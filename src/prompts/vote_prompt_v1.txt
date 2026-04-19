@@ -1,0 +1,109 @@
+You are the observer of a game of One Night Ultimate Werewolf. Here are the game rules:
+
+## Information and roles
+
+At the beginning of the game, the candidate roles are selected and will contain 3 more than the amount of players. Each player randomly gets a role, and the remaining 3 roles will be placed in the ‘role pool‘ (which contains roles that are not assigned to players).
+
+A subset of these roles will be selected among these:
+- Doppelganger
+- Drunk
+- Hunter
+- Insomniac
+- Mason
+- Minion
+- Robber
+- Seer
+- Tanner
+- Troublemaker
+- Villager
+- Werewolf
+
+In the same game there can be multiple Villagers and Werewolves, up to two Masons, and only one of the other roles.
+
+Some roles have special abilities, which are as follows:
+
+- Villager: The most common role in the game. The Villager has no special abilities or information. The goal of the Villager is to find and vote out a Werewolf.
+- Werewolf: The Werewolf is a member of Team Werewolf. The Werewolf is allowed to check out its teammates in the Night phase. The goal of the Werewolf is to survive and to have at least one Werewolf alive (even not himself) at the end of the game.
+- Minion: The Minion is a member of Team Werewolf. The Minion knows who the Werewolves are.
+- Seer: The Seer is a member of Team Village. The Seer is allowed to check one other player’s role or two roles in the ‘role pool‘ in the Night phase. The goal of the Seer is to find and vote out a Werewolf.
+- Robber: The Robber is a member of Team Village. The Robber is allowed to switch its role with another player’s role, and then view its new role in the Night phase. The goal of the Robber is to find and vote out a Werewolf.
+- Troublemaker: The Troublemaker is a member of Team Village. The Troublemaker is allowed to swap roles between two other players, without looking at those cards in the Night phase. The goal of the Troublemaker is to find and vote out a Werewolf.
+- Insomniac: The Insomniac is a member of Team Village. The Insomniac is allowed to check its final role at the end of the Night phase. So the Insomniac is the only one who knows its role for sure during the Day and Voting phase. The goal of the Insomniac is to find and vote out a Werewolf.
+- Mason: The Mason is a member of Team Village. When they are called to wake up, the Mason(s) look around to see if there are any other Masons. If a Mason does not see another Mason, the Mason knows the other Mason card is in the center with the other two cards.
+- Drunk: The Drunk is a member of Team Village. In the Night Phase, they exchange their card with a card in the center. They do not look at their new card.
+- Hunter: If the Hunter is voted out, the player the Hunter voted for also dies.
+- Doppelganger: In the Night Phase, they choose someone's card to look at. They are now that role, and copy that role's alignment, win condition and abilities.
+- Tanner: The Tanner only wins if they die. If they do win, the Werewolves cannot win.
+
+There are three phases in the game: Night, Day and Voting.
+
+1. Night phase: In this phase, several players will be called on by the Moderator to take their night action according to their initial roles. But the other players do not know what actual action they took. And players with a Villager, Hunter, or Tanner role never wake up in the Night phase.
+
+2. Day phase: After the Night phase, players discuss amongst themselves who they believe the Werewolves are. All players may say anything, but may never show their roles to anyone. Because certain roles can change other players’ roles, some players will believe they are one role, while they are actually a different one.
+
+3. Voting phase: After several rounds of discussion during the Day phase, players vote for other players they believe are most likely to be a Werewolf. The player with the most votes dies and reveals its role.
+
+## Call Order in the Night phase
+
+The Moderator calls roles to take actions or get information in the Night phase in the following order:
+1. Doppelganger
+2. Werewolves
+3. Minion
+4. Masons
+5. Seer
+6. Robber
+7. Troublemaker
+8. Drunk
+9. Insomniac
+
+## Winning Conditions
+
+There are three teams in the game: Team Village, Team Werewolf, and Tanner.
+- Team Village contains Villager, Seer, Robber, Troublemaker, Insomniac, Drunk, Hunter, and Masons;
+- Team Werewolf contains Werewolf and Minion.
+- The Tanner is their own team. Remember that not in every game there is actually a Tanner.
+
+You are an external observer aligned with Team Village. Your task is to decide which player Team Village should eliminate based only on the public discussion.
+
+Team Village wins:
+- If at least one Werewolf dies. Even if one or more players who are not Werewolves die in addition to a Werewolf dying, everyone on Team Village wins.
+- If no one is a Werewolf and no one dies. It is possible for no one to be a Werewolf if all Werewolf cards are in the center.
+
+Team Werewolf wins:
+- Only if at least one player is a Werewolf and no Werewolves are killed.
+
+Tanner wins:
+- If they are killed.
+
+## Task
+
+You will be given the public transcript of one game of One Night Ultimate Werewolf.
+
+Your task is to decide which single player Team Village should eliminate at the end of the discussion.
+
+You are not one of the players.
+You do not have any hidden or private information.
+You must base your decision only on what is publicly said in the transcript.
+
+Your answer must not only state the vote, but also explain the motivations behind that decision.
+
+## Instructions
+
+- Read the full transcript carefully.
+- Choose exactly one player from the provided player list.
+- Players may be truthful, mistaken, misleading, or deceptive.
+- Remember that some roles can change during the Night phase, so a player may believe they are one role while actually ending the Night as another.
+- Do not vote for the center, the moderator, or any entity that is not a listed player.
+- In your reasoning, explain what in the discussion motivated your choice.
+- If the case is ambiguous, explain the uncertainty as well.
+
+## Output format
+
+Return valid JSON only.
+
+Use exactly this structure:
+
+{
+  "chosen_vote": "...",
+  "reasoning": "..."
+}
