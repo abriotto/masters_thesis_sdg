@@ -45,19 +45,111 @@ def build_full_prompt(base_prompt: str, player_names: list[str], transcript_text
 """.strip()
 
 
-def extract_json_object(text: str) -> Optional[dict]:
+def extract_first_json_block(text: str) -> Optional[str]:
     """
-    Try to extract the first JSON object from the model response.
+    Try to extract a JSON object from model output.
+
+    Priority:
+    1. fenced ```json ... ```
+    2. fenced ``` ... ```
+    3. first balanced {...} block
     """
-    match = re.search(r"\{.*\}", text, flags=re.DOTALL)
-    if not match:
+    fenced_json = re.search(r"```json\s*(\{.*?\})\s*```", text, flags=re.DOTALL | re.IGNORECASE)
+    if fenced_json:
+        return fenced_json.group(1)
+
+    fenced_any = re.search(r"```\s*(\{.*?\})\s*```", text, flags=re.DOTALL)
+    if fenced_any:
+        return fenced_any.group(1)
+
+    start = text.find("{")
+    if start == -1:
         return None
 
-    candidate = match.group(0)
+    depth = 0
+    for i in range(start, len(text)):
+        ch = text[i]
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:i + 1]
+
+    return None
+
+
+def parse_model_json(text: str) -> Optional[dict]:
+    candidate = extract_first_json_block(text)
+    if candidate is None:
+        return None
+
     try:
         return json.loads(candidate)
     except json.JSONDecodeError:
         return None
+
+
+def validate_vote_output(obj: Optional[dict], player_names: list[str]) -> dict:
+    report = {
+        "is_valid": False,
+        "errors": [],
+        "chosen_vote": None,
+        "reasoning": None,
+    }
+
+    if obj is None:
+        report["errors"].append("no_parseable_json")
+        return report
+
+    if not isinstance(obj, dict):
+        report["errors"].append("parsed_output_not_dict")
+        return report
+
+    if "chosen_vote" not in obj:
+        report["errors"].append("missing_chosen_vote")
+    if "reasoning" not in obj:
+        report["errors"].append("missing_reasoning")
+
+    chosen_vote = obj.get("chosen_vote")
+    reasoning = obj.get("reasoning")
+
+    if not isinstance(chosen_vote, str) or not chosen_vote.strip():
+        report["errors"].append("chosen_vote_not_nonempty_string")
+    elif chosen_vote not in player_names:
+        report["errors"].append(f"chosen_vote_not_in_player_list:{chosen_vote}")
+
+    if not isinstance(reasoning, str) or not reasoning.strip():
+        report["errors"].append("reasoning_not_nonempty_string")
+
+    report["chosen_vote"] = chosen_vote
+    report["reasoning"] = reasoning
+
+    if not report["errors"]:
+        report["is_valid"] = True
+
+    return report
+
+
+def add_soft_warnings(validation: dict, raw_response: str) -> list[str]:
+    warnings = []
+
+    reasoning = validation.get("reasoning")
+    if isinstance(reasoning, str):
+        low = reasoning.lower()
+
+        if "confirmed" in low:
+            warnings.append("reasoning_contains_confirmed_language")
+        if "all players" in low or "everyone is" in low:
+            warnings.append("reasoning_may_overgeneralize")
+        if "likely a villager" in low and validation.get("chosen_vote") is not None:
+            warnings.append("reasoning_may_target_player_described_as_villager")
+
+    raw_low = raw_response.lower()
+    if raw_low.count("{") > 1 or raw_low.count("```") > 0:
+        warnings.append("response_contains_extra_wrapper_text")
+
+    return warnings
 
 
 def call_gemini(client: genai.Client, model_name: str, prompt: str) -> str:
@@ -72,10 +164,18 @@ def load_local_model(model_name: str):
     import torch
     from transformers import AutoTokenizer, AutoModelForCausalLM
 
+    if torch.cuda.is_available():
+        if torch.cuda.is_bf16_supported():
+            dtype = torch.bfloat16
+        else:
+            dtype = torch.float16
+    else:
+        dtype = torch.float32
+
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+        torch_dtype=dtype,
         device_map="auto" if torch.cuda.is_available() else None,
     )
 
@@ -85,7 +185,7 @@ def load_local_model(model_name: str):
     return tokenizer, model
 
 
-def call_local_model(model, tokenizer, prompt: str, max_new_tokens: int = 700) -> str:
+def call_local_model(model, tokenizer, prompt: str, max_new_tokens: int = 200) -> str:
     import torch
 
     messages = [{"role": "user", "content": prompt}]
@@ -100,13 +200,18 @@ def call_local_model(model, tokenizer, prompt: str, max_new_tokens: int = 700) -
         input_text = prompt
 
     model_device = next(model.parameters()).device
-    inputs = tokenizer(input_text, return_tensors="pt", truncation=True).to(model_device)
+    inputs = tokenizer(
+        input_text,
+        return_tensors="pt",
+        truncation=True,
+    ).to(model_device)
 
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_new_tokens,
             do_sample=False,
+            use_cache=True,
             pad_token_id=tokenizer.eos_token_id,
         )
 
@@ -241,7 +346,9 @@ def main():
             else:
                 raise ValueError(f"Unsupported backend: {args.backend}")
 
-            parsed_output = extract_json_object(raw_response)
+            parsed_output = parse_model_json(raw_response)
+            validation = validate_vote_output(parsed_output, row["player_names"])
+            soft_warnings = add_soft_warnings(validation, raw_response)
 
             result = {
                 "source": row["source"],
@@ -255,12 +362,15 @@ def main():
                 "prompt_path": args.prompt_path,
                 "raw_response": raw_response,
                 "parsed_output": parsed_output,
+                "validation": validation,
+                "soft_warnings": soft_warnings,
             }
 
             with output_path.open("w", encoding="utf-8") as f:
                 json.dump(result, f, indent=2, ensure_ascii=False)
 
-            print(f"[{i}/{len(rows)}] OK - {source}/{transcript_stem}.json")
+            status = "OK" if validation["is_valid"] else "PARSED_BUT_INVALID"
+            print(f"[{i}/{len(rows)}] {status} - {source}/{transcript_stem}.json")
 
         except Exception as e:
             error_result = {
