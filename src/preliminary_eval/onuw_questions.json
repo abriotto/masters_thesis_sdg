@@ -176,14 +176,10 @@
     "id": "q09",
     "dimension": "claim_consistency",
     "question": "Read this transcript.\nPlayer A: 'I started as the Robber. During the night I stole from Player B, and the card I took was a Villager.'\nPlayer B: 'I am the Insomniac. I checked my card at the end of the night and I was the Robber.'\nBased strictly on game mechanics, is it possible for both players to be telling the truth?",
-    "expected_final_answer": "Yes",
-    "reference_reasoning": "The Robber acts before the Insomniac. Player A can rob Player B and take a Villager card, leaving the Robber card with Player B. At the end of the night, Player B as the Insomniac can then see that the current card is Robber. So both claims are possible.",
+    "expected_final_answer": "No",
+    "reference_reasoning": "The claims are not consistent, as Player B cannot be simoultaneously the Villager and the Insomniac as a starting role.",
     "expected_key_points": [
-      "The Robber acts before the Insomniac.",
-      "Player A can take a Villager card from Player B.",
-      "That leaves the Robber card with Player B.",
-      "The Insomniac then sees the Robber card at the end of the night.",
-      "Therefore both claims can be true."
+      "Player B cannot wake up as the Insomniac if they were holding the Villager card"
     ],
     "scoring": {
       "answer_score": "0/1",
@@ -191,8 +187,8 @@
       "total_score": "0/1/2"
     },
     "scoring_guide": {
-      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Yes'; 0 otherwise.",
-      "reasoning_score": "1 if the reasoning correctly traces the Robber swap and explains why Player B can later see the Robber card as Insomniac; 0 otherwise."
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'No'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that Player B could be either the Villager or the Insomniac at the start, 0 otherwise."
     }
   },
   {
