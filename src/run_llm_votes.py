@@ -7,27 +7,8 @@ from typing import Optional
 
 from google import genai
 
-
-def find_repo_root(start: Optional[Path] = None, repo_name: str = "masters_thesis_sdg") -> Path:
-    if start is None:
-        start = Path.cwd().resolve()
-
-    current = start
-    while True:
-        if current.name == repo_name:
-            return current
-        if current.parent == current:
-            raise FileNotFoundError(f"Could not find repo root '{repo_name}' from {start}")
-        current = current.parent
-
-
-def load_json(path: Path):
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def load_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8").strip()
+from utils.io_utils import find_repo_root, load_json, load_text
+from utils.model_utils import call_gemini, call_local_model, load_local_model
 
 
 def build_full_prompt(base_prompt: str, player_names: list[str], transcript_text: str) -> str:
@@ -151,72 +132,6 @@ def add_soft_warnings(validation: dict, raw_response: str) -> list[str]:
 
     return warnings
 
-
-def call_gemini(client: genai.Client, model_name: str, prompt: str) -> str:
-    response = client.models.generate_content(
-        model=model_name,
-        contents=prompt,
-    )
-    return (response.text or "").strip()
-
-
-def load_local_model(model_name: str):
-    import torch
-    from transformers import AutoTokenizer, AutoModelForCausalLM
-
-    if torch.cuda.is_available():
-        if torch.cuda.is_bf16_supported():
-            dtype = torch.bfloat16
-        else:
-            dtype = torch.float16
-    else:
-        dtype = torch.float32
-
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        torch_dtype=dtype,
-        device_map="auto" if torch.cuda.is_available() else None,
-    )
-
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
-    return tokenizer, model
-
-
-def call_local_model(model, tokenizer, prompt: str, max_new_tokens: int = 200) -> str:
-    import torch
-
-    messages = [{"role": "user", "content": prompt}]
-
-    if hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template is not None:
-        input_text = tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
-    else:
-        input_text = prompt
-
-    model_device = next(model.parameters()).device
-    inputs = tokenizer(
-        input_text,
-        return_tensors="pt",
-        truncation=True,
-    ).to(model_device)
-
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,
-            use_cache=True,
-            pad_token_id=tokenizer.eos_token_id,
-        )
-
-    generated = outputs[0][inputs["input_ids"].shape[1]:]
-    return tokenizer.decode(generated, skip_special_tokens=True).strip()
 
 
 def main():

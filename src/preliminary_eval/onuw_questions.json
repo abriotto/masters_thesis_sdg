@@ -1,0 +1,220 @@
+[
+  {
+    "id": "q01",
+    "dimension": "final_card_win_condition",
+    "question": "Player A starts as the Robber. Player B starts as the Werewolf. During the Night phase, Player A robs Player B. During the Day phase, the town votes out Player B. Who wins?",
+    "expected_final_answer": "Team Werewolf wins",
+    "reference_reasoning": "Player A robs Player B and ends the night holding the Werewolf card. Player B is voted out, but Player B no longer has the Werewolf card. Since at least one player is a Werewolf and no Werewolf is killed, Team Werewolf wins.",
+    "expected_key_points": [
+      "Player A ends the night with the Werewolf card.",
+      "Player B is no longer the Werewolf when voted out.",
+      "Win conditions depend on final roles, not starting roles.",
+      "Therefore Team Werewolf wins."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Team Werewolf wins'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that the Werewolf card moved to Player A and that final roles determine the outcome; 0 if the reasoning is missing, vague, contradictory, or relies on incorrect mechanics."
+    }
+  },
+  {
+    "id": "q02",
+    "dimension": "role_swapping",
+    "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+    "expected_final_answer": "Yes",
+    "reference_reasoning": "The Troublemaker acts before the Insomniac. At the end of the night, the Insomniac checks their current card. Therefore Player A can know that their card was swapped before the Day phase begins.",
+    "expected_key_points": [
+      "The Insomniac acts after the Troublemaker.",
+      "The Insomniac checks their current card at the end of the night.",
+      "Therefore Player A knows the card was swapped."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Yes'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly relies on the night order and the Insomniac's ability to inspect the current card at the end of the night; 0 otherwise."
+    }
+  },
+  {
+    "id": "q03",
+    "dimension": "final_card_win_condition",
+    "question": "Player A starts as the Drunk and blindly swaps their card with a center card. That center card happens to be a Werewolf. During the Day phase, the town votes out Player B, who is a Villager. Which team wins?",
+    "expected_final_answer": "Team Werewolf wins",
+    "reference_reasoning": "Player A ends the night holding the Werewolf card after swapping with the center. Player B, a Villager, is voted out. Since at least one player is a Werewolf and no Werewolf is killed, Team Werewolf wins.",
+    "expected_key_points": [
+      "Player A ends the game with the Werewolf card.",
+      "The Drunk's lack of knowledge does not affect win conditions.",
+      "Win conditions depend on final roles.",
+      "No Werewolf is killed, so Team Werewolf wins."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Team Werewolf wins'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that Player A ends with the Werewolf card and survives, and does not incorrectly rely on the Drunk's knowledge state; 0 otherwise."
+    }
+  },
+  {
+    "id": "q04",
+    "dimension": "secret_actions_and_information",
+    "question": "The Minion wakes up and sees that Player X is the only Werewolf. Later in the Night phase, the Troublemaker swaps Player X's card with Player Y's card. When the Day phase begins, who does the Minion believe is the Werewolf?",
+    "expected_final_answer": "Player X",
+    "reference_reasoning": "The Minion gets information before the Troublemaker acts. The Minion is not informed about later swaps. Therefore the Minion still believes that Player X is the Werewolf.",
+    "expected_key_points": [
+      "The Minion acts before the Troublemaker.",
+      "The Minion is not informed about later swaps.",
+      "The Minion's information is outdated by the Day phase.",
+      "Therefore the Minion believes Player X is the Werewolf."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer correctly identifies Player X as the Minion's mechanical belief; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that the Minion acts before the Troublemaker and is not updated afterward; 0 otherwise."
+    }
+  },
+  {
+    "id": "q05",
+    "dimension": "tanner_win_condition",
+    "question": "Player 1 starts as the Tanner. No night actions affect their card. During the Day phase, the town votes out Player 1. There is also an active Werewolf among the surviving players. Who wins?",
+    "expected_final_answer": "Only the Tanner wins",
+    "reference_reasoning": "Player 1 is the Tanner and is voted out. The Tanner wins if they die. This special win condition overrides the standard Village/Werewolf outcome, so only the Tanner wins.",
+    "expected_key_points": [
+      "Player 1 remains the Tanner.",
+      "The Tanner wins by being killed.",
+      "The Tanner's win overrides the normal Village/Werewolf outcome in this case.",
+      "Therefore only the Tanner wins."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Only the Tanner wins'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that the Tanner wins by dying and that this overrides the standard team outcome; 0 otherwise."
+    }
+  },
+  {
+    "id": "q06",
+    "dimension": "claim_consistency",
+    "question": "Read this transcript.\nPlayer A: 'I am the Mason, and when I woke up I saw Player B as the other Mason.'\nPlayer C: 'I am the Seer, and Player B was the Werewolf.'\nBased strictly on game mechanics, is it possible for both Player A and Player C to be telling the truth?",
+    "expected_final_answer": "No",
+    "reference_reasoning": "Both Masons and Seer receive their information before role-swapping players act.Therefore, Player B cannot simultaneously be a Mason (as A saw) and a Werewolf (as C saw) at the same point in time.",
+    "expected_key_points": [
+      "Masons and Seers receive their information before role-swapping players act.",
+      "Both claims cannot be simultaneously true."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'No'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly identifies the incompatibility between Player B being a Mason and a Werewolf at the relevant information times; 0 otherwise."
+    }
+  },
+  {
+    "id": "q07",
+    "dimension": "center_card_accounting",
+    "question": "Read this transcript.\nPlayer A: 'I am a Mason. I woke up in the night and did not see another Mason.'\nPlayer B: 'I am the Seer. I looked at two center cards and saw the Tanner and the Robber.'\nAssuming a standard 3-card center pool, is it possible that both players are telling the truth?",
+    "expected_final_answer": "Yes",
+    "reference_reasoning": "If Player A is a lone Mason, then the other Mason card must be in the center. Player B accounts for two center cards: Tanner and Robber. The third center card can therefore be the other Mason, so both claims are consistent.",
+    "expected_key_points": [
+      "If Player A is a lone Mason, the other Mason must be in the center.",
+      "Player B accounts for two center cards: Tanner and Robber.",
+      "The third center card can be the other Mason.",
+      "Therefore both claims can be true."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Yes'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly accounts for the three center cards and identifies the unseen center card as the other Mason; 0 otherwise."
+    }
+  },
+  {
+    "id": "q08",
+    "dimension": "claim_consistency",
+    "question": "Read this transcript.\nPlayer A: 'I am the Drunk. I swapped my card with one of the center cards during the night.'\nPlayer B: 'I am the Seer. I used my ability and looked at two center cards. One of them was the Drunk card.'\nBased strictly on game mechanics, is it possible for both Player A and Player B to be telling the truth?",
+    "expected_final_answer": "No",
+    "reference_reasoning": "The Seer acts before the Drunk. Therefore when the Seer looked at the center, the Drunk card was still in front of Player A and could not yet have been in the center. So both claims cannot simultaneously be true.",
+    "expected_key_points": [
+      "The Seer acts before the Drunk.",
+      "When the Seer looked, the Drunk card was still in front of Player A.",
+      "So the Seer could not have seen the Drunk card in the center.",
+      "Therefore both claims cannot both be true."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'No'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly relies on Seer-before-Drunk night order and concludes that the Drunk card could not have been in the center yet; 0 otherwise."
+    }
+  },
+  {
+    "id": "q09",
+    "dimension": "claim_consistency",
+    "question": "Read this transcript.\nPlayer A: 'I started as the Robber. During the night I stole from Player B, and the card I took was a Villager.'\nPlayer B: 'I am the Insomniac. I checked my card at the end of the night and I was the Robber.'\nBased strictly on game mechanics, is it possible for both players to be telling the truth?",
+    "expected_final_answer": "Yes",
+    "reference_reasoning": "The Robber acts before the Insomniac. Player A can rob Player B and take a Villager card, leaving the Robber card with Player B. At the end of the night, Player B as the Insomniac can then see that the current card is Robber. So both claims are possible.",
+    "expected_key_points": [
+      "The Robber acts before the Insomniac.",
+      "Player A can take a Villager card from Player B.",
+      "That leaves the Robber card with Player B.",
+      "The Insomniac then sees the Robber card at the end of the night.",
+      "Therefore both claims can be true."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Yes'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly traces the Robber swap and explains why Player B can later see the Robber card as Insomniac; 0 otherwise."
+    }
+  },
+  {
+    "id": "q10",
+    "dimension": "multi_step_card_tracking",
+    "question": "Read this transcript.\nPlayer A: 'I am the Troublemaker. I swapped Player B and Player C during the night.'\nPlayer C: 'I am the Robber. I stole from Player D, and the card I got was a Werewolf. Therefore Player B is the Werewolf right now.'\nBased strictly on game mechanics, is Player C's deduction correct?",
+    "expected_final_answer": "Yes",
+    "reference_reasoning": "The Robber acts before the Troublemaker. So Player C takes the Werewolf card from Player D before the later swap between Player B and Player C. That later swap moves the Werewolf card from player C to Player B. Therefore Player C's deduction is correct.",
+    "expected_key_points": [
+      "The Robber acts before the Troublemaker.",
+      "Player C takes the Werewolf card from Player D.",
+      "The later swap between Player B and Player C moves the Werewolf card to player B.",
+      "Therefore Player B is the Werewolf at that point."
+    ],
+    "scoring": {
+      "answer_score": "0/1",
+      "reasoning_score": "0/1",
+      "total_score": "0/1/2"
+    },
+    "scoring_guide": {
+      "answer_score": "1 if the final answer is correct or semantically equivalent to 'Yes'; 0 otherwise.",
+      "reasoning_score": "1 if the reasoning correctly explains that the Robber acts before the Troublemaker and that the later swap moves the Werewolf card from player C to player B; 0 otherwise."
+    }
+  }
+]
