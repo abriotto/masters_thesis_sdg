@@ -113,7 +113,7 @@ def _tokenize_inputs(model_io, input_text: str, model_device):
     inputs = model_io(
         text=input_text,
         return_tensors="pt",
-        truncation=True,
+        truncation=False,
     )
     return inputs.to(model_device)
 

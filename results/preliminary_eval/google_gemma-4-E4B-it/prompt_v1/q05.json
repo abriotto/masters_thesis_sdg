@@ -3,30 +3,30 @@
   "dimension": "tanner_win_condition",
   "question": "Player 1 starts as the Tanner. No night actions affect their card. During the Day phase, the town votes out Player 1. There is also an active Werewolf among the surviving players. Who wins?",
   "backend": "hf_local",
-  "model_name": "Qwen/Qwen2.5-14B-Instruct",
+  "model_name": "google/gemma-4-E4B-it",
   "prompt_version": "v1",
   "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v1.txt",
   "rules_path": "src/prompts/onuw_rules_v1.txt",
-  "raw_response": "{\n  \"final_answer\": \"Only the Tanner wins\",\n  \"reasoning\": \"Since Player 1, who is the Tanner, is voted out and dies, the Tanner wins according to the winning condition that the Tanner wins if they die.\"\n}",
+  "raw_response": "{\n  \"final_answer\": \"Tanner wins\",\n  \"reasoning\": \"The Tanner wins if the Tanner dies, and the Tanner was voted out during the Day phase.\"\n}",
   "parsed_output": {
-    "final_answer": "Only the Tanner wins",
-    "reasoning": "Since Player 1, who is the Tanner, is voted out and dies, the Tanner wins according to the winning condition that the Tanner wins if they die."
+    "final_answer": "Tanner wins",
+    "reasoning": "The Tanner wins if the Tanner dies, and the Tanner was voted out during the Day phase."
   },
   "validation": {
     "is_valid": true,
     "errors": [],
-    "final_answer": "Only the Tanner wins",
-    "reasoning": "Since Player 1, who is the Tanner, is voted out and dies, the Tanner wins according to the winning condition that the Tanner wins if they die."
+    "final_answer": "Tanner wins",
+    "reasoning": "The Tanner wins if the Tanner dies, and the Tanner was voted out during the Day phase."
   },
   "soft_warnings": [],
   "rendered_prompt": "You are answering a rule-understanding question about the social deduction game One Night Ultimate Werewolf (ONUW).\n\nYour task is to answer the question strictly according to the provided game rules.\n\nInstructions:\n- Use only the provided rules.\n- Be precise and concise.\n- Follow exactly the output format described below.\n\nOutput instructions:\n- Return exactly one JSON object.\n- Do not include markdown fences.\n- Do not include any text before or after the JSON object.\n- Use exactly this schema:\n\n{\n  \"final_answer\": \"<short answer>\",\n  \"reasoning\": \"<brief explanation>\"\n}\n\nThe `final_answer` must be short and direct. You must also provide a `reasoning` that briefly and precisely justifies it.\n\nExamples of valid `final_answer` values include:\n- \"Yes\"\n- \"No\"\n- \"Team Village wins\"\n- \"Team Werewolf wins\"\n- \"Only the Tanner wins\"\n\nHere are the game rules:\n\n## Information and roles\n\nAt the beginning of the game, a set of candidate roles is selected. The number of candidate roles is always equal to the number of players plus 3. Each player is randomly assigned one role card, and the remaining 3 cards are placed in the center. These 3 center cards are called the role pool.\n\nThe selected roles may include:\n- Doppelganger\n- Drunk\n- Hunter\n- Insomniac\n- Mason\n- Minion\n- Robber\n- Seer\n- Tanner\n- Troublemaker\n- Villager\n- Werewolf\n\nIn the same game, there may be multiple Villagers and multiple Werewolves, up to two Masons, and at most one of each other listed role.\n\nAt the beginning of the game, each player may look at their own card to learn their starting role. After that, players may not look at their own card or any other player's card, except when explicitly allowed by their role ability.\n\n## Roles and abilities\n\n- Villager: A Villager is a member of Team Village and has no special ability.\n- Werewolf: A Werewolf is a member of Team Werewolf. During the Night phase, Werewolves may identify their teammates.\n- Minion: The Minion is a member of Team Werewolf. During the Night phase, the Minion learns who the Werewolves are.\n- Seer: The Seer is a member of Team Village. During the Night phase, the Seer may either look at one other player's card or look at two cards in the center.\n- Robber: The Robber is a member of Team Village. During the Night phase, the Robber swaps their card with another player's card, then looks at their new card.\n- Troublemaker: The Troublemaker is a member of Team Village. During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\n- Insomniac: The Insomniac is a member of Team Village. At the end of the Night phase, the Insomniac looks at their current card.\n- Mason: The Mason is a member of Team Village. During the Night phase, Masons look to see whether there is another Mason. If a Mason does not see another Mason, then the other Mason card must be in the center.\n- Drunk: The Drunk is a member of Team Village. During the Night phase, the Drunk swaps their card with one card from the center, without looking at the new card.\n- Hunter: The Hunter is a member of Team Village. If the Hunter is voted out, the player the Hunter voted for also dies.\n- Doppelganger: During the Night phase, the Doppelganger looks at another player's card and becomes that role. The Doppelganger also copies that role's alignment, win condition, and ability.\n- Tanner: The Tanner is its own independent team. The Tanner wins only if they die.\n\n## Game phases\n\nA full game consists of three phases: Night, Day, and Voting.\n\n1. Night phase: Players with relevant night actions are called by the Announcer in a specific order and perform their actions according to their starting roles. Other players do not know what actions were taken. Players with the Villager, Hunter, or Tanner role do not wake up during the Night phase.\n\n2. Day phase: After the Night phase, players discuss who they believe the Werewolves are. Players may say anything, but they may never show their role cards. Because some roles can change cards during the night, a player may believe they are one role while actually ending the night as another role.\n\n3. Voting phase: After discussion, all players vote for the player they believe is most likely to be a Werewolf. The player with the most votes dies.\n\n## Night action order\n\nThe Announcer calls roles in the following order during the Night phase:\n1. Doppelganger\n2. Werewolves\n3. Minion\n4. Masons\n5. Seer\n6. Robber\n7. Troublemaker\n8. Drunk\n9. Insomniac\n\n## Winning conditions\n\nThere are three teams: Team Village, Team Werewolf, and Tanner.\n\n- Team Village includes Villager, Seer, Robber, Troublemaker, Insomniac, Drunk, Hunter, and Mason.\n- Team Werewolf includes Werewolf and Minion.\n- Tanner is its own independent team.\n\nTeam Village wins:\n- If at least one Werewolf dies.\n- If no player is a Werewolf and no one dies. This can happen if all Werewolf cards are in the center.\n\nTeam Werewolf wins:\n- Only if at least one player is a Werewolf and no Werewolves die.\n\nTanner wins:\n- If the Tanner dies.\n\nNow answer the following question.\n\nQuestion:\nPlayer 1 starts as the Tanner. No night actions affect their card. During the Day phase, the town votes out Player 1. There is also an active Werewolf among the surviving players. Who wins?",
   "debug_info": {
     "model_device": "cuda:0",
-    "input_token_count": 1274,
-    "output_token_count": 52,
-    "generation_time_sec": 2.80195951461792,
+    "input_token_count": 1300,
+    "output_token_count": 42,
+    "generation_time_sec": 3.213348150253296,
     "used_chat_template": true,
-    "input_char_count": 5403,
-    "model_family": "standard_chat"
+    "input_char_count": 5293,
+    "model_family": "gemma4"
   }
 }

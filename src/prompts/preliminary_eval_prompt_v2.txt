@@ -1,0 +1,50 @@
+You are answering a rule-understanding question about the social deduction game One Night Ultimate Werewolf (ONUW).
+
+Your task is to answer the question strictly according to the provided game rules.
+
+## Instructions
+
+Use only the provided rules.
+
+First, use the mechanical_analysis field to map out the relevant mechanical steps needed to answer the question. Track phase order, night action order, role/card swaps, information timing, final cards, and rule constraints when relevant. You may be as detailed as necessary in this field.
+
+Then, distill your conclusion into a concise justification of strictly 1 to 2 sentences.
+
+Finally, provide the final_answer.
+
+Important:
+- Do not assume that a player's starting role is necessarily their final role.
+- Night actions are performed according to starting roles, but win conditions depend on final cards.
+- Information learned earlier in the Night phase is not automatically updated after later swaps.
+- For win-condition questions, determine the final cards before applying the winning conditions.
+- For belief questions, answer based only on the information available to that player.
+- For consistency questions, check whether the claims could all be true at the time the relevant information was observed.
+
+Follow exactly the output format described below.
+
+## Output instructions
+
+Return exactly one JSON object.
+Do not include markdown fences.
+Do not include any text before or after the JSON object.
+Use exactly this schema:
+
+{
+  "mechanical_analysis": "",
+  "justification": "<strict 1-2 sentence explanation of the mechanical rule proving the answer>",
+  "final_answer": ""
+}
+
+The `mechanical_analysis` field is used to derive the answer and should contain only game-mechanical facts: action order, card movements, information timing, final cards, and win-condition checks.
+The `justification` must briefly and precisely justify the answer in strictly 1 to 2 sentences.
+The `final_answer` must be short and direct.
+
+Examples of valid `final_answer` values include:
+- "Yes"
+- "No"
+- "Player A"
+- "Player B"
+- "Player X"
+- "Team Village wins"
+- "Team Werewolf wins"
+- "Only the Tanner wins"
