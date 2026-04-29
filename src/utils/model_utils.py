@@ -7,7 +7,7 @@ from typing import Any, Literal, Optional, Tuple
 from google import genai
 
 
-ModelFamily = Literal["gemma4", "gpt_oss", "standard_chat"]
+ModelFamily = Literal["gemma4", "gpt_oss", "qwen", "standard_chat"]
 QuantizationMode = Literal["none", "8bit", "4bit"]
 ReasoningEffort = Literal["low", "medium", "high"]
 
@@ -53,6 +53,9 @@ def get_model_family(model_name: str) -> ModelFamily:
 
     if "gpt-oss" in low:
         return "gpt_oss"
+
+    if "qwen" in low:
+        return "qwen"
 
     return "standard_chat"
 
@@ -311,13 +314,24 @@ class BaseLocalModelHandler:
 
 class StandardChatHandler(BaseLocalModelHandler):
     """
-    Default handler for Qwen, Llama, Mistral, and most instruct/chat models.
+    Default handler for generic instruct/chat models.
 
     If their tokenizer provides a chat template, it is used automatically.
     If not, the raw prompt is used as fallback.
     """
 
     pass
+
+
+class QwenHandler(BaseLocalModelHandler):
+    """
+    Handler for Qwen chat/instruct models.
+
+    Qwen-Instruct models should expose a tokenizer chat template.
+    Requiring it prevents accidentally evaluating Qwen with the wrong prompt format.
+    """
+
+    requires_chat_template = True
 
 
 class GptOssHandler(BaseLocalModelHandler):
@@ -386,6 +400,23 @@ class Gemma4Handler(BaseLocalModelHandler):
             if isinstance(parsed, str):
                 return parsed.strip()
 
+            if isinstance(parsed, dict):
+                content = parsed.get("content")
+
+                if isinstance(content, str):
+                    return content.strip()
+
+                # Fallback for possible nested/multi-part processor outputs.
+                if isinstance(content, list):
+                    parts = []
+                    for item in content:
+                        if isinstance(item, str):
+                            parts.append(item)
+                        elif isinstance(item, dict) and isinstance(item.get("text"), str):
+                            parts.append(item["text"])
+                    if parts:
+                        return "".join(parts).strip()
+
             return str(parsed).strip()
 
         return raw.strip()
@@ -411,6 +442,15 @@ def make_local_handler(
 
     if family == "gpt_oss":
         return GptOssHandler(
+            model=model,
+            model_io=model_io,
+            model_name=model_name,
+            reasoning_effort=reasoning_effort,
+            gemma_enable_thinking=False,
+        )
+
+    if family == "qwen":
+        return QwenHandler(
             model=model,
             model_io=model_io,
             model_name=model_name,

@@ -1,0 +1,39 @@
+## Task
+
+You will be given the public transcript of one game of One Night Ultimate Werewolf.
+
+You are an external observer. Your task is to decide which listed player Team Village should eliminate based only on the public discussion.
+
+Your goal is to vote for the listed player most likely to be a Werewolf.
+
+You are not one of the players.
+You do not have any hidden or private information.
+
+## Instructions
+
+- Read the full transcript and the game rules carefully.
+- Choose exactly one player from the provided player list.
+- Base your decision only on what is publicly said in the transcript.
+- Each player wants their own team to win, and they will say everything in their power to make their team win.
+- Remember that some roles can change during the Night phase, so a player may believe they are one role while actually ending the Night as another.
+- Do not invent a complete role assignment for all players unless it is clearly supported by the transcript.
+- Your reasoning must support your chosen vote.
+- Do not vote for the center, the Announcer, or any entity that is not a listed player.
+
+
+## Output format
+
+Return valid JSON only.
+
+First explain the reasoning that leads to your decision, then provide the final vote.
+
+Use exactly this structure:
+
+{
+  "reasoning": "...",
+  "chosen_vote": "..."
+}
+
+The value of "chosen_vote" must be exactly one name from the provided player list.
+The "reasoning" field should briefly explain which public statements or inconsistencies most influenced your decision.
+Do not include markdown, code fences, or text outside the JSON object.
