@@ -6,9 +6,9 @@ from typing import Optional
 
 from google import genai
 
-from utils.io_utils import find_repo_root, load_json, load_text
-from utils.json_utils import parse_model_json
-from utils.model_utils import (
+from src.utils.io_utils import find_repo_root, load_json, load_text
+from src.utils.json_utils import parse_model_json
+from src.utils.model_utils import (
     call_gemini,
     call_local_model,
     get_model_io_info,
@@ -16,10 +16,19 @@ from utils.model_utils import (
 )
 
 
-def build_full_prompt(base_prompt: str, player_names: list[str], transcript_text: str) -> str:
+def build_full_prompt(
+    base_prompt: str,
+    rules_text: str,
+    player_names: list[str],
+    transcript_text: str,
+) -> str:
     players_str = ", ".join(player_names)
 
     return f"""{base_prompt}
+
+Here are the game rules:
+
+{rules_text}
 
 ## Player list
 
@@ -86,6 +95,16 @@ def add_soft_warnings(validation: dict, raw_response: str) -> list[str]:
         if "likely a villager" in low and validation.get("chosen_vote") is not None:
             warnings.append("reasoning_may_target_player_described_as_villager")
 
+        sentence_count = (
+            reasoning.count(".")
+            + reasoning.count("!")
+            + reasoning.count("?")
+        )
+        if sentence_count < 6:
+            warnings.append("reasoning_may_be_shorter_than_6_sentences")
+        if sentence_count > 12:
+            warnings.append("reasoning_may_exceed_12_sentences")
+
     raw_low = raw_response.lower()
     if raw_low.count("{") > 1 or raw_low.count("```") > 0:
         warnings.append("response_contains_extra_wrapper_text")
@@ -121,6 +140,12 @@ def parse_args() -> argparse.Namespace:
         "--prompt_path",
         type=str,
         default="src/prompts/vote_prompt_v1.txt",
+    )
+    parser.add_argument(
+        "--rules_path",
+        type=str,
+        default="src/prompts/onuw_rules_v2.txt",
+        help="Path to the ONUW rules file.",
     )
     parser.add_argument(
         "--backend",
@@ -312,6 +337,7 @@ def build_result_record(
         "model_name": args.model_name,
         "prompt_version": args.prompt_version,
         "prompt_path": args.prompt_path,
+        "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
         "quantization": args.quantization,
         "reasoning_effort": args.reasoning_effort,
@@ -347,6 +373,7 @@ def build_error_record(
         "model_name": args.model_name,
         "prompt_version": args.prompt_version,
         "prompt_path": args.prompt_path,
+        "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
         "quantization": args.quantization,
         "reasoning_effort": args.reasoning_effort,
@@ -368,9 +395,11 @@ def main() -> None:
 
     index_path = repo_root / args.index_path
     prompt_path = repo_root / args.prompt_path
+    rules_path = repo_root / args.rules_path
 
     index_data = load_json(index_path)
     base_prompt = load_text(prompt_path)
+    rules_text = load_text(rules_path)
 
     rows = index_data if args.max_games == -1 else index_data[: args.max_games]
 
@@ -388,6 +417,7 @@ def main() -> None:
 
     print(f"Loaded {len(rows)} games from {index_path}")
     print(f"Prompt file: {prompt_path}")
+    print(f"Rules file: {rules_path}")
     print(f"Backend: {args.backend}")
     print(f"Model: {args.model_name}")
     print(f"Quantization: {args.quantization}")
@@ -420,6 +450,7 @@ def main() -> None:
         transcript_text = load_text(transcript_path)
         prompt = build_full_prompt(
             base_prompt=base_prompt,
+            rules_text=rules_text,
             player_names=row["player_names"],
             transcript_text=transcript_text,
         )
