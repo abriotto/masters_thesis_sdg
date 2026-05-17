@@ -1,0 +1,39 @@
+## Task
+
+You will be given the public transcript of one game of One Night Ultimate Werewolf.
+You are an external observer, but you must make the voting decision from Team Village's perspective.
+Your task is to decide which listed player Team Village should eliminate based only on the public discussion.
+Use Team Village's objective: choose the listed player whose elimination is most likely to help Team Village win. In most cases, this means voting for the player most likely to be a Werewolf.
+
+You are not one of the players.
+You do not have any hidden or private information.
+
+## Instructions
+
+- Read the full transcript and the game rules carefully.
+- Choose exactly one player from the provided player list.
+- Remember that some roles can change during the Night phase, so a player may believe they are one role while actually ending the Night as another.
+- Your justification must support your chosen vote.
+- Do not vote for the center, the Announcer, or any entity that is not a listed player.
+
+Important:
+- Do not assume that a player's starting role is necessarily their final role.
+- Night actions are performed according to starting roles, but win conditions depend on final cards.
+- Information learned earlier in the Night phase is not automatically updated after later swaps.
+- Each player wants their own team to win: Werewolves want to avoid elimination, Village-aligned players want to eliminate a Werewolf if one is present, and the Tanner wants to attract votes in order to be eliminated. Thus, players may bluff or deceive others to achieve their goal.
+
+## Output format
+
+Return valid JSON only.
+
+Use exactly this structure:
+
+{
+  "chosen_vote": "...",
+  "justification": "..."
+}
+
+The "chosen_vote" field must appear first.
+The value of "chosen_vote" must be exactly one name from the provided player list.
+The "justification" field should contain a concise explanation of the decision in 3-5 sentences.
+Do not include markdown, code fences, analysis, scratchpad text, or text outside the JSON object.

@@ -40,12 +40,44 @@ Here are the game rules:
 """.strip()
 
 
+def extract_response_for_parsing(raw_response: str, model_name: str) -> str:
+    """
+    GPT-OSS/Harmony local decoding may return text like:
+
+        analysis...
+        assistantfinal{...}
+
+    For GPT-OSS only, parse the final channel.
+    For other models, including Gemma and Qwen, leave the response unchanged.
+    The raw response is still saved separately for auditability.
+    """
+    if not isinstance(raw_response, str):
+        return raw_response
+
+    if "gpt-oss" not in model_name.lower():
+        return raw_response.strip()
+
+    markers = [
+        "assistantfinal",
+        "<|channel|>final<|message|>",
+    ]
+
+    for marker in markers:
+        idx = raw_response.rfind(marker)
+        if idx != -1:
+            candidate = raw_response[idx + len(marker):].strip()
+            if "{" in candidate:
+                return candidate
+
+    return raw_response.strip()
+
+
 def validate_vote_output(obj: Optional[dict], player_names: list[str]) -> dict:
     report = {
         "is_valid": False,
         "errors": [],
         "chosen_vote": None,
-        "reasoning": None,
+        "justification": None,
     }
 
     if obj is None:
@@ -58,22 +90,26 @@ def validate_vote_output(obj: Optional[dict], player_names: list[str]) -> dict:
 
     if "chosen_vote" not in obj:
         report["errors"].append("missing_chosen_vote")
-    if "reasoning" not in obj:
-        report["errors"].append("missing_reasoning")
+    if "justification" not in obj:
+        report["errors"].append("missing_justification")
 
     chosen_vote = obj.get("chosen_vote")
-    reasoning = obj.get("reasoning")
+    justification = obj.get("justification")
 
     if not isinstance(chosen_vote, str) or not chosen_vote.strip():
         report["errors"].append("chosen_vote_not_nonempty_string")
-    elif chosen_vote not in player_names:
-        report["errors"].append(f"chosen_vote_not_in_player_list:{chosen_vote}")
+    else:
+        chosen_vote = chosen_vote.strip()
+        if chosen_vote not in player_names:
+            report["errors"].append(f"chosen_vote_not_in_player_list:{chosen_vote}")
 
-    if not isinstance(reasoning, str) or not reasoning.strip():
-        report["errors"].append("reasoning_not_nonempty_string")
+    if not isinstance(justification, str) or not justification.strip():
+        report["errors"].append("justification_not_nonempty_string")
+    else:
+        justification = justification.strip()
 
     report["chosen_vote"] = chosen_vote
-    report["reasoning"] = reasoning
+    report["justification"] = justification
 
     if not report["errors"]:
         report["is_valid"] = True
@@ -81,33 +117,45 @@ def validate_vote_output(obj: Optional[dict], player_names: list[str]) -> dict:
     return report
 
 
-def add_soft_warnings(validation: dict, raw_response: str) -> list[str]:
+def add_soft_warnings(
+    validation: dict,
+    raw_response: str,
+    response_for_parsing: str,
+) -> list[str]:
     warnings = []
 
-    reasoning = validation.get("reasoning")
-    if isinstance(reasoning, str):
-        low = reasoning.lower()
+    justification = validation.get("justification")
+    if isinstance(justification, str):
+        low = justification.lower()
 
         if "confirmed" in low:
-            warnings.append("reasoning_contains_confirmed_language")
+            warnings.append("justification_contains_confirmed_language")
         if "all players" in low or "everyone is" in low:
-            warnings.append("reasoning_may_overgeneralize")
+            warnings.append("justification_may_overgeneralize")
         if "likely a villager" in low and validation.get("chosen_vote") is not None:
-            warnings.append("reasoning_may_target_player_described_as_villager")
+            warnings.append("justification_may_target_player_described_as_villager")
 
         sentence_count = (
-            reasoning.count(".")
-            + reasoning.count("!")
-            + reasoning.count("?")
+            justification.count(".")
+            + justification.count("!")
+            + justification.count("?")
         )
-        if sentence_count < 6:
-            warnings.append("reasoning_may_be_shorter_than_6_sentences")
-        if sentence_count > 12:
-            warnings.append("reasoning_may_exceed_12_sentences")
+
+        if sentence_count < 3:
+            warnings.append("justification_may_be_shorter_than_3_sentences")
+        if sentence_count > 5:
+            warnings.append("justification_may_exceed_5_sentences")
 
     raw_low = raw_response.lower()
-    if raw_low.count("{") > 1 or raw_low.count("```") > 0:
-        warnings.append("response_contains_extra_wrapper_text")
+
+    if raw_low.count("```") > 0:
+        warnings.append("response_contains_code_fence")
+
+    if "analysis" in raw_low and "assistantfinal" in raw_low:
+        warnings.append("response_contains_gpt_oss_analysis_channel")
+
+    if response_for_parsing.strip() != raw_response.strip():
+        warnings.append("response_was_cleaned_before_parsing")
 
     return warnings
 
@@ -139,7 +187,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--prompt_path",
         type=str,
-        default="src/prompts/vote_prompt_v1.txt",
+        default="src/prompts/vote_prompt_v2.txt",
     )
     parser.add_argument(
         "--rules_path",
@@ -161,7 +209,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--prompt_version",
         type=str,
-        default="v1",
+        default="v2",
     )
     parser.add_argument(
         "--task_name",
@@ -171,7 +219,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max_games",
         type=int,
-        default=5,
+        default=-1,
         help="Number of games to process. Use -1 for all.",
     )
     parser.add_argument(
@@ -188,15 +236,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max_new_tokens",
         type=int,
-        default=512,
+        default=768,
         help="Maximum number of new tokens generated by local HF models.",
-    )
-    parser.add_argument(
-        "--quantization",
-        type=str,
-        choices=["none", "8bit", "4bit"],
-        default="none",
-        help="Optional HF local model quantization. Defaults to none.",
     )
     parser.add_argument(
         "--reasoning_effort",
@@ -209,6 +250,18 @@ def parse_args() -> argparse.Namespace:
         "--gemma_enable_thinking",
         action="store_true",
         help="Enable Gemma 4 thinking mode. Ignored by non-Gemma models.",
+    )
+    parser.add_argument(
+        "--repetition_penalty",
+        type=float,
+        default=1.05,
+        help="Repetition penalty for local HF generation. Use 1.0 to disable.",
+    )
+    parser.add_argument(
+        "--no_repeat_ngram_size",
+        type=int,
+        default=0,
+        help="Optional no-repeat ngram size for local HF generation. 0 disables it.",
     )
     parser.add_argument(
         "--save_prompt",
@@ -231,7 +284,6 @@ def load_backend(args: argparse.Namespace):
     if args.backend == "hf_local":
         model_io, model = load_local_model(
             model_name=args.model_name,
-            quantization=args.quantization,
         )
         return None, model_io, model
 
@@ -271,6 +323,8 @@ def call_backend(
             reasoning_effort=args.reasoning_effort,
             gemma_enable_thinking=args.gemma_enable_thinking,
             return_debug_info=args.debug_timing,
+            repetition_penalty=args.repetition_penalty,
+            no_repeat_ngram_size=args.no_repeat_ngram_size,
         )
 
     raise ValueError(f"Unsupported backend: {args.backend}")
@@ -306,7 +360,9 @@ def print_debug_info(
             f"device={debug_info['model_device']} | "
             f"handler={debug_info.get('handler', 'unknown')} | "
             f"reasoning_effort={debug_info.get('reasoning_effort')} | "
-            f"gemma_thinking={debug_info.get('gemma_enable_thinking')}"
+            f"gemma_thinking={debug_info.get('gemma_enable_thinking')} | "
+            f"rep_penalty={debug_info.get('repetition_penalty')} | "
+            f"no_repeat_ngram={debug_info.get('no_repeat_ngram_size')}"
         )
         return
 
@@ -321,6 +377,7 @@ def build_result_record(
     args: argparse.Namespace,
     row: dict,
     raw_response: str,
+    response_for_parsing: str,
     parsed_output: Optional[dict],
     validation: dict,
     soft_warnings: list[str],
@@ -339,10 +396,12 @@ def build_result_record(
         "prompt_path": args.prompt_path,
         "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
-        "quantization": args.quantization,
         "reasoning_effort": args.reasoning_effort,
         "gemma_enable_thinking": args.gemma_enable_thinking,
+        "repetition_penalty": args.repetition_penalty,
+        "no_repeat_ngram_size": args.no_repeat_ngram_size,
         "raw_response": raw_response,
+        "response_for_parsing": response_for_parsing,
         "parsed_output": parsed_output,
         "validation": validation,
         "soft_warnings": soft_warnings,
@@ -375,9 +434,10 @@ def build_error_record(
         "prompt_path": args.prompt_path,
         "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
-        "quantization": args.quantization,
         "reasoning_effort": args.reasoning_effort,
         "gemma_enable_thinking": args.gemma_enable_thinking,
+        "repetition_penalty": args.repetition_penalty,
+        "no_repeat_ngram_size": args.no_repeat_ngram_size,
         "error": str(error),
         "error_type": type(error).__name__,
     }
@@ -420,8 +480,10 @@ def main() -> None:
     print(f"Rules file: {rules_path}")
     print(f"Backend: {args.backend}")
     print(f"Model: {args.model_name}")
-    print(f"Quantization: {args.quantization}")
     print(f"Reasoning effort: {args.reasoning_effort}")
+    print(f"Max new tokens: {args.max_new_tokens}")
+    print(f"Repetition penalty: {args.repetition_penalty}")
+    print(f"No-repeat ngram size: {args.no_repeat_ngram_size}")
     print(f"Results root: {results_root}")
 
     if args.backend == "hf_local":
@@ -476,14 +538,24 @@ def main() -> None:
                 debug_info=debug_info,
             )
 
-            parsed_output = parse_model_json(raw_response)
+            response_for_parsing = extract_response_for_parsing(
+                raw_response=raw_response,
+                model_name=args.model_name,
+            )
+
+            parsed_output = parse_model_json(response_for_parsing)
             validation = validate_vote_output(parsed_output, row["player_names"])
-            soft_warnings = add_soft_warnings(validation, raw_response)
+            soft_warnings = add_soft_warnings(
+                validation=validation,
+                raw_response=raw_response,
+                response_for_parsing=response_for_parsing,
+            )
 
             result = build_result_record(
                 args=args,
                 row=row,
                 raw_response=raw_response,
+                response_for_parsing=response_for_parsing,
                 parsed_output=parsed_output,
                 validation=validation,
                 soft_warnings=soft_warnings,
@@ -494,7 +566,8 @@ def main() -> None:
             save_json(output_path, result)
 
             status = "OK" if validation["is_valid"] else "PARSED_BUT_INVALID"
-            print(f"[{i}/{len(rows)}] {status} - {game_id}.json")
+            chosen_vote = validation.get("chosen_vote")
+            print(f"[{i}/{len(rows)}] {status} - {game_id}.json -> {chosen_vote}")
 
         except Exception as e:
             error_result = build_error_record(

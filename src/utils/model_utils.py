@@ -8,7 +8,6 @@ from google import genai
 
 
 ModelFamily = Literal["gemma4", "gpt_oss", "qwen", "standard_chat"]
-QuantizationMode = Literal["none", "8bit", "4bit"]
 ReasoningEffort = Literal["low", "medium", "high"]
 
 
@@ -25,7 +24,6 @@ class LocalModelBundle:
     family: ModelFamily
     model_io: Any
     model: Any
-    quantization: QuantizationMode = "none"
 
     @property
     def io_info(self) -> dict:
@@ -33,7 +31,6 @@ class LocalModelBundle:
             "family": self.family,
             "io_type": "processor" if self.family == "gemma4" else "tokenizer",
             "has_chat_template": has_chat_template(self.model_io),
-            "quantization": self.quantization,
         }
 
 
@@ -77,18 +74,6 @@ def get_model_io_info(model_name: str, model_io: Any) -> dict:
     }
 
 
-def _validate_quantization(quantization: str) -> QuantizationMode:
-    valid_modes = {"none", "8bit", "4bit"}
-
-    if quantization not in valid_modes:
-        raise ValueError(
-            f"Unsupported quantization mode: {quantization}. "
-            f"Expected one of: {sorted(valid_modes)}"
-        )
-
-    return quantization  # type: ignore[return-value]
-
-
 def _validate_reasoning_effort(reasoning_effort: str) -> ReasoningEffort:
     valid_efforts = {"low", "medium", "high"}
 
@@ -108,68 +93,31 @@ def _load_torch_and_transformers():
     return torch, AutoModelForCausalLM, AutoProcessor, AutoTokenizer
 
 
-def _model_load_kwargs(torch_module, quantization: str = "none") -> dict:
+def _best_model_dtype(torch_module):
     """
-    Centralized loading policy.
+    Use bf16 on CUDA when supported, otherwise fp16.
+    Fall back to fp32 on CPU.
 
-    quantization='none':
-        Loads the model with torch_dtype='auto'.
-
-    quantization='8bit' or '4bit':
-        Uses bitsandbytes through Transformers BitsAndBytesConfig.
-        This requires CUDA and bitsandbytes installed.
+    This avoids torch_dtype='auto', which can leave too little VRAM headroom
+    for generation on large local models.
     """
-    quantization = _validate_quantization(quantization)
+    if torch_module.cuda.is_available():
+        if torch_module.cuda.is_bf16_supported():
+            return torch_module.bfloat16
+        return torch_module.float16
 
-    if quantization == "none":
-        kwargs = {
-            "torch_dtype": "auto",
-        }
+    return torch_module.float32
 
-        if torch_module.cuda.is_available():
-            kwargs["device_map"] = "auto"
 
-        return kwargs
-
-    if not torch_module.cuda.is_available():
-        raise RuntimeError(
-            f"Quantization mode '{quantization}' requires CUDA, but CUDA is not available."
-        )
-
-    try:
-        from transformers import BitsAndBytesConfig
-    except ImportError as e:
-        raise ImportError(
-            "8-bit/4-bit quantization requires bitsandbytes support through Transformers. "
-            "Install the needed packages, for example: pip install bitsandbytes"
-        ) from e
-
+def _model_load_kwargs(torch_module) -> dict:
     kwargs = {
-        "device_map": "auto",
+        "torch_dtype": _best_model_dtype(torch_module),
     }
 
-    if quantization == "8bit":
-        kwargs["quantization_config"] = BitsAndBytesConfig(
-            load_in_8bit=True,
-        )
-        return kwargs
+    if torch_module.cuda.is_available():
+        kwargs["device_map"] = "auto"
 
-    if quantization == "4bit":
-        compute_dtype = (
-            torch_module.bfloat16
-            if torch_module.cuda.is_bf16_supported()
-            else torch_module.float16
-        )
-
-        kwargs["quantization_config"] = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=compute_dtype,
-            bnb_4bit_quant_type="nf4",
-            bnb_4bit_use_double_quant=True,
-        )
-        return kwargs
-
-    raise ValueError(f"Unsupported quantization mode: {quantization}")
+    return kwargs
 
 
 def _load_model_io(model_name: str, family: ModelFamily):
@@ -187,19 +135,13 @@ def _load_model_io(model_name: str, family: ModelFamily):
     return tokenizer
 
 
-def load_local_model(
-    model_name: str,
-    quantization: str = "none",
-) -> Tuple[Any, Any]:
+def load_local_model(model_name: str) -> Tuple[Any, Any]:
     """
-    Backward-compatible loader.
+    Load a local HF causal LM and its tokenizer/processor.
 
-    The runner can keep using:
-
-        model_io, model = load_local_model(model_name, quantization="none")
+    No quantization is used.
+    CUDA models are loaded in bf16 when supported, otherwise fp16.
     """
-    quantization = _validate_quantization(quantization)
-
     torch, AutoModelForCausalLM, _, _ = _load_torch_and_transformers()
 
     family = get_model_family(model_name)
@@ -207,26 +149,15 @@ def load_local_model(
 
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        **_model_load_kwargs(torch, quantization=quantization),
+        **_model_load_kwargs(torch),
     )
 
     model.eval()
     return model_io, model
 
 
-def load_local_model_bundle(
-    model_name: str,
-    quantization: str = "none",
-) -> LocalModelBundle:
-    """
-    Optional cleaner API for future runners.
-    """
-    quantization = _validate_quantization(quantization)
-
-    model_io, model = load_local_model(
-        model_name=model_name,
-        quantization=quantization,
-    )
+def load_local_model_bundle(model_name: str) -> LocalModelBundle:
+    model_io, model = load_local_model(model_name=model_name)
     family = get_model_family(model_name)
 
     return LocalModelBundle(
@@ -234,7 +165,6 @@ def load_local_model_bundle(
         family=family,
         model_io=model_io,
         model=model,
-        quantization=quantization,
     )
 
 
@@ -313,24 +243,10 @@ class BaseLocalModelHandler:
 
 
 class StandardChatHandler(BaseLocalModelHandler):
-    """
-    Default handler for generic instruct/chat models.
-
-    If their tokenizer provides a chat template, it is used automatically.
-    If not, the raw prompt is used as fallback.
-    """
-
     pass
 
 
 class QwenHandler(BaseLocalModelHandler):
-    """
-    Handler for Qwen chat/instruct models.
-
-    Qwen-Instruct models should expose a tokenizer chat template.
-    Requiring it prevents accidentally evaluating Qwen with the wrong prompt format.
-    """
-
     requires_chat_template = True
 
 
@@ -339,8 +255,8 @@ class GptOssHandler(BaseLocalModelHandler):
     GPT-OSS must use the Transformers chat template.
 
     The template applies the Harmony response format automatically.
-    reasoning_effort defaults to 'low' and is passed to the template when
-    supported by the installed Transformers/tokenizer version.
+    reasoning_effort is passed to the template when supported by the installed
+    Transformers/tokenizer version.
     """
 
     requires_chat_template = True
@@ -406,7 +322,6 @@ class Gemma4Handler(BaseLocalModelHandler):
                 if isinstance(content, str):
                     return content.strip()
 
-                # Fallback for possible nested/multi-part processor outputs.
                 if isinstance(content, list):
                     parts = []
                     for item in content:
@@ -472,10 +387,12 @@ def call_local_model(
     model_io: Any,
     prompt: str,
     model_name: str | None = None,
-    max_new_tokens: int = 256,
+    max_new_tokens: int = 768,
     reasoning_effort: str = "low",
     gemma_enable_thinking: bool = False,
     return_debug_info: bool = False,
+    repetition_penalty: float = 1.05,
+    no_repeat_ngram_size: int = 0,
 ):
     import torch
 
@@ -494,53 +411,73 @@ def call_local_model(
     model_device = next(model.parameters()).device
     inputs = handler.tokenize(input_text, model_device)
 
-    input_len = inputs["input_ids"].shape[-1]
+    input_len = int(inputs["input_ids"].shape[-1])
+    input_char_count = len(input_text)
     pad_token_id = handler.pad_token_id()
 
     generation_kwargs = {
         "max_new_tokens": max_new_tokens,
         "do_sample": False,
         "use_cache": True,
+        "repetition_penalty": repetition_penalty,
     }
+
+    if no_repeat_ngram_size > 0:
+        generation_kwargs["no_repeat_ngram_size"] = no_repeat_ngram_size
 
     if pad_token_id is not None:
         generation_kwargs["pad_token_id"] = pad_token_id
 
     t0 = time.time()
+
     with torch.inference_mode():
         outputs = model.generate(
             **inputs,
             **generation_kwargs,
         )
+
     t1 = time.time()
 
     generated_ids = outputs[0][input_len:]
+    output_token_count = int(generated_ids.shape[0])
     text = handler.decode(generated_ids)
-
-    if not return_debug_info:
-        return text
 
     family = get_model_family(model_name or "")
 
-    debug_info = {
-        "model_device": str(model_device),
-        "input_token_count": int(input_len),
-        "output_token_count": int(generated_ids.shape[0]),
-        "generation_time_sec": float(t1 - t0),
-        "used_chat_template": has_chat_template(model_io),
-        "input_char_count": len(input_text),
-        "model_family": family,
-        "handler": handler.__class__.__name__,
-        "reasoning_effort": (
-            reasoning_effort
-            if family == "gpt_oss"
-            else None
-        ),
-        "gemma_enable_thinking": (
-            bool(gemma_enable_thinking)
-            if family == "gemma4"
-            else None
-        ),
-    }
+    debug_info = None
+    if return_debug_info:
+        debug_info = {
+            "model_device": str(model_device),
+            "input_token_count": input_len,
+            "output_token_count": output_token_count,
+            "generation_time_sec": float(t1 - t0),
+            "used_chat_template": has_chat_template(model_io),
+            "input_char_count": input_char_count,
+            "model_family": family,
+            "handler": handler.__class__.__name__,
+            "reasoning_effort": (
+                reasoning_effort
+                if family == "gpt_oss"
+                else None
+            ),
+            "gemma_enable_thinking": (
+                bool(gemma_enable_thinking)
+                if family == "gemma4"
+                else None
+            ),
+            "repetition_penalty": repetition_penalty,
+            "no_repeat_ngram_size": no_repeat_ngram_size,
+            "torch_dtype": str(getattr(model, "dtype", "unknown")),
+        }
 
-    return text, debug_info
+    del outputs
+    del inputs
+    del generated_ids
+
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+    if return_debug_info:
+        return text, debug_info
+
+    return text
