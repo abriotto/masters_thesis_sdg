@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#3#Insomniac",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#3#Insomniac_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Audrey: Claims Robber. Says she took Dylan's card. Claims Dylan was the Seer. (So Audrey is now Seer, Dylan is now Robber).\n    *   Dylan: Confirms he saw Audrey was a Robber (Wait, if Audrey took his card, he's the Robber now, but he says \"I saw you're a Robber\"). This is confusing. Let's re-read.\n        *   Audrey: \"I was the Robber, and I took Dylan's card. And Dylan was the Seer... I switched our cards, so he's now a Robber.\"\n        *   Dylan: \"I saw you're a Robber.\" (This contradicts Audrey's claim that she took his card and he is now the Robber).\n    *   Dan: Claims Troublemaker. Says he switched two cards.\n    *   Ed: Claims Insomniac. Says he woke up as a Mason.\n    *   Katie: Claims Mason. Says she was alone (only one Mason). Later says she's now the Insomniac.\n    *   Brett: Claims Drunk. Says he switched a card from the middle.\n\n    *   Dan (Troublemaker) claims he switched two cards.\n    *   Ed (Insomniac) claims he woke up as a Mason.\n    *   Katie (Mason) claims she is now the Insomniac.\n    *   This implies Dan (Troublemaker) switched Ed (Insomniac) and Katie (Mason).\n    *   If Dan switched Ed and Katie:\n        *   Ed (starting Insomniac) becomes Mason.\n        *   Katie (starting Mason) becomes Insomniac.\n        *   Ed (Insomniac) wakes up at the end of the night and sees he is now a Mason.\n        *   This story is consistent.\n\n    *   Audrey (starting Robber) takes Dylan's (starting Seer) card.\n    *   Audrey is now Seer.\n    *   Dylan is now Robber.\n    *   Dylan says: \"I saw you're a Robber.\"\n    *   Wait, if Dylan is the Robber, he looks at his *new* card. If Audrey took his card, he doesn't look at her card. The Robber looks at the card they *took*.\n    *   If Audrey took Dylan's card, Audrey looks at Dylan's card. Dylan doesn't look at anything.\n    *   Dylan's claim \"I saw you're a Robber\" makes no sense if he's the Robber (he'd see his own card) or the Seer (he'd see someone else's card). If he was the Seer and Audrey took his card, he's now the Robber. If he was the Robber and took Audrey's card, he'd see her card.\n    *   Let's re-examine: Audrey says \"I was the Robber, and I took Dylan's card.\" This means Audrey is now the Seer (if Dylan was Seer) and Dylan is now the Robber.\n    *   Dylan says: \"I saw you're a Robber.\" This is a contradiction. If he's the Robber, he sees his own card. If he's the Seer, he sees someone else's. But Audrey says she took his card.\n\n    *   Brett claims Drunk.\n    *   He says he switched a card from the middle.\n    *   He's the only one without a supporting claim or a role that fits into the others' narratives.\n    *   The group is leaning towards Brett.\n\n    *   Audrey: Robber -> Seer (claims)\n    *   Dylan: Seer -> Robber (claims)\n    *   Dan: Troublemaker (claims)\n    *   Ed: Insomniac -> Mason (claims)\n    *   Katie: Mason -> Insomniac (claims)\n    *   Brett: Drunk (claims)\n\n    *   Wait, if everyone is telling the truth, there are no Werewolves.\n    *   Roles claimed: Robber, Seer, Troublemaker, Insomniac, Mason, Drunk.\n    *   Total players: 6.\n    *   If these 6 roles are present, there are no Werewolves.\n    *   However, in One Night Ultimate Werewolf, there are always 3 cards in the center.\n    *   Candidate roles: 6 players + 3 = 9 roles.\n    *   If the roles claimed are all present, the 3 center cards must be the remaining roles (e.g., Werewolf, Werewolf, Minion, or Tanner, etc.).\n\n    *   Dylan's statement \"I saw you're a Robber\" is very suspicious. If Audrey took his card, he shouldn't have seen her card. If he was the Seer and looked at her, he would have seen she was the Robber *before* she took his card. But the Seer wakes up *before* the Robber.\n    *   Seer (5) -> Robber (6).\n    *   If Dylan was the Seer, he could have looked at Audrey and seen she was the Robber. Then Audrey (Robber) woke up and took Dylan's card.\n    *   So:\n        1.  Dylan (Seer) looks at Audrey (Robber).\n        2.  Audrey (Robber) takes Dylan's (Seer) card.\n        3.  Now Audrey is Seer, Dylan is Robber.\n    *   This makes Dylan's statement \"I saw you're a Robber\" possible.\n\n    *   If all claims are true:\n        *   Audrey: Seer (final)\n        *   Dylan: Robber (final)\n        *   Dan: Troublemaker (final)\n        *   Ed: Mason (final)\n        *   Katie: Insomniac (final)\n        *   Brett: Drunk (final)\n    *   If these are the final roles, there are no Werewolves.\n    *   But someone must be lying if there is a Werewolf.\n    *   Who is most likely lying?\n    *   Brett's claim is the most isolated. He claims Drunk, but no one can verify it.\n    *   The group has decided to vote for Brett.\n\n    *   Is there any other contradiction?\n    *   Katie says: \"I was Mason, but now I'm the Insomniac because...\"\n    *   Ed says: \"I was the Insomniac. Now I'm the Mason, because I woke up...\"\n    *   Dan says: \"I did switch those two cards.\"\n    *   This trio (Dan, Ed, Katie) is very consistent.\n    *   Audrey and Dylan are also somewhat consistent (as analyzed in step 8).\n    *   Brett is the odd one out.\n\n    *   If Brett is the Werewolf, voting for him wins the game for the Village.\n    *   If Brett is the Tanner, voting for him loses the game for the Village.\n    *   If Brett is a Villager/Drunk/Mason, and there's a Werewolf elsewhere, voting for him doesn't win the game.\n    *   However, based on the public discussion, Brett is the most suspicious because his role is unverified and he's the only one not integrated into a confirmed narrative.\n\n    *   Wait, let's re-read Dylan's part.\n    *   Dylan: \"I saw you're a Robber.\"\n    *   Audrey: \"Who's card did you see?\"\n    *   Dylan: \"I saw you're a Robber.\"\n    *   This is Dylan claiming he was the Seer and saw Audrey was the Robber.\n    *   Then Audrey claims she was the Robber and took Dylan's card.\n    *   This is consistent with the night order (Seer then Robber).\n\n    *   The most likely candidate for Werewolf is Brett, as he has no one to verify his claim and the other players have formed a cohesive narrative.\n\n    *   Dan: Troublemaker\n    *   Ed: Insomniac -> Mason\n    *   Katie: Mason -> Insomniac\n    *   Audrey: Robber -> Seer\n    *   Dylan: Seer -> Robber\n    *   Brett: Drunk\n    *   If these are the roles, there are no werewolves. But the game usually has werewolves. If Brett is lying about being the Drunk, he's the most likely Werewolf.\n\n    *   Wait, let's check the roles again.\n    *   If Brett is the Werewolf, he'd want to claim a role that doesn't conflict with others. Drunk is a good claim because it's hard to verify.\n    *   The group's logic: \"If there's a Werewolf in play, we don't kill it, then the Werewolf wins. So we have to kill you [Brett].\"\n\n    *   Is there any other possibility?\n    *   Could Dan, Ed, and Katie be the Werewolves? (They are backing each other).\n    *   But their story about the Insomniac/Mason swap is very specific. For a Werewolf to fake that, they would need to know who the Insomniac and Mason were, which they wouldn't unless they were the Minion or had other info.\n    *   The most plausible target for Team Village is Brett.",
+  "parsed_output": {
+    "justification": "The players have established a cohesive narrative where Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason), and Audrey (Robber) swapped roles with Dylan (Seer). This network of claims is mutually reinforcing and consistent with the night action order. Brett is the only player whose claim (Drunk) is entirely unverified and does not fit into the established narrative, making him the most likely candidate for a Werewolf bluffing to avoid detection.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"The players have established a cohesive narrative where Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason), and Audrey (Robber) swapped roles with Dylan (Seer). This network of claims is mutually reinforcing and consistent with the night action order. Brett is the only player whose claim (Drunk) is entirely unverified and does not fit into the established narrative, making him the most likely candidate for a Werewolf bluffing to avoid detection.\",\n  \"chosen_vote\": \"Brett\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"The players have established a cohesive narrative where Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason), and Audrey (Robber) swapped roles with Dylan (Seer). This network of claims is mutually reinforcing and consistent with the night action order. Brett is the only player whose claim (Drunk) is entirely unverified and does not fit into the established narrative, making him the most likely candidate for a Werewolf bluffing to avoid detection.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "The players have established a cohesive narrative where Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason), and Audrey (Robber) swapped roles with Dylan (Seer). This network of claims is mutually reinforcing and consistent with the night action order. Brett is the only player whose claim (Drunk) is entirely unverified and does not fit into the established narrative, making him the most likely candidate for a Werewolf bluffing to avoid detection."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5471,
+    "output_token_count": 2270,
+    "generation_time_sec": 247.55904030799866,
+    "used_chat_template": true,
+    "input_char_count": 17677,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

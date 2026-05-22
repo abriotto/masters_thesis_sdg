@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game3.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Alana: Claims to be \"no help\" (initially), then later seems confused.\n    *   Mitchell: Claims he looked at someone's card (Seer/Robber claim). Claims he saw Mike was the Robber. Later claims he was the Tanner.\n    *   Mike: Claims he was the Robber (initially implied), then claims he is the Tanner.\n    *   Caitlynn: Claims she is the Troublemaker and switched Mitchell and Mike.\n\n    *   Mitchell says: \"I saw Mike's, and I can confirm that he was the robber.\" (Line 58)\n    *   Caitlynn says: \"I switched you two [Mitchell and Mike]\" (Line 68, 109).\n    *   Mike says: \"I'm the tanner\" (Line 83, 139, 141).\n    *   Mitchell says: \"I was the tanner this whole time\" (Line 89, 98, 145).\n\n    *   If Caitlynn is the Troublemaker and switched Mitchell and Mike:\n        *   If Mitchell was the Seer and saw Mike was the Robber, and then Caitlynn switched them, Mitchell is now the Robber and Mike is now the Seer.\n        *   Wait, the Troublemaker swaps *cards*, not roles. If Mitchell had the Seer card and Mike had the Robber card, and Caitlynn swapped them, Mitchell now has the Robber card and Mike now has the Seer card.\n        *   However, the Troublemaker acts *after* the Seer and Robber.\n        *   Night Order: 1. Doppelganger, 2. Werewolves, 3. Minion, 4. Masons, 5. Seer, 6. Robber, 7. Troublemaker, 8. Drunk, 9. Insomniac.\n        *   If Mitchell was the Seer (5), he looked at Mike's card (Robber).\n        *   If Mike was the Robber (6), he robbed someone.\n        *   If Caitlynn was the Troublemaker (7), she swapped Mitchell and Mike.\n        *   Now Mitchell has the Robber card and Mike has the Seer card.\n\n    *   But wait, Mitchell and Mike are both claiming to be the Tanner.\n    *   If Mitchell was the Tanner (starting role), he wouldn't have woken up to see Mike's card.\n    *   If Mike was the Tanner (starting role), he wouldn't have been the Robber.\n\n    *   Mitchell's claims are contradictory:\n        1.  \"I looked at someone's card\" (Line 44)\n        2.  \"I saw Mike's, and I can confirm that he was the robber\" (Line 58)\n        3.  \"I was the tanner this whole time\" (Line 89)\n    *   If he was the Tanner, he couldn't have looked at Mike's card. If he looked at Mike's card, he wasn't the Tanner.\n    *   This contradiction strongly suggests Mitchell is lying.\n\n    *   Mike's claims:\n        1.  Initially doesn't claim a role, but Mitchell says he's the Robber.\n        2.  Later claims \"I'm the tanner\" (Line 83).\n    *   Caitlynn's claims:\n        1.  Claims to be the Troublemaker and swapped Mitchell and Mike.\n\n    *   If Mitchell is lying about being the Seer/Robber *and* lying about being the Tanner, he is likely the Werewolf.\n    *   If Mike is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out.\n    *   Mitchell tries to shift the vote to Alana at the end (Lines 155, 158, 161).\n\n    *   Caitlynn: Claims Troublemaker.\n    *   Alana: No strong claim, mostly confused.\n    *   Mike: Claims Tanner.\n    *   Mitchell: Claims Seer/Robber, then claims Tanner. (Contradiction!)\n\n    *   Mitchell's behavior is the most suspicious. He claimed to have information (seeing Mike's card) and then immediately claimed to be the Tanner (who has no information). This is a blatant contradiction.\n\n    *   Team Village wins if they vote out a Werewolf.\n    *   Mitchell is the most likely Werewolf due to his contradictory claims.\n\n    *   Wait, let's re-read:\n        Mitchell: \"I saw Mike's, and I can confirm that he was the robber.\" (Line 58)\n        Mitchell: \"I was the tanner this whole time.\" (Line 89)\n    *   These cannot both be true. A Tanner does not wake up and look at cards.\n    *   Therefore, Mitchell is lying. Lying is typical for Werewolves or Tanners.\n    *   If Mitchell is the Tanner, he wants to be voted out. If he's the Werewolf, he wants to avoid it.\n    *   He tries to push the vote onto Alana (Line 155). This suggests he is *not* the Tanner and is instead the Werewolf.\n\n    *   Mike also claims to be the Tanner (Line 83).\n    *   If Mike is the Tanner and Mitchell is the Werewolf, voting Mitchell is the correct move for the Village.\n\n    *   Caitlynn claims Troublemaker.\n    *   Alana is quiet.\n    *   Mitchell is contradictory.\n    *   Mike claims Tanner.\n    *   The most suspicious player is Mitchell.",
+  "parsed_output": {
+    "justification": "Mitchell makes contradictory claims throughout the discussion. He first claims to have looked at Mike's card and confirmed Mike was the Robber, but later claims he was the Tanner. Since the Tanner does not wake up to look at other players' cards, Mitchell is clearly lying. Furthermore, he attempts to divert the vote toward Alana at the end of the game, which is behavior consistent with a Werewolf trying to avoid elimination rather than a Tanner trying to attract votes.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell makes contradictory claims throughout the discussion. He first claims to have looked at Mike's card and confirmed Mike was the Robber, but later claims he was the Tanner. Since the Tanner does not wake up to look at other players' cards, Mitchell is clearly lying. Furthermore, he attempts to divert the vote toward Alana at the end of the game, which is behavior consistent with a Werewolf trying to avoid elimination rather than a Tanner trying to attract votes.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell makes contradictory claims throughout the discussion. He first claims to have looked at Mike's card and confirmed Mike was the Robber, but later claims he was the Tanner. Since the Tanner does not wake up to look at other players' cards, Mitchell is clearly lying. Furthermore, he attempts to divert the vote toward Alana at the end of the game, which is behavior consistent with a Werewolf trying to avoid elimination rather than a Tanner trying to attract votes.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell makes contradictory claims throughout the discussion. He first claims to have looked at Mike's card and confirmed Mike was the Robber, but later claims he was the Tanner. Since the Tanner does not wake up to look at other players' cards, Mitchell is clearly lying. Furthermore, he attempts to divert the vote toward Alana at the end of the game, which is behavior consistent with a Werewolf trying to avoid elimination rather than a Tanner trying to attract votes."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4883,
+    "output_token_count": 1437,
+    "generation_time_sec": 158.44848585128784,
+    "used_chat_template": true,
+    "input_char_count": 15757,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

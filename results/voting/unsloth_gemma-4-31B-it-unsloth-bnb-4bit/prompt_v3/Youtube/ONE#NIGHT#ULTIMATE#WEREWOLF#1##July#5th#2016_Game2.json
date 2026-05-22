@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Alban",
+    "James",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Drunk, swapped with center, now Revealer.\n    *   Mitchell: Claims Seer (initially), then claims Robber, stole from Justin (who was Drunk).\n    *   James: Claims Seer, looked in center, saw Revealer.\n    *   Mike: Claims Revealer.\n    *   Julie: Claims Insomniac.\n    *   Alban: Claims Insomniac.\n\n    *   Justin: Drunk -> Revealer (via center swap).\n    *   Mitchell: Robber (stole from Justin).\n    *   James: Seer (saw Revealer in center).\n    *   Mike: Revealer.\n    *   Julie: Insomniac.\n    *   Alban: Insomniac.\n\n    *   Wait, there are two Insomniacs (Julie and Alban). Only one Insomniac can exist.\n    *   There are two people claiming Revealer (Justin and Mike). Only one Revealer can exist.\n    *   There are two people claiming Seer/Robber (Mitchell claimed Seer then Robber; James claims Seer).\n    *   Wait, James claims he is the Seer and saw the Revealer in the center.\n    *   Justin claims he was the Drunk and swapped with the Revealer in the center.\n    *   If James (Seer) saw the Revealer in the center, and Justin (Drunk) swapped with the Revealer in the center, then Justin is now the Revealer.\n    *   This makes Mike's claim to be the Revealer a lie.\n\n    *   If Mike is lying about being the Revealer, he is likely a Werewolf or the Tanner.\n    *   Justin, James, and Mitchell's stories are mostly consistent with each other:\n        *   James (Seer) saw Revealer in center.\n        *   Justin (Drunk) swapped with center (Revealer).\n        *   Mitchell (Robber) stole from Justin (Drunk).\n    *   Wait, if Mitchell (Robber) stole from Justin (Drunk), Mitchell would have seen the Drunk card.\n    *   Mitchell says: \"I saw a Drunk, I got the Drunk.\"\n    *   This means Mitchell is now the Drunk.\n    *   Justin was the Drunk, swapped with the center (Revealer), so Justin is now the Revealer.\n    *   James is the Seer.\n    *   Julie and Alban both claim Insomniac. One must be lying.\n\n    *   Mike claims to be the Revealer.\n    *   Justin claims to be the Revealer (via Drunk swap).\n    *   James (Seer) says he saw the Revealer in the center.\n    *   If James is telling the truth, the Revealer was in the center.\n    *   If the Revealer was in the center, Mike cannot be the Revealer.\n    *   Therefore, Mike is lying.\n\n    *   Is Mike the Tanner? He's not actively trying to get voted out in a way that screams \"Tanner,\" although he's defending himself.\n    *   Is Mike a Werewolf? If he's lying about his role and isn't the Tanner, he's likely a Werewolf.\n    *   What about Alban and Julie? Both claim Insomniac. One is lying. But Mike's lie is more central to the group's consensus.\n\n    *   Justin, James, Mitchell, Julie, and Alban all seem to lean towards Mike.\n    *   Justin, James, and Mitchell have a cohesive story.\n    *   Mike's claim to be the Revealer is contradicted by James's claim (Seer saw Revealer in center) and Justin's claim (Drunk swapped with Revealer in center).\n\n    *   If James is the Werewolf and lying about being the Seer, he could be framing Mike.\n    *   However, the prompt asks for the player *most likely* to be a Werewolf based on the public discussion.\n    *   The majority of the players have converged on Mike.\n    *   The contradiction between Mike's claim (Revealer) and the combined claims of James (Seer saw Revealer in center) and Justin (Drunk swapped with Revealer in center) strongly points to Mike.\n\n    *   Justin: Drunk -> Revealer.\n    *   James: Seer.\n    *   Mitchell: Robber -> Drunk.\n    *   Mike: Claims Revealer (Lying).\n    *   Julie/Alban: One is Insomniac, one is lying.\n    *   If Mike is the Werewolf, Team Village wins by voting him out.\n\n    *   Wait, let's re-read Mitchell's claim. Mitchell first said \"I was the Seer,\" then \"Actually, I am lying,\" then \"I was the Robber.\"\n    *   Mitchell's inconsistency is noted, but he eventually aligns with Justin and James.\n    *   Mike's claim to be the Revealer is the most direct contradiction to the established narrative (James saw Revealer in center, Justin swapped with it).\n\n    *   Mike is the most likely candidate for Werewolf because his claim to be the Revealer is contradicted by James (who claims to be the Seer and saw the Revealer in the center) and Justin (who claims to be the Drunk and swapped with the Revealer in the center).\n    *   The majority of the players (Justin, James, Mitchell, Julie, Alban) have expressed a willingness to vote for Mike.\n    *   While Alban and Julie both claim Insomniac, this doesn't provide as strong a lead as the contradiction surrounding the Revealer role.",
+  "parsed_output": {
+    "justification": "Mike claims to be the Revealer, but this is contradicted by James, who claims to be the Seer and saw the Revealer card in the center, and Justin, who claims to be the Drunk and swapped with the Revealer card in the center. If James and Justin are telling the truth, Mike must be lying about his role. Given the contradictions and the consensus among the other players, Mike is the most likely candidate to be a Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claims to be the Revealer, but this is contradicted by James, who claims to be the Seer and saw the Revealer card in the center, and Justin, who claims to be the Drunk and swapped with the Revealer card in the center. If James and Justin are telling the truth, Mike must be lying about his role. Given the contradictions and the consensus among the other players, Mike is the most likely candidate to be a Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claims to be the Revealer, but this is contradicted by James, who claims to be the Seer and saw the Revealer card in the center, and Justin, who claims to be the Drunk and swapped with the Revealer card in the center. If James and Justin are telling the truth, Mike must be lying about his role. Given the contradictions and the consensus among the other players, Mike is the most likely candidate to be a Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike claims to be the Revealer, but this is contradicted by James, who claims to be the Seer and saw the Revealer card in the center, and Justin, who claims to be the Drunk and swapped with the Revealer card in the center. If James and Justin are telling the truth, Mike must be lying about his role. Given the contradictions and the consensus among the other players, Mike is the most likely candidate to be a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4611,
+    "output_token_count": 1371,
+    "generation_time_sec": 150.15706515312195,
+    "used_chat_template": true,
+    "input_char_count": 15972,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

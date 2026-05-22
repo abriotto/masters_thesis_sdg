@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#2#The#Drunk",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#2#The#Drunk_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Ed claims Seer. He says he saw Dan was a Mason.\n    *   Dan confirms he was a Mason (starting role).\n    *   Brett claims Troublemaker. He says he swapped Dylan and Dan.\n    *   Dylan is very evasive. He eventually claims he was a Werewolf (starting role) and that he looked in the middle and saw a Villager (which is a contradiction, as Werewolves don't look in the middle unless they are the only one, and even then, they look for other werewolves/center cards, but the transcript says \"If there is only one werewolf, you may look at a card from the center\").\n    *   Audrey claims Villager.\n    *   Katie doesn't claim a specific role until the end, where she vaguely mentions being a Mason (though this seems like a joke).\n\n    *   Ed (Seer) saw Dan (Mason).\n    *   Brett (Troublemaker) swapped Dylan and Dan.\n    *   If Brett is telling the truth:\n        *   Dan (starting Mason) is now Dylan's role.\n        *   Dylan (starting role) is now Dan's role.\n    *   Dylan claims he was a Werewolf.\n    *   If Dylan was a Werewolf and Brett swapped him with Dan, then Dan is now the Werewolf.\n\n    *   Dylan's behavior is highly suspicious. He's evasive, then claims to be a Werewolf, then claims he saw a Villager in the middle (which is only possible if he were a Seer or a single Werewolf).\n    *   Wait, Dylan says: \"I was the werewolf. I looked in the middle, I saw another villager.\" (Line 116).\n    *   If Dylan was a Werewolf and the only one, he could look at a center card.\n    *   If Brett (Troublemaker) swapped Dylan and Dan, then Dan is now the Werewolf.\n    *   However, Brett's claims are inconsistent. He first says he swapped Dylan and Ed (Line 86), then corrects to Dylan and Dan (Line 88).\n    *   Dylan's claim \"I was the werewolf\" is very unusual. Usually, Werewolves don't admit it unless they are trying to confuse the group or are the Tanner.\n    *   If Dylan is the Tanner, he wants to be voted out.\n    *   If Dylan is a Werewolf and Brett swapped him with Dan, Dan is the target.\n    *   But wait, Dylan says \"I'm the seer now\" (Line 134). This is completely contradictory to his previous claim of being a Werewolf.\n\n    *   Ed: Claims Seer. Saw Dan as Mason.\n    *   Dan: Confirms starting as Mason.\n    *   Brett: Claims Troublemaker. Swapped Dylan and Dan.\n    *   Dylan: Claims Werewolf, then claims he saw a Villager in the middle, then claims he is the Seer now.\n    *   Audrey: Claims Villager.\n\n    *   If Ed is Seer and Dan is Mason, and Brett is Troublemaker who swapped Dylan and Dan:\n        *   Dan (Mason) -> Dylan\n        *   Dylan (?) -> Dan\n    *   If Dylan was a Werewolf, Dan is now the Werewolf.\n    *   If Dylan is lying about being a Werewolf and is actually the Tanner, he wants to be voted out.\n    *   If Dylan is lying and is actually a Werewolf, he might be trying to frame Dan by pretending he was swapped.\n\n    *   Dylan's claims are a mess:\n        1.  \"I'll wait this out\" (Line 15)\n        2.  \"I was the werewolf. I looked in the middle, I saw another villager.\" (Line 116)\n        3.  \"I'm the seer now.\" (Line 134)\n    *   This level of inconsistency usually points to a Werewolf bluffing poorly or a Tanner.\n    *   However, if we believe Brett (Troublemaker) and Dylan (Werewolf), then Dan is the current Werewolf.\n    *   But Brett's reliability is questionable (\"101%\").\n    *   Let's look at the voting:\n        *   Brett votes Dan.\n        *   Katie votes Audrey.\n        *   Dan votes Dan (after being convinced).\n        *   Audrey is defended by Katie.\n\n    *   If Dylan is a Werewolf and was swapped with Dan, Dan is the Werewolf.\n    *   If Dylan is the Werewolf and was *not* swapped, Dylan is the Werewolf.\n    *   If Dylan is the Tanner, he's just lying to get votes.\n    *   If Dylan is the Werewolf and is lying about being swapped, he's trying to get Dan voted out.\n\n    *   Dylan's behavior is the most erratic. He claims to be a Werewolf, then a Seer.\n    *   If Dylan is a Werewolf, he's either the current Werewolf (if no swap) or he's the one who was swapped (making Dan the Werewolf).\n    *   Wait, if Dylan is the Werewolf and Brett swapped him with Dan, then Dan is the Werewolf.\n    *   But Dylan's claim \"I'm the seer now\" (Line 134) is bizarre. If he was a Werewolf and was swapped with Dan (a Mason), he would be a Mason, not a Seer.\n    *   If Dylan was the Seer and was swapped with Dan (a Mason), he would be a Mason.\n    *   If Dylan was the Robber and stole from the Seer, then was swapped by the Troublemaker... it gets complex.\n\n    *   Dylan is the most suspicious player due to contradictory claims (Werewolf, Seer, etc.).\n    *   If Dylan is a Werewolf, the Village wins by voting him out (unless he was swapped).\n    *   If Dylan is the Tanner, the Village loses (but the goal is to find the Werewolf).\n    *   If Dan is the Werewolf (because he was swapped with Dylan), the Village wins by voting Dan.\n    *   However, Dylan's claims are so unreliable that any \"swap\" he's involved in is suspect.\n    *   Let's re-examine Dylan's \"confession\": \"I was the werewolf\" (Line 91, 151).\n    *   If Dylan is actually a Werewolf, and Brett actually swapped him with Dan, then Dan is the Werewolf.\n    *   But is Brett trustworthy? He's acting very chaotic.\n    *   If Dylan is the Werewolf and Brett is the Minion, they might be working together to frame Dan.\n\n    *   Dylan's claims:\n        - \"I'll wait this out\"\n        - \"I was the werewolf\"\n        - \"I looked in the middle, I saw another villager\" (Only possible for a single Werewolf or Seer)\n        - \"I'm the seer now\"\n    *   This is a disaster of a claim strategy. He's either the Tanner or a very confused Werewolf.\n    *   If he's a Werewolf, he's the most likely candidate for elimination, regardless of whether he was swapped, because his behavior is the most indicative of a non-village role.\n    *   Wait, if he *was* swapped with Dan, then Dan is the Werewolf. But we only have Brett's word for the swap.\n    *   If we don't trust Brett, Dylan is the primary suspect.\n    *   If we trust Brett, Dan is the primary suspect.\n    *   Given the chaos, Dylan's blatant contradictions (\"I was the werewolf\" vs \"I'm the seer now\") make him the most suspicious.\n\n    *   Dylan's claims are completely contradictory. He claims to have been the Werewolf, then claims to be the Seer. This behavior is typical of a Werewolf attempting to confuse the group or a Tanner.\n    *   While Brett claims to have swapped Dylan and Dan, Brett's own reliability is low.\n    *   Voting for Dylan is a strong move because he is the source of the most misinformation.\n    *   If Dylan was indeed the Werewolf and was swapped with Dan, then Dan is the Werewolf. But Dylan's claim to be the Seer later contradicts the swap logic (he would be a Mason).\n    *   Therefore, Dylan is the most likely Werewolf or Tanner. Between the two, Dylan is the most suspicious.\n\n    *   Wait, let me re-read: \"I'm the seer now\" (Line 134).\n    *   If Dylan was the Robber and stole the Seer card, then was swapped with Dan (Mason), he would now be a Mason.\n    *   If Dylan was the Seer and was swapped with Dan (Mason), he would now be a Mason.\n    *   There is no way for Dylan to be the Seer *now* if he was swapped with Dan.\n    *   This means Dylan is lying about almost everything.\n\n    *   Dylan is the most suspicious.\n    *   Brett is chaotic but consistent in his claim to be the Troublemaker.\n    *   Ed is consistent as the Seer.\n    *   Dan is consistent as the Mason.\n    *   Audrey is consistent as the Villager.\n    *   Dylan is the only one whose story changes multiple times.\n\n    *   Dylan's claims are completely contradictory, as he claims to have been the Werewolf and later claims to be the Seer.\n    *   His behavior is highly suspicious and characteristic of a Werewolf attempting to deceive the group or a Tanner.\n    *   Although Brett claims to have swapped Dylan and Dan, Dylan's subsequent claims make the swap narrative inconsistent.\n    *   Eliminating Dylan is the most logical choice for Team Village based on the public discussion.",
+  "parsed_output": {
+    "justification": "Dylan is the most suspicious player due to his highly contradictory claims. He explicitly states multiple times that he was the Werewolf, but later claims he is the Seer, and previously claimed to have seen a Villager in the center (an action only possible for a Seer or a single Werewolf). While Brett claims to have swapped Dylan and Dan, Dylan's inconsistent role claims make him the most likely candidate for a Werewolf or Tanner, and his behavior is the most disruptive to Team Village's goals.",
+    "chosen_vote": "Dylan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan is the most suspicious player due to his highly contradictory claims. He explicitly states multiple times that he was the Werewolf, but later claims he is the Seer, and previously claimed to have seen a Villager in the center (an action only possible for a Seer or a single Werewolf). While Brett claims to have swapped Dylan and Dan, Dylan's inconsistent role claims make him the most likely candidate for a Werewolf or Tanner, and his behavior is the most disruptive to Team Village's goals.\",\n  \"chosen_vote\": \"Dylan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan is the most suspicious player due to his highly contradictory claims. He explicitly states multiple times that he was the Werewolf, but later claims he is the Seer, and previously claimed to have seen a Villager in the center (an action only possible for a Seer or a single Werewolf). While Brett claims to have swapped Dylan and Dan, Dylan's inconsistent role claims make him the most likely candidate for a Werewolf or Tanner, and his behavior is the most disruptive to Team Village's goals.\",\n  \"chosen_vote\": \"Dylan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dylan",
+    "justification": "Dylan is the most suspicious player due to his highly contradictory claims. He explicitly states multiple times that he was the Werewolf, but later claims he is the Seer, and previously claimed to have seen a Villager in the center (an action only possible for a Seer or a single Werewolf). While Brett claims to have swapped Dylan and Dan, Dylan's inconsistent role claims make him the most likely candidate for a Werewolf or Tanner, and his behavior is the most disruptive to Team Village's goals."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5705,
+    "output_token_count": 2363,
+    "generation_time_sec": 257.1181938648224,
+    "used_chat_template": true,
+    "input_char_count": 18589,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

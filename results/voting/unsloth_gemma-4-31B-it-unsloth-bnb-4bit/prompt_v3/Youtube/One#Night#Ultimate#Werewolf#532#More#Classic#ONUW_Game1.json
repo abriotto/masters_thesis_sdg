@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#532#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#532#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ryan\n    *   Katie\n    *   Brett\n    *   DeAndre\n\n    *   Brett: Claims he robbed Ryan and Ryan was the Drunk. (Wait, Brett says \"I robbed Ryan. He was the drunk.\")\n    *   Ryan: Claims he was the Robber and Brett was the Troublemaker.\n    *   DeAndre: Claims he was a Werewolf and that he switched Katie and Ryan (claiming to be the Troublemaker).\n    *   Katie: Claims she was a Werewolf (or is playing along with DeAndre's claim).\n\n    *   Brett claims Robber (robbed Ryan, who was Drunk).\n    *   Ryan claims Robber (robbed Brett, who was Troublemaker).\n    *   DeAndre claims Troublemaker (switched Katie and Ryan) and claims he started as a Werewolf.\n    *   Katie claims she was a Werewolf.\n\n    *   If Ryan is the Robber and Brett was the Troublemaker:\n        *   Ryan takes Brett's Troublemaker card.\n        *   Brett becomes the Robber (if Ryan took it) or whatever Ryan had.\n        *   Wait, if Ryan is the Robber and took Brett's card, Ryan is now the Troublemaker.\n    *   If Brett is the Robber and Ryan was the Drunk:\n        *   Brett takes Ryan's Drunk card.\n        *   Brett is now the Drunk.\n    *   If DeAndre is the Troublemaker:\n        *   He switched Katie and Ryan.\n        *   He claims he was a Werewolf. (Wait, if he's the Troublemaker, he can't be a Werewolf).\n\n    *   DeAndre says: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   DeAndre says: \"I switched Katie and Ryan.\" [28] (Claiming Troublemaker).\n    *   Katie says: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Katie says: \"We're werewolves together.\" [38]\n    *   Brett says: \"I swapped both of you.\" [39] (Wait, Brett is now claiming Troublemaker too).\n    *   Brett says: \"I switched you two.\" [84]\n\n    *   Brett: Robber -> Troublemaker? (Claims he robbed Ryan, then later claims he Troublemade Katie and DeAndre).\n    *   Ryan: Robber -> Troublemaker? (Claims he robbed Brett).\n    *   DeAndre: Werewolf -> Troublemaker? (Claims he was a Werewolf and Troublemade Katie and Ryan).\n    *   Katie: Werewolf?\n\n    *   Brett's claims are inconsistent. First, he says he robbed Ryan [8]. Then he says he Troublemade Katie and DeAndre [39, 84].\n    *   Ryan's claim is consistent: He was the Robber and took Brett's Troublemaker card [10, 14].\n    *   DeAndre's claim is inconsistent: He says he was a Werewolf [22] and then says he switched Katie and Ryan [28].\n    *   Katie's claim: She says she was a Werewolf [36, 38].\n\n    *   If DeAndre was a Werewolf and Brett (as Troublemaker) switched DeAndre and Katie, then Katie is now the Werewolf.\n    *   If DeAndre was a Werewolf and Ryan (as Robber) took DeAndre's card, Ryan is now the Werewolf.\n    *   If DeAndre was a Werewolf and he is lying about being the Troublemaker, he is still a Werewolf.\n    *   If Katie is a Werewolf and she's telling the truth, she's the target.\n\n    *   DeAndre admits to being a Werewolf [22].\n    *   Katie admits to being a Werewolf [36, 38].\n    *   Brett and Ryan are fighting over who the Robber/Troublemaker was.\n\n    *   DeAndre's admission: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie's admission: \"we should vote for Ryan, because I was werewolf.\" [36] (Wait, she says vote for Ryan because *she* was the werewolf? That's confusing. She probably means if DeAndre switched them, Ryan is now the werewolf).\n    *   Let's re-read: DeAndre says \"I switched Katie and Ryan\" [28]. Katie says \"we should vote for Ryan, because I was werewolf\" [36]. This implies Katie believes she was the werewolf and DeAndre (the Troublemaker) switched her with Ryan.\n    *   But Brett also claims he switched them: \"I swapped both of you\" [39].\n\n    *   If DeAndre is a Werewolf and is trying to confuse the group by claiming to be the Troublemaker, he's a prime target.\n    *   If Katie is a Werewolf and is trying to confuse the group, she's a prime target.\n    *   If Brett is a Werewolf and is lying about being the Robber/Troublemaker, he's a prime target.\n    *   If Ryan is a Werewolf and is lying about being the Robber, he's a prime target.\n\n    *   DeAndre: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Brett: \"I guess DeAndre.\" [107]\n    *   Ryan: \"DeAndre.\" [108]\n\n    *   DeAndre's claim to be a Werewolf is very suspicious. Even if he's bluffing as a Tanner, voting for a self-proclaimed Werewolf is usually the best move for the Village unless there's strong evidence otherwise.\n    *   Katie also claimed to be a Werewolf, but she's trying to shift the vote to Ryan.\n    *   Brett and Ryan's confusion about Robber/Troublemaker is common in these games.\n\n    *   DeAndre admitted to being a Werewolf.\n    *   Katie admitted to being a Werewolf.\n    *   Brett and Ryan are arguing over the Robber/Troublemaker roles.\n    *   If DeAndre was a Werewolf and was swapped with Katie, Katie is now the Werewolf.\n    *   If DeAndre was a Werewolf and was swapped with Ryan, Ryan is now the Werewolf.\n    *   If DeAndre was a Werewolf and was NOT swapped, DeAndre is still the Werewolf.\n    *   However, DeAndre's admission is the most direct.\n\n    *   DeAndre: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Wait, Katie says \"I was werewolf\" and then says \"vote for Ryan\". This means she thinks she was the werewolf and was swapped with Ryan.\n    *   If Katie was the werewolf and was swapped with Ryan, Ryan is now the werewolf.\n    *   If DeAndre was the werewolf and was swapped with Katie, Katie is now the werewolf.\n    *   If DeAndre was the werewolf and was swapped with Ryan, Ryan is now the werewolf.\n\n    *   DeAndre: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Brett: \"I guess DeAndre.\" [107]\n    *   Ryan: \"DeAndre.\" [108]\n\n    *   DeAndre's claim to be a werewolf is the most explicit. While Katie also claimed it, she immediately tried to pivot the vote to Ryan. DeAndre's claim is more straightforward.\n\n    *   DeAndre claims he was a werewolf [22].\n    *   Katie claims she was a werewolf [36].\n    *   Brett and Ryan are confused about their roles.\n    *   Voting for someone who admits to being a werewolf is the most logical choice for Team Village.\n    *   Between DeAndre and Katie, DeAndre's admission was first and more direct.\n\n    *   Wait, let's look at DeAndre's claim again: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Then he says: \"I switched Katie and Ryan.\" [28]\n    *   If he was a werewolf, he couldn't have been the Troublemaker. So he's lying about one of those.\n    *   If he's lying about being the Troublemaker, he might actually be the Werewolf.\n    *   If he's lying about being the Werewolf, he might be the Troublemaker (or something else).\n    *   But in One Night Ultimate Werewolf, when someone admits to being a werewolf, they are often either the werewolf or the Tanner. Voting for them is generally the best bet for the Village.\n\n    *   DeAndre: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Brett: \"I guess DeAndre.\" [107]\n    *   Ryan: \"DeAndre.\" [108]\n    *   The consensus among the players (Brett and Ryan) is to vote for DeAndre.\n\n    *   DeAndre admitted to being a werewolf.\n    *   Katie also admitted to being a werewolf but tried to shift the vote.\n    *   Brett and Ryan's claims are contradictory, but they agree on voting for DeAndre.\n    *   The most likely werewolf is either DeAndre or Katie. DeAndre's admission is more direct.\n\n    *   Wait, let's re-read Katie's part: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   This is a very strange thing to say. If she was the werewolf and she was swapped with Ryan, then Ryan is now the werewolf.\n    *   If DeAndre was the werewolf and he swapped Katie and Ryan, then Katie is still not the werewolf unless she was already one.\n    *   This is getting confusing, but the simplest path is: DeAndre said he was a werewolf.\n\n    *   DeAndre: \"I'm just gonna go out on a limb and say that I was a werewolf.\" [22]\n    *   Katie: \"we should vote for Ryan, because I was werewolf.\" [36]\n    *   Brett: \"I guess DeAndre.\" [107]\n    *   Ryan: \"DeAndre.\" [108]\n    *   The most direct admission of being a werewolf comes from DeAndre.\n\n    *   DeAndre claims he was a werewolf [22].\n    *   Katie also claims she was a werewolf [36].\n    *   Brett and Ryan are inconsistent in their role claims (Robber/Troublemaker).\n    *   Since DeAndre explicitly stated he was a werewolf, he is a primary target for Team Village.\n    *   The other players (Brett and Ryan) also suggest voting for DeAndre.",
+  "parsed_output": {
+    "justification": "DeAndre explicitly admitted to being a werewolf early in the discussion. While Katie also claimed to be a werewolf, she immediately attempted to shift the vote toward Ryan. Given DeAndre's direct admission and the consensus between Brett and Ryan to vote for him, DeAndre is the most likely candidate for elimination to help Team Village win.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"DeAndre explicitly admitted to being a werewolf early in the discussion. While Katie also claimed to be a werewolf, she immediately attempted to shift the vote toward Ryan. Given DeAndre's direct admission and the consensus between Brett and Ryan to vote for him, DeAndre is the most likely candidate for elimination to help Team Village win.\",\n  \"chosen_vote\": \"DeAndre\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"DeAndre explicitly admitted to being a werewolf early in the discussion. While Katie also claimed to be a werewolf, she immediately attempted to shift the vote toward Ryan. Given DeAndre's direct admission and the consensus between Brett and Ryan to vote for him, DeAndre is the most likely candidate for elimination to help Team Village win.\",\n  \"chosen_vote\": \"DeAndre\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "DeAndre explicitly admitted to being a werewolf early in the discussion. While Katie also claimed to be a werewolf, she immediately attempted to shift the vote toward Ryan. Given DeAndre's direct admission and the consensus between Brett and Ryan to vote for him, DeAndre is the most likely candidate for elimination to help Team Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3899,
+    "output_token_count": 2666,
+    "generation_time_sec": 283.32570576667786,
+    "used_chat_template": true,
+    "input_char_count": 13750,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

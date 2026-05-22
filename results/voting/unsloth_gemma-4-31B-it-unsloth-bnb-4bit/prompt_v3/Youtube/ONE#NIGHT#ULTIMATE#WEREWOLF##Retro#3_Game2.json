@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims he was a Villager [32].\n    *   James: Claims he stole something \"boring\" [41], later claims he was a Villager [47] (Wait, James is claiming Robber? Let's re-read).\n    *   Mitchell: Claims he stole a Villager from Justin [78, 80].\n    *   Mike: Claims he was a Villager the whole time [52], but previously mentioned \"Insomniac\" [54] (though he says he did it to see if anyone else would say it).\n\n    *   [32] Justin: \"I was a villager.\"\n    *   [34-41] James is asked what he saw/stole. James says \"Someone boring.\"\n    *   [47] James: \"No, I was a villager.\" (Wait, James is responding to Mitchell's question about whether he woke up as a villager after being an Insomniac).\n    *   [48] Mitchell: \"So you woke up as a villager? You went to sleep as an Insomniac and you woke up as a villager? Is that what you're claiming?\"\n    *   [49] James: \"There's no way that could happen.\" (James is denying the Insomniac claim).\n    *   [52] Mike: \"No, I was actually villager the whole time.\"\n    *   [53] Mitchell: \"So why did you say, 'Insomniac'?\"\n    *   [54] Mike: \"To see if anyone else would say it.\"\n    *   [75] Mitchell: \"Well, I didn't steal the Seer.\"\n    *   [78] Mitchell: \"I stole a villager.\"\n    *   [80] Mitchell: \"I stole your villager.\" (to Justin).\n\n    *   Wait, both James and Mitchell are claiming to be the Robber?\n    *   James: [41] \"Someone boring.\" [40] Justin asks \"Did you steal from somebody?\" James says \"Someone boring.\"\n    *   Mitchell: [78] \"I stole a villager.\" [80] \"I stole your villager.\" (to Justin).\n    *   If Mitchell is the Robber and stole Justin's Villager, then Mitchell is now a Villager.\n    *   If James is also claiming to have stolen something, he's either bluffing or the Robber. But only one Robber exists.\n    *   Let's look at James again. [34] \"I'm going to go ahead and see that.\" [35] Mitchell: \"What did you see?\" [39] James: \"What did I look at, was...\" [41] James: \"Someone boring.\"\n    *   James's claims are very vague. He doesn't explicitly say \"I am the Robber,\" but he's answering questions about stealing.\n    *   Mitchell explicitly claims to be the Robber: \"I stole your villager\" [80].\n\n    *   Mike claims to be a Villager [52, 96].\n    *   Mike previously mentioned \"Insomniac\" [54] but then walked it back.\n    *   Justin and Mitchell both suspect Mike.\n    *   Justin: \"I think Mike might be a werewolf\" [57].\n    *   Mitchell: \"So he stole a villager, I grabbed a villager. And now you're claiming you're a villager\" [98]. (Wait, Mitchell is saying *he* stole a villager, and *Mike* is claiming to be a villager).\n    *   Justin: \"That's bull crap!\" [99].\n    *   Mitchell: \"And then you first claimed you were an Insomniac\" [100].\n\n    *   Justin: Claims Villager.\n    *   Mitchell: Claims Robber (stole Justin's Villager).\n    *   James: Vague claims about stealing/seeing something boring.\n    *   Mike: Claims Villager, but had a weird moment with the \"Insomniac\" claim.\n\n    *   If Mitchell is the Robber and stole Justin's Villager, then Justin was a Villager and Mitchell is now a Villager.\n    *   That leaves James and Mike.\n    *   James's behavior is suspicious (vague claims), but Mike's behavior is more erratic (claiming Insomniac then switching to Villager).\n    *   However, look at the dialogue again.\n    *   [81] Justin: \"Yeah. So Mike's a werewolf.\"\n    *   [83] James: \"Mike's a werewolf.\"\n    *   [85] James: \"Mike's a werewolf.\"\n    *   [89] James: \"Mike's the werewolf.\"\n    *   The group (Justin, James, Mitchell) has converged on Mike.\n\n    *   If Mike is the Werewolf, voting him out wins for the Village.\n    *   If James is the Werewolf, voting Mike out loses (unless James is also a Werewolf, but there are usually 1-2).\n    *   If Mitchell is the Werewolf, voting Mike out loses.\n    *   If Mike is the Tanner, voting him out loses.\n\n    *   Mike's claim to be the Insomniac [54] was weird. He said he did it \"to see if anyone else would say it.\" This is a common bluff for Werewolves or Tanners.\n    *   James's claims were vague, but he eventually aligned with the others against Mike.\n    *   Mitchell's claim as Robber is specific (\"I stole your villager\").\n\n    *   Justin, James, and Mitchell all agree Mike is the Werewolf.\n    *   Mike's defense is weak (\"I guarantee you I'm not the werewolf\").\n    *   The most likely target for Team Village, based on the public discussion, is Mike.\n\n    *   Wait, let me re-read James's part.\n    *   [34] James: \"I'm going to go ahead and see that.\"\n    *   [35] Mitchell: \"What did you see?\"\n    *   [39] James: \"What did I look at, was...\"\n    *   [41] James: \"Someone boring.\"\n    *   James is acting like the Seer or Robber.\n    *   Mitchell then claims Robber.\n    *   If Mitchell is the Robber, James is either the Seer or a Werewolf.\n    *   If James is the Seer and saw \"someone boring\" (a Villager), that's consistent.\n    *   If Mike is the Werewolf, he would want to deflect. Mike tries to accuse Justin and James [69, 82, 84].\n\n    *   Mike's inconsistency regarding the Insomniac role and his desperate denials make him the strongest candidate for the Werewolf.\n    *   The other three players have formed a consensus against him.\n\n    *   Justin: Villager (claimed)\n    *   Mitchell: Robber (claimed, stole Justin's Villager)\n    *   James: Seer? (vague claims, but not contradicting Mitchell)\n    *   Mike: Werewolf? (inconsistent claims, accused by others)\n\n    *   Wait, let's check the \"Insomniac\" thing again.\n    *   [53] Mitchell: \"So why did you say, 'Insomniac'?\"\n    *   [54] Mike: \"To see if anyone else would say it.\"\n    *   This is very suspicious. Why would a Villager claim Insomniac just to see if others would?\n\n    *   Conclusion: Mike is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mike is the most suspicious player due to his inconsistent claims. He initially mentioned being the Insomniac, then quickly changed his claim to being a Villager, stating he only mentioned the Insomniac role to see if others would claim it. Furthermore, Justin, James, and Mitchell have all converged on the conclusion that Mike is the Werewolf, while Mike's attempts to deflect accusations onto the others are unconvincing.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike is the most suspicious player due to his inconsistent claims. He initially mentioned being the Insomniac, then quickly changed his claim to being a Villager, stating he only mentioned the Insomniac role to see if others would claim it. Furthermore, Justin, James, and Mitchell have all converged on the conclusion that Mike is the Werewolf, while Mike's attempts to deflect accusations onto the others are unconvincing.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike is the most suspicious player due to his inconsistent claims. He initially mentioned being the Insomniac, then quickly changed his claim to being a Villager, stating he only mentioned the Insomniac role to see if others would claim it. Furthermore, Justin, James, and Mitchell have all converged on the conclusion that Mike is the Werewolf, while Mike's attempts to deflect accusations onto the others are unconvincing.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike is the most suspicious player due to his inconsistent claims. He initially mentioned being the Insomniac, then quickly changed his claim to being a Villager, stating he only mentioned the Insomniac role to see if others would claim it. Furthermore, Justin, James, and Mitchell have all converged on the conclusion that Mike is the Werewolf, while Mike's attempts to deflect accusations onto the others are unconvincing."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3432,
+    "output_token_count": 1877,
+    "generation_time_sec": 198.4733681678772,
+    "used_chat_template": true,
+    "input_char_count": 12132,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

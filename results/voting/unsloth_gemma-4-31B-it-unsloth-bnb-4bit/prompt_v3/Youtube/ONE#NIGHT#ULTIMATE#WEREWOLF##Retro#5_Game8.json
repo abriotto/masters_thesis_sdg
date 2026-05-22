@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin, Paul, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Justin: Claims Seer. Says he looked in the center and saw two normal cards (no werewolves).\n        *   Mitchell: Claims Robber. Says he stole from Paul and saw an Insomniac card.\n        *   Paul: Claims he started as Insomniac.\n\n    *   Justin (Seer) -> Looked at center (2 cards). No werewolves there.\n    *   Mitchell (Robber) -> Stole from Paul. Saw Insomniac.\n    *   Paul (Insomniac) -> Started as Insomniac.\n\n    *   If Justin is Seer and saw no werewolves in the center, then at least one werewolf must be among the players (since there are 3 center cards and 3 players, and the candidate pool is 6). Wait, the rules say \"candidate roles is always equal to the number of players plus 3\". So 3+3=6 roles.\n    *   If Justin saw two \"normal\" cards in the center, and there are 3 center cards total, one card remains in the center.\n    *   If Mitchell is Robber and stole from Paul (Insomniac), Mitchell is now Insomniac and Paul is now Robber.\n    *   If Paul started as Insomniac and Mitchell stole it, Paul is now the Robber.\n    *   If Justin is Seer, Mitchell is Insomniac (via Robber), and Paul is Robber (via Mitchell), then who is the werewolf?\n    *   Wait, if Justin is Seer, Mitchell is Robber/Insomniac, and Paul is Insomniac/Robber, then no one is a werewolf. But Justin says \"I know at least one of you are lying\" (Line 43).\n    *   Let's re-examine Justin's claim: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\" (Line 31). This is a weird way to phrase it. If he saw two normal cards, the third center card could be a werewolf.\n    *   If there is a werewolf, who is it?\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   If Mitchell really stole from Paul and saw Insomniac, then Paul was Insomniac.\n    *   If Paul was Insomniac and Mitchell is now Insomniac, and Justin is Seer, then no one is a werewolf unless someone is lying.\n    *   Justin says \"I know at least one of you are lying\" (Line 43). Why? Because if he's the Seer and saw no werewolves in the center, and the other two are Robber and Insomniac, then there's no werewolf? No, that's not right. If there are no werewolves among the players, the Village wins if no one dies.\n    *   Wait, Justin says \"I think Mitchell is the tanner\" (Line 68).\n    *   Mitchell says \"I think it might be Paul\" (Line 93) and \"He's a werewolf\" (Line 82) referring to Justin.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber (stole from Paul, saw Insomniac).\n    *   Paul: Claims Insomniac.\n    *   If these three claims are true:\n        *   Justin = Seer\n        *   Mitchell = Insomniac (was Robber)\n        *   Paul = Robber (was Insomniac)\n        *   This means no one is a werewolf.\n    *   However, Justin believes someone is lying. If Justin is the werewolf, he would lie about being the Seer.\n    *   If Mitchell is the werewolf, he would lie about being the Robber.\n    *   If Paul is the werewolf, he would lie about being the Insomniac.\n\n    *   Justin says: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\" (Line 31).\n    *   If he saw two normal cards, the third card in the center could be a werewolf.\n    *   If the third card in the center is a werewolf, and the other two center cards are normal, then there is only one werewolf card in the game.\n    *   If that werewolf card is in the center, then no one is a werewolf.\n    *   But Justin says \"I know at least one of you are lying\" (Line 43). This is the key. Why does he think they are lying?\n    *   If Justin is the Seer and saw no werewolves in the center, he knows there *must* be a werewolf among the players (unless the werewolf card is the 3rd center card).\n    *   Wait, if Justin is the Seer and saw two normal cards in the center, he doesn't know what the 3rd center card is.\n    *   If the 3rd center card is the werewolf, then no one is a werewolf.\n    *   If the 3rd center card is NOT a werewolf, then there must be a werewolf among the players.\n    *   Justin's logic: \"I know at least one of you are lying\" suggests he believes there is a werewolf among the players.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber, stole from Paul, saw Insomniac.\n    *   Paul: Claims Insomniac.\n    *   If Mitchell is the Robber and stole from Paul, and Paul was the Insomniac, then Mitchell is now the Insomniac and Paul is now the Robber.\n    *   If Justin is the Seer, then the roles are Seer, Robber, Insomniac. No werewolf.\n    *   If Justin is the werewolf, he's lying about being the Seer.\n    *   If Mitchell is the werewolf, he's lying about being the Robber.\n    *   If Paul is the werewolf, he's lying about being the Insomniac.\n\n    *   Justin's behavior: He's very aggressive in calling Mitchell a liar and then suddenly suggests voting \"to the left\" (which usually means a specific person in these games, but here it's ambiguous). He says \"We can't kill anybody\" (Line 81). This is a strange thing for a Village player to say if they think there's a werewolf.\n    *   Mitchell's behavior: He claims Robber, says he stole from Paul and saw Insomniac. He's consistent.\n    *   Paul's behavior: He claims Insomniac. He's consistent with Mitchell's claim.\n\n    *   If Paul is Insomniac and Mitchell is Robber, they are consistent.\n    *   Justin is the outlier. He claims Seer but then says \"We can't kill anybody\" and \"I think Mitchell is the tanner.\"\n    *   If Mitchell were the Tanner, he would want to be voted out. Mitchell is not pushing for himself to be voted out; he's pointing at Paul and Justin.\n    *   If Justin is the werewolf, he wants to avoid being voted out. He tries to convince them to vote \"to the left\" (which he then clarifies as \"no one gets killed\").\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   If Justin is the werewolf, he's lying.\n    *   If Mitchell is the werewolf, he's lying.\n    *   If Paul is the werewolf, he's lying.\n    *   Mitchell and Paul's stories align (Mitchell stole Insomniac from Paul).\n    *   Justin's story doesn't align with theirs (he says one of them must be lying).\n    *   If Mitchell and Paul are telling the truth, Justin must be the werewolf.\n\n    *   Justin: \"I think Mitchell is the tanner.\" (Line 68)\n    *   Justin: \"I think we got to all vote to the left. We can't kill anybody.\" (Line 81)\n    *   This is very suspicious. If he's the Seer and thinks there's a werewolf, why would he want to avoid killing anyone?\n    *   If he's the werewolf, he wants to avoid anyone being killed (especially himself).\n\n    *   Justin is the most likely werewolf because his claims and suggestions (avoiding voting anyone out) contradict the goal of the Village and the claims of the other two players, who are consistent with each other.\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber, stole from Paul, saw Insomniac.\n    *   Paul claims Insomniac.\n    *   Mitchell and Paul's claims are mutually supportive.\n    *   Justin's claim that \"at least one of you are lying\" contradicts the consistency between Mitchell and Paul.\n    *   Justin's suggestion to vote in a way that \"no one gets killed\" is highly suspicious for a Village-aligned player.\n    *   Therefore, Justin is the most likely werewolf.\n\n    *   Wait, \"vote to the left\" - in a 3-player game, who is \"to the left\"?\n    *   The transcript doesn't specify seating. But Justin says \"We can't kill anybody\" (Line 81). This implies he's trying to orchestrate a tie or a situation where no one is eliminated.\n    *   If Justin is the werewolf, this is the perfect strategy.\n\n    *   Justin: Seer (Claim)\n    *   Mitchell: Robber (Claim) -> stole from Paul (Insomniac)\n    *   Paul: Insomniac (Claim)\n    *   If Justin is the werewolf, he's lying about being the Seer.\n    *   If Mitchell is the werewolf, he's lying about being the Robber.\n    *   If Paul is the werewolf, he's lying about being the Insomniac.\n    *   Since Mitchell and Paul's stories match, Justin is the most likely liar.\n\n    *   Justin: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\"\n    *   This is a very odd statement. If he saw two normal cards, he knows there's at most one werewolf in the center.\n    *   If there's only one werewolf in the game, and it's in the center, then no one is a werewolf.\n    *   If there's only one werewolf in the game, and it's NOT in the center, then one of the players is a werewolf.\n    *   Justin's claim \"I know at least one of you are lying\" suggests he believes there is a werewolf among the players.\n    *   But then he says \"We can't kill anybody.\" This is a complete contradiction. If he knows there's a werewolf, he should want to kill them.\n\n    *   Justin is the most likely werewolf.\n\n    *   Justin claims to be the Seer and asserts that either Paul or Mitchell must be lying.\n    *   However, Paul and Mitchell's claims (Insomniac and Robber) are consistent with each other, as Mitchell claims to have stolen the Insomniac role from Paul.\n    *   Justin's subsequent suggestion that the group should vote in a way that \"no one gets killed\" is contradictory to the goal of the Village and highly suspicious.\n    *   This makes Justin the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and asserts that either Paul or Mitchell must be lying. However, Paul and Mitchell's claims are mutually supportive: Paul claims he started as the Insomniac, and Mitchell claims he was the Robber and stole the Insomniac role from Paul. Justin's later suggestion that the group should vote in a way that 'no one gets killed' is contradictory to the goal of the Village and highly suspicious, suggesting he is the Werewolf attempting to avoid elimination.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and asserts that either Paul or Mitchell must be lying. However, Paul and Mitchell's claims are mutually supportive: Paul claims he started as the Insomniac, and Mitchell claims he was the Robber and stole the Insomniac role from Paul. Justin's later suggestion that the group should vote in a way that 'no one gets killed' is contradictory to the goal of the Village and highly suspicious, suggesting he is the Werewolf attempting to avoid elimination.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and asserts that either Paul or Mitchell must be lying. However, Paul and Mitchell's claims are mutually supportive: Paul claims he started as the Insomniac, and Mitchell claims he was the Robber and stole the Insomniac role from Paul. Justin's later suggestion that the group should vote in a way that 'no one gets killed' is contradictory to the goal of the Village and highly suspicious, suggesting he is the Werewolf attempting to avoid elimination.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin claims to be the Seer and asserts that either Paul or Mitchell must be lying. However, Paul and Mitchell's claims are mutually supportive: Paul claims he started as the Insomniac, and Mitchell claims he was the Robber and stole the Insomniac role from Paul. Justin's later suggestion that the group should vote in a way that 'no one gets killed' is contradictory to the goal of the Village and highly suspicious, suggesting he is the Werewolf attempting to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3488,
+    "output_token_count": 2690,
+    "generation_time_sec": 283.7674207687378,
+    "used_chat_template": true,
+    "input_char_count": 12521,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

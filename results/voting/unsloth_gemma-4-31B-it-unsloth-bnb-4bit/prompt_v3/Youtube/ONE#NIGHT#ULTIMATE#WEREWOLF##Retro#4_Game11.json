@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game11.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims he was the Troublemaker (\"I was this, so whatever you two were is backwards\" [12]). He claims he swapped two people.\n    *   Mitchell: Claims he started as a Minion, saw Justin as a Werewolf, but then James (Troublemaker) swapped his card. He claims he is now an Insomniac (\"I'm an insomniac\" [14], \"I was a minion... and I just saw one werewolf... and that was Justin\" [54-58]).\n    *   Mike: Claims he was the Seer and looked in the center, seeing a Drunk and a Werewolf [18-21].\n    *   Caitlynn: Claims she was the Insomniac and woke up as a Minion [46-48, 92, 98].\n    *   Justin: Doesn't make a clear role claim initially, but later suggests he might have been the Robber or a Werewolf [43-50, 65-70].\n\n    *   James (Troublemaker) swapped two people.\n    *   Mitchell (Minion -> Insomniac) says he saw Justin as a Werewolf.\n    *   Caitlynn (Insomniac -> Minion) says she woke up as a Minion.\n    *   Wait, if James (Troublemaker) swapped Mitchell and Caitlynn, then Mitchell (Minion) becomes Insomniac and Caitlynn (Insomniac) becomes Minion. This matches their claims perfectly.\n    *   If Mitchell was the Minion and saw Justin as a Werewolf, then Justin is the Werewolf.\n    *   Mike (Seer) saw a Drunk and a Werewolf in the center. If there's a Werewolf in the center, and Justin is also a Werewolf, there are two Werewolves.\n\n    *   Mitchell's story is very specific: He was a Minion, saw Justin as a Werewolf, then James (Troublemaker) swapped him with someone (Caitlynn).\n    *   Caitlynn's story corroborates this: She was the Insomniac and woke up as a Minion.\n    *   James's story corroborates this: He was the Troublemaker and swapped two people.\n    *   If this chain is true, Justin is the Werewolf.\n    *   Mike's claim (Seer, saw Drunk and Werewolf in center) doesn't contradict this; it just means there were two Werewolf cards in the game (one with Justin, one in the center).\n\n    *   Could Mitchell be the Werewolf/Minion lying? If Mitchell is the Werewolf, he's trying to frame Justin.\n    *   Could Justin be the Robber? He mentions it as a possibility [68-70]. If Justin was the Robber and robbed a Werewolf, he would be the Werewolf now.\n    *   Could Mike be lying? He claims to be the Seer. If he's the Werewolf, he's just staying out of the way.\n    *   However, the Mitchell-Caitlynn-James narrative is highly consistent. Mitchell (Minion) -> James (Troublemaker) swaps Mitchell and Caitlynn (Insomniac) -> Mitchell is now Insomniac, Caitlynn is now Minion. This explains why Mitchell knows Justin is a Werewolf and why Caitlynn woke up as a Minion.\n\n    *   If Mitchell is telling the truth, Justin is a Werewolf.\n    *   If Mitchell is lying, he's likely the Werewolf/Minion.\n    *   But the corroboration between James, Mitchell, and Caitlynn makes the \"Justin is the Werewolf\" scenario the most plausible based on the public discussion.\n\n    *   James: Troublemaker (swapped Mitchell and Caitlynn).\n    *   Mitchell: Minion (saw Justin as Werewolf) -> became Insomniac.\n    *   Caitlynn: Insomniac -> became Minion.\n    *   Justin: Werewolf.\n    *   Mike: Seer (saw Drunk and Werewolf in center).\n    *   This accounts for all players and roles.\n\n    *   Justin is the most likely Werewolf based on the consistent claims of Mitchell, Caitlynn, and James. Mitchell's claim as a former Minion specifically identifies Justin as the Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell claims he started as the Minion and identified Justin as a Werewolf before being swapped by James, who claims to be the Troublemaker. This narrative is corroborated by Caitlynn, who claims she started as the Insomniac and woke up as the Minion, suggesting James swapped her and Mitchell. Because these three accounts are mutually consistent and specifically point to Justin as the Werewolf, voting for Justin is the most logical choice for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims he started as the Minion and identified Justin as a Werewolf before being swapped by James, who claims to be the Troublemaker. This narrative is corroborated by Caitlynn, who claims she started as the Insomniac and woke up as the Minion, suggesting James swapped her and Mitchell. Because these three accounts are mutually consistent and specifically point to Justin as the Werewolf, voting for Justin is the most logical choice for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims he started as the Minion and identified Justin as a Werewolf before being swapped by James, who claims to be the Troublemaker. This narrative is corroborated by Caitlynn, who claims she started as the Insomniac and woke up as the Minion, suggesting James swapped her and Mitchell. Because these three accounts are mutually consistent and specifically point to Justin as the Werewolf, voting for Justin is the most logical choice for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Mitchell claims he started as the Minion and identified Justin as a Werewolf before being swapped by James, who claims to be the Troublemaker. This narrative is corroborated by Caitlynn, who claims she started as the Insomniac and woke up as the Minion, suggesting James swapped her and Mitchell. Because these three accounts are mutually consistent and specifically point to Justin as the Werewolf, voting for Justin is the most logical choice for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3879,
+    "output_token_count": 1122,
+    "generation_time_sec": 124.61989903450012,
+    "used_chat_template": true,
+    "input_char_count": 13830,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

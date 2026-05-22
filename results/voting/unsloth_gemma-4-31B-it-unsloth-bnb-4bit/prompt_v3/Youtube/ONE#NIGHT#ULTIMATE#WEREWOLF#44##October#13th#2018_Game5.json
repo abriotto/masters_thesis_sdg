@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer. Says he saw two cards in the center (one of which he later claims was a Werewolf).\n    *   Mike: Doesn't claim a specific role initially, but seems to be agreeing with Justin.\n    *   Paul: Initially claims Insomniac (line 17), then quickly changes to Troublemaker (line 19). Claims he swapped Mitchell and Mike (line 56, 69).\n    *   Mitchell: Claims he swapped someone (line 58, 86), but is vague about who. He suggests voting for both him and Paul (line 34).\n\n    *   Justin (Seer) -> Saw two cards in center.\n    *   Paul (Troublemaker) -> Swapped Mitchell and Mike.\n    *   Mitchell (???) -> Claims he swapped people too.\n\n    *   Justin claims Seer. If he saw a Werewolf in the center (line 77), and there are 4 players, there are 7 candidate roles.\n    *   Paul claims Troublemaker. He says he swapped Mitchell and Mike.\n    *   Mitchell claims he swapped people (line 58, 86). But only one Troublemaker exists. If Paul is the Troublemaker, Mitchell is lying. If Mitchell is the Troublemaker, Paul is lying.\n    *   Wait, Paul's claim changed: Insomniac -> Troublemaker. This is a red flag.\n    *   Mitchell's claim is inconsistent: \"I swapped you with someone\" (line 58), \"I swapped you with this guy\" (line 86). He doesn't clearly state he is the Troublemaker, but he's acting like he performed a swap.\n\n    *   Justin: Seer (Village)\n    *   Mike: ? (Village/Werewolf)\n    *   Paul: Troublemaker (Village) or Werewolf/Tanner\n    *   Mitchell: ? (Werewolf/Tanner)\n\n    *   Paul and Mitchell are contradicting each other on who the Troublemaker is.\n    *   Paul changed his claim (Insomniac to Troublemaker).\n    *   Mitchell's claims are confused and inconsistent.\n    *   Justin (Seer) says he saw a Werewolf in the center. If there's only one Werewolf in the game, and it's in the center, Team Village wins if no one dies or if they vote out a non-Werewolf (wait, no, if no Werewolf is in play, they win if no one dies). But if there are two Werewolves, and one is in the center, one is still in play.\n    *   Paul and Mitchell both seem suspicious. However, Mitchell's behavior is more erratic. He suggests voting for both himself and Paul (which is a classic Tanner move or a confused Werewolf move).\n    *   Paul claims he swapped Mitchell and Mike. If Paul is the Troublemaker, and he swapped Mitchell (Werewolf) with Mike (Villager), then Mike is now the Werewolf and Mitchell is the Villager. But the goal is to kill the *current* Werewolf.\n    *   Wait, let's re-read: Paul says \"I switched you two\" (referring to Mitchell and Mike). If Mitchell was the Werewolf and Paul swapped him with Mike, Mike is now the Werewolf.\n    *   However, Mitchell's claims are very weak. He says \"I swapped you with someone\" then \"I swapped you with this guy\" (referring to Mike). He's essentially claiming to be the Troublemaker too.\n    *   Since there's only one Troublemaker, one of them (Paul or Mitchell) is definitely lying.\n    *   Paul's flip-flop (Insomniac to Troublemaker) is suspicious, but Mitchell's confusion and attempt to deflect (\"I'm voting for Mike\") make him a strong candidate for Werewolf.\n    *   Justin and Mike both seem to lean towards voting for Mitchell.\n\n    *   Justin: Seer.\n    *   Paul: Claims Troublemaker (swapped Mitchell/Mike).\n    *   Mitchell: Claims he swapped people (confused).\n    *   If Paul is the Troublemaker and Mitchell is the Werewolf, and Paul swapped Mitchell and Mike, then Mike is the Werewolf.\n    *   But if Mitchell is the Werewolf and *wasn't* swapped, Mitchell is the target.\n    *   If Mitchell is the Tanner, he wants to be voted out.\n    *   If Paul is the Werewolf, he's lying about being the Troublemaker.\n    *   Let's look at the dialogue again. Paul says \"Honestly, I feel think we won because they don't know that we're both Werewolves\" (line 74). This is a huge tell! He's basically admitting it (though he might be joking/bluffing).\n    *   Wait, line 74: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\"\n    *   Line 75: Mitchell: \"Yeah.\"\n    *   This looks like a joke or a very bold bluff, but in the context of the game, it's a massive admission.\n    *   However, Justin says \"they can't both be Werewolves. Because I saw a werewolf in the center\" (line 77).\n    *   If Justin is the Seer and saw one Werewolf in the center, there can only be one other Werewolf (since max Werewolves is usually 2 in a 4-player game, but the rules say \"up to two Masons\", and doesn't specify the max number of Werewolves for 4 players, but usually it's 1 or 2).\n    *   If Paul and Mitchell are both claiming to be Werewolves (even as a joke), but only one can be, who is more likely?\n    *   Mitchell's claims are incoherent. Paul's claim is a bit more structured (though he changed it).\n    *   Justin and Mike both decide to vote for Mitchell.\n\n    *   Paul's \"admission\" (line 74) is so blatant it's almost certainly a joke.\n    *   Mitchell's confusion and contradictory claims about swapping people make him the most suspicious.\n    *   Justin (Seer) and Mike are both targeting Mitchell.\n    *   Mitchell's suggestion to vote for both himself and Paul (line 34) is suspicious.\n\n    *   If Paul is the Troublemaker and swapped Mitchell and Mike, and Mitchell was the Werewolf, then Mike is now the Werewolf.\n    *   But we don't know if Paul is actually the Troublemaker.\n    *   If Mitchell is the Werewolf and wasn't swapped, he's the target.\n    *   Given the public discussion, Mitchell is the most inconsistent and suspicious player.\n\n    *   Justin: Seer (claims center cards).\n    *   Paul: Troublemaker (claims swap Mitchell/Mike).\n    *   Mitchell: Claims swap (confused).\n    *   Mike: No claim.\n    *   The most likely Werewolf based on the erratic behavior and contradictions is Mitchell.\n\n    *   Paul's claim to be the Troublemaker and swap Mitchell and Mike would mean Mike is the Werewolf if Mitchell was. But Paul's claim is suspect because he first claimed Insomniac.\n    *   However, Mitchell's claims are even more suspect. He doesn't even clearly claim a role, just that he \"swapped\" people.\n    *   Justin and Mike are aligned against Mitchell.\n\n    *   Justin: Seer.\n    *   Paul: Troublemaker (swapped Mitchell/Mike).\n    *   Mitchell: Werewolf.\n    *   Mike: Villager.\n    *   If this is true, Mike is now the Werewolf.\n    *   BUT, if Paul is lying and is the Werewolf, and Mitchell is just confused/Tanner...\n    *   Let's look at the \"admission\" again. Paul: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\" Mitchell: \"Yeah.\"\n    *   This is very strange. If they are both Werewolves, they are trying to trick the others.\n    *   If Justin saw a Werewolf in the center, there's only one Werewolf left. So Paul and Mitchell cannot both be Werewolves.\n    *   Therefore, at least one of them is lying about being a Werewolf.\n    *   Mitchell's behavior is the most erratic. He's the most likely candidate for elimination to help the village.",
+  "parsed_output": {
+    "justification": "Mitchell's claims are inconsistent and confusing; he claims to have swapped players without clearly identifying his role, and his suggestions for voting are erratic. Paul also behaves suspiciously by changing his role claim from Insomniac to Troublemaker and jokingly claiming to be a Werewolf, but Mitchell's lack of a coherent narrative makes him more suspect. Justin (claiming Seer) and Mike both express a preference for voting Mitchell, making him the most likely target for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell's claims are inconsistent and confusing; he claims to have swapped players without clearly identifying his role, and his suggestions for voting are erratic. Paul also behaves suspiciously by changing his role claim from Insomniac to Troublemaker and jokingly claiming to be a Werewolf, but Mitchell's lack of a coherent narrative makes him more suspect. Justin (claiming Seer) and Mike both express a preference for voting Mitchell, making him the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell's claims are inconsistent and confusing; he claims to have swapped players without clearly identifying his role, and his suggestions for voting are erratic. Paul also behaves suspiciously by changing his role claim from Insomniac to Troublemaker and jokingly claiming to be a Werewolf, but Mitchell's lack of a coherent narrative makes him more suspect. Justin (claiming Seer) and Mike both express a preference for voting Mitchell, making him the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell's claims are inconsistent and confusing; he claims to have swapped players without clearly identifying his role, and his suggestions for voting are erratic. Paul also behaves suspiciously by changing his role claim from Insomniac to Troublemaker and jokingly claiming to be a Werewolf, but Mitchell's lack of a coherent narrative makes him more suspect. Justin (claiming Seer) and Mike both express a preference for voting Mitchell, making him the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3517,
+    "output_token_count": 2036,
+    "generation_time_sec": 216.389577627182,
+    "used_chat_template": true,
+    "input_char_count": 12814,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

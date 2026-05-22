@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Tyler\n\n    *   Justin: Claims Copycat (initially), then claims Robber (later).\n    *   Mitchell: Claims Insomniac (initially), then claims Drunk (later).\n    *   Paul: Claims Troublemaker (eventually), mentions Tanner (initially).\n    *   Tyler: Claims Seer (saw cards in the middle).\n\n    *   Tyler (Seer) says he saw a Copycat in one location and a Werewolf in another.\n    *   Tyler says Justin is lying.\n    *   Justin claims he was the Robber from the beginning.\n    *   Paul claims he was the Troublemaker and swapped Justin and Mitchell.\n    *   Mitchell claims he was the Drunk.\n\n    *   Tyler (Seer) claims he saw a Copycat and a Werewolf in the center. (Wait, let me re-read: \"I saw a card in the middle\" [19], then later \"I saw a copycat in this location... and I saw werewolf in that location\" [61, 63]).\n    *   Wait, Tyler says \"I saw a copycat in this location\" and \"I saw werewolf in that location\". This is ambiguous. Does \"location\" mean center cards or other players?\n    *   Looking at [19]: \"I'm going to say that I saw a card in the middle.\"\n    *   Looking at [61-63]: \"Because I saw a copycat in this location... And I saw werewolf in that location.\"\n    *   If Tyler is the Seer and saw a Copycat and a Werewolf in the center, then no one is a Copycat and there is only one Werewolf (or none, if the other Werewolf is also in the center).\n    *   Wait, if Tyler saw a Copycat and a Werewolf in the center, then Justin's claim to be a Copycat is a lie.\n    *   Justin claims he was the Robber.\n    *   Paul claims he was the Troublemaker and swapped Justin and Mitchell.\n    *   Mitchell claims he was the Drunk.\n\n    *   If Paul (Troublemaker) swapped Justin and Mitchell:\n        *   Justin's starting role was X, Mitchell's starting role was Y.\n        *   After the swap, Justin is Y and Mitchell is X.\n    *   If Mitchell was the Drunk (starting role), he swapped his card with the center.\n    *   If Justin was the Robber (starting role), he swapped his card with someone else.\n\n    *   Tyler (Seer) says he saw a Copycat and a Werewolf in the center.\n    *   If Tyler is telling the truth:\n        *   Copycat is in the center.\n        *   One Werewolf is in the center.\n        *   Justin cannot be the Copycat.\n        *   Justin claims he was the Robber.\n        *   Paul claims he was the Troublemaker and swapped Justin and Mitchell.\n        *   Mitchell claims he was the Drunk.\n\n    *   Justin's behavior: Claims Copycat, then switches to Robber.\n    *   Paul's behavior: Mentions Tanner, then claims Troublemaker.\n    *   Mitchell's behavior: Claims Insomniac, then switches to Drunk.\n    *   Tyler's behavior: Consistent claim of Seer.\n\n    *   If Tyler is the Seer and saw a Werewolf in the center, there is only one Werewolf left in the game (since there are usually 2 Werewolves or 1 Werewolf + 1 Minion).\n    *   If Paul is the Troublemaker and swapped Justin and Mitchell, and Mitchell is the Drunk, then the roles are shifting.\n    *   Wait, Paul says \"I switched you two\" (Justin and Mitchell).\n    *   If Justin was the Robber and Paul swapped him with Mitchell (the Drunk), Justin is now the Drunk and Mitchell is now the Robber.\n    *   But Mitchell claims he was the Drunk.\n\n    *   Justin: Copycat -> Robber.\n    *   Mitchell: Insomniac -> Drunk.\n    *   Paul: Tanner? -> Troublemaker.\n    *   Tyler: Seer.\n\n    *   Tyler's claim: Seer, saw Copycat and Werewolf in the center.\n    *   If Tyler is the Seer, then Justin's first claim (Copycat) was a lie.\n    *   Justin then claims he was the Robber.\n    *   Paul claims he was the Troublemaker and swapped Justin and Mitchell.\n    *   Mitchell claims he was the Drunk.\n\n    *   If Paul is the Troublemaker and swapped Justin and Mitchell, and Justin was the Robber and Mitchell was the Drunk:\n        *   Justin (Robber) <-> Mitchell (Drunk).\n        *   Now Justin is the Drunk and Mitchell is the Robber.\n        *   But Mitchell claims he was the Drunk. This is a contradiction.\n\n    *   If Justin is the Werewolf:\n        *   He would lie about his role (claiming Copycat, then Robber).\n        *   Tyler (Seer) saw a Werewolf in the center, meaning there's only one Werewolf left. Justin could be that one.\n        *   Paul (Troublemaker) might be trying to help the village by pointing out Justin's shadiness.\n\n    *   If Paul is the Werewolf:\n        *   He claims Troublemaker to confuse the situation and cast suspicion on Justin.\n        *   He mentions being the Tanner early on to seem like he's playing a game.\n\n    *   If Mitchell is the Werewolf:\n        *   He claims Insomniac, then Drunk.\n\n    *   Tyler is the most consistent.\n    *   Justin is the most inconsistent (Copycat -> Robber).\n    *   Mitchell is inconsistent (Insomniac -> Drunk).\n    *   Paul is inconsistent (Tanner -> Troublemaker).\n\n    *   Tyler says he saw a Copycat and a Werewolf in the center.\n    *   If this is true, the only roles left are: Seer (Tyler), Troublemaker, Robber, Drunk, Insomniac, Villager, Werewolf, Minion, etc.\n    *   Wait, if there are 4 players, there are 7 candidate roles.\n    *   If Copycat and Werewolf are in the center, that's 2 of the 3 center cards.\n    *   The remaining roles are distributed among the 4 players and 1 center card.\n\n    *   Justin's flip-flopping on his role (Copycat to Robber) is a strong indicator of lying.\n    *   Paul's claim that he swapped Justin and Mitchell, combined with Justin's shadiness, makes Justin a primary target.\n    *   Tyler's Seer claim specifically targets Justin as lying.\n\n    *   Justin: \"I was never the robber. I'm a copycat.\" [55]\n    *   Tyler: \"Justin is lying... Because I saw a copycat in this location [center].\" [59, 61]\n    *   Justin: \"I was lying. I was the robert [robber] from the beginning.\" [66]\n    *   This sequence shows Justin lying about his role twice.\n\n    *   Justin is the most likely Werewolf because he lied about his role twice (first claiming Copycat, then claiming Robber) and was called out by Tyler (the Seer). Paul also points the finger at Justin.\n\n    *   Wait, Paul said \"Did you rob from me, because, if so you're now not the tanner anymore\" [39]. This is very confusing. It sounds like Paul is suggesting *he* might be the Tanner.\n    *   Then Paul says \"I was the troublemaker from the beginning\" [98].\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Paul is the Werewolf, he wants to divert attention.\n    *   If Justin is the Werewolf, he's doing a poor job of lying.\n\n    *   Tyler's claim is the most solid. He claims to be the Seer and saw a Copycat and a Werewolf in the center.\n    *   If Tyler is the Seer, Justin's claim to be the Copycat is a lie.\n    *   Justin's subsequent claim to be the Robber is also suspect.\n    *   Paul's claim to be the Troublemaker and swap Justin and Mitchell is also a possibility, but Justin's lies are more direct.\n\n    *   Justin's contradictions:\n        1.  Claims Copycat.\n        2.  Tyler (Seer) says Copycat is in the center.\n        3.  Justin admits he lied and claims Robber.\n    *   This pattern of lying is typical for a Werewolf or a Tanner. However, Justin isn't actively trying to get himself voted out (like a Tanner would); he's trying to justify his role.\n\n    *   Justin is the most suspicious player due to his contradictory role claims. Tyler's Seer information directly contradicts Justin's first claim. Paul also identifies Justin as \"shady.\" Therefore, voting for Justin is the most logical choice for Team Village.",
+  "parsed_output": {
+    "justification": "Justin is the most suspicious player because he made contradictory role claims. He first claimed to be the Copycat, but Tyler (claiming to be the Seer) stated that the Copycat card was in the center. Justin then admitted he was lying and changed his claim to the Robber. This pattern of deception, combined with Paul's accusations of Justin being 'shady,' makes him the most likely candidate for a Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin is the most suspicious player because he made contradictory role claims. He first claimed to be the Copycat, but Tyler (claiming to be the Seer) stated that the Copycat card was in the center. Justin then admitted he was lying and changed his claim to the Robber. This pattern of deception, combined with Paul's accusations of Justin being 'shady,' makes him the most likely candidate for a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin is the most suspicious player because he made contradictory role claims. He first claimed to be the Copycat, but Tyler (claiming to be the Seer) stated that the Copycat card was in the center. Justin then admitted he was lying and changed his claim to the Robber. This pattern of deception, combined with Paul's accusations of Justin being 'shady,' makes him the most likely candidate for a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin is the most suspicious player because he made contradictory role claims. He first claimed to be the Copycat, but Tyler (claiming to be the Seer) stated that the Copycat card was in the center. Justin then admitted he was lying and changed his claim to the Robber. This pattern of deception, combined with Paul's accusations of Justin being 'shady,' makes him the most likely candidate for a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3870,
+    "output_token_count": 2192,
+    "generation_time_sec": 235.29913544654846,
+    "used_chat_template": true,
+    "input_char_count": 13978,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

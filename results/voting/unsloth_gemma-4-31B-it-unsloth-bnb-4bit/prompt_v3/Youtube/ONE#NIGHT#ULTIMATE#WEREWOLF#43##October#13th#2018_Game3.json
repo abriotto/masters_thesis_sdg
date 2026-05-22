@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin:\n        *   Claimed Seer (looked in the middle, saw Drunk and Werewolf) [65, 77, 80].\n        *   Later claimed Werewolf [123].\n    *   Mitchell:\n        *   Claimed Troublemaker (switched Paul and Justin) [8, 22, 34, 98].\n        *   Claimed he saw Paul as a Werewolf and Justin as a Robber (initially) [8].\n    *   Paul:\n        *   Claimed Robber [32, 56].\n        *   Claimed he saw Justin was the Seer [35, 38].\n        *   Later claimed Tanner [106, 125].\n    *   Mike:\n        *   Claimed Tanner [39, 43].\n        *   Later claimed Robber [113].\n\n    *   Mitchell claims Troublemaker. He says he switched Paul and Justin.\n    *   Paul claims Robber. He says he robbed Justin and saw he was the Seer.\n    *   Justin claims Seer. He says he saw Drunk and Werewolf in the center.\n    *   Justin then flips and claims Werewolf.\n    *   Paul then flips and claims Tanner.\n    *   Mike claims Tanner, then Robber.\n\n    *   If Justin is a Werewolf (his final claim), Team Village wins by voting him out.\n    *   If Paul is the Tanner (his final claim), voting him out makes the Tanner win.\n    *   If Mitchell is the Troublemaker, he's Team Village.\n    *   If Mike is the Robber, he's Team Village.\n\n    *   Justin's claim to be a Werewolf [123] is a direct admission. In One Night Ultimate Werewolf, if a player admits to being a Werewolf, they are usually the most logical target for Team Village unless they are the Tanner trying to get voted out.\n    *   However, Paul also claimed to be the Tanner [106, 125].\n    *   Mike's claims are inconsistent (Tanner, then Robber).\n    *   Mitchell's claims are consistent (Troublemaker).\n\n    *   Justin: Seer -> Werewolf.\n    *   Paul: Robber -> Tanner.\n    *   Mike: Tanner -> Robber.\n    *   Mitchell: Troublemaker.\n\n    *   If Justin is the Werewolf, voting him wins the game for the Village.\n    *   If Paul is the Tanner, voting him loses the game for the Village.\n    *   If Mike is the Werewolf (bluffing as Robber/Tanner), voting him wins.\n\n    *   Justin explicitly says \"I was a werewolf, so there's a werewolf in here\" [123].\n    *   Paul explicitly says \"I was the tanner\" [106, 125].\n    *   If we believe Justin is the Werewolf and Paul is the Tanner, the correct vote for Team Village is Justin.\n\n    *   Justin's admission is the strongest piece of evidence for a Werewolf.\n    *   Paul's admission is the strongest piece of evidence for a Tanner.\n    *   Voting for the admitted Werewolf is the primary goal of Team Village.\n\n    *   Wait, let's re-read the transcript.\n    *   Justin: \"I was a werewolf, so there's a werewolf in here.\" [123]\n    *   Paul: \"I was the tanner.\" [106, 125]\n    *   If Justin is the Werewolf, voting him is the win condition.\n    *   If Paul is the Tanner, voting him is a loss.\n    *   If Mike is the Werewolf, voting him is a win.\n    *   But Justin *claimed* to be the Werewolf.\n\n    *   Is Justin bluffing as a Werewolf to protect someone else? Unlikely in a 4-player game.\n    *   Is Justin the Tanner? He claimed Seer first, then Werewolf.\n    *   Is Paul the Werewolf? He claimed Robber, then Tanner.\n    *   Is Mike the Werewolf? He claimed Tanner, then Robber.\n\n    *   Let's look at the claims again.\n    *   Justin: Seer -> Werewolf.\n    *   Paul: Robber -> Tanner.\n    *   Mike: Tanner -> Robber.\n    *   Mitchell: Troublemaker.\n\n    *   If Justin is the Werewolf, he's the target.\n    *   If Paul is the Tanner, he's the \"trap\".\n    *   If Mike is the Werewolf, he's the target.\n\n    *   Justin's admission \"I was a werewolf\" is the most direct lead. Even if he's lying, he's creating a scenario where he is the most likely Werewolf.\n\n    *   Wait, let's check the \"Tanner\" claim. Paul says \"I was the tanner\" [106]. If Paul is the Tanner, the Village should *not* vote for him.\n    *   Justin says \"I'm killing Paul\" [127]. This suggests Justin (claiming Werewolf) wants Paul (claiming Tanner) to die. This is a weird interaction. If Justin is the Werewolf, he wants to survive. If he's the Werewolf, why would he admit it and then try to get the Tanner killed?\n    *   Actually, if Justin is the Werewolf, he wants to avoid being voted out. Admitting he's a Werewolf is counter-intuitive unless he's trying to confuse the group or is the Tanner.\n    *   But if Justin is the Tanner, he wants to be voted out.\n    *   If Paul is the Tanner, he wants to be voted out.\n\n    *   Let's re-evaluate:\n        *   Justin: Claimed Seer, then Werewolf.\n        *   Paul: Claimed Robber, then Tanner.\n        *   Mike: Claimed Tanner, then Robber.\n        *   Mitchell: Claimed Troublemaker.\n\n    *   If Justin is the Werewolf, he's the target.\n    *   If Paul is the Tanner, he's the trap.\n    *   If Mike is the Werewolf, he's the target.\n\n    *   Looking at the flow:\n        Justin claims Seer.\n        Mitchell claims Troublemaker.\n        Paul claims Robber.\n        Mike claims Tanner.\n        Then Justin says he's a Werewolf.\n        Then Paul says he's the Tanner.\n        Then Mike says he's the Robber.\n\n    *   This is a mess of contradictory claims. However, Justin's admission of being a Werewolf is the most direct evidence of a Werewolf's presence. In the absence of other clear evidence, the player claiming to be the Werewolf is the most likely candidate for elimination to help Team Village.\n\n    *   Wait, let's look at Justin's last few lines:\n        [121] Justin: All right, I'm just going to say it.\n        [123] Justin: I was a werewolf, so there's a werewolf in here.\n        [127] Justin: I'm killing Paul.\n\n    *   If Justin is the Werewolf, he's trying to divert the vote to Paul (who claimed Tanner).\n    *   If Justin is the Tanner, he's trying to get himself voted out by claiming to be the Werewolf.\n    *   If Paul is the Tanner, he's trying to get himself voted out.\n\n    *   If Justin is the Werewolf, voting him wins.\n    *   If Paul is the Tanner, voting him loses.\n    *   If Mike is the Werewolf, voting him wins.\n\n    *   Between Justin and Paul, Justin's claim to be the Werewolf is more significant for Team Village than Paul's claim to be the Tanner. If Justin is the Werewolf, the Village wins. If Paul is the Tanner, the Village loses. Therefore, Justin is the safer and more logical vote for Team Village.\n\n    *   Wait, let's double-check Mike. Mike claimed Tanner, then Robber. He's very inconsistent. But Justin's claim is the most explicit.\n\n    *   Let's consider the possibility that Justin is the Tanner and Paul is the Werewolf.\n        Justin (Tanner) claims Werewolf to get voted out.\n        Paul (Werewolf) claims Tanner to avoid being voted out.\n        This is a common strategy.\n\n    *   However, based *only* on the public transcript, Justin is the only one who claimed to be a Werewolf.\n\n    *   Let's re-read the transcript one more time.\n        Justin: \"I was a werewolf, so there's a werewolf in here.\" [123]\n        Paul: \"I was the tanner.\" [106, 125]\n        Mike: \"I was actually the robber.\" [113]\n        Mitchell: \"I switched to you. I switched you.\" [98] (Troublemaker)\n\n    *   If we have to pick one person to vote out to help Team Village, and one person has admitted to being the Werewolf, that's the most logical choice, provided we don't have strong evidence they are the Tanner. But Paul also claimed to be the Tanner.\n\n    *   If Justin is the Werewolf, voting him wins.\n    *   If Paul is the Tanner, voting him loses.\n    *   If Justin is the Tanner, voting him loses.\n\n    *   But Justin's claim to be the Werewolf is the only claim of a Werewolf in the game.\n\n    *   Let's look at the claims again.\n        Justin: Seer -> Werewolf.\n        Paul: Robber -> Tanner.\n        Mike: Tanner -> Robber.\n        Mitchell: Troublemaker.\n\n    *   If Justin is the Werewolf, he's the target.\n    *   If Paul is the Tanner, he's the trap.\n    *   If Mike is the Werewolf, he's the target.\n\n    *   Justin's admission is the most direct. Let's go with Justin.\n\n    *   Wait, let me re-read the very end.\n        [127] Justin: I'm killing Paul.\n        [128] Paul: ... I'm playing as a villager.\n        Paul's last claim is that he's playing as a villager.\n\n    *   So we have:\n        Justin: Claims Werewolf.\n        Paul: Claims Tanner, then Villager.\n        Mike: Claims Tanner, then Robber.\n        Mitchell: Claims Troublemaker.\n\n    *   Justin is the only one who claimed to be a Werewolf.\n\n    *   Justification: Justin explicitly claimed to be a Werewolf in line [123]. While Paul and Mike made inconsistent claims (Tanner, Robber, Villager), Justin's admission is the most direct evidence of a Werewolf's identity. Voting for the player who admits to being a Werewolf is the most likely way for Team Village to win.\n\n    *   Wait, let me check if there's any other possibility.\n        Could Mitchell be the Werewolf? He claimed Troublemaker.\n        Could Mike be the Werewolf? He claimed Tanner, then Robber.\n        Could Paul be the Werewolf? He claimed Robber, then Tanner, then Villager.\n\n    *   If Justin is the Werewolf, he's the target.\n    *   If Justin is the Tanner, he's the trap.\n    *   If Paul is the Tanner, he's the trap.\n\n    *   In One Night Ultimate Werewolf, when someone claims Werewolf, they are either the Werewolf (trying to confuse/divert) or the Tanner (trying to get voted out). However, from the perspective of Team Village, the most likely Werewolf is the one who claimed to be one, unless there's stronger evidence for someone else.\n\n    *   Let's re-examine the claims:\n        Justin: Seer -> Werewolf.\n        Paul: Robber -> Tanner -> Villager.\n        Mike: Tanner -> Robber.\n        Mitchell: Troublemaker.\n\n    *   Justin's claim to be a Werewolf is the most definitive statement of alignment in the transcript.\n\n    *   Final check on the players: Justin, Mitchell, Paul, Mike.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Justin explicitly admitted to being a Werewolf in line [123], stating, 'I was a werewolf, so there's a werewolf in here.' While other players like Paul and Mike made inconsistent claims (switching between Tanner, Robber, and Villager), Justin's admission is the most direct evidence of a Werewolf's identity. From Team Village's perspective, eliminating the player who has claimed to be a Werewolf is the most likely path to victory.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin explicitly admitted to being a Werewolf in line [123], stating, 'I was a werewolf, so there's a werewolf in here.' While other players like Paul and Mike made inconsistent claims (switching between Tanner, Robber, and Villager), Justin's admission is the most direct evidence of a Werewolf's identity. From Team Village's perspective, eliminating the player who has claimed to be a Werewolf is the most likely path to victory.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin explicitly admitted to being a Werewolf in line [123], stating, 'I was a werewolf, so there's a werewolf in here.' While other players like Paul and Mike made inconsistent claims (switching between Tanner, Robber, and Villager), Justin's admission is the most direct evidence of a Werewolf's identity. From Team Village's perspective, eliminating the player who has claimed to be a Werewolf is the most likely path to victory.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin explicitly admitted to being a Werewolf in line [123], stating, 'I was a werewolf, so there's a werewolf in here.' While other players like Paul and Mike made inconsistent claims (switching between Tanner, Robber, and Villager), Justin's admission is the most direct evidence of a Werewolf's identity. From Team Village's perspective, eliminating the player who has claimed to be a Werewolf is the most likely path to victory."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4213,
+    "output_token_count": 2949,
+    "generation_time_sec": 315.6209714412689,
+    "used_chat_template": true,
+    "input_char_count": 14665,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

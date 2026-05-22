@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Paul: Claims to be Seer (saw Justin as a Werewolf).\n        *   Mitchell: Claims to be Insomniac (woke up as Insomniac).\n        *   Justin: Admits he started as a Werewolf.\n\n    *   Paul says: \"I know what Justin started with... Justin was a werewolf.\" (Claiming Seer)\n    *   Mitchell says: \"I was Insomniac and I woke up as myself.\" (Claiming Insomniac)\n    *   Justin says: \"I'm admitting that I started as a werewolf.\" (Admitting starting role)\n\n    *   If Paul is Seer and Mitchell is Insomniac, Justin is the Werewolf.\n    *   If Justin started as a Werewolf and wasn't swapped by the Robber or Troublemaker, he is still the Werewolf.\n    *   If Mitchell is the Insomniac and woke up as himself, he knows he didn't get swapped by the Robber or Troublemaker.\n    *   If Paul is the Seer, he saw Justin as a Werewolf.\n    *   Justin admits he started as a Werewolf.\n\n    *   Could Paul be the Werewolf? He claims to be Seer.\n    *   Could Mitchell be the Werewolf? He claims to be Insomniac.\n    *   Could Justin be the Tanner? He's admitting he's a Werewolf, which is a classic Tanner strategy to get voted out. However, Paul (claiming Seer) also identifies him as a Werewolf. If Paul is the Seer and Justin is the Tanner, Paul would have seen the Tanner card. But Paul says he saw a Werewolf.\n\n    *   Paul (Seer) -> Justin (Werewolf)\n    *   Mitchell (Insomniac) -> Mitchell (Insomniac)\n    *   Justin (Werewolf) -> Admits it.\n\n    *   If Paul is the Seer and Mitchell is the Insomniac, Justin is the Werewolf.\n    *   If Justin is the Tanner, he wants to be voted out.\n    *   If Justin is the Werewolf, Team Village wins by voting him out.\n    *   If Paul or Mitchell are Werewolves, they are bluffing. But Justin's admission is very strong evidence.\n\n    *   Justin admits he started as a Werewolf.\n    *   Paul claims to be the Seer and saw Justin as a Werewolf.\n    *   Mitchell claims to be the Insomniac and confirmed his own role.\n    *   Even if Justin is the Tanner, voting him out is the most logical choice for Team Village based on the available information, as both other players are pointing to him and he admits it.\n\n    *   Wait, let's re-read: \"I'm admitting that I started as a werewolf.\" (Justin, [71]).\n    *   Paul: \"I know what Justin started with... Justin was a werewolf.\" ([25], [27]).\n    *   Mitchell: \"I was Insomniac and I woke up as myself.\" ([30]).\n    *   If Justin is the Werewolf, voting him out wins the game for the Village.\n    *   If Justin is the Tanner, voting him out loses the game for the Village.\n    *   However, Paul's claim as Seer seeing Justin as a Werewolf makes it highly likely Justin is actually a Werewolf (unless Paul is the Werewolf/Minion bluffing).\n    *   If Paul is the Werewolf and Mitchell is the Insomniac, Paul would be lying about being the Seer. But Justin *also* admits he started as a Werewolf. If Justin is the Werewolf, Paul's claim is consistent.\n\n    *   Justin is the most likely Werewolf.\n    *   Paul and Mitchell both identify him as such.\n    *   Justin admits it.\n    *   The evidence is overwhelming.",
+  "parsed_output": {
+    "justification": "Justin admitted to starting as a Werewolf, and Paul claimed to be the Seer who saw Justin as a Werewolf. Mitchell claimed to be the Insomniac and confirmed he woke up as himself, which supports the consistency of the other claims. Given that both other players identified Justin as the Werewolf and Justin himself admitted it, he is the most likely target for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin admitted to starting as a Werewolf, and Paul claimed to be the Seer who saw Justin as a Werewolf. Mitchell claimed to be the Insomniac and confirmed he woke up as himself, which supports the consistency of the other claims. Given that both other players identified Justin as the Werewolf and Justin himself admitted it, he is the most likely target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin admitted to starting as a Werewolf, and Paul claimed to be the Seer who saw Justin as a Werewolf. Mitchell claimed to be the Insomniac and confirmed he woke up as himself, which supports the consistency of the other claims. Given that both other players identified Justin as the Werewolf and Justin himself admitted it, he is the most likely target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin admitted to starting as a Werewolf, and Paul claimed to be the Seer who saw Justin as a Werewolf. Mitchell claimed to be the Insomniac and confirmed he woke up as himself, which supports the consistency of the other claims. Given that both other players identified Justin as the Werewolf and Justin himself admitted it, he is the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3673,
+    "output_token_count": 979,
+    "generation_time_sec": 105.97552490234375,
+    "used_chat_template": true,
+    "input_char_count": 13414,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

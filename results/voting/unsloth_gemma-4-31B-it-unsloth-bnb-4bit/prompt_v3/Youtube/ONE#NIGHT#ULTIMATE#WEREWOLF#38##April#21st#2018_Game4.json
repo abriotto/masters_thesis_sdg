@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be the Revealer. Claims he looked at Mike's card and saw something \"not good\" (later specifies \"werewolf\").\n    *   Mitchell: Claims he can confirm Justin is the Revealer and that Mike is \"bad\" (werewolf).\n    *   Mike: Claims to be the Seer. Claims he saw a Troublemaker in the center. Later claims he saw a Werewolf in the center. Claims Justin is lying about being the Revealer.\n    *   James: Initially confused, then claims to be the Seer.\n    *   Caitlynn: Doesn't claim a specific role, but says her role was \"taken from her\" (suggesting she was robbed).\n\n    *   Revealer: Not in the standard role list provided in the \"Information and roles\" section, but mentioned in the transcript. Wait, let me re-read the rules.\n    *   *Re-reading rules:* The rules list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Wait:* The Announcer mentions \"Revealer\" in the transcript: \"Revealer, wake up. You may turn any other player's card face up. If the card you reveal is a werewolf or a tanner, turn it back over, face down.\"\n    *   *Crucial observation:* The \"Revealer\" is a role in this specific game, even though it wasn't in the general rule list provided at the top. I must use the Announcer's description of the Revealer.\n\n    *   Justin claims to be the Revealer.\n    *   Mitchell supports Justin's claim and says he knows Justin is the Revealer and that Mike is a Werewolf.\n    *   Mike claims to be the Seer.\n    *   James also claims to be the Seer.\n    *   If James is the Seer, Mike is lying.\n    *   If Justin is the Revealer and saw Mike as a Werewolf, Mike is lying.\n    *   Mitchell is backing Justin.\n\n    *   Mike claims to be the Seer.\n    *   James claims to be the Seer.\n    *   Only one Seer can exist (unless there's a Doppelganger).\n    *   Justin claims to be the Revealer and saw Mike as a Werewolf.\n    *   Mitchell confirms Justin's claim.\n    *   Mike's claims are inconsistent (first says Troublemaker in center, then says Werewolf in center).\n\n    *   If Justin and Mitchell are telling the truth, Mike is the Werewolf.\n    *   If Mike is the Werewolf, he would lie about being the Seer.\n    *   If James is the Seer, he contradicts Mike.\n    *   If Caitlynn was robbed, she might be the one who lost her role.\n\n    *   Justin (Revealer) -> Mike (Werewolf)\n    *   Mitchell (Supporting Justin)\n    *   James (Seer) -> Contradicts Mike\n    *   Mike (Claims Seer) -> Contradicted by James and Justin\n\n    *   The most likely Werewolf is Mike, as he is contradicted by three other players (Justin, Mitchell, and James). Justin's claim as Revealer specifically targets Mike.\n\n    *   Justin claims to be the Revealer and says he saw Mike's card was a Werewolf.\n    *   Mitchell supports Justin's claim.\n    *   James also claims to be the Seer, contradicting Mike's claim to be the Seer.\n    *   Mike's claims are inconsistent and contradicted by multiple players.\n    *   Therefore, Mike is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Revealer and states that he revealed Mike's card to be a Werewolf. Mitchell supports Justin's claim and confirms that Mike is 'bad'. Furthermore, both Mike and James claim to be the Seer, and since only one Seer can exist, at least one of them is lying; given the combined testimony of Justin and Mitchell, Mike is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Revealer and states that he revealed Mike's card to be a Werewolf. Mitchell supports Justin's claim and confirms that Mike is 'bad'. Furthermore, both Mike and James claim to be the Seer, and since only one Seer can exist, at least one of them is lying; given the combined testimony of Justin and Mitchell, Mike is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Revealer and states that he revealed Mike's card to be a Werewolf. Mitchell supports Justin's claim and confirms that Mike is 'bad'. Furthermore, both Mike and James claim to be the Seer, and since only one Seer can exist, at least one of them is lying; given the combined testimony of Justin and Mitchell, Mike is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Justin claims to be the Revealer and states that he revealed Mike's card to be a Werewolf. Mitchell supports Justin's claim and confirms that Mike is 'bad'. Furthermore, both Mike and James claim to be the Seer, and since only one Seer can exist, at least one of them is lying; given the combined testimony of Justin and Mitchell, Mike is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4741,
+    "output_token_count": 940,
+    "generation_time_sec": 105.56257796287537,
+    "used_chat_template": true,
+    "input_char_count": 15441,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game10.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Zack\n    *   Sean\n    *   Hunter\n    *   Jacob\n\n    *   Sean claims Villager (at [21], [44], [181]).\n    *   Jacob claims Drunk (at [32]), but says he doesn't know his current role ([36], [70], [72]).\n    *   Zack claims Seer ([47]), but then admits he forgot what the card was ([47]), and Hunter tells him he's not the Seer ([48]). Zack then accepts he's a Villager ([54]).\n    *   Hunter claims Troublemaker ([68], [102], [164]) and says he swapped Zack and Jacob ([66]).\n\n    *   If Hunter is the Troublemaker and swapped Zack and Jacob:\n        *   Zack (starting Seer/Villager) $\\leftrightarrow$ Jacob (starting Drunk).\n        *   Jacob (starting Drunk) $\\leftrightarrow$ Zack (starting Seer/Villager).\n    *   Wait, let's re-examine the claims:\n        *   Zack claimed Seer, then accepted he's a Villager.\n        *   Jacob claimed Drunk.\n        *   Hunter claims he swapped Zack and Jacob.\n        *   If Hunter swapped Zack and Jacob, then Jacob (the Drunk) now has Zack's card, and Zack (the Seer/Villager) now has Jacob's card.\n        *   Wait, the Drunk swaps their card with one from the center. So Jacob (starting Drunk) already swapped his card with the center before the Troublemaker (Hunter) potentially swapped him with Zack.\n\n    *   Zack: Claimed Seer, then Villager.\n    *   Sean: Claimed Villager.\n    *   Hunter: Claimed Troublemaker.\n    *   Jacob: Claimed Drunk.\n\n    *   Hunter is very confident and leads the conversation. He claims to be the Troublemaker and says he swapped Zack and Jacob.\n    *   Zack's claim to be Seer was weak (\"forgot what the card was\").\n    *   Jacob's claim to be Drunk is straightforward.\n    *   Sean's claim to be Villager is straightforward.\n\n    *   If Hunter is the Werewolf, he would want to divert attention. Claiming Troublemaker and swapping two other players is a great way to create confusion.\n    *   If Hunter is the Troublemaker, he's telling the truth about the swap.\n    *   If Zack is the Werewolf, he might have lied about being the Seer.\n    *   If Jacob is the Werewolf, he might have lied about being the Drunk.\n    *   If Sean is the Werewolf, he's just claiming Villager.\n\n    *   Hunter says: \"I know I switched those two [Zack and Jacob]. So even if we vote him [Zack] out, you [Sean] still won't win.\" (Wait, this is confusing).\n    *   Hunter says: \"So if you [Sean] were the Werewolf and you don't believe me that we switched those two, we're trying to get him [Zack] voted out to the one Werewolf would be left. I did switch those two. So you'd be screwed either way.\" (This is also confusing).\n    *   Let's re-read: Hunter is trying to convince the group that he is the Troublemaker and that he swapped Zack and Jacob.\n\n    *   Zack's \"Seer\" claim was incredibly poor (\"I forgot what the card was\"). This is highly suspicious. Usually, a Seer knows what they saw.\n    *   However, if Zack was the Werewolf and saw the Seer card in the center, he might try to claim Seer but fail to make up a convincing story.\n    *   Hunter's claim to be Troublemaker is very assertive.\n    *   Jacob's claim to be Drunk is consistent.\n    *   Sean's claim to be Villager is consistent.\n\n    *   If Hunter is the Troublemaker and swapped Zack and Jacob:\n        *   Zack (starting role X) $\\rightarrow$ Jacob's card.\n        *   Jacob (starting Drunk) $\\rightarrow$ Zack's card.\n        *   But Jacob (Drunk) already swapped his card with the center. So Jacob's card at the time of the Troublemaker's swap was a center card.\n        *   Therefore, Zack now has a center card, and Jacob now has Zack's starting card.\n\n    *   Wait, let's look at the transcript again.\n    *   Zack: \"I'm a seer, and I looked in there and I forgot what the card was.\" ([47])\n    *   Hunter: \"Well I hate to tell you chief, but you're not the seer.\" ([48])\n    *   Zack: \"Damn.\" ([49])\n    *   Hunter: \"But that's fine, because you're a villager now.\" ([53])\n    *   Hunter: \"Cause these two got swapped.\" ([66]) (Referring to Zack and Jacob).\n\n    *   If Hunter is the Troublemaker and swapped Zack and Jacob, and Zack was the Seer, then Jacob is now the Seer and Zack is now whatever Jacob was (which was a center card because Jacob was the Drunk).\n    *   But Hunter says \"you're a villager now\" to Zack. This implies Hunter knows what card Jacob had. But the Troublemaker doesn't look at the cards they swap.\n\n    *   Wait! \"Troublemaker: During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\"\n    *   If Hunter is the Troublemaker, he *cannot* know that Zack is a \"villager now\" unless he's guessing or lying.\n\n    *   Hunter's claim: \"I'm the Troublemaker, I swapped Zack and Jacob, so Zack is a villager now.\"\n    *   Contradiction: The Troublemaker does not see the cards they swap. Hunter cannot know Zack's new role.\n    *   This makes Hunter highly suspicious. He is claiming knowledge he couldn't have if he were actually the Troublemaker.\n\n    *   Zack's Seer claim was bad, but he quickly folded.\n    *   Sean and Jacob haven't done much other than claim roles.\n    *   Hunter is the one driving the narrative and making a claim that contradicts the rules of the Troublemaker role.\n\n    *   If Hunter is the Werewolf, he's pretending to be the Troublemaker to control the vote and confuse the other players.\n    *   By claiming he swapped Zack and Jacob, he's trying to shift suspicion or create a scenario where he seems helpful.\n    *   The slip-up \"you're a villager now\" is a strong indicator of deception.\n\n    *   Zack: Claimed Seer (poorly), then Villager.\n    *   Sean: Claimed Villager.\n    *   Jacob: Claimed Drunk.\n    *   Hunter: Claimed Troublemaker, claimed to swap Zack and Jacob, and claimed to know Zack's new role.\n\n    *   The most suspicious player is Hunter due to the contradiction between the Troublemaker's abilities and his claim to know the resulting roles.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   [53] Hunter: \"But that's fine, because you're a villager now.\"\n    *   [64] Hunter: \"No I'm saying he's the villager now.\"\n    *   [66] Hunter: \"Cause these two got swapped.\"\n    *   Yes, Hunter is claiming that because he swapped Zack and Jacob, Zack is now a villager. But as Troublemaker, he wouldn't know what card Jacob had.\n\n    *   Is there any other way Hunter could know?\n    *   If Hunter was the Seer? No, he claimed Troublemaker.\n    *   If Hunter was the Robber? No, he claimed Troublemaker.\n    *   If Hunter was the Werewolf? He could be lying about everything.\n\n    *   Let's check if anyone else is more suspicious.\n    *   Zack's Seer claim was very weird, but he didn't fight for it.\n    *   Sean and Jacob are relatively passive.\n    *   Hunter is the most active and has a logical flaw in his claim.\n\n    *   Wait, let's look at the roles again.\n    *   Could Hunter be the Insomniac? No, he claimed Troublemaker.\n    *   Could Hunter be the Doppelganger? If he copied the Troublemaker, he still wouldn't know the cards.\n\n    *   Conclusion: Hunter's claim to know the result of the swap is the strongest piece of evidence.\n\n    *   Justification: Hunter claims to be the Troublemaker and says he swapped Zack and Jacob. However, he then asserts that Zack is \"a villager now,\" which is information a Troublemaker cannot have since they swap cards without looking at them. This contradiction suggests Hunter is lying about his role and is likely the Werewolf.\n\n    *   Wait, let me double-check the transcript for any other clues.\n    *   [102] Jacob: \"Were you really the troublemaker?\"\n    *   [103] Hunter: \"Yeah.\"\n    *   [167] Sean: \"So with Hunter the Troublemaker and he switched us, would there be any incentive if he was the Werewolf to say that these were switched?\"\n    *   [168] Hunter: (Explains his \"political\" reasoning).\n    *   Hunter is very confident, but the rule about the Troublemaker not seeing the cards is key.\n\n    *   Is there any other possibility?\n    *   What if Jacob was the Villager and Hunter knew it? No, that doesn't make sense.\n    *   What if Hunter is the Werewolf and is just making things up? That's the most likely scenario.\n\n    *   Let's re-verify the player list: Zack, Sean, Hunter, Jacob.\n    *   The vote should be for Hunter.",
+  "parsed_output": {
+    "justification": "Hunter claims to be the Troublemaker and asserts that he swapped the roles of Zack and Jacob. However, he then claims to know that Zack is 'a villager now,' which is impossible for a Troublemaker because that role swaps cards without looking at them. This contradiction strongly suggests that Hunter is lying about his role to deceive the group, making him the most likely Werewolf.",
+    "chosen_vote": "Hunter"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Hunter claims to be the Troublemaker and asserts that he swapped the roles of Zack and Jacob. However, he then claims to know that Zack is 'a villager now,' which is impossible for a Troublemaker because that role swaps cards without looking at them. This contradiction strongly suggests that Hunter is lying about his role to deceive the group, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Hunter\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Hunter claims to be the Troublemaker and asserts that he swapped the roles of Zack and Jacob. However, he then claims to know that Zack is 'a villager now,' which is impossible for a Troublemaker because that role swaps cards without looking at them. This contradiction strongly suggests that Hunter is lying about his role to deceive the group, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Hunter\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Hunter",
+    "justification": "Hunter claims to be the Troublemaker and asserts that he swapped the roles of Zack and Jacob. However, he then claims to know that Zack is 'a villager now,' which is impossible for a Troublemaker because that role swaps cards without looking at them. This contradiction strongly suggests that Hunter is lying about his role to deceive the group, making him the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5382,
+    "output_token_count": 2409,
+    "generation_time_sec": 261.12370681762695,
+    "used_chat_template": true,
+    "input_char_count": 17485,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

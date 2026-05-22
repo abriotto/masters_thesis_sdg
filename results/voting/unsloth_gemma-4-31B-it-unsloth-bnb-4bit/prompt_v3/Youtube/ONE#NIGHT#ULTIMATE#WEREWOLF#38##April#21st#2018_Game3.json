@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Robber, robbed Mitchell.\n    *   Caitlynn: Claims Robber, robbed Justin.\n    *   Mitchell: Claims Seer, saw two cards in the center (one of which was a Minion, according to later discussion).\n    *   James: Initially confused, then claims he was a Werewolf (starting role).\n    *   Mike: Initially claims Robber (robbed James, saw Revealer), then claims Tanner.\n\n    *   Mitchell (Seer) saw two cards in the center.\n    *   Justin (Robber) robbed Mitchell. If Mitchell was the Seer, Justin is now the Seer.\n    *   Caitlynn (Robber) robbed Justin. If Justin was the Robber, Caitlynn is now the Robber.\n    *   James claims he was a Werewolf.\n    *   Mike claims he is the Tanner.\n\n    *   Wait, the transcript says \"Revealer\" woke up. This is not a standard role in the provided rules, but it's in the transcript. Let's check the rules provided: \"Villager, Werewolf, Minion, Seer, Robber, Troublemaker, Insomniac, Mason, Drunk, Hunter, Doppelganger, Tanner\". The \"Revealer\" is mentioned in the transcript but not in the rules. I must stick to the provided rules. However, the transcript is the evidence.\n    *   Wait, the transcript says \"Revealer, wake up. You may turn any other player's card face up.\" This is a custom role for this specific game.\n\n    *   James admits: \"I was werewolf\" [126] and \"Me and Mike are werewolves\" [153].\n    *   Mike claims: \"I am 100% the tanner\" [142].\n    *   If James is a Werewolf and Mike is a Werewolf, Team Village wins by voting for either.\n    *   If James is a Werewolf and Mike is the Tanner, Team Village wins by voting for James.\n    *   If James is lying and Mike is the Tanner, voting for Mike helps the Tanner win, not the Village.\n    *   If James is lying and Mike is a Werewolf, voting for Mike helps the Village.\n\n    *   James's admission is very strong: \"Me and Mike are werewolves\" [153].\n    *   Mike's claim to be the Tanner [120, 142] is a common strategy for Werewolves to avoid being voted for, or for a real Tanner to get voted for.\n    *   However, James's admission that he *was* a werewolf is a huge tell. Even if he was swapped, he's admitting to being on Team Werewolf.\n\n    *   Justin claims Robber.\n    *   Caitlynn claims Robber.\n    *   Mike claims Robber, then Tanner.\n    *   Mitchell claims Seer.\n    *   James claims Werewolf.\n\n    *   If James is a Werewolf, voting for him wins the game for the Village.\n    *   If Mike is a Werewolf, voting for him wins the game for the Village.\n    *   If James is a Werewolf and Mike is the Tanner, voting for James is the only way to win.\n    *   If James is the Tanner and Mike is a Werewolf, voting for Mike is the only way to win.\n    *   James explicitly stated \"Me and Mike are werewolves\" [153]. This is a direct admission of alignment.\n\n    *   James: \"I was werewolf\" [126], \"Me and Mike are werewolves\" [153].\n    *   Mike: \"I am 100% the tanner\" [142].\n    *   If James is telling the truth about being a werewolf, voting for him is a win.\n    *   If James is lying to protect Mike, he's still likely a werewolf or minion.\n    *   If Mike is the Tanner, voting for him is a loss for the Village.\n    *   If James is the Tanner, voting for him is a loss for the Village.\n    *   But James's admission is more specific (\"Me and Mike are werewolves\") than Mike's (\"I am the tanner\").\n\n    *   James admits to being a werewolf twice.\n    *   Mike claims to be the tanner.\n    *   Voting for James is the most logical choice for Team Village given the admissions.\n\n    *   Wait, James says \"Me and Mike are werewolves\" [153].\n    *   Then he says \"Let's vote Mike!\" [166].\n    *   This is strange. Why would a werewolf suggest voting for his teammate?\n    *   Maybe James is the Tanner trying to get people to vote for Mike? Or maybe James is a confused werewolf? Or maybe James is the Minion?\n    *   Regardless, James's admission \"I was werewolf\" [126] is the most direct piece of evidence.\n\n    *   James: Admits to being a werewolf.\n    *   Mike: Claims to be the tanner.\n    *   Caitlynn: Claims to be the robber.\n    *   Justin: Claims to be the robber.\n    *   Mitchell: Claims to be the seer.\n    *   The most likely werewolf is James (by his own admission).\n\n    *   James admitted to being a werewolf (\"I was werewolf\", \"Me and Mike are werewolves\").\n    *   Mike claimed to be the Tanner.\n    *   Voting for James is the most direct way to eliminate a confessed werewolf.",
+  "parsed_output": {
+    "justification": "James explicitly admits to being a werewolf multiple times, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike claims to be the Tanner, James's direct admission of his alignment makes him the most likely target for Team Village to ensure a win. Even if James is attempting to confuse the group by suggesting they vote for Mike, his own admission of being a werewolf is the strongest evidence available.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admits to being a werewolf multiple times, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike claims to be the Tanner, James's direct admission of his alignment makes him the most likely target for Team Village to ensure a win. Even if James is attempting to confuse the group by suggesting they vote for Mike, his own admission of being a werewolf is the strongest evidence available.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admits to being a werewolf multiple times, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike claims to be the Tanner, James's direct admission of his alignment makes him the most likely target for Team Village to ensure a win. Even if James is attempting to confuse the group by suggesting they vote for Mike, his own admission of being a werewolf is the strongest evidence available.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admits to being a werewolf multiple times, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike claims to be the Tanner, James's direct admission of his alignment makes him the most likely target for Team Village to ensure a win. Even if James is attempting to confuse the group by suggesting they vote for Mike, his own admission of being a werewolf is the strongest evidence available."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4678,
+    "output_token_count": 1358,
+    "generation_time_sec": 149.5416440963745,
+    "used_chat_template": true,
+    "input_char_count": 15570,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

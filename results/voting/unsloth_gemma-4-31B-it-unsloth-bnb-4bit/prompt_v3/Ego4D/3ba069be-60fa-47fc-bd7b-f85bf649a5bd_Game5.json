@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game5.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin: Claims Troublemaker. Says he swapped Jessica and himself (though Daniel points out you can't swap yourself).\n    *   Jessica: Initially claims Villager, then quickly changes to Tanner.\n    *   Kaelan: Claims Drunk.\n    *   Daniel: Hasn't clearly claimed a role, is being evasive (\"I don't have a good answer for this\").\n\n    *   Kevin (Troublemaker) -> Swapped Jessica and himself (Invalid action, but he claims it).\n    *   Jessica (Tanner) -> If Kevin swapped her with himself, Kevin is now the Tanner and Jessica is the Troublemaker.\n    *   Kaelan (Drunk) -> Swapped with a center card.\n    *   Daniel (?) -> No claim.\n\n    *   Kevin claims Troublemaker. If he is, and he swapped Jessica (Tanner) and himself, Kevin is now the Tanner and Jessica is the Troublemaker.\n    *   Jessica claims Tanner. If she is, and Kevin swapped her, she is now the Troublemaker.\n    *   Kaelan claims Drunk.\n    *   Daniel is evasive.\n\n    *   If Jessica is the Tanner, voting for her makes the Tanner win (bad for Village).\n    *   If Daniel is the Werewolf, voting for him helps the Village win.\n    *   Kevin's claim of swapping himself is illegal. This suggests he might be lying or confused.\n    *   Daniel's refusal to claim a role is highly suspicious.\n    *   Kaelan's claim of Drunk is plausible.\n\n    *   Kevin: Claims Troublemaker (but describes an illegal move).\n    *   Jessica: Claims Tanner.\n    *   Kaelan: Claims Drunk.\n    *   Daniel: No claim, evasive.\n\n    *   If Jessica is the Tanner, she *wants* to be voted out.\n    *   If Daniel is the Werewolf, he *doesn't* want to be voted out.\n    *   Daniel's behavior (evasiveness, \"I don't have a good answer\") is typical of a Werewolf trying to avoid suspicion or a Minion.\n\n    *   Kevin says he's voting for Jessica.\n    *   Kaelan doesn't trust Daniel or Jessica.\n    *   Jessica suggests voting for the middle (not a player).\n\n    *   Daniel is the most suspicious player due to his lack of a role claim and evasive answers.\n    *   Jessica claiming Tanner is a red flag; if she is the Tanner, voting for her loses the game for the Village.\n    *   Kevin's claim is weird, but Daniel's silence is more indicative of a Werewolf.\n\n    *   Wait, if Kevin is the Troublemaker and he swapped Jessica (Tanner) and himself, then Kevin is the Tanner and Jessica is the Troublemaker.\n    *   But Kevin's action \"swapped Jess and me\" is not how Troublemaker works. Troublemaker swaps *two other* players.\n    *   If Kevin is lying about being the Troublemaker, he could be the Werewolf.\n    *   However, Daniel's total lack of a claim is the biggest red flag.\n\n    *   Kevin: Claims Troublemaker (suspicious action).\n    *   Jessica: Claims Tanner (dangerous to vote).\n    *   Kaelan: Claims Drunk.\n    *   Daniel: No claim (very suspicious).\n\n    *   If Daniel is the Werewolf, voting for him wins.\n    *   If Kevin is the Werewolf, voting for him wins.\n    *   If Jessica is the Werewolf, voting for her wins (but she claims Tanner, which is a common Werewolf bluff to avoid being voted, or a Tanner's goal). Actually, if she's the Tanner, voting her loses. If she's the Werewolf claiming Tanner, voting her wins.\n\n    *   Daniel's behavior is the most classic \"Werewolf\" behavior in these transcripts (avoiding a claim).\n\n    *   Kevin: \"I am [Troublemaker].\"\n    *   Jessica: \"I was the Tanner.\"\n    *   Kaelan: \"I was the Drunk.\"\n    *   Daniel: \"I don't have a good answer for this.\"\n\n    *   Daniel is the only one who hasn't made a claim. In a game of One Night Ultimate Werewolf, the person refusing to claim or being evasive is usually the most likely Werewolf.\n\n    *   Kevin's claim is weird (\"swapped Jess and me\"), but he's at least making a claim.\n    *   Jessica's claim is Tanner.\n    *   Kaelan's claim is Drunk.\n    *   Daniel's lack of claim is the strongest signal.\n\n    *   Wait, let's re-read: \"I'm going to vote Jess\" (Kevin).\n    *   Kaelan: \"I don't trust you two [Daniel and Jessica].\"\n    *   Daniel: \"I don't know.\"\n\n    *   If Daniel is the Werewolf, voting for him is the best move for the Village.\n\n    *   Kevin claims Troublemaker.\n    *   Jessica claims Tanner.\n    *   Kaelan claims Drunk.\n    *   Daniel refuses to claim.\n    *   The most suspicious player is Daniel.\n\n    *   Wait, let's look at the roles again. Could Daniel be the Robber? Or the Seer? Or the Werewolf?\n    *   If he were the Seer or Robber, he would have information and would likely use it to point at someone else.\n    *   His evasiveness strongly suggests he is the Werewolf or the Minion.\n\n    *   Justification: Daniel is the only player who failed to provide a role claim, remaining evasive throughout the discussion. Jessica claimed to be the Tanner, making her a risky vote for the Village. Kevin and Kaelan both provided claims, whereas Daniel's lack of transparency is highly suspicious and characteristic of a Werewolf. Therefore, Daniel is the most likely candidate for elimination to help Team Village win.",
+  "parsed_output": {
+    "justification": "Daniel is the most suspicious player because he is the only one who refuses to make a role claim, remaining evasive throughout the discussion. Jessica claimed to be the Tanner, which makes voting for her risky as it could lead to a Tanner victory. While Kevin's claim of being the Troublemaker involved an illegal action (swapping himself), Daniel's complete lack of transparency is a stronger indicator of being a Werewolf or Minion. Therefore, voting for Daniel is the most strategic move for Team Village.",
+    "chosen_vote": "Daniel"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Daniel is the most suspicious player because he is the only one who refuses to make a role claim, remaining evasive throughout the discussion. Jessica claimed to be the Tanner, which makes voting for her risky as it could lead to a Tanner victory. While Kevin's claim of being the Troublemaker involved an illegal action (swapping himself), Daniel's complete lack of transparency is a stronger indicator of being a Werewolf or Minion. Therefore, voting for Daniel is the most strategic move for Team Village.\",\n  \"chosen_vote\": \"Daniel\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Daniel is the most suspicious player because he is the only one who refuses to make a role claim, remaining evasive throughout the discussion. Jessica claimed to be the Tanner, which makes voting for her risky as it could lead to a Tanner victory. While Kevin's claim of being the Troublemaker involved an illegal action (swapping himself), Daniel's complete lack of transparency is a stronger indicator of being a Werewolf or Minion. Therefore, voting for Daniel is the most strategic move for Team Village.\",\n  \"chosen_vote\": \"Daniel\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Daniel",
+    "justification": "Daniel is the most suspicious player because he is the only one who refuses to make a role claim, remaining evasive throughout the discussion. Jessica claimed to be the Tanner, which makes voting for her risky as it could lead to a Tanner victory. While Kevin's claim of being the Troublemaker involved an illegal action (swapping himself), Daniel's complete lack of transparency is a stronger indicator of being a Werewolf or Minion. Therefore, voting for Daniel is the most strategic move for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2860,
+    "output_token_count": 1487,
+    "generation_time_sec": 155.18969655036926,
+    "used_chat_template": true,
+    "input_char_count": 10357,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

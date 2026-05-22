@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Mitchell: Troublemaker (claims he switched two cards).\n        *   Justin: Robber (claims he stole James's card and vouches for him).\n        *   Alvin: Villager.\n        *   James: No specific role claim, but Justin claims to have stolen his card.\n\n    *   Mitchell claims Troublemaker. He says he switched \"me and Alvin\" (himself and Alvin).\n    *   Justin claims Robber. He says he stole James's card and therefore vouches for James.\n    *   Alvin claims Villager.\n    *   James doesn't claim a role but is accused by Justin (initially) and then defends himself/attacks Justin, then switches to attacking Mitchell.\n\n    *   If Mitchell is the Troublemaker, he swapped two *other* players' cards. He cannot swap his own card.\n    *   Mitchell's statement: \"I'm the troublemaker. I switched me and Alvin.\"\n    *   Rule check: \"Troublemaker: ... swaps the cards of two other players without looking at them.\"\n    *   Conclusion: Mitchell's claim is a direct contradiction of the Troublemaker's ability. He cannot be the Troublemaker if he swapped himself and Alvin.\n\n    *   Justin claims Robber and stole James's card.\n    *   If Justin is the Robber and stole James's card, he knows James's *starting* role.\n    *   If James was a Villager, Justin can vouch for him.\n    *   However, if Mitchell (claiming Troublemaker) actually swapped cards, James's role might have changed.\n\n    *   Mitchell's claim is logically impossible based on the game rules. This makes him highly suspicious.\n    *   Justin's claim is plausible, though he could be lying.\n    *   Alvin claims Villager, which is a neutral claim.\n    *   James is reacting to the others.\n\n    *   Mitchell claimed to be the Troublemaker but said he swapped himself and Alvin. The Troublemaker cannot swap their own card. This is a clear lie or a misunderstanding of the rules, making him the most likely Werewolf or Tanner.\n    *   Since the goal is to eliminate a Werewolf, and Mitchell is the only one caught in a blatant lie about role abilities, he is the prime target.\n\n    *   Justin: Robber (claims James is safe).\n    *   Alvin: Villager.\n    *   James: (No claim, but Justin vouches for him).\n    *   Mitchell: Troublemaker (claims he swapped himself and Alvin - IMPOSSIBLE).\n\n    *   Wait, did Mitchell say \"I switched me and Alvin\"?\n    *   Transcript [49]: \"I'm the troublemaker. I switched me and Alvin.\"\n    *   Yes, he did. This is a rule violation.\n\n    *   Could Mitchell be the Tanner? Yes.\n    *   Could Mitchell be the Werewolf? Yes.\n    *   Is there anyone else more suspicious?\n        *   Justin's claim is consistent with the Robber's ability.\n        *   Alvin's claim is simple.\n        *   James hasn't claimed anything.\n    *   Mitchell's lie is the most concrete piece of evidence.\n\n    *   Justification: Mitchell claimed to be the Troublemaker and stated that he swapped his own card with Alvin's. According to the rules, the Troublemaker can only swap the cards of two other players, not their own. This contradiction makes Mitchell the most suspicious player and the most likely candidate for elimination to help Team Village.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Troublemaker and stated that he swapped his own card with Alvin's. However, the Troublemaker's ability specifically allows them to swap the cards of two other players, not their own. This blatant contradiction of the game rules makes Mitchell the most suspicious player and the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated that he swapped his own card with Alvin's. However, the Troublemaker's ability specifically allows them to swap the cards of two other players, not their own. This blatant contradiction of the game rules makes Mitchell the most suspicious player and the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated that he swapped his own card with Alvin's. However, the Troublemaker's ability specifically allows them to swap the cards of two other players, not their own. This blatant contradiction of the game rules makes Mitchell the most suspicious player and the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell claimed to be the Troublemaker and stated that he swapped his own card with Alvin's. However, the Troublemaker's ability specifically allows them to swap the cards of two other players, not their own. This blatant contradiction of the game rules makes Mitchell the most suspicious player and the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2789,
+    "output_token_count": 917,
+    "generation_time_sec": 97.67313289642334,
+    "used_chat_template": true,
+    "input_char_count": 10351,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Laura: Claims Seer. Says she saw no werewolf in the center (Wait, [32] \"There wasn't a werewolf\" - this is ambiguous. Does she mean she looked at the center and saw no werewolf, or she looked at a player and they weren't a werewolf?). Later, [133] \"Yeah I only saw one werewolf\" (Wait, this contradicts [32]). Let's re-read.\n    *   [21] Laura: \"I was the seer.\"\n    *   [32] Laura: \"There wasn't a werewolf.\" (This is likely referring to the center cards or a specific player).\n    *   [133] Laura: \"Yeah I only saw one werewolf.\" (Wait, this is a huge contradiction).\n    *   [136] Laura: \"This guy\" (pointing to someone, likely Paul).\n    *   [139] Laura: \"Yeah\" (confirming she saw something in the middle).\n    *   James: Claims Tanner [44], then claims Seer [88, 92], then claims Insomniac [97], then claims Tanner again [124].\n    *   Mitchell: Claims Troublemaker [120]. Claims he swapped James and Paul [106, 126].\n    *   Paul: Claims Robber [113], then claims Hunter [142]. Claims he robbed Mitchell [117] and saw Troublemaker [120].\n    *   Justin: Claims Insomniac [103].\n\n    *   James: Tanner -> (Swapped by Mitchell) -> ?\n    *   Paul: ? -> (Swapped by Mitchell) -> ?\n    *   Mitchell: Troublemaker.\n    *   Laura: Seer.\n    *   Justin: Insomniac.\n\n    *   James says he was Tanner [44].\n    *   Mitchell says he swapped James and Paul [106].\n    *   If James was Tanner and Paul was X, then James is now X and Paul is now Tanner.\n    *   Paul claims he was the Robber [113] and robbed Mitchell [117].\n    *   If Paul was the Robber and Mitchell was the Troublemaker, Paul now has the Troublemaker card.\n    *   Wait, the order of actions:\n        1.  Doppelganger\n        2.  Werewolves\n        3.  Minion\n        4.  Masons\n        5.  Seer (Laura)\n        6.  Robber (Paul?)\n        7.  Troublemaker (Mitchell?)\n        8.  Drunk\n        9.  Insomniac (Justin?)\n\n    *   If Paul was the Robber, he robbed Mitchell *before* Mitchell (the Troublemaker) swapped anyone.\n    *   If Mitchell was the Troublemaker, he swapped James and Paul *after* Paul robbed him.\n    *   Let's trace:\n        *   Start: James (Tanner), Paul (Robber), Mitchell (Troublemaker), Laura (Seer), Justin (Insomniac).\n        *   Robber (Paul) robs Mitchell (Troublemaker). Paul is now Troublemaker, Mitchell is now Robber.\n        *   Troublemaker (Mitchell, now Robber) swaps James (Tanner) and Paul (now Troublemaker). James is now Troublemaker, Paul is now Tanner.\n        *   Insomniac (Justin) wakes up and sees Insomniac.\n\n    *   Wait, if this sequence happened:\n        *   James: Tanner -> Troublemaker\n        *   Paul: Robber -> Troublemaker -> Tanner\n        *   Mitchell: Troublemaker -> Robber\n        *   Laura: Seer\n        *   Justin: Insomniac\n\n    *   But wait, Laura's claims are very inconsistent.\n        *   [32] \"There wasn't a werewolf.\"\n        *   [133] \"Yeah I only saw one werewolf.\"\n        *   [136] \"This guy\" (pointing to Paul).\n        *   If Laura is the Seer and she saw a werewolf, she should be consistent.\n\n    *   Let's look at the claims again.\n        *   James: Tanner, then Seer, then Insomniac, then Tanner. (Very unreliable).\n        *   Paul: Robber, then Hunter. (Unreliable).\n        *   Laura: Seer. (Contradictory about what she saw).\n        *   Mitchell: Troublemaker.\n        *   Justin: Insomniac.\n\n    *   If Laura is the Werewolf, she would lie about being the Seer.\n    *   If Paul is the Werewolf, he might be lying about being the Robber/Hunter.\n    *   If James is the Werewolf, he's definitely lying about being the Tanner/Seer/Insomniac.\n\n    *   Let's re-examine Laura's statements:\n        [32] \"There wasn't a werewolf.\"\n        [133] \"Yeah I only saw one werewolf.\"\n        This is a direct contradiction. If she's the Seer, she knows exactly what she saw. If she's a Werewolf, she's making it up and slipping up.\n\n    *   Let's re-examine Paul's statements:\n        He claims he was the Robber, then the Hunter.\n        He claims he robbed Mitchell and saw Troublemaker.\n        He claims he was swapped by Mitchell.\n\n    *   Let's re-examine James's statements:\n        He claims Tanner, then Seer, then Insomniac, then Tanner.\n        He's basically trolling.\n\n    *   Who is the most likely Werewolf?\n        Laura's contradiction is glaring.\n        James is acting like a Tanner (trying to get votes, though he's not really pushing for it, he's just claiming it).\n        Paul is confused.\n        Mitchell is claiming Troublemaker.\n        Justin is claiming Insomniac.\n\n    *   Wait, let's look at Laura's contradiction again.\n        [32] \"There wasn't a werewolf.\"\n        [133] \"Yeah I only saw one werewolf.\"\n        In [32], she might have been talking about the center cards.\n        In [133], she might be talking about a player.\n        But in [136], she says \"This guy\" (referring to Paul).\n        If she saw Paul was a werewolf, why did she say \"There wasn't a werewolf\" at [32]?\n        Maybe she meant \"There wasn't a werewolf [in the center]\"?\n        But the Seer chooses *either* one player *or* two center cards.\n        If she looked at the center and saw no werewolf, she couldn't have also seen that Paul was a werewolf.\n\n    *   Therefore, Laura is lying.\n\n    *   Is anyone else lying?\n        James is definitely lying about being the Seer and Insomniac.\n        Paul is changing his story (Robber to Hunter).\n\n    *   Let's look at the roles again.\n        If Laura is the Werewolf, she's lying about being the Seer.\n        If James is the Tanner, he wants to be voted out.\n        If Paul is the Werewolf, he's lying about being the Robber/Hunter.\n\n    *   Wait, let's look at the transcript again.\n        [142] Paul: \"Laura's the werewolf. I'm the hunter. Hundred percent.\"\n        [147] Laura: \"No, because James is the tanner. So you're the tanner now.\"\n        [153] Laura: \"No, I did [see the hunter in the middle].\"\n        [156] Paul: \"Laura is lying about seeing the hunter in the middle- for sure.\"\n\n    *   If Laura saw the Hunter in the middle, and Paul claims he is the Hunter, then Laura is calling Paul a liar.\n    *   If Paul is the Hunter, he's Team Village.\n    *   If Laura is the Werewolf, she's lying about being the Seer and about seeing the Hunter in the middle.\n\n    *   Let's evaluate the likelihood:\n        Laura's contradiction ([32] vs [133]) is a strong indicator of lying.\n        James's behavior is typical of a Tanner or a Werewolf trying to confuse.\n        Paul's confusion is common in these games.\n\n    *   If we have to pick one person to vote out to help Team Village win, the most suspicious person is Laura due to the blatant contradiction in her Seer claims.\n\n    *   Wait, let's re-read [32] and [133] one more time.\n        [32] \"There wasn't a werewolf.\"\n        [133] \"Yeah I only saw one werewolf.\"\n        Is it possible [32] was a response to \"What did you see?\" and she meant \"I didn't see a werewolf [in the center]\"?\n        But then [133] \"Yeah I only saw one werewolf\" would mean she *did* see one.\n        If she looked at the center, she can't look at a player.\n        If she looked at a player, she can't look at the center.\n        So she cannot have seen both \"no werewolf in the center\" and \"one werewolf (Paul)\".\n\n    *   Conclusion: Laura is lying about her Seer results.\n\n    *   Is there any other possibility?\n        Could James be the werewolf? He claimed almost every role.\n        Could Paul be the werewolf? He's acting very erratic.\n        Could Mitchell be the werewolf? He's claiming Troublemaker and swapping people.\n\n    *   However, Laura's contradiction is the most concrete piece of evidence.\n\n    *   Let's double-check the roles.\n        If Laura is the Werewolf, she's lying.\n        If James is the Tanner, he's lying/trolling.\n        If Paul is the Robber/Hunter, he's just confused.\n        If Mitchell is the Troublemaker, he's telling the truth.\n        If Justin is the Insomniac, he's telling the truth.\n\n    *   This fits together. Laura is the most likely Werewolf.\n\n    *   Wait, let me re-read [133] again.\n        [132] Paul: \"You said you saw one werewolf.\"\n        [133] Laura: \"Yeah I only saw one werewolf.\"\n        Wait, did Laura say she saw one werewolf *before* [132]?\n        Looking back...\n        [21] Laura: \"I was the seer.\"\n        [29] Justin: \"She saw a werewolf.\"\n        [30] Laura: \"Okay. I'll tell you one of them.\"\n        [32] Laura: \"There wasn't a werewolf.\"\n        Wait! [30] \"I'll tell you one of them\" and then [32] \"There wasn't a werewolf.\"\n        That is an even more immediate contradiction.\n        [30] \"I'll tell you one of them [the werewolves].\"\n        [32] \"There wasn't a werewolf.\"\n        She literally contradicted herself in two sentences.\n\n    *   This makes Laura extremely suspicious.\n\n    *   Final check:\n        Player list: Justin, Laura, Paul, James, Mitchell.\n        Chosen vote: Laura.\n        Justification: Laura claimed to be the Seer but immediately contradicted herself, first stating she would name a werewolf, then stating there wasn't one, and later claiming she saw one werewolf (Paul). This inconsistency strongly suggests she is lying about her role and is likely the Werewolf.\n\n    *   Wait, let me check if James could be the werewolf.\n        James claimed Tanner, then Seer, then Insomniac, then Tanner.\n        This is very suspicious, but in One Night Ultimate Werewolf, the Tanner often trolls.\n        Laura's contradiction is more indicative of a Werewolf trying to fake a Seer claim.\n\n    *   Let's re-verify the \"Tanner\" possibility for James.\n        [44] James: \"No, no. I was a tanner.\"\n        [124] James: \"I was tanner.\"\n        If James is the Tanner, he wants to be voted out.\n        If Laura is the Werewolf, she wants to avoid being voted out.\n        If we vote Laura, Team Village wins.\n\n    *   One last look at Paul.\n        Paul claims he was the Robber, then the Hunter.\n        If he was the Robber and robbed Mitchell (Troublemaker), he'd be the Troublemaker.\n        If Mitchell then swapped Paul and James, Paul would be whatever James was.\n        If James was the Tanner, Paul is now the Tanner.\n        This matches Paul's later realization: [147] \"So you're the tanner now.\" [148] \"Okay. That's very possible.\"\n        So Paul's confusion actually makes sense within the game's mechanics.\n\n    *   Laura's contradiction remains the strongest lead.",
+  "parsed_output": {
+    "justification": "Laura claimed to be the Seer but provided completely contradictory information. She first stated she would name a werewolf, then immediately said there wasn't one, and later claimed she saw one werewolf (Paul). Such blatant inconsistencies in a Seer claim are a strong indicator that the player is lying and is likely the Werewolf.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Laura claimed to be the Seer but provided completely contradictory information. She first stated she would name a werewolf, then immediately said there wasn't one, and later claimed she saw one werewolf (Paul). Such blatant inconsistencies in a Seer claim are a strong indicator that the player is lying and is likely the Werewolf.\",\n  \"chosen_vote\": \"Laura\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Laura claimed to be the Seer but provided completely contradictory information. She first stated she would name a werewolf, then immediately said there wasn't one, and later claimed she saw one werewolf (Paul). Such blatant inconsistencies in a Seer claim are a strong indicator that the player is lying and is likely the Werewolf.\",\n  \"chosen_vote\": \"Laura\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Laura claimed to be the Seer but provided completely contradictory information. She first stated she would name a werewolf, then immediately said there wasn't one, and later claimed she saw one werewolf (Paul). Such blatant inconsistencies in a Seer claim are a strong indicator that the player is lying and is likely the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4563,
+    "output_token_count": 3088,
+    "generation_time_sec": 332.42555022239685,
+    "used_chat_template": true,
+    "input_char_count": 15179,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

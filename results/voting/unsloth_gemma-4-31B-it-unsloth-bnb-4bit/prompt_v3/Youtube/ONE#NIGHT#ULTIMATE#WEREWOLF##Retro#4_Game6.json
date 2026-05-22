@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims Seer. Says he saw Justin (Insomniac).\n    *   Mike: Claims Troublemaker. Says he switched two people (doesn't specify who, but later says \"I switched last\").\n    *   Justin: Claims Insomniac. Confirms he is still the Insomniac.\n    *   Mitchell: Claims Drunk. Says he started as something, then got a werewolf, then switched it for a middle card. (Wait, his logic is confusing: \"if I was a robber, that means I took a card and then I got a werewolf? Yeah. But if I was a drunk, I get a werewolf, then I switched it for a middle one.\")\n    *   Caitlynn: Hasn't made a clear role claim, but hasn't been accused yet.\n\n    *   James (Seer) -> Justin (Insomniac).\n    *   Justin (Insomniac) -> Confirms he is Insomniac.\n    *   Mike (Troublemaker) -> Switched two people.\n    *   Mitchell (Drunk) -> Claims he was a Drunk and swapped a werewolf for a center card.\n\n    *   Mitchell's claim is very suspicious. He says, \"if I was a robber, that means I took a card and then I got a werewolf? Yeah. But if I was a drunk, I get a werewolf, then I switched it for a middle one.\"\n    *   Wait, the Drunk swaps their card with one from the center *without looking at the new card*. Mitchell says \"I get a werewolf, then I switched it for a middle one.\" This is backwards. The Drunk swaps *first*, then doesn't know what they have.\n    *   Also, Mitchell says \"60% chance that I'm a bad dude, vote for me.\" This sounds like someone who knows they are a werewolf or is trying to act like a confused Drunk.\n    *   If Mitchell is the Werewolf, he's trying to explain why he might have been seen as one or why he's acting suspicious.\n    *   If Mike is the Troublemaker, he swapped two people. If he swapped Mitchell and someone else, Mitchell's role could have changed.\n    *   James (Seer) saw Justin (Insomniac). This seems consistent.\n\n    *   James: Seer (Village)\n    *   Justin: Insomniac (Village)\n    *   Mike: Troublemaker (Village)\n    *   Mitchell: Drunk (Village/Werewolf?)\n    *   Caitlynn: ?\n\n    *   Mitchell's explanation of the Drunk role is fundamentally wrong. He says he \"got a werewolf, then I switched it for a middle one.\" The Drunk swaps their *starting* card for a center card. They don't \"get a werewolf\" and then decide to switch it.\n    *   Mitchell basically admits he's likely a \"bad dude\" and tells the group to vote for him. While the Tanner also wants to be voted out, the context of his confusing role claim suggests he's either a Werewolf bluffing poorly or the Tanner.\n    *   However, in One Night Ultimate Werewolf, if a player is acting this suspiciously and claiming a role incorrectly, they are the primary target for Team Village.\n\n    *   James (Seer) and Justin (Insomniac) corroborate each other.\n    *   Mike (Troublemaker) claims to have swapped two people.\n    *   Mitchell's claim is incoherent.\n    *   Caitlynn is silent.\n\n    *   Mitchell is the most suspicious player due to his incorrect description of the Drunk's ability and his own admission that he's likely a \"bad dude.\"\n\n    *   Wait, let's re-read Mitchell's part: \"if I was a robber, that means I took a card and then I got a werewolf? Yeah. But if I was a drunk, I get a werewolf, then I switched it for a middle one.\"\n    *   This is completely wrong. A Robber takes a card from another player. A Drunk takes a card from the center.\n    *   He's essentially guessing how the roles work or lying badly.\n\n    *   Is there any chance Mitchell is the Tanner? Yes. But from the perspective of Team Village, if they have to pick the *most likely* Werewolf, Mitchell's behavior is the biggest red flag.\n\n    *   James: Seer\n    *   Justin: Insomniac\n    *   Mike: Troublemaker\n    *   Mitchell: Drunk (Claim)\n    *   Caitlynn: ?\n\n    If James is Seer and saw Justin as Insomniac, and Justin confirms he is Insomniac, those two are likely Village. If Mike is Troublemaker, he's Village. That leaves Mitchell and Caitlynn. Mitchell is making a mess of his claim.\n\n    *   Mitchell's claim to be the Drunk is logically flawed regarding how the Drunk role works.\n    *   He openly suggests that he is likely a \"bad dude\" and encourages the group to vote for him.\n    *   Other players (James, Justin, Mike) have claims that are consistent with each other.\n    *   Therefore, Mitchell is the most likely candidate for elimination to help Team Village.",
+  "parsed_output": {
+    "justification": "Mitchell's claim to be the Drunk is logically inconsistent with the game rules; he suggests he 'got a werewolf' and then switched it for a center card, whereas the Drunk swaps their starting card for a center card without knowing the new role. Furthermore, Mitchell openly admits there is a high probability that he is a 'bad dude' and encourages the group to vote for him. With James (Seer), Justin (Insomniac), and Mike (Troublemaker) providing consistent claims, Mitchell is the most suspicious player.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell's claim to be the Drunk is logically inconsistent with the game rules; he suggests he 'got a werewolf' and then switched it for a center card, whereas the Drunk swaps their starting card for a center card without knowing the new role. Furthermore, Mitchell openly admits there is a high probability that he is a 'bad dude' and encourages the group to vote for him. With James (Seer), Justin (Insomniac), and Mike (Troublemaker) providing consistent claims, Mitchell is the most suspicious player.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell's claim to be the Drunk is logically inconsistent with the game rules; he suggests he 'got a werewolf' and then switched it for a center card, whereas the Drunk swaps their starting card for a center card without knowing the new role. Furthermore, Mitchell openly admits there is a high probability that he is a 'bad dude' and encourages the group to vote for him. With James (Seer), Justin (Insomniac), and Mike (Troublemaker) providing consistent claims, Mitchell is the most suspicious player.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell's claim to be the Drunk is logically inconsistent with the game rules; he suggests he 'got a werewolf' and then switched it for a center card, whereas the Drunk swaps their starting card for a center card without knowing the new role. Furthermore, Mitchell openly admits there is a high probability that he is a 'bad dude' and encourages the group to vote for him. With James (Seer), Justin (Insomniac), and Mike (Troublemaker) providing consistent claims, Mitchell is the most suspicious player."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3051,
+    "output_token_count": 1329,
+    "generation_time_sec": 139.8407371044159,
+    "used_chat_template": true,
+    "input_char_count": 11132,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

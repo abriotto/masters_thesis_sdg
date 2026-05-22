@@ -1,13 +1,16 @@
 from __future__ import annotations
 
+import re
 import time
+import warnings
 from dataclasses import dataclass
 from typing import Any, Literal, Optional, Tuple
 
 from google import genai
+from google.genai import types
 
 
-ModelFamily = Literal["gemma4", "gpt_oss", "qwen", "standard_chat"]
+ModelFamily = Literal["gemma4", "gpt_oss"]
 ReasoningEffort = Literal["low", "medium", "high"]
 
 
@@ -16,6 +19,7 @@ class ModelIOInfo:
     family: ModelFamily
     io_type: str
     has_chat_template: bool
+    backend: str = "unsloth"
 
 
 @dataclass
@@ -24,37 +28,68 @@ class LocalModelBundle:
     family: ModelFamily
     model_io: Any
     model: Any
+    backend: str = "unsloth"
+    max_seq_length: Optional[int] = None
 
     @property
     def io_info(self) -> dict:
         return {
             "family": self.family,
-            "io_type": "processor" if self.family == "gemma4" else "tokenizer",
+            "io_type": "tokenizer_or_processor",
             "has_chat_template": has_chat_template(self.model_io),
+            "backend": self.backend,
+            "model_name": self.model_name,
+            "max_seq_length": self.max_seq_length,
         }
 
 
-def call_gemini(client: genai.Client, model_name: str, prompt: str) -> str:
-    response = client.models.generate_content(
-        model=model_name,
-        contents=prompt,
-    )
+def call_gemini(
+    client: genai.Client,
+    model_name: str,
+    prompt: str,
+    temperature: Optional[float] = None,
+    top_p: Optional[float] = None,
+    top_k: Optional[int] = None,
+) -> str:
+    kwargs = {
+        "model": model_name,
+        "contents": prompt,
+    }
+
+    config_kwargs = {}
+    if temperature is not None:
+        config_kwargs["temperature"] = temperature
+    if top_p is not None:
+        config_kwargs["top_p"] = top_p
+    if top_k is not None:
+        config_kwargs["top_k"] = top_k
+
+    if config_kwargs:
+        kwargs["config"] = types.GenerateContentConfig(**config_kwargs)
+
+    response = client.models.generate_content(**kwargs)
     return (response.text or "").strip()
 
 
 def get_model_family(model_name: str) -> ModelFamily:
+    """
+    Only local Unsloth families used in this project are supported.
+
+    This intentionally does not fall back to generic HF/Qwen/standard chat
+    handlers: unsupported model names should fail loudly.
+    """
     low = model_name.lower()
 
     if "gemma-4" in low or "gemma4" in low:
         return "gemma4"
 
-    if "gpt-oss" in low:
+    if "gpt-oss" in low or "gpt_oss" in low:
         return "gpt_oss"
 
-    if "qwen" in low:
-        return "qwen"
-
-    return "standard_chat"
+    raise ValueError(
+        f"Unsupported local model family for Unsloth runner: {model_name!r}. "
+        "Expected a Gemma 4 or GPT-OSS Unsloth checkpoint."
+    )
 
 
 def has_chat_template(model_io: Any) -> bool:
@@ -69,8 +104,9 @@ def get_model_io_info(model_name: str, model_io: Any) -> dict:
 
     return {
         "family": family,
-        "io_type": "processor" if family == "gemma4" else "tokenizer",
+        "io_type": "tokenizer_or_processor",
         "has_chat_template": has_chat_template(model_io),
+        "backend": "unsloth",
     }
 
 
@@ -86,112 +122,331 @@ def _validate_reasoning_effort(reasoning_effort: str) -> ReasoningEffort:
     return reasoning_effort  # type: ignore[return-value]
 
 
-def _load_torch_and_transformers():
-    import torch
-    from transformers import AutoModelForCausalLM, AutoProcessor, AutoTokenizer
+def _load_unsloth_classes():
+    try:
+        import torch
+        from unsloth import FastLanguageModel
+    except ImportError as exc:
+        raise ImportError(
+            "Unsloth is required for local models. "
+            "Install/update it in the environment where you run the experiments."
+        ) from exc
 
-    return torch, AutoModelForCausalLM, AutoProcessor, AutoTokenizer
+    try:
+        from unsloth import FastModel  # Gemma 4 support in recent Unsloth versions
+    except Exception:
+        FastModel = None
+
+    return torch, FastLanguageModel, FastModel
 
 
-def _best_model_dtype(torch_module):
+def _unsloth_from_pretrained(
+    model_name: str,
+    family: ModelFamily,
+    max_seq_length: int,
+    dtype: Any = None,
+    full_finetuning: bool = False,
+) -> Tuple[Any, Any, str]:
     """
-    Use bf16 on CUDA when supported, otherwise fp16.
-    Fall back to fp32 on CPU.
+    Unsloth-only loader.
 
-    This avoids torch_dtype='auto', which can leave too little VRAM headroom
-    for generation on large local models.
+    The checkpoint name is used exactly as provided. No aliases, redirects, or
+    normalization are applied. Public quantization is intentionally removed:
+    this loader always uses the Unsloth 4-bit / QLoRA-compatible path.
     """
-    if torch_module.cuda.is_available():
-        if torch_module.cuda.is_bf16_supported():
-            return torch_module.bfloat16
-        return torch_module.float16
+    _, FastLanguageModel, FastModel = _load_unsloth_classes()
 
-    return torch_module.float32
+    common_kwargs = dict(
+    model_name=model_name,
+    max_seq_length=max_seq_length,
+    dtype=dtype,
+    load_in_4bit=True,
+    full_finetuning=full_finetuning,
+)
+    # GPT-OSS currently does not support SDPA in this Transformers/Unsloth path.
+    # Force eager attention to avoid:
+    # "GptOssForCausalLM does not support ... scaled_dot_product_attention yet"
+    if family == "gpt_oss":
+        common_kwargs["attn_implementation"] = "eager"
+    
 
+    loaders: list[tuple[str, Any]] = []
 
-def _model_load_kwargs(torch_module) -> dict:
-    kwargs = {
-        "torch_dtype": _best_model_dtype(torch_module),
-    }
+    # Gemma 4 support may live under FastModel in recent Unsloth builds.
+    # GPT-OSS and text-only fall back to FastLanguageModel.
+    if family == "gemma4" and FastModel is not None:
+        loaders.append(("FastModel", FastModel))
 
-    if torch_module.cuda.is_available():
-        kwargs["device_map"] = "auto"
+    loaders.append(("FastLanguageModel", FastLanguageModel))
 
-    return kwargs
+    errors: list[str] = []
+    for loader_name, loader in loaders:
+        try:
+            model, tokenizer = loader.from_pretrained(**common_kwargs)
 
+            # Some Unsloth helpers mutate the model in-place and return None.
+            for_inference = getattr(loader, "for_inference", None)
+            if callable(for_inference):
+                maybe_model = for_inference(model)
+                if maybe_model is not None:
+                    model = maybe_model
 
-def _load_model_io(model_name: str, family: ModelFamily):
-    _, _, AutoProcessor, AutoTokenizer = _load_torch_and_transformers()
+            if model is None:
+                raise RuntimeError(
+                    f"{loader_name}.from_pretrained returned model=None for {model_name}"
+                )
 
-    if family == "gemma4":
-        return AutoProcessor.from_pretrained(model_name)
+            if tokenizer is None:
+                raise RuntimeError(
+                    f"{loader_name}.from_pretrained returned tokenizer/processor=None "
+                    f"for {model_name}"
+                )
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+            setattr(model, "_local_backend", "unsloth")
+            setattr(model, "_local_loader", loader_name)
+            setattr(model, "_local_quantization", "unsloth_4bit")
+            setattr(model, "_requested_model_name", model_name)
+            setattr(model, "_resolved_model_name", model_name)
+            setattr(model, "_max_seq_length", max_seq_length)
+            setattr(model, "_last_thought_block", None)
 
-    if getattr(tokenizer, "pad_token", None) is None:
-        tokenizer.pad_token = tokenizer.eos_token
+            if getattr(tokenizer, "pad_token", None) is None:
+                tokenizer.pad_token = getattr(tokenizer, "eos_token", None)
+            tokenizer.padding_side = "left"
 
-    tokenizer.padding_side = "left"
-    return tokenizer
+            model.eval()
+            return tokenizer, model, loader_name
 
+        except Exception as exc:
+            errors.append(f"{loader_name}: {type(exc).__name__}: {exc}")
 
-def load_local_model(model_name: str) -> Tuple[Any, Any]:
-    """
-    Load a local HF causal LM and its tokenizer/processor.
-
-    No quantization is used.
-    CUDA models are loaded in bf16 when supported, otherwise fp16.
-    """
-    torch, AutoModelForCausalLM, _, _ = _load_torch_and_transformers()
-
-    family = get_model_family(model_name)
-    model_io = _load_model_io(model_name, family)
-
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        **_model_load_kwargs(torch),
+    joined_errors = "\n".join(errors)
+    raise RuntimeError(
+        f"Could not load model with Unsloth: {model_name}\n"
+        f"Tried loaders:\n{joined_errors}"
     )
 
-    model.eval()
+
+def load_local_model(
+    model_name: str,
+    max_seq_length: int = 8192,
+    dtype: Any = None,
+    full_finetuning: bool = False,
+) -> Tuple[Any, Any]:
+    """
+    Load a local model through Unsloth only.
+
+    Notes:
+    - No `quantization` parameter.
+    - No HF-local backend compatibility layer.
+    - No automatic checkpoint normalization.
+    - Only Gemma 4 and GPT-OSS local checkpoints are supported.
+    """
+    family = get_model_family(model_name)
+    model_io, model, _ = _unsloth_from_pretrained(
+        model_name=model_name,
+        family=family,
+        max_seq_length=max_seq_length,
+        dtype=dtype,
+        full_finetuning=full_finetuning,
+    )
     return model_io, model
 
 
-def load_local_model_bundle(model_name: str) -> LocalModelBundle:
-    model_io, model = load_local_model(model_name=model_name)
+def load_local_model_bundle(
+    model_name: str,
+    max_seq_length: int = 8192,
+    dtype: Any = None,
+    full_finetuning: bool = False,
+) -> LocalModelBundle:
     family = get_model_family(model_name)
+    model_io, model, _ = _unsloth_from_pretrained(
+        model_name=model_name,
+        family=family,
+        max_seq_length=max_seq_length,
+        dtype=dtype,
+        full_finetuning=full_finetuning,
+    )
 
     return LocalModelBundle(
         model_name=model_name,
         family=family,
         model_io=model_io,
         model=model,
+        max_seq_length=max_seq_length,
     )
 
 
+def _normalize_device_value(device_value: Any):
+    """Normalize a value from hf_device_map into a torch.device-compatible value."""
+    if device_value is None:
+        return None
+
+    value = str(device_value)
+    if value in {"cpu", "disk", "meta"}:
+        return None
+
+    if isinstance(device_value, int) or value.isdigit():
+        return f"cuda:{value}"
+
+    return value
+
+
+def get_model_input_device(model: Any):
+    """
+    Pick the right input device for Unsloth/Accelerate models.
+    """
+    import torch
+
+    model_device = getattr(model, "device", None)
+    if model_device is not None and str(model_device) != "meta":
+        return torch.device(model_device)
+
+    hf_device_map = getattr(model, "hf_device_map", None)
+    if isinstance(hf_device_map, dict):
+        preferred_keys = (
+            "model.embed_tokens",
+            "transformer.wte",
+            "model.model.embed_tokens",
+            "language_model.model.embed_tokens",
+            "",
+        )
+
+        for key in preferred_keys:
+            if key in hf_device_map:
+                normalized = _normalize_device_value(hf_device_map[key])
+                if normalized is not None:
+                    return torch.device(normalized)
+
+        for value in hf_device_map.values():
+            normalized = _normalize_device_value(value)
+            if normalized is not None:
+                return torch.device(normalized)
+
+    return next(model.parameters()).device
+
+
+def _strip_known_special_tokens(text: str) -> str:
+    # Keep this conservative: remove wrappers, not actual content.
+    replacements = [
+        "<bos>",
+        "<eos>",
+        "<pad>",
+        "<turn|>",
+        "<|end|>",
+        "<|return|>",
+    ]
+    for token in replacements:
+        text = text.replace(token, "")
+
+    text = re.sub(r"<\|turn\>(?:assistant|model)\s*", "", text)
+    text = re.sub(r"<\|turn\>(?:user|system)\s*", "", text)
+    text = re.sub(r"<\|start\|>assistant", "", text)
+    return text.strip()
+
+
+def _parse_gemma_thinking(raw: str) -> tuple[Optional[str], Optional[str]]:
+    """
+    Gemma 4 thinking commonly appears as:
+    <|channel>thought
+    ...
+    <channel|>final answer...
+    """
+    match = re.search(
+        r"<\|channel\>thought\s*(?P<thinking>.*?)(?:<channel\|>)(?P<answer>.*)$",
+        raw,
+        flags=re.DOTALL,
+    )
+    if not match:
+        return None, None
+
+    thinking = _strip_known_special_tokens(match.group("thinking"))
+    answer = _strip_known_special_tokens(match.group("answer"))
+    return thinking or None, answer or None
+
+
+def _parse_harmony_response(raw: str) -> tuple[Optional[str], Optional[str]]:
+    """
+    Best-effort parser for GPT-OSS / Harmony-like output.
+    """
+    analysis_blocks = re.findall(
+        r"<\|channel\|>analysis<\|message\|>(.*?)(?=<\|end\|>|<\|start\|>assistant|<\|channel\|>final|$)",
+        raw,
+        flags=re.DOTALL,
+    )
+    final_match = re.search(
+        r"<\|channel\|>final<\|message\|>(.*?)(?=<\|return\|>|<\|end\|>|$)",
+        raw,
+        flags=re.DOTALL,
+    )
+
+    thinking = "\n\n".join(_strip_known_special_tokens(x) for x in analysis_blocks).strip()
+    answer = _strip_known_special_tokens(final_match.group(1)) if final_match else None
+
+    return thinking or None, answer or None
+
+
+def parse_reasoning_response(model_io: Any, raw: str) -> tuple[str, Optional[str]]:
+    """
+    Return (visible_answer, internal_thoughts).
+
+    Priority:
+    1. tokenizer/processor.parse_response if available;
+    2. Gemma thinking tag parser;
+    3. GPT-OSS/Harmony parser;
+    4. raw text with special-token cleanup.
+    """
+    parse_response = getattr(model_io, "parse_response", None)
+    if callable(parse_response):
+        try:
+            parsed = parse_response(raw)
+            if isinstance(parsed, dict):
+                thinking = parsed.get("thinking", None)
+                content = parsed.get("content", parsed.get("answer", None))
+
+                if isinstance(content, str):
+                    return content.strip(), thinking
+
+                if isinstance(content, list):
+                    parts = []
+                    for item in content:
+                        if isinstance(item, str):
+                            parts.append(item)
+                        elif isinstance(item, dict) and isinstance(item.get("text"), str):
+                            parts.append(item["text"])
+                    if parts:
+                        return "".join(parts).strip(), thinking
+
+                return str(parsed).strip(), thinking
+        except Exception as exc:
+            warnings.warn(f"parse_response failed; falling back to regex parser: {exc}")
+
+    thinking, answer = _parse_gemma_thinking(raw)
+    if answer is not None:
+        return answer.strip(), thinking
+
+    thinking, answer = _parse_harmony_response(raw)
+    if answer is not None:
+        return answer.strip(), thinking
+
+    return _strip_known_special_tokens(raw), None
+
+
 class BaseLocalModelHandler:
-    """
-    Generic local HF model handler.
-
-    Policy:
-    - If a chat template exists, always use it.
-    - If no chat template exists, use raw prompt only for generic/base models.
-    - Specific families can require chat templates when raw fallback is unsafe.
-    """
-
-    requires_chat_template = False
+    requires_chat_template = True
 
     def __init__(
         self,
         model: Any,
         model_io: Any,
-        model_name: Optional[str],
+        model_name: str,
         reasoning_effort: str = "low",
         gemma_enable_thinking: bool = False,
     ) -> None:
         self.model = model
         self.model_io = model_io
-        self.model_name = model_name or ""
-        self.family = get_model_family(self.model_name)
+        self.model_name = model_name
+        self.family = get_model_family(model_name)
         self.reasoning_effort = _validate_reasoning_effort(reasoning_effort)
         self.gemma_enable_thinking = gemma_enable_thinking
 
@@ -206,32 +461,39 @@ class BaseLocalModelHandler:
         )
 
     def build_input_text(self, prompt: str) -> str:
-        messages = self.build_messages(prompt)
-
-        if has_chat_template(self.model_io):
-            return self.apply_chat_template(messages)
-
-        if self.requires_chat_template:
+        if not has_chat_template(self.model_io):
             raise ValueError(
                 f"Model '{self.model_name}' requires a chat template, "
                 "but none was found."
             )
 
-        return prompt
+        return self.apply_chat_template(self.build_messages(prompt))
 
     def tokenize(self, input_text: str, model_device: Any):
+        # Keyword `text=` is required for Gemma 4 processors. Passing the prompt
+        # positionally can be interpreted as images/videos and causes text=None.
         inputs = self.model_io(
             text=input_text,
             return_tensors="pt",
             truncation=False,
         )
+
+        if inputs is None:
+            raise RuntimeError(
+                "model_io returned None during tokenization. "
+                "Check that the processor/tokenizer supports text-only inputs."
+            )
+
         return inputs.to(model_device)
 
     def decode(self, generated_ids: Any) -> str:
-        return self.model_io.decode(
+        raw = self.model_io.decode(
             generated_ids,
-            skip_special_tokens=True,
-        ).strip()
+            skip_special_tokens=False,
+        )
+        text, thoughts = parse_reasoning_response(self.model_io, raw)
+        setattr(self.model, "_last_thought_block", thoughts)
+        return text.strip()
 
     def pad_token_id(self) -> Optional[int]:
         pad_token_id = getattr(self.model_io, "pad_token_id", None)
@@ -242,25 +504,7 @@ class BaseLocalModelHandler:
         return pad_token_id
 
 
-class StandardChatHandler(BaseLocalModelHandler):
-    pass
-
-
-class QwenHandler(BaseLocalModelHandler):
-    requires_chat_template = True
-
-
 class GptOssHandler(BaseLocalModelHandler):
-    """
-    GPT-OSS must use the Transformers chat template.
-
-    The template applies the Harmony response format automatically.
-    reasoning_effort is passed to the template when supported by the installed
-    Transformers/tokenizer version.
-    """
-
-    requires_chat_template = True
-
     def apply_chat_template(self, messages: list[dict[str, str]]) -> str:
         try:
             return self.model_io.apply_chat_template(
@@ -278,15 +522,6 @@ class GptOssHandler(BaseLocalModelHandler):
 
 
 class Gemma4Handler(BaseLocalModelHandler):
-    """
-    Gemma 4 uses an AutoProcessor.
-
-    Thinking is disabled by default, but can be enabled through
-    gemma_enable_thinking=True.
-    """
-
-    requires_chat_template = True
-
     def apply_chat_template(self, messages: list[dict[str, str]]) -> str:
         try:
             return self.model_io.apply_chat_template(
@@ -296,55 +531,26 @@ class Gemma4Handler(BaseLocalModelHandler):
                 enable_thinking=self.gemma_enable_thinking,
             )
         except TypeError:
+            # Unsloth Gemma 4 docs also describe thinking as explicit via a
+            # system message beginning with <|think|>. Use that as fallback.
+            if self.gemma_enable_thinking:
+                messages = [{"role": "system", "content": "<|think|>"}, *messages]
+
             return self.model_io.apply_chat_template(
                 messages,
                 tokenize=False,
                 add_generation_prompt=True,
             )
 
-    def decode(self, generated_ids: Any) -> str:
-        raw = self.model_io.decode(
-            generated_ids,
-            skip_special_tokens=False,
-        )
-
-        parse_response = getattr(self.model_io, "parse_response", None)
-
-        if callable(parse_response):
-            parsed = parse_response(raw)
-
-            if isinstance(parsed, str):
-                return parsed.strip()
-
-            if isinstance(parsed, dict):
-                content = parsed.get("content")
-
-                if isinstance(content, str):
-                    return content.strip()
-
-                if isinstance(content, list):
-                    parts = []
-                    for item in content:
-                        if isinstance(item, str):
-                            parts.append(item)
-                        elif isinstance(item, dict) and isinstance(item.get("text"), str):
-                            parts.append(item["text"])
-                    if parts:
-                        return "".join(parts).strip()
-
-            return str(parsed).strip()
-
-        return raw.strip()
-
 
 def make_local_handler(
     model: Any,
     model_io: Any,
-    model_name: Optional[str],
+    model_name: str,
     reasoning_effort: str = "low",
     gemma_enable_thinking: bool = False,
 ) -> BaseLocalModelHandler:
-    family = get_model_family(model_name or "")
+    family = get_model_family(model_name)
 
     if family == "gemma4":
         return Gemma4Handler(
@@ -364,35 +570,25 @@ def make_local_handler(
             gemma_enable_thinking=False,
         )
 
-    if family == "qwen":
-        return QwenHandler(
-            model=model,
-            model_io=model_io,
-            model_name=model_name,
-            reasoning_effort=reasoning_effort,
-            gemma_enable_thinking=False,
-        )
-
-    return StandardChatHandler(
-        model=model,
-        model_io=model_io,
-        model_name=model_name,
-        reasoning_effort=reasoning_effort,
-        gemma_enable_thinking=False,
-    )
+    # get_model_family already raises for unsupported families, so this should
+    # be unreachable.
+    raise AssertionError(f"Unhandled model family: {family}")
 
 
 def call_local_model(
     model: Any,
     model_io: Any,
     prompt: str,
-    model_name: str | None = None,
+    model_name: str,
     max_new_tokens: int = 768,
     reasoning_effort: str = "low",
     gemma_enable_thinking: bool = False,
     return_debug_info: bool = False,
     repetition_penalty: float = 1.05,
     no_repeat_ngram_size: int = 0,
+    temperature: Optional[float] = None,
+    top_p: float = 0.95,
+    top_k: int = 64,
 ):
     import torch
 
@@ -408,7 +604,7 @@ def call_local_model(
 
     input_text = handler.build_input_text(prompt)
 
-    model_device = next(model.parameters()).device
+    model_device = get_model_input_device(model)
     inputs = handler.tokenize(input_text, model_device)
 
     input_len = int(inputs["input_ids"].shape[-1])
@@ -417,16 +613,26 @@ def call_local_model(
 
     generation_kwargs = {
         "max_new_tokens": max_new_tokens,
-        "do_sample": False,
         "use_cache": True,
         "repetition_penalty": repetition_penalty,
     }
+
+    if temperature is not None and temperature > 0:
+        generation_kwargs["do_sample"] = True
+        generation_kwargs["temperature"] = temperature
+        generation_kwargs["top_p"] = top_p
+        generation_kwargs["top_k"] = top_k
+    else:
+        generation_kwargs["do_sample"] = False
 
     if no_repeat_ngram_size > 0:
         generation_kwargs["no_repeat_ngram_size"] = no_repeat_ngram_size
 
     if pad_token_id is not None:
         generation_kwargs["pad_token_id"] = pad_token_id
+
+    # Reset per-call diagnostic state.
+    setattr(model, "_last_thought_block", None)
 
     t0 = time.time()
 
@@ -438,15 +644,23 @@ def call_local_model(
 
     t1 = time.time()
 
+    if outputs is None:
+        raise RuntimeError(
+            "model.generate returned None. This usually means the loaded model/backend "
+            "is not using the standard Transformers generate API, or generation failed internally."
+        )
+
     generated_ids = outputs[0][input_len:]
     output_token_count = int(generated_ids.shape[0])
     text = handler.decode(generated_ids)
 
-    family = get_model_family(model_name or "")
+    family = get_model_family(model_name)
 
     debug_info = None
     if return_debug_info:
         debug_info = {
+            "backend": getattr(model, "_local_backend", "unsloth"),
+            "loader": getattr(model, "_local_loader", None),
             "model_device": str(model_device),
             "input_token_count": input_len,
             "output_token_count": output_token_count,
@@ -455,19 +669,23 @@ def call_local_model(
             "input_char_count": input_char_count,
             "model_family": family,
             "handler": handler.__class__.__name__,
-            "reasoning_effort": (
-                reasoning_effort
-                if family == "gpt_oss"
-                else None
-            ),
+            "reasoning_effort": reasoning_effort if family == "gpt_oss" else None,
             "gemma_enable_thinking": (
-                bool(gemma_enable_thinking)
-                if family == "gemma4"
-                else None
+                bool(gemma_enable_thinking) if family == "gemma4" else None
             ),
+            "do_sample": generation_kwargs.get("do_sample", False),
+            "temperature": temperature,
+            "top_p": top_p if generation_kwargs.get("do_sample") else None,
+            "top_k": top_k if generation_kwargs.get("do_sample") else None,
             "repetition_penalty": repetition_penalty,
             "no_repeat_ngram_size": no_repeat_ngram_size,
             "torch_dtype": str(getattr(model, "dtype", "unknown")),
+            "quantization": getattr(model, "_local_quantization", "unsloth_4bit"),
+            "requested_model_name": getattr(model, "_requested_model_name", model_name),
+            "resolved_model_name": getattr(model, "_resolved_model_name", model_name),
+            "max_seq_length": getattr(model, "_max_seq_length", None),
+            "hf_device_map": getattr(model, "hf_device_map", None),
+            "internal_thoughts": getattr(model, "_last_thought_block", None),
         }
 
     del outputs

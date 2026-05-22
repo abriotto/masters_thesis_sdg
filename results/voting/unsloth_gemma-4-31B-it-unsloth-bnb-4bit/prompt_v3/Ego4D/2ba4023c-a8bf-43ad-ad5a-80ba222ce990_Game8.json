@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "2ba4023c-a8bf-43ad-ad5a-80ba222ce990",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/2ba4023c-a8bf-43ad-ad5a-80ba222ce990_Game8.txt",
+  "player_names": [
+    "Tyler",
+    "Margaret",
+    "Erin",
+    "Clint"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Tyler\n    *   Margaret\n    *   Erin\n    *   Clint\n\n    *   Erin: Claims Drunk (put card in center).\n    *   Clint: Claims Insomniac (and says he was still it at the end).\n    *   Margaret: Claims Hunter.\n    *   Tyler: Claims Robber (robbed Clint, now claims to be Insomniac).\n\n    *   Clint claims he is the Insomniac and remained so at the end of the night.\n    *   Tyler claims he was the Robber and robbed Clint, meaning Tyler is now the Insomniac and Clint is now the Robber.\n    *   If Tyler is telling the truth, Clint cannot be the Insomniac at the end of the night.\n    *   If Clint is telling the truth, Tyler cannot be the Robber who robbed Clint.\n\n    *   If Tyler is the Robber and robbed Clint (Insomniac), Tyler becomes the Insomniac and Clint becomes the Robber.\n    *   If Clint is the Insomniac and remained so, Tyler is lying about being the Robber or about robbing Clint.\n    *   If Tyler is lying, he could be a Werewolf.\n    *   If Clint is lying, he could be a Werewolf.\n\n    *   Erin claims Drunk.\n    *   Margaret claims Hunter.\n    *   Tyler and Clint are in a direct contradiction regarding the Insomniac role.\n\n    *   Tyler accuses Erin of being a Werewolf (multiple times).\n    *   Clint accuses Erin of being a Werewolf.\n    *   Margaret suspects Tyler or Clint because of the contradiction.\n    *   Erin suspects Tyler or Clint.\n\n    *   Tyler's claim: Robber -> robbed Clint (Insomniac) -> Tyler is now Insomniac.\n    *   Clint's claim: Insomniac -> still Insomniac at the end.\n    *   These two claims are mutually exclusive. One of them *must* be lying (unless a Troublemaker swapped them, but no one claimed Troublemaker, and Margaret notes that if no one claims it, it might be in the center).\n    *   Wait, if a Troublemaker swapped Tyler and Clint, Tyler (Robber) could have robbed Clint (Insomniac), then the Troublemaker swapped them back? No, the Robber acts *before* the Troublemaker.\n    *   Night Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber (Tyler)\n        7. Troublemaker\n        8. Drunk (Erin)\n        9. Insomniac (Clint)\n    *   If Tyler (Robber) robbed Clint (Insomniac), Tyler becomes Insomniac and Clint becomes Robber. Then the Troublemaker (if present) could swap them again. But if the Troublemaker swapped them back, Tyler would be Robber and Clint would be Insomniac. However, Tyler claims he is *now* the Insomniac.\n    *   If Tyler is now the Insomniac, and Clint claims he is still the Insomniac, one is lying.\n\n    *   Tyler is very aggressive in accusing Erin.\n    *   Clint also accuses Erin.\n    *   Erin's claim (Drunk) is relatively neutral.\n    *   Margaret's claim (Hunter) is also neutral.\n    *   The contradiction between Tyler and Clint is the strongest lead.\n    *   Tyler's claim is more complex (Robber who became Insomniac).\n    *   Clint's claim is simpler (Insomniac).\n    *   However, Tyler is the one pushing the narrative against Erin.\n\n    *   Tyler: \"I feel like Erin's a Drunk, I mean Erin's a Werewolf.\" (Line 116)\n    *   Clint: \"I think Erin's the Werewolf.\" (Line 106)\n    *   Tyler: \"Erin's definitely a Werewolf.\" (Line 119)\n    *   They are both targeting Erin.\n\n    *   If Tyler is the Werewolf, he might be lying about being the Robber to create confusion or frame someone.\n    *   If Clint is the Werewolf, he might be lying about being the Insomniac.\n    *   If Erin is the Werewolf, she is lying about being the Drunk.\n\n    *   Tyler claims he robbed Clint.\n    *   Clint claims he is still the Insomniac.\n    *   If Tyler is the Robber and robbed Clint, Clint *cannot* be the Insomniac.\n    *   If Clint is the Insomniac, Tyler *cannot* have robbed him and become the Insomniac.\n    *   One of them is lying.\n    *   Tyler's accusation of Erin seems like a diversion.\n\n    *   Tyler's claim: Robber -> robbed Clint -> now Insomniac.\n    *   Clint's claim: Insomniac -> still Insomniac.\n    *   If Tyler is the Werewolf, he's lying about the Robber role to cast doubt on Clint or Erin.\n    *   If Clint is the Werewolf, he's lying about the Insomniac role.\n    *   If Erin is the Werewolf, she's lying about being the Drunk.\n    *   Looking at the transcript, Tyler is the most aggressive and contradictory. He claims to be the Robber and the Insomniac, while Clint claims to be the Insomniac.\n    *   Wait, Tyler says: \"I was the Robber... I'm now the Insomniac.\" (Line 60).\n    *   Clint says: \"I was the Insomniac... I was still it at the end.\" (Line 45, 66).\n    *   This is a direct contradiction.\n    *   Tyler's behavior (immediately accusing Erin and Margaret) is often a sign of a Werewolf trying to lead the vote.\n\n    *   Tyler's claim is highly suspicious because it contradicts Clint's claim and he is aggressively pushing the vote toward Erin.\n    *   Clint's claim is simpler.\n    *   Erin's claim is simple.\n    *   Margaret's claim is simple.\n    *   The most likely Werewolf is either Tyler or Clint. Between the two, Tyler's aggression and complex claim make him more suspicious.\n\n    *   Wait, let's re-read: Tyler says \"She's a Werewolf\" (Line 9) before anyone even claims a role. This is a huge red flag. He's trying to set the narrative before any information is shared.\n\n    *   Tyler's early and repeated accusations of Erin, combined with his contradictory claim about being the Robber/Insomniac (which conflicts with Clint's claim), strongly suggest he is the Werewolf.\n\n    *   Tyler: Claims Robber, then Insomniac.\n    *   Clint: Claims Insomniac.\n    *   Erin: Claims Drunk.\n    *   Margaret: Claims Hunter.\n    *   Contradiction: Tyler vs. Clint.\n    *   Suspicious behavior: Tyler's immediate accusations of Erin.\n    *   Conclusion: Tyler is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Tyler is the most suspicious player due to his behavior and contradictory claims. He immediately accused Erin of being a Werewolf before any roles were discussed, which is a common tactic for Werewolves to divert attention. Furthermore, Tyler claimed to be the Robber who stole the Insomniac card from Clint, while Clint maintained he was the Insomniac at the end of the night; since these claims are mutually exclusive, one must be lying, and Tyler's aggressive redirection toward Erin makes him the more likely liar.",
+    "chosen_vote": "Tyler"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Tyler is the most suspicious player due to his behavior and contradictory claims. He immediately accused Erin of being a Werewolf before any roles were discussed, which is a common tactic for Werewolves to divert attention. Furthermore, Tyler claimed to be the Robber who stole the Insomniac card from Clint, while Clint maintained he was the Insomniac at the end of the night; since these claims are mutually exclusive, one must be lying, and Tyler's aggressive redirection toward Erin makes him the more likely liar.\",\n  \"chosen_vote\": \"Tyler\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Tyler is the most suspicious player due to his behavior and contradictory claims. He immediately accused Erin of being a Werewolf before any roles were discussed, which is a common tactic for Werewolves to divert attention. Furthermore, Tyler claimed to be the Robber who stole the Insomniac card from Clint, while Clint maintained he was the Insomniac at the end of the night; since these claims are mutually exclusive, one must be lying, and Tyler's aggressive redirection toward Erin makes him the more likely liar.\",\n  \"chosen_vote\": \"Tyler\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Tyler",
+    "justification": "Tyler is the most suspicious player due to his behavior and contradictory claims. He immediately accused Erin of being a Werewolf before any roles were discussed, which is a common tactic for Werewolves to divert attention. Furthermore, Tyler claimed to be the Robber who stole the Insomniac card from Clint, while Clint maintained he was the Insomniac at the end of the night; since these claims are mutually exclusive, one must be lying, and Tyler's aggressive redirection toward Erin makes him the more likely liar."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4038,
+    "output_token_count": 1752,
+    "generation_time_sec": 189.43168258666992,
+    "used_chat_template": true,
+    "input_char_count": 13494,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

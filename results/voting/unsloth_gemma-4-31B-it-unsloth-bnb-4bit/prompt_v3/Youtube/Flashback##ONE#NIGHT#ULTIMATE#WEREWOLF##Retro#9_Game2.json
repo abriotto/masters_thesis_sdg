@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Switched Paul and Mitchell.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Villager, Robber, or Insomniac.\n    *   James: Claims Villager (but previously said \"I was this\" in response to \"two werewolves as your option\" - though the transcript is a bit messy).\n    *   Mitchell: Claims Seer. Saw Robber and Insomniac in the center.\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   If Robber and Insomniac are in the center, then the roles remaining in play are: Villager, Werewolf, Minion, Seer, Troublemaker, and whatever else was in the pool (3 cards total in center).\n    *   Wait, Mitchell says he saw *two* in the middle (Robber and Insomniac). That means those two roles are definitely not held by any player.\n    *   Paul claimed he was Villager, Robber, or Insomniac. If Mitchell is telling the truth, Paul must be a Villager (since Robber and Insomniac are in the center).\n    *   Justin (Troublemaker) says he switched Paul and Mitchell.\n    *   James's behavior is erratic. At [61], when Justin says \"that leaves you with two werewolves as your option,\" James says \"I was this\" (pointing to something, presumably a werewolf card or just agreeing). Later, James claims he was a Villager [125] and was just testing people [138].\n\n    *   If Justin (Troublemaker) switched Paul and Mitchell:\n        *   If Paul was a Villager and Mitchell was a Werewolf, then Paul is now the Werewolf and Mitchell is the Villager.\n        *   If Paul was a Werewolf and Mitchell was a Villager, then Paul is now the Villager and Mitchell is the Werewolf.\n    *   James's claim: James claims he was a Villager. But he previously seemed to admit to being a Werewolf (or at least didn't deny it clearly at first).\n    *   Let's re-examine the \"I was this\" moment [61]. Justin says \"that leaves you with two werewolves as your option,\" and James says \"I was this.\" This strongly suggests James is a Werewolf.\n\n    *   Justin: Troublemaker (Village)\n    *   Laura: Villager (Village)\n    *   Mitchell: Seer (Village)\n    *   Paul: Villager/Robber/Insomniac (Village)\n    *   James: Werewolf (Werewolf)\n\n    *   If James is the Werewolf and Justin switched Paul and Mitchell, James is still the Werewolf.\n    *   If James is the Werewolf and Justin switched Paul and Mitchell, and Paul/Mitchell were just Villagers/Seer, James remains the primary target.\n\n    *   James admitted (or seemed to admit) to being a Werewolf at [61].\n    *   He then tried to backtrack, saying he was a Villager and just testing people [138].\n    *   Justin and Paul are now leaning towards voting for James [133, 145, 155].\n    *   Mitchell also agrees to kill James [146].\n\n    *   Could James be the Tanner? Tanners want to be voted out. Admitting to being a Werewolf is a common Tanner strategy.\n    *   However, in a game with 5 players, if James is the Werewolf, voting him out wins for the Village. If he's the Tanner, the Tanner wins.\n    *   Is there any evidence for anyone else being the Werewolf?\n    *   Paul's claims are consistent with Mitchell's Seer info (if Mitchell is honest).\n    *   Justin's Troublemaker claim is central to the logic.\n\n    *   James's admission at [61] (\"I was this\" in response to \"two werewolves as your option\") is the strongest piece of evidence.\n    *   His subsequent denial (\"I was a villager\") is a classic Werewolf defense.\n    *   The other players (Justin, Paul, Mitchell) have converged on James.\n\n    *   Justin: Troublemaker.\n    *   Mitchell: Seer.\n    *   Paul: Villager.\n    *   Laura: Villager.\n    *   James: Werewolf.\n    *   Center: Robber, Insomniac, (one more).\n    *   This fits all the claims.\n\n    *   Wait, Justin says he switched Paul and Mitchell [117].\n    *   If Paul was a Villager and Mitchell was a Seer, they just swapped those roles.\n    *   If James is the Werewolf, he is the best target.\n\n    *   James's admission at [61] is the key.\n    *   The group's consensus at the end is to vote for James.\n    *   No other player has a strong suspicion against them.\n\n    *   Wait, let me re-read [151-153]. Paul says \"he told us he was the werewolf right at the beginning... so he's still the werewolf.\"\n    *   James's defense is \"I was a villager and Paul's a liar.\"\n    *   The most likely Werewolf is James.",
+  "parsed_output": {
+    "justification": "James is the most likely Werewolf because he appeared to admit to the role early in the discussion (at [61], responding 'I was this' when presented with the option of being a Werewolf). Although he later claimed he was a Villager and was simply testing the other players, this is a common bluff for Werewolves. The other players, including the claimed Troublemaker (Justin) and Seer (Mitchell), converged on James as the most suspicious player by the end of the discussion.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James is the most likely Werewolf because he appeared to admit to the role early in the discussion (at [61], responding 'I was this' when presented with the option of being a Werewolf). Although he later claimed he was a Villager and was simply testing the other players, this is a common bluff for Werewolves. The other players, including the claimed Troublemaker (Justin) and Seer (Mitchell), converged on James as the most suspicious player by the end of the discussion.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James is the most likely Werewolf because he appeared to admit to the role early in the discussion (at [61], responding 'I was this' when presented with the option of being a Werewolf). Although he later claimed he was a Villager and was simply testing the other players, this is a common bluff for Werewolves. The other players, including the claimed Troublemaker (Justin) and Seer (Mitchell), converged on James as the most suspicious player by the end of the discussion.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James is the most likely Werewolf because he appeared to admit to the role early in the discussion (at [61], responding 'I was this' when presented with the option of being a Werewolf). Although he later claimed he was a Villager and was simply testing the other players, this is a common bluff for Werewolves. The other players, including the claimed Troublemaker (Justin) and Seer (Mitchell), converged on James as the most suspicious player by the end of the discussion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4547,
+    "output_token_count": 1327,
+    "generation_time_sec": 143.8200626373291,
+    "used_chat_template": true,
+    "input_char_count": 15736,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

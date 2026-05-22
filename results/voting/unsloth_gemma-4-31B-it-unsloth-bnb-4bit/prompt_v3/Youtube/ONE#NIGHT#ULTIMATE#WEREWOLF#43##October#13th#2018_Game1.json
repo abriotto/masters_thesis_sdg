@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Werewolves (wake up, look for others/center)\n    *   Seer (look at player or center)\n    *   Robber (swap card, look at new card)\n    *   Troublemaker (swap two other players' cards)\n    *   Revealer (turn a card face up; if not villager, turn back over) - *Wait, \"Revealer\" is not in the standard rules provided, but it's in the transcript. Let's check the provided rules again.*\n    *   *Checking provided rules:* The rules list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Wait, the transcript mentions a \"Revealer\" (Announcer [18]).* The provided rules *do not* list a \"Revealer\". However, the transcript is the primary source of the game's events. The Announcer explicitly calls the \"Revealer\" at [18].\n\n    *   Paul claims to be the Troublemaker [58]. He says he switched Justin and Mike [60, 64].\n    *   Mike claims to be the Revealer [96, 131]. He says he revealed Mitchell and Mitchell was a Werewolf [56, 101].\n    *   Justin claims to be the Seer [97]. He says he looked in the center and saw a Tanner and a Werewolf [72].\n    *   Mitchell doesn't claim a role initially, but says \"I'm just going to leave it at that\" when asked what he did [78]. Later, he suggests Justin was the Robber [110].\n\n    *   If Mike is the Revealer and saw Mitchell as a Werewolf, Mitchell is a Werewolf.\n    *   If Paul is the Troublemaker and switched Justin and Mike, their roles changed.\n    *   If Justin was the Seer and saw a Werewolf and a Tanner in the center, then there is one Werewolf among the players (since there are usually 2 Werewolves in a 4-player game if the center has one, but the rules say \"up to two Masons, and at most one of each other listed role\", and \"multiple Werewolves\" are possible). Wait, the rules say \"multiple Werewolves\" are possible. If Justin saw one in the center, there could be one or more among the players.\n    *   Mike says there are two Werewolves out there [54, 81].\n\n    *   Paul (Troublemaker) switched Justin and Mike.\n    *   Mike (Revealer) saw Mitchell as a Werewolf.\n    *   Justin (Seer) saw a Werewolf and a Tanner in the center.\n    *   If these claims are true:\n        *   Center: Werewolf, Tanner, (one more card).\n        *   Mitchell: Werewolf.\n        *   Justin: Seer (swapped with Mike).\n        *   Mike: Revealer (swapped with Justin).\n        *   Paul: Troublemaker.\n    *   In this scenario, Mitchell is the only Werewolf among the players.\n\n    *   Could Mike be the Werewolf? He's claiming to be the Revealer and accusing Mitchell.\n    *   Could Paul be the Werewolf? He's claiming to be the Troublemaker and facilitating the accusation against Mitchell.\n    *   Could Justin be the Werewolf? He's claiming to be the Seer.\n    *   Could Mitchell be the Tanner? He's being accused and isn't fighting back very hard.\n\n    *   Mike's claim is very direct: \"It was Mitchell. It was a 100% Mitchell.\" [56].\n    *   Justin supports Mike's claim [86, 102, 152].\n    *   Paul is skeptical [103, 105, 160] but doesn't provide a counter-claim other than \"a feeling\" [162].\n    *   Mitchell doesn't offer a strong defense, just says \"I have no last words\" [155].\n\n    *   The most evidence (even if it's just claims) points to Mitchell.\n    *   Mike (Revealer) saw Mitchell as a Werewolf.\n    *   Justin (Seer) saw a Werewolf in the center, meaning there's likely at least one more Werewolf among the players.\n    *   If Mike is lying, he's likely the Werewolf. But if Mike is the Revealer, Mitchell is the Werewolf.\n    *   Given the public discussion, Mitchell is the most likely candidate for elimination to help Team Village.\n\n    *   Wait, the Announcer's call for the Robber [9] says \"view your minion card\". This is a very strange phrasing. \"You may exchange your card with another player's card and then view your minion card.\" This sounds like a mistake in the transcript or a very weird voice pack.\n    *   The \"Revealer\" role is not in the provided rules, but it is in the transcript. I must rely on the transcript.\n    *   If Mike is the Revealer and saw Mitchell as a Werewolf, Mitchell is the target.\n\n    *   Justin: Seer (claims center: Werewolf, Tanner).\n    *   Mike: Revealer (claims Mitchell: Werewolf).\n    *   Paul: Troublemaker (claims he switched Justin and Mike).\n    *   Mitchell: No claim, accused by Mike.\n\n    If these are true, Mitchell is a Werewolf. If Mike is lying, Mike is likely the Werewolf. However, Justin's claim about the center (Werewolf, Tanner) supports the idea that there is at least one Werewolf among the players.\n\n    *   Justin: \"I think we just kill Mitchell.\" [152]\n    *   Mike: \"I think we kill Mitchell.\" [153]\n    *   Paul: \"I think we should vote for Mike.\" [160]\n    *   Mitchell: \"Agreed.\" [163]\n\n    Paul's sudden shift to Mike is based on a \"feeling\" [162]. Mike's accusation of Mitchell is based on a specific role claim (Revealer).\n\n    *   If Mitchell is the Werewolf, voting for him wins for the Village.\n    *   If Mike is the Werewolf and lying about being the Revealer, voting for him wins for the Village.\n    *   If Paul is the Werewolf and lying about being the Troublemaker, voting for him wins for the Village.\n    *   If Mitchell is the Tanner, voting for him loses for the Village.\n\n    Comparing Mike's specific claim (\"I revealed Mitchell and he was a werewolf\") vs Paul's \"feeling\", Mike's claim is more substantial. Mitchell's lack of defense also makes him a stronger target.\n\n    *   Justin (Seer) -> Center (Werewolf, Tanner)\n    *   Mike (Revealer) -> Mitchell (Werewolf)\n    *   Paul (Troublemaker) -> Swapped Justin and Mike.\n    *   This means:\n        *   Justin (now Revealer)\n        *   Mike (now Seer)\n        *   Paul (Troublemaker)\n        *   Mitchell (Werewolf)\n    *   Wait, if Paul swapped Justin and Mike, then Mike is now the Seer and Justin is now the Revealer. But Mike claims he was the Revealer and *then* Paul swapped them.\n    *   Let's re-read:\n        *   Mike: \"I was the revealer.\" [96]\n        *   Paul: \"I switched you [Justin] with somebody... Mike.\" [60, 64]\n        *   If Mike was the Revealer and was swapped with Justin, Mike is now the Seer and Justin is now the Revealer.\n        *   This doesn't change the fact that Mike (as the Revealer) saw Mitchell as a Werewolf.\n\n    *   The most likely Werewolf based on the claims is Mitchell.\n    *   Mike's claim is direct and specific.\n    *   Justin's claim about the center supports the existence of a Werewolf among the players.\n    *   Paul's objection is weak (\"a feeling\").\n    *   Mitchell's defense is non-existent.\n\n    *   Justification: Mike claimed to be the Revealer and stated he revealed Mitchell as a Werewolf. Justin, claiming to be the Seer, reported seeing a Werewolf and a Tanner in the center, which suggests another Werewolf is among the players. Paul's claim as the Troublemaker to have swapped Justin and Mike does not contradict Mike's initial discovery. Mitchell offered no defense against the accusation, making him the most likely Werewolf.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mike claimed to be the Revealer and stated that he revealed Mitchell as a Werewolf. Justin, claiming to be the Seer, reported seeing a Werewolf and a Tanner in the center, which supports the possibility of another Werewolf being among the players. Paul's claim as the Troublemaker to have swapped Justin and Mike does not invalidate Mike's initial discovery. Mitchell offered no defense against the accusation, making him the most likely candidate for elimination to help Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claimed to be the Revealer and stated that he revealed Mitchell as a Werewolf. Justin, claiming to be the Seer, reported seeing a Werewolf and a Tanner in the center, which supports the possibility of another Werewolf being among the players. Paul's claim as the Troublemaker to have swapped Justin and Mike does not invalidate Mike's initial discovery. Mitchell offered no defense against the accusation, making him the most likely candidate for elimination to help Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claimed to be the Revealer and stated that he revealed Mitchell as a Werewolf. Justin, claiming to be the Seer, reported seeing a Werewolf and a Tanner in the center, which supports the possibility of another Werewolf being among the players. Paul's claim as the Troublemaker to have swapped Justin and Mike does not invalidate Mike's initial discovery. Mitchell offered no defense against the accusation, making him the most likely candidate for elimination to help Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mike claimed to be the Revealer and stated that he revealed Mitchell as a Werewolf. Justin, claiming to be the Seer, reported seeing a Werewolf and a Tanner in the center, which supports the possibility of another Werewolf being among the players. Paul's claim as the Troublemaker to have swapped Justin and Mike does not invalidate Mike's initial discovery. Mitchell offered no defense against the accusation, making him the most likely candidate for elimination to help Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4721,
+    "output_token_count": 2110,
+    "generation_time_sec": 229.4714744091034,
+    "used_chat_template": true,
+    "input_char_count": 15842,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_4bit",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
