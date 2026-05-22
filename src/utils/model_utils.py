@@ -122,6 +122,60 @@ def _validate_reasoning_effort(reasoning_effort: str) -> ReasoningEffort:
     return reasoning_effort  # type: ignore[return-value]
 
 
+
+
+def _coerce_rendered_prompt(rendered: Any) -> str:
+    """Normalize prompt renderers that may return str/list/dict/bytes."""
+    if isinstance(rendered, str):
+        return rendered
+
+    if isinstance(rendered, bytes):
+        return rendered.decode("utf-8")
+
+    if isinstance(rendered, list):
+        if len(rendered) == 1 and isinstance(rendered[0], str):
+            return rendered[0]
+        return "".join(str(x) for x in rendered)
+
+    if isinstance(rendered, dict):
+        for key in ("text", "prompt", "content"):
+            value = rendered.get(key)
+            if isinstance(value, str):
+                return value
+
+    return str(rendered)
+
+
+def _encode_gpt_oss_with_harmony(
+    messages: list[dict[str, str]],
+    reasoning_effort: ReasoningEffort,
+    add_generation_prompt: bool = True,
+) -> Optional[str]:
+    """
+    Render GPT-OSS prompts with Unsloth's Harmony helper when available.
+
+    This is prompt formatting only. It does not affect the attention backend,
+    KV cache, or Unsloth compilation behavior used later by model.generate().
+    """
+    try:
+        from unsloth_zoo import encode_conversations_with_harmony
+    except Exception:
+        return None
+
+    try:
+        rendered = encode_conversations_with_harmony(
+            messages=messages,
+            reasoning_effort=reasoning_effort,
+            add_generation_prompt=add_generation_prompt,
+        )
+        return _coerce_rendered_prompt(rendered)
+    except Exception as exc:
+        warnings.warn(
+            "encode_conversations_with_harmony failed; falling back to "
+            f"tokenizer.apply_chat_template: {exc}"
+        )
+        return None
+
 def _load_unsloth_classes():
     try:
         import torch
@@ -163,23 +217,18 @@ def _unsloth_from_pretrained(
     load_in_4bit=True,
     full_finetuning=full_finetuning,
 )
-    # GPT-OSS currently does not support SDPA in this Transformers/Unsloth path.
-    # Force eager attention to avoid:
-    # "GptOssForCausalLM does not support ... scaled_dot_product_attention yet"
-    if family == "gpt_oss":
-        common_kwargs["attn_implementation"] = "eager"
-    
+  
 
     loaders: list[tuple[str, Any]] = []
 
-    # Gemma 4 support may live under FastModel in recent Unsloth builds.
-    # GPT-OSS and text-only fall back to FastLanguageModel.
-    if family == "gemma4" and FastModel is not None:
+
+    if FastModel is not None and family in {"gemma4", "gpt_oss"}:
         loaders.append(("FastModel", FastModel))
 
     loaders.append(("FastLanguageModel", FastLanguageModel))
 
     errors: list[str] = []
+
     for loader_name, loader in loaders:
         try:
             model, tokenizer = loader.from_pretrained(**common_kwargs)
@@ -506,6 +555,19 @@ class BaseLocalModelHandler:
 
 class GptOssHandler(BaseLocalModelHandler):
     def apply_chat_template(self, messages: list[dict[str, str]]) -> str:
+        # Prefer Unsloth's Harmony renderer for GPT-OSS when available.
+        # This avoids ambiguity in Jinja chat templates and preserves the
+        # explicit reasoning_effort field.
+        harmony_prompt = _encode_gpt_oss_with_harmony(
+            messages=messages,
+            reasoning_effort=self.reasoning_effort,
+            add_generation_prompt=True,
+        )
+        if harmony_prompt is not None:
+            setattr(self.model, "_last_prompt_formatter", "harmony")
+            return harmony_prompt
+
+        setattr(self.model, "_last_prompt_formatter", "chat_template")
         try:
             return self.model_io.apply_chat_template(
                 messages,
@@ -611,11 +673,17 @@ def call_local_model(
     input_char_count = len(input_text)
     pad_token_id = handler.pad_token_id()
 
+    effective_max_length = input_len + max_new_tokens
+
     generation_kwargs = {
         "max_new_tokens": max_new_tokens,
+        "max_length": effective_max_length,
         "use_cache": True,
         "repetition_penalty": repetition_penalty,
     }
+
+    if hasattr(model, "generation_config"):
+        model.generation_config.max_length = effective_max_length
 
     if temperature is not None and temperature > 0:
         generation_kwargs["do_sample"] = True
@@ -669,6 +737,7 @@ def call_local_model(
             "input_char_count": input_char_count,
             "model_family": family,
             "handler": handler.__class__.__name__,
+            "prompt_formatter": getattr(model, "_last_prompt_formatter", None),
             "reasoning_effort": reasoning_effort if family == "gpt_oss" else None,
             "gemma_enable_thinking": (
                 bool(gemma_enable_thinking) if family == "gemma4" else None
