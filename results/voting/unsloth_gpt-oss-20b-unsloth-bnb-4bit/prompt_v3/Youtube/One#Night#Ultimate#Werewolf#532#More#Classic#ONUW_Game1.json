@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#532#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#532#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We should analyze: roles. Players 4: Ryan, Katie, Brett, DeAndre. Three center cards unknown.\n\nFrom transcript, we have a lot of confusion. We need to deduce who likely is werewolf. Let's map.\n\nDuring night actions:\n\nWerewolves: woke up and looked at each other if multiple, could look at a center card if only one. Not clear.\n\nRobber: Did a swap. In transcript, \"Brett: I robbed Ryan. He was the drunk.\" That indicates Brett believed Ryan was drunk prior. So presumably, at night, Brett (Robber) swapped his card with Ryan's. Also says \"Ryan: No, I was the robber.\" Wait that's conflicting. Let's parse carefully.\n\nPositions: They mention roles specifically: Brett: \"I robbed Ryan. He was the drunk.\" This suggests Brett had the Robber card (starting) and swapped Ryan's card. After swap Brett gets Ryan's original role. Then \"Katie: You're the drunk again?\" Means that Katie thinks Ryan was drunk earlier? Actually \"You're the drunk again?\" refers to Ryan? Let's follow.\n\nStart: Each player initially has a role; not known to others. Statements from transcript:\n\n[8] Brett: \"I robbed Ryan. He was the drunk.\" So Brett had Robber, and Ryan was Drunk originally? But it says \"He was the drunk,\" meaning Ryan had the Drunk role. So initially Ryan had Drunk, Brett had Robber.\n\nAfter swapping, presumably Brett now has Ryan's role (Drunk)?? Wait but he swapped his card with Ryan's card. So Brett's starting Robber card goes to Ryan, Ryan's Drunk goes to Brett. So post-swap: Brett has Drunk, Ryan has Robber.\n\nBut then [10] Ryan: \"No, I was the robber.\" That's contradictory; Ryan claims he was the robber. But after swap, Ryan is Robber. This fits.\n\nThus current roles after night: Brett - Drunk, Ryan - Robber. Karen? Actually Katie hasn't swapped yet. Let's continue.\n\nOther roles: Who else? Possibly werewolves and minion etc.\n\n\"Britt: I robbed Ryan. He was the drunk.\": So Brett started as Robber. After night, Ryan is Robber.\n\nNow later transcripts talk about swaps and allegations that something switched many cards, but the actual roles may still be confusing.\n\nConsider unique sequential actions:\n\nRobber: swapped someone. Troublemaker: swapped two other players' cards. Drunk: swapped with center. If we have 4 players, subset of roles: each may be unique or duplicates? There can be duplicates e.g., multiple villagers etc.\n\nWe saw that Brett swapped Ryan. Also mentions that \"DeAndre\" claimed to have been werewolf. \"I was a werewolf\" is self-defining; might be misdirection.\n\nLet's try to map plausible assignment.\n\n- Ryan: currently Robber after receiving from Brett.\n- Brett: currently Drunk/others? But he was originally Robber; after swap, he is Drunk.\n\n- Katie: unknown? Could be Minion, Werewolf, etc.\n\n- DeAndre: unknown role; perhaps a Werewolf or werewolf originally?\n\nIf at least one Werewolf exists among the four, we need to find who likely is.\n\nThe statements about \"tanner\" appear: \"Yeah, there could be a Tanner\" etc.\n\nThey talk about \"minion\" maybe.\n\nNeed to interpret key clues: The murderer confusion suggests evidence of a werewolf. Some statements: \"[26] Katie: Yeah.\" [27] \"Brett: He's looking at me.\" referencing? [28] \"DeAndre: I switched Katie and Ryan.\" That's weird. Which they'd say \"I switched Katie and Ryan.\" But someone else might have swapped his card: troublemaker? Wait \"Troublemaker\" looks at: swaps two other players' cards. So the troublemaker would swap the cards of whichever two he chooses. According to the transcript: cooking lines from 30+.\n\n\"Brett: Really?\" \"What's that?\" \"Matthew? No let's not dig.\n\nBetter approach: Educated guess. In such random confusion, likely there's a werewolf among them. Identify consistent claim: DeAndre says he was a werewolf. That appears suspicious. Additionally, others speak about \"tanner\" and \"minion.\" It's possible that the werewolf is among those who claim. But how to decide?\n\nWe should evaluate each player's role possibilities at the start. Prior to any movement, each player may have a role. We know that at least 3 center cards are reserved.\n\nPotential scenario: Starting roles could be: Among players: 3 villages, 1 werewolf? Not sure.\n\nMaybe it’s simpler: if we treat the real world \"on channel\" but this seems gibberish; but we could pick, maybe the villain is DeAndre because he claimed he was werewolf.\n\nGiven the confusion, likely the most reliable is to trust statements: Reverse an assumption: the taken actions indicate that DeAndre did something: \"I switched Katie and Ryan.\" That would require that the troublemaker role? But troublemaker swaps two random players. But as the troublemaker, the person would be knowing the identities? But no.\n\nWait the troublemaker swapped two other players. So the troublemaker could have swapped Katie and Ryan, making each other's roles changed. So if DeAndre is the troublemaker, he swapped two. But if DeAndre claims he's a werewolf too, confusion. Actually in many games, it might be possible that the troublemaker is also a werewolf? Unclear.\n\nConclusion: The research lead: \"Q: According to the transcript, which player should be voted for?\"\n\nIt says: \"In most cases, this means voting for the player most likely to be a Werewolf.\"\n\nAll our info: Person Who said \"I was a werewolf\" early: DeAndre. So probably DeAndre is the Werewolf (or minion or tanner). But what about DeAndre being a minion? The line \"I think I was a werewolf\" is suspicious; they might be lying.\n\nWe should check what roles were swapped: \"Brett\" seems to have swapped Ryan. \"DeAndre\" says \"I switched Katie and Ryan.\" That could be similar to troublemaker.\n\nThus the suspect: Possibly the one speaking no legitimate credence: \"Brett\"? Actually \"Brett\" says \"I robbed Ryan. He was the drunk.\" That's indicative of Robber swapping Ryan with Drunk role.\n\nThus at night, the actors: Robber (Brett) swapped Ryan. Then a troublemaker also swapped other two but unclear.\n\nBecause we don't know who else holds role, I'd pick the player who is most likely to be werewolf: there's no explicit claim except \"DeAndre: I'm just gonna go out on a limb and say that I was a werewolf.\" That is an admission. So answer: vote for DeAndre.\n\nBut we must consider that the wrestler may also be minion or tanner. But minion would hide being werewolf? A minion aligning with werewolves tries to avoid death? They might be said to be a werewolf. So it's ambiguous.\n\nBut typical is to vote for the suspect. Therefore choose \"DeAndre\".\n\nWe'll produce output accordingly.",
+  "parsed_output": {
+    "justification": "Based on the transcript, DeAndre declares themselves as a werewolf at the very beginning.  No other player explicitly claims to be a werewolf, and the discussion revolves around possible swaps and inconsistencies rather than a clear indication of another werewolf.  Therefore voting for DeAndre maximizes the chance of eliminating a potential werewolf and benefiting the village team.\n",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, DeAndre declares themselves as a werewolf at the very beginning.  No other player explicitly claims to be a werewolf, and the discussion revolves around possible swaps and inconsistencies rather than a clear indication of another werewolf.  Therefore voting for DeAndre maximizes the chance of eliminating a potential werewolf and benefiting the village team.\\n\",\"chosen_vote\":\"DeAndre\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, DeAndre declares themselves as a werewolf at the very beginning.  No other player explicitly claims to be a werewolf, and the discussion revolves around possible swaps and inconsistencies rather than a clear indication of another werewolf.  Therefore voting for DeAndre maximizes the chance of eliminating a potential werewolf and benefiting the village team.\\n\",\"chosen_vote\":\"DeAndre\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "Based on the transcript, DeAndre declares themselves as a werewolf at the very beginning.  No other player explicitly claims to be a werewolf, and the discussion revolves around possible swaps and inconsistencies rather than a clear indication of another werewolf.  Therefore voting for DeAndre maximizes the chance of eliminating a potential werewolf and benefiting the village team."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3556,
+    "output_token_count": 1595,
+    "generation_time_sec": 196.6901717185974,
+    "used_chat_template": true,
+    "input_char_count": 14051,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

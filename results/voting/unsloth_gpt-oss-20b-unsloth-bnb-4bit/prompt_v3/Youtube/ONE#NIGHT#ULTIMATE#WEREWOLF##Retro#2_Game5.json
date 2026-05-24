@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse the transcript. The game has five players: Justin, Dan, Mitchell, Caitlynn, Mike. We have to decide whom to vote for to maximize chance eliminating a Werewolf(s). Need to deduce roles from statements.\n\nThe transcript is messy, but let's try to extract key points.\n\nFrom lines [38]: \"I was the seer. I looked at two cards in the center, and they were both villagers.\" Also Justin says \"I looked at two cards in the center\" etc. That would mean Justin saw two villagers at center, implying that there is at least one werewolf in the play (since a werewolf card is in the set). On transcription: Justin seems to state he's the seer; he looked in center and saw villagers. That could imply he \"is the seer\" at secret location? Wait they mentioned in line [28] \"I was not a villager. I'll start with that.\" So maybe Justin originally was not a villager, perhaps was a special role or a werewolf; but then says he was seer. It's confusing.\n\nWe need more clarity. Let's step back. For each player we might simulate possibilities.\n\nList of roles: 5+3 =8 roles in total; roles available limited to one of each special except minions etc. They didn't mention drunk, but possible.\n\nKey observations:\n\n- Justin states as seer: \"I looked at two cards in the center and they were both villagers.\" That means from his perspective the center had two villagers -> no werewolf in center. That implies that a werewolf has been in the other 5 player slots. So at least one werewolf among players.\n\n- Also, \"Justin was not a villager\" statement indicates he might be a werewolf or special role.\n\nBut if Justin is seer then he's a villager. But a seer is a village. So maybe Justin thinks he's a village (se) but might have swapped.\n\n- Mitchell says \"I was not a villager. I'll start with that. I was a special character ...\". Then later says \"I was a special character.\" and \"I won't reveal.\" at [73] maybe. He says \"I was a special character,\" \"not a villager\". He says \"That I'm not a villager,\" maybe meaning he is a Werewolf. That could indicate he might be a werewolf or was stolen.\n\nLet's examine specific parts:\n\nDJ.\n\n**From line [38]** Justin: \"I was the seer. I looked at two cards in the center, and they were both villagers.\" The wording indicates he claims to be Seer. That suggests he originally has seer, cannot be werewolf. But he says \"I was the seer. I looked at two cards in the center...\" So Justin says at the start he was seer. Another possibility: Justin might be telling truth. The fact that center two villagers means probable.\n\n**Line [56]** \"Caitlynn: Justin, who did you like at?\" Possibly a typo for \"looked at\".\n\nAlso line [59] \"Caitlynn: Yeah.\" line 60: \"Mike: Okay. Then-\" This part unclear.\n\nLine [60] \"Mike: Okay. Then-\" missing next.\n\nLine [58] \"Justin: And there were two villagers.\"\n\nSo yes, Justin said centre had 2 villagers.\n\n**line 64** \"Dan: Who did you switch?\" Suggest potential center swap.\n\nThe bigger design: may be deck of 8 unknown roles. Suppose Justin was Seer, he would have looked at center two, reading both were Villagers, meaning center contained two villagers and possibly a werewolf maybe still? Nine?\n\nBut the key is that we have to determine who is likely the werewolf(s). The suspect is Justin: if he was Seer, he would likely be good to keep alive. But he claims he wasn't a villager. That seems contradictory.\n\nBut could be miscommunication: maybe Justin was the werewolf; he is claiming to be Seer to deflect. However, seers can only occur once.\n\nLet's consider typical setup: Among 5 players, 8 roles could include minion, werewolf. Let's guess possible roles: maybe one werewolf and maybe minion; but only one werewolf needed. So likely one werewolf among 5.\n\nWho in the transcripts appears suspicious? There is a lot of confusion but I see too many identical lines that may not be helpful. Let's parse again.\n\nAt [38], Justin claims to be seer. So he's considered a Village member.\n\nAt [38], Mike says \"So there's definitely at least one werewolf out there.\" Not that he thinks Justin's a werewolf. But he might refer to Justin's information. Actually [39] \"Mike: So there's definitely at least one werewolf out there.\" It's ambiguous.\n\nAt [40], Mitchell says \"I will say that someone, one of you four is claiming to have the position I was.\" He might be accusing somebody else.\n\nAt [42] \"Mike: Robber?\" Not sure.\n\nAt [42], the context: \"Andy\"? There's messing.\n\nNow let's read again from the top quickly. I'll run through each drastically.\n\nI'll ignore noise and focus on claims about identity.\n\n**From line 38**: Justin: \"I was the seer. I looked at two cards in the center, and they were both villagers.\"\n\nNow line 39: Mike: \"So there's definitely at least one werewolf out there.\" That could refer to the presence of a werewolf somewhere else. This might be because there is a werewolf among the playing 5, but Justin is not that one.\n\nLine 62: Mike: \"If you go to convict, Justin was the S/E??\"\n\nBut not helpful.\n\nLet's analyze the patterns: Many statements revolve around Justin being the seer and always being the \"target.\"\n\nHence, if Justin was the seer, he would be a village. So do we suspect he might be a werewolf disguised as seer? Could be.\n\nBut perhaps we need to rely on common sense: In this game, the player presenting contradictory statements might be arewolf. The lauded - Justin says \"I'm a special character\" indicates perhaps he's a werewolf. But he says he looked at 2 villagers, that might be false.\n\nLet's process: It's easier: The majority of the transcript indicates that Justin is cast as the target: \"Justin is the werewolf.\" Many others talk about him as werewolf. Given the repeated claims: \"Justin is the arewolf\" as well as \"Justin is the werewolf.\" So likely the correct answer: Vote Justin.\n\nBut we need to analyze properly.\n\nAt line 66: \"Caitlynn: Justin is the werewolf.\" yes.\n\nLine 70: \"Mike: If he wasn't before, he is now.\"\n\nLine 72: \"Justin: Mitchell, how do you know someone is lying?\" So conversation is suspicious.\n\nHence it seems like yes, Justin is suspected as werewolf.\n\nThus we can vote Justin.\n\nBut we will produce justification: Because most comments claim Justin is the werewolf, and it's unlikely that a seer would think he is a werewolf given that he looked at villagers as claim. Similarly, suspicion around his role confusion. There is no explicit evidence that others are werewolves. I'd vote Justin.\n\nOk.\n\nNow produce output.",
+  "parsed_output": {
+    "justification": "The transcript repeatedly identifies Justin as the suspect within the discussion—multiple players (Caitlynn, Mike, and others) explicitly assert that \"Justin is the werewolf.\" His claim of being the seer contradicts typical logic, and the narrative surrounding other players involves confusion and deception, whereas the clear consensus points toward Justin as the werewolf.  Casting a vote against him maximizes the chance of eliminating a werewolf and aligns with the village’s objective to eliminate a werewolf.  Moreover, no other player displays credible evidence of exclusivity as a werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The transcript repeatedly identifies Justin as the suspect within the discussion—multiple players (Caitlynn, Mike, and others) explicitly assert that \\\"Justin is the werewolf.\\\" His claim of being the seer contradicts typical logic, and the narrative surrounding other players involves confusion and deception, whereas the clear consensus points toward Justin as the werewolf.  Casting a vote against him maximizes the chance of eliminating a werewolf and aligns with the village’s objective to eliminate a werewolf.  Moreover, no other player displays credible evidence of exclusivity as a werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript repeatedly identifies Justin as the suspect within the discussion—multiple players (Caitlynn, Mike, and others) explicitly assert that \\\"Justin is the werewolf.\\\" His claim of being the seer contradicts typical logic, and the narrative surrounding other players involves confusion and deception, whereas the clear consensus points toward Justin as the werewolf.  Casting a vote against him maximizes the chance of eliminating a werewolf and aligns with the village’s objective to eliminate a werewolf.  Moreover, no other player displays credible evidence of exclusivity as a werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The transcript repeatedly identifies Justin as the suspect within the discussion—multiple players (Caitlynn, Mike, and others) explicitly assert that \"Justin is the werewolf.\" His claim of being the seer contradicts typical logic, and the narrative surrounding other players involves confusion and deception, whereas the clear consensus points toward Justin as the werewolf.  Casting a vote against him maximizes the chance of eliminating a werewolf and aligns with the village’s objective to eliminate a werewolf.  Moreover, no other player displays credible evidence of exclusivity as a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3514,
+    "output_token_count": 1659,
+    "generation_time_sec": 207.62268209457397,
+    "used_chat_template": true,
+    "input_char_count": 13694,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

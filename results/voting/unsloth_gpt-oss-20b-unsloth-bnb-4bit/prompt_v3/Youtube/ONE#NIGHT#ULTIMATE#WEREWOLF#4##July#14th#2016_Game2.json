@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide vote for target likely to be werewolf. Let's parse.\n\nPlayers: Justin, Paul, Mitchell, Mike.\n\nFrom transcript, many confusion. There's mention of \"drunk\", \"tanner\". There is implication that some swapped? We read that player \"Mitchell\" says \"I switched Justin with Paul.\" Another line: \"Paul: Yeah.\" That suggests that at some point, there was a swapping involving them? Also states \"Justin: I was the tanner.\" So maybe role assignments?\n\nLet's parse throughout.\n\nKey parts:\n\n> Mike: I was the seer. (line 15)\n> ... Many lines about 2 players being turned into Drunk and Tanner.\n\nNeed to reconstruct possible roles. Might try to deduce final roles.\n\nThe mechanism: 4 players + 3 centers. Roles appear in usual selection but not specified which roles got dealt.\n\nWe need to figure possible roles at the start. Let's suppose roles dealt maybe included: Seer, Drunk, etc. W/ 4 players, known roles that appear: At least might be 4 roles: Seer, Werewolf, Drunk, etc. Based on transcript: there's mention of Drunk, Tanner, etc.\n\nBut we need decision: For village, we want to vote for a werewolf as likely.\n\nLet's examine statements lines for evidence who could be werewolf.\n\nLine 15: \"Mike: I was the seer.\" So Mike claims to be the Seer at start. The elimination: Mike claims to have known at some point.\n\nThen lines where others claim to be certain things:\n\nLine 27: \"Justin: That's a double lie.\" (maybe about something)...\n\nSome confusion about mistaken identity.\n\nPlayers claim they are the drunk or the tanner. \"Justin: I was the tanner.\" So Justin claims to be tanner? Actually line 44: \"Justin: I was the tanner.\" Self statement. That seems suspicious but might be lying. Honestly we need to evaluate suspicion.\n\nAlso many misinterpretations.\n\nThe actual game script cut suggests: There might be a trick: the only reliable clue is that \"Mike: I was the seer.\" Usually you can't be certain if you're role; you only know starting role. There's ability of the Seer. Maybe we can deduce actual final roles based on night actions.\n\nWe need to simulate night actions.\n\nNight actions in this game: There's roles: Seer, Troublemaker (now present), Drunk (present), etc.\n\nBut not necessarily all roles present.\n\nBetter approach: Suppose each player started with certain role; but we don't know initial assignment.\n\nBut maybe the transcript's references provide enough hints.\n\nLet's parse step-by-step:\n\n---\n\nAnnouncer instructions:\n\n1) Wait for werewolves to wake. Are there any werewolves? In the transcript, nothing signals werewolf presence until tough alliances.\n\nThen trappings.\n\nAfter some lines, we see:\n\n> Mike: I was the seer.\n\nOk, so Mike had role Seer.\n\nNow, after finishing; players call \"Drunk\" or \"Tanner\".\n\nThus there was a Drunk among players? On lines 15-33, but uncertain.\n\nLet's parse full transcript more systematically:\n\n```\n[6] Mike: Oh, exchange record.\n[7] Announcer: Troublemaker, close your eyes.\n[8] Announcer: Drunk wake...\n[9] Announcer: Everyone, keep your eyes closed ...\n(assuming not needed)\n```\n\nOur major interest: Roles of each person may have changed due to night actions.\n\nImportant: In One Night Ultimate Werewolf, roles can swap. So e.g., if a Robber swaps, they become the card of chosen player; if Doubledganger becomes underlying role.\n\nSince the transcript seems messy, we need to guess who ended up as werewolf.\n\nGiven high confusion, maybe it's spurious. Perhaps the simpler: The only plausible werewolf is Mitchell, because he says he's a werewolf? Let's see: Line 48: \"Paul: Yeah. Now I'm the werewolf, aren't I?\" So Paul claims being werewolf? Actually \"Now I'm the werewolf, aren't I?\" implies that maybe Paul now is werewolf. Could be that Paul is a werewolf.\n\nThus perhaps the best target to vote is Paul.\n\nHowever, but earlier, line 48 suggests Paul asserts he's arewolf. People usually state that they'd be a werewolf if they've been swapped into that role. That might indicate he's the werewolf. Others say something else, but each might be lying.\n\nThus I'd guess that Paul is suspect.\n\nCheck also: Lines 72-73: Paul says \"I did say that much.\" That confirms his presence.\n\nAdditionally: Over confusion at line 86: \"Mike: Don't vote for Justin. I think Mitchell is the werewolf.\"\n\nThus user: Mike suspects Mitchell is werewolf. But if we look at aligning, it's unclear.\n\nLet's also note: The rules say the primary objective is to vote someone suspected to be werewolf. To vote for someone we consider likely to be werewolf.\n\nTest: Are there any hints from the roles lineup? Perhaps the game's implied role distribution: the roles present are Seer, Drunk, and others but didn't mention Werewolf. However, a player described as Wolf (like \"Paul: Now I'm the werewolf\") suggests indeed, Paul is a Werewolf.\n\nBut there's no mention of a werewolf-specific deck unless someone said; but maybe the \"Now I'm the werewolf, aren't I?\" indicates they are indeed a werewolf.\n\nThus best candidate: Paul.\n\nLet's check other possibilities: \"Mitchell: I switched Justin with Paul.\" That's an action, meaning whoever performed that action (Troublemaker?) used to swap those two people.\n\nBut there's no sign of minion.\n\nSo likely the werewolf is Paul. Suggest vote for Paul.\n\nTherefore answer: \"Paul\".\n\nNow just produce JSON with justification.",
+  "parsed_output": {
+    "justification": "The transcript reveals that Paul claims to be a werewolf after a swap involving Justin, and this is the only explicit indication of a werewolf among the four players. Most other comments revolve around confusion between roles (tanner, drunk, etc.) but none explicitly identify a werewolf except Paul’s declaration. Since a vote for Paul would most effectively eliminate a potential werewolf and aid Team Village, “Paul” is the optimal choice.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The transcript reveals that Paul claims to be a werewolf after a swap involving Justin, and this is the only explicit indication of a werewolf among the four players. Most other comments revolve around confusion between roles (tanner, drunk, etc.) but none explicitly identify a werewolf except Paul’s declaration. Since a vote for Paul would most effectively eliminate a potential werewolf and aid Team Village, “Paul” is the optimal choice.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript reveals that Paul claims to be a werewolf after a swap involving Justin, and this is the only explicit indication of a werewolf among the four players. Most other comments revolve around confusion between roles (tanner, drunk, etc.) but none explicitly identify a werewolf except Paul’s declaration. Since a vote for Paul would most effectively eliminate a potential werewolf and aid Team Village, “Paul” is the optimal choice.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcript reveals that Paul claims to be a werewolf after a swap involving Justin, and this is the only explicit indication of a werewolf among the four players. Most other comments revolve around confusion between roles (tanner, drunk, etc.) but none explicitly identify a werewolf except Paul’s declaration. Since a vote for Paul would most effectively eliminate a potential werewolf and aid Team Village, “Paul” is the optimal choice."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3920,
+    "output_token_count": 1320,
+    "generation_time_sec": 163.8025279045105,
+    "used_chat_template": true,
+    "input_char_count": 15399,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

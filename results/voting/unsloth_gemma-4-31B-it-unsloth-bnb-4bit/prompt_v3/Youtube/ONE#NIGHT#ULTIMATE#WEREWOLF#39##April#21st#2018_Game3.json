@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#39##April#21st#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#39##April#21st#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer.\n    *   Mike: Claims Seer.\n    *   Mitchell: Claims Drunk.\n    *   Caitlynn: Claims Drunk.\n    *   James: Claims Witch (though the rules provided don't list a \"Witch\" role, the transcript mentions it. Wait, let me re-read the rules).\n\n    *Wait*, the rules provided list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *The transcript mentions a \"Witch\".* Looking at the transcript:\n    [23] Announcer: \"Witch, wake up. You may look at one of the center cards. If you do- [27] ... you must exchange that card- [29] ... with any player's card.\"\n    This \"Witch\" role is not in the provided rules list, but it's in the transcript. I must follow the transcript's events.\n\n    *   Justin: Claims Seer.\n    *   Mike: Claims Seer.\n    *   Mitchell: Claims Drunk.\n    *   Caitlynn: Claims Drunk.\n    *   James: Claims Witch.\n\n    *   Two people claim Seer (Justin, Mike).\n    *   Two people claim Drunk (Mitchell, Caitlynn).\n    *   One person claims Witch (James).\n\n    *   Justin says he saw something in the center (though he later says he's lying to bait Mike).\n    *   Mike says he saw two good things in the center, meaning there are two werewolves.\n    *   Mitchell and Caitlynn both claim to be the Drunk.\n    *   James claims to be the Witch.\n\n    *   Justin and Mike are fighting over who is the real Seer.\n    *   Mitchell and Caitlynn are fighting over who is the real Drunk.\n    *   James is generally confused but eventually leans towards voting for Justin or Caitlynn.\n    *   Caitlynn and Mitchell both suggest Justin is suspicious.\n    *   Justin suggests Mike is suspicious.\n    *   Justin eventually says \"Maybe I am [the Tanner]. So maybe then vote for Mike.\"\n\n    *   If there are two Seers, one must be lying (unless there's a Doppelganger).\n    *   If there are two Drunks, one must be lying (unless there's a Doppelganger).\n    *   If Mike is the Seer and saw two good cards in the center, then there are two werewolves among the players.\n    *   If Justin is the Seer, he didn't provide much concrete info (he admitted to lying to bait Mike).\n    *   Caitlynn and Mitchell both claiming Drunk is highly suspicious. One of them is likely lying.\n    *   Justin's behavior (admitting he's lying, suggesting he might be the Tanner) is erratic.\n\n    *   Justin: Claims Seer, then admits to lying, then suggests he might be the Tanner.\n    *   Mike: Claims Seer, says he saw two good cards in the center.\n    *   Mitchell: Claims Drunk.\n    *   Caitlynn: Claims Drunk.\n    *   James: Claims Witch.\n\n    *   If Mike is the Seer and saw two good cards in the center, the werewolves are among the players.\n    *   If Justin is lying about being the Seer, he could be a Werewolf or the Tanner.\n    *   If Caitlynn or Mitchell is lying about being the Drunk, they could be a Werewolf or the Tanner.\n\n    *   Caitlynn and Mitchell both claim Drunk.\n    *   Justin and Mike both claim Seer.\n    *   James claims Witch.\n    *   Caitlynn and Mitchell both push for Justin to be voted out.\n    *   Justin pushes for Mike to be voted out.\n    *   James eventually says \"We're killing Mike\" [229], but then the conversation shifts.\n    *   Caitlynn says \"We're voting Justin\" [249].\n\n    *   Justin's admission that he was lying to bait Mike [125] and his suggestion that he might be the Tanner [246] makes him a prime target for elimination.\n    *   However, if he *is* the Tanner, voting him out loses the game for the Village.\n    *   But if he's a Werewolf, voting him out wins the game.\n    *   Mike's claim of seeing two good cards in the center is a strong claim. If true, there are two werewolves.\n    *   If Mike is the Werewolf, he's lying about the center cards to make the Village think there are more werewolves than there are, or to shift focus.\n\n    *   Justin: Claims Seer -> admits lying -> suggests he's Tanner.\n    *   Mike: Claims Seer -> says center is good.\n    *   Mitchell: Claims Drunk.\n    *   Caitlynn: Claims Drunk.\n    *   James: Claims Witch.\n\n    Wait, if Mike saw two good cards in the center, and there are 5 players, and 3 cards in the center (total 8 cards), and 2 are good in the center, that leaves 6 cards. If 2 werewolves are among the players, that's 2/5.\n\n    Let's look at the claims again.\n    Justin and Mike both claim Seer.\n    Mitchell and Caitlynn both claim Drunk.\n    James claims Witch.\n\n    If Justin is the Werewolf, he'd claim a role (Seer) and then try to confuse the group.\n    If Mike is the Werewolf, he'd claim Seer and lie about the center.\n\n    Caitlynn and Mitchell's conflict over the Drunk role is also suspicious.\n\n    Looking at the end of the transcript:\n    Caitlynn: \"We're voting Justin.\" [249]\n    James: \"We're killing Mike.\" [229]\n    Justin: \"You have to kill one of us [Mike or Justin].\" [243]\n\n    Justin's behavior is very suspicious. He claims Seer, then says he's lying, then says he might be the Tanner. This is a classic \"confuse the room\" strategy.\n\n    Let's re-evaluate Mike. Mike's claim is consistent. He says he's the Seer and saw two good cards.\n\n    Let's re-evaluate Mitchell and Caitlynn. Both claim Drunk. Only one can be the Drunk. One is lying.\n\n    If Justin is the Werewolf, he's doing a poor job of hiding it. If he's the Tanner, he's doing a great job of getting votes.\n\n    Wait, the prompt asks for the player whose elimination is *most likely* to help Team Village win. This usually means the most likely Werewolf.\n\n    Justin's erratic claims (Seer -> Lying -> Tanner) make him a strong candidate for Werewolf or Tanner.\n    Mike's claim is straightforward.\n    Mitchell and Caitlynn are fighting over Drunk.\n\n    If we have to pick one: Justin's behavior is the most inconsistent. He claims a role, then admits he's lying, then suggests he's the Tanner. This is often a tactic used by Werewolves to create chaos or by Tanners to get voted out. However, in the context of \"most likely to be a Werewolf,\" Justin's instability makes him a primary suspect.\n\n    Let's double-check the \"Witch\" role. The announcer says: \"Witch, wake up. You may look at one of the center cards. If you do... you must exchange that card... with any player's card.\"\n    James claims to be the Witch. If James is the Witch, he swapped a center card with a player's card.\n\n    If Mike is the Seer and saw two good cards in the center, and James (Witch) swapped one of those good cards with a player, then there's still at least one good card in the center.\n\n    This is getting complex. Let's simplify.\n    Who is the most suspicious?\n    Justin: Claimed Seer, then admitted lying, then claimed he might be Tanner.\n    Mike: Claimed Seer, consistent story.\n    Mitchell/Caitlynn: Both claim Drunk.\n\n    Between Justin and Mike, Justin is far more suspicious due to his shifting story. Between Mitchell and Caitlynn, it's a toss-up.\n\n    Justin's admission \"I'm lying to get you to give more information\" [125] is a very strange thing for a real Seer to say. A real Seer would just state what they saw.\n\n    Therefore, Justin is the most likely candidate for a Werewolf (or Tanner). Given the goal is to eliminate a Werewolf, Justin is the strongest lead.\n\n    *   Justin: Claims Seer, then admits to lying, then suggests he might be the Tanner.\n    *   Mike: Claims Seer, says he saw two good cards in the center.\n    *   Mitchell: Claims Drunk.\n    *   Caitlynn: Claims Drunk.\n    *   James: Claims Witch.\n    *   The conflict between Justin and Mike, and Mitchell and Caitlynn, suggests multiple people are lying.\n    *   Justin's behavior is the most erratic and suspicious.\n\n    Wait, let me re-read the transcript one more time.\n    [135] Caitlynn: \"So I think we kill Justin because Mitchell is clearly the tanner, and wants to die.\"\n    [136] Justin: \"I think we kill Mike.\"\n    [139] Mitchell: \"I think we kill Mike because she's clear the tanner and wants to die.\" (Wait, Mitchell says \"she's\" referring to Mike? Mike is usually a male name, but maybe Mitchell thinks Mike is female or is just confused).\n    [229] James: \"We're killing Mike.\"\n    [230] Mike: \"So we're killing Justin.\"\n    [249] Caitlynn: \"We're voting Justin.\"\n\n    The group seems split between Justin and Mike. Justin's admission of lying makes him the more likely liar.\n\n    Final check: Is there any other possibility?\n    If Justin is the Tanner, voting him out is a loss.\n    If Justin is the Werewolf, voting him out is a win.\n    If Mike is the Werewolf, voting him out is a win.\n    If Mitchell or Caitlynn is the Werewolf, voting them out is a win.\n\n    Justin's behavior is the most indicative of a non-Village role (Werewolf or Tanner). In these games, the most erratic player is often the target.\n\n    Wait, let's look at [111] and [112]:\n    [111] Mike: \"Robber.\"\n    [112] Justin: \"Witch.\"\n    They were trying to say what they saw in the center at the same time.\n    Mike saw a Robber.\n    Justin saw a Witch.\n    But James claims he *is* the Witch.\n    If James is the Witch, and Justin saw a Witch in the center, then Justin is lying (because the Witch card would be with James, not in the center).\n    If Mike saw a Robber in the center, and the Robber is in the center, that's possible.\n\n    This confirms Justin is lying about what he saw in the center. If he's lying about being the Seer and lying about what he saw, he's almost certainly not the Seer. He's either the Werewolf or the Tanner.\n\n    Between Justin and Mike, Justin is the one caught in a lie.\n\n    *   Justin claimed to be the Seer.\n    *   Justin claimed to see a Witch in the center.\n    *   James claimed to be the Witch.\n    *   If James is the Witch, Justin's claim about the center is false.\n    *   Justin also admitted to lying to bait Mike.\n    *   This makes Justin the most suspicious player and the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Justin and Mike both claimed to be the Seer, but Justin's behavior was highly inconsistent. He admitted to lying to bait Mike and claimed to see a Witch in the center, yet James claimed to be the Witch, which contradicts Justin's observation. This inconsistency, combined with Justin's erratic claims about his own role and potential status as the Tanner, makes him the most likely candidate for a Werewolf attempting to deceive the group.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin and Mike both claimed to be the Seer, but Justin's behavior was highly inconsistent. He admitted to lying to bait Mike and claimed to see a Witch in the center, yet James claimed to be the Witch, which contradicts Justin's observation. This inconsistency, combined with Justin's erratic claims about his own role and potential status as the Tanner, makes him the most likely candidate for a Werewolf attempting to deceive the group.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin and Mike both claimed to be the Seer, but Justin's behavior was highly inconsistent. He admitted to lying to bait Mike and claimed to see a Witch in the center, yet James claimed to be the Witch, which contradicts Justin's observation. This inconsistency, combined with Justin's erratic claims about his own role and potential status as the Tanner, makes him the most likely candidate for a Werewolf attempting to deceive the group.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin and Mike both claimed to be the Seer, but Justin's behavior was highly inconsistent. He admitted to lying to bait Mike and claimed to see a Witch in the center, yet James claimed to be the Witch, which contradicts Justin's observation. This inconsistency, combined with Justin's erratic claims about his own role and potential status as the Tanner, makes him the most likely candidate for a Werewolf attempting to deceive the group."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6056,
+    "output_token_count": 2856,
+    "generation_time_sec": 301.44236421585083,
+    "used_chat_template": true,
+    "input_char_count": 18863,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

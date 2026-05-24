@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims Robber. Says he robbed Justin but forgot to look at the card.\n    *   Mike: Claims Seer. Says he looked at Justin and saw a Werewolf.\n    *   Justin: Admits he was a Werewolf. Says he saw a card in the center (which Werewolves do if they are alone).\n    *   Caitlynn: No claim.\n    *   Mitchell: No claim.\n\n    *   James (Robber) robbed Justin (Werewolf).\n    *   If James successfully robbed Justin, James is now the Werewolf and Justin is now the Robber.\n    *   Mike (Seer) saw Justin as a Werewolf. This happened *before* the Robber's action (Seer is 5th, Robber is 6th). So Mike's information is consistent with Justin starting as a Werewolf.\n    *   Justin admits he started as a Werewolf.\n\n    *   Justin (Starting: Werewolf) -> Robbed by James.\n    *   James (Starting: Robber) -> Robbed Justin.\n    *   Current roles:\n        *   Justin: Robber (Village)\n        *   James: Werewolf (Werewolf)\n        *   Mike: Seer (Village)\n        *   Caitlynn: ?\n        *   Mitchell: ?\n\n    *   If James is the Werewolf (having stolen the card from Justin), voting for James helps Team Village.\n    *   If Justin is still the Werewolf (e.g., James lied about robbing him), voting for Justin helps Team Village.\n    *   However, James openly admitted to robbing Justin. If James is lying about being the Robber, he's likely a Werewolf trying to confuse the situation. If he's telling the truth, he's now the Werewolf.\n    *   Justin admits he was a Werewolf. This is a very strong signal. Usually, Werewolves don't admit it unless they've been swapped or are trying a complex bluff. Since James claimed to rob him, Justin knows he's no longer the Werewolf.\n\n    *   James claims he robbed Justin.\n    *   Justin confirms he was a Werewolf.\n    *   Mike confirms Justin was a Werewolf.\n    *   Therefore, the Werewolf card moved from Justin to James.\n    *   James is the current Werewolf.\n\n    *   Voting for James eliminates the current Werewolf.\n\n    *   Could James be the Tanner? If James is the Tanner, he wants to be voted out. But he's claiming to be the Robber who stole a Werewolf card.\n    *   Could Justin be lying? He admits to being a Werewolf. If he's a Werewolf and *wasn't* robbed, he's just confessing.\n    *   Could Mike be lying? Mike claims Seer and saw Justin as a Werewolf. This aligns with Justin's confession.\n    *   The most logical conclusion based on the public statements is that James is now the Werewolf.\n\n    *   James: Robber (starting) -> Werewolf (final)\n    *   Justin: Werewolf (starting) -> Robber (final)\n    *   Mike: Seer (final)\n    *   Caitlynn/Mitchell: Other roles.\n    *   Vote: James.",
+  "parsed_output": {
+    "justification": "James claimed to be the Robber and stated that he robbed Justin. Justin and Mike both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James would have taken the Werewolf card from Justin, making James the current Werewolf. Therefore, voting for James is the most likely way for Team Village to win.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claimed to be the Robber and stated that he robbed Justin. Justin and Mike both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James would have taken the Werewolf card from Justin, making James the current Werewolf. Therefore, voting for James is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claimed to be the Robber and stated that he robbed Justin. Justin and Mike both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James would have taken the Werewolf card from Justin, making James the current Werewolf. Therefore, voting for James is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James claimed to be the Robber and stated that he robbed Justin. Justin and Mike both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James would have taken the Werewolf card from Justin, making James the current Werewolf. Therefore, voting for James is the most likely way for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2540,
+    "output_token_count": 863,
+    "generation_time_sec": 86.43638324737549,
+    "used_chat_template": true,
+    "input_char_count": 9782,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

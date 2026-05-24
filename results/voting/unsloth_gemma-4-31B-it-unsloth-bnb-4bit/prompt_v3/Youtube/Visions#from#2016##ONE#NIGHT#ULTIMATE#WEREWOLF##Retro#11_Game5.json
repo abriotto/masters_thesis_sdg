@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   James: Claims Tanner [66, 85, 113].\n    *   Mitchell: Claims Hunter/Insomniac [33], then specifically Hunter [100, 149].\n    *   Justin: Claims Hunter/Insomniac [34], then specifically Hunter [99, 101], then later claims Mason [151].\n    *   Laura: Claims Hunter/Insomniac [82], then specifically Insomniac [107, 147].\n    *   Paul: Claims no swap [70], doesn't explicitly claim a role for most of the game, but says he knows who to trust [93].\n\n    *   Three players (Justin, Mitchell, Laura) all claim to be either Hunter or Insomniac.\n    *   Justin and Mitchell both claim to be the Hunter.\n    *   Laura claims to be the Insomniac.\n    *   Justin later changes his claim to Mason [151].\n    *   James claims to be the Tanner.\n\n    *   If Laura is the Insomniac and Mitchell is the Hunter, Justin's claims (Hunter, then Mason) are contradictory and suspicious.\n    *   If Justin is the Mason, then Mitchell or Laura must be lying about their roles.\n    *   James claiming Tanner is a common strategy for the Tanner, but it could also be a Werewolf bluff. However, the Tanner *wants* to be voted out.\n    *   Paul is playing very vaguely, which can be a sign of a Werewolf or just a cautious Villager.\n\n    *   Justin claimed to be Hunter/Insomniac [34], then specifically Hunter [99, 101], then suddenly switched to Mason [151]. This inconsistency is a strong indicator of lying.\n    *   Mitchell consistently claimed Hunter [100, 149].\n    *   Laura consistently claimed Insomniac [107, 147].\n    *   If Mitchell and Laura are telling the truth, Justin is lying.\n    *   If Justin is a Werewolf, he might have tried different claims to see what stuck or to confuse the group.\n\n    *   James claims Tanner. If he is the Tanner, voting for him makes the Tanner win. Team Village wants to avoid this unless they are sure there are no Werewolves.\n    *   Justin's flip-flopping between Hunter and Mason is highly suspicious.\n    *   Paul is quiet, but Justin's behavior is more overtly deceptive.\n\n    *   Justin's claims: Hunter/Insomniac -> Hunter -> Mason.\n    *   Mitchell's claims: Hunter/Insomniac -> Hunter.\n    *   Laura's claims: Hunter/Insomniac -> Insomniac.\n    *   Since only one Hunter and one Insomniac can exist, at least one of these three is lying. Justin is the only one who changed his claim entirely (to Mason).\n\n    *   Justin is the most likely candidate for a Werewolf due to his inconsistent role claims.\n    *   James is claiming Tanner, so voting for him is risky for the Village.\n    *   Paul is vague, but not as contradictory as Justin.\n    *   Mitchell and Laura are consistent in their claims.\n\n    *   Justin claimed to be the Hunter, then later claimed to be a Mason.\n    *   This inconsistency suggests he is bluffing.\n    *   Voting for him is the most logical choice for Team Village.",
+  "parsed_output": {
+    "justification": "Justin's role claims are highly inconsistent. He initially claimed to be either the Hunter or Insomniac, then specifically claimed to be the Hunter, and finally claimed to be a Mason. Since Mitchell and Laura consistently claimed the Hunter and Insomniac roles respectively, Justin's flip-flopping makes him the most suspicious player and the most likely Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's role claims are highly inconsistent. He initially claimed to be either the Hunter or Insomniac, then specifically claimed to be the Hunter, and finally claimed to be a Mason. Since Mitchell and Laura consistently claimed the Hunter and Insomniac roles respectively, Justin's flip-flopping makes him the most suspicious player and the most likely Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's role claims are highly inconsistent. He initially claimed to be either the Hunter or Insomniac, then specifically claimed to be the Hunter, and finally claimed to be a Mason. Since Mitchell and Laura consistently claimed the Hunter and Insomniac roles respectively, Justin's flip-flopping makes him the most suspicious player and the most likely Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's role claims are highly inconsistent. He initially claimed to be either the Hunter or Insomniac, then specifically claimed to be the Hunter, and finally claimed to be a Mason. Since Mitchell and Laura consistently claimed the Hunter and Insomniac roles respectively, Justin's flip-flopping makes him the most suspicious player and the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4479,
+    "output_token_count": 890,
+    "generation_time_sec": 93.80677533149719,
+    "used_chat_template": true,
+    "input_char_count": 15260,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

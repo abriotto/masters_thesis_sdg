@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game8.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Roles involved (based on claims):\n        *   Jacob: Claims he started as a Villager.\n        *   Sean: Claims he was the Troublemaker.\n        *   Zack: Claims he was the Robber.\n        *   Hunter: No initial claim, but reacts to the others.\n\n    *   Jacob: \"I started as villager, I have no idea what I am now\" [45].\n    *   Sean: \"I was trouble maker\" [54].\n    *   Zack: \"No I'm trouble maker now. I stole from you\" [55] -> \"I was there robber\" [65].\n    *   Sean: \"Because I switched your guys' cards\" [61].\n    *   Hunter: \"So I'm troublemaker\" [62] (Wait, Hunter is reacting to Sean's claim).\n\n    *   Sean (Troublemaker) says he switched cards.\n    *   Zack (Robber) says he stole a card.\n    *   Jacob (Villager) says he started as a Villager.\n    *   Hunter (Unknown) is the fourth player.\n\n    *   If Sean was the Troublemaker, he swapped two players' cards.\n    *   If Zack was the Robber, he stole a card from someone.\n    *   If Jacob started as a Villager, and Sean (Troublemaker) swapped cards, and Zack (Robber) stole a card, the roles could have shifted significantly.\n\n    *   Sean claims Troublemaker.\n    *   Zack claims Robber.\n    *   Jacob claims Villager.\n    *   Hunter is the only one who hasn't made a specific role claim about their starting role, but he's following the logic of the others.\n\n    *   Wait, let's look at the dialogue again.\n    *   Sean: \"I was trouble maker.\" [54]\n    *   Zack: \"No I'm trouble maker now. I stole from you.\" [55] (Zack is confused about how the Robber works; the Robber steals a card, they don't become the Troublemaker unless they steal the Troublemaker's card).\n    *   Sean: \"No you're not... Because I switched your guys' cards.\" [59, 61]\n    *   Hunter: \"So I'm troublemaker.\" [62] (Hunter is guessing based on Sean's claim).\n    *   Zack: \"I was there robber\" [65].\n    *   Hunter: \"I hate to tell you chief, but you're now the werewolf.\" [71] (Hunter is making a deduction).\n\n    *   If Sean (Troublemaker) swapped two people, and Zack (Robber) stole a card, who is the Werewolf?\n    *   The players are trying to figure out who the Werewolf is.\n    *   Hunter says to Zack: \"I hate to tell you chief, but you're now the werewolf.\" [71]\n    *   Zack responds: \"Ooh, unfortunate.\" [72]\n    *   Sean says: \"Yeah, this is pretty clear cut.\" [79]\n\n    *   The group seems to have converged on Zack being the Werewolf.\n    *   Let's re-examine the logic:\n        *   Jacob: Started Villager.\n        *   Sean: Started Troublemaker.\n        *   Zack: Started Robber.\n        *   Hunter: ?\n    *   If Sean (Troublemaker) swapped two people, and Zack (Robber) stole a card, the roles shifted.\n    *   If Hunter is the one who believes Zack is the Werewolf, and Sean agrees, the most likely target for the vote is Zack.\n\n    *   Wait, let's look at the roles again.\n    *   If Sean was Troublemaker and swapped two people, and Zack was Robber and stole a card...\n    *   If Zack stole a card from someone, he knows what that card is.\n    *   Zack says \"I'm trouble maker now. I stole from you\" [55]. This is a contradiction. If he stole the Troublemaker card, he would be the Troublemaker. But the Troublemaker's ability happens *before* the Robber's ability? No, the order is:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n    *   Wait, the Robber (6) goes *before* the Troublemaker (7).\n    *   So if Zack was the Robber, he stole a card first. Then Sean (Troublemaker) swapped two cards.\n    *   If Zack stole a card and then Sean swapped him with someone else, Zack might not know his final role.\n    *   However, the conversation is very casual. Hunter tells Zack he's the werewolf, and Zack accepts it (\"Ooh, unfortunate\"). Sean agrees it's \"clear cut\".\n\n    *   The players have collectively decided that Zack is the most likely Werewolf.\n    *   Zack's own admission (\"Ooh, unfortunate\") and Sean's agreement (\"this is pretty clear cut\") strongly suggest Zack is the target.\n\n    *   Zack claimed to be the Robber.\n    *   Sean claimed to be the Troublemaker.\n    *   Jacob claimed to be a Villager.\n    *   Hunter is the fourth player.\n    *   The group concludes Zack is the Werewolf.\n\n    *   Is there any reason to vote for anyone else?\n    *   Jacob: Claims Villager.\n    *   Sean: Claims Troublemaker.\n    *   Hunter: No claim, but leading the accusation.\n    *   Zack: Admits/accepts he might be the Werewolf.\n\n    *   The most logical choice for Team Village, based on the public discussion, is Zack.",
+  "parsed_output": {
+    "justification": "The players discussed their roles, with Sean claiming to be the Troublemaker and Zack claiming to be the Robber. Hunter deduced that Zack had become the Werewolf due to the card swaps and thefts that occurred during the night. Zack accepted this conclusion, and Sean agreed that the situation was 'clear cut,' making Zack the most likely target for elimination to benefit Team Village.",
+    "chosen_vote": "Zack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"The players discussed their roles, with Sean claiming to be the Troublemaker and Zack claiming to be the Robber. Hunter deduced that Zack had become the Werewolf due to the card swaps and thefts that occurred during the night. Zack accepted this conclusion, and Sean agreed that the situation was 'clear cut,' making Zack the most likely target for elimination to benefit Team Village.\",\n  \"chosen_vote\": \"Zack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"The players discussed their roles, with Sean claiming to be the Troublemaker and Zack claiming to be the Robber. Hunter deduced that Zack had become the Werewolf due to the card swaps and thefts that occurred during the night. Zack accepted this conclusion, and Sean agreed that the situation was 'clear cut,' making Zack the most likely target for elimination to benefit Team Village.\",\n  \"chosen_vote\": \"Zack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Zack",
+    "justification": "The players discussed their roles, with Sean claiming to be the Troublemaker and Zack claiming to be the Robber. Hunter deduced that Zack had become the Werewolf due to the card swaps and thefts that occurred during the night. Zack accepted this conclusion, and Sean agreed that the situation was 'clear cut,' making Zack the most likely target for elimination to benefit Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2990,
+    "output_token_count": 1471,
+    "generation_time_sec": 146.96450209617615,
+    "used_chat_template": true,
+    "input_char_count": 10524,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

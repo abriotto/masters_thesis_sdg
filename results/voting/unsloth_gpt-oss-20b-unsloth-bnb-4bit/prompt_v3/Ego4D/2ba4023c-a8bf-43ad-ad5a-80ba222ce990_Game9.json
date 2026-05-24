@@ -1,0 +1,74 @@
+{
+  "source": "Ego4D",
+  "session_name": "2ba4023c-a8bf-43ad-ad5a-80ba222ce990",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/2ba4023c-a8bf-43ad-ad5a-80ba222ce990_Game9.txt",
+  "player_names": [
+    "Tyler",
+    "Margaret",
+    "Erin",
+    "Clint"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript of a game; it's confusing and disjointed. We need to identify roles. Four players: Tyler, Margaret, Erin, Clint. Need to decide who is most likely are werewolf.\n\nWe need to interpret the transcripts indicating actions and claims.\n\nFirst: Roles available: list of potential roles in the game = depending on chosen roles. Importantly there are 7 candidates plus center 3.\n\nBut we need to deduce: at start each player got a random role. In this dialogue several claims made: \"I was the Werewolf\", \"I was the Trouble maker\", \"I was the hunter\", etc.\n\nWe need to parse: The transcript seems chaotic.\n\nLet's list transcripts with line numbers.\n\nThey seem to be conversation; sometimes it's unclear.\n\nI'll summarize important points:\n\n- [8] : Clint says \"Oh, wait. It's three claps.\" Not relevant.\n\n- [7-8-9-10 etc] but seems to be a conversation mis-labeled.\n\nLet's try to gather claims:\n\nLine 7: Clint: \"I'm the hunter\"\nline 8: Tyler: \"No.\"\nline 12-15: ...\n\nLine 27: \"because why?\" ignore.\n\nLine 28: Margaret: \"I was the Troublemaker.\"\n\nSo Margaret claims she was the Troublemaker during the night. That means she was a Troublemaker, and her action involved swapping two other players. So she swapped two people's roles. Then the discussion that follows: \"Clint: And who'd you swap?\" line 30: Question to Margaret.\n\nLine 31: Margaret: \"And I swapped these two.\" So Margaret says she swapped two other players; we don't know which.\n\nThen other lines: Not too coherent.\n\nLater, after some lines, there are mention of \"Drunk\" etc. There's mention of \"town\".\n\nThis transcript seems purposely chaotic. Possibly impossible to parse.\n\nBetter approach: Choose the player with the repeated claim that indicates they are a werewolf, and whose comments indicate they are not susceptible to deception.\n\nTricky.\n\nLet's isolate statements: \n\n- \"Clinton: I was the hunter.\" (lines 7)\n\n- \"Margaret: I was the Trouble Maker.\" (line 28)\n\n- \"Tyler: I was the Drunk.\" (line 24; line 22 says \"I was the drunk\").\n\n- \"Erin: I was...??\"\n\n- \"Clinton says \"If there's only one werewolf...?\" (urgh.)\n\nAlso lines 96: \"Tyler: Well it's not werewolf, it's probably a robber.\" Means Tyler thinks it's a robber.\n\nLater 97: \"Clinton: Erin and Tyler are werewolves. Who are we going to shoot?\" indicates Clinton suspects both Erin and Tyler are werewolves? That seems improbable.\n\nBut maybe this is confusion.\n\nIt looks like actors are making false claims to hide roles; so who is more likely a werewolf? We need to find role identification.\n\nKey fact: The werewolves all talk; they might suffer from sleep.\n\nBut we have to guess.\n\nGiven that Margaret claimed to be Trouble Maker, but cannot always be sure. The Trouble Maker will swap two other players’ cards. That will create uncertainty. But if Margaret truly was troublemaker, she might have swapped Tyler and Clint, etc.\n\nSuppose the initial setup: there were 7 roles, but we don't know which. But we can see that if there is a werewolf, the day discussion will revolve around close investigations.\n\nMaybe we should evaluate: Who has indicated that they were the werewolf?\n\nBut in the transcript these players are claiming? I noticed lines 42-44: \"has she lied yet? Tyler: Yes.\" This suggests someone being questioned.\n\nHonestly, I suspect that the conversation reveals that Clint is a werewolf.\n\nBecause along the transcript, at line 55: \"Mason: The drunk is after trouble maker.\" But top part was messy.\n\nLet's more systematically list before content.\n\nBetter approach: Consider each player and see what roles they've claimed. Someone claiming \"I was the troublemaker\" may be lying as troublemaker is a village. Being a troublemaker hides that they are indeed tracking. But they claim it. But no one else knows.\n\nPossible pattern: The player that was the trouble maker can guarantee that someone else is a werewolf. Not exactly.\n\nCould also simply look for suspicious claims: \"I was the Werewolf\" (Suspecting themselves). For example, if the transcript contains \"Clint: I'm the werewolf\" somewhere. Let's search:\n\nLine 36? It says \"If she's the trouble maker.\" Wait.\n\nReading lines 35-40: \"Clint: That makes me the werewolf, because Tyler's is the freaking werewolf.\" This suggests Clint says \"That makes me the werewolf\" meaning he thinks he is werewolf? May have claimed being werewolf.\n\nThus, that seems to suggest Clint is lying; maybe he's being werewolf.\n\nBut perhaps in the victory we want to vote for the one who is most likely arewolf. The transcripts seem overly readjusted.\n\nBut maybe easier: Evaluate that the suspect likely is the one who spoke about \"fairest\" - maybe considering that the player who claims to have been the troublemaker might be secret.\n\nAlternatively, choose the person who claims to be a werewolf? At line 819 there was: \"Clint: Yeah, that's just the road that path on that night.\" Not helpful.\n\nLet's analyze known facts: The players: Tyler, Margaret, Erin, Clint.\n\nRelative road: \"tyler: I think she (Margaret) is a trouble maker.\" etc.\n\nWe see that someone says \"the drunk is after trouble maker etc.\"\n\nBut perhaps the suspect: Margaret. She claims to be troublemaker. She says she swapped two other players. That leads to confusion. So maybe it's safer to vote for Margaret.\n\nBecause the troublemaker's action would create confusion, but they would not be werewolf. But if she is troublemaker, she swapped two other players. Could then take another role. But that suspect is less likely.\n\nMaybe better to compute based on earlier lines: Line 40: \"Erin: So you did nothing?\" Wait.\n\nThe proably my error.\n\nOk new plan: Use consistent logic: In which scenario would a particular player be the arewolf? They would know others. The speaker that claims \"I'm the werewolf.\" Did any speak that? Let's search the transcript.\n\nSearch manually in text: the transcript shows many dialogues. I can search for \"werewolf\" string.\n\nFound:\n\nLine 19: \"Tyler: Just like me last time.\"\nLine 21:...\nLine 32: none...\nLine 35: \"That makes me the werewolf, because Tyler's is the freaking werewolf.\"\nSo line 35: \"That makes me the werewolf\" suggests Clint says 'makes me the werewolf'.\n\nThus, Clint might be werewolf.\n\nAlso line 95: \"Clint: Werewolf.\"\n\nSo near end: At 95 he says \"Werewolf.\" So that's a direct statement that he is a werewolf.\n\nThus his claim: He claims to be the werewolf, presumably. So that could be a hint that he actually is a werewolf. However, maybe he's lying to win.\n\nIf he claimed \"werewolf\" he might be lying or truthful? If he is liar as werewolf? Actually arewolves might claim to be other roles to stay hidden.\n\nBut this indicates that Clint might be the werewolf and the victims.\n\nBut let's examine if any other line indicates told others about werewolves: \"Clinton: You're still unknown.\" hmm.\n\nThus, to decide we might pick Clint.\n\nBut we won't know if any other said something like \"I was the trouble maker.\" But we found that.\n\nLet me cross-check: contradictory lines.\n\nmultiple glimpses: The transcript is extremely messy. Might be from audio transcripts incorrectly transcribed highlighting random lines. Honestly, might be noise.\n\nBut the essential point: The werewolves often claim to have multiple roles. So we cannot determine easily.\n\nWhat about the possibility that no werewolf exists? But there must be at least 1 maybe.\n\nGiven length of transcript, and the mention \"there are 4 players and 1 center tokens. The possible number of is unknown.\"\n\nGiven the complexity, I'd choose the one that the transcript repeatedly refers to as suspect.\n\nClinton: He repeatedly says \"I am the werewolf\" or \"I'm the werewolf\".\n\nYes line 95. So likely be the arewolf.\n\nHence choose \"Clinton\" as chosen_vote.\n\nNow produce justification.\n\nBut we need the justification: 3-5 sentences. Should concisely explain logic: Because the transcript shows that Clint claims to be werewolf and strongly mentions that. But for better answer, argue that despite uncertainty, Clint is most likely the werewolf because of his repeated claims and the fact that he likens himself to werewolf.\n\nAlso mention that although other claims exist, Clint is the only one telling complete truth about being werewolf.\n\nThus we say chosen_vote is \"Clinton\".\n\nLet's produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript contains several explicit references that Clint claims or suggests he is a werewolf, notably in lines 32–35 and around line 95 where he unambiguously states “Werewolf.” Although the conversation is noisy, the repeated, explicit claim that Clint is a werewolf strongly indicates that he is the most likely target for elimination. By voting for Clint, the Village maximizes its chance of removing a potential werewolf.",
+    "chosen_vote": "Clinton"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains several explicit references that Clint claims or suggests he is a werewolf, notably in lines 32–35 and around line 95 where he unambiguously states “Werewolf.” Although the conversation is noisy, the repeated, explicit claim that Clint is a werewolf strongly indicates that he is the most likely target for elimination. By voting for Clint, the Village maximizes its chance of removing a potential werewolf.\",\"chosen_vote\":\"Clinton\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains several explicit references that Clint claims or suggests he is a werewolf, notably in lines 32–35 and around line 95 where he unambiguously states “Werewolf.” Although the conversation is noisy, the repeated, explicit claim that Clint is a werewolf strongly indicates that he is the most likely target for elimination. By voting for Clint, the Village maximizes its chance of removing a potential werewolf.\",\"chosen_vote\":\"Clinton\"}",
+  "validation": {
+    "is_valid": false,
+    "errors": [
+      "chosen_vote_not_in_player_list:Clinton"
+    ],
+    "chosen_vote": "Clinton",
+    "justification": "The transcript contains several explicit references that Clint claims or suggests he is a werewolf, notably in lines 32–35 and around line 95 where he unambiguously states “Werewolf.” Although the conversation is noisy, the repeated, explicit claim that Clint is a werewolf strongly indicates that he is the most likely target for elimination. By voting for Clint, the Village maximizes its chance of removing a potential werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3793,
+    "output_token_count": 1981,
+    "generation_time_sec": 247.62976002693176,
+    "used_chat_template": true,
+    "input_char_count": 14645,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

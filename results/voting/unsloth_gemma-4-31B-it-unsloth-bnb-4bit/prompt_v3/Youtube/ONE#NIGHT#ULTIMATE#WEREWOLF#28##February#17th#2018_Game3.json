@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Alysha: Claims Seer. Says she looked at Justin and he was a Werewolf.\n    *   Justin: Claims Troublemaker. Says he trouble-made Paul.\n    *   Mike: Claims Troublemaker. Says he trouble-made Paul and someone else.\n    *   Caitlynn: Claims Revealer. Says she revealed a card and it was a Tanner. (Wait, who did she reveal? She says \"No, it was a Tanner\" in response to Mitchell asking if she looked at Justin's card).\n    *   Mitchell: Claims Robber. Says he robbed someone (initially says he forgot who, then says he robbed Caitlynn).\n    *   Paul: Claims Minion (initially), then claims Tanner (at the end).\n\n    *   Alysha (Seer) -> Justin (Werewolf).\n    *   Mike (Troublemaker) -> Switched Paul and someone else.\n    *   Justin (Troublemaker) -> Switched Paul and someone else. (Wait, both Mike and Justin claim Troublemaker).\n    *   Caitlynn (Revealer) -> Revealed a card (Tanner).\n    *   Mitchell (Robber) -> Robbed Caitlynn.\n    *   Paul (Minion/Tanner) -> Claims he started as Minion, then says he's the Tanner.\n\n    *   Only one Troublemaker exists. Both Mike and Justin claim it.\n    *   Only one Seer exists. Alysha claims it.\n    *   Only one Revealer exists. Caitlynn claims it.\n    *   Only one Robber exists. Mitchell claims it.\n    *   Paul's claim is inconsistent (Minion then Tanner).\n\n    *   If Alysha is the Seer and she saw Justin as a Werewolf, Justin is a prime target.\n    *   If Justin is the Troublemaker, Mike is lying.\n    *   If Mike is the Troublemaker, Justin is lying.\n    *   Paul claiming to be the Minion is a huge red flag (Minions are Team Werewolf). Then he switches to Tanner.\n    *   Caitlynn claims Revealer. If she revealed a Tanner, and Paul claims to be the Tanner, this might align.\n\n    *   Alysha (Seer) says Justin = Werewolf.\n    *   Paul says he started as Minion (Team Werewolf).\n    *   Mike and Justin both claim Troublemaker.\n    *   If Paul is the Minion, he's on Team Werewolf.\n    *   If Justin is the Werewolf (per Alysha), he's on Team Werewolf.\n    *   If Mike is lying about being Troublemaker, he could be a Werewolf.\n\n    *   Wait, Paul says \"I'm actually the Tanner TBH\" at the very end.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Paul was the Minion, he's Team Werewolf.\n    *   If Alysha is the Seer, Justin is the Werewolf.\n\n    *   Alysha's claim is direct: Justin is a Werewolf.\n    *   Mike's behavior is erratic and contradictory.\n    *   Paul's claims are contradictory (Minion then Tanner).\n    *   Justin's claim (Troublemaker) conflicts with Mike's.\n\n    *   If Alysha is the Seer, Justin is the Werewolf.\n    *   If Paul is the Minion, he's Team Werewolf.\n    *   If Mike is lying about being Troublemaker, he could be the other Werewolf.\n\n    *   Alysha (Seer) -> Justin (Werewolf).\n    *   Paul (Minion/Tanner) -> Confused/Lying.\n    *   Mike (Troublemaker?) -> Conflicting with Justin.\n    *   Justin (Troublemaker?) -> Conflicting with Mike.\n\n    *   If we vote Justin, and Alysha is the Seer, we win.\n    *   If we vote Paul, and he's the Minion, we don't necessarily win (we need a Werewolf). If he's the Tanner, the Tanner wins.\n    *   If we vote Mike, and he's a Werewolf, we win.\n\n    *   Alysha's claim is the most concrete piece of information: \"I looked at Justin's card. He was the werewolf.\"\n    *   Justin's defense is that he's the Troublemaker and was swapped.\n    *   Mike also claims to be the Troublemaker.\n    *   If Mike is the Troublemaker, Justin is lying. If Justin is the Troublemaker, Mike is lying.\n    *   If Alysha is the Seer, Justin is the Werewolf.\n\n    *   Justin: Claims Troublemaker.\n    *   Mike: Claims Troublemaker.\n    *   One of them must be lying.\n    *   Alysha (Seer) says Justin is the Werewolf.\n    *   If Alysha is telling the truth, Justin is the Werewolf.\n    *   If Justin is the Werewolf, he's lying about being the Troublemaker.\n    *   This makes Mike more likely to be the Troublemaker (or another Werewolf).\n\n    *   Paul claims Minion, then Tanner.\n    *   If Paul is the Minion, he's Team Werewolf.\n    *   If Paul is the Tanner, he's Team Tanner.\n    *   If Paul is the Minion, and Justin is the Werewolf, then Team Werewolf has Justin and Paul.\n\n    *   Voting Justin is the most direct path to victory if Alysha is the Seer.\n    *   Voting Mike is a possibility if he's the other Werewolf.\n    *   Voting Paul is risky because he might be the Tanner.\n\n    *   Alysha's claim is the strongest evidence.\n    *   Justin's claim is contradicted by Mike.\n    *   Paul's claims are inconsistent.\n    *   The most likely Werewolf based on the Seer's claim is Justin.\n\n    *   Wait, let's re-read:\n        [40] Alysha: He was the werewolf.\n        [41] Justin: That's not true.\n        [42] Alysha: Unless you traded his card...he's still the werewolf.\n        [43] Mike: I did trade his card.\n        [50] Mike: ...But I trouble made you.\n        [53] Justin: ...someone robbed from you. Mitchell robbed from you, then you switched Mitchell and I, now I'm the troublemaker.\n    *   This is getting complex. Let's simplify.\n    *   Alysha (Seer) -> Justin (Werewolf).\n    *   Mike (Troublemaker) -> Switched Justin and someone.\n    *   If Mike is the Troublemaker and he switched Justin (the Werewolf) with someone else, then the person Mike switched him with is now the Werewolf.\n    *   But the Seer looks at the card *before* the Robber and Troublemaker act? No, the Seer acts *before* the Robber and Troublemaker.\n    *   Night Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer (Alysha)\n        6. Robber (Mitchell)\n        7. Troublemaker (Mike/Justin)\n        8. Drunk\n        9. Insomniac\n    *   So Alysha (Seer) saw Justin's card *before* the Robber (Mitchell) and Troublemaker (Mike/Justin) acted.\n    *   If Alysha saw Justin as a Werewolf, Justin *started* as a Werewolf.\n    *   If the Robber or Troublemaker moved that card, Justin might not be the Werewolf *now*.\n    *   However, the goal of Team Village is to eliminate *a* Werewolf. If Justin started as a Werewolf and was swapped, the person he was swapped with is now the Werewolf.\n    *   Wait, if the Robber (Mitchell) took Justin's card, Mitchell is now the Werewolf.\n    *   If the Troublemaker (Mike/Justin) swapped Justin's card with someone else's, that other person is now the Werewolf.\n    *   But we don't know for sure who the Robber or Troublemaker are or who they swapped.\n    *   The most reliable information is the Seer's initial observation. In One Night Ultimate Werewolf, usually, the simplest claim (Seer says X is Werewolf) is the strongest lead unless there's a very clear swap.\n    *   Justin and Mike are both claiming Troublemaker. This conflict suggests one of them is lying.\n    *   If Alysha is the Seer, Justin is the most likely candidate for the Werewolf (starting role).\n\n    *   Paul: \"I started as the minion.\" (Minion is Team Werewolf).\n    *   Then Paul: \"I'm actually the Tanner TBH.\"\n    *   If Paul is the Minion, he's Team Werewolf.\n    *   If Paul is the Tanner, he's Team Tanner.\n    *   If Paul is the Minion, he's lying about being the Tanner.\n    *   If Paul is the Tanner, he's lying about being the Minion.\n    *   Either way, Paul is not a helpful Village member.\n\n    *   Alysha (Seer) says Justin is a Werewolf.\n    *   Justin and Mike are fighting over the Troublemaker role.\n    *   Paul is claiming to be Minion/Tanner.\n    *   The most consistent lead for Team Village is Alysha's claim about Justin.\n\n    *   If Justin was the Werewolf and was swapped by the Robber (Mitchell), Mitchell is now the Werewolf.\n    *   If Justin was the Werewolf and was swapped by the Troublemaker (Mike), the person Mike swapped him with is now the Werewolf.\n    *   But we don't have confirmed information on the swaps.\n    *   In the absence of confirmed swaps, the Seer's target is the best bet.\n\n    *   Justin: Claims Troublemaker.\n    *   Mike: Claims Troublemaker.\n    *   Alysha: Claims Seer, says Justin is Werewolf.\n    *   Paul: Claims Minion, then Tanner.\n    *   Caitlynn: Claims Revealer.\n    *   Mitchell: Claims Robber.\n    *   If we have to pick one, Justin is the most likely Werewolf based on the Seer's claim.\n\n    *   Wait, Paul's claim to be the Minion is very strange. Minions are Team Werewolf. Why would he admit that?\n    *   Maybe he's the Tanner trying to get voted out?\n    *   If Paul is the Tanner, then Justin is more likely to be the Werewolf.\n    *   If Paul is the Minion, then Justin is likely the Werewolf (since Minions and Werewolves are on the same team).\n\n    *   Justin is the most likely Werewolf because the Seer (Alysha) identified him as such, and his own claim to be the Troublemaker is contested by Mike.\n\n    *   Justification: Alysha claimed to be the Seer and identified Justin as the Werewolf. While Justin and Mike both claimed to be the Troublemaker, creating a contradiction, Alysha's direct identification of Justin makes him the most likely target for Team Village. Paul's inconsistent claims (Minion, then Tanner) further suggest that the Werewolf alignment is concentrated among the other players.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Alysha claimed to be the Seer and explicitly identified Justin as the Werewolf. Although Justin and Mike both claimed to be the Troublemaker, creating a contradiction, Alysha's direct identification of Justin provides the strongest lead for Team Village. Paul's inconsistent claims of being the Minion and then the Tanner further suggest that the Werewolf alignment is likely associated with Justin.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claimed to be the Seer and explicitly identified Justin as the Werewolf. Although Justin and Mike both claimed to be the Troublemaker, creating a contradiction, Alysha's direct identification of Justin provides the strongest lead for Team Village. Paul's inconsistent claims of being the Minion and then the Tanner further suggest that the Werewolf alignment is likely associated with Justin.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claimed to be the Seer and explicitly identified Justin as the Werewolf. Although Justin and Mike both claimed to be the Troublemaker, creating a contradiction, Alysha's direct identification of Justin provides the strongest lead for Team Village. Paul's inconsistent claims of being the Minion and then the Tanner further suggest that the Werewolf alignment is likely associated with Justin.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alysha claimed to be the Seer and explicitly identified Justin as the Werewolf. Although Justin and Mike both claimed to be the Troublemaker, creating a contradiction, Alysha's direct identification of Justin provides the strongest lead for Team Village. Paul's inconsistent claims of being the Minion and then the Tanner further suggest that the Werewolf alignment is likely associated with Justin."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4349,
+    "output_token_count": 2767,
+    "generation_time_sec": 282.44569396972656,
+    "used_chat_template": true,
+    "input_char_count": 14984,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

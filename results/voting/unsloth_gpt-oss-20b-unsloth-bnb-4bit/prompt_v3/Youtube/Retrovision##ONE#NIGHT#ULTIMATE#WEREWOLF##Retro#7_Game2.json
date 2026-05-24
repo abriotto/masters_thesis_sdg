@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to choose a player to vote for. We have a transcript somewhat incoherent. Players: Justin, Eric, Paul, Mitchell, Mike.\n\nWe need to infer roles based on actions:\n\nNight anticipated roles: Are roles assigned before? The transcript shows various statements about \"trouble maker\", \"robber\", \"werewolf\".\n\nLet's try to parse: \"Paul: this time I was a troublemaker.\" That implies his initial role was troublemaker. Then as troublemaker they swapped two other people's cards.\n\nAlso later: \"Justin: I'm the insomniac. Woke up as the insomniac.\" So Justin's starting role was insomniac. That means near the end he looked at his current card: \"The insomniac saw his current card. So he knows his current role. So Justin is either a Villager, Seer, etc. He didn't say \"I was the pre card\". Hmm.\n\nAlso there's mention: \"Mike: Oops... I think I had the robust...\"\n\nWe need to reconstruct: The game uses roles more than we can get.\n\nKey info: TroubleMaker made swaps: \"You didn't switch me. I can confirm that.\" suggests no swap or something.\n\nImportant statements: \"Mike: ...\" \"he robbed from me first\". Hard.\n\nPerhaps easiest: Determine likely werewolf from dialogues: Inverted about \"Mike: I'm going to…\" He might suspect others.\n\nLook at lines: \"Mike: Oop. I'll double check. I thought I had them on fast...\" Might be irrelevant.\n\n\"Mike: Oh. You didn't switch at all or he didn't switch at all or he didn't switch at all?\" ambiguous.\n\nAt (35): \"Mike: He's the werewolf. Snap.\"\n\nSimilarly, (39) \"Mike: I was the werewolf and if he switched us,\".\n\nSo Mike thinks he is or might be werewolf. \"Mike: ... I was the werewolf and if he switched us\" implies he believes he is werewolf. So presumably he might be candidate for werewolf. Also many others vanish.\n\nMaybe the puzzle is that we think the werewolf is Mike.\n\nBut earlier, \"Justin: I'm the insomniac.\" So Justin's starting role was insomniac; he now knows his current card (which could be different).\n\nBecause of troublemaker involvement, maybe the werewolf ended up as someone missing in statements. If troublemaker swapped two others, one of them could now be werewolf.\n\nAlternatively examine: \"Justin: I'm the insomniac. Woke up as the insomniac.\" This indicates Justin didn't swap; he remained insomniac.\n\n\"Paul: this time I was a troublemaker.\" Tm initially troublemaker, and they swapped two people's cards (approach). Which players did he swap? He didn't reveal. He says \"We should speed at the roll next...\" probably irrelevant.\n\n\"Paul: I didn't switch you.\" So doesn't say who.\n\nWait: (25) \"Paul: I didn't switch you.\" (and near 27.)\n\nThese are confusing.\n\nEssential: We need to choose someone likely a werewolf.\n\nFrom transcript, see if any mention of being a werewolf by others: \"Mike: He's the werewolf. Snap.\" \"Mike: I was the werewolf and if he switched us\" (so Mike claims to be werewolf). People complaining about him.\n\n\"Eric: I'd like to hear say it.\" \"Mike: I think I'm the werewolf...\"\n\n\"Paul: I was the troublemaker.\" He swapped? \"Paul: this time I was a troublemaker.\" Means he swapped two other players' cards without looking. He didn't reveal which. That could hide a werewolf piece somewhere.\n\nTherefore unclear.\n\nI suspect most likely werewolf is Mike due to explicit statements or suspicion. Could be also John?\n\nAdditionally, \"Justin: you're going to kill.\" \"Mike: ...\"\n\nThe conversation seems chaotic. But some lines: (96) \"Mitchell: Because he's the werewolf, he's trying to throw me under the bus...\" Suggests someone identified the werewolf as someone else. Maybe \"he\" refers to Mike? Hard.\n\nAnother angle: The game originally had 5 roles: If some roles are assigned. Since it's 5 players, roles: maybe combination of Insomniac, Troublemaker, Seer, and maybe Werewolf(s). Starting roles might be as follows: There's at least one troublemaker, one insomniac, maybe seer & rogue.\n\nIn typical play, if these roles are present, at least 1 werewolf typically. We find if any handle suggests they meet a werewolf.\n\nMike says: \"I think I'm going to do something. Wait...\"\n\nThis is messy.\n\nMaybe not necessary to decipher exact: Vote for Mike for maximum chances: he considers himself a werewolf. So others suspect.\n\nThus guess Mike.\n\nJustify: Who is most likely werewolf: Mike. Vote for Mike.\n\nLet's produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "Based on the transcript, several players accuse one another of being an imposter, but the most consistent indicator is that Mike repeatedly claims or accepts that he is a werewolf. While other statements are vague, Mike’s assertions—\"He's the werewolf,\" \"I was the werewolf,\" and accusations that he caused a swap—suggest a definitive role. Because players tend to bluff intentionally when they are villains, the most probable candidate to be a werewolf is Mike, and eliminating him will benefit the village. Therefore, voting for Mike is the most logical choice.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, several players accuse one another of being an imposter, but the most consistent indicator is that Mike repeatedly claims or accepts that he is a werewolf. While other statements are vague, Mike’s assertions—\\\"He's the werewolf,\\\" \\\"I was the werewolf,\\\" and accusations that he caused a swap—suggest a definitive role. Because players tend to bluff intentionally when they are villains, the most probable candidate to be a werewolf is Mike, and eliminating him will benefit the village. Therefore, voting for Mike is the most logical choice.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, several players accuse one another of being an imposter, but the most consistent indicator is that Mike repeatedly claims or accepts that he is a werewolf. While other statements are vague, Mike’s assertions—\\\"He's the werewolf,\\\" \\\"I was the werewolf,\\\" and accusations that he caused a swap—suggest a definitive role. Because players tend to bluff intentionally when they are villains, the most probable candidate to be a werewolf is Mike, and eliminating him will benefit the village. Therefore, voting for Mike is the most logical choice.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Based on the transcript, several players accuse one another of being an imposter, but the most consistent indicator is that Mike repeatedly claims or accepts that he is a werewolf. While other statements are vague, Mike’s assertions—\"He's the werewolf,\" \"I was the werewolf,\" and accusations that he caused a swap—suggest a definitive role. Because players tend to bluff intentionally when they are villains, the most probable candidate to be a werewolf is Mike, and eliminating him will benefit the village. Therefore, voting for Mike is the most logical choice."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3460,
+    "output_token_count": 1155,
+    "generation_time_sec": 143.47232675552368,
+    "used_chat_template": true,
+    "input_char_count": 13641,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

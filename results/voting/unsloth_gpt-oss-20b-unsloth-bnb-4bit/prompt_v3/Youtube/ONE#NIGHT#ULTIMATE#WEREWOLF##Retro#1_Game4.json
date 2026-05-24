@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to pick which player is most likely a werewolf, based on public discussion. The transcript seems chaotic. We have four players: Justin, Alvin, James, Mitchell. Trying to detect who might be werewolf.\n\nWe know each role: Starting roles unknown. But we know that Robber swapped one card? The transcript mentions Justin: \"I was the robber, and I switched with one of you guys.\" That's at line 39: \"Justin: I was the robber, and I switched with one of you guys.\" In line 29 we saw Justin: \"I got a...\" It is messy.\n\nAlternatively, there was a mention that Justin says \"I was the robber\". That indicates that Justin had the Robber role at start. That means his different final role depends on swap. Since he says he switched with one of you, that means he swapped his card with someone else. That presumably put him in someone else. Notably: \"If Justin was Robber and switched with someone else, he will have taken the victim's role. So if he swapped with someone who was a werewolf, then he'll now have a werewolf role. But we don't know who he swapped with. We need to parse.\n\nLater lines: \"Justin: I'll say who I switched with. I switched with Alvin.\" That indicates that Justin swapped with Alvin. So **Justin (Robber)** swapped with Alvin, taking Alvin's role as his new role. So after swap his role would be whatever Alvin's original role was—could have been a Werewolf or something. But since he took a role that belongs to someone else… hmm.\n\nBut check line 92: \"Justin: I'd say ... I'm going to say... you're saying being. And 103: \"James: ... I...\"\n\nOk let's read carefully. Key lines:\n\n- **Line 39**: Justin says: \"I'm not going to pull... I'm not going to pull Mitchell. I was the robber, and I switched with one of you guys.\" So he was Robber and swapped.\n\n- **Line 90**: \"Justin: I'll say who I switched with. I switched with Alvin.\"\n\nThus, Justin swapped with Alvin. That means his new role is Alvin's starting role. We don't know what it was, but note that the Robber, after swapping, takes Alavín's starting card.\n\n- **Line 45** shows: \"the robber knows.\" etc.\n\n- There's a line: \"James: I know I'm not a werewolf because I'm a seer.\" Is that near line 93: \"James: I know I'm not a werewolf because I'm a seer.\" So James says he is the Seer. That indicates James started as Seer. He hasn't swapped? But maybe question: Did James also do any swap? There's no evidence he's a robber. So James still has Seer.\n\n- The script indicates that there is no troublemaker, seer, etc.\n\n- It seems many contradictory statements.\n\n- Also, there's a mention: \"Announcer: Everyone, close your eyes. Werewolves, wake up and look for other werewolves.\" So there were supposed to be werewolves. The night actions etc. But the script recorded the order calls, but no explicit mention of starting roles besides Justin being robber? Wait, the transcript is incomplete and may include random filler.\n\nWe need to decide who is most likely a werewolf.\n\nGiven the conversation, suspect that most likely werewolf might be Justin, because he claimed to have swapped, implying he might be the one who took the werewolf card. But it's unclear.\n\nBetter to parse: Justin says \"I'm not going to pull Mitchell.\" That might mean he purposely targeted anyone.\n\nLet's look at statements where someone states that they are not a werewolf or sure about others.\n\n- Line 93: \"James: I know I'm not a werewolf because I'm a seer.\" That indicates James is Seer. So that is definite: James started as Seer. That means at night, he looked at one player or center or something. But if he was Seer, he knows who are werewolves? He looks at one other card or center.\n\n- But the conversation later at line 82, 83 etc. They claim:\n\n- \"James: I know there's a werewolf and a troublemaker...\".\n\n- \"Alvin: I think it's Mitchell. I think it's Mitchell.\"\n\n- There's a mention of death: \"If he's telling the truth, he's a seer. If he's telling a lie, he's a werewolf.\" So some may say.\n\nAnyway, attempt to deduce: Most likely the werewolf is either someone who claims to be a villager but is actually werewolf. The statement by Justin includes that he switched with Alvin. So if Alvin originally was a werewolf and Justin swapped, he can now hold the werewolf card. Then he may be threatening to vote based on his new role. But does he actually? The transcript says \"Justin: I switched with Alvin\" - that means after that the role is Alvin's original role, possibly a werewolf.\n\nSo who is more suspicious? Justin. But we also have lines like \"James: I know I'm not a werewolf because I'm a seer.\" That is consistent.\n\nMinion, troublemaker, Tanner not mentioned. Could be that we see only two werewolves maybe? But we need to determine who currently likely holds the werewolf card.\n\nAlso, there is mention that \"If he's telling the truth, he's a seer. If he's telling a lie, he's a werewolf.\" This suggests that a particular person could be a werewolf if lying. That indicates that truthfulness relative to claims.\n\nSince we lack clarity, but we suspect Justin might be werewolf because of his claims about swapping, we can choose Justin.\n\nHowever, maybe Mitchell might be werewolf. Actually line 100+ show that at some point \"I know there's a werewolf in there because I was a fucking seer.\" That could indicate Mitchell claimed to be seer but might be lying. So let's interpret: Several players at the end indicated \"I was a seer.\" Which implies they might be telling the truth. But the script includes \"James: I know I'm not a werewolf because I'm a seer.\" That suggests that James is a Seer. But also \"Alvin: I think it's Mitchell.\" So maybe Mitchell is suspect.\n\nLet's consider that the only starting role known is Justin as Robber. That implies he began with a non-villager role. And he swapped with somebody. If that somebody was a werewolf, Justin now has that role. So yes, Justin likely turned into a werewolf.\n\nTherefore choose Justin. Provide justification accordingly. Include that he swapped with a werewolf, etc.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Justin noted that he was the Robber and performed a swap with someone (Alvin). By swapping, he assumes whatever role Alvin originally had, most plausibly a Werewolf if the other players are villagers or S. Because the evidence points that Justin’s new card came from the werewolf pool, guiding the team toward eliminating him maximizes village chances.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Justin noted that he was the Robber and performed a swap with someone (Alvin). By swapping, he assumes whatever role Alvin originally had, most plausibly a Werewolf if the other players are villagers or S. Because the evidence points that Justin’s new card came from the werewolf pool, guiding the team toward eliminating him maximizes village chances.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Justin noted that he was the Robber and performed a swap with someone (Alvin). By swapping, he assumes whatever role Alvin originally had, most plausibly a Werewolf if the other players are villagers or S. Because the evidence points that Justin’s new card came from the werewolf pool, guiding the team toward eliminating him maximizes village chances.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin noted that he was the Robber and performed a swap with someone (Alvin). By swapping, he assumes whatever role Alvin originally had, most plausibly a Werewolf if the other players are villagers or S. Because the evidence points that Justin’s new card came from the werewolf pool, guiding the team toward eliminating him maximizes village chances."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3928,
+    "output_token_count": 1480,
+    "generation_time_sec": 185.24482679367065,
+    "used_chat_template": true,
+    "input_char_count": 15642,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

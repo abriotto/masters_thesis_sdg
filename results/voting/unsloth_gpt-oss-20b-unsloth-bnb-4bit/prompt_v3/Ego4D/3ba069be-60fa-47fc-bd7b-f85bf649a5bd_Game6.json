@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game6.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse transcript. 4 players: Kevin, Kaelan, Jessica, Daniel. Roles: list possible. From discussion seems much confusion. We need identify who likely was werewolf.\n\nLet's reconstruct.\n\nWe have confusion about who had which role.\n\nSet of candidate roles equals players+3=7 roles selected, 4 players and 3 center cards. Likely mix includes various roles. Let's examine statements:\n\nDaniel: \"I was the Drunk.\" at line 6. So Daniel started as Drunk. That means his starting role was Drunk.\n\nJessica: \"Yes.\" indicates she was the Insomniac. She said \"Yes\" likely confirming she was Insomniac. She didn't say earlier if she had a different role. So probably she was Insomniac.\n\nKaelan had mention \"I was the robber\" at line 24. Wait: line 24 says \"- \"He was the Tanner and I was the Robber.\" That suggests a conversation where someone else said they were the robber. Possibly Kaelan's statement originally: \"He was the Tanner and I was the Robber.\" So Kaelan is Robber. But earlier, someone else talks about \"I was the Robber\"? Need clarify.\n\nLine 9: \"Hmm. Are you still the Insomniac?\" - referencing Daniel asking Jessica? Wait dialogue: Daniel (lines 5-6 missing) shows.\nOk transcript lines are numbered roughly sequential lines conversation. Hard to parse.\n\nWe also have indicating \"Kevin: I'm the Doppelgänger.\", \"Kevin: I was the Doppelgänger.\"\n\nSeems Kevin's starting role could have been Doppelgänger. But later he says \"I'm not the Tanner\". He might be revealing.\n\nAlso \"You were the Drunk\" perhaps multiple times.\n\nAt end, Daniel: \"Yep. Your boy. So I took the Tanner.\" He says he took the Tanner?? Not sure.\n\nNeed decide probable werewolf.\n\nWhat is likely scenario: If Daniel was Drunk, after Drunk action, he swaps his card with center card. That swapped to either some unknown. If Drunk turned into something else, could be werewolf or not.\n\nBut if Drunk is a receiving card, it's not considered a werewolf.\n\nWait Drunk is in Team Village; unless it switches to a werewolf? It can't become werewolf because it's Spawns gambler. Actually Drunk is replaced with whatever card he swapped to. At night, Drunk swaps his card with one from center, not seeing. So Drunk ends up with a random card from center which could be a werewolf. But the original card was likely a non-werewolf. However, after swapping, his final card could be werewolf, potentially making him a werewolf. But the win conditions revolve around final roles. So if Drunk swaps to a werewolf, he becomes a werewolf. So \"I was the Drunk\" means initial role Drunk; but final role could be one of center cards. Might be werewolf.\n\nSimilarly, another role might be something like Seer, Trembles.\n\nHowever, we don't know the exact distribution.\n\nBut maybe it's easiest if we assume layout: Perhaps the two cops confused. Could be though to identify candidate: who is likely werewolf? We have center can't be voted. We must decide which player from list is likely a werewolf. Considering dialogue: Kevin claims being Doppelgänger (and presumably became werewolf). But maybe not. There is confusion. I'd assume the most likely werewolf is Kevin.\n\nBut we need evidence.\n\nLet's systematically track.\n\nFrom transcript lines:\n\n[1] Daniel: This music...\n[2] Kevin: Tap it.\n[3] Kaelan: Dan?\n[4] Jessica: You first.\n[5] Kaelan: You first.\n[6] Daniel: I was the Drunk.\nThis indicates Daniel played the role of Drunk at start? He might have had role Drunk. But being Drunk doesn't mean he was werewolf.\n\n[7] Jessica: Okay.\n[8] Kaelan: Okay.\n[9] Daniel: Hmm. Are you still the **Insomniac**? \nLooks like question to Jessica perhaps: \"Are you still the Insomniac?\" So Jessica might be Insomniac. She says yes next line.\n\n[10] Jessica: Yes. So she confirms she is Insomniac.\n\n[11] Kevin: So...\n[12] Daniel: Kevin, were you the Troublemaker despite not having Troublemaker in the game? \nSo Daniel is questioning Kevin about Troublemaker. If not in game then no Trouble.\n\nIt seems conversation is purposely confusing.\n\n[13] Kaelan: I heard some giggling at some point.\n[14] Kevin: In a way, I was. Dan, you switched up the middle card? Was the Doppelgänger.\nSome confusion.\n\n[15] Daniel: Oh, interesting.\n[16] Kevin: Yeah.\n[17] Daniel: So you're the Seer?\nSo Daniel asks Kevin about Seer status?\n\n[18] ... etc\n\nAt [24] line, \"He was the Tanner and I was the Robber.\" Who is speaking? At [24] something like \"He was the Tanner and I was the Robber.\" Potentially it's a reply by Kaelan? The lines preceding showing confusion.\n\nIn summary, roles may be scattered. But likely we can find statement \"Kell\" says \"I was the robber\" lines 37-38. So Kaelan says he is robber.\n\nCheck lines 38-39: they're same as 37: \"I was the robber. I did rob him.\" So Kaelan said he robbed him. That's the Robber's action; so he was Robber at start.\n\nRobber swapped his card with another with random card? Actually Robber chooses a player to swap with then sees new card. So they want to take the desired card.\n\nThus if Kaelan says he was Robber, his final role could be unknown.\n\nIf a player is Robber and swapped with a werewolf, they could become werewolf.\n\nBut Karen?\n\nNot enough details.\n\nMaybe we need identify who is likely werewolf based on scoreboard: The only suspects are those not in core list (could be that Kevin claims being Doppelgänger ...). However, there is improbable suspicion.\n\nFirst we recall that the game starts with roles unknown. Without clear info, we can't determine definite werewolf. So we decide to guess accordingly.\n\nThere's some talk that \"Kevin\" indeed is likely a suspect maybe becoming werewolf.\n\nAlternatively, use \"Daniel\" since he states \"I was the Drunk\", but he might have ended as werewolf.\n\nPerhaps the best guess: Person who might have ended as werewolf is Kevin because he claimed being a Doppelgänger which could turn to WEREWOLF at end. Others speak duties.\n\nTherefore I'll choose Kevin.",
+  "parsed_output": {
+    "justification": "Kevin’s conversation includes claims of being the Doppelgänger, likely resulting in a change in role, and he repeatedly refers to others’ roles in ways that suggest he is a potential werewolf. Given the uncertainty, voting him out is the most reasonable way to ensure a werewolf dies.",
+    "chosen_vote": "Kevin"
+  },
+  "raw_response": "{\"justification\":\"Kevin’s conversation includes claims of being the Doppelgänger, likely resulting in a change in role, and he repeatedly refers to others’ roles in ways that suggest he is a potential werewolf. Given the uncertainty, voting him out is the most reasonable way to ensure a werewolf dies.\",\"chosen_vote\":\"Kevin\"}",
+  "response_for_parsing": "{\"justification\":\"Kevin’s conversation includes claims of being the Doppelgänger, likely resulting in a change in role, and he repeatedly refers to others’ roles in ways that suggest he is a potential werewolf. Given the uncertainty, voting him out is the most reasonable way to ensure a werewolf dies.\",\"chosen_vote\":\"Kevin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kevin",
+    "justification": "Kevin’s conversation includes claims of being the Doppelgänger, likely resulting in a change in role, and he repeatedly refers to others’ roles in ways that suggest he is a potential werewolf. Given the uncertainty, voting him out is the most reasonable way to ensure a werewolf dies."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2433,
+    "output_token_count": 1494,
+    "generation_time_sec": 183.46194911003113,
+    "used_chat_template": true,
+    "input_char_count": 9881,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

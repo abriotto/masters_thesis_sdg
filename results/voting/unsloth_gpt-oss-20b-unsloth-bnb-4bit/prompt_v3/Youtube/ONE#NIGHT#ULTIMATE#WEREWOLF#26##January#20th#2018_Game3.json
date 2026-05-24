@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Meghan",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse transcript; very messy. We have players: Justin, Meghan, Paul, Mitchell, Mike. Roles unknown but some people mention them. For example: “Justin: I was the tanner and he switched me”. Several lines. The transcript close to 13: Mike says \"I want to know the information first.\" etc. The key scenario: There's some confusion if Justin is Tanner or maybe werewolf.\n\nWe must decide who to vote for. Team Village wants eliminate a werewolf if present. So we need to guess likely werewolf. The transcripts mentions that Mike says \"I suspected Justin was werewolf\" and \"Mike: I think Justin is werewolf\". Also lines mention that at [95], Mike says: \"No, I think you're the werewolf.\" So someone (Mike) suspects Justin's role.\n\nAlso demand: “Mike: I don't think he's the Tanner.” Wait line reflecting that they suspect.\n\nOther lines mention that some other player could be murdered (note: 'I am the tanner' earlier). But we should treat the transcript as conversation in game 3 about the entire night.\n\nBut we lack clarity of roles. Let's try summarizing:\n\nList of players: Justin, Meghan, Paul, Mitchell, Mike.\n\nFrom transcript, there is conversation about night actions: after announcement of werewolf revealing. At the start, only two werewolves may have shown. Probably there are one or two werewolves.\n\nUnder the gibberish transcript, many statements appear disjointed.\n\nPerhaps the actual roles: maybe the game's results: Mike had been the robber or troublemaker? Hard to parse.\n\nThe transcript indicates that Justin says: \"I was the tanner\" and \"I was the tanner\", lines 94, 95, 98. \"Justin: I was the tanner\". That lines show he's telling he's the Tanner.\n\nBut wait: It says \"Justin: I was the tanner\" but not \"I am the tanner\"? Hard to parse.\n\nBetter to compute probable roles. Since there might have been no werewolves in game else they'd have bigger talk about them.\n\nThe transcript basically indicates that there may have been a Werewolf or two.\n\nIf we treat actionable: \"Mike: I think being the werewolf\". Possibly Justin is werewolf? But the transcript states: \"Mike: I think you're the werewolf\" line 95.\n\nThus it's ambiguous.\n\nOur goal: choose a single player to vote for. Evaluate that the most likely werewolf is: If there is at least one werewolf in game, they want to be killed. The transcript appears to revolve around accusations/identities. Actually there is repeated mention of \"Justin: I was the tanner\".\n\nSo it's more probable that Justin is the Tanner, not a Werewolf. So who could be werewolf? Maybe none. If there's no werewolf, there's no need to vote; but they'd still have to vote. But if no werewolf, everyone votes ??? Ideally they'd skip.\n\nBut choices must be one of the players. So let's consider that maybe Paul is the werewolf? But we need evidence.\n\nLook for uses: At line [96], says \"justn't trust Justin\". Freed. When referencing \"Mike: I don't believe him\". He is suspicious.\n\nLine from [59] \"Justin: So Mitchell, what did you see at the center?\" That indicates like unknown.\n\nGiven confusion, typical being random, but many players engaged in rumor.\n\nMaybe the last part of transcript is not relevant to the game but confusions. Might be a mis-labeled conversation from a different game?\n\nA simpler viewpoint: The players each suspect each other. In one neutrally vet we might just pick the one who's most suspicious. For instance, \"Mike: I think you're the werewolf.\" That begs to vote for Mike. But maybe too? Wait that is to suspect that Mike may be werewolf. But the phrase \"No, I think you're the werewolf\" from line 95 is ambiguous: maybe the speaker is you: \"Mike: No, I think you're the werewolf.\" That seems like the speaker accusing the referent. The speaker is Mike about someone else being a werewolf. But they didn't specify who. It's unclear.\n\nAlternatively, \"Mike: I want to know the information first.\" He asked about who or what. He may be trying to gather info.\n\nGiven my analysis, ignoring nonsense: I'd pick \"Mike\" as the vote target because he said \"I think you're the werewolf\" and basically is suspecting him. Maybe he is the werewolf. So the answer: Paul? Wait again, yep.\n\nBut maybe the game had a werewolf among the players: maybe Mike as the werewolf. But the conversation reveals that \"Mike: I think you're the werewolf\" to be victims?\n\nHmm, but the transcripts show that lines 97 etc. It's quite confusing. I think the best approach is: make a conservative guess: The only individual who is frequently guessed as suspect by others is Jeff?\n\nWait not. Let me quickly search which names appears in many lines: \"Mike\" appears frequently. But \"Justin\" appears but also eventually says \"I was the tanner\" - a role that would die.\n\nBut if Justin is a Tyler, not a werewolf. Stating that \"I was the tanner\" also indicates he might have died before. But did he? Hard.\n\nThe most plausible victim is Mike? He says \"Mike: I think Justin is werewolf.\" I'd vote for Mike to vote for Mike? But you cannot vote for yourself.\n\nWait: Suppose the players think that Mike is the suspect. But who is the most suspicious? The transcripts mention \"Mike: I think you're the werewolf.\" That could be describing someone else as werewolf; not necessarily that he is being accused but he suspects some else. That suggests that he's telling the group that someone else (like maybe Justin) is werewolf. But not that Mike himself is werewolf.\n\nNevertheless, maybe the are creep.\n\nWe ask: choose a target that is the farthest likely to be werewolf. That is the one that \"someone\" thinks is a werewolf.\n\nGiven that \"Mike: I think Justin is werewolf\". So that suggests that Justin might be werewolf? But also \"Justin: I'm the tanner\" conflict.\n\nBut the transcripts revolve around \"Justin: I was the tanner\" etc. Eh.\n\nThis is messy but maybe just choose \"Justin\" to vote because he claimed to be the tanner and his statement might hint of deception. Actually if Justin is the tanner, he won't cause a win for Village because that would not secure the village. The village wins if at least one werewolf dies. So vote for whoever is suspected to be werewolf.\n\nIf we vote for the tanner, but the Tanner draws still kill the tanner causing victory for village, yes, good. So choose Justin maybe? But Wait: if Justin actually the Tanner, then he is ai go cheat. However from transcript: He says \"I was the tanner and he switched me directly.\" Not the typical random. So maybe he is indeed Tanner.\n\nIf we vote for Justin, we kill him; if he's the Tanner, done; if he's a werewolf, killed. So better choose him.\n\nThus final: vote for Justin.",
+  "parsed_output": {
+    "justification": "Based on the transcript, Justin repeatedly claims to be the Tanner or mentions a switch involving him. If he is indeed the Tanner, eliminating him would satisfy the win condition for the Village. Moreover, several comments suggest uncertainty about Justin’s true role, indicating he might be the most suspicious or a likely target. Eliminating him is therefore the most strategic choice for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, Justin repeatedly claims to be the Tanner or mentions a switch involving him. If he is indeed the Tanner, eliminating him would satisfy the win condition for the Village. Moreover, several comments suggest uncertainty about Justin’s true role, indicating he might be the most suspicious or a likely target. Eliminating him is therefore the most strategic choice for Team Village.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, Justin repeatedly claims to be the Tanner or mentions a switch involving him. If he is indeed the Tanner, eliminating him would satisfy the win condition for the Village. Moreover, several comments suggest uncertainty about Justin’s true role, indicating he might be the most suspicious or a likely target. Eliminating him is therefore the most strategic choice for Team Village.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Based on the transcript, Justin repeatedly claims to be the Tanner or mentions a switch involving him. If he is indeed the Tanner, eliminating him would satisfy the win condition for the Village. Moreover, several comments suggest uncertainty about Justin’s true role, indicating he might be the most suspicious or a likely target. Eliminating him is therefore the most strategic choice for Team Village."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3852,
+    "output_token_count": 1590,
+    "generation_time_sec": 198.93965888023376,
+    "used_chat_template": true,
+    "input_char_count": 15263,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game5.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript of a game of One Night Are lengthly conversation, but appears disorganized and filled with noise. It may not contain explicit statements of identity; maybe some participants claim roles but statements are garbled. Hard to parse.\n\nWe need to decide, from perspective of Team Village, which player to vote for that will help win. Ideally you vote for a werewolf if exists; also Note there is no mention that any player claimed to be a werewolf. Many accusations: James says \"I think ... was a Werewolve\"? Actually many statements about suspecting being werewolf. Let's analyze key statements:\n\nList of players: Elliot, Ashley, James, Chris, Sukeshi, Sian.\n\nFrom transcript, try to identify who might be Werewolf.\n\nKey statements regarding identity:\n\n- Lines where somebody says \"I'm…\" e.g.:\n\nLine 65: Ashley: \"I will then. Yep. Definitely.\" Coming from some context; unspecific.\n\nLine 70: \"Because I knew you were the Insomniac before you said it.\" Not a claim.\n\nLine 78: James: \"And I'm still the Doppelgänger.\" So claims to be Doppelgänger.\n\nLine 99: Elliot: \"I am the Seer. Chris is a Werewolve.\" So Elliot claims role is Seer, and that Chris is werewolf.\n\nLine 100: Chris: \"That's a bold accusation.\" Not identity.\n\nLater, line 115: \"You are the Robber.\" Could be Sian saying \"you are the Robber\" but is Spencer? Actually \"You are the Robber.\" Here at line 115: \"Sian: You are the Robber.\" So Sian CLAIMS that the speaker (maybe itself?) is the robbers?\n\nLet's check lines 114-116: \n115. Sut: \"You are the Robber.\"  The preceding lines: 114. \"You're not the Werewolve?\" presumably it's Sian saying to someone else? Hard.\n\nAlso 114: \"You're not the Werewolve?\" suggests Sian says to others? So \"Sian: You are the Robber.\" Possibly Sian says to the group: \"You are the Robber.\"\n\nThen 117, 118, 119: etc about Robber action.\n\nSeems unclear.\n\nThis transcript is quite confusing. However, we need to choose someone to vote. There's suggestion that James may have suspicion his identity as Jok about being werewolf. Let's observe that multiple people inadvertently talk about roles; but no one convincingly proves they are a Werewolf.\n\nYet many statements referencing \"Werewolve\". People call them probably by mistake spelled \"Werewolve\". Next: \"I think ... I think you are the ...\"\n\nWe need to figure out based on statements: In this conversation, who could plausibly be a werewolf? Possibly Elliot is Seer; but he claims \"Chris is a Werewolve.\" That indicates that Elliot might think Chris is werewolf. But is this statement false? In oneline 100: Chris says \"That's a bold accusation.\" So maybe suspicious.\n\nCould be that trivial scenario: The only suspect that obviously about a werewolf is Chris: many accuse him. But identity could be ambiguous.\n\nLater at line 128: \"Sukeshi: Yep.\" Hmm.\n\nNow let's search within transcript for \"Werewo\".\n\nlines:\n\n48: \"Sian?\\n49: James: I don't think you're a Werewolve this time.\"\nline 50: 50: Sukeshi: Is that because you're a Werewolve? hmm maybe.\n\nThen 73: \"Because I'm a Doppelgänger.\" but not.\n\nLater 70-100: The snippet 99: Elliot: I am the Seer. Chris is a Werewolve. So Elliot points to Chris being werewolf.\n\nThus candidate: maybe Chris.\n\nBut need to analyze possibility: maybe the Real werewolf isn't obvious; could be someone else. Still, possible that someone used deception, claiming to be \"Damned?\"?\n\nBecause the transcript too messy.\n\nHowever, we possibly vote for Chris, based on many mentions of suspicion. Let's further examine lines 70–100.\n\nFrom 70:\n\n69. James: How would that prove you?\n70. James doesn't speak. Wait.\n\nAnyway.\n\nAt 99: Elliot says: \"I am the Seer. Chris is a Werewolve.\" So Elliot is 100% sight seer. But it's possible that being a Seer is known. Not sure.\n\nOne more suspicion: there may be argument that \"Genie\" uses convict. Honestly, this transcript looks unrealistic; maybe none of these claims are reliable.\n\nNeed to deduce final. As the external observer, we pick a player likely to be a Werewolf based on discussion. Random guess: Chris likely to be suspected because many accusations.\n\nSo final: choose Chris. Let's produce brief justification.",
+  "parsed_output": {
+    "justification": "Most of the discussion focuses on suspicious claims of the character \"Chris.\" Several players accuse him of being the Werewolf, and only Elliot declares himself the Seer and singles out Chris as the werewolf, indicating that the only clear target is Chris. Voting for Chris would maximize the chance that someone who may actually be a Werewolf is eliminated, helping the Village win.",
+    "chosen_vote": "Chris"
+  },
+  "raw_response": "{\"justification\":\"Most of the discussion focuses on suspicious claims of the character \\\"Chris.\\\" Several players accuse him of being the Werewolf, and only Elliot declares himself the Seer and singles out Chris as the werewolf, indicating that the only clear target is Chris. Voting for Chris would maximize the chance that someone who may actually be a Werewolf is eliminated, helping the Village win.\",\"chosen_vote\":\"Chris\"}",
+  "response_for_parsing": "{\"justification\":\"Most of the discussion focuses on suspicious claims of the character \\\"Chris.\\\" Several players accuse him of being the Werewolf, and only Elliot declares himself the Seer and singles out Chris as the werewolf, indicating that the only clear target is Chris. Voting for Chris would maximize the chance that someone who may actually be a Werewolf is eliminated, helping the Village win.\",\"chosen_vote\":\"Chris\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Chris",
+    "justification": "Most of the discussion focuses on suspicious claims of the character \"Chris.\" Several players accuse him of being the Werewolf, and only Elliot declares himself the Seer and singles out Chris as the werewolf, indicating that the only clear target is Chris. Voting for Chris would maximize the chance that someone who may actually be a Werewolf is eliminated, helping the Village win."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3973,
+    "output_token_count": 1094,
+    "generation_time_sec": 137.4964714050293,
+    "used_chat_template": true,
+    "input_char_count": 14710,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

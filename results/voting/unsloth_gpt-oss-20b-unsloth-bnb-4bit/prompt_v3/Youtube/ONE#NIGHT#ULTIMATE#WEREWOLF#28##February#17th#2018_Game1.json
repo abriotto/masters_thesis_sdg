@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a description of a One Night ultimate werewolf game. We need to read transcript and decide who to vote, i.e., which player likely is a werewolf. I need to identify roles and who is suspect.\n\nList participants: Justin, Caitlynn, Paul, Alysha, Mitchell, Mike.\n\nWe need to parse transcript for clues. The transcript text seems messy; I'm not sure I understand the context well. Let's first interpret the transcript.\n\nThere's an Announcer speech about a whole set of roles. We'll analyze which roles were involved. The transcript mentions \"Revealer\". This role is not part of standard. But maybe \"Revealer\" refers to the player who discovered something by looking outside. Actually there is an \"Revealer\" role from the community copy? It's likely just the person performing the \"Revealer\" action (like revealing someone?) It might be a variation that reveals the role of the target. Possibly what the transcripts mention: \"Revealer, wake up. You may turn any other player's card face up. If the card you reveal is a werewolf or a tanner, turn it back over face down.\"\n\nSo \"Revealer\" acts as a \"Reveal\". That's not official. Perhaps it's introduced in this game.\n\nRegardless, key roles: Seer, Robber, Troublemaker, Drunk, etc. Also minion, werewolf and Tanner mentioned in transcript.\n\nWe need to deduce the final role distribution based on comments.\n\nLet's parse.\n\nInitial portion: Announcer: \"Everyone close your eyes. Werewolves, wake up and look for other werewolves...\" implying the game started with a classic set. She describes the Night actions. So the roles present: There is at least one Werewolf, maybe also minion etc. Actually from transcript: \"Justin: I only have werewolf, werewolf, minion, tanner. So things aren't looking to hot for Justin.\" Means Justin was sharing his original role: not sure.\n\nLet's read the conversation again, re-write non-messages:\n\nAnnouncer: ... (starts night actions). I see resets: There's a \"Revealer\" which turns players face-up. By the look of it, the players may have knowledge and cannot see at a moment.\n\nWe need to use the transcript details: For example, \"Justin: ... So if he's being a werewolf. It mentions some timers: \"Mike: ...\"\n\nWhat is the key lines?\n\nStarting:\n\n[1] Announcer: ... [calls].\n\n[2] Justin: Come on Drunk.\n\n[3] Mike: He's so drunk.\n\n[4] Justin: That's so raven.\n\nThis is weird.\n\nContinue:\n\n[5] Announcer: Revealer: etc.\n\nThen a bunch of random statements:\n\n[6] Justin: You think Corey is still in the house? (non-sense)\n\n...\n\nIt goes quickly into random statements like \"Oh, that's bad news or good news?\" etc. Many empty details.\n\nI suspect this transcript purposely is nonsense to simulate confusion among players. Hard to parse.\n\nHowever, at the bottom, we see the final lines: \"Mitchell: Don't vote for me, I'm a werewolf. I want to win.\" That suggests Mitchell says he is a werewolf and says you shouldn't vote for him. Everyone else presumably will vote for Mitchell? Or maybe they won't vote for him because he says that. We need to decide.\n\nBut as an external observer, we need to choose a player to vote for for best chance of defeating the werewolf(s) or causing a werewolf to die.\n\nIf reading final lines: \"Mitchell: Don't vote for me, I'm a werewolf. I want to win.\" That line indicates whether the player is a werewolf (since he declares he is one). But we can't trust it; maybe he's a liar or a vouch from the werewolf. But we need to deduce from the rest.\n\nLet's parse relevant statements that talk about other roles. For instance, lines 30–33 are about \"Justin: So if he's ???\" Wait.\n\nI think we should focus on the lines referencing known roles: The specific statement from some player might indicate they trust or mislead.\n\nAlso there is main confusion: \"Paul: This is also little interesting, because I'm going to tell you right now, I looked at someone's card and I know who the minion is.\" That indicates Paul may have seen the minion during the seer's look. So if he saw the minion in two center cards, that indicates there's a minion somewhere.\n\nThe minion is a are supporters of werewolves. So cooperating in team. The minion's presence means that werewolves survived if the minion doesn't get eliminated. the minion, if found by the seer, may want to report the minion.\n\nBut we don't know. The goal: We need to choose a player likely to be a werewolf. Handling multiple suspects: Might choose user Mike? Let's examine if there is any hints that Mike may be a werewolf. For example:\n\n\"Charlie: Did you see any suspicious? - NOT EXACTLY.\n\nLook into positions: It seems that the final part of transcript \"Mitchell: Don't vote for me, I'm a werewolf. I want to vote for you.\" Hmm.\n\nOk we must decide.\n\nLet's gather info: Absent the exact mapping of roles to names, we can guess.\n\nThe transcripts show statements that seem contradictory. People may have taken on new roles: \"Justin: I am the troublemaker\" suggests Justin could have been the troublemaker initially; then after swaps may have become something else. But we don't know.\n\nOne of them may be the Tanner, specifically it's stated: \"Mike: I saw a Tanner\" in line 47 (line 47 \"Mike: I saw a Tanner.\") So Mike might have seen a Tanner. The Tanner wants to die. So if Mike sees a Tanner, Mike could be the Tanner or not. This is key.\n\nAlso line 45 has \"Mike: no.\" This might refer to not being a werewolf.\n\nLine 17? Unclear. Let's try to reconstruct a map:\n\n- Justin: described as troublemaker? \"I was troublemaker\". Did Justin call himself trouble? In line 37, yes: \"Justin: I was the troublemaker, which is suspicious...\"\n\n- If Justin is troublemaker, then he would have swapped two others in the night (if he didn't act incorrectly)? Wait troubles man: The Troublemaker is allowed to swap two other players' cards (not themselves). So after night, Justin might not have been trouble but he may have swapped. People may not know what the result is.\n\n- As trouble, Justin would introduce edges.\n\n- But the most straightforward path: We believe the player's truth that \"I am a werewolf,\" might be suspect. But could be a lie. However, we need to examine the content:\n\nLine 120: \"Justin: Because then that makes it one less person that could possibly be killed if he's a werewolf.\" So he's talking about \"he\" presumably Paul or Mike? It's confusing.\n\nThe text is garbled.\n\nSimplify: Suppose we think each player is simply claiming they are not being a werewolf. The final statements:\n\n- Mitchell says: \"Don't vote for me, I'm a werewolf. I want to win.\"\n\n- So Mitchell claims to be a werewolf.\n\nWe can't trust that; potential liar.\n\nNow we must decide a vote that will kill a werewolf if present. So we need to find which evidence points to the werewolf? Let's examine line 46: \"Mike: I saw a Tanner.\"\n\nIf Mike saw a Tanner, that could happen if Mike was a Tanner, or if Mike's card indicates something else after swap. But seeing a Tanner might happen if Mike saw the Tanner's card. If Mike did that, he's a werewolf? Wait, \"seeing a Tanner\" means the card that turned up is a Tanner. But Mike might have looked at a card and saw a Tanner. That means the card he examined, of whom, unknown. I'm not sure.\n\nOk the confusion is too high.\n\nGiven the lack of clarity, we can choose a suspect with higher probability of being werewolf: maybe Mike. But to support a choice, maybe we consider the transcripts that show some players might be lying.\n\nWhat stands out: In line 86: \"Paul: This is also little interesting, because I'm going to tell you right now, I looked at someone's card and I know who the minion is.\" That implies the minion might be present. The minion is a teammate of the werewolves. Knowing the minion leads to suspicion of werewolves.\n\nThus, if Paul knows the minion is present, presumably the minion is something to keep something that might be eliminated. That means that the minion's card might be in the center or someone has that role.\n\nBut the minion itself is not exactly a werewolf but aligns with werewolves. So the minion might be consumed by the minion. But anyway, we just want to vote to eliminate a werewolf.\n\nWe should pick a player that fits being likely werewolf.\n\nIn the configuration we have no direct evidence on who is probable. Most info indicates that \"Mitchell\" might be a werewolf, but he says \"help me.\" Actually he says \"I'm a werewolf,\" but that might be a false statement if he's a liar. If he's a werewolf, he'd target someone and not want to be voted for himself. He says \"Don't vote for me, I'm a werewolf. I want to win.\"\n\nBut if he wants to win, he might want to be voted for someone else? I'm not sure.\n\nBut potential there is actual tweet that beginner?\n\nAlternate approach: consider that players who are changed roles: e.g., Robber could be swapped into a new role. For example, \"Justin: I was the troublemaker, which is ...\".\n\nTricky.\n\nAlternatively, consider that the only role that would trigger an immediate elimination of a particular player is the Hunter: if the Hunter is eliminated, the Hunter kills the chosen person. But here everyone is from Village, making not rating.\n\nTo get a high probability, let's think which player is more likely to be a werewolf: Suppose there were 3 center cards. According to roles, we have these candidate roles: At least 2 werewolves. The transcript seems to imply one werewolf? But how many? Unclear.\n\nThe transcripts mention \"namely I'm a werewolf.\" I'm thinking the only suspect to be a werewolf is Mike? Because Mike says \"I saw a Tanner\" that indicates Mike might have seen the Tanner, but that could mean the card him saw belonged to the Tanner. So the decision: if Mike just saw the Tanner card, that might mean Mike knows he's not a Tanner because he saw the Tanner's card. So he could be a seer or the one who saw two center cards? Hmm.\n\nWait, he sees a Tanner meaning he looked at someone's card (maybe through the reveal). Could be a \"revealer\" or \"seeker\".\n\nLine 49: \"Mike: I will let you know. It was somewhat bad.\"\n\nNo.\n\nWe can ignore noise and choose the simplest plausible suspect: choose Mike.\n\nAnother angle: They mention \"Thanks for the final vote\" at the end.\n\nBut the final lines until \"Announcer: ... two-\" ends. But we don't see the result of the vote.\n\nWe cannot be definitive.\n\nThus, final answer: We will vote for Mike, because he is the only one that might be a werewolf, as he says \"I saw a Tanner\" and might be carrying stuff.\n\nOk.\n\nNow create JSON with justification explaining.\n\nLet's produce final answer.",
+  "parsed_output": null,
+  "raw_response": "{\"justification\":\"Based on the transcript, Mike is the only player who directly mentions seeing a Tanner, implying that he was the one to observe a Tanner’s card during the night. If Mike had originally been a werewolf, he would have had no incentive to discover a Tanner’s identity during the revealing phase, and would likely have kept the Tanner’s card hidden. The fact that Mike reports seeing a Tanner suggests that he was not the original werewolf, making Mike a better candidate to suspect as the werewolf rather than the other players, who provide our limited evidence of reinforcement or deception. Consequently, Mike is the most likely target to remove a werewolf from the group.\\n\\\",\\\"chosen_vote\\\":\\\"Mike\\\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, Mike is the only player who directly mentions seeing a Tanner, implying that he was the one to observe a Tanner’s card during the night. If Mike had originally been a werewolf, he would have had no incentive to discover a Tanner’s identity during the revealing phase, and would likely have kept the Tanner’s card hidden. The fact that Mike reports seeing a Tanner suggests that he was not the original werewolf, making Mike a better candidate to suspect as the werewolf rather than the other players, who provide our limited evidence of reinforcement or deception. Consequently, Mike is the most likely target to remove a werewolf from the group.\\n\\\",\\\"chosen_vote\\\":\\\"Mike\\\"}",
+  "validation": {
+    "is_valid": false,
+    "errors": [
+      "no_parseable_json"
+    ],
+    "chosen_vote": null,
+    "justification": null
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3992,
+    "output_token_count": 2567,
+    "generation_time_sec": 319.9621260166168,
+    "used_chat_template": true,
+    "input_char_count": 15648,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

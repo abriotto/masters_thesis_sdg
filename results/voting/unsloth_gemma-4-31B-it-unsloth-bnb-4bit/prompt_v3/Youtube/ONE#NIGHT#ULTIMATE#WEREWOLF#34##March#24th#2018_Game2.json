@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Carly\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Werewolf\n    *   Minion\n    *   Seer\n    *   Troublemaker\n    *   Revealer (Wait, the announcer mentioned \"Revealer\" in the transcript, but the rules provided list \"Robber\", \"Insomniac\", \"Mason\", \"Drunk\", \"Hunter\", \"Doppelganger\", \"Tanner\", \"Villager\". Let me re-read the announcer's part.)\n    *   *Correction:* The announcer says \"Revealer, wake up.\" This role is not in the provided rules list, but it's in the transcript. I must follow the rules provided, but the transcript is the source of truth for what happened in the game. However, the rules list \"Robber\", \"Insomniac\", etc. Let's see if \"Revealer\" is just a custom role or a mistake. Regardless, the core goal is to find the Werewolf.\n\n    *   Carly claims Troublemaker. She says she switched two cards.\n    *   Paul claims Troublemaker initially, but then admits he claims it every game. Later, he claims he was the Hunter.\n    *   Mike claims Seer (he says \"I looked at the two center\"). He says he saw one Werewolf and one Tanner in the center.\n    *   Justin claims Hunter.\n    *   Mitchell is relatively quiet but seems to be reacting to Carly's accusations.\n\n    *   Carly (Troublemaker) says she switched Paul and Mitchell.\n    *   Carly says Mitchell is now the Werewolf.\n    *   Paul claims he started as Minion (at [89]: \"I started as minion so-\").\n    *   Mike (Seer) says he saw a Werewolf and a Tanner in the center.\n    *   If Mike saw a Werewolf and a Tanner in the center, then there are no Werewolves among the players (unless there were two Werewolves and one is in the center).\n    *   Wait, Mike says: \"One of them is the tanner... One was the werewolf. One of them was the tanner.\" (at [103-111]). He's referring to the center cards.\n    *   If a Werewolf is in the center, Team Village wins if no one dies or if a Werewolf dies. But if the only Werewolf is in the center, no one is a Werewolf.\n    *   Wait, let's re-read Mike's statement: \"One of them is the tanner... One was the werewolf. One of them was the tanner.\" (at [103-111]). He's talking about the center cards.\n    *   If Mike is the Seer and saw a Werewolf and a Tanner in the center, then there are no Werewolves among the players (assuming only one Werewolf was in the game).\n    *   However, Carly is adamant that Mitchell is the Werewolf.\n    *   Paul's behavior is suspicious (claiming Troublemaker, then Minion, then Hunter).\n\n    *   Carly: Claims Troublemaker. Switched Paul and Mitchell.\n    *   Paul: Claims Troublemaker (fake), then Minion (starting role), then Hunter.\n    *   Mike: Claims Seer. Saw Werewolf and Tanner in center.\n    *   Justin: Claims Hunter.\n    *   Mitchell: Doesn't claim a role but is accused by Carly.\n\n    *   If Mike is the Seer and saw a Werewolf in the center, then there are no Werewolves among the players. In that case, voting for anyone might be risky (Tanner wins if they die).\n    *   But if Mike is lying (Werewolf/Minion), he wants to protect the Werewolf.\n    *   Carly claims she switched Paul and Mitchell and that Mitchell is now the Werewolf.\n    *   Paul admits he started as Minion. If Paul was the Minion and Carly switched him with Mitchell, Mitchell is now the Minion. But Carly says Mitchell is the Werewolf.\n    *   If Paul started as the Werewolf and Carly switched him with Mitchell, Mitchell is now the Werewolf.\n    *   Paul's admission \"I started as minion\" is very strange. If he's the Minion, he's on the Werewolf team.\n\n    *   Carly is the most consistent in her claims.\n    *   Paul is inconsistent (Troublemaker -> Minion -> Hunter).\n    *   Mike's claim about the center (Werewolf and Tanner) would mean no one is a Werewolf. If that's true, the only way for the Village to win is to not vote anyone out (or vote out the Tanner, but that makes the Tanner win).\n    *   However, if Mike is lying, he's likely the Minion or Werewolf.\n    *   Carly's claim that Mitchell is the Werewolf is direct.\n    *   Paul's admission that he started as Minion (if true) means he's on the Werewolf team. If Carly switched him with Mitchell, Mitchell is now the Minion.\n    *   Wait, if Paul was the Minion and was switched with Mitchell, Mitchell is now the Minion. If Paul was the Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   Carly says: \"Mitchell is the werewolf.\"\n\n    *   Carly: Troublemaker (Village)\n    *   Mike: Seer (Village) - *If he's telling the truth, no one is a werewolf.*\n    *   Justin: Hunter (Village)\n    *   Paul: Minion/Werewolf (Werewolf Team)\n    *   Mitchell: Werewolf/Minion (Werewolf Team)\n\n    *   If Mike is the Seer and saw a Werewolf in the center, then no one is a Werewolf.\n    *   If Mike is lying, he's likely the Minion.\n    *   If Paul is lying about being the Minion, he's just confusing.\n    *   Carly's claim is the most specific: \"Mitchell is the werewolf.\"\n\n    *   Carly claims she switched Paul and Mitchell.\n    *   Paul admits he started as Minion.\n    *   If Paul was Minion and was switched with Mitchell, Mitchell is now the Minion.\n    *   If Paul was Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   Carly says Mitchell is the Werewolf. This implies Paul started as the Werewolf.\n    *   Paul's claim \"I started as minion\" contradicts Carly's \"Mitchell is the werewolf\" (if we assume only one Werewolf and one Minion). If Paul was the Minion, then Mitchell is now the Minion, not the Werewolf.\n    *   Wait, if Paul was the Werewolf and Carly switched him with Mitchell, Mitchell is now the Werewolf. Paul would then be the Minion? No, that's not how it works. If Paul was the Werewolf and Mitchell was the Minion, and they were switched, Paul is now the Minion and Mitchell is now the Werewolf.\n    *   This fits! Paul says \"I started as minion\" (Wait, he said \"I started as minion so-\"). If he started as the Werewolf and was switched with the Minion (Mitchell), he is now the Minion.\n    *   So, Mitchell is now the Werewolf.\n\n    *   Carly (Troublemaker) switched Paul and Mitchell.\n    *   Paul (started as Werewolf) is now the Minion.\n    *   Mitchell (started as Minion) is now the Werewolf.\n    *   Mike (Seer) is lying about the center to protect Mitchell.\n    *   Justin (Hunter) is just along for the ride.\n\n    *   Voting for Mitchell is the most likely way for Team Village to win, as Carly (the Troublemaker) specifically identifies him as the Werewolf after a swap. Paul's inconsistent claims and Mike's potentially deceptive Seer claim further support the idea that the Werewolf team is trying to confuse the vote.\n\n    *   Wait, Paul said \"I started as minion so-\". If he started as the Minion and was switched with Mitchell, Mitchell is now the Minion.\n    *   If Paul started as the Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   Carly says \"Mitchell is the werewolf.\"\n    *   If Carly is the Troublemaker and she knows Mitchell is the Werewolf, she must have switched the Werewolf card to him.\n    *   Therefore, Mitchell is the most likely target.",
+  "parsed_output": {
+    "justification": "Carly claims to be the Troublemaker and states that she switched the cards of Paul and Mitchell, identifying Mitchell as the current Werewolf. Paul's behavior is highly inconsistent, claiming to be the Troublemaker, then the Minion, and finally the Hunter. Mike's claim as the Seer that a Werewolf is in the center contradicts Carly's specific identification of Mitchell, suggesting Mike may be lying to protect the Werewolf. Therefore, voting for Mitchell is the most strategic move for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Carly claims to be the Troublemaker and states that she switched the cards of Paul and Mitchell, identifying Mitchell as the current Werewolf. Paul's behavior is highly inconsistent, claiming to be the Troublemaker, then the Minion, and finally the Hunter. Mike's claim as the Seer that a Werewolf is in the center contradicts Carly's specific identification of Mitchell, suggesting Mike may be lying to protect the Werewolf. Therefore, voting for Mitchell is the most strategic move for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Carly claims to be the Troublemaker and states that she switched the cards of Paul and Mitchell, identifying Mitchell as the current Werewolf. Paul's behavior is highly inconsistent, claiming to be the Troublemaker, then the Minion, and finally the Hunter. Mike's claim as the Seer that a Werewolf is in the center contradicts Carly's specific identification of Mitchell, suggesting Mike may be lying to protect the Werewolf. Therefore, voting for Mitchell is the most strategic move for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Carly claims to be the Troublemaker and states that she switched the cards of Paul and Mitchell, identifying Mitchell as the current Werewolf. Paul's behavior is highly inconsistent, claiming to be the Troublemaker, then the Minion, and finally the Hunter. Mike's claim as the Seer that a Werewolf is in the center contradicts Carly's specific identification of Mitchell, suggesting Mike may be lying to protect the Werewolf. Therefore, voting for Mitchell is the most strategic move for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4617,
+    "output_token_count": 2056,
+    "generation_time_sec": 215.44359874725342,
+    "used_chat_template": true,
+    "input_char_count": 15709,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

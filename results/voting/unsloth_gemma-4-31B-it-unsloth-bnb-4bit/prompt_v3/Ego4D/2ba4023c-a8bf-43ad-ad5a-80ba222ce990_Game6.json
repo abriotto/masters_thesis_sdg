@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "2ba4023c-a8bf-43ad-ad5a-80ba222ce990",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/2ba4023c-a8bf-43ad-ad5a-80ba222ce990_Game6.txt",
+  "player_names": [
+    "Tyler",
+    "Margaret",
+    "Erin",
+    "Clint"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Tyler\n    *   Margaret\n    *   Erin\n    *   Clint\n\n    *   Clint: Claims he was the Drunk and swapped with a card in the center (though he says \"swapped with that one\", implying a card). Later, he admits he \"could very easily be a werewolf\" (T[87]).\n    *   Erin: Claims she was the Robber (T[28], T[43], T[122]).\n    *   Tyler: Claims he was the Seer (T[47], T[49], T[80], T[89]). He refuses to reveal who he looked at (T[55], T[93]).\n    *   Margaret: Claims she was the Troublemaker (T[121]).\n\n    *   Seer (Tyler) -> Robber (Erin) -> Troublemaker (Margaret) -> Drunk (Clint) -> Insomniac (?).\n    *   Wait, the order is: Doppelganger, Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac.\n    *   Tyler (Seer) looks at a card.\n    *   Erin (Robber) swaps her card with someone else's and looks at it.\n    *   Margaret (Troublemaker) swaps two other players' cards.\n    *   Clint (Drunk) swaps his card with one from the center.\n\n    *   Tyler (Seer) says Erin is the Seer (T[47]). This is confusing. If Tyler was the Seer, he looked at someone. If he says Erin is the Seer, maybe he looked at her card *before* the Robber/Troublemaker actions? But the Seer acts *before* the Robber and Troublemaker. If Tyler saw Erin was the Seer, then Erin was the Seer at the start. But Erin claims she was the Robber.\n    *   Wait, Tyler says \"No, she's the Seer\" (T[47]) in response to Clint saying \"Erin is still a Werewolf\" (T[46]).\n    *   Tyler claims he was the Seer (T[49]).\n    *   Erin claims she was the Robber (T[28]).\n    *   Margaret claims she was the Troublemaker (T[121]).\n    *   Clint claims he was the Drunk (T[12]).\n\n    *   If Tyler was the Seer and saw Erin's card, and Erin was the Robber, Tyler would have seen \"Robber\". Why would he say \"she's the Seer\"?\n    *   Maybe Tyler is lying? Or maybe he's the Werewolf?\n    *   Let's re-read: Tyler says \"No, she's the Seer\" (T[47]). Then he says \"I was the Seer\" (T[49]). This is a contradiction. He can't both be the Seer and say Erin is the Seer unless he's lying or confused.\n    *   Wait, look at T[80]: \"if I thought that I was a werewolf and you traded me to her, then I would want everybody to guess her and I'm saying she is not, she is the seer.\" This is very convoluted.\n    *   Let's look at the claims again:\n        *   Clint: Drunk.\n        *   Erin: Robber.\n        *   Tyler: Seer.\n        *   Margaret: Troublemaker.\n    *   If these four roles (Seer, Robber, Troublemaker, Drunk) are all claimed, and there are only 4 players, then no one is a Werewolf? But the game usually has at least one Werewolf.\n    *   Wait, the candidate roles are players + 3. So 4 + 3 = 7 roles.\n    *   If Tyler, Erin, Margaret, and Clint are Seer, Robber, Troublemaker, and Drunk, then the Werewolf must be in the center.\n    *   But someone is likely lying.\n\n    *   Clint: Claims Drunk. Admits he could be a Werewolf (T[87]).\n    *   Tyler: Claims Seer. Refuses to say who he looked at.\n    *   Erin: Claims Robber.\n    *   Margaret: Claims Troublemaker.\n\n    *   Tyler says Erin is the Seer (T[47]), then says he is the Seer (T[49]). This is a huge red flag.\n    *   However, Erin and Margaret both seem to trust Tyler's claim that Clint is the Werewolf (T[138], T[139]).\n    *   Erin says \"it has to be Clint\" (T[138]).\n    *   Margaret says \"I'll make that one [vote for Clint]\" (T[143]).\n\n    *   Clint's claim of being the Drunk is weak. He says \"I was the Drunk and I swapped with that one\" (T[12]).\n    *   Tyler's claim of being the Seer is suspicious because of the \"she's the Seer\" comment, but he later clarifies he's trying to protect Erin.\n    *   Erin's claim of being the Robber is consistent.\n    *   Margaret's claim of being the Troublemaker is consistent.\n\n    *   If Tyler is the Seer and he saw Clint's card, and Clint was the Werewolf, then voting for Clint is the right move.\n    *   If Tyler is the Werewolf and is lying about being the Seer to frame Clint, then voting for Tyler is the right move.\n    *   However, the prompt asks to make the decision from Team Village's perspective based on the public discussion.\n    *   In the discussion, Erin and Margaret have converged on Clint.\n    *   Clint himself is very unsure (\"I could very easily be a werewolf\" T[87]).\n\n    *   Tyler: \"I think that he's the werewolf\" (T[106]).\n    *   Erin: \"it has to be Clint\" (T[138]).\n    *   Margaret: \"I'll make that one [vote for Clint]\" (T[143]).\n    *   Clint: \"I very well could be\" (T[107]).\n\n    *   The most likely target for Team Village, based on the consensus of the players who are claiming village roles (Erin, Margaret, Tyler), is Clint.\n    *   Clint's own admission that he could be the werewolf makes him the strongest candidate for elimination.\n\n    *   Tyler's contradiction (T[47] vs T[49]) is weird, but the overall flow of the conversation leads to Clint.\n    *   Clint's claim to be the Drunk is not supported by any other evidence.\n    *   Erin and Margaret's claims (Robber, Troublemaker) are relatively straightforward.\n    *   The most probable Werewolf is Clint.",
+  "parsed_output": {
+    "justification": "Clint claims to have been the Drunk, but he admits multiple times that he could very easily be the Werewolf. Both Erin and Margaret, who claim the Robber and Troublemaker roles respectively, converge on the conclusion that Clint is the most likely Werewolf. Tyler also identifies Clint as the Werewolf, and although Tyler's claims are somewhat inconsistent, the overall consensus among the players aligned with Team Village points toward Clint.",
+    "chosen_vote": "Clint"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Clint claims to have been the Drunk, but he admits multiple times that he could very easily be the Werewolf. Both Erin and Margaret, who claim the Robber and Troublemaker roles respectively, converge on the conclusion that Clint is the most likely Werewolf. Tyler also identifies Clint as the Werewolf, and although Tyler's claims are somewhat inconsistent, the overall consensus among the players aligned with Team Village points toward Clint.\",\n  \"chosen_vote\": \"Clint\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Clint claims to have been the Drunk, but he admits multiple times that he could very easily be the Werewolf. Both Erin and Margaret, who claim the Robber and Troublemaker roles respectively, converge on the conclusion that Clint is the most likely Werewolf. Tyler also identifies Clint as the Werewolf, and although Tyler's claims are somewhat inconsistent, the overall consensus among the players aligned with Team Village points toward Clint.\",\n  \"chosen_vote\": \"Clint\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Clint",
+    "justification": "Clint claims to have been the Drunk, but he admits multiple times that he could very easily be the Werewolf. Both Erin and Margaret, who claim the Robber and Troublemaker roles respectively, converge on the conclusion that Clint is the most likely Werewolf. Tyler also identifies Clint as the Werewolf, and although Tyler's claims are somewhat inconsistent, the overall consensus among the players aligned with Team Village points toward Clint."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4528,
+    "output_token_count": 1694,
+    "generation_time_sec": 173.5843529701233,
+    "used_chat_template": true,
+    "input_char_count": 14912,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

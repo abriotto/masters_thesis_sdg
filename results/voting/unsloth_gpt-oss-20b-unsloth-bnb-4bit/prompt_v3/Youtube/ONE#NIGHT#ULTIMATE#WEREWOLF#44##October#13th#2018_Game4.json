@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to guess probably who is werewolf. There are 4 players: Justin, Mitchell, Paul, Mike. Transcript weird. No clear role reveals. We need choose a vote for a player likely werewolf. Hard guesses.\n\nLet's parse transcript. At start, \"Everyone close your eyes...\" Then various roles act.\n\nBut no one's identified; transcript seems messy. We need examine statements: In conversation, Paul says something about seeing \"seher\"? Actually line 16: \"I just looked and saw thee seer, and now I can claim this. It's the best. Right after we came up with that strategy, I mean, I was the seer.\" Then later: \"No, I totally saw two werewolves. I. promise.\" He says convinced maybe he saw werewolves. Possibly indicating he's Seer? But interesting but ambiguous.\n\nWe need make decision that a particular player is likely werewolf based on conversation. But because roles unknown, we could pick maybe Justin. Let's consider logic: If a player says \"So we kill Paul?\" over some context.\n\nBetter approach: look at contributions. The earlier lines show some confusion. We might guess that players are joking; might not be actual role revealing. Maybe Justin has bragged?\n\nGiven ambiguity, we need choose someone likely to be werewolf. I'd guess \"Mike\". There's few lines of Mike: \"I thought it was the cat.\" \"I felt toes.\" Not very telling.\n\nTry to pick someone obviously suspicious. The player with no mention of being a villager might be suspect. But no info.\n\nAssistant must choose one. I'll decide \"Justin\" as likely werewolf because conversation shows Justin possibly misled others.\n\nThus answer JSON with chosen_vote Justin.\n\nNeed justification: say that Justin gave ambiguous statements and no evidence of viewing other cards; questionable. Ok.",
+  "parsed_output": {
+    "justification": "Justin’s statements are vague and do not provide any clear indication that he is a villager, whereas the other players’ comments suggest either confusion or lack of engagement. His remarks suggest a possibility that he could be a werewolf or has misled others about his true role, making him the safest target. Without direct evidence of his alibi, a vote against him increases the chance of eliminating a werewolf if he indeed holds one.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Justin’s statements are vague and do not provide any clear indication that he is a villager, whereas the other players’ comments suggest either confusion or lack of engagement. His remarks suggest a possibility that he could be a werewolf or has misled others about his true role, making him the safest target. Without direct evidence of his alibi, a vote against him increases the chance of eliminating a werewolf if he indeed holds one.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Justin’s statements are vague and do not provide any clear indication that he is a villager, whereas the other players’ comments suggest either confusion or lack of engagement. His remarks suggest a possibility that he could be a werewolf or has misled others about his true role, making him the safest target. Without direct evidence of his alibi, a vote against him increases the chance of eliminating a werewolf if he indeed holds one.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin’s statements are vague and do not provide any clear indication that he is a villager, whereas the other players’ comments suggest either confusion or lack of engagement. His remarks suggest a possibility that he could be a werewolf or has misled others about his true role, making him the safest target. Without direct evidence of his alibi, a vote against him increases the chance of eliminating a werewolf if he indeed holds one."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2286,
+    "output_token_count": 476,
+    "generation_time_sec": 59.700101375579834,
+    "used_chat_template": true,
+    "input_char_count": 9587,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

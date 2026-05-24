@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse transcript; it's messy but seems to involve four players: Justin, Alvin, James, Mitchell, and apparently something about roles. We don't know starting roles. But we see mentions:\n\n- In line [18], Mitchell says: \"I was the Troublemaker.\" So Mitchell's starting role is Troublemaker. He informs he swapped two cards.\n\n- At [24] etc, \"I'm going to wait.\" Maybe he's denied?\n\n- \"I was the robber\" lines indicate Justin said \"I was the robber\". In line [32], Justin says \"I was the robber. I was the robber.\" So starting role: Justin was Robber.\n\n- There's mention of \"discards\" and \"swapped\" but unclear.\n\n- They mention \"I am\" or \"What are you?\" for unknown role.\n\n- At [41], James says “Because he's just... Justin is. He's a werewolf.” So maybe the suspicion that Justin is werewolf.\n\nAlso they mention \"I swapped me and Alvin\"; looks like Mitchell claimed to be troublemaker and complaining.\n\nWe need find probable werewolf among those four based on statements. Let's deduce: Roles start sets: Because there are 4 players +3 center = 7 cards in play. Candidate roles can be many but likely typical distribution, but not specified. However each role has ability; probably in this game they used roles up to 4 participants, but the exact roles unspecified.\n\nBut let's analyze actions: TroubleMaker wakes, can swap any two other players' cards, but cannot look. Robert as Robber can swap his own with someone's and look. Seer wakes earlier and looks. There's mention that 'Justin was the robber' meaning Justin swapped his card. That could reveal.\n\nIf Justin swapped his card with someone else, but didn't mention which. Might have swapped with, say, James or someone.\n\nAlso people talk about \"switch broken\" but unclear.\n\nWe need to guess which player is likely werewolf. The transcripts show accusations: James says \"because he's just... Justin is. He's a werewolf.\" So suspect Justin to be werewolf.\n\nBut let's consider that TroubleMaker (Mitchell) might have swapped two other cards. If he claimed to have swapped them, maybe he swapped others and left himself as original? Wait, troublemaker swaps two other players' cards, so cannot swap with himself. So he can't create a werewolf self. But he could swap two non-werewolf into are unknown.\n\nEssentially we must decide likely werewolf.\n\nJustin says he was the robber. Robber can warn that he doesn't know his new card but might be werewolf after swap.\n\nGiven the confusion, but given the comments: \"You switched me and Alvin.\" Means Mitchell swapped his card with another? Wait, \"I am the troublemaker. I switched me and Alvin.\" That seems suspect; the troublemaker cannot swap his own card. So the statement is false. Likely Mitchell is lying or maybe that's false.\n\nX Let's attempt to reconstruct:\n\n1. Roles: Justin - Robber\n2. Mitchell - Troublemaker\n3. Others unknown.\n\nRobber had action: See transcript line [31-38] shows Justin says: \"I was the robber. I was the robber. And I can vouch for James.\" That implies Justin swapped his card with someone and then discovered new card. He says he will vouch for James indicating something?\n\nHe says: \"I'm going to look at the new one.\" Actually, \"I'm gonna look at the new one.\" Might have info.\n\nPotentially, the troublemaker's swap could misinform other players. But attacks / accusations revolve around Justin being suspected.\n\nLet's examine transcript lines 15-33: [15] Mitchell: \"Okay. We only have four minutes and 42 seconds...\" [16] \"It's Justin.\" [17] \"Justin: It's Justin.\" Something weird.\n\n[16] says: \"It's Justin.\" Could be 'target to vote', 'the best to get to kill'? Wait.\n\nMaybe we should assume that the only plausible it is simpler: the only role that could get to known that Justin is a werewolf is if the troublemaker messed up. So choose Justin.\n\nAlternatively, consider mishandling of robbers: If Justin swapped his card where maybe he ended up as werewolf. So the attack says he is suspect. So choose Justin.\n\nThus our chosen vote likely is \"Justin\".\n\nNow produce justification.\n\nFocus: this transcript indicates Justin is likely the werewolf. They say \"Jeff's the werewolf.\" and \"Justice is the werewolf.\" It seems unscrambed.\n\nThus final output: choose Justin.\n\nLet's produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "Justin is the sole player repeatedly identified as the potential werewolf through several accusations in the transcript. His role as Robber potentially allowed him to acquire a werewolf card during the night, and his statements (“I was the robber”) align with a possible deception. The conversation heavily centers around determining whether he is the werewolf, making him the most probable target.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Justin is the sole player repeatedly identified as the potential werewolf through several accusations in the transcript. His role as Robber potentially allowed him to acquire a werewolf card during the night, and his statements (“I was the robber”) align with a possible deception. The conversation heavily centers around determining whether he is the werewolf, making him the most probable target.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Justin is the sole player repeatedly identified as the potential werewolf through several accusations in the transcript. His role as Robber potentially allowed him to acquire a werewolf card during the night, and his statements (“I was the robber”) align with a possible deception. The conversation heavily centers around determining whether he is the werewolf, making him the most probable target.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin is the sole player repeatedly identified as the potential werewolf through several accusations in the transcript. His role as Robber potentially allowed him to acquire a werewolf card during the night, and his statements (“I was the robber”) align with a possible deception. The conversation heavily centers around determining whether he is the werewolf, making him the most probable target."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2605,
+    "output_token_count": 1047,
+    "generation_time_sec": 131.2829668521881,
+    "used_chat_template": true,
+    "input_char_count": 10652,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

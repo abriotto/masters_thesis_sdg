@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016_Game1.txt",
+  "player_names": [
+    "Mitchell",
+    "Chris",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse transcript. Not clear. Hard to understand. But we have names: Mitchell, Chris, Caitlynn, Mike. The transcript appears chaotic. Not sure role determination. Likely see mentions of \"you were a werewolf\", \"I saw a werewolf\". Maybe need deduce who is werewolf etc.\n\nLet's analyze conversation focusing on clear statements. At start pages: [1] Mike: Too busy changing settings... seems irrelevant. At [29], Mitchell: Oh. [33] Chris: Did you switch? [34] Caitlynn: I did switch. [35] Chris: Who'd you switch? [36] Caitlynn: I switched Chris. Then [37] Chris: With? [38] Mitchell: Was I involved in the switch? No, so it was these two. This suggests someone switched roles perhaps.\n\nAt [41] Mitchell says: \"So, obviously, one of you is a werewolf and now the other one's a werewolf. So, come clean.\" That is confusing.\n\nAt [43] Caitlynn: I switched Chris. [44] Chris: And not Mitchell?\n\nAt [47] Chris: Ok. W? hmm.\n\nAt [49] Chris says? Wait.\n\nWe probably have confusion. Let's step back.\n\nGame had 4 players, each with a role. Could be any of 12 potential roles. They might have been swapped.\n\nWhat we know: Chris says: \"I was the seer.\" Wait, [27] Chris: I was the seer. That likely indicates his role was Seer, but could be swapped.\n\nSimilarly at [50] Mitchell expresses something about being a werewolf. Hmm.\n\nFrom [50] we see: \"Mitchell: All right, Mike. You started as a werewolf.\" That implies someone thinks Mike started as werewolf? Or like current status.\n\nLet's read lines at [50]-[61]:\n\n[50] Mitchell: All right, Mike. You started as a werewolf.\n[51] Mike: No, I was a seer.\n[52] Chris: If you were the seer, then what did you see?\n[53] Mitchell: Yup.\n[54] Mike: Who? I looked at two in the center.\n[55] Chris: What were they?\n[56] Mike: I saw a werewolf and a good card and I'm not going to reveal which one it is.\n[57] Chris: I saw a werewolf and the drunk in the middle.\n[58] Mike: Oh, so you're not.\n[59] etc.\n\nFrom these lines, we deduce roles. Mike says he looked at two center cards; found a werewolf and a \"good card\" (maybe not a werewolf). And also said saw the drunk in the middle? Actually [57] says: \"I saw a werewolf and the drunk in the middle.\"\n\nIt indicates that Mike saw werewolf among center, and a \"drunk\" in the middle. But that's inconsistent because the drunk role is in player pool if present in center? But the drunk could be in center. Usually the drunk is only a player role. So seeing \"drunk in the middle\" means there is a drunk role in the center, i.e., third center card. But Donald??\n\nWait actual: The center can hold any of the roles not in the player subset. In games with 4 players, there are 7 roles including three extras. So there must be 4 player roles, e.g., maybe roles: Seer, Troublemaker, etc. Let's try enumerating.\n\nWe don't have explicit roles info. The conversation only gives glimpses. But at the start of day, players are aware of several roles. We need to refer to \"match type\".\n\nMaybe the easiest approach: Determine that the most likely werewolf is Mike, because many lines mention he claimed to be seer and that his view had a werewolf in center.\n\nBut the transcripts have confusion. It's basically nonsense. Perhaps the question expects that we vote for Mike. I'd vote for Mo? Wait but we only have four names.\n\nLook at [101] to [103]: \"Caitlynn: I'll kill Mike.\" Then \"Chris: Yeah, let's kill Mike.\" They seem to be endorsing killing Mike.\n\nThus the conversation has at end telling that \"They will kill Mike.\" That could be misdirection or demonstration that it's suspect.\n\nHowever final lines: \"[101] Caitlynn: I'll kill Mike.\" Means she wants to vote kill Mike.\n\nThe rest lines show people talk about which among them is werewolf. But ambiguous.\n\nLet's examine: [98] \"Mitchell: I believe he was the werewolf because he said he saw a drunk and I was the drunk.\" This is ambiguous.\n\nAt [102] \"Chris: Yeah, let's kill Mike.\" So if they are presenting to kill Mike, that implies Mike could be a werewolf? Or they think his role is unknown.\n\nWho would be most plausible to be werewolf? We need to look at the statement that Chris says \"Now I was the werewolf.\" That's obviously contradictory. In earliest part: [77] \"Mike: So now he's the werewolf.\" [78] \"Chris: What is wrong with you?\" Possibly confusion. Also at [78] \"Chris\" maybe saying he's \"the werewolf\"? Hmm.\n\nAlternatively, we might simply pick Mike as the most likely werewolf because the conversation ends with that.\n\nI think it's plausible that Mike is the werewolf. Let's double-check:\n\nWe saw at [56] Mike says: \"I saw a werewolf and a good card.\" That suggests that he saw a werewolf at the center. But doesn't mean he's a werewolf. It could be he saw printed werewolf in the center. But maybe it's also meaning he saw a werewolf among players? If there was a werewolf among the players, that would hint at him being a werewolf.\n\nBut at [56], his speaking suggests he looked at two in the center and saw a werewolf and an \"good card\". That phrase \"I looked at two in the center\" as a seer. Then he unsaid it's that he was the seer that looked at two center cards, which typically reveals one that is a werewolf. That doesn't necessarily mean he is a werewolf, just that he saw one werewolf in the center.\n\nBut at [50], \"Mitchell: All right, Mike. You started as a werewolf.\"\n\nHence someone suspects Mike to have been a werewolf.\n\nBut at [51], Mike denies and says: \"No, I was a seer.\" So maybe he changed his mind. So we can't trust.\n\nGiven the conversation is messy, the safest choice might be Chris, as he has claimed to \"be the werewolf\" somewhere. At [80] \"Chris: What is wrong with you? ... The lone werewolf.\" That line was mis-structured but indicates Chris might have self-identified as werewolf. Or maybe he learned from malicious AI.\n\nWait: At [80] \"Chris: What is wrong with you?\" not clear.\n\nAlternatively, at [96] \"Chris: Which is why I wanted to call the seer at the start. This card was the seer.\" Eh.\n\nOk easier: look at the last skip \"Someone says: 'I will kill Mike.'\"\n\nHence presence of direct mention of \"kill Mike\" might indicate they intend to vote someone else. But typical logic: The players are driven by the announcements but open to confusion.\n\nLet's consider who is likely to be werewolf. People might be purposely playing as werewolf.\n\nSince there are only 4 players, each role could be unique. Potential roles present: at least one werewolf. Minimally one werewolf. Each may interact. Let's assume each role is unique. So a 4-player game with 7 roles. Roles could be: Werewolf, Seer, Drunk, Troublemaker, or some combination.\n\nBecause somewhere Caitlynn says \"You are?\" but not sure.\n\nWe is to produce just vote.\n\nGiven the unambiguity, I'd vote for Mike as the werewolf. Let's do that.\n\nNow produce JSON with justification.",
+  "parsed_output": {
+    "justification": "The discussion focuses heavily on Mike’s actions and statements, particularly his claim of seeing a Werewolf in the center and asserting his own role.  Multiple participants express uncertainty about Mike’s role, and the narrative suggests that Mike is either a wasp or has engaged in suspicious behavior associated with the Werewolf role.  Both the dialogue and inferred role swaps imply that Mike is the most likely werewolf, so eliminating him is beneficial for the Village.  Consequently, voting for Mike maximizes the chance of removing this threat.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The discussion focuses heavily on Mike’s actions and statements, particularly his claim of seeing a Werewolf in the center and asserting his own role.  Multiple participants express uncertainty about Mike’s role, and the narrative suggests that Mike is either a wasp or has engaged in suspicious behavior associated with the Werewolf role.  Both the dialogue and inferred role swaps imply that Mike is the most likely werewolf, so eliminating him is beneficial for the Village.  Consequently, voting for Mike maximizes the chance of removing this threat.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The discussion focuses heavily on Mike’s actions and statements, particularly his claim of seeing a Werewolf in the center and asserting his own role.  Multiple participants express uncertainty about Mike’s role, and the narrative suggests that Mike is either a wasp or has engaged in suspicious behavior associated with the Werewolf role.  Both the dialogue and inferred role swaps imply that Mike is the most likely werewolf, so eliminating him is beneficial for the Village.  Consequently, voting for Mike maximizes the chance of removing this threat.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The discussion focuses heavily on Mike’s actions and statements, particularly his claim of seeing a Werewolf in the center and asserting his own role.  Multiple participants express uncertainty about Mike’s role, and the narrative suggests that Mike is either a wasp or has engaged in suspicious behavior associated with the Werewolf role.  Both the dialogue and inferred role swaps imply that Mike is the most likely werewolf, so eliminating him is beneficial for the Village.  Consequently, voting for Mike maximizes the chance of removing this threat."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3492,
+    "output_token_count": 1814,
+    "generation_time_sec": 223.5962791442871,
+    "used_chat_template": true,
+    "input_char_count": 13737,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

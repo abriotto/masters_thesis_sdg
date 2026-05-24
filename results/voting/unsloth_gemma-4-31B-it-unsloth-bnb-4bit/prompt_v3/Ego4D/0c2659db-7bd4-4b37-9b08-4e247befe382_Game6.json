@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game6.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot: Claims Doppelganger who took Insomniac role. Later suggests he might be the Tanner.\n    *   Ashley: Claims Seer. Says Sian is the Tanner.\n    *   James: Claims Troublemaker. Says he switched Sukeshi and Chris.\n    *   Chris: Claims Hunter.\n    *   Sukeshi: Claims Robber who robbed the Seer (Ashley), then says James (Troublemaker) switched her and Chris.\n    *   Sian: Claims Hunter. Later says she's not claiming Doppelganger (though Sukeshi says she is).\n\n    *   Ashley (Seer) -> Sian (Tanner).\n    *   Sukeshi (Robber) -> Robbed Ashley (Seer).\n    *   James (Troublemaker) -> Switched Sukeshi and Chris.\n    *   Chris (Hunter) -> Claims he was the Hunter.\n    *   Elliot (Doppelganger/Insomniac) -> Claims he copied Insomniac.\n\n    *   If Sukeshi was the Robber and robbed Ashley (Seer), Sukeshi becomes the Seer.\n    *   If James was the Troublemaker and switched Sukeshi and Chris, then Sukeshi's role (Seer) goes to Chris, and Chris's role (Hunter) goes to Sukeshi.\n    *   So, at the end:\n        *   Chris = Seer (from Sukeshi)\n        *   Sukeshi = Hunter (from Chris)\n        *   Ashley = Robbed (now whatever Sukeshi was)\n        *   James = Troublemaker\n        *   Elliot = Doppelganger/Insomniac\n        *   Sian = ?\n\n    *   Wait, let's re-examine the claims:\n        *   Ashley claims Seer.\n        *   Sukeshi claims Robber who robbed the Seer (Ashley).\n        *   James claims Troublemaker who switched Sukeshi and Chris.\n        *   Chris claims Hunter.\n        *   Sian claims Hunter.\n\n    *   If Ashley was the Seer, and Sukeshi robbed her, Sukeshi becomes the Seer.\n    *   If James then switched Sukeshi and Chris, Chris becomes the Seer and Sukeshi becomes whatever Chris was (Hunter).\n    *   This means Chris should be the Seer, but Chris claims to be the Hunter.\n    *   Sukeshi claims she is now the Hunter (because James switched her and Chris).\n    *   Sian also claims to be the Hunter.\n\n    *   Elliot's claim: Doppelganger who took Insomniac.\n    *   James's claim: Troublemaker.\n    *   Ashley's claim: Seer.\n    *   Sukeshi's claim: Robber.\n    *   Chris's claim: Hunter.\n    *   Sian's claim: Hunter.\n\n    *   Contradiction 1: Sian and Chris both claim Hunter.\n    *   Contradiction 2: Ashley claims Seer, but Sukeshi claims she robbed the Seer (Ashley). If Sukeshi robbed Ashley, Ashley is no longer the Seer.\n    *   Contradiction 3: Elliot claims to be the Doppelganger who took the Insomniac role, but no one else claims to be the Insomniac.\n\n    *   If Ashley is the Seer, she says Sian is the Tanner.\n    *   If Sukeshi is the Robber and robbed Ashley, Sukeshi knows Ashley was the Seer.\n    *   If James is the Troublemaker and switched Sukeshi and Chris, then Chris is the Seer and Sukeshi is the Hunter.\n    *   But Chris claims to be the Hunter. This is a contradiction.\n\n    *   Let's look at the claims again.\n    *   Ashley: Seer.\n    *   Sukeshi: Robber (robbed Ashley).\n    *   James: Troublemaker (switched Sukeshi and Chris).\n    *   Chris: Hunter.\n    *   Sian: Hunter.\n    *   Elliot: Doppelganger (copied Insomniac).\n\n    *   If James is lying about being the Troublemaker, then the switch didn't happen.\n    *   If Sukeshi is lying about being the Robber, then the robbery didn't happen.\n    *   If Ashley is lying about being the Seer, she could be the Werewolf.\n\n    *   Elliot's claim is very suspicious. He claims to be the Doppelganger who copied the Insomniac. However, he can't name who the Insomniac was.\n    *   James, Ashley, and Sukeshi seem to be coordinating a story (Robber, Troublemaker, Seer).\n    *   Sian and Chris both claim Hunter. Only one can be the Hunter.\n    *   Ashley says Sian is the Tanner.\n\n    *   If Ashley is the Seer, Sian is the Tanner.\n    *   If Sian is the Tanner, she wants to be voted out.\n    *   If Elliot is the Werewolf, he would lie about his role. His claim (Doppelganger/Insomniac) is complex and unsupported.\n\n    *   Elliot's claim is inconsistent and he eventually suggests he might be the Tanner.\n    *   Sian's claim to be the Hunter is contradicted by Chris.\n    *   Ashley's claim to be the Seer is supported by Sukeshi (who says she robbed the Seer).\n    *   James's claim to be the Troublemaker is supported by Sukeshi (who says James switched her and Chris).\n\n    *   Wait, if Sukeshi robbed Ashley (the Seer), Sukeshi becomes the Seer. Then James switched Sukeshi and Chris. So Chris becomes the Seer and Sukeshi becomes the Hunter.\n    *   But Chris claims to be the Hunter.\n    *   This means either James, Sukeshi, or Chris is lying.\n\n    *   Let's re-read:\n        *   Sukeshi: \"I robbed the seer. I am now the seer, or I was.\" (Line 88)\n        *   James: \"Because after you robbed, I switched you and Chris.\" (Line 100)\n        *   Sukeshi: \"So you're the seer, and if you're telling the truth I'm the hunter.\" (Line 101)\n        *   Chris: \"Correct.\" (Line 102)\n        *   Wait, Chris says \"Correct\" to Sukeshi saying \"you're the seer\" (referring to James? No, Sukeshi is talking to James).\n        *   Let's re-read Line 101: \"So you're the seer, and if you're telling the truth I'm the hunter.\" Sukeshi is talking to James.\n        *   Wait, if James is the Troublemaker, he can't be the Seer.\n        *   Let's re-read Line 101 again: \"So you're the seer, and if you're telling the truth I'm the hunter.\"\n        *   Actually, Sukeshi is saying to James: \"So you're the seer\" - this makes no sense. James claimed to be the Troublemaker.\n        *   Maybe Sukeshi meant \"So [Chris is] the seer\"?\n        *   Let's look at Line 101 again: \"So you're the seer, and if you're telling the truth I'm the hunter.\"\n        *   If Sukeshi is talking to James, she's saying James is the Seer. But James just said he's the Troublemaker.\n        *   This is very confusing. Let's look at the roles again.\n\n    *   Elliot: Claims Doppelganger/Insomniac.\n    *   Ashley: Claims Seer.\n    *   Sukeshi: Claims Robber.\n    *   James: Claims Troublemaker.\n    *   Chris: Claims Hunter.\n    *   Sian: Claims Hunter.\n\n    *   If Ashley is the Seer, and Sukeshi robbed her, Sukeshi is the Seer.\n    *   If James switched Sukeshi and Chris, Chris is the Seer and Sukeshi is the Hunter.\n    *   If Chris is the Seer, why does he claim to be the Hunter?\n    *   If Sukeshi is the Hunter, why does Sian also claim to be the Hunter?\n\n    *   It's possible that Elliot is the Werewolf. He's the one most people are targeting.\n    *   His claim is the most elaborate and least supported.\n    *   He's the only one who doesn't fit into the \"coordinated\" story of Ashley, Sukeshi, James, and Chris.\n\n    *   Ashley (Seer) -> Sian (Tanner)\n    *   Sukeshi (Robber) -> Robbed Ashley\n    *   James (Troublemaker) -> Switched Sukeshi and Chris\n    *   Chris (Hunter) -> Claims Hunter\n    *   Sian (Hunter) -> Claims Hunter\n    *   Elliot (Doppelganger) -> Claims Insomniac\n\n    *   If Ashley is the Seer, Sian is the Tanner.\n    *   If Sian is the Tanner, she's lying about being the Hunter.\n    *   If Chris is the Hunter, then Sian is definitely lying.\n    *   If Elliot is the Werewolf, he's lying about being the Doppelganger.\n\n    *   The most likely Werewolf is Elliot, as his claim is weak and he's being targeted by multiple players. Sian is also a possibility, but Ashley's Seer claim specifically identifies her as the Tanner.\n\n    *   Elliot's claim to be the Doppelganger who copied the Insomniac is unsupported, as no one else claimed to be the Insomniac.\n    *   He is the primary target of the other players' suspicions.\n    *   His attempt to pivot to being the Tanner is a common bluff for Werewolves when their initial claim fails.\n    *   The other players (Ashley, Sukeshi, James, Chris) have a somewhat consistent (if confusing) narrative.\n\n    *   Wait, let's re-read Line 101: \"So you're the seer, and if you're telling the truth I'm the hunter.\"\n    *   Sukeshi is talking to James. James claimed to be the Troublemaker.\n    *   If Sukeshi is saying James is the Seer, she's contradicting James.\n    *   But then Chris says \"Correct\" (Line 102).\n    *   This part of the transcript is very messy. However, the overall consensus among the players is to vote for Elliot.\n\n    *   Elliot's claim: Doppelganger -> Insomniac.\n    *   No one else claims Insomniac.\n    *   Elliot's behavior is suspicious.\n    *   The group is leaning towards Elliot.\n\n    *   Is Sian more likely? Ashley (Seer) says Sian is the Tanner. If Sian is the Tanner, voting for her would make the Tanner win, not the Village.\n    *   Is James more likely? Sukeshi says \"James is a werewolf\" (Line 73, 75), but then later agrees with him.\n    *   Is Chris more likely? He and Sian both claim Hunter.\n\n    *   Given the options, Elliot's claim is the most logically flawed. He claims to be a Doppelganger who copied the Insomniac, but cannot identify the Insomniac. This is a strong indicator of a bluff.\n\n    *   Elliot claimed to be the Doppelganger who copied the Insomniac, but no other player claimed to be the Insomniac, making his claim highly suspicious.\n    *   He later attempted to claim he might be the Tanner, which is a common tactic for Werewolves when their initial bluff is questioned.\n    *   The other players, despite some confusion, largely converged on Elliot as the most likely Werewolf.\n    *   Voting for Elliot is the most strategic move for Team Village based on the available public discussion.",
+  "parsed_output": {
+    "justification": "Elliot claimed to be the Doppelganger who copied the Insomniac, but no other player claimed to be the Insomniac, and he could not identify who he had copied. He later attempted to pivot his claim to being the Tanner, a common bluffing tactic for Werewolves when their initial story is challenged. While there was some confusion among other players' claims, the group's consensus shifted toward Elliot as the most suspicious player.",
+    "chosen_vote": "Elliot"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Elliot claimed to be the Doppelganger who copied the Insomniac, but no other player claimed to be the Insomniac, and he could not identify who he had copied. He later attempted to pivot his claim to being the Tanner, a common bluffing tactic for Werewolves when their initial story is challenged. While there was some confusion among other players' claims, the group's consensus shifted toward Elliot as the most suspicious player.\",\n  \"chosen_vote\": \"Elliot\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Elliot claimed to be the Doppelganger who copied the Insomniac, but no other player claimed to be the Insomniac, and he could not identify who he had copied. He later attempted to pivot his claim to being the Tanner, a common bluffing tactic for Werewolves when their initial story is challenged. While there was some confusion among other players' claims, the group's consensus shifted toward Elliot as the most suspicious player.\",\n  \"chosen_vote\": \"Elliot\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Elliot",
+    "justification": "Elliot claimed to be the Doppelganger who copied the Insomniac, but no other player claimed to be the Insomniac, and he could not identify who he had copied. He later attempted to pivot his claim to being the Tanner, a common bluffing tactic for Werewolves when their initial story is challenged. While there was some confusion among other players' claims, the group's consensus shifted toward Elliot as the most suspicious player."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5338,
+    "output_token_count": 2872,
+    "generation_time_sec": 301.0603520870209,
+    "used_chat_template": true,
+    "input_char_count": 16577,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

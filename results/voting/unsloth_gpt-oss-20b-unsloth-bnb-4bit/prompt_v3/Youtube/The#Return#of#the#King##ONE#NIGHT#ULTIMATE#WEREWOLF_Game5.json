@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript with many obfuscations; unclear roles. The list of players: Justin, Mitchell, Paul, James, Tyler.\n\nSeems to be a messed up video transcription. Must decide potential voter based on clear statements. Need find one believed werewolf.\n\nSeeing early: \"Justin: Mitchell's a Werewolf.\" So Justin claims Mitchell is werewolf. But that's internal claim maybe false? The question: choose one player from the list to prioritize as most likely werewolf.\n\nGiven confusion, but Justin claims Mitchell is werewolf. Also mentions others: \"James is minion,\" \"Tyler's Tanner\", \"Tyler's Tanner... etc.\" Many claims seem contradictory; maybe Justin and Mitchell are accusing each other.\n\nThere's also mention of be Trojan? For example, ### Note: \"If there is only one, you may look at your cards.\" That refers to if only one werewolf etc. Hard.\n\nBut likely the suspect: James. \"James is minion.\" That would be team werewolf (minion). So if a minion is present, there is a werewolf maybe? If there werewolf and minion--> both winning for werewolf team only; if minion is involved, they win. But the game might not have a werewolf? Wait minion sees werewolves. But if minion is found, it indicates werewolf exists? Not necessarily.\n\nBut hints: Many statements about \"minion\" are confused. Off. Let's parse more logically: We want to vote for suspect of werewolf to reduce chance of survival. Looking at problem, we also guess that many thrown center out of context. But identify every attempt: Some mention \"two two\" leads to central. However we lack clarity. Maybe we can pick Justin to vote out because Justin frequently claims roles. But he says \"I don't even, you just tell me who to vote for.\"\n\nAlternatively, \"Tyler\" is identified as tanner by many. But we need to vote for a werewolf.\n\nStatements: \"James is minion.\" \"James is minion\" would mean James is Minion (a member of werewolf team). So James is likely werewolf team. So vote for James. Others: \"Justin: Mitchel's a werewolf\" but that's not verified. Could be mislead.\n\nThus from available: I'd go with James as most likely werewolf. Provide justification: evidence: Justin claims \"James is minion\". The minion is villager? Wait minion is werewolf supporting key. So James likely part of werewolf team. So vote James.",
+  "parsed_output": {
+    "justification": "Justin repeatedly claims that \"James is minion,\" suggesting the Minion is present in the game. Since the Minion supports the Werewolf team, this implies that there is at least one Werewolf among the players. Thus the player most likely a werewolf (or allied with a werewolf) is James.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"Justin repeatedly claims that \\\"James is minion,\\\" suggesting the Minion is present in the game. Since the Minion supports the Werewolf team, this implies that there is at least one Werewolf among the players. Thus the player most likely a werewolf (or allied with a werewolf) is James.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"Justin repeatedly claims that \\\"James is minion,\\\" suggesting the Minion is present in the game. Since the Minion supports the Werewolf team, this implies that there is at least one Werewolf among the players. Thus the player most likely a werewolf (or allied with a werewolf) is James.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "Justin repeatedly claims that \"James is minion,\" suggesting the Minion is present in the game. Since the Minion supports the Werewolf team, this implies that there is at least one Werewolf among the players. Thus the player most likely a werewolf (or allied with a werewolf) is James."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4398,
+    "output_token_count": 606,
+    "generation_time_sec": 78.03603935241699,
+    "used_chat_template": true,
+    "input_char_count": 16805,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

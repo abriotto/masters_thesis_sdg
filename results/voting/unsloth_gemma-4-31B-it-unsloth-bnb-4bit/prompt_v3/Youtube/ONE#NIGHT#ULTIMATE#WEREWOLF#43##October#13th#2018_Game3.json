@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Mitchell claims Troublemaker. He says he switched Paul and Justin (or someone, he's a bit chaotic).\n    *   Justin claims Seer (initially), then says he saw a Werewolf and Drunk in the center, then finally admits he was a Werewolf [123].\n    *   Paul claims Robber [32], then claims Tanner [106], then says he's playing as a Villager [128].\n    *   Mike claims Tanner [39, 43], then claims Robber [113].\n\n    *   Justin: Claims Werewolf [123].\n    *   Mitchell: Claims Troublemaker [22].\n    *   Paul: Claims Robber [32], then Tanner [106].\n    *   Mike: Claims Tanner [39], then Robber [113].\n\n    *   Justin admits to being a Werewolf at the end [123].\n    *   Mitchell's claims are confusing, but he doesn't admit to being a Werewolf.\n    *   Paul and Mike are making contradictory claims (both claiming Robber/Tanner).\n\n    *   If Justin is a Werewolf, voting for him is the most direct way for Team Village to win.\n    *   Justin explicitly states: \"I was a werewolf, so there's a werewolf in here\" [123].\n\n    *   Justin: Admitted Werewolf.\n    *   Mitchell: Claimed Troublemaker.\n    *   Paul: Claimed Robber/Tanner.\n    *   Mike: Claimed Tanner/Robber.\n\n    *   Justin's admission is the strongest piece of evidence. Even if he's lying to confuse people, admitting to being a Werewolf usually makes you the primary target for the Village.\n\n    *   Wait, let's re-read the end.\n    *   [123] Justin: \"I was a werewolf, so there's a werewolf in here.\"\n    *   [127] Justin: \"I'm killing Paul.\"\n    *   [128] Paul: \"... I'm playing as a villager.\"\n\n    *   If Justin is a Werewolf, voting for him wins the game for the Village.\n\n    *   Justin: Admitted Werewolf.\n    *   Mitchell: Claimed Troublemaker.\n    *   Paul: Claimed Tanner/Robber.\n    *   Mike: Claimed Tanner/Robber.\n\n    *   The most likely Werewolf is Justin, as he explicitly claimed the role.\n\n    *   Justin admitted to being a Werewolf in the final moments of the discussion.\n    *   While other players (Paul, Mike) made conflicting claims about being the Robber or Tanner, Justin's admission is the most definitive lead for Team Village.\n    *   Eliminating a self-confessed Werewolf is the primary goal of Team Village.",
+  "parsed_output": {
+    "justification": "Justin explicitly admits to being a Werewolf during the final stage of the discussion ('I was a werewolf, so there's a werewolf in here'). While other players like Paul and Mike make contradictory claims about being the Robber or Tanner, Justin's admission provides the most direct evidence for Team Village. Voting for a self-confessed Werewolf is the most reliable way for Team Village to achieve its win condition.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin explicitly admits to being a Werewolf during the final stage of the discussion ('I was a werewolf, so there's a werewolf in here'). While other players like Paul and Mike make contradictory claims about being the Robber or Tanner, Justin's admission provides the most direct evidence for Team Village. Voting for a self-confessed Werewolf is the most reliable way for Team Village to achieve its win condition.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin explicitly admits to being a Werewolf during the final stage of the discussion ('I was a werewolf, so there's a werewolf in here'). While other players like Paul and Mike make contradictory claims about being the Robber or Tanner, Justin's admission provides the most direct evidence for Team Village. Voting for a self-confessed Werewolf is the most reliable way for Team Village to achieve its win condition.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin explicitly admits to being a Werewolf during the final stage of the discussion ('I was a werewolf, so there's a werewolf in here'). While other players like Paul and Mike make contradictory claims about being the Robber or Tanner, Justin's admission provides the most direct evidence for Team Village. Voting for a self-confessed Werewolf is the most reliable way for Team Village to achieve its win condition."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4213,
+    "output_token_count": 777,
+    "generation_time_sec": 83.2957673072815,
+    "used_chat_template": true,
+    "input_char_count": 14665,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

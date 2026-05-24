@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Alvin\n    *   James\n    *   Mitchell\n\n    *   James: Claims Hunter.\n    *   Alvin: Claims Seer. Says he saw James was the Hunter.\n    *   Justin: Claims Robber. Says he swapped with Alvin.\n    *   Mitchell: Claims Villager.\n\n    *   James (Hunter) -> Claimed early.\n    *   Alvin (Seer) -> Confirms James (Hunter).\n    *   Justin (Robber) -> Confirms Alvin (Seer). Claims he swapped with Alvin.\n    *   Mitchell (Villager) -> No one confirms him.\n\n    *   If Justin is the Robber and swapped with Alvin, Justin now has Alvin's card.\n    *   If Alvin was the Seer, Justin is now the Seer.\n    *   If Justin is the Seer, he should know Alvin's *starting* role (if he looked at Alvin's card) or the center cards. Wait, the Robber swaps *then* looks at the new card.\n    *   If Justin (Robber) swapped with Alvin (Seer), Justin now has the Seer card. He knows he is now the Seer.\n    *   Wait, Justin says \"I'm confirming that you [Alvin] are [the Seer]\". If Justin swapped with Alvin, he knows what Alvin *was*.\n    *   Let's re-examine:\n        *   Alvin: \"I was the seer and I saw that [James] was the hunter.\"\n        *   Justin: \"I was the robber and I swapped with Alvin.\"\n        *   If Justin swapped with Alvin, Justin now has the Seer card. He knows Alvin *was* the Seer.\n        *   This creates a chain of verification: Justin -> Alvin -> James.\n\n    *   Mitchell is the only one without a claim that is verified by anyone else.\n    *   However, Alvin expresses suspicion toward Justin: \"I think Justin's addendum was a little timely... I think it's Justin.\"\n    *   James is very insistent that Mitchell is the werewolf: \"I'm still finding shots at you... my feeling is if anyone it was, it's Mitchell.\"\n    *   Justin suggests everyone vote to their left (which is a common strategy to avoid killing a villager if they think there are no werewolves, or to spread votes).\n\n    *   If Justin is the Robber and swapped with Alvin (Seer), Justin is now the Seer.\n    *   If Alvin is the Seer and saw James is the Hunter, that's consistent.\n    *   If Mitchell is the Villager, he has no information.\n    *   If there is a Werewolf, who is most likely?\n        *   Mitchell: No one verified him. He's the \"odd one out\".\n        *   Justin: Alvin suspects him. His claim came late.\n        *   Alvin/James: They are verifying each other. If they are both werewolves, they are coordinating a lie.\n\n    *   James is very aggressive toward Mitchell.\n    *   Alvin is suspicious of Justin.\n    *   Justin is trying to avoid a focused vote (\"vote to our left\").\n    *   Mitchell is passive.\n\n    *   If Justin is the Robber and swapped with Alvin (Seer), Justin knows Alvin was the Seer.\n    *   If Alvin is the Seer and saw James is the Hunter, that's consistent.\n    *   If Mitchell is the Werewolf, he would claim Villager.\n    *   If Justin is the Werewolf, he might claim Robber to create a fake verification chain.\n    *   If Alvin and James are Werewolves, they are lying about the Seer/Hunter connection.\n\n    *   In a 4-player game, if three people have a consistent story (Justin-Alvin-James) and one person (Mitchell) doesn't, the one without the story is often the target.\n    *   However, the \"Robber\" claim is often used by werewolves to fake a role.\n    *   Let's look at the timing:\n        *   James claims Hunter immediately.\n        *   Alvin claims Seer and verifies James.\n        *   Justin claims Robber and verifies Alvin.\n    *   This looks like a coordinated effort to clear James and Alvin.\n    *   But wait, if Justin is the Robber and swapped with Alvin, he knows Alvin's role. If Alvin was the Seer, Justin is now the Seer.\n    *   If Justin is the Werewolf, he's lying about being the Robber.\n    *   If Mitchell is the Werewolf, he's just a Villager with no info.\n\n    *   James: \"I'm still finding shots at you [Mitchell]... my feeling is if anyone it was, it's Mitchell.\"\n    *   Alvin: \"I think it's Justin... I think Justin's addendum was a little timely.\"\n    *   Justin: \"I think we should all vote to our left.\"\n\n    *   If the goal is to eliminate a Werewolf, and we have a choice between Mitchell (unverified) and Justin (suspected by Alvin), who is more likely?\n    *   The chain Justin -> Alvin -> James is very tight. If any of them are lying, they are likely working together (Werewolves/Minion).\n    *   But in a 4-player game, there's usually only 1 Werewolf (or 1 Werewolf and 1 Minion).\n    *   If there's only 1 Werewolf, the chain is less likely to be a coordinated lie and more likely to be a mix of honest claims and one lie.\n    *   If Mitchell is the Werewolf, he's the only one left.\n    *   If Justin is the Werewolf, he's faking the Robber claim to protect Alvin.\n\n    *   James is very confident.\n    *   Alvin is confident but suspicious of Justin.\n    *   Justin is vague and suggests spreading votes.\n    *   Mitchell is defensive.\n\n    *   Wait, if Justin is the Robber and swapped with Alvin, he knows Alvin's role.\n    *   If Alvin is the Seer, Justin now has the Seer card.\n    *   If Justin is the Werewolf, he's lying about being the Robber.\n    *   If Mitchell is the Werewolf, he's just a Villager.\n\n    *   Let's look at the \"vote to the left\" suggestion. Justin is trying to prevent a consensus vote. This is often a sign of a Werewolf trying to survive.\n    *   Alvin's suspicion of Justin is a strong signal. Alvin is the one who claimed Seer. If Alvin is actually the Seer, his intuition or observation might be correct.\n\n    *   James: Hunter\n    *   Alvin: Seer\n    *   Justin: Robber (swapped with Alvin)\n    *   Mitchell: Villager\n    *   This is a perfectly valid set of roles. If this is the case, there are no werewolves (they are in the center).\n    *   If there *is* a werewolf, who is it?\n    *   If Mitchell is the werewolf, he'd claim villager.\n    *   If Justin is the werewolf, he'd claim Robber to link himself to the Seer.\n    *   If Alvin is the werewolf, he'd claim Seer to verify the Hunter.\n\n    *   James is pushing hard for Mitchell.\n    *   Alvin is pushing for Justin.\n    *   Justin is pushing for no one (vote left).\n\n    *   In these games, the person who tries to deflect the vote or suggests \"no one is the werewolf\" or \"vote to the left\" is often the werewolf.\n    *   Justin's behavior (late claim, verifying others to fit in, suggesting spreading votes) is highly suspicious.\n    *   Alvin, who claimed Seer, specifically points to Justin.\n\n    *   If Justin is the Werewolf, he's lying about being the Robber.\n    *   If Mitchell is the Werewolf, he's just a Villager.\n    *   If James is the Werewolf, he's lying about being the Hunter.\n    *   If Alvin is the Werewolf, he's lying about being the Seer.\n\n    *   The most suspicious behavior comes from Justin (the \"vote to the left\" comment and the timing of his claim).\n    *   Alvin's suspicion of Justin adds weight.\n    *   James's aggression toward Mitchell could be a werewolf trying to frame a villager, but Justin's attempt to derail the voting process is a more classic werewolf tell.\n\n    *   Wait, let's re-read: \"I think we should all vote to our left.\"\n    *   If they all vote to their left, and there are 4 players, each person gets 1 vote.\n    *   Rule: \"If all players receive exactly one vote, no one dies.\"\n    *   If no one dies, Team Werewolf wins (if there is a werewolf).\n    *   Justin is explicitly trying to trigger the \"no one dies\" condition. This is a huge red flag.\n\n    *   Justin is the most likely Werewolf because he attempted to manipulate the voting process to ensure no one was eliminated (\"vote to our left\"), which would result in a Werewolf victory if one were present. Additionally, his claim to be the Robber came late and served primarily to verify other players, a common tactic for Werewolves to blend in. Alvin, claiming the Seer role, also expressed suspicion toward Justin.",
+  "parsed_output": {
+    "justification": "Justin is the most suspicious player due to his attempt to manipulate the voting process. He suggested that everyone 'vote to our left,' which, in a four-player game, would result in each player receiving one vote and no one being eliminated—a condition that guarantees a win for Team Werewolf if a werewolf is present. Furthermore, his claim to be the Robber was made late in the discussion and served primarily to verify other players, and he was specifically singled out as suspicious by Alvin, who claimed the Seer role.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin is the most suspicious player due to his attempt to manipulate the voting process. He suggested that everyone 'vote to our left,' which, in a four-player game, would result in each player receiving one vote and no one being eliminated—a condition that guarantees a win for Team Werewolf if a werewolf is present. Furthermore, his claim to be the Robber was made late in the discussion and served primarily to verify other players, and he was specifically singled out as suspicious by Alvin, who claimed the Seer role.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin is the most suspicious player due to his attempt to manipulate the voting process. He suggested that everyone 'vote to our left,' which, in a four-player game, would result in each player receiving one vote and no one being eliminated—a condition that guarantees a win for Team Werewolf if a werewolf is present. Furthermore, his claim to be the Robber was made late in the discussion and served primarily to verify other players, and he was specifically singled out as suspicious by Alvin, who claimed the Seer role.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin is the most suspicious player due to his attempt to manipulate the voting process. He suggested that everyone 'vote to our left,' which, in a four-player game, would result in each player receiving one vote and no one being eliminated—a condition that guarantees a win for Team Werewolf if a werewolf is present. Furthermore, his claim to be the Robber was made late in the discussion and served primarily to verify other players, and he was specifically singled out as suspicious by Alvin, who claimed the Seer role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4206,
+    "output_token_count": 2270,
+    "generation_time_sec": 235.5152292251587,
+    "used_chat_template": true,
+    "input_char_count": 14976,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

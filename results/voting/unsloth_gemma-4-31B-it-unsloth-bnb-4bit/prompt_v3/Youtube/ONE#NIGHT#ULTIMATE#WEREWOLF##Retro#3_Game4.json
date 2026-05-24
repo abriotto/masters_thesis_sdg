@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Werewolves (wake up, look for others, look at center if alone)\n    *   Seer (look at player or center)\n    *   Robber (swap and look)\n    *   Insomniac (look at own card at end of night)\n    *   Tanner (wants to be voted out)\n    *   Villager (no ability)\n    *   (Other roles like Troublemaker, Drunk, etc., are possible but not explicitly claimed)\n\n    *   [25] James asks Mitchell what he stole.\n    *   [26] Mike responds, \"What did I steal?\" (Wait, James asked Mitchell, but Mike answered. This suggests Mike might be claiming Robber or James thought Mitchell was the Robber).\n    *   [29-34] James pushes Mike to reveal what he stole. Mike is evasive (\"I don't want to give all my information out all once\").\n    *   [35] James suggests Mike is a Werewolf or Tanner.\n    *   [38] Justin thinks James is the Mason.\n    *   [39] James claims he was a Villager.\n    *   [40-43] Mitchell asks Mike how exciting the stolen character was. Mike says \"Not very exciting,\" and Mitchell suggests \"Like villager,\" and Mike agrees.\n    *   [44-48] Mitchell calls Mike a liar and claims he (Mitchell) was *not* a villager.\n    *   [67] Mitchell claims: \"I was the tanner and Mike switched with me.\"\n    *   [68] Mike denies this: \"I did not, no. I switched with James.\"\n    *   [72] Justin claims he wasn't the Seer.\n    *   [73] James says he's going to vote Mitchell.\n    *   [105] Justin claims he was the Insomniac.\n    *   [106] James claims he was a Villager.\n    *   [107] Mike claims he was a Villager.\n    *   [118] James decides to vote Mike.\n    *   [121] Mitchell agrees to vote Mike.\n\n    *   *Mike:* Claims Robber (implied by [26], [68]). Claims he stole from James and got a Villager.\n    *   *Mitchell:* Claims he was the Tanner and Mike (the Robber) stole his card.\n    *   *Justin:* Claims Insomniac.\n    *   *James:* Claims Villager.\n\n    *   If Mike is the Robber and stole from Mitchell (Tanner), Mike is now the Tanner and Mitchell is now a Villager.\n    *   If Mike is the Robber and stole from James (Villager), Mike is now a Villager and James is now a Villager.\n    *   If Mitchell is the Tanner and Mike is the Robber, and Mike stole from Mitchell, Mike is now the Tanner.\n    *   If Mitchell is the Werewolf and is lying about being the Tanner to get votes (though the Tanner *wants* votes, a Werewolf might pretend to be the Tanner to confuse people, but usually, they want to avoid votes). Wait, if Mitchell claims he was the Tanner and Mike stole his card, Mitchell is claiming he is now a Villager (since the Robber takes the card).\n\n    *   Mike's behavior is suspicious: he's evasive about what he stole [30-34].\n    *   Mitchell's claim: \"I was the tanner and Mike switched with me\" [67]. If this is true, Mike is now the Tanner and Mitchell is now a Villager.\n    *   James's stance: He initially suspects Mitchell [73, 95, 98, 100], then switches to Mike [118].\n    *   Justin's stance: Claims Insomniac [105].\n\n    *   If Mike is the Robber and stole from Mitchell (Tanner), Mike is now the Tanner. Voting Mike would result in a Tanner win.\n    *   If Mike is a Werewolf pretending to be the Robber, voting Mike helps the Village.\n    *   If Mitchell is a Werewolf pretending to be the Tanner (or pretending the Robber stole his Tanner card), voting Mitchell helps the Village.\n\n    *   Mike claims he stole from James [68].\n    *   Mitchell claims Mike stole from him [67].\n    *   They contradict each other. One of them is lying.\n    *   If Mike is the Robber, he knows who he stole from. He says James. Mitchell says Mike stole from him.\n    *   If Mike is the Robber and stole from James, Mitchell is lying. Why would Mitchell lie about being the Tanner? To get votes? But he's claiming the Robber *took* the Tanner card, meaning he's no longer the Tanner. This is a weird bluff.\n    *   If Mike is the Robber and stole from Mitchell, Mike is lying about stealing from James. Why? To hide that he is now the Tanner? Or to hide that he stole a Werewolf card?\n\n    *   James is very aggressive in accusing both Mike and Mitchell.\n    *   Justin claims Insomniac.\n    *   Mike's evasiveness is a classic Werewolf tell in these games.\n    *   Mitchell's claim that he was the Tanner and Mike stole it is highly unusual. If Mitchell was the Tanner and Mike stole the card, Mitchell is now a Villager and Mike is now the Tanner.\n\n    *   If Mike is the Werewolf, he's lying about being the Robber.\n    *   If Mitchell is the Werewolf, he's lying about being the Tanner.\n    *   James and Justin seem more aligned with the Village (though they could be lying).\n    *   Looking at the transcript, Mike's refusal to say what he stole immediately [30-34] is very suspicious.\n    *   James eventually decides to vote Mike [118]. Mitchell also agrees to vote Mike [121].\n\n    *   If Mike is the Robber and stole from James (Villager), Mike is a Villager.\n    *   If Mike is the Robber and stole from Mitchell (Tanner), Mike is the Tanner.\n    *   If Mike is a Werewolf, he's lying about being the Robber.\n    *   If Mitchell is a Werewolf, he's lying about being the Tanner.\n\n    Wait, let's re-read [67]: \"I was the tanner and Mike switched with me.\"\n    If Mitchell was the Tanner and Mike (Robber) stole the card, Mitchell is now a Villager and Mike is now the Tanner.\n    If Mike is the Tanner, voting him makes the Tanner win.\n    However, if Mike is a Werewolf, voting him makes the Village win.\n\n    Let's look at Mike's claim again. Mike says he stole from James [68].\n    If Mike is the Robber and stole from James (Villager), then Mitchell's claim [67] is a lie.\n    Why would Mitchell lie and say he was the Tanner? Maybe Mitchell is the Werewolf.\n\n    Let's re-evaluate:\n    - Mike: Claims Robber, stole from James (Villager).\n    - Mitchell: Claims he was Tanner, Mike stole it.\n    - James: Claims Villager.\n    - Justin: Claims Insomniac.\n\n    If Mike is telling the truth, Mitchell is lying.\n    If Mitchell is telling the truth, Mike is lying.\n\n    If Mitchell is the Werewolf, he might claim he was the Tanner to create confusion or to make Mike look like the Tanner (and thus not be voted for). But wait, if Mike is the Tanner, the Village loses. So a Werewolf would *want* the Village to vote for the Tanner.\n\n    Wait, if Mitchell is the Werewolf and he wants the Village to vote for Mike, he would claim Mike is the Werewolf or the Tanner. By claiming Mike stole the Tanner card, he's suggesting Mike is now the Tanner. This would be a weird strategy for a Werewolf because if the Village votes for the Tanner, the Tanner wins, not the Werewolves.\n\n    Actually, the most straightforward interpretation of Mike's behavior (evasiveness, contradicting Mitchell) is that he's the Werewolf.\n\n    *   Mike's evasiveness [30-34].\n    *   The contradiction between Mike and Mitchell regarding who was robbed.\n    *   James's final decision to vote Mike.\n    *   Mitchell's agreement to vote Mike.\n\n    If Mike is the Werewolf, voting him wins the game for the Village. If Mitchell is the Werewolf, voting Mike might lead to a Tanner win (if Mike is the Tanner) or a Werewolf win (if Mike is a Villager). But based on the public discussion, Mike's behavior is the most suspicious.\n\n    Wait, let's look at Mitchell again. Mitchell says \"I was the tanner and Mike switched with me.\" If Mitchell is the Werewolf, he's lying about being the Tanner. If he's the Tanner, he's lying about the Robber stealing his card (because the Tanner wants to be voted out). If he's the Tanner and he *was* robbed, he's now a Villager and no longer wants to be voted out.\n\n    This is confusing, but Mike's initial evasiveness is a strong signal.\n\n    *   Justin: Insomniac (Village)\n    *   James: Villager (Village)\n    *   Mike: Robber? (Claims he stole from James)\n    *   Mitchell: Tanner? (Claims Mike stole his card)\n\n    If Mike is the Robber and stole from James, then Mitchell is lying. If Mitchell is lying about being the Tanner, he's likely the Werewolf.\n    If Mike is the Robber and stole from Mitchell, then Mike is the Tanner and Mitchell is a Villager.\n\n    Wait, let's re-read [68]: \"I did not, no. I switched with James.\"\n    If Mike is the Robber and stole from James, and James is a Villager, then Mike is now a Villager.\n    Then Mitchell's claim [67] \"I was the tanner and Mike switched with me\" is a lie.\n    If Mitchell is lying, he's either the Werewolf or the Tanner (but the Tanner wants to be voted out, and Mitchell is trying to get Mike voted out).\n\n    So if Mitchell is the Werewolf, he's lying about being the Tanner to cast suspicion on Mike.\n    If Mike is the Werewolf, he's lying about being the Robber.\n\n    Let's look at the voting: James and Mitchell both agree to vote Mike. Justin is undecided but questioning Mike.\n\n    In One Night Ultimate Werewolf, the player who is most evasive or contradicts others is often the target. Mike's behavior at the start [30-34] is very suspicious.\n\n    Let's double-check the roles.\n    If Mike is the Werewolf, he's pretending to be the Robber.\n    If Mitchell is the Werewolf, he's pretending to be the (former) Tanner.\n\n    Which is more likely?\n    Mike: \"I don't want to give all my information out all once.\" (Very suspicious)\n    Mitchell: \"I was the tanner and Mike switched with me.\" (Very specific, slightly weird claim)\n\n    If Mitchell were the Werewolf, why would he claim he was the Tanner? To make Mike the Tanner? That doesn't help the Werewolves win.\n    If Mike is the Werewolf, he's just lying about being the Robber to blend in.\n\n    Therefore, Mike is the most likely Werewolf.\n\n    *   Mike claimed to be the Robber but was evasive about the details.\n    *   There is a direct contradiction between Mike and Mitchell regarding who the Robber stole from.\n    *   James and Mitchell both expressed a willingness to vote for Mike.\n    *   Mike's behavior is consistent with a Werewolf attempting to bluff a role.",
+  "parsed_output": {
+    "justification": "Mike's behavior is highly suspicious, particularly his initial evasiveness when asked what he stole as the Robber. There is a direct contradiction between Mike and Mitchell; Mike claims he stole from James, while Mitchell claims Mike stole from him. Given Mike's reluctance to provide information and the fact that both James and Mitchell eventually align to vote for him, Mike is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike's behavior is highly suspicious, particularly his initial evasiveness when asked what he stole as the Robber. There is a direct contradiction between Mike and Mitchell; Mike claims he stole from James, while Mitchell claims Mike stole from him. Given Mike's reluctance to provide information and the fact that both James and Mitchell eventually align to vote for him, Mike is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike's behavior is highly suspicious, particularly his initial evasiveness when asked what he stole as the Robber. There is a direct contradiction between Mike and Mitchell; Mike claims he stole from James, while Mitchell claims Mike stole from him. Given Mike's reluctance to provide information and the fact that both James and Mitchell eventually align to vote for him, Mike is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike's behavior is highly suspicious, particularly his initial evasiveness when asked what he stole as the Robber. There is a direct contradiction between Mike and Mitchell; Mike claims he stole from James, while Mitchell claims Mike stole from him. Given Mike's reluctance to provide information and the fact that both James and Mitchell eventually align to vote for him, Mike is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3993,
+    "output_token_count": 2817,
+    "generation_time_sec": 288.57499289512634,
+    "used_chat_template": true,
+    "input_char_count": 13992,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

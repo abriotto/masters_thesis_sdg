@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Tanner (at [31]), then later claims he's an Insomniac (at [97]), then says he was the Tanner (at [113]). He's very inconsistent.\n    *   Laura: Claims Troublemaker (at [94]). She says she switched two people (at [94]).\n    *   Paul: Claims he woke up as himself with no info (at [30]). Later, Justin tries to convince him he's the Tanner (at [129]).\n    *   James: Claims he was \"this guy\" (at [38]), then claims he was the Tanner (at [107]), then claims he's a \"lonely nobody\" (at [132]), then claims he was the Tanner again (at [170]).\n    *   Mitchell: Claims Seer (at [50]). Says he saw two cards from the middle (at [52]), one of which was a Werewolf (at [78]), and later says he saw the Robber (at [143]).\n\n    *   Laura (Troublemaker) claims she switched two people. She doesn't explicitly say who, but Justin and Paul are mentioned in the context of the switch.\n    *   Justin claims he was the Tanner, then claims he's the Insomniac, then claims he was the Tanner again.\n    *   James claims he was the Tanner, then a nobody, then the Tanner again.\n    *   Mitchell (Seer) claims he saw a Werewolf in the center. If there's only one Werewolf and it's in the center, the Village wins if no one dies. But if there's a Werewolf in play, they need to find them.\n\n    *   Justin is acting very erratically. He claims Tanner, then Insomniac, then Tanner.\n    *   James is also acting erratically. He claims Tanner, then nobody, then Tanner.\n    *   Mitchell's Seer claim is a bit suspicious (changing what he saw in the center), but he's consistent about being the Seer.\n    *   Laura's Troublemaker claim seems relatively stable.\n    *   Paul seems confused and mostly passive.\n\n    *   If Laura is the Troublemaker and she switched two people, and Justin/James are both claiming Tanner, it's possible one of them *was* the Tanner and got swapped, or one is lying.\n    *   Wait, Justin says \"I was the tanner\" [31], then later \"I'm an Insomniac\" [97], then \"I was the tanner\" [113].\n    *   James says \"I was the tanner\" [107], then \"lonely nobody\" [132], then \"I was tanner\" [170].\n    *   If James is claiming Tanner and acting suspicious, he might be the Werewolf trying to confuse the group or the actual Tanner.\n    *   However, Justin's behavior is even more chaotic.\n\n    *   Mitchell (Seer) says he saw a Werewolf in the center [78]. If this is true, there is only one Werewolf total (since there are usually 2 candidates for Werewolf in a 5-player game, but the rules say \"up to two\"). If one is in the center, only one remains.\n    *   If Mitchell is lying and is the Werewolf, he's trying to divert attention.\n    *   James is claiming Tanner repeatedly. The Tanner *wants* to be voted out. If James is the Tanner, voting for him makes the Tanner win. If James is the Werewolf, voting for him makes the Village win.\n\n    *   Justin: Claims Tanner -> Insomniac -> Tanner.\n    *   James: Claims Tanner -> Nobody -> Tanner.\n    *   Mitchell: Claims Seer.\n    *   Laura: Claims Troublemaker.\n    *   Paul: Claims nothing/Villager.\n\n    Looking at the end of the transcript:\n    Justin and Mitchell are both pointing at James [173, 175].\n    Paul says \"James is not a werewolf\" [176].\n    Mitchell says \"I think he is\" [177].\n\n    Wait, let's re-read the \"Tanner\" claims.\n    Justin: \"I was the tanner\" [31].\n    James: \"I was the tanner\" [107].\n    If both are claiming Tanner, one is likely lying. If one is the Werewolf, they might claim Tanner to confuse people or if they think they can't win by claiming a power role.\n\n    Let's look at James again. He claims Tanner [107], then says he's a \"lonely nobody\" [132], then claims Tanner again [170]. This is highly suspicious. Usually, a real Tanner stays consistent with their claim to attract votes. A Werewolf might flip-flop.\n\n    Mitchell's claim: He says he saw a Werewolf in the center [78]. If he's the Seer, and there's one Werewolf in the center, there's only one Werewolf left in the game.\n\n    If James is the Werewolf, voting for him wins the game for the Village.\n    If James is the Tanner, voting for him wins the game for the Tanner.\n    If James is a Villager, voting for him does nothing (unless he's the Hunter).\n\n    Is there any other suspect?\n    Justin is also very suspicious. He claimed Tanner, then Insomniac, then Tanner.\n    But at the end, Justin and Mitchell both target James.\n\n    Let's re-evaluate James's claims:\n    [107] \"I was...I was the tanner.\"\n    [132] \"I am just the lonely nobody.\"\n    [170] \"Oh that I was tanner.\"\n\n    This inconsistency is a strong signal for a Werewolf. A real Tanner would not call themselves a \"lonely nobody\" if they wanted to be voted out.\n\n    *   Justin: Claims Tanner, then Insomniac, then Tanner. (Very confusing)\n    *   James: Claims Tanner, then Nobody, then Tanner. (Also confusing)\n    *   Mitchell: Claims Seer.\n    *   Laura: Claims Troublemaker.\n    *   Paul: Claims nothing.\n\n    Between James and Justin, James's flip-flop from \"Tanner\" to \"nobody\" to \"Tanner\" is a classic sign of a Werewolf trying to gauge the room's reaction. Justin's claims are also messy, but he's the one pushing the vote toward James.\n\n    Wait, let's look at the Troublemaker (Laura). She says she switched two people [94]. If she switched James and someone else, James's role could have changed. But the prompt asks for the player *most likely* to be the Werewolf based on the public discussion.\n\n    James's behavior is the most contradictory. He claims to be the Tanner, then denies it by calling himself a \"lonely nobody,\" then claims it again. This suggests he is lying about his role to manipulate the vote.\n\n    *   Justin: Claims Tanner [31], then Insomniac [97], then Tanner [113].\n    *   James: Claims Tanner [107], then Nobody [132], then Tanner [170].\n    *   Mitchell: Claims Seer [50].\n    *   Laura: Claims Troublemaker [94].\n    *   Paul: Claims nothing [30].\n\n    Both James and Justin are acting suspiciously. However, James's shift to \"lonely nobody\" is a direct contradiction of the Tanner's goal (to be voted out). If he were the Tanner, he would never call himself a \"nobody\" when he's trying to get votes. This makes him the most likely Werewolf.\n\n    *   Could Mitchell be the Werewolf? He's the one directing the vote toward James.\n    *   Could Justin be the Werewolf? He's also directing the vote toward James.\n    *   If James is the Tanner, the Village loses if they vote him. But the goal is to find the *most likely* Werewolf. James's inconsistency is the strongest evidence.\n\n    Let's double-check the transcript one more time.\n    [107] James: \"I was...I was the tanner.\"\n    [132] James: \"I am just the lonely nobody.\"\n    [170] James: \"Oh that I was tanner.\"\n    This is a clear contradiction.\n\n    Justin's claims:\n    [31] \"I was the tanner.\"\n    [97] \"I'm an Insomniac.\"\n    [113] \"Yeah [I was the tanner].\"\n    Justin is also contradicting himself, but he's more consistent in his goal (voting for James).\n\n    Wait, let's look at Mitchell again.\n    [52] \"I saw two from the middle.\"\n    [78] \"I saw one werewolf in the middle.\"\n    [143] \"I saw robber [in the middle].\"\n    Mitchell is also changing his story about what he saw in the center.\n\n    However, James's contradiction is about his own identity and goal. In One Night Ultimate Werewolf, the most suspicious behavior is often flip-flopping on a role claim, especially when it contradicts the role's objective (like the Tanner).\n\n    Let's compare James and Justin.\n    James: Tanner -> Nobody -> Tanner.\n    Justin: Tanner -> Insomniac -> Tanner.\n    Both are very suspicious. But James's \"lonely nobody\" comment is particularly telling.\n\n    Let's look at the final moments:\n    [173] Justin: \"I'm pointing at James.\"\n    [175] Mitchell: \"I'm pointing at James.\"\n    [176] Paul: \"James is not a werewolf.\"\n    [177] Mitchell: \"I think he is.\"\n\n    The consensus among the more active players (Justin, Mitchell) is to vote for James.\n\n    Final check on James:\n    - Claimed Tanner (to get voted out?)\n    - Claimed Nobody (to avoid being voted out?)\n    - Claimed Tanner again (to get voted out?)\n    This is erratic. If he were the Tanner, he'd just stay Tanner. If he were a Villager, he'd probably just say Villager. If he's the Werewolf, he's trying to figure out if claiming Tanner will work or if he should play it safe.\n\n    Therefore, James is the most likely candidate for the Werewolf.",
+  "parsed_output": {
+    "justification": "James exhibits highly contradictory behavior regarding his role. He claims to be the Tanner at [107], then describes himself as a 'lonely nobody' at [132], and then reverts to claiming he was the Tanner at [170]. Since the Tanner's sole objective is to be voted out, claiming to be a 'nobody' directly contradicts the incentive of a real Tanner, making James the most likely Werewolf attempting to manipulate the group's perception.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James exhibits highly contradictory behavior regarding his role. He claims to be the Tanner at [107], then describes himself as a 'lonely nobody' at [132], and then reverts to claiming he was the Tanner at [170]. Since the Tanner's sole objective is to be voted out, claiming to be a 'nobody' directly contradicts the incentive of a real Tanner, making James the most likely Werewolf attempting to manipulate the group's perception.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James exhibits highly contradictory behavior regarding his role. He claims to be the Tanner at [107], then describes himself as a 'lonely nobody' at [132], and then reverts to claiming he was the Tanner at [170]. Since the Tanner's sole objective is to be voted out, claiming to be a 'nobody' directly contradicts the incentive of a real Tanner, making James the most likely Werewolf attempting to manipulate the group's perception.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James exhibits highly contradictory behavior regarding his role. He claims to be the Tanner at [107], then describes himself as a 'lonely nobody' at [132], and then reverts to claiming he was the Tanner at [170]. Since the Tanner's sole objective is to be voted out, claiming to be a 'nobody' directly contradicts the incentive of a real Tanner, making James the most likely Werewolf attempting to manipulate the group's perception."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4911,
+    "output_token_count": 2530,
+    "generation_time_sec": 265.87874126434326,
+    "used_chat_template": true,
+    "input_char_count": 16373,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

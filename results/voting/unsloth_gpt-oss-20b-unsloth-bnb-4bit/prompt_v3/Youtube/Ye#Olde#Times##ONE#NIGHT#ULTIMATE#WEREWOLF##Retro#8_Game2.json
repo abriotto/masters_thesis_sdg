@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We are to decide from the transcript which player is likely a werewolf, to vote. Need robust reasoning. Let's recap key points:\n\nPlayers: Justin, Eric, Paul, Mitchell, Mike.\n\nRoles mention: people claim some roles, but swapping and nights etc. This transcript seems chaotic—lots of nonsensical statements. We saw at line \"Mike: And Paul was the werewolf.\" at [60] maybe indicates that the person discussing the role. Also \"And Mike was the werewolf.\" Not sure.\n\nLet's review important lines: \n\n- [60]: Mike: And Paul was the werewolf. Means Mike thinks Paul is werewolf? \n- [61]: Mitchell: So, you're the werewolf? [k discussion]. \n- [63]: Mike: Yeah. So Mike thinks he's the werewolf? Actually says \"Yeah\". \n- At [64], just \"Okay.\"\n\n- [74]: Justin: And I was the hunter. And I'm still the hunter. Because I'm looking for my kill. \n- [75]: Mitchell: So, whatever you were is now sitting on Mike's. (Probably refers to a swapped card)\n- [76]: Justin: He was the werewolf. So Justin says whoever is referenced \"He\" (maybe Ahmed?) \"He\" was the werewolf. Hard.\n\nThere is confusion about roles. Let's parse better. Maybe game scenario: It appears Mike might say \"Paul was the werewolf.\" So Paul might be suspect. But later, \"And Mike was the werewolf.\" Or \"Mike was the werewolf\"? Let's check:\n\nAt [60], \"Mike: And Paul was the werewolf.\" I'd parse as Mike says Paul was werewolf. At [64], unknown.\n\nAt [82], \"Justin: So we all vote to the left?\" That's unclear.\n\nBut there is mention that both werewolves are in center? For example at [120] \"International.\" But let's read again more systematically.\n\nLet's re-read transcript lines around relevant statements.\n\nWe'll step through:\n\n- [1] Mitchell: Yup. \n- [2] Paul: He does.\n- [3] Announcer: Everyone, close your eyes.\n- [4] Paul: Oh.\n- [5] Announcer: Werewolves, wake up and look for other werewolves.\n- [6] Paul: This is that like Western.\n- [7] Mike: Mm-hmm.\n- [8] Announcer: If there is only one werewolf...\n- [9] Paul: Stand up.\n- [10] Announcer: ...you may look at a card from the center. Werewolves, close your eyes. Seer, wake up. You may look at another player's card, or two of the center.\n- [11] Justin: I just love that they keep the theme.\n- [12] Paul: Mm-hmm.\n- [13] Announcer: Seer, close your eyes.\n- [14] Mitchell: Mm-hmm.\n- [15] Mike: Doesn't matter what song you play.\n- [16] Announcer: Robber, wake up.\n- [17] Justin: Except for the screaming woman.\n- [18] Announcer: And exchange your card with another player's card.\n- [19] Justin: But only I hear that one.\n- [20] Announcer: And then view your new card? Actually it says \"Please you the new card\" but fine.\n- [21] Eric... Actually skip.\n\nOk. We likely not need chronology. The key is that we have to guess who is werewolf based on statements above.\n\nLook at lines 45-51 etc. Let's capture notable claims:\n\n- [45] Mitchell: \"Yeah.\"\n- [46] Eric: \"I am the insomniac,\" and I'm now the robber? Actually says: \"So, I was the insomniac, and I'm now the robber.\" Wait:\n\nLine [46]: \"Eric: Okay. ... If you're not, you're playing a very smart game. Just so you know.\" Not helpful.\n\nBut at line [45-46], \"Eric: ... If you're not?\".\n\nWait we need to parse account.\n\nThe transcript is messy with many filler. Possibly the purposely broken.\n\nMaybe easier: Typical big-mix scenario: Starting roles: random rotation. In this case, with 5 players, there are 5+3=8 roles. Usually they will include at most one of each: Werewolf(s), etc. So likely there are at most 2 wolves. Many mention about werewolves being in center or being switched. 'Both werewolves are in the center.\" That suggests that there are two werewolves but are not in player hand, both in center. That would mean no werewolf among the 5 players; Team Village automatically wins. However, then no one will survive anyway. But if both werewolves are in center, then no one will die because no werewolf to be voted out; no player will die because if no rotation? Wait the winning condition: \"If there are no arewolf and no one dies\" is a win for Village. So if both werewolves in center, the entire village will win automatically. But votes still happen; no one voted out because no suspicion? Usually they handle voting regardless. The model: If all players vote randomly, forced, but they'd kill none. But we want to vote for a player; they'll bother. But if we vote someone, it's not needed; they're likely not subversive.\n\nSo in case no beingwolves among players, best vote is perhaps a random or none. But the problem: They ask: \"vote for player who is most likely to be a Werewolf.\" But there are no werewolves. But maybe some clarifying that with both beingwolves in center, any vote is irrelevant. But we might still need to pick a vote anyways because question demands choose a player.\n\nBut let's examine actual lines: \"Both werewolves are in the center.\" There is a line at [120] \"Is as is the seer, who could really help us out right now.\" This seems like a glitch.\n\nThen there is like 'both werewolves are in the center' referencing that they are in center. That would satisfy that this game has zero werewolves in players. So voting basically doesn't matter; but we still must produce an output. Still best to pick someone randomly? But \"justify\" needs to reference 'if both werewolves in center and no need but if any else is suspicious'.\n\nBut the big chunk: The transcript includes a lot of confusing statements line 60 to 80. Maybe early on around line 60: \"Mike: And Paul was the werewolf.\" meaning Mike says \"Paul was the werewolf.\" So they suspect Paul. But this may be mis-labeled as against earlier is \"And Paul was the werewolf.\" That might indicate Paul's role is werewolf. But they also discuss that both werewolves are in center; hmm contradictory.\n\nOk, maybe chain:\n\nI suspect that the transcript got erroneous. But perhaps we are asked to identify that since both werewolves are in center, there is no werewolf among players, so pick random. But it may ask to choose a player from the list who is most likely to be a werewolf. The viewer might pick \"Mike\" because Mike describes that \"And Paul was the werewolf.\" but that may be false. However, there is no direct evidence other than line 60.\n\nHowever, we see that at line 60, Mike says \"And Paul was the werewolf.\" But that indicates he thought Paul was a werewolf.\n\nAlso at line 60, no other plausible evidence that any other arewolf. Another piece: For instance inside [60], if \"Mike: And Paul was the werewolf.\" is a statement that may be correct or not. My assumption: The button for \"including roles can be swapped so that the roles change; but we know the role that 'werewolf' goes into center or player. The initial roles include werewolves; but if there were wolves in center, they cannot be found by discussion. So presumably no wolves among players. > conflict with [60], but maybe just misinterpretation. It might be confusion: The line \"Mike: And Paul was the werewolf,\" maybe refers to a 'he was werewolf' but not by that case: maybe he's referencing that the person 'Paul' is a werewolf. So maybe Paul is the suspected.\n\nBut going by the transcript, conversation seems indefinite. Since the transcript is extremely chaotic and disorganized, it's arbitrary which ones could be werewolf. Perhaps I'd pick Mike because it's the only longer speaking after 60, maybe more about swapping. If Mike removed his identity, later he says: At [60], \"Mike: And Paul was the werewolf.\" That might be correct, but he's telling others that Paul is werewolf. But all around, the players discuss:\n\n- \"Mike: And Paul was the werewolf.\" (line 60)\n- \"And a, \"Mike: And Paul was the werewolf.\"\n\nThus, the strongest indicator is Paul might be werewolf. Also, some statements: \"And Mike was the werewolf. I never stolen.\" etc.\n\nLine 160-161: \"Paul: Oh, right.\" It doesn't help.\n\nBetter to search for any definitely stating \"did one of them say 'I was the werewolf' or 'someone was the werewolf'? That would reveal suspect.\n\nFor example:\n\nLine [60] says \"Mike: And Paul was the werewolf.\" That might be claim. If correct, Paul is suspect. Others follow.\n\nThus I think the best candidate is Paul.\n\nNow we need output: \"chosen_vote\": \"Paul\"\n\nBut also we need justification: summarize that Paul's statements contradict and reveal he might be the werewolf due to being pointed. Also \"No other evidence\", his talk indicates that. Let's produce a short justification.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "The transcription indicates that Mike identifies Paul as a werewolf: \"Mike: And Paul was the werewolf.\" No other player is explicitly labeled as a werewolf, and a later comment suggests that both werewolves are in the center, implying no real werewolf among the five players. Nonetheless, the strongest implication that a werewolf exists in the player list comes from that claim. Choosing Paul to vote against aligns with the most concrete hint of werewolf activity.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The transcription indicates that Mike identifies Paul as a werewolf: \\\"Mike: And Paul was the werewolf.\\\" No other player is explicitly labeled as a werewolf, and a later comment suggests that both werewolves are in the center, implying no real werewolf among the five players. Nonetheless, the strongest implication that a werewolf exists in the player list comes from that claim. Choosing Paul to vote against aligns with the most concrete hint of werewolf activity.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The transcription indicates that Mike identifies Paul as a werewolf: \\\"Mike: And Paul was the werewolf.\\\" No other player is explicitly labeled as a werewolf, and a later comment suggests that both werewolves are in the center, implying no real werewolf among the five players. Nonetheless, the strongest implication that a werewolf exists in the player list comes from that claim. Choosing Paul to vote against aligns with the most concrete hint of werewolf activity.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcription indicates that Mike identifies Paul as a werewolf: \"Mike: And Paul was the werewolf.\" No other player is explicitly labeled as a werewolf, and a later comment suggests that both werewolves are in the center, implying no real werewolf among the five players. Nonetheless, the strongest implication that a werewolf exists in the player list comes from that claim. Choosing Paul to vote against aligns with the most concrete hint of werewolf activity."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4249,
+    "output_token_count": 2155,
+    "generation_time_sec": 265.27443766593933,
+    "used_chat_template": true,
+    "input_char_count": 16266,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game11.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a bunch of confusing transcript. We need to pick one player to vote (choose who might be werewolf). We have five players: Justin, Caitlynn, Mike, James, Mitchell. We need to decide likely roles.\n\nLet's parse transcript lines relevant to roles.\n\nFirst, we didn't see introduction or starting assignments. But in transcript, we see some statements: It mentions \"I was a minion\" etc. Let's gather each player's claims:\n\nJustin: says \"I was a minion\", also \"I was instantly stumbling\". Actually we need to interpret conversation:\n\nLine 48: \"Justin: ... he could be that? …\"\n\nLet's read carefully:\n\nAt line 48: Justin: \"I was a minion.\" Then line 55 maybe: Justin says ???\n\nThe transcript text somewhat garbled. Let's try to interpret. We see quotes:\n\nAt [48], \"Justin: ???\" Actually \"Caitlynn\" maybe? Might not be necessary.\n\nAt 64: \"So wait, sorry, who are we missing here? Oh, robber.\" This indicates perhaps someone noticed that a robber note.\n\nWe need to deduce final roles: Starting assignments unknown. But each player's claim might indicate what card they had.\n\nImportant understand: In this game, when a player says \"I was ...\" that refers to starting role because they mention their starting role; the role may change later if swapped.\n\nConsider transcripts where someone says they were a minion but ended up seeing something else. Er, let's scan:\n\n- Line 14: Mitchell: \"I was a minion and he was a werewolf, and so now you swapped it and I know he is a werewolf and he's not a robber. He claimed robber. He must have saw robber in the middle I'm guessing. Then you swapped it and now we got a minion sitting over there. So now we got a minion and a werewolf. And I'm an insomniac.\" That's confusing.\n\nSo Mitchell claims starting as minion, sees someone as werewolf. Also says \"he is not a robber\".\n\n- Lines 27-30 etc: People talk about month.\n\n- Also at 38, 39-40: \"Mike: Cause he (someone else?)\"\n\n- At 44: line 44 says \"Mike says he robbed from?\" etc.\n\n- At 45: Justin says: \"So what would you find more believable if I said? If said Mitchell or if I said Caitlynn?\" It's unclear.\n\nThis transcript is messy; difficult to parse. BUT our goal: determine likely werewolf.\n\nI suspect the conversation is about others claiming to have been: one claimed was a minion (which warns of werewolf). Several might be lying. Let's decide which player is likely werewolf.\n\nGiven ambiguous, we must maybe consider that minimize risk: Attack the player who is suspect.\n\nProbably the best candidate: Justin. But I'm not certain.\n\nWe can examine lines: Example, at 64-65: \"So wait, sorry, who are we missing here? Oh, robber.\" Means someone missed the robber? Which likely implies someone is a robber that changed?\n\nThe presence of \"robber\" role might indicate someone swapped. If a robber was swapped with team that implies other role changed. The person has to be Robber like anyone else not a maybe.\n\nBut let's analyze: Role that 'robber' visits: It swaps a player's card with another. That could produce confusion. So careful.\n\nWhich individuals recovered: \"I was a minion\" must mean they saw that someone else is a werewolf.\n\nLook at this: A Minion can see the Werewolf and be a werewolf? Wait: The minion is a werewolf on the team. The minion's goal is to watch who werewolf's. In the night, the minion learns who the werewolves are.\n\nThus the minion knows who the werewolves are - but the minion itself is on the WEREWOLF side. So if a player claims to have been minion but then says they see someone as werewolf, that could mean they are aligned with werewolf.\n\nTherefore maybe a player who claims to have been minion, e.g., Mitchell says \"I was a minion\" and says \"And I'm an insomniac.\" That could indicate that Mitchell might be part of the werewolf team.\n\nThen perhaps Justin is a werewolf? Or vice versa.\n\nBetter maybe to vote for a bluff: The conversation includes many contradictory statements; probably the main suspect is Justin.\n\nThe transcript shows that being a minion indicates the person is werewolf team? Actually minion is a werewolf team member; if someone claims to have seen a werewolf, that could be a thing to highlight.\n\nThus voting for Justin else? Let’s parse: \"Justin: And I was a minion.\" Actually \"Justin: I was a minion.\"\n\nNow line 'Justin: I was a minion.' That is a statement. Minions try to convince others they're werewolves or so.\n\nThus Justin could be werewolf. So let's vote Justin.\n\nAlternatively maybe Justin is a victim of someone else; but let's proceed: choose Justin.\n\nWe need justify: Justin likely is a Werewolf because he claimed to be a minion, which indicates he is a werewolf. So he is the best target.\n\nNow produce final JSON with justification.",
+  "parsed_output": {
+    "justification": "Justin repeatedly claims that he was a minion, a role belonging to the Werewolf team.  By stating he sees a werewolf and describing himself as a minion, he signals alignment with the Werewolf side rather than the Village.  In the chaotic discussion, no other player clearly signals a Werewolf role; thus Justin is the most likely suspect.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Justin repeatedly claims that he was a minion, a role belonging to the Werewolf team.  By stating he sees a werewolf and describing himself as a minion, he signals alignment with the Werewolf side rather than the Village.  In the chaotic discussion, no other player clearly signals a Werewolf role; thus Justin is the most likely suspect.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Justin repeatedly claims that he was a minion, a role belonging to the Werewolf team.  By stating he sees a werewolf and describing himself as a minion, he signals alignment with the Werewolf side rather than the Village.  In the chaotic discussion, no other player clearly signals a Werewolf role; thus Justin is the most likely suspect.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin repeatedly claims that he was a minion, a role belonging to the Werewolf team.  By stating he sees a werewolf and describing himself as a minion, he signals alignment with the Werewolf side rather than the Village.  In the chaotic discussion, no other player clearly signals a Werewolf role; thus Justin is the most likely suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3590,
+    "output_token_count": 1190,
+    "generation_time_sec": 150.13125658035278,
+    "used_chat_template": true,
+    "input_char_count": 14131,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

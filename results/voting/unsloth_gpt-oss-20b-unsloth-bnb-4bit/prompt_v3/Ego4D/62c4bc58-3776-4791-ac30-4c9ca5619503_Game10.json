@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game10.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have 4 players: Kevin, Kaelan, Jessica, Daniel. We have a transcript of a game of One Night Ultimate Werewolf. We need to decide whom to vote for, based on the public discussion content.\n\nBut the transcript posted seems incomplete or garbled. It appears to be conversation, but many parts are nonsense. Also lines like \"[crosstalk 00:00:57]\", etc. It's unclear.\n\nWe need to deduce who is likely a werewolf. Let's parse.\n\nThe lines are numbered from 1 to 20. They are short fragments.\n\nGiven that the game has only four players and three cards first. Actually five total roles due to 4 players + 3 = 7 card set. But here we just consider logic.\n\nWe cannot be sure if any werewolf is present or not, but we can infer from the dialogue.\n\nLine 3: Kaelan: I am [inaudible] a Villager. So Kaelan claims to be a Villager. It says \"I am (something) a Villager\". Label incomplete. Perhaps he is confirming his role.\n\nLine 4: Jessica: Same. So Jessica also claims to be a Villager. So both claim to be Villager.\n\nLine 5: Daniel: So he's the Tanner. That suggests Daniel saying someone else (maybe Kevin?) is the Tanner. He says 'So he's the Tanner'. Who is \"he\"? Maybe refers to Kevin? Did Daniel originally test for role? Hard to decipher.\n\nLine 7: \"Was that a- No, that was just a different type of notification.\" Not helpful.\n\nLine 10: Daniel: So maybe he's the Werewolf? So maybe he's the Werewolf. The speaker indicates something about suspect.\n\nLine 16: Daniel: Bad news everybody. Might indicate something discovered that there is a werewolf.\n\nWe don't know which player? The conversation seems incomplete.\n\nCould it be that Daniel is suspecting of being tanner or a werewolf? \"So he's the Tanner\" is ambiguous: could be referring to Daniel himself? Nope, he says \"So he's the Tanner\" where 'he' is maybe one of the other players.\n\nGiven the context, we might guess that one of the players is the werewolf. But how to decide?\n\nWe need to determine which of the four players has already given the most suspicious info or telling about something. The story seems that many people are state \"I'm Villager\" which could be lying if they're a werewolf, because they'd be lying about their role because they are a werewolf but claim to be villager. But we cannot rely on that.\n\nWe need to compute odds. I'm going to interpret the transcript: Since there's nothing obvious about a known werewolf, pick anyone? The safe pick might be the one little line says \"So he's the Tanner.\" Suppose Daniel is pointing a suspect that someone else is the Tanner (so that someone is the Tanner). But veer maybe we might error.\n\nLet’s read. Tag: 1 Kaelan: I don't know why this is necessary considering [crosstalk 00:00:57] [inaudible 00:00:59] saw the card.\n\nIt looks like noise.\n\nPeople: maybe Kevin watchers?\n\nNo idea.\n\nWe might try to use heuristics: If any mention of \"Because he is a Tanner\", that indicates the presence of someone as the Tanner. The Tanner's win condition is death; they'd like to be eliminated. So they would imply themselves maybe.\n\nHowever, there are no clear mentions.\n\nLet's review a few key stances:\n\n- Daniel: line 5 \"So he's the Tanner.\" Might refer to someone being the Tanner. Could be Kevin? Possibly. Not sure.\n\n- Line 10: Daniel: \"So maybe he's the Werewolf?\" Suggests suspicion of someone's role.\n\nGiven the lack of clarity, it's difficult.\n\nBut we need to pick one of the four names: Kevin, Kaelan, Jessica, Daniel.\n\nLet's attempt to guess who might be a werewolf. Probably not the one who claimed to be a villager. But that's false. Tiger.\n\nVietnam.\n\nMaybe the one who mis-forms \"So he's the Tanner\" might be talking about someone else. But there is no direct evidence.\n\nOkay next approach: evaluate the conversation circled around 'Donald's.\n\nAlso consider that a player may shout \"I am a Villager.\" If they claim to be a Villager 100% that may be suspicious.\n\nIt might be that someone is the are the werewolf will lie.\n\nFor instance: If someone says \"I'm a Villager,\" they could be lying if they're a Werewolf or maybe a \"Miner\" or \"Mason\".\n\nBut the transcripts are incomplete; the actual contents may have been truncated.\n\nThus we have almost no info.\n\nHence if we assume no evidence strongly indicates a werewolf, default vote: none should get it? But need to vote for someone.\n\nOk what's the best decision? I'd guess a random one.\n\nBut maybe the conversation talk: line 5: Daniel says \"So he's the Tanner\". So Daniel is calling someone to be the Tanner. But a Tanner only cares to lose. If Daniel is a werewolf, they'd want to avoid elimination, but would they call \"So he's the Tanner\"? But if Daniel is a werewolf, they'd treat themselves as a non-werewolf indirectly. Eh.\n\nActually, difference: The only role that may want to be eliminated is the Tanner. If someone puts \"They're the Tanner\", that suggests the conversation is about a person.\n\nI think the correct answer is that 'Daniel' is someone's suspect; but the question is: who is the werewolf? There's no evidence; default vote maybe default to those that speak about \"he's the werewolf\".\n\nBut line 10: Daniel: So maybe he's the Werewolf? So maybe he's the werewolf. That is about someone he thinks is werewolf. That person might be Jenny? But I'm confused.\n\nAnother interpretation: When someone says \"He's the Tanner\" they might be referring to someone. So perhaps Daniel points out someone to be the Tanner, maybe Kevin? But still no.\n\nAnyway, I will pick \"Kevin\" as he is not talked about as a villager. That might be the selection. So chosen_vote: Kevin.\n\nNow produce justification: Reason: In the limited information, no explicit evidence of werewolf presence exists; so best guess is to cast vote away from a player clearly stating are villagers. Kevin is not referenced as such. Thus think Kevin as the potential werewolf. Provide quick justification.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Based on the transcripts, the only hints of suspicious behavior come from Daniel’s statements about other players, yet none claim to be a Werewolf directly. Several players assert their own Villager status (Kaelan and Jessica), meaning they are unlikely to be a werewolf. Kevin was never identified as a Villager, so he remains the least flagged and potentially the werewolf. Therefore casting a vote against Kevin maximizes the chance of eliminating a werewolf.",
+    "chosen_vote": "Kevin"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcripts, the only hints of suspicious behavior come from Daniel’s statements about other players, yet none claim to be a Werewolf directly. Several players assert their own Villager status (Kaelan and Jessica), meaning they are unlikely to be a werewolf. Kevin was never identified as a Villager, so he remains the least flagged and potentially the werewolf. Therefore casting a vote against Kevin maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Kevin\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcripts, the only hints of suspicious behavior come from Daniel’s statements about other players, yet none claim to be a Werewolf directly. Several players assert their own Villager status (Kaelan and Jessica), meaning they are unlikely to be a werewolf. Kevin was never identified as a Villager, so he remains the least flagged and potentially the werewolf. Therefore casting a vote against Kevin maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Kevin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kevin",
+    "justification": "Based on the transcripts, the only hints of suspicious behavior come from Daniel’s statements about other players, yet none claim to be a Werewolf directly. Several players assert their own Villager status (Kaelan and Jessica), meaning they are unlikely to be a werewolf. Kevin was never identified as a Villager, so he remains the least flagged and potentially the werewolf. Therefore casting a vote against Kevin maximizes the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1997,
+    "output_token_count": 1457,
+    "generation_time_sec": 178.7778844833374,
+    "used_chat_template": true,
+    "input_char_count": 8440,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

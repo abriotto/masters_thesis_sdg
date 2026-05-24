@@ -1,16 +1,15 @@
 from __future__ import annotations
 
+import unsloth
+
 import re
 import time
 import warnings
 from dataclasses import dataclass
 from typing import Any, Literal, Optional, Tuple
 
-from google import genai
-from google.genai import types
 
-
-ModelFamily = Literal["gemma4", "gpt_oss"]
+ModelFamily = Literal["gemma4", "gpt_oss", "qwen"]
 ReasoningEffort = Literal["low", "medium", "high"]
 
 
@@ -20,6 +19,14 @@ class ModelIOInfo:
     io_type: str
     has_chat_template: bool
     backend: str = "unsloth"
+
+
+@dataclass(frozen=True)
+class LoaderPolicy:
+    loaders: tuple[str, ...]
+    load_in_4bit: bool = True
+    attn_implementation: Optional[str] = None
+    quantization_label: str = "unsloth_load_in_4bit"
 
 
 @dataclass
@@ -43,40 +50,20 @@ class LocalModelBundle:
         }
 
 
-def call_gemini(
-    client: genai.Client,
-    model_name: str,
-    prompt: str,
-    temperature: Optional[float] = None,
-    top_p: Optional[float] = None,
-    top_k: Optional[int] = None,
-) -> str:
-    kwargs = {
-        "model": model_name,
-        "contents": prompt,
-    }
-
-    config_kwargs = {}
-    if temperature is not None:
-        config_kwargs["temperature"] = temperature
-    if top_p is not None:
-        config_kwargs["top_p"] = top_p
-    if top_k is not None:
-        config_kwargs["top_k"] = top_k
-
-    if config_kwargs:
-        kwargs["config"] = types.GenerateContentConfig(**config_kwargs)
-
-    response = client.models.generate_content(**kwargs)
-    return (response.text or "").strip()
-
+# ---------------------------------------------------------------------------
+# Model family / loader policy
+# ---------------------------------------------------------------------------
 
 def get_model_family(model_name: str) -> ModelFamily:
     """
-    Only local Unsloth families used in this project are supported.
+    Local Unsloth model families supported by this project.
 
-    This intentionally does not fall back to generic HF/Qwen/standard chat
-    handlers: unsupported model names should fail loudly.
+    Current final experiment:
+    - GPT-OSS through Unsloth FastLanguageModel.
+    - Gemma 4 through Unsloth FastModel.
+
+    Future extension:
+    - Qwen through Unsloth FastLanguageModel.
     """
     low = model_name.lower()
 
@@ -86,10 +73,59 @@ def get_model_family(model_name: str) -> ModelFamily:
     if "gpt-oss" in low or "gpt_oss" in low:
         return "gpt_oss"
 
+    if "qwen" in low:
+        return "qwen"
+
     raise ValueError(
         f"Unsupported local model family for Unsloth runner: {model_name!r}. "
-        "Expected a Gemma 4 or GPT-OSS Unsloth checkpoint."
+        "Expected a Gemma 4, GPT-OSS, or Qwen Unsloth checkpoint."
     )
+
+
+def get_loader_policy(model_name: str, family: ModelFamily) -> LoaderPolicy:
+    """
+    Centralized model-loading policy.
+
+    Notes from the current experiments:
+    - GPT-OSS needs FastLanguageModel first and `attn_implementation='eager'`
+      in this cluster stack, otherwise Transformers tries unsupported SDPA.
+    - GPT-OSS BNB checkpoint still needs `load_in_4bit=True` here; setting it
+      to False pushed Unsloth into a huge 16-bit LoRA path.
+    - Gemma 4 prefers FastModel.
+    - Qwen support is intentionally simple and future-facing.
+    """
+    is_bnb_checkpoint = "bnb-4bit" in model_name.lower()
+    quantization_label = (
+        "unsloth_load_in_4bit_on_bnb_checkpoint"
+        if is_bnb_checkpoint
+        else "unsloth_load_in_4bit"
+    )
+
+    if family == "gpt_oss":
+        return LoaderPolicy(
+            loaders=("FastLanguageModel", "FastModel"),
+            load_in_4bit=True,
+            attn_implementation="eager",
+            quantization_label=quantization_label,
+        )
+
+    if family == "gemma4":
+        return LoaderPolicy(
+            loaders=("FastModel", "FastLanguageModel"),
+            load_in_4bit=True,
+            attn_implementation=None,
+            quantization_label=quantization_label,
+        )
+
+    if family == "qwen":
+        return LoaderPolicy(
+            loaders=("FastLanguageModel", "FastModel"),
+            load_in_4bit=True,
+            attn_implementation=None,
+            quantization_label=quantization_label,
+        )
+
+    raise AssertionError(f"Unhandled model family: {family}")
 
 
 def has_chat_template(model_io: Any) -> bool:
@@ -101,7 +137,6 @@ def has_chat_template(model_io: Any) -> bool:
 
 def get_model_io_info(model_name: str, model_io: Any) -> dict:
     family = get_model_family(model_name)
-
     return {
         "family": family,
         "io_type": "tokenizer_or_processor",
@@ -112,73 +147,20 @@ def get_model_io_info(model_name: str, model_io: Any) -> dict:
 
 def _validate_reasoning_effort(reasoning_effort: str) -> ReasoningEffort:
     valid_efforts = {"low", "medium", "high"}
-
     if reasoning_effort not in valid_efforts:
         raise ValueError(
             f"Unsupported reasoning effort: {reasoning_effort}. "
             f"Expected one of: {sorted(valid_efforts)}"
         )
-
     return reasoning_effort  # type: ignore[return-value]
 
 
-
-
-def _coerce_rendered_prompt(rendered: Any) -> str:
-    """Normalize prompt renderers that may return str/list/dict/bytes."""
-    if isinstance(rendered, str):
-        return rendered
-
-    if isinstance(rendered, bytes):
-        return rendered.decode("utf-8")
-
-    if isinstance(rendered, list):
-        if len(rendered) == 1 and isinstance(rendered[0], str):
-            return rendered[0]
-        return "".join(str(x) for x in rendered)
-
-    if isinstance(rendered, dict):
-        for key in ("text", "prompt", "content"):
-            value = rendered.get(key)
-            if isinstance(value, str):
-                return value
-
-    return str(rendered)
-
-
-def _encode_gpt_oss_with_harmony(
-    messages: list[dict[str, str]],
-    reasoning_effort: ReasoningEffort,
-    add_generation_prompt: bool = True,
-) -> Optional[str]:
-    """
-    Render GPT-OSS prompts with Unsloth's Harmony helper when available.
-
-    This is prompt formatting only. It does not affect the attention backend,
-    KV cache, or Unsloth compilation behavior used later by model.generate().
-    """
-    try:
-        from unsloth_zoo import encode_conversations_with_harmony
-    except Exception:
-        return None
-
-    try:
-        rendered = encode_conversations_with_harmony(
-            messages=messages,
-            reasoning_effort=reasoning_effort,
-            add_generation_prompt=add_generation_prompt,
-        )
-        return _coerce_rendered_prompt(rendered)
-    except Exception as exc:
-        warnings.warn(
-            "encode_conversations_with_harmony failed; falling back to "
-            f"tokenizer.apply_chat_template: {exc}"
-        )
-        return None
+# ---------------------------------------------------------------------------
+# Unsloth loading
+# ---------------------------------------------------------------------------
 
 def _load_unsloth_classes():
     try:
-        import torch
         from unsloth import FastLanguageModel
     except ImportError as exc:
         raise ImportError(
@@ -187,11 +169,28 @@ def _load_unsloth_classes():
         ) from exc
 
     try:
-        from unsloth import FastModel  # Gemma 4 support in recent Unsloth versions
+        from unsloth import FastModel
     except Exception:
         FastModel = None
 
-    return torch, FastLanguageModel, FastModel
+    return FastLanguageModel, FastModel
+
+
+def _loader_registry(FastLanguageModel: Any, FastModel: Any) -> dict[str, Any]:
+    registry = {"FastLanguageModel": FastLanguageModel}
+    if FastModel is not None:
+        registry["FastModel"] = FastModel
+    return registry
+
+
+def _safe_set_tokenizer_defaults(tokenizer_or_processor: Any) -> None:
+    if getattr(tokenizer_or_processor, "pad_token", None) is None:
+        eos = getattr(tokenizer_or_processor, "eos_token", None)
+        if eos is not None:
+            tokenizer_or_processor.pad_token = eos
+
+    if hasattr(tokenizer_or_processor, "padding_side"):
+        tokenizer_or_processor.padding_side = "left"
 
 
 def _unsloth_from_pretrained(
@@ -204,34 +203,34 @@ def _unsloth_from_pretrained(
     """
     Unsloth-only loader.
 
-    The checkpoint name is used exactly as provided. No aliases, redirects, or
-    normalization are applied. Public quantization is intentionally removed:
-    this loader always uses the Unsloth 4-bit / QLoRA-compatible path.
+    No Gemini dependency.
+    No legacy HF-local fallback.
+    No checkpoint aliasing/normalization.
     """
-    _, FastLanguageModel, FastModel = _load_unsloth_classes()
+    FastLanguageModel, FastModel = _load_unsloth_classes()
+    registry = _loader_registry(FastLanguageModel, FastModel)
+    policy = get_loader_policy(model_name, family)
 
-    common_kwargs = dict(
-    model_name=model_name,
-    max_seq_length=max_seq_length,
-    dtype=dtype,
-    load_in_4bit=True,
-    full_finetuning=full_finetuning,
-)
-  
+    common_kwargs = {
+        "model_name": model_name,
+        "max_seq_length": max_seq_length,
+        "dtype": dtype,
+        "load_in_4bit": policy.load_in_4bit,
+        "full_finetuning": full_finetuning,
+    }
 
-    loaders: list[tuple[str, Any]] = []
-
-
-    if FastModel is not None and family in {"gemma4", "gpt_oss"}:
-        loaders.append(("FastModel", FastModel))
-
-    loaders.append(("FastLanguageModel", FastLanguageModel))
+    if policy.attn_implementation is not None:
+        common_kwargs["attn_implementation"] = policy.attn_implementation
 
     errors: list[str] = []
+    for loader_name in policy.loaders:
+        loader = registry.get(loader_name)
+        if loader is None:
+            errors.append(f"{loader_name}: unavailable in this Unsloth installation")
+            continue
 
-    for loader_name, loader in loaders:
         try:
-            model, tokenizer = loader.from_pretrained(**common_kwargs)
+            model, model_io = loader.from_pretrained(**common_kwargs)
 
             # Some Unsloth helpers mutate the model in-place and return None.
             for_inference = getattr(loader, "for_inference", None)
@@ -245,7 +244,7 @@ def _unsloth_from_pretrained(
                     f"{loader_name}.from_pretrained returned model=None for {model_name}"
                 )
 
-            if tokenizer is None:
+            if model_io is None:
                 raise RuntimeError(
                     f"{loader_name}.from_pretrained returned tokenizer/processor=None "
                     f"for {model_name}"
@@ -253,26 +252,23 @@ def _unsloth_from_pretrained(
 
             setattr(model, "_local_backend", "unsloth")
             setattr(model, "_local_loader", loader_name)
-            setattr(model, "_local_quantization", "unsloth_4bit")
+            setattr(model, "_local_quantization", policy.quantization_label)
             setattr(model, "_requested_model_name", model_name)
             setattr(model, "_resolved_model_name", model_name)
             setattr(model, "_max_seq_length", max_seq_length)
             setattr(model, "_last_thought_block", None)
+            setattr(model, "_last_prompt_formatter", None)
 
-            if getattr(tokenizer, "pad_token", None) is None:
-                tokenizer.pad_token = getattr(tokenizer, "eos_token", None)
-            tokenizer.padding_side = "left"
-
+            _safe_set_tokenizer_defaults(model_io)
             model.eval()
-            return tokenizer, model, loader_name
+            return model_io, model, loader_name
 
         except Exception as exc:
             errors.append(f"{loader_name}: {type(exc).__name__}: {exc}")
 
-    joined_errors = "\n".join(errors)
     raise RuntimeError(
         f"Could not load model with Unsloth: {model_name}\n"
-        f"Tried loaders:\n{joined_errors}"
+        f"Tried loaders:\n" + "\n".join(errors)
     )
 
 
@@ -282,15 +278,6 @@ def load_local_model(
     dtype: Any = None,
     full_finetuning: bool = False,
 ) -> Tuple[Any, Any]:
-    """
-    Load a local model through Unsloth only.
-
-    Notes:
-    - No `quantization` parameter.
-    - No HF-local backend compatibility layer.
-    - No automatic checkpoint normalization.
-    - Only Gemma 4 and GPT-OSS local checkpoints are supported.
-    """
     family = get_model_family(model_name)
     model_io, model, _ = _unsloth_from_pretrained(
         model_name=model_name,
@@ -316,7 +303,6 @@ def load_local_model_bundle(
         dtype=dtype,
         full_finetuning=full_finetuning,
     )
-
     return LocalModelBundle(
         model_name=model_name,
         family=family,
@@ -326,8 +312,11 @@ def load_local_model_bundle(
     )
 
 
+# ---------------------------------------------------------------------------
+# Device utilities
+# ---------------------------------------------------------------------------
+
 def _normalize_device_value(device_value: Any):
-    """Normalize a value from hf_device_map into a torch.device-compatible value."""
     if device_value is None:
         return None
 
@@ -375,8 +364,11 @@ def get_model_input_device(model: Any):
     return next(model.parameters()).device
 
 
+# ---------------------------------------------------------------------------
+# Output parsing
+# ---------------------------------------------------------------------------
+
 def _strip_known_special_tokens(text: str) -> str:
-    # Keep this conservative: remove wrappers, not actual content.
     replacements = [
         "<bos>",
         "<eos>",
@@ -395,12 +387,6 @@ def _strip_known_special_tokens(text: str) -> str:
 
 
 def _parse_gemma_thinking(raw: str) -> tuple[Optional[str], Optional[str]]:
-    """
-    Gemma 4 thinking commonly appears as:
-    <|channel>thought
-    ...
-    <channel|>final answer...
-    """
     match = re.search(
         r"<\|channel\>thought\s*(?P<thinking>.*?)(?:<channel\|>)(?P<answer>.*)$",
         raw,
@@ -415,9 +401,6 @@ def _parse_gemma_thinking(raw: str) -> tuple[Optional[str], Optional[str]]:
 
 
 def _parse_harmony_response(raw: str) -> tuple[Optional[str], Optional[str]]:
-    """
-    Best-effort parser for GPT-OSS / Harmony-like output.
-    """
     analysis_blocks = re.findall(
         r"<\|channel\|>analysis<\|message\|>(.*?)(?=<\|end\|>|<\|start\|>assistant|<\|channel\|>final|$)",
         raw,
@@ -431,7 +414,6 @@ def _parse_harmony_response(raw: str) -> tuple[Optional[str], Optional[str]]:
 
     thinking = "\n\n".join(_strip_known_special_tokens(x) for x in analysis_blocks).strip()
     answer = _strip_known_special_tokens(final_match.group(1)) if final_match else None
-
     return thinking or None, answer or None
 
 
@@ -439,11 +421,11 @@ def parse_reasoning_response(model_io: Any, raw: str) -> tuple[str, Optional[str
     """
     Return (visible_answer, internal_thoughts).
 
-    Priority:
-    1. tokenizer/processor.parse_response if available;
-    2. Gemma thinking tag parser;
-    3. GPT-OSS/Harmony parser;
-    4. raw text with special-token cleanup.
+    Supports:
+    - tokenizer/processor.parse_response if available;
+    - Gemma thinking tags;
+    - GPT-OSS Harmony tags;
+    - plain text fallback.
     """
     parse_response = getattr(model_io, "parse_response", None)
     if callable(parse_response):
@@ -481,9 +463,11 @@ def parse_reasoning_response(model_io: Any, raw: str) -> tuple[str, Optional[str
     return _strip_known_special_tokens(raw), None
 
 
-class BaseLocalModelHandler:
-    requires_chat_template = True
+# ---------------------------------------------------------------------------
+# Handlers
+# ---------------------------------------------------------------------------
 
+class BaseLocalModelHandler:
     def __init__(
         self,
         model: Any,
@@ -512,15 +496,12 @@ class BaseLocalModelHandler:
     def build_input_text(self, prompt: str) -> str:
         if not has_chat_template(self.model_io):
             raise ValueError(
-                f"Model '{self.model_name}' requires a chat template, "
-                "but none was found."
+                f"Model '{self.model_name}' requires a chat template, but none was found."
             )
-
         return self.apply_chat_template(self.build_messages(prompt))
 
     def tokenize(self, input_text: str, model_device: Any):
-        # Keyword `text=` is required for Gemma 4 processors. Passing the prompt
-        # positionally can be interpreted as images/videos and causes text=None.
+        # `text=` is required for Gemma 4 processors; it also works for normal tokenizers.
         inputs = self.model_io(
             text=input_text,
             return_tensors="pt",
@@ -536,37 +517,24 @@ class BaseLocalModelHandler:
         return inputs.to(model_device)
 
     def decode(self, generated_ids: Any) -> str:
-        raw = self.model_io.decode(
-            generated_ids,
-            skip_special_tokens=False,
-        )
+        raw = self.model_io.decode(generated_ids, skip_special_tokens=False)
         text, thoughts = parse_reasoning_response(self.model_io, raw)
         setattr(self.model, "_last_thought_block", thoughts)
         return text.strip()
 
     def pad_token_id(self) -> Optional[int]:
         pad_token_id = getattr(self.model_io, "pad_token_id", None)
-
         if pad_token_id is None:
             pad_token_id = getattr(self.model_io, "eos_token_id", None)
-
         return pad_token_id
 
 
 class GptOssHandler(BaseLocalModelHandler):
     def apply_chat_template(self, messages: list[dict[str, str]]) -> str:
-        # Prefer Unsloth's Harmony renderer for GPT-OSS when available.
-        # This avoids ambiguity in Jinja chat templates and preserves the
-        # explicit reasoning_effort field.
-        harmony_prompt = _encode_gpt_oss_with_harmony(
-            messages=messages,
-            reasoning_effort=self.reasoning_effort,
-            add_generation_prompt=True,
-        )
-        if harmony_prompt is not None:
-            setattr(self.model, "_last_prompt_formatter", "harmony")
-            return harmony_prompt
-
+        """
+        GPT-OSS: use tokenizer chat template with reasoning_effort.
+        This mirrors the working Unsloth notebook-style path.
+        """
         setattr(self.model, "_last_prompt_formatter", "chat_template")
         try:
             return self.model_io.apply_chat_template(
@@ -576,6 +544,10 @@ class GptOssHandler(BaseLocalModelHandler):
                 reasoning_effort=self.reasoning_effort,
             )
         except TypeError:
+            warnings.warn(
+                "tokenizer.apply_chat_template does not accept reasoning_effort; "
+                "falling back without it."
+            )
             return self.model_io.apply_chat_template(
                 messages,
                 tokenize=False,
@@ -585,6 +557,7 @@ class GptOssHandler(BaseLocalModelHandler):
 
 class Gemma4Handler(BaseLocalModelHandler):
     def apply_chat_template(self, messages: list[dict[str, str]]) -> str:
+        setattr(self.model, "_last_prompt_formatter", "chat_template")
         try:
             return self.model_io.apply_chat_template(
                 messages,
@@ -593,16 +566,23 @@ class Gemma4Handler(BaseLocalModelHandler):
                 enable_thinking=self.gemma_enable_thinking,
             )
         except TypeError:
-            # Unsloth Gemma 4 docs also describe thinking as explicit via a
-            # system message beginning with <|think|>. Use that as fallback.
             if self.gemma_enable_thinking:
                 messages = [{"role": "system", "content": "<|think|>"}, *messages]
-
             return self.model_io.apply_chat_template(
                 messages,
                 tokenize=False,
                 add_generation_prompt=True,
             )
+
+
+class QwenHandler(BaseLocalModelHandler):
+    """
+    Future-facing Qwen support through Unsloth.
+
+    This intentionally stays generic. Add model-specific options only after a
+    dedicated Qwen smoke test confirms the exact expected chat template behavior.
+    """
+    pass
 
 
 def make_local_handler(
@@ -614,28 +594,21 @@ def make_local_handler(
 ) -> BaseLocalModelHandler:
     family = get_model_family(model_name)
 
-    if family == "gemma4":
-        return Gemma4Handler(
-            model=model,
-            model_io=model_io,
-            model_name=model_name,
-            reasoning_effort=reasoning_effort,
-            gemma_enable_thinking=gemma_enable_thinking,
-        )
-
     if family == "gpt_oss":
-        return GptOssHandler(
-            model=model,
-            model_io=model_io,
-            model_name=model_name,
-            reasoning_effort=reasoning_effort,
-            gemma_enable_thinking=False,
-        )
+        return GptOssHandler(model, model_io, model_name, reasoning_effort, False)
 
-    # get_model_family already raises for unsupported families, so this should
-    # be unreachable.
+    if family == "gemma4":
+        return Gemma4Handler(model, model_io, model_name, reasoning_effort, gemma_enable_thinking)
+
+    if family == "qwen":
+        return QwenHandler(model, model_io, model_name, reasoning_effort, False)
+
     raise AssertionError(f"Unhandled model family: {family}")
 
+
+# ---------------------------------------------------------------------------
+# Generation
+# ---------------------------------------------------------------------------
 
 def call_local_model(
     model: Any,
@@ -665,7 +638,6 @@ def call_local_model(
     )
 
     input_text = handler.build_input_text(prompt)
-
     model_device = get_model_input_device(model)
     inputs = handler.tokenize(input_text, model_device)
 
@@ -673,17 +645,11 @@ def call_local_model(
     input_char_count = len(input_text)
     pad_token_id = handler.pad_token_id()
 
-    effective_max_length = input_len + max_new_tokens
-
     generation_kwargs = {
         "max_new_tokens": max_new_tokens,
-        "max_length": effective_max_length,
         "use_cache": True,
         "repetition_penalty": repetition_penalty,
     }
-
-    if hasattr(model, "generation_config"):
-        model.generation_config.max_length = effective_max_length
 
     if temperature is not None and temperature > 0:
         generation_kwargs["do_sample"] = True
@@ -699,23 +665,17 @@ def call_local_model(
     if pad_token_id is not None:
         generation_kwargs["pad_token_id"] = pad_token_id
 
-    # Reset per-call diagnostic state.
     setattr(model, "_last_thought_block", None)
 
     t0 = time.time()
-
     with torch.inference_mode():
-        outputs = model.generate(
-            **inputs,
-            **generation_kwargs,
-        )
-
+        outputs = model.generate(**inputs, **generation_kwargs)
     t1 = time.time()
 
     if outputs is None:
         raise RuntimeError(
-            "model.generate returned None. This usually means the loaded model/backend "
-            "is not using the standard Transformers generate API, or generation failed internally."
+            "model.generate returned None. This usually means generation failed internally "
+            "or the loaded model/backend does not expose the standard Transformers generate API."
         )
 
     generated_ids = outputs[0][input_len:]
@@ -749,7 +709,7 @@ def call_local_model(
             "repetition_penalty": repetition_penalty,
             "no_repeat_ngram_size": no_repeat_ngram_size,
             "torch_dtype": str(getattr(model, "dtype", "unknown")),
-            "quantization": getattr(model, "_local_quantization", "unsloth_4bit"),
+            "quantization": getattr(model, "_local_quantization", "unknown"),
             "requested_model_name": getattr(model, "_requested_model_name", model_name),
             "resolved_model_name": getattr(model, "_resolved_model_name", model_name),
             "max_seq_length": getattr(model, "_max_seq_length", None),
@@ -768,3 +728,17 @@ def call_local_model(
         return text, debug_info
 
     return text
+
+
+__all__ = [
+    "ModelFamily",
+    "ReasoningEffort",
+    "ModelIOInfo",
+    "LocalModelBundle",
+    "get_model_family",
+    "get_model_io_info",
+    "get_model_input_device",
+    "load_local_model",
+    "load_local_model_bundle",
+    "call_local_model",
+]

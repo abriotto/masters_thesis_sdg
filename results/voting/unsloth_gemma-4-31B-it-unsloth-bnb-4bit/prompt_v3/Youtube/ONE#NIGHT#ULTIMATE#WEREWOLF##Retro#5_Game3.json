@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Says he didn't switch anyone.\n    *   Paul: Claims he started as a Werewolf. Claims Mitchell is the Insomniac who became a Werewolf (though he later says he himself was the only werewolf).\n    *   Mitchell: Claims Seer. Initially says he saw two werewolves (which is contradictory if he looked at a player), then changes his story to say he saw one werewolf (Paul) and lied about the second one being in the middle.\n\n    *   Justin: Troublemaker (claims he didn't switch anyone).\n    *   Paul: Werewolf (admits he started as one).\n    *   Mitchell: Seer (claims he saw Paul as a werewolf).\n\n    *   If Paul is telling the truth about starting as a Werewolf, he is a Werewolf (unless swapped).\n    *   If Mitchell is telling the truth about being the Seer and seeing Paul as a Werewolf, Paul is a Werewolf.\n    *   If Justin is the Troublemaker and didn't switch anyone, the roles remained as they started.\n    *   Paul's claim: \"I was a werewolf. A hundred percent... I started as the werewolf.\" (Line 67). This is a very bold admission. Usually, Werewolves don't admit they are Werewolves unless they are trying to confuse the other players or are playing a very strange strategy. However, in this specific transcript, Paul explicitly admits it multiple times (Lines 64, 67, 86, 91, 94, 98).\n    *   Mitchell's claim: \"I was the seer and I saw two werewolves right here\" (Line 51). Then he changes it to \"I saw one werewolf... it was a werewolf [Paul]\" (Line 101).\n\n    *   If Paul is a Werewolf, voting for him wins the game for Team Village.\n    *   If Mitchell is a Werewolf and lying about being the Seer, voting for him wins.\n    *   If Justin is a Werewolf and lying about being the Troublemaker, voting for him wins.\n\n    *   Paul's admission: \"I was a werewolf. A hundred percent.\" (Line 67).\n    *   Mitchell's claim: \"I was the seer and I saw [Paul]... it was a werewolf.\" (Line 101).\n    *   Justin's claim: \"I'm the troublemaker... I didn't switch.\" (Line 56, 97).\n\n    If Paul is indeed a Werewolf (as he admitted and Mitchell claimed), voting for Paul is the correct move for Team Village.\n\n    *   Could Paul be the Tanner? Tanners want to be voted out. Admitting to being a Werewolf is a great way to get voted out.\n    *   Could Mitchell be the Werewolf? He changed his story about seeing \"two werewolves\" (which is impossible for a Seer looking at one player, but possible if looking at the center). He first said he saw two werewolves \"right here\" (meaning players), then said he saw one (Paul) and lied about the other being in the middle. This inconsistency is suspicious.\n    *   However, Paul's admission is direct: \"I was the only werewolf\" (Line 94).\n\n    *   If Paul is the Werewolf, Village wins.\n    *   If Paul is the Tanner, Village loses (Tanner wins).\n    *   If Mitchell is the Werewolf, Village wins by voting Mitchell.\n\n    Wait, let's re-read Paul's claims.\n    Line 64: \"No, I was a werewolf. You switched us. Mitchell is the Insomniac. He knows he is a werewolf.\"\n    Line 67: \"No, I was werewolf. A hundred percent... I started as the werewolf.\"\n    Line 94: \"I was the only werewolf.\"\n    Line 98: \"If you didn't switch us, then I'm werewolf.\"\n\n    Paul is essentially admitting to being the Werewolf. In One Night Ultimate Werewolf, if a player admits to being the Werewolf, they are usually either the Werewolf (trying to confuse/bluff) or the Tanner. But from the perspective of Team Village, if someone admits to being the Werewolf and another player (Mitchell) claims to have seen them as a Werewolf, that person is the primary target.\n\n    *   Justin: Troublemaker (no action).\n    *   Paul: Werewolf.\n    *   Mitchell: Seer.\n    *   This is a consistent scenario.\n\n    *   Justin: Werewolf.\n    *   Paul: Tanner (trying to get voted out).\n    *   Mitchell: Seer (misidentified Paul).\n    *   This is less likely given the dialogue.\n\n    *   Justin: Troublemaker.\n    *   Paul: Villager.\n    *   Mitchell: Werewolf (lying about being Seer).\n    *   This is possible, but Paul's admission is very strong.\n\n    Paul explicitly admits to being the Werewolf multiple times. Mitchell supports this by claiming to be the Seer and seeing Paul as a Werewolf. Justin claims to be the Troublemaker and says he didn't swap anyone. Therefore, Paul is the most likely Werewolf.\n\n    *   Paul: \"I was a werewolf. A hundred percent.\"\n    *   Mitchell: \"I was a seer and I looked at his and it was a werewolf [Paul].\"\n    *   Justin: \"I didn't switch.\"\n    *   Conclusion: Vote Paul.",
+  "parsed_output": {
+    "justification": "Paul explicitly admits multiple times to starting as the Werewolf, stating, 'I was a werewolf. A hundred percent' and 'I was the only werewolf.' Mitchell supports this by claiming to be the Seer and stating he saw that Paul was a Werewolf. Justin claims to be the Troublemaker and confirms he did not switch any players' cards, meaning Paul's starting role remains his final role. Therefore, voting for Paul is the most likely way for Team Village to win.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admits multiple times to starting as the Werewolf, stating, 'I was a werewolf. A hundred percent' and 'I was the only werewolf.' Mitchell supports this by claiming to be the Seer and stating he saw that Paul was a Werewolf. Justin claims to be the Troublemaker and confirms he did not switch any players' cards, meaning Paul's starting role remains his final role. Therefore, voting for Paul is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admits multiple times to starting as the Werewolf, stating, 'I was a werewolf. A hundred percent' and 'I was the only werewolf.' Mitchell supports this by claiming to be the Seer and stating he saw that Paul was a Werewolf. Justin claims to be the Troublemaker and confirms he did not switch any players' cards, meaning Paul's starting role remains his final role. Therefore, voting for Paul is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admits multiple times to starting as the Werewolf, stating, 'I was a werewolf. A hundred percent' and 'I was the only werewolf.' Mitchell supports this by claiming to be the Seer and stating he saw that Paul was a Werewolf. Justin claims to be the Troublemaker and confirms he did not switch any players' cards, meaning Paul's starting role remains his final role. Therefore, voting for Paul is the most likely way for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3891,
+    "output_token_count": 1360,
+    "generation_time_sec": 139.36054348945618,
+    "used_chat_template": true,
+    "input_char_count": 13829,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

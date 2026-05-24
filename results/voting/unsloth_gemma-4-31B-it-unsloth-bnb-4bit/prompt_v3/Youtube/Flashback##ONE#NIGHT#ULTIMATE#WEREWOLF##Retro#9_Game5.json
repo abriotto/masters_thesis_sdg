@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Insomniac.\n    *   Laura: Claims Werewolf (after Paul says he switched her and Mitchell).\n    *   Paul: Claims Troublemaker.\n    *   James: Claims Seer (saw Tanner and Insomniac in the center).\n    *   Mitchell: Claims Villager.\n\n    *   James (Seer) says Tanner and Insomniac are in the center.\n    *   Justin (Insomniac) says he is the Insomniac.\n    *   Conflict: If James is telling the truth, Justin is lying. If Justin is telling the truth, James is lying.\n\n    *   Paul (Troublemaker) says he switched Laura and Mitchell.\n    *   Laura says she *was* a Werewolf, meaning Mitchell is now the Werewolf.\n    *   Mitchell admits he might be a Werewolf now (\"I've grown some fur\").\n\n    *   If Paul is the Troublemaker and he switched Laura and Mitchell, and Laura was a Werewolf, then Mitchell is now the Werewolf.\n    *   If James is the Seer and saw the Insomniac in the center, then Justin is lying about being the Insomniac.\n    *   If Justin is the Insomniac, then James is lying about seeing the Insomniac in the center.\n\n    *   If James is the Seer and saw the Insomniac in the center, Justin is lying.\n    *   If Justin is the Insomniac, James is lying.\n    *   If James is the Tanner, he wants to be voted out. Claiming to be the Seer and seeing the Insomniac in the center (contradicting Justin) is a way to create conflict and potentially draw votes.\n    *   If Laura was a Werewolf and Paul (Troublemaker) switched her with Mitchell, Mitchell is now the Werewolf.\n\n    *   Paul's claim as Troublemaker seems consistent. He says he switched Laura and Mitchell.\n    *   Laura's admission (\"I was a werewolf\") is very strong evidence. Even if she's bluffing, why would a Werewolf admit to being one unless they were swapped? If she was a Werewolf and got swapped, she's now a Villager (or whatever Mitchell was), and Mitchell is now the Werewolf.\n    *   If Mitchell is the Werewolf, voting for him helps Team Village.\n    *   What about James? If James is the Tanner, voting for him helps the Tanner. If James is a Werewolf, voting for him helps the Village.\n    *   However, the most direct evidence of a Werewolf's current position is the Paul/Laura/Mitchell interaction. Paul (Troublemaker) swapped Laura (Werewolf) and Mitchell (Villager). Therefore, Mitchell is the Werewolf.\n\n    *   James claims Seer, saw Insomniac in center.\n    *   Justin claims Insomniac.\n    *   If James is lying, he could be a Werewolf or the Tanner.\n    *   If Justin is lying, he could be a Werewolf or the Tanner.\n    *   But the Laura/Paul/Mitchell chain is more explicit. Laura admits she was a Werewolf and was swapped by Paul.\n\n    *   If Paul is the Troublemaker and swapped Laura and Mitchell, and Laura was a Werewolf, Mitchell is now the Werewolf.\n    *   Voting for Mitchell is the most logical choice for Team Village based on the public discussion.\n\n    *   Wait, did Laura actually say she was a werewolf?\n    *   [53] Laura: \"I was a werewolf. That means you are a werewolf now.\" (Speaking to Mitchell).\n    *   [50] Paul: \"I switched Lauren and Mitchell.\"\n    *   This is a very clear sequence. If Paul is telling the truth about being the Troublemaker and swapping them, and Laura is telling the truth about being the Werewolf, Mitchell is the Werewolf.\n\n    *   Could Paul be the Werewolf lying about being the Troublemaker?\n    *   Could Laura be the Tanner trying to get Mitchell voted out? (No, Tanner wants themselves voted out).\n    *   Could Laura be a Werewolf lying about being swapped? (If she's still a Werewolf, she wouldn't admit it).\n    *   If Laura was a Werewolf and got swapped, she is now a Villager (or whatever Mitchell was).\n    *   If Mitchell was a Villager and got swapped with a Werewolf, he is now the Werewolf.\n\n    *   James vs. Justin: One is lying. James says Insomniac is in the center; Justin says he is the Insomniac.\n    *   If James is the Werewolf, he's lying to confuse the group.\n    *   If Justin is the Werewolf, he's lying to claim a village role.\n    *   But the Laura/Paul/Mitchell situation is more definitive. If we believe Paul and Laura, Mitchell is the Werewolf.\n\n    *   If Mitchell is the Werewolf, voting for him wins the game for the Village.\n    *   If James is the Tanner, voting for him loses the game for the Village.\n    *   If James is the Werewolf, voting for him wins the game for the Village.\n    *   The most likely Werewolf is Mitchell, given the Troublemaker swap.\n\n    *   Paul (Troublemaker) swapped Laura and Mitchell.\n    *   Laura admitted she was a Werewolf.\n    *   Therefore, Mitchell is now the Werewolf.\n    *   Voting for Mitchell is the best move for Team Village.",
+  "parsed_output": {
+    "justification": "Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura subsequently admitted that she was a Werewolf, which implies that her Werewolf card was transferred to Mitchell during the swap. Consequently, Mitchell is the most likely player to currently hold the Werewolf role, making him the primary target for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura subsequently admitted that she was a Werewolf, which implies that her Werewolf card was transferred to Mitchell during the swap. Consequently, Mitchell is the most likely player to currently hold the Werewolf role, making him the primary target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura subsequently admitted that she was a Werewolf, which implies that her Werewolf card was transferred to Mitchell during the swap. Consequently, Mitchell is the most likely player to currently hold the Werewolf role, making him the primary target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura subsequently admitted that she was a Werewolf, which implies that her Werewolf card was transferred to Mitchell during the swap. Consequently, Mitchell is the most likely player to currently hold the Werewolf role, making him the primary target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3680,
+    "output_token_count": 1320,
+    "generation_time_sec": 136.5836980342865,
+    "used_chat_template": true,
+    "input_char_count": 13606,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

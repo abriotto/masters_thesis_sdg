@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to interpret the transcript. Input seems garbled; many statements confusing. Goal: capture who might beWerewolf. Let's parse knowledge.\n\nPlayers: Justin, Dan, Mitchell, Caitlynn, Mike (five). The transcript is messy, lacking clear actions for roles. We need to guess who might be werewolf(s). According to rules, game usually choose roles, random. No exactly clarity.\n\nWe suspect that the transcript may hide actual roles. We we might infer that the werewolves are Justin? The dialogue suggests Justin claims other roles: \"Justin: I am the seer.\" also \"Justin: And I was the robber, and I switched ...\". This indicates a claim of being Seer or Robber, weird.\n\nPlayers names:\n\n- Justin: claims to be Seer (lines 109). Also earlier claims to be robber: line 111. Possibly a liar? But if he is Seer, he would have looked at others / center to get info.\n\n- Dan: claims to be Seer too: line 110 says \"Dan: I am the seer. I was kidding again.\"\n\n- Mitchell lines are possibly trust issues.\n\n- Caitlynn: mentions that she is a werewolf? Lines 74-75: \"Mike: I can agree with that. That means Caitlin's a werewolf.\" Then later others say Caitlin might be a werewolf. So perhaps Caitlynn is werewolf.\n\n- Mike: claims to be the victim of a liar? In lines 94-101 discussing switching: \"Justin: I did.\" etc.\n\nWe need to determine who we think is werewolf. Considering the super confusion: \"Mike: I can agree with that. That means Caitlin's a werewolf.\" This is stating that Caitlynn is a werewolf.\n\nThus, likely suspect: Caitlynn. But also maybe Justin? He claims to be the seer. Usually people would lie to confuse. But the question of endless conversation leads to picking the one whose role might hamper village.\n\nThough the transcript doesn't mention any explicit role sessions like who talked about who looked at center. Many times mention \"I started as a werewolf.\" Some confusion suggests there might have been a Werewolf among players. Which one, maybe 'Caitlynn'.\n\nLet's pay attention: The story: \"Mike : That means Caitlin's a werewolf.\" \"Mike: The wiki???\"\n\nAlso earlier: \"Dan: ... again: In line 109 Justin – \"Justin: I am the seer.\" \"Mike: ...\", \"Announcer\" same. Wait.\n\nBetter approach: The easiest suspect might be Justin or Caitlynn about being werewolf. But one line: \"Mike: That's how it came about, I think. That means Caitlin's a werewolf.\" That's a direct statement - he states that Caitlynn is a werewolf. That info remains.\n\nThus best guess: vote for Caitlynn.\n\nAlternatively, could be that the werewolves are presumed to be, but to be safe: we need choose one player. Vote for who most likely was werewolf. I'd choose \"Caitlynn\".\n\nJustification: statements to identify exactly that she is a werewolf.\n\nBut do we double-check other possible? There is also possibility of Justin being liar. However, Justin says \"I'm the robber, and I switched with you\" - that could be a bluff. But we can check consistency: If Justin is a Seer or Robber or something, the other players wouldn't suspect. But the statements \"Justin: I'm the seer, ...,\" not consistent with the rest. Not sure. Maybe I should consider story: If Jim is seer, he would look at others. But the transcript doesn't show that.\n\nBut we should decide: answer: choose Caitlynn.\n\nInclude brief justification that we suspect her to be werewolf, based on statements.\n\nNow write JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains several direct accusations that Caitlynn is the werewolf—Mike declares “That means Caitlin's a werewolf,” and multiple other speakers mention her as a suspect. No other player has a clear, consistent claim that matches the typical behavior of a failed role, while Caitlynn’s statements are blunt and self-referential, indicating she is likely the hostile player. Consequently, the strongest evidence points to Caitlynn as the likely werewolf, making her the best target for the village vote.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains several direct accusations that Caitlynn is the werewolf—Mike declares “That means Caitlin's a werewolf,” and multiple other speakers mention her as a suspect. No other player has a clear, consistent claim that matches the typical behavior of a failed role, while Caitlynn’s statements are blunt and self-referential, indicating she is likely the hostile player. Consequently, the strongest evidence points to Caitlynn as the likely werewolf, making her the best target for the village vote.\",\"chosen_vote\":\"Caitlynn\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains several direct accusations that Caitlynn is the werewolf—Mike declares “That means Caitlin's a werewolf,” and multiple other speakers mention her as a suspect. No other player has a clear, consistent claim that matches the typical behavior of a failed role, while Caitlynn’s statements are blunt and self-referential, indicating she is likely the hostile player. Consequently, the strongest evidence points to Caitlynn as the likely werewolf, making her the best target for the village vote.\",\"chosen_vote\":\"Caitlynn\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "The transcript contains several direct accusations that Caitlynn is the werewolf—Mike declares “That means Caitlin's a werewolf,” and multiple other speakers mention her as a suspect. No other player has a clear, consistent claim that matches the typical behavior of a failed role, while Caitlynn’s statements are blunt and self-referential, indicating she is likely the hostile player. Consequently, the strongest evidence points to Caitlynn as the likely werewolf, making her the best target for the village vote."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3639,
+    "output_token_count": 925,
+    "generation_time_sec": 117.33824491500854,
+    "used_chat_template": true,
+    "input_char_count": 14288,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

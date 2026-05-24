@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript of a game of One Night Ultimate Werewolf. There's a specific list of players: Matt, Caitlynn, Mitchell, Alana, Mike. The transcript appears extremely garbled, with repeated nonsense, emojis? Many unclear statements. The transcript seems more like random conversation.\n\nThe instructions: I have to choose one player to vote for who is most likely a Werewolf. I need to read the transcript carefully, detect role claims, possible swaps.\n\nNeed to parse the conversation: it seems people make claims about being Seer, etc. And there appear claims that Mitchell says \"I was the werewolf\". But earlier he says he was the Tanner. Also, \"I was the seer\".\n\nLet's analyze stepwise.\n\nGame roles unknown; players may claim roles.\n\nThe crucial part: In day, players discuss roles. People can lie. There might be confusion. As external observer, I can see the transcript. Remove clarifying typical one-night; I'll analyze.\n\nList players:\n\n1. Matt\n2. Caitlynn\n3. Mitchell\n4. Alana\n5. Mike\n\nWe need decide whom to vote. Probably the individual who is likely to be the werewolf is the one that was claimed to be werewolf and perhaps got confirmed by other players. But let's check data.\n\nAt beginning of transcript it looks like first snippet: \"Mike: Wake up!\".\n\nBut I think lines 8 onward confusion.\n\nFrom parsed transcript, there are weird lines referencing \"the tanner\". There are conversation: \"Mitchell: I really was the seer though. I really was.\" Another: \"Mike: He was the tanner? You robbed the tanner from him?\" etc. So could involve swap with Robber possibly.\n\nAdditionally, at line [7], there was a \"Revealer\" voice. This indicates that the typical game used presumably includes the \"Revealer\" role (in this variant used?). The transcript is extremely messy.\n\nWe must decide who is likely werewolf. Let's follow conversation that mentions \"tanner\" and \"werewolf\".\n\nLines: [107] Mike: ... \"He was the tanner\".\nLine [113] Mike: \"He's the tanner\" - states Mike identifies someone as Tanner perhaps?\n\nBut line 123 says \"Mitchell: I really wasn't the tanner. I was the werewolf.\"\n\nSo maybe Mitchell says he was werewolf. So may be person is suspect.\n\nLet's examine even earlier: line 86: \"Mitchell: I was absolutely the seer\" (or 86: \"I was absolutely the seer\").\n\nThen later: 123: \"Mitchell: I really wasn't the tanner. I was the werewolf.\"\n\nThis contradictory claim: he flips between roles.\n\nPerhaps the confusion may indicate that Mitchell swapped or identity changed.\n\nMaybe the best candidate for werewolf is Mitchell, due to his repeated contradictory claims and possible mention of being a werewolf.\n\nAlternatively, we can look at bigger context: There's mention \"no was\". Actually \"No, I'm the tanner\".\n\nWait.\n\nWait again: The transcript includes many lines that talk about \"the tanner\" frequently. We have random conversation around who is the tanner.\n\nLet's attempt a timeline.\n\nTranscript is messy but itemized as [1], [2], etc. However, many lines are repeated. It seems the transcript is incomplete or corrupted. But anyway.\n\nThe best we can do: consider the usual roles possible: Among 5 players there will be some werewolves, one possibly ambiguous. If you need to vote for a werewolf, take whoever appears most likely to be a werewolf.\n\nGiven the conversation shows that Mitchell claims to be a werewolf (line 123). So he is likely a werewolf. Additionally, he receives accusations that his identity may have been swapped (line 93: \"Caitlynn: Hey John? Actually '157'? not relevant).\n\nAlso line 109: not relevant.\n\nThus choose Mitchell as vote.\n\nNow, need justify: He claims to be werewolf. Others suspicious. The transcript also says \"involved mention of being seer\" earlier may indicate someone else mis-identified. Tom.\n\nNow I need to produce JSON with justification and chosen_vote.\n\nBut we need to reason thoroughly: The dialogue includes many lines where Mitchell says he's the werewolf or the Tanner. This looks like confusion.\n\nThus we vote for Mitchell.\n\nOne nuance: the rule says \"do not vote for the center, the Announcer, or any entity that is not a listed player.\" Only players.\n\nYes.\n\nThus recommend choose Mitchell.\n\nNow produce JSON:\n\n{\n  \"justification\":\"...\",\n  \"chosen_vote\":\"Mitchell\"\n}\n\nNow finalize.\n\nBut need to short justification: from 3-5 sentences. It should highlight in the transcripts that Mitchell was claimed to be a werewolf, and other players cast doubt, making him plausible target.\n\nOk.",
+  "parsed_output": {
+    "justification": "During the discussion, Mitchell repeatedly claims contradictory roles – he starts by stating he was a Tanner and later says he was a Werewolf. Several other players dismiss or question his claims, suggesting his ambiguity is suspicious. No other player presents credible evidence of being a Werewolf, so Mitchell stands out as the most likely suspect. Eliminating him gives Team Village the best chance to remove a werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"During the discussion, Mitchell repeatedly claims contradictory roles – he starts by stating he was a Tanner and later says he was a Werewolf. Several other players dismiss or question his claims, suggesting his ambiguity is suspicious. No other player presents credible evidence of being a Werewolf, so Mitchell stands out as the most likely suspect. Eliminating him gives Team Village the best chance to remove a werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"During the discussion, Mitchell repeatedly claims contradictory roles – he starts by stating he was a Tanner and later says he was a Werewolf. Several other players dismiss or question his claims, suggesting his ambiguity is suspicious. No other player presents credible evidence of being a Werewolf, so Mitchell stands out as the most likely suspect. Eliminating him gives Team Village the best chance to remove a werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "During the discussion, Mitchell repeatedly claims contradictory roles – he starts by stating he was a Tanner and later says he was a Werewolf. Several other players dismiss or question his claims, suggesting his ambiguity is suspicious. No other player presents credible evidence of being a Werewolf, so Mitchell stands out as the most likely suspect. Eliminating him gives Team Village the best chance to remove a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4176,
+    "output_token_count": 1102,
+    "generation_time_sec": 137.71382474899292,
+    "used_chat_template": true,
+    "input_char_count": 15698,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

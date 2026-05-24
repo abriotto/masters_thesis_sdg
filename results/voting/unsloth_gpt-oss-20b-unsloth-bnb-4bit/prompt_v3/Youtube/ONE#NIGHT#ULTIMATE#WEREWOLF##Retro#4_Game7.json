@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have to interpret the transcript and identify characters. Provide which player vote is best.\n\nTranscript suspicious: Many nonsensical lines, unclear. Let's parse names:\n\nPlayers: Justin, Caitlynn, Mike, James, Mitchell. They have roles unknown; could be random.\n\nWe need determine which is most likely a Werewolf.\n\nFrom transcript, key lines: \"Mike: I'm going to claim seer.\" So Mike says he claims seer (i.e., currently thinks he's seer). But we don't know if he might have swapped to a different role.\n\nAnother line: \"Justin: I'm the minion.\" So Justin says he is minion. That could mean he started as minion? But maybe he ended up being minion because swapped. However their statements about had no werewolves etc.\n\nLet's deduce: The winning team needs a werewolf to die. We think there are are two werewolves in center; implies no werewolves among players. But if minion says no werewolves, but minion can find that; but implausible.\n\nBut many statements appear nonsense. Perhaps the transcript is purposely garbled.\n\nGoal: who seems likely to be a werewolf? Candidates: maybe Mike because he says he is seer; but seer cannot be werewolf. Who else? Justin says he is minion. Minion is a werewolf ally. So Justin could be a werewolf ally? Actually minion is not a werewolf but aligns with werewolves. So Justin has that alignment because minion works with werewolves. So if we suspect Justin is minion, then he is aligned with werewolves and thus you want to kill him? Wait! If minion is a werewolf ally, then counting objective for Village: they'd target werewolves or minions? For victory, a werewolf dies.\n\nTeam Village aims to kill at least one werewolf. They could vote for minion? But minion is with werewolves. But if you kill a minion, you still defeat a werewolf ally and reduce werewolf count. But the minion may be hidden.\n\nRight now we hypothesize: Justin is minion; thus align with werewolf, but if he is removed, team village gets rid of an ally of werewolves. But file: If all players are winners, no one dies, team still wins if no werewolves present. But we have 2 werewolves in center. So if all 5 players are villages (none are werewolf), Team Village wins, because no werewolf alive. Wait: If all cards are in the center, no werewolves, otherwise everything else.\n\nIn that scenario, there's no werewolf among players, so no need to kill werewolf by voting.\n\nThus best voting choice: maybe no one. But instruction: choose exactly one player to vote for.\n\nEven if someone is minion? But minion is part of werewolf team. However minion mind works in eliminating may not be necessary.\n\nBut typical solution is to vote for the person most likely to be werewolf. Suppose Justin is minion -> not direct werewolf but they align with werewolf. Even though they're not a werewolf themselves, they align with werewolves because minion is allied with werewolves, but that alignment qualifies as \"most likely to be werewolf\" because they are from the werewolf side.\n\nThus I'd vote for Justin.\n\nCheck if other claims: James says \"Well, I can say whatever you were, you're the drunk now\"??? Not telling.\n\nMike mentions \"I'm going to claim Seer.\" Typically seer is village, cannot be werewolf. So not likely.\n\nThus Justin appears to be minion, aligning with werewolves; that's the biggest hint. So we vote for Justin.\n\nThus final answer: vote for Justin.\n\nBut need to produce justification: reason. Good.",
+  "parsed_output": {
+    "justification": "Justin identifies himself as the minion, an ally of the Werewolves, which makes him the best candidate for elimination to reduce the Werewolf advantage. No other player in the transcript claims to have been a Werewolf or indicates a likely Werewolf role, and the rest of the conversation is incoherent or ambiguous. By voting for Justin, the Village team takes a direct hit at the werewolf alliance, improving chances of a win. The absence of any other clear werewolf candidate supports focusing on Justin.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\n  \"justification\": \"Justin identifies himself as the minion, an ally of the Werewolves, which makes him the best candidate for elimination to reduce the Werewolf advantage. No other player in the transcript claims to have been a Werewolf or indicates a likely Werewolf role, and the rest of the conversation is incoherent or ambiguous. By voting for Justin, the Village team takes a direct hit at the werewolf alliance, improving chances of a win. The absence of any other clear werewolf candidate supports focusing on Justin.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Justin identifies himself as the minion, an ally of the Werewolves, which makes him the best candidate for elimination to reduce the Werewolf advantage. No other player in the transcript claims to have been a Werewolf or indicates a likely Werewolf role, and the rest of the conversation is incoherent or ambiguous. By voting for Justin, the Village team takes a direct hit at the werewolf alliance, improving chances of a win. The absence of any other clear werewolf candidate supports focusing on Justin.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin identifies himself as the minion, an ally of the Werewolves, which makes him the best candidate for elimination to reduce the Werewolf advantage. No other player in the transcript claims to have been a Werewolf or indicates a likely Werewolf role, and the rest of the conversation is incoherent or ambiguous. By voting for Justin, the Village team takes a direct hit at the werewolf alliance, improving chances of a win. The absence of any other clear werewolf candidate supports focusing on Justin."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2637,
+    "output_token_count": 908,
+    "generation_time_sec": 114.06632018089294,
+    "used_chat_template": true,
+    "input_char_count": 10682,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

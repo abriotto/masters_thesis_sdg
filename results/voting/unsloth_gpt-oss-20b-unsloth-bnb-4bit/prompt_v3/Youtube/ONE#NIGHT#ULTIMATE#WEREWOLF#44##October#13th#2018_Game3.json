@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide best target to vote for. Let's parse and understand roles.\n\nPlayers: Justin, Mitchell, Paul, Mike.\n\nWe know actions.\n\nDuring night: Troublemaker wakes up (Paul?) Wait: at step 13, Announcer: Troublemaker, wake up. But earlier \"Paul: I'm doing Troublemaker, even though he got it.\" That suggests Paul is Troublemaker? Actually step 2: Paul says he is doing Troublemaker. So likely Paul started as Troublemaker. So Paul's role is Troublemaker, not voted yet? It might shift due to actions?\n\nWe need to track Night actions in order:\n\n1. Duel: There is no doppelganger.\n2. Werewolves: none of the players? Maybe none. Wait: The player list: Justin, Mitchell, Paul, Mike. But we don't know roles. But from comments, maybe not all.\n\nBut \"Announcer: Werewolves, wake up and look for others werewolves.\" Possibly nobody is werewolf? But we don't know. The actions mention \"I robbed from Justin who was the Werewolf.\" Suggesting that somewhere someone is a Werewolf.\n\nAlso \"the Tanner might 'fuck it up'..\" The game seemed chaotic.\n\nBetter to identify each player's role at the start based on statements:\n\nSome lines:\n\n- \"Paul: I'm doing Troublemaker, even though he got it.\" So Paul starts as Troublemaker.\n- \"Justin: I'm doing the inspection -> he was Seer maybe.\"\n- In line 27, \"Mitchell: Sorry.\" Possibly he didn't get a role easily.\n\nFrom lines 41: \"Mike: I think Mitchell is the Tanner.\" So at some point someone changes.\n\nNeed to track possible swaps.\n\nTroublemaker's action: exchange between two other players. Might affect roles. He says \"I need a second\". He may actually swapped other players.\n\n\"Paul: I need a second.\" Might be about picking a second card?\n\n\"Mike: I switched you with someone.\" So at some point Mike swapped a role.\n\nThere is confusion but final votes: They appear to not decide; many contradictory claims.\n\nWe need to pick who is more likely a werewolf.\n\nPossible candidates: who claims they are werewolf, or who rev can't be determined. \"I robbed from Justin who was the Werewolf.\" So maybe there is a werewolf.\n\nFrom that statement, maybe the werewolf is Justin. He is called \"I robbed from Justin who was the Werewolf.\" That implies Justin may have been werewolf? But that phrase might be coming from someone who robbed (removed) Justin's card making them become werewolf?\n\nLet's parse textual mapping:\n\n(1-3 comments: some confusion but ignore.)\n\nImportant: \"Paul: I need a second\" might refer to second victim? Not clear.\n\nThe conversation is basically about votes; it's unclear who holds who.\n\nWe probably assume that a player being indicated as werewolf. Let's focus on the word \"Werewolf\" is used in lines: 6: \"Werewolves, wake up and look for others werewolves.\" Possibly the game didn't determine werewolves.\n\nBut later, \"I'm doing Troublemaker.\" So only Paul is Troublemaker. Others could be other roles: perhaps Justin is Seer, Mike could be something else (maybe robber). Mitchel maybe random.\n\nBecause roles controlling \"robbing\" are aspects. \"Robber, wake up.\" That was step 12. That indicates the player with role Robber wakes up. But which player? Unknown. Possibly Mike?\n\nOn step 13: \"Troublemaker, wake up.\" There's only one Troublemaker known. So role of Robber? Since the Robber is defined to be a village role. But we don't know.\n\nIn step 12: \"Announcer: Robber, wake up. You may exchange your card with another player's card and then view your new card.\"\n\nThus whoever is Robber (unknown) can steal someone's role.\n\nLine 41/42 guess: \"Mike: I think Mitchell is the Tanner.\" That could indicate that Mike possibly replaced somebody? Maybe Mike is the Robber who swapped.\n\nAlternatively, maybe Mike is the robber; he \"robbed from Justin\" (steal Justin's card?). That would mean Justin could have been a werewolf initially; then Mike swapped Justin's role (giving Justin a different role?).\n\nAlternatively, Bob: \"I robbed from Justin...\" indicates that Mike might have swapped the role of Justin, possibly turning Justin into a werewolf? Possibly, because being robbed might mean he's removed as shapeshifter? Hard.\n\nBut we need a single likely werewolf to vote for. The bigger hint: \"I robbed from Justin who was the Werewolf.\" suggests that Justin originally was a werewolf, or that Mike stole Justin's role (was werewolf) and turned it into something else? The statement from the conversation: \"I robbed from Justin who was the Werewolf.\" If someone says this, it could mean that the person they \"robbed\" was the werewolf? But it might just be a phrase used to assert they robbed.\n\nActually, consider that all \"did\"? Let's search line: 48: \"I'm robbing from Justin who was werewolf.\" That means the thing being robbed is a werewolf? Or that the person that was then removed? Not sure.\n\nWe may need to examine each line where weapon mentions.\n\nNow let's parse lines 46-50.\n\n46: \"Paul: Okay, we vote for Mitchell.\"\n47: \"Justin: No, we don't vote for Mitchell.\"\n48: \"Paul: Yes we do, because I robbed from Justin who was the Werewolf.\"\n49: \"Justin: No. No.\"\n\nSo Paul says that he \"robbed from Justin who was the Werewolf,\" implying that Paul in fact became a werewolf? Wait, \"robbed from Justin\" might imply that Paul obtained role from Justin? If Justin previously had a werewolf role and Paul stole it. So original role of Justin was werewolf, and Paul's action reveals he got an werewolf card. So as \"robbed from Justin,\" implies Justin gave his role to Paul. So now, Paul might hold the werewolf role.\n\nThus Paul's would be W. Or maybe not.\n\nNow line 48: \"Paul: Yes we do, because I robbed from Justin who was the Werewolf.\" He indicates there's a werewolf. He says he had the werewolf after robbing from Justin. Ideally, that statement is evidence.\n\nAlternatively, Mike says \"I think Mitchell is the Tanner.\" So maybe Mike is a tanner.\n\nBut the objective is find who is might be werewolf.\n\nGiven noise, perhaps the simplest is: Paul's claim that he robbed from Justin who was the Werewolf implies that his current card (after robbery) might not be the werewolf but something else—he may have stolen the werewolf role? Hmm.\n\nActually, the robber grabs someone else's card. If Justin had the werewolf card, and Paul swapped it with his card, then Paul's new card might be the werewolf. So Paul's new role is werewolf. Thus, Paul is likely the werewolf.\n\nIn addition, there might also be other roles: Justin might have had another role; but after the game, Michigan's contested.\n\nTherefore, I think Paul may be the arewolf to vote for.\n\nBut let's examine other lines:\n\n48: \"Paul: Yes we do, because I robbed from Justin who was the Werewolf.\"\n\nSo Paul's action: The only way to become a werewolf through robbery is if Justin was a werewolf and Paul took that role.\n\nTherefore, it's plausible that Paul has the werewolf.\n\nAlso, \"I helped ensure that [others are] wasn't\"\n\nAt the end, there is \"Joe: I think we are all fine.\" Possibly they reflect unknown.\n\nThus, I'd vote for Paul.\n\nBut we need justification.\n\nWe need to reason but not too deep. Summarize: Paul's actions and statements strongly suggest that Paul's current role is likely werewolf. If we vote for Paul, that eliminates a werewolf, helpful for Village. Improve chances.\n\nTherefore, chosen_vote: \"Paul\".\n\nJustification: concise explanation: Paul's admission of robbing from Justin, which explains how he acquired the werewolf card, and other statements support that Paul may currently be the werewolf.\n\nWe'll produce final answer.",
+  "parsed_output": {
+    "justification": "The transcript shows that Paul claims he 'robbed from Justin who was the Werewolf,' implying that Justin owned a Werewolf card and Paul took it, so Paul’s current role is most likely a Werewolf. His subsequent statements and the confusion around being the Robber further support that he was last seen as the primary suspect for the werewolf role. Because eliminating him would mitigate known werewolf threats, voting for Paul maximizes the chance that the Village succeeds.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript shows that Paul claims he 'robbed from Justin who was the Werewolf,' implying that Justin owned a Werewolf card and Paul took it, so Paul’s current role is most likely a Werewolf. His subsequent statements and the confusion around being the Robber further support that he was last seen as the primary suspect for the werewolf role. Because eliminating him would mitigate known werewolf threats, voting for Paul maximizes the chance that the Village succeeds.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript shows that Paul claims he 'robbed from Justin who was the Werewolf,' implying that Justin owned a Werewolf card and Paul took it, so Paul’s current role is most likely a Werewolf. His subsequent statements and the confusion around being the Robber further support that he was last seen as the primary suspect for the werewolf role. Because eliminating him would mitigate known werewolf threats, voting for Paul maximizes the chance that the Village succeeds.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcript shows that Paul claims he 'robbed from Justin who was the Werewolf,' implying that Justin owned a Werewolf card and Paul took it, so Paul’s current role is most likely a Werewolf. His subsequent statements and the confusion around being the Robber further support that he was last seen as the primary suspect for the werewolf role. Because eliminating him would mitigate known werewolf threats, voting for Paul maximizes the chance that the Village succeeds."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3386,
+    "output_token_count": 1839,
+    "generation_time_sec": 226.55582475662231,
+    "used_chat_template": true,
+    "input_char_count": 13354,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

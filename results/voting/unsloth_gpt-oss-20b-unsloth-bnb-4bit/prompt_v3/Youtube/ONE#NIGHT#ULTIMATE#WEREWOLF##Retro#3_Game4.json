@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "The transcript indicates repeated accusations directed at Mitchell—multiple players claim, including James, that he is the werewolf, and the phrasing ‘I was the tanner’ strongly implies a conflict between identities. Given the limited information, it is most plausible that Mitchell is the werewolf, so eliminating him first favors the village’s victory.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "<|channel|>analysis<|message|>We need to parse this weird transcript. It seems to be disorganized; appears to have no clear evidence of werewolves etc. We need to choose a player to vote with highest likelihood being Werewolf. Because our team is Team Village; any player might be Werewolf. We need to guess.\n\nLet's parse key statements:\n\n- Justin says: \"I think James is the Mason.\" That may be an accusation.\n\n- Several accusations about to be werewolf target; But many confusing.\n\n- There is mention: \"Mitchell: I was the tanner and Mike switched with me.\" Wait: \"I was the tanner and Mike switched with me.\" That would mean Mitchell was originally the tanner, but as a tanner, they lose when killed. But the tagline indicates a trust. Let's parse:\n\nLine 68: \"Mike: I did not, no. I switched with James.\" (Therefore, Mike says he switched with James; presumably Mike had his card swapped with James earlier, so Mike ends up as something else.)\n\nLine 69: \"Mitchell: And I think he's trying to say he didn't switch with me.\" This is a conversation.\n\nAlso \"Mitchell: I was the tanner and Mike switched with me.\" That implies Mitchell was the tanner, so elimination would be beneficial to Team Village (Tanner loses), but the tanner wins only by dying. So elimination of a Tanner increases chance of Village wins? Actually, if a Tanner is eliminated, the Town wins if at least one werewolf dies; but elimination of a member of independent team is neutral; Team Village wins when at least one Werewolf dies. Since the Tanner is not required to kill anyone else. But if Tanner is eliminated, that player dies and thus Tanner loses. So elimination of the Tanner isn't beneficial to Village because it's just a non-alignment elimination. However, if the Tanner is a werewolf disguised, elimination could help, but can't guarantee.\n\nMaybe better to vote for the potential werewolves: According to statements, \"James: It's Mitchell.\" That's many times.\n\nJames accuses both Mitchell and others. Let's check: \"James: It's Mitchell.\" Also \"For example: [95] James: Because there is a werewolf out there and It's Mitchell.\"\n\nPossible werewolf suspect: Mitchell?\n\nBut also earlier: \"Others suspect. Justin says: I'm going to vote Mitchell.\" \"James: I think it's Mitchell.\" So many people pointing at Mitchell.\n\nAdditionally, \"Justin: What if they're both werewolves?\" And the mention \"If there is only one werewolf, you may look at a card from the center.\" So there might be only one werewolf.\n\nAre there any explicit claims about being a werewolf? Not directly; but often players call each other \"what are you?\" Without actual clarity.\n\nWe need to deduce likely werewolf thanks to the transcripts: The one that seems suspicious: \"Mitchell: I was the tanner\". That suggests that the player might be eliminated knowingly. Also \"Mitchell: I was the tanner and Mike switched with me.\" That means that 'Mike' had the found midnight swap with Mitchell; Mike's role changed. So Mike is uncertain.\n\nBut we suspect that the are cautious.\n\nAlternatively, the opposite is that the \"Justin: I think James is the Mason.\" But Mason is nice; not werewolf.\n\nThere is a line: \"Justin: What if I was this?\" Not referencing here.\n\nThe general pattern suggests that the are trying to figure context; but the consistent suspect creative.\n\nThere's remark: \"Mitchell: I think it's Mike.\" Later: \"I'm voting Mike.\" Person: \"Mitchell: I think it's Mike. James: I think it's Mitchell. I don't think Mike was the robber at all.\" //All messy.\n\nThus, it's unclear but we need choose only 1 candidate.\n\nConsider that player names: Justin, Mike, James, Mitchell.\n\nWe assume majority of roles: there may be a werewolf disguised among them. At least one waswolf.\n\nThe lines suggested that \"James: It's Mitchell.\" So earlier suspect: The werewolves might be Mitchell.\n\nAlso \"Justin: Because there is a werewolf out there and it's Mitchell.\" Indeed.\n\nThus we should call out that all mentions point to Mitchell being the werewolf.\n\nNow evaluate: If Mitchell is werewolf, eliminating him would help Village win.\n\nBut also there's mention \"Mitchell: I think it's Mike\" later; conflict.\n\nLet's find final lines:\n\nline 101: \"Mitchell: I think it's Mike.\"\nline 102: \"James: I think it's Mitchell. I don't think Mike was the robber at all.\"\n\nAnd line 118: \"Mike: I'm going to vote Mike.\" — Wait that is contradictory: \"Mike: I'm going to vote Mike.\" That seems weird: They intend to vote themselves? But they could be signature.\n\nAnyway, between these lines, best to trust earlier consensus: \"James: It's Mitchell.\" etc. Also he calls \"Mitchell: I was the tanner ...\"\n\nThus the likely suspect: Mitchell. Let's double-check that. If Mitchell was the tanner, his elimination would kill the independent, leaving us. But no, isolated only one werewolf still stuck. But the elimination of the tanner leaves one unknown, but the werewolf might still survive.\n\nHowever, watchers maybe misinterpret the role; he might be a werewolf disguised as someone else; but the transcripts mention \"I was the tanner.\" That suggests that originally he was the tanner but might have swapped with Mike, etc. Was the role do \"switch\" meaning final role black.\n\nOk.\n\nThus answer: choose Mitchell.\n\nNow produce final JSON: just name \"Mitchell\" with reasoning.\n\n<|channel|>final <|constrain|>json<|message|>{\"justification\":\"The transcript indicates repeated accusations directed at Mitchell—multiple players claim, including James, that he is the werewolf, and the phrasing ‘I was the tanner’ strongly implies a conflict between identities. Given the limited information, it is most plausible that Mitchell is the werewolf, so eliminating him first favors the village’s victory.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript indicates repeated accusations directed at Mitchell—multiple players claim, including James, that he is the werewolf, and the phrasing ‘I was the tanner’ strongly implies a conflict between identities. Given the limited information, it is most plausible that Mitchell is the werewolf, so eliminating him first favors the village’s victory.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript indicates repeated accusations directed at Mitchell—multiple players claim, including James, that he is the werewolf, and the phrasing ‘I was the tanner’ strongly implies a conflict between identities. Given the limited information, it is most plausible that Mitchell is the werewolf, so eliminating him first favors the village’s victory."
+  },
+  "soft_warnings": [
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3613,
+    "output_token_count": 1255,
+    "generation_time_sec": 157.79880952835083,
+    "used_chat_template": true,
+    "input_char_count": 14293,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

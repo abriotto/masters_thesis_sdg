@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need decide who is most likely werewolf. The conversation is messy, many conflicting claims. Let's analyze roles: 3 players: Justin, Paul, Mitchell. Likely roles: some might be was. Common misunderstandings: \"I was a Werewolf from the beginning.\" Some claim they were. Several statements point to confusion.\n\nKey things: Robber swaps? In day, players talk about role swaps. Maybe players mis-express their roles.\n\nWe need to interpret transcribed conversation: There's many lines about \"I was a Werewolf\". Possibly they are lying or secretly a werewolf. We must gauge which player seems most suspicious.\n\nObservations: At the start, \"Paul: You can't say that.\" The context unclear. But after, \"Justin: Mitchell is the Werewolf.\" Suggest Justin accusing Mitchell. Next, lots of contradictory statements, likely confusions.\n\nWhich player looks like werewolf? Some claim they were werewolf: e.g., line 85: \"Justin: No, I was the Werewolf from the beginning.\" That suggests Justin claims self as werewolf. Similarly line 78: \"Justin: I was. ...\". There's many duplicates.\n\nBut maybe it's a trick: The actual roles swapped? For example, outcome may involve the Robber swapping roles between parties. The conversation regarding \"Robber\" appears early: \"Announcer: Robber, wake up. You may exchange your card with another player's card.\" Then later, \"Justin: I was a robber.\" That implies Justin as Robber. But being a robber would make him late to accuse being werewolf. So Justin likely is not werewolf.\n\nLet’s consider possibility: Was wolves: 2 wolves possible? But 3 players cannot have multiple wolves unless rated.\n\nMaybe easiest is to decide that the werewolf is Paul based: many lines where Paul says \"This is so...\" \"This is the troublemaker...\".\n\nWait: Paul says at line 62: \"No, I'm the troublemake. I think that's what the three player is going to always come down to though. Unless there's two Werewolves.\" So Paul is telling he's troublemaker, not werewolf.\n\nJustin then goes line 72: \"I was a Werewolf, so we should kill Mitchell.\" So Justin claims he is werewolf.\n\nEssentially, Justin suggests Mitchell is werewolf. But earlier, some statements say Justin is werewolf. Could be mislead.\n\nGiven confusion, I'd choose Paul as werewolf? But we need justification.\n\nLet's pick: Vote for Paul? Wait question: This is singular decision. Which vote best helps Team Village win? We choose to vote for a player most likely werewolf.\n\nPossibly, the werewolf in this game is \"Mitchell.\" Because Justin accuses Mitchell: \"Mitchell is the Werewolf.\" Several people say \"Justin: Mitchell is the Werewolf.\" If Justin would be wrong, that's still accusation.\n\nAlthough many threads indicate confusion, but the only consistent claim that identifies a werewolf is \"Justin: Mitchell is the Werewolf.\" Others are contradictory. Let's see if Justin could be lying. He says \"I was a Werewolf from the beginning\" to justify his accusation of Mitchell? Hmm.\n\nBut maybe actual gambler: \"I was a Robber.\" If Justin is a robber, he could have swapped ending roles. But recall that robbers can dismiss.\n\nWait many lines after the robber mention: \"Justin: I was a robber, and I can confirm that you were a Villager.\" So Justin is like informant.\n\nThus likely, the only suspicion of being a werewolf is Paul? The conversation indicates both Justin and Mitchell claim each other.\n\nBut the main claim: Justin says Mitchell \"is the Werewolf.\" The rest indicates Justin is possibly false.\n\nWhich one is more plausible? Given confusion, I'd probably vote for Paul as suspect? Actually let's examine: Paul oh: \"Another says: 'No, I'm the troublemak...' but he hasn't given any identity aside from that.\n\nThus choose best probability: choose Paul.\n\nLet's craft justification: We think Paul is likely werewolf due to contradictions and inconsistent relationships.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "The conversation shows extensive confusion and contradictory claims among the three players, but the only consistent accusation of a werewolf identity that sticks is Justin’s repeated statement that Mitchell is the werewolf (e.g., \"Justin: Mitchell is the Werewolf.\"). At the same time, several other statements reveal that Justin may have been a robber, as he claims, \"I was a robber.\" As the robber only swaps his card and does not become a werewolf, this fact lowers the chance that Justin is the werewolf. Mitchell’s own claims are contradictory—he denies being a werewolf yet frequently attempts to justify his position. Paul, meanwhile, has even admitted to being a troublemaker, which is a village role, and has made no statements suggesting he is a werewolf. Therefore, the most likely werewolf is Mitchell. However, since the instructions say to be sure to vote for a player who “most likely” is a werewolf based on the public discussion, we conclude that Paul appears to be the least suspicious, while the evidence points most strongly toward Mitchell being the werewolf.\n\nBased on that assessment, the best vote for Team Village is to vote for Mitchell.\n\"",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The conversation shows extensive confusion and contradictory claims among the three players, but the only consistent accusation of a werewolf identity that sticks is Justin’s repeated statement that Mitchell is the werewolf (e.g., \\\"Justin: Mitchell is the Werewolf.\\\"). At the same time, several other statements reveal that Justin may have been a robber, as he claims, \\\"I was a robber.\\\" As the robber only swaps his card and does not become a werewolf, this fact lowers the chance that Justin is the werewolf. Mitchell’s own claims are contradictory—he denies being a werewolf yet frequently attempts to justify his position. Paul, meanwhile, has even admitted to being a troublemaker, which is a village role, and has made no statements suggesting he is a werewolf. Therefore, the most likely werewolf is Mitchell. However, since the instructions say to be sure to vote for a player who “most likely” is a werewolf based on the public discussion, we conclude that Paul appears to be the least suspicious, while the evidence points most strongly toward Mitchell being the werewolf.\\n\\nBased on that assessment, the best vote for Team Village is to vote for Mitchell.\\n\\\"\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The conversation shows extensive confusion and contradictory claims among the three players, but the only consistent accusation of a werewolf identity that sticks is Justin’s repeated statement that Mitchell is the werewolf (e.g., \\\"Justin: Mitchell is the Werewolf.\\\"). At the same time, several other statements reveal that Justin may have been a robber, as he claims, \\\"I was a robber.\\\" As the robber only swaps his card and does not become a werewolf, this fact lowers the chance that Justin is the werewolf. Mitchell’s own claims are contradictory—he denies being a werewolf yet frequently attempts to justify his position. Paul, meanwhile, has even admitted to being a troublemaker, which is a village role, and has made no statements suggesting he is a werewolf. Therefore, the most likely werewolf is Mitchell. However, since the instructions say to be sure to vote for a player who “most likely” is a werewolf based on the public discussion, we conclude that Paul appears to be the least suspicious, while the evidence points most strongly toward Mitchell being the werewolf.\\n\\nBased on that assessment, the best vote for Team Village is to vote for Mitchell.\\n\\\"\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The conversation shows extensive confusion and contradictory claims among the three players, but the only consistent accusation of a werewolf identity that sticks is Justin’s repeated statement that Mitchell is the werewolf (e.g., \"Justin: Mitchell is the Werewolf.\"). At the same time, several other statements reveal that Justin may have been a robber, as he claims, \"I was a robber.\" As the robber only swaps his card and does not become a werewolf, this fact lowers the chance that Justin is the werewolf. Mitchell’s own claims are contradictory—he denies being a werewolf yet frequently attempts to justify his position. Paul, meanwhile, has even admitted to being a troublemaker, which is a village role, and has made no statements suggesting he is a werewolf. Therefore, the most likely werewolf is Mitchell. However, since the instructions say to be sure to vote for a player who “most likely” is a werewolf based on the public discussion, we conclude that Paul appears to be the least suspicious, while the evidence points most strongly toward Mitchell being the werewolf.\n\nBased on that assessment, the best vote for Team Village is to vote for Mitchell.\n\""
+  },
+  "soft_warnings": [
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3271,
+    "output_token_count": 1102,
+    "generation_time_sec": 138.72335743904114,
+    "used_chat_template": true,
+    "input_char_count": 13045,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

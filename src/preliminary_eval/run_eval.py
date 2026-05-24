@@ -1,26 +1,29 @@
+from __future__ import annotations
+
+import unsloth
+
 import argparse
-import json
-import time
-from pathlib import Path
-from typing import Optional
+import traceback
+from typing import Any, Optional
 
-from google import genai
-
+from src.utils.experiment_utils import (
+    add_common_soft_warnings,
+    build_results_root,
+    count_sentences,
+    get_internal_thoughts,
+    prepare_response_for_json,
+    print_generation_debug,
+    print_local_model_summary,
+    remove_internal_thoughts_from_debug,
+    save_json,
+    select_rows,
+)
 from src.utils.io_utils import find_repo_root, load_json, load_text
 from src.utils.json_utils import parse_model_json
-from src.utils.model_utils import (
-    call_gemini,
-    call_local_model,
-    get_model_io_info,
-    load_local_model,
-)
+from src.utils.model_utils import call_local_model, load_local_model
 
 
-def build_preliminary_prompt(
-    eval_prompt: str,
-    rules_text: str,
-    question_text: str,
-) -> str:
+def build_preliminary_prompt(eval_prompt: str, rules_text: str, question_text: str) -> str:
     return f"""{eval_prompt}
 
 Here are the game rules:
@@ -34,13 +37,25 @@ Question:
 """.strip()
 
 
-def validate_preliminary_output(obj: Optional[dict]) -> dict:
-    report = {
+def normalize_preliminary_output(
+    obj: Optional[dict[str, Any]],
+) -> Optional[dict[str, Any]]:
+    """Normalize legacy `final_answer` to the preferred `answer` field."""
+    if not isinstance(obj, dict):
+        return obj
+
+    normalized = dict(obj)
+    if "answer" not in normalized and "final_answer" in normalized:
+        normalized["answer"] = normalized["final_answer"]
+    return normalized
+
+
+def validate_preliminary_output(obj: Optional[dict[str, Any]]) -> dict[str, Any]:
+    report: dict[str, Any] = {
         "is_valid": False,
         "errors": [],
-        "final_answer": None,
         "justification": None,
-        "mechanical_analysis": None,
+        "answer": None,
     }
 
     if obj is None:
@@ -51,98 +66,81 @@ def validate_preliminary_output(obj: Optional[dict]) -> dict:
         report["errors"].append("parsed_output_not_dict")
         return report
 
-    final_answer = obj.get("final_answer")
-    justification = obj.get("justification")
-    mechanical_analysis = obj.get("mechanical_analysis")
+    if "justification" not in obj:
+        report["errors"].append("missing_justification")
+    if "answer" not in obj and "final_answer" not in obj:
+        report["errors"].append("missing_answer")
 
-    if not isinstance(final_answer, str) or not final_answer.strip():
-        report["errors"].append("final_answer_not_nonempty_string")
+    justification = obj.get("justification")
+    answer = obj.get("answer", obj.get("final_answer"))
 
     if not isinstance(justification, str) or not justification.strip():
         report["errors"].append("justification_not_nonempty_string")
+    else:
+        justification = justification.strip()
 
-    if not isinstance(mechanical_analysis, str) or not mechanical_analysis.strip():
-        report["errors"].append("mechanical_analysis_not_nonempty_string")
+    if not isinstance(answer, str) or not answer.strip():
+        report["errors"].append("answer_not_nonempty_string")
+    else:
+        answer = answer.strip()
 
-    report["final_answer"] = final_answer
     report["justification"] = justification
-    report["mechanical_analysis"] = mechanical_analysis
-
-    if not report["errors"]:
-        report["is_valid"] = True
-
+    report["answer"] = answer
+    report["is_valid"] = not report["errors"]
     return report
 
 
-def add_soft_warnings(
-    validation: dict,
-    raw_response: str,
-    parsed_output: Optional[dict],
+def add_preliminary_soft_warnings(
+    validation: dict[str, Any],
+    raw_response: Any,
+    response_for_parsing: Any,
+    parsed_output: Optional[dict[str, Any]],
+    debug_info: Optional[dict[str, Any]],
+    max_new_tokens: int,
 ) -> list[str]:
-    warnings = []
+    warnings = add_common_soft_warnings(
+        raw_response=raw_response,
+        response_for_parsing=response_for_parsing,
+        parsed_output=parsed_output,
+        debug_info=debug_info,
+        max_new_tokens=max_new_tokens,
+    )
 
-    final_answer = validation.get("final_answer")
+    answer = validation.get("answer")
     justification = validation.get("justification")
-    mechanical_analysis = validation.get("mechanical_analysis")
 
-    if isinstance(final_answer, str) and len(final_answer.strip()) > 80:
-        warnings.append("final_answer_may_be_too_long")
+    if isinstance(answer, str) and len(answer.strip()) > 80:
+        warnings.append("answer_may_be_too_long")
 
     if isinstance(justification, str):
-        low = justification.lower()
-
-        if any(x in low for x in ["i think", "probably", "maybe", "i guess"]):
-            warnings.append("justification_contains_uncertain_language")
-
-        sentence_count = (
-            justification.count(".")
-            + justification.count("!")
-            + justification.count("?")
-        )
+        sentence_count = count_sentences(justification)
+        if sentence_count < 1:
+            warnings.append("justification_may_be_empty_or_sentence_fragment")
         if sentence_count > 2:
             warnings.append("justification_may_exceed_2_sentences")
 
-    if isinstance(mechanical_analysis, str):
-        if len(mechanical_analysis.strip()) > 1500:
-            warnings.append("mechanical_analysis_may_be_too_long")
-
-        low = mechanical_analysis.lower()
-        if any(x in low for x in ["i think", "probably", "maybe", "i guess"]):
-            warnings.append("mechanical_analysis_contains_uncertain_language")
-
-    if "```" in raw_response:
-        warnings.append("response_contains_markdown_fences")
-
-    if raw_response.count("{") > 1 and parsed_output is not None:
-        warnings.append("response_may_contain_extra_json_or_wrapper_text")
-
     if isinstance(parsed_output, dict):
-        expected_fields = {
-            "mechanical_analysis",
-            "justification",
-            "final_answer",
-        }
-
-        unexpected_fields = sorted(set(parsed_output.keys()) - expected_fields)
+        expected_fields = {"justification", "answer"}
+        allowed_legacy_fields = {"final_answer"}
+        unexpected_fields = sorted(
+            set(parsed_output.keys()) - expected_fields - allowed_legacy_fields
+        )
         if unexpected_fields:
             warnings.append(f"response_contains_unexpected_fields:{unexpected_fields}")
-
-        if "id" in parsed_output:
-            warnings.append("response_contains_unexpected_id_field")
-
-        if "reasoning" in parsed_output:
-            warnings.append("response_contains_old_reasoning_field")
+        if "final_answer" in parsed_output and "answer" not in parsed_output:
+            warnings.append("response_uses_legacy_final_answer_field")
 
     return warnings
 
 
-def filter_questions(rows: list[dict], question_ids: list[str] | None) -> list[dict]:
+def filter_questions(
+    rows: list[dict[str, Any]], question_ids: Optional[list[str]]
+) -> list[dict[str, Any]]:
     if not question_ids:
         return rows
 
     wanted = set(question_ids)
     filtered = [row for row in rows if row.get("id") in wanted]
-
     found = {row.get("id") for row in filtered}
     missing = wanted - found
 
@@ -152,241 +150,94 @@ def filter_questions(rows: list[dict], question_ids: list[str] | None) -> list[d
     return filtered
 
 
-def safe_path_name(name: str) -> str:
-    return (
-        name.replace("/", "_")
-        .replace("\\", "_")
-        .replace(":", "_")
-        .replace(" ", "_")
-    )
-
-
-def save_json(path: Path, obj: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(obj, f, indent=2, ensure_ascii=False)
-
-
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="Run preliminary ONUW rule-understanding evals with local Unsloth models."
+    )
 
     parser.add_argument(
         "--questions_path",
         type=str,
         default="src/preliminary_eval/onuw_questions.json",
     )
-    parser.add_argument(
-        "--eval_prompt_path",
-        type=str,
-        default="src/prompts/preliminary_eval_prompt.txt",
-    )
-    parser.add_argument(
-        "--rules_path",
-        type=str,
-        default="src/prompts/onuw_rules.txt",
-    )
-    parser.add_argument(
-        "--backend",
-        type=str,
-        choices=["gemini", "hf_local"],
-        default="hf_local",
-    )
-    parser.add_argument(
-        "--model_name",
-        type=str,
-        default="Qwen/Qwen2.5-7B-Instruct",
-    )
-    parser.add_argument(
-        "--prompt_version",
-        type=str,
-        default="v1",
-    )
-    parser.add_argument(
-        "--task_name",
-        type=str,
-        default="preliminary_eval",
-    )
-    parser.add_argument(
-        "--max_questions",
-        type=int,
-        default=-1,
-        help="Number of questions to process. Use -1 for all.",
-    )
+    parser.add_argument("--eval_prompt_path", type=str, required=True)
+    parser.add_argument("--rules_path", type=str, default="src/prompts/onuw_rules_v2.txt")
+    parser.add_argument("--model_name", type=str, required=True)
+    parser.add_argument("--prompt_version", type=str, required=True)
+    parser.add_argument("--task_name", type=str, default="preliminary_eval")
+
+    parser.add_argument("--start_index", type=int, default=0, help="Zero-based start index.")
+    parser.add_argument("--max_questions", type=int, default=-1, help="Use -1 for all questions.")
     parser.add_argument(
         "--question_ids",
         nargs="*",
         default=None,
-        help="Optional list of specific question IDs to run, e.g. --question_ids q01 q03 q07.",
+        help="Optional list of question IDs, e.g. --question_ids q01 q03 q07.",
     )
-    parser.add_argument(
-        "--sleep_sec",
-        type=float,
-        default=1.0,
-        help="Seconds to sleep between API calls. Only used with the Gemini backend.",
-    )
-    parser.add_argument(
-        "--overwrite",
-        action="store_true",
-        help="Overwrite existing result files.",
-    )
-    parser.add_argument(
-        "--max_new_tokens",
-        type=int,
-        default=256,
-        help="Maximum number of new tokens generated by local HF models.",
-    )
-    parser.add_argument(
-        "--quantization",
-        type=str,
-        choices=["none", "8bit", "4bit"],
-        default="none",
-        help="Optional HF local model quantization. Defaults to none.",
-    )
+    parser.add_argument("--overwrite", action="store_true")
+
+    parser.add_argument("--max_seq_length", type=int, default=8192)
+    parser.add_argument("--max_new_tokens", type=int, default=256)
     parser.add_argument(
         "--reasoning_effort",
         type=str,
         choices=["low", "medium", "high"],
         default="low",
-        help="Reasoning effort for GPT-OSS models. Ignored by non-GPT-OSS local models.",
+        help="Used by GPT-OSS models.",
     )
     parser.add_argument(
         "--gemma_enable_thinking",
         action="store_true",
-        help="Enable Gemma 4 thinking mode. Ignored by non-Gemma models. Defaults to disabled.",
+        help="Used by Gemma 4 models.",
     )
-    parser.add_argument(
-        "--save_prompt",
-        action="store_true",
-        help="Save the fully rendered prompt inside each result JSON.",
-    )
-    parser.add_argument(
-        "--debug_timing",
-        action="store_true",
-        help="Print prompt length, token counts, and generation timing.",
-    )
+    parser.add_argument("--temperature", type=float, default=1.0)
+    parser.add_argument("--top_p", type=float, default=0.95)
+    parser.add_argument("--top_k", type=int, default=64)
+    parser.add_argument("--repetition_penalty", type=float, default=1.05)
+    parser.add_argument("--no_repeat_ngram_size", type=int, default=0)
+
+    parser.add_argument("--save_prompt", action="store_true")
+    parser.add_argument("--save_internal_thoughts", action="store_true")
+    parser.add_argument("--debug_timing", action="store_true")
 
     return parser.parse_args()
 
 
-def load_backend(args: argparse.Namespace):
-    if args.backend == "gemini":
-        return genai.Client(), None, None
-
-    if args.backend == "hf_local":
-        model_io, model = load_local_model(
-            model_name=args.model_name,
-            quantization=args.quantization,
-        )
-        return None, model_io, model
-
-    raise ValueError(f"Unsupported backend: {args.backend}")
-
-
-def call_backend(
-    args: argparse.Namespace,
-    prompt: str,
-    client,
-    model_io,
-    model,
-):
-    if args.backend == "gemini":
-        t0 = time.time()
-        raw_response = call_gemini(
-            client=client,
-            model_name=args.model_name,
-            prompt=prompt,
-        )
-        t1 = time.time()
-
-        debug_info = {
-            "generation_time_sec": float(t1 - t0),
-            "input_char_count": len(prompt),
-        }
-
-        return raw_response, debug_info
-
-    if args.backend == "hf_local":
-        return call_local_model(
-            model=model,
-            model_io=model_io,
-            prompt=prompt,
-            model_name=args.model_name,
-            max_new_tokens=args.max_new_tokens,
-            reasoning_effort=args.reasoning_effort,
-            gemma_enable_thinking=args.gemma_enable_thinking,
-            return_debug_info=args.debug_timing,
-        )
-
-    raise ValueError(f"Unsupported backend: {args.backend}")
-
-
-def unpack_backend_response(args: argparse.Namespace, response):
-    if args.backend == "hf_local" and args.debug_timing:
-        return response
-
-    if isinstance(response, tuple):
-        return response[0], response[1]
-
-    return response, None
-
-
-def print_debug_info(
-    args: argparse.Namespace,
-    question_index: int,
-    total_questions: int,
-    question_id: str,
-    debug_info: Optional[dict],
-) -> None:
-    if not args.debug_timing or debug_info is None:
-        return
-
-    if args.backend == "hf_local":
-        print(
-            f"[{question_index}/{total_questions}] {question_id} | "
-            f"chars={debug_info['input_char_count']} | "
-            f"in_tokens={debug_info['input_token_count']} | "
-            f"out_tokens={debug_info['output_token_count']} | "
-            f"time={debug_info['generation_time_sec']:.2f}s | "
-            f"device={debug_info['model_device']} | "
-            f"handler={debug_info.get('handler', 'unknown')} | "
-            f"reasoning_effort={debug_info.get('reasoning_effort')} | "
-            f"gemma_thinking={debug_info.get('gemma_enable_thinking')}"
-        )
-        return
-
-    print(
-        f"[{question_index}/{total_questions}] {question_id} | "
-        f"chars={debug_info['input_char_count']} | "
-        f"time={debug_info['generation_time_sec']:.2f}s"
-    )
-
-
 def build_result_record(
     args: argparse.Namespace,
-    row: dict,
+    row: dict[str, Any],
     raw_response: str,
-    parsed_output: Optional[dict],
-    validation: dict,
+    response_for_parsing: Any,
+    internal_thoughts: Optional[str],
+    parsed_output: Optional[dict[str, Any]],
+    validation: dict[str, Any],
     soft_warnings: list[str],
-    debug_info: Optional[dict],
+    debug_info: Optional[dict[str, Any]],
     prompt: str,
-) -> dict:
-    result = {
+) -> dict[str, Any]:
+    result: dict[str, Any] = {
         "question_id": row["id"],
         "dimension": row.get("dimension"),
         "question": row["question"],
-        "backend": args.backend,
+        "backend": "unsloth_local",
         "model_name": args.model_name,
         "prompt_version": args.prompt_version,
         "eval_prompt_path": args.eval_prompt_path,
         "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
-        "quantization": args.quantization,
+        "max_seq_length": args.max_seq_length,
         "reasoning_effort": args.reasoning_effort,
         "gemma_enable_thinking": args.gemma_enable_thinking,
-        "raw_response": raw_response,
+        "save_internal_thoughts": args.save_internal_thoughts,
+        "temperature": args.temperature,
+        "top_p": args.top_p,
+        "top_k": args.top_k,
+        "repetition_penalty": args.repetition_penalty,
+        "no_repeat_ngram_size": args.no_repeat_ngram_size,
+        "internal_thoughts": internal_thoughts,
         "parsed_output": parsed_output,
+        "raw_response": raw_response,
+        "response_for_parsing": response_for_parsing,
         "validation": validation,
         "soft_warnings": soft_warnings,
     }
@@ -394,33 +245,40 @@ def build_result_record(
     if args.save_prompt:
         result["rendered_prompt"] = prompt
 
-    if debug_info is not None:
-        result["debug_info"] = debug_info
+    cleaned_debug = remove_internal_thoughts_from_debug(debug_info)
+    if cleaned_debug is not None:
+        result["debug_info"] = cleaned_debug
 
     return result
 
 
 def build_error_record(
     args: argparse.Namespace,
-    row: dict,
+    row: dict[str, Any],
     error: Exception,
     prompt: str,
-) -> dict:
-    result = {
+) -> dict[str, Any]:
+    result: dict[str, Any] = {
         "question_id": row.get("id"),
         "dimension": row.get("dimension"),
         "question": row.get("question"),
-        "backend": args.backend,
+        "backend": "unsloth_local",
         "model_name": args.model_name,
         "prompt_version": args.prompt_version,
         "eval_prompt_path": args.eval_prompt_path,
         "rules_path": args.rules_path,
         "max_new_tokens": args.max_new_tokens,
-        "quantization": args.quantization,
+        "max_seq_length": args.max_seq_length,
         "reasoning_effort": args.reasoning_effort,
         "gemma_enable_thinking": args.gemma_enable_thinking,
+        "temperature": args.temperature,
+        "top_p": args.top_p,
+        "top_k": args.top_k,
+        "repetition_penalty": args.repetition_penalty,
+        "no_repeat_ngram_size": args.no_repeat_ngram_size,
         "error": str(error),
         "error_type": type(error).__name__,
+        "traceback": traceback.format_exc(),
     }
 
     if args.save_prompt:
@@ -431,7 +289,6 @@ def build_error_record(
 
 def main() -> None:
     args = parse_args()
-
     repo_root = find_repo_root()
 
     questions_path = repo_root / args.questions_path
@@ -443,111 +300,124 @@ def main() -> None:
     rules_text = load_text(rules_path)
 
     rows = filter_questions(questions, args.question_ids)
+    rows = select_rows(rows, start_index=args.start_index, max_items=args.max_questions)
 
-    if args.max_questions != -1:
-        rows = rows[: args.max_questions]
-
-    safe_model_name = safe_path_name(args.model_name)
-    results_root = (
-        repo_root
-        / "results"
-        / args.task_name
-        / safe_model_name
-        / f"prompt_{args.prompt_version}"
+    results_root = build_results_root(
+        repo_root=repo_root,
+        task_name=args.task_name,
+        model_name=args.model_name,
+        prompt_version=args.prompt_version,
     )
-    results_root.mkdir(parents=True, exist_ok=True)
 
-    client, model_io, model = load_backend(args)
+    model_io, model = load_local_model(
+        model_name=args.model_name,
+        max_seq_length=args.max_seq_length,
+    )
 
-    print(f"Loaded {len(rows)} questions from {questions_path}")
-    print(f"Eval prompt file: {eval_prompt_path}")
-    print(f"Rules file: {rules_path}")
-    print(f"Backend: {args.backend}")
-    print(f"Model: {args.model_name}")
-    print(f"Quantization: {args.quantization}")
-    print(f"Reasoning effort: {args.reasoning_effort}")
-    print(f"Results root: {results_root}")
+    print(f"Loaded {len(rows)} questions from {questions_path}", flush=True)
+    print(f"Eval prompt file: {eval_prompt_path}", flush=True)
+    print(f"Rules file: {rules_path}", flush=True)
+    print("Backend: unsloth_local", flush=True)
+    print(f"Model: {args.model_name}", flush=True)
+    print("Expected schema: {\"justification\": str, \"answer\": str}", flush=True)
+    print(f"Reasoning effort: {args.reasoning_effort}", flush=True)
+    print(f"Gemma thinking enabled: {args.gemma_enable_thinking}", flush=True)
+    print(f"Max new tokens: {args.max_new_tokens}", flush=True)
+    print(f"Max seq length: {args.max_seq_length}", flush=True)
+    print(f"Temperature: {args.temperature}", flush=True)
+    print(f"Top P: {args.top_p}", flush=True)
+    print(f"Top K: {args.top_k}", flush=True)
+    print(f"Repetition penalty: {args.repetition_penalty}", flush=True)
+    print(f"No-repeat ngram size: {args.no_repeat_ngram_size}", flush=True)
+    print(f"Results root: {results_root}", flush=True)
+    print_local_model_summary(args.model_name, model_io, model)
 
-    if args.backend == "hf_local":
-        io_info = get_model_io_info(args.model_name, model_io)
-        print(f"Model device: {next(model.parameters()).device}")
-        print(f"Model family: {io_info['family']}")
-        print(f"Model IO type: {io_info['io_type']}")
-        print(f"Has chat template: {io_info['has_chat_template']}")
-        print(f"Gemma thinking enabled: {args.gemma_enable_thinking}")
-
-    for i, row in enumerate(rows, start=1):
+    for local_i, row in enumerate(rows, start=1):
+        global_i = args.start_index + local_i
         question_id = row["id"]
-        question_text = row["question"]
         output_path = results_root / f"{question_id}.json"
 
         if output_path.exists() and not args.overwrite:
-            print(f"[{i}/{len(rows)}] SKIP - {output_path.name} already exists")
+            print(f"[{global_i}] SKIP - {output_path.name} already exists", flush=True)
             continue
 
         prompt = build_preliminary_prompt(
             eval_prompt=eval_prompt,
             rules_text=rules_text,
-            question_text=question_text,
+            question_text=row["question"],
         )
 
         try:
-            response = call_backend(
-                args=args,
-                prompt=prompt,
-                client=client,
-                model_io=model_io,
+            raw_response, debug_info = call_local_model(
                 model=model,
+                model_io=model_io,
+                prompt=prompt,
+                model_name=args.model_name,
+                max_new_tokens=args.max_new_tokens,
+                reasoning_effort=args.reasoning_effort,
+                gemma_enable_thinking=args.gemma_enable_thinking,
+                return_debug_info=True,
+                repetition_penalty=args.repetition_penalty,
+                no_repeat_ngram_size=args.no_repeat_ngram_size,
+                temperature=args.temperature,
+                top_p=args.top_p,
+                top_k=args.top_k,
             )
 
-            raw_response, debug_info = unpack_backend_response(args, response)
+            if args.debug_timing:
+                prefix = f"[{global_i}/{args.start_index + len(rows)}] {question_id}"
+                print_generation_debug(prefix, debug_info)
 
-            print_debug_info(
-                args=args,
-                question_index=i,
-                total_questions=len(rows),
-                question_id=question_id,
-                debug_info=debug_info,
+            response_for_parsing = prepare_response_for_json(raw_response)
+            parsed_raw = (
+                parse_model_json(response_for_parsing)
+                if isinstance(response_for_parsing, str)
+                else None
             )
-
-            parsed_output = parse_model_json(raw_response)
+            parsed_output = normalize_preliminary_output(parsed_raw)
             validation = validate_preliminary_output(parsed_output)
-            soft_warnings = add_soft_warnings(
+            soft_warnings = add_preliminary_soft_warnings(
                 validation=validation,
                 raw_response=raw_response,
-                parsed_output=parsed_output,
+                response_for_parsing=response_for_parsing,
+                parsed_output=parsed_raw,
+                debug_info=debug_info,
+                max_new_tokens=args.max_new_tokens,
+            )
+            internal_thoughts = get_internal_thoughts(
+                debug_info=debug_info,
+                save_internal_thoughts=args.save_internal_thoughts,
             )
 
             result = build_result_record(
                 args=args,
                 row=row,
                 raw_response=raw_response,
+                response_for_parsing=response_for_parsing,
+                internal_thoughts=internal_thoughts,
                 parsed_output=parsed_output,
                 validation=validation,
                 soft_warnings=soft_warnings,
                 debug_info=debug_info,
                 prompt=prompt,
             )
-
             save_json(output_path, result)
 
             status = "OK" if validation["is_valid"] else "PARSED_BUT_INVALID"
-            print(f"[{i}/{len(rows)}] {status} - {question_id}.json")
-
-        except Exception as e:
-            error_result = build_error_record(
-                args=args,
-                row=row,
-                error=e,
-                prompt=prompt,
+            print(
+                f"[{global_i}/{args.start_index + len(rows)}] {status} - "
+                f"{question_id}.json -> {validation.get('answer')}",
+                flush=True,
             )
 
+        except Exception as exc:
+            error_result = build_error_record(args=args, row=row, error=exc, prompt=prompt)
             save_json(output_path, error_result)
-
-            print(f"[{i}/{len(rows)}] ERROR - {question_id}.json -> {e}")
-
-        if args.backend == "gemini":
-            time.sleep(args.sleep_sec)
+            print(
+                f"[{global_i}/{args.start_index + len(rows)}] ERROR - "
+                f"{question_id}.json -> {exc}",
+                flush=True,
+            )
 
 
 if __name__ == "__main__":

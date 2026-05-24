@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game1.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze who to vote. Four players: Kevin, Kaelan, Jessica, Daniel. Need to decide based on transcript.\n\nThis transcript looks messy. Let's extract key claims:\n\n- Kevin says: \"I'm the Troublemaker.\" then at [49] says he's a Robber? Hmm.\n\nSequence: [2] Kevin: I'm the Troublemaker. Then [49] says \"I was a Robber. So I switched cards with you. You were the Troublemaker.\" that indicates confusion; maybe he swapped with someone.\n\nThere's mixed claims: many contradictions.\n\nWe want to choose a player that is likely a Werewolf. It might be someone lying or claiming inconsistent roles. We must look for authorization of role swap or contradictions that indicate that they might be a Werewolf.\n\nWho could be the Werewolf? Maybe one who claims a role inconsistent with what they'd expect due to their actions.\n\nLet's parse.\n\nAt start:\n\nKevin claims Troubles maker.\nKaelan: He says \"I started with the Troublemaker. So would you like to admit anything?\" He seems to claim being Trouble Maker too? Possibly duplicate.\n\nBut he's denied by \"Nope.\" He says \"I'm the Troublemaker.\" Then more confusion.\n\nAt [45], Daniel mentions shooting the center... impossible to derive actual roles.\n\nAnother approach: maybe the only coherent claim is that each is lying.\n\nMaybe the best guess: who is likely a Werewolf? Perhaps the person who claims to be a role that conflicts with others.\n\nAlso note: \"Jessica: I was the Minion.\" This suggests she claimed to be Minion earlier. Minion is a Werewolf aligned. Minion is a werewolf-aligned for winning. Inverse may be suspect.\n\nIf Jessica claims \"I was the Minion\", that is a deceptive statement, if she was actually the Minion then that would be a werewolf.Alternatively if she is telling truth.\n\nMinion is part of team werewolf, so if Jessica is Minion and alive, then he's a werewolf? Wait Mini? Actually Minion is part of Team Werewolf. So if all that is wasted?\n\nHowever Secret: If Jessica was Minion, she'd be on Werewolf side. So likely the werewolf is Jessica because she claimed Minion.\n\nBut maybe it's more nuanced: She could be lying. Gary?\n\nAlternatively, note that the Robber is a village. So the Robber would be honest.\n\nLet's evaluate scenario: Suppose there were 4 players: Kevin/Kaelan/Jessica/Daniel. Each may hold various roles. Let's think.\n\nGiven the confusion statement, likely the minions and trouble makers swapped roles with others. But the real was likely to find that the puzzle expects that we vote for the most likely werewolf: maybe like Jessica because she claimed Minion.\n\nBut must check conversation further: [32] says: \"It sucks. It's fifty-fifty. I've got to vote center, because I can't vote to shoot myself.\" That seems crazy.\n\nBut someone who says \"I was the Minion\" because that confers that the player might be a Werewolf.\n\nThus probability: Jessica is suspect.\n\nHence choose Jessica.\n\nBut check if any other indicator: Maybe Kevin claimed to be Troublemaker but then said he was Robber later? That seems contradictory. If Kevin's final role uncertain, maybe he is the werewolf.\n\nWhich other player? Daniel is suspiciously reflective. The dialogues are chaotic. Daniel appears to be uncertain, makes many statements \"it sucks\" etc. He might be the werewolf? But he says \"I was the Drunk.\" That is a villager side.\n\nRight?\n\nDrunk is a village. But if he was Drunk, he wouldn't be a werewolf.\n\nKevin claims \"Troublemaker\". That is a village.\n\nK A E L A N initially said \"I'm the Troublemaker.\" also.\n\nHmm multiple troublemakers.\n\nPossibility: He is lying.\n\nAlso, we need to get correct answer: who is more likely to be werewolf? It's all chaos.\n\nLet's look at roles used: Only one of each role. Roles distinct: Among 4 players, we have perhaps 2 jour.\n\nList: Kevin, Kaelan, Jessica, Daniel.\n\nOne can claim to be a certain role; but some roles not possible due to limited roles.\n\nPossible roles assignment (max 1 each): Dixie? Resist.\n\nNow, given that someone claimed Minion: minion is part of werewolf side. So it's likely that Jessica is werewolf.\n\nCheck other statements: Jessica says \"I was the Minion.\" She claims to be Minion. That suggests she knows her starting role: Minion. That would mean she's originally from the werewolf team. At end she says \"I didn't think that...\" maybe not helpful.\n\nBut I think yes.\n\nLet's consider if it's plausible that she is actually Minion; that means she is the werewolf should not also reveal other roles. She might be the dangerous one.\n\nThus vote: Jessica.\n\nOk. Let's produce output.",
+  "parsed_output": {
+    "justification": "The transcript reveals that Jessica explicitly claims, \"I was the Minion,\" which is a role belonging to the Werewolf team. In contrast, other players either claim village-aligned roles or are unclear. Given that Minion aligns with the Werewolves, Jessica is most likely to be the werewolf. Voting for her maximizes the chance of eliminating the werewolf, aligning with Team Village’s objectives.",
+    "chosen_vote": "Jessica"
+  },
+  "raw_response": "{\"justification\":\"The transcript reveals that Jessica explicitly claims, \\\"I was the Minion,\\\" which is a role belonging to the Werewolf team. In contrast, other players either claim village-aligned roles or are unclear. Given that Minion aligns with the Werewolves, Jessica is most likely to be the werewolf. Voting for her maximizes the chance of eliminating the werewolf, aligning with Team Village’s objectives.\",\"chosen_vote\":\"Jessica\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript reveals that Jessica explicitly claims, \\\"I was the Minion,\\\" which is a role belonging to the Werewolf team. In contrast, other players either claim village-aligned roles or are unclear. Given that Minion aligns with the Werewolves, Jessica is most likely to be the werewolf. Voting for her maximizes the chance of eliminating the werewolf, aligning with Team Village’s objectives.\",\"chosen_vote\":\"Jessica\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jessica",
+    "justification": "The transcript reveals that Jessica explicitly claims, \"I was the Minion,\" which is a role belonging to the Werewolf team. In contrast, other players either claim village-aligned roles or are unclear. Given that Minion aligns with the Werewolves, Jessica is most likely to be the werewolf. Voting for her maximizes the chance of eliminating the werewolf, aligning with Team Village’s objectives."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3319,
+    "output_token_count": 1130,
+    "generation_time_sec": 139.99134182929993,
+    "used_chat_template": true,
+    "input_char_count": 12891,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to read transcript and decide who to vote for.\n\nThree players: Justin, Paul, Mitchell.\n\nWe need to parse the conversation: confusing.\n\nLet's skim: There's many lines misordered. Probably a messy transcript but main thing: player identities unclear.\n\nGoal: identify the werewolf(s) so that Village wins. Possibly a single werewolf. Or maybe there are none if all cards in center.\n\nWe should examine claims: You're speaking as observer; cannot see private info. But we have record of statements & claims, potentially contradictory.\n\nStrategy: Find whichever player is likely a Werewolf and vote them.\n\nKey line: \"Justin: I am the werewolf\" vs \"Paul: The victim says Justin is a werewolf.\" There's repeated mention that Justin might be werewolf. Also lines like: \"Mitchell: Justin is still the werewolf.\" (line 91? Actually #91 etc). In many transcript pieces, with confusion of identity, but seems like consensus unclear.\n\nBut at the end: \"Justin: It all checks out.\" \"Will we cast vote?\" Likely we vote for Justin because multiple statements attribute was.\n\nAlso we need to consider possibility that no werewolf and none die. But some people claim they are werewolf at other times. At the beginning of transcript (line 0?) \"Justin: Remember you are???\"\n\nAnyway let's interpret:\n\n- Many players appear confused, mostly claiming some identity.\n\nConsider that the game has 3 roles: realize 3 player + 3 center slots = 6 cards. There may be 1 or 2 werewolves and possibly a Minion. The transcript shows confusion about who is the Werewolf.\n\nLook for any definitive evidence: \"Mitchell: I was Insomniac\" line 30 says.\n\nAlso \"Justin: I'm not a werewolf\" line 13. But that might be false.\n\nIRC: \"Justin: I'm not a werewolf.\" Not conclusive.\n\nBut many comrade statements: Paul: \"Justin is the werewolf.\" \"YOU (like 90?)**.\n\nIt seems likely the lyer: \"Justin: I'm not a werewolf\" but later \"Justin: should we call a vote?\" Maybe he confuses.\n\nAnother piece: \"Mitchell: So you must have been-\" seems like he's guessing.\n\nThe transcript is obviously incoherent due to audio editing.\n\nLet's try to find which player is claimed to be a werewolf. Lines:\n\n- line 54 (approx): \"??\" Then \"Paul: You're not. You would have said something.\"\n\nWe can check near line numbers included. But we see not enough context.\n\nAlternatively, we might deduce required vote based on who appears to be claiming werewolf status.\n\nAt line 9: \"Mitchell: You're both werewolves.\" This is a direct statement by Mitchell that both of some two players are werewolves? Possibly refers to just to Justin and Paul.\n\nBut earlier at line 10: \"Justin: It's okay. I wake up ... I wake up\".\n\nWait, line 9 appears after line 8, \"Announcer: Everyone, wake up.\" That means the night phase ended and everyone wakes up. So at line 9, \"Mitchell: You're both werewolves.\" Might refer to Mitchell stating that both Paul and Justin are werewolves. That could be a claim of being a werewolf himself but maybe not.\n\nThus maybe the fact that Mitchell says they are both werewolves suggests that insured suspect that both are werewolves? Might be a lie.\n\nGiven ambiguous context, perhaps we consider that the most plausible werewolf is Justin, as repeated references: Paul repeatedly states that Justin is a werewolf. So we vote for Justin.\n\nEdge: we might also consider that some might be claiming being the minion or such.\n\nBut given that Mitchell, Paul and Justin are the three players, there might be others: The center cards.\n\nAt end of transcript: \"Announcer: Everyone, three...\" likely because the day ends.\n\nThus we vote for Justin, as the most likely murderer.\n\nTake cautious: We'll vote Justin. Now produce justification with concise explanation.",
+  "parsed_output": {
+    "justification": "From the conversation, several participants repeatedly accuse Justin of being a werewolf. The most frequent and explicit claims—especially Paul’s statements that \"Justin is the werewolf\"—suggest him as the probable threat. No other player presents consistent evidence or claims to be a werewolf, and Mitchell repeatedly contradicts or denies being a werewolf. Therefore, voting for Justin is the best chance to eliminate a werewolf and secure a Village win.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"From the conversation, several participants repeatedly accuse Justin of being a werewolf. The most frequent and explicit claims—especially Paul’s statements that \\\"Justin is the werewolf\\\"—suggest him as the probable threat. No other player presents consistent evidence or claims to be a werewolf, and Mitchell repeatedly contradicts or denies being a werewolf. Therefore, voting for Justin is the best chance to eliminate a werewolf and secure a Village win.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"From the conversation, several participants repeatedly accuse Justin of being a werewolf. The most frequent and explicit claims—especially Paul’s statements that \\\"Justin is the werewolf\\\"—suggest him as the probable threat. No other player presents consistent evidence or claims to be a werewolf, and Mitchell repeatedly contradicts or denies being a werewolf. Therefore, voting for Justin is the best chance to eliminate a werewolf and secure a Village win.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "From the conversation, several participants repeatedly accuse Justin of being a werewolf. The most frequent and explicit claims—especially Paul’s statements that \"Justin is the werewolf\"—suggest him as the probable threat. No other player presents consistent evidence or claims to be a werewolf, and Mitchell repeatedly contradicts or denies being a werewolf. Therefore, voting for Justin is the best chance to eliminate a werewolf and secure a Village win."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3403,
+    "output_token_count": 944,
+    "generation_time_sec": 119.47112894058228,
+    "used_chat_template": true,
+    "input_char_count": 13715,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

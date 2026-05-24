@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine likely Werewolf(s). List players: Justin, Caitlynn, Mike, James, Mitchell.\n\nNeed to parse transcript to deduce roles info.\n\nWe have limited info: It appears the game had various roles possibly. From transcript, we see mention that \"James: I was the robber. I accomplished my role of robbing Justin, but I don't know what he was because I didn't look at the card I stole.\" So James the Robber swapped Justin's card? He robbed Justin? Let's read:\n\nLine [24]: \"James: I was the robber. I accomplished my role of robbing Justin, but I don't know what he was because I didn't look at the card I stole.\" So James has Robber role; made a swap from Justin to himself. But didn't look.\n\nAlso line [25]: \"Mike: Well, I can help you out with that. I was the seer and I looked at what Justin was.\" So Mike is Seer; looked at Justin.\n\nLine [26]: \"Justin: I can also help you with that. Uh, it was a werewolf.\" So Justin says he saw Justin? Wait \"it\" refers to discovered type from Mike, \"Uh, it was a werewolf.\" So the role of Justin was werewolf? Actually it's confusing: The Seer can look at one other player's card; Mike looked at what Justin was. The Seer would know the card of Justin. That indicates Justin is a werewolf? They said \"uh, it was a werewolf.\" So the Seer looked at Justin's card as a werewolf? So Justin's final role is Werewolf? But the role could have changed due to swap. The Robber swapped Justin's card presumably with his own, but not looked at his new card. There were also swap issues because Robber swapped Justin's deck into his slot? Let's logically interpret.\n\nRobber's action: He switches his card with Justin's card, then looks at his new card. The transcript: \"I accomplished my role...robered, but I don't know what he was because I didn't look at the card I stole.\" He didn't look at the card he stole; oh, this indicates he swapped but didn't look? But the Robber should look at his new card after swap. But it says \"I don't know what he was because I didn't look at the card I stole.\" That sounds like he's not aware of the new card. But maybe he hasn't looked yet.\n\nLet's consider the following events:\n\n- Seer looked at Justin's card: It says \"Uh, it was a werewolf.\" So Seer saw Justin's role is a werewolf. That means Justin was a werewolf at that point? Wait if Seer looked at Justin's card and sees the role, it's telling us Justin's starting/ending role is werewolf? But we must rely on starting: Seer sees against the starting role at time of their action: at that time, Justin had a certain role before swap. He hasn't swapped yet. So Seer looked at Justin's card; if Seer sees \"werewolf,\" that means the card in front of Justin at that moment is the Werewolf card. So indeed Justin was werewolf prior to the swap.\n\nThen Robber swapped Justin's role with his own. So what is the Robber's card? Since Robber has not looked at his new card, unknown.\n\nBut the big question: At end of night, final roles may differ due to swaps. But only those roles that swap (Robber) or look around (doppel, drunk etc.) could change others.\n\nSince Justin is currently a werewolf (or ended up in centre?). Wait after the Robber's swap, Justin's card goes to Robber; Justin gets new card (his original card). So Justin's ending role may be different. But menu choices? Let's analyze.\n\nWe have role assignments of the five players: Justin, Caitlynn, Mike, James, Mitchell 5 roles. The role pool: 8 cards total (players+3). Unknown which roles available. The transcript implies roles discovered: James – Robber; Mike – Seer; that leaves maybe the rest: Justin – only known maybe Werewolf; Caitlynn and Mitchell ??? Not known.\n\nFrom steps: There was a Devil (??)...\n\nCheck transcripts for hints: \"Justin: I can also help you with that. Uh, it was a werewolf.\" suggests that Person Jeff?\n\nIt may be that Justin tells we found that Mike (Seer) looked at Justin and saw was werewolf. So Justin was likely a Werewolf card. But after swap with Robber, Justin gets his original card: maybe from center? Wait if Robber swapped his card with Justin's card, Justin ends up with his original card (maybe a general card). But what was his original? As we don't know.\n\nGiven that Justin was a werewolf before swap, still presumably at final state could be something else. But still the team's objective: Should vote for a suspected Werewolf (currently there is at least one werewolf likely among players). Seer said they saw Justin had werewolf; so that indicates Justin is a WEREWOLF card. So at simplest, the best target is Justin.\n\nBut check if maybe the final role of Justin is maintain werewolf; but if swapped, he could become any else.\n\nBut the question: \"someone else\" maybe a werewolf after all. Even though Justin had arewolf originally, after the Robber's swap, his card is replaced with his original maybe a '???' but unknown. Could Justin still remain a werewolf after swap? Not necessarily.\n\nBut we likely suspect Justin being a werewolf.\n\nAlternatively other suspicion: Since Mike (seep) looked at Justin and confirmed werewolf. So the best choice: Justin.\n\nLet's produce output with choice Justin.",
+  "parsed_output": {
+    "justification": "The seer confirmed that Justin’s card was a werewolf before the robber’s swap. Even after the swap, Justin’s role remains unknown but the evidence points strongly toward him originally being a werewolf. Since our aim is to eliminate a werewolf, voting for Justin is the logical choice.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The seer confirmed that Justin’s card was a werewolf before the robber’s swap. Even after the swap, Justin’s role remains unknown but the evidence points strongly toward him originally being a werewolf. Since our aim is to eliminate a werewolf, voting for Justin is the logical choice.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The seer confirmed that Justin’s card was a werewolf before the robber’s swap. Even after the swap, Justin’s role remains unknown but the evidence points strongly toward him originally being a werewolf. Since our aim is to eliminate a werewolf, voting for Justin is the logical choice.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The seer confirmed that Justin’s card was a werewolf before the robber’s swap. Even after the swap, Justin’s role remains unknown but the evidence points strongly toward him originally being a werewolf. Since our aim is to eliminate a werewolf, voting for Justin is the logical choice."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2444,
+    "output_token_count": 1279,
+    "generation_time_sec": 159.76306128501892,
+    "used_chat_template": true,
+    "input_char_count": 10083,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

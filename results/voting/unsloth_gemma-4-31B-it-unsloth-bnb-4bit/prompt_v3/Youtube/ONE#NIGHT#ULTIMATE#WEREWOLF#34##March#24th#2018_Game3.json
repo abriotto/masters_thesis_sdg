@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Carly\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Doppelganger\n    *   Werewolves\n    *   Minion\n    *   Masons\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   Revealer (Wait, the announcer mentioned \"Revealer\". Let me check the rules provided. The rules list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf. The announcer says \"Revealer, wake up. You may turn any other player's card face up.\" This is a role *not* in the provided rules list, but it's in the transcript. I must follow the transcript's game state.)\n    *   Drunk\n    *   Insomniac\n\n    *   Mitchell claims to be the Revealer. He says he looked at Justin's card and saw the Tanner.\n    *   Paul claims to be the Seer.\n    *   Justin claims to be the Troublemaker. He says he switched Carly and Mike.\n    *   Carly claims she \"stole the troublemaker one\" (Robber claim?). She says \"I stole the troublemaker one so he couldn't.\" This sounds like a Robber claim.\n    *   Mike claims he looked at someone (Seer or Revealer claim?). He says \"I looked at him\" (referring to Paul) and \"I saw the tanner there\" (referring to Justin).\n\n    *   *Mitchell:* Claims Revealer. Says Justin is the Tanner.\n    *   *Justin:* Claims Troublemaker. Says he switched Carly and Mike.\n    *   *Paul:* Claims Seer.\n    *   *Carly:* Claims Robber (stole Troublemaker).\n    *   *Mike:* Claims he looked at Paul and saw Justin as the Tanner (Wait, Mike's claims are confusing). Let's re-read.\n        *   [40] Mike: \"I did [look at players].\"\n        *   [61] Mike: \"I looked at him [Paul].\"\n        *   [69] Mike: \"I looked at him. Mitchell is the one who's lying.\"\n        *   [77] Mike: \"I saw the tanner there.\" (Referring to Justin, based on the context of Mitchell's claim in [73]).\n        *   [126] Mike: \"No, he's the tanner.\" (Referring to Justin).\n\n    *   *Revealer:* Mitchell claims this. The announcer says the Revealer turns a card face up. Mitchell says he revealed Justin's card. But Justin says \"It's face down! You didn't reveal it!\" [68]. If Mitchell were the Revealer, the card would be face up for everyone to see. Since it wasn't, Mitchell is lying about being the Revealer.\n    *   *Troublemaker:* Justin claims this. He says he switched Carly and Mike.\n    *   *Robber:* Carly claims she stole the Troublemaker card. If she did, she is now the Troublemaker, and Justin (the original Troublemaker) is now the Robber.\n    *   *Seer:* Paul claims this.\n    *   *Tanner:* Mitchell and Mike both claim Justin is the Tanner.\n\n    *   Mitchell is almost certainly lying about being the Revealer because the card wasn't turned face up.\n    *   If Mitchell is lying about being the Revealer, he is likely a Werewolf or the Minion.\n    *   Justin claims Troublemaker. If he is the Troublemaker, he's Village.\n    *   Paul claims Seer. If he is the Seer, he's Village.\n    *   Carly claims Robber. If she is the Robber, she's Village.\n    *   Mike's claims are inconsistent. He says he looked at Paul, but then agrees with Mitchell that Justin is the Tanner.\n\n    *   Mitchell's lie is the most blatant. He claimed to be the Revealer and claimed to have revealed a card, but the card remained face down. This is a direct contradiction of the role's mechanic.\n    *   If Mitchell is a Werewolf, eliminating him helps the Village.\n    *   If Justin is the Tanner, eliminating him helps the Tanner, not the Village.\n    *   If Mitchell is the Werewolf and is trying to frame Justin as the Tanner to avoid being caught, voting for Mitchell is the correct move.\n\n    *   Mitchell: Lying about Revealer (card not face up).\n    *   Justin: Claims Troublemaker.\n    *   Paul: Claims Seer.\n    *   Carly: Claims Robber.\n    *   Mike: Claims he looked at Paul, then supports Mitchell's claim about Justin.\n\n    Wait, let's look at Mike again.\n    [61] Mike: \"I looked at him [Paul].\"\n    [69] Mike: \"I looked at him. Mitchell is the one who's lying.\"\n    [77] Mike: \"I saw the tanner there.\" (This is ambiguous. Does \"there\" mean Paul or Justin?)\n    [109] Mike: \"He's the tanner.\" (Referring to Justin).\n    [126] Mike: \"No, he's the tanner.\" (Referring to Justin).\n\n    If Mike is the Seer and Paul is lying about being the Seer, Mike might be telling the truth about Justin being the Tanner. But Mitchell's lie about the Revealer is much more concrete. The Revealer *must* turn the card face up. Mitchell said he did, but the card was face down.\n\n    *   Mitchell is lying about being the Revealer.\n    *   He is attempting to frame Justin as the Tanner.\n    *   This behavior is typical of a Werewolf or Minion.\n    *   Therefore, Mitchell is the most likely candidate for elimination to help Team Village.\n\n    *   Justin: Troublemaker (Village)\n    *   Carly: Robber (Village)\n    *   Paul: Seer (Village)\n    *   Mike: Seer/Villager (Village)\n    *   Mitchell: Werewolf/Minion (Werewolf Team)\n\n    Wait, if Mitchell is the Werewolf and Mike is the Minion, they might be working together. Mike's shifting claims (\"Mitchell is the one who's lying\" then \"He's the tanner\") could be an attempt to confuse the group.\n\n    Regardless, Mitchell's lie is the most obvious.\n\n    *   Justification: Mitchell claimed to be the Revealer and stated he revealed Justin's card, but the card remained face down, which contradicts the Revealer's ability. He then attempted to frame Justin as the Tanner. This blatant lie strongly suggests Mitchell is a Werewolf or Minion.\n    *   Chosen Vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Revealer and stated that he had revealed Justin's card, but Justin correctly pointed out that the card remained face down. Since the Revealer's ability explicitly requires turning the card face up for all to see, Mitchell's claim is a blatant lie. This deception, combined with his attempt to frame Justin as the Tanner, strongly indicates that Mitchell is a member of Team Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Revealer and stated that he had revealed Justin's card, but Justin correctly pointed out that the card remained face down. Since the Revealer's ability explicitly requires turning the card face up for all to see, Mitchell's claim is a blatant lie. This deception, combined with his attempt to frame Justin as the Tanner, strongly indicates that Mitchell is a member of Team Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Revealer and stated that he had revealed Justin's card, but Justin correctly pointed out that the card remained face down. Since the Revealer's ability explicitly requires turning the card face up for all to see, Mitchell's claim is a blatant lie. This deception, combined with his attempt to frame Justin as the Tanner, strongly indicates that Mitchell is a member of Team Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell claimed to be the Revealer and stated that he had revealed Justin's card, but Justin correctly pointed out that the card remained face down. Since the Revealer's ability explicitly requires turning the card face up for all to see, Mitchell's claim is a blatant lie. This deception, combined with his attempt to frame Justin as the Tanner, strongly indicates that Mitchell is a member of Team Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4397,
+    "output_token_count": 1664,
+    "generation_time_sec": 171.90955924987793,
+    "used_chat_template": true,
+    "input_char_count": 14747,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

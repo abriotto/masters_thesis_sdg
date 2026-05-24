@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript with many nonsensical statements. We must decide who likely is Werewolf to vote. We have 5 players: Justin, Carly, Paul, Mitchell, Mike.\n\nHard to parse roles, but mention: \"I am the seer.\" etc. \"Troublemaker\". \"Revealer\" appears. Some mention \"tanner\". The transcript seems chaotic. Need to guess likely werewolf(s). The only explicit mention: \"I am the seer.\" at line 55. So Paul says \"I am the seer\" but earlier statement: \"I am the seer?\" Might indicate he's revealing his role. But confusion: A revealer wakes to reveal others. So maybe Paul is a Revealer, but a Revealer can't reveal his own card? Wait: Revealer's ability is to turn any other's card face up; it's essentially rotting? Actually Revealer is not a known role in typical list; maybe misprint. However, there is mention \"revealer\" but it's not official role. Provided roles list had no \"revealer\" except maybe \"revealer\" is unknown? Nonstandard.\n\nBut we just have to choose a vote that is best. Probably vote for Paul because he's claiming to be Seer; expected to be a villager, but if that's true? But maybe he's Werewolf disguised. Possibly choose Paul.\n\nLet's analyze potentially: \"Paul: I am the seer.\" He might be lying; used to mislead. If Paul is a werewolf, he might lie to distract.\n\nMike earlier says \"I saw the tanner there.\" So someone is tanner, but unclear who.\n\nCarly says \"Yes\" to being troublemaker. That would make her a troublemaker role (Village). Someone could be troublemaker. But typical roles: 1 *Troublemaker*.\n\nThe conversation is messy. Let's think: The game started: roles likely randomized; the player who has a Werewolf should cause misdirection.\n\nWe need rational inference: If a player says \"I'm the seer,\" they'd be in the Village aligned. But he may claim to be Seer but in second-line Might be liar.\n\nGiven lack of clarity, best to vote for the player that stands out as having questionable statements: Justin. He appears passive, random. But saw earlier: \"Justin: I'm the tanner?\" He incorrectly suggests he is tanner or others. Several lines where he asserts wrong things. Maybe he is the taunted/compromised.\n\nAlternatively, observe \"Mike: I saw the tanner there.\" So one player likely is tanner.\n\nIf the tanner died, they win as tanner. But our objective: Team Village. So want to eliminate werewolf.\n\nBetter to find evidence that someone said they are werewolf or revealed something else.\n\nRecall \"Mike: I saw the tanner there.\" Might indicate that Mike saw the tanner in center? Or that the tanner is in the game.\n\nConsider: In a typical game with 5 players + 3 center, 8 roles. There could be a Werewolf among them.\n\nProbably easiest: Vote for Paul, as his statements show probable deception/lies; also he claims to be seer but might be wrong. So fix.\n\nThus I choose Paul. Provide justification: high inconsistencies; indicates he may be werewolf.\n\nLet's prepare justification.",
+  "parsed_output": {
+    "justification": "From the transcript, Paul repeatedly makes contradictory statements, claims to be the Seer, and exhibits suspicious behavior—evidence that suggests he might be a Werewolf trying to mislead.  Other players’ comments mostly hint at confusion or apparent lies, but Paul’s own claims stand out as unreliable.  Therefore, he remains the leading suspect.<br>The strongest indication of him being the threat is his assertion “I am the Seer” while others accuse him of deceit, implying that he is either a Werewolf or has received an incorrect role through a swap.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, Paul repeatedly makes contradictory statements, claims to be the Seer, and exhibits suspicious behavior—evidence that suggests he might be a Werewolf trying to mislead.  Other players’ comments mostly hint at confusion or apparent lies, but Paul’s own claims stand out as unreliable.  Therefore, he remains the leading suspect.<br>The strongest indication of him being the threat is his assertion “I am the Seer” while others accuse him of deceit, implying that he is either a Werewolf or has received an incorrect role through a swap.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, Paul repeatedly makes contradictory statements, claims to be the Seer, and exhibits suspicious behavior—evidence that suggests he might be a Werewolf trying to mislead.  Other players’ comments mostly hint at confusion or apparent lies, but Paul’s own claims stand out as unreliable.  Therefore, he remains the leading suspect.<br>The strongest indication of him being the threat is his assertion “I am the Seer” while others accuse him of deceit, implying that he is either a Werewolf or has received an incorrect role through a swap.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "From the transcript, Paul repeatedly makes contradictory statements, claims to be the Seer, and exhibits suspicious behavior—evidence that suggests he might be a Werewolf trying to mislead.  Other players’ comments mostly hint at confusion or apparent lies, but Paul’s own claims stand out as unreliable.  Therefore, he remains the leading suspect.<br>The strongest indication of him being the threat is his assertion “I am the Seer” while others accuse him of deceit, implying that he is either a Werewolf or has received an incorrect role through a swap."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3863,
+    "output_token_count": 819,
+    "generation_time_sec": 104.264577627182,
+    "used_chat_template": true,
+    "input_char_count": 15048,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

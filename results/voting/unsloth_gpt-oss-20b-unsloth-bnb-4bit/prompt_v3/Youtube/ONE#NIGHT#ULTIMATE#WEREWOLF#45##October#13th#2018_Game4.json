@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#45##October#13th#2018",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#45##October#13th#2018_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse this transcript. It's garbled, but we need to determine who is likely a Werewolf, and choose a vote accordingly. We have 4 players: Justin, Mitchell, Paul, Mike.\n\nFrom context, roles mentioned: random conversation about who is werewolf etc. Hard to deduce.\n\nLet's try to parse.\n\nAt start of speaker list: Many brief lines, but unclear.\n\nWe need to analyze roles:\n\nThe roles maybe playing: some mention \"Hunter\", \"Troublemaker\", \"Drunk\" etc. But no explicit mention of any role assignments except story: \"Mike: I'm the hunter?\" Example.\n\nBut we need to deduce from conversations which player is most likely the werewolf.\n\nLook at the lines: Justin says: \"If you think we kill Justin\", \"I think Justin's a werewolf\".\n\nAlso, earlier line near line [5] etc clarifies?\n\nLet's search quickly: at line [35] Paul: They say \"Paul: I think Justin's the Tanner.\" nearly.\n\nLine [34] - \"Mike: No, I mean...\" not helpful.\n\nLine [37] Paul: \"What if you're not the troublemaker?\" indicates some role confusion.\n\nAt line [67] Justin: \"I thought I got switched.\" etc.\n\nAt line [73] Mike: \"Mike: Okay so then Justin is a safe kill\". Not helpful.\n\nTries to be weird.\n\nGiven the conversation, seems no clear conclusions. However, we need to guess best.\n\nLet's think about the likely scenario: Suppose this is standard twist. There's a switch possible: the TroubleMaker had swapped two players. There's talk of \"Harry ask and yes\" I'm not sure.\n\nGiven the confusion, we might basically assume the widely-known role set: 3? Actually just four players plus 3 center = seven roles.\n\nIf we think common roles: Werewolves may be 1 or 2. Could be more.\n\nGiven apprehension: Based on the transcript, it appears there is a widely confused conversation about \"who is werewolf\". The transcripts' only mention of being able to identify are:\n\n- line [37] might give \"Assuming player Mike is being was asked if you're a troublemaker? Actually line [37] is \" Mike: What if you're not the troublemaker?\"\n\n- line [35] might says \" Paul: I think Justin's the Tanner.\"\n\nBut concealed that the conversation indicates many suspects. But oh.\n\nIt might be too ambiguous: The key likely: It's maybe that there's no explicit evidence that a particular player is werewolf-based on dialogue: we can't identify one clearly. However, we might think Alex.\n\nWait, the relevant phrasing: Are there any direct statements indicating one as a werewolf? Line [35] \"Paul: I think Justin's the Tanner. He gives tannery.\" This indicates that maybe Justin is not a werewolf. But earlier line [115] \"Paul: But Justin's still the werewolf, so we kill Justin.\" So Paul says Justin's werewolf. Let's parse.\n\nLine [115] \"But Justin's still the werewolf, so we kill Justin.\" So Paul is claiming that Justin is still werewolf. Good evidence: Justin is being identified as werewolf.\n\nThus, should vote Justin. Let's check if any other lines indicate something else.\n\nLine [119] \"Justin: We kill Paul.\" So that's contradictory, but anyway. People mention multiple times.\n\nBut generally, we need to follow the list: only mention \"Justin's been interchangeably labeled as both champion of werewolf and then confused that he might be tanner.\" But line 115 explicitly says \"But Justin's still the werewolf, so we kill Justin.\" So probably a unique mention of being werewolf. So we vote Justin.\n\nBut need to confirm no other similar. Line [113] \"Joe\"? Wait?\n\nWe need to ensure correct. In the conversation, no using of \"tanner\" is consistent.\n\nThus: I'd decide to vote Justin as suspect werewolf.\n\nNow produce answer.\n\nJustifications: mention that line 115 indicates Justin identified as werewolf, we choose to vote Justin.\n\nReturn the JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains a direct claim that ‘Justin’s still the werewolf’ (line 115), which strongly suggests that Justin is most likely the werewolf. The majority of the discussion revolves around identifying victims and the conversation states that several times people refer to Justin as a potential werewolf or as the target for elimination. As a result, voting for Justin maximizes the chance of eliminating a werewolf and thereby benefiting Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains a direct claim that ‘Justin’s still the werewolf’ (line 115), which strongly suggests that Justin is most likely the werewolf. The majority of the discussion revolves around identifying victims and the conversation states that several times people refer to Justin as a potential werewolf or as the target for elimination. As a result, voting for Justin maximizes the chance of eliminating a werewolf and thereby benefiting Team Village.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains a direct claim that ‘Justin’s still the werewolf’ (line 115), which strongly suggests that Justin is most likely the werewolf. The majority of the discussion revolves around identifying victims and the conversation states that several times people refer to Justin as a potential werewolf or as the target for elimination. As a result, voting for Justin maximizes the chance of eliminating a werewolf and thereby benefiting Team Village.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The transcript contains a direct claim that ‘Justin’s still the werewolf’ (line 115), which strongly suggests that Justin is most likely the werewolf. The majority of the discussion revolves around identifying victims and the conversation states that several times people refer to Justin as a potential werewolf or as the target for elimination. As a result, voting for Justin maximizes the chance of eliminating a werewolf and thereby benefiting Team Village."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3789,
+    "output_token_count": 953,
+    "generation_time_sec": 118.92972159385681,
+    "used_chat_template": true,
+    "input_char_count": 14777,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

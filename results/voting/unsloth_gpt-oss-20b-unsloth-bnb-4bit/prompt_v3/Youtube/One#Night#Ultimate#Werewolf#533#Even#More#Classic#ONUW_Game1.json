@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine who to vote for based mainly on the transcript.\n\nWe have four players: Ryan, Katie, Brett, DeAndre.\n\nThe transcript is quite chaotic; seems garbled conversation. Hard to parse actual logic.\n\nWe need to detect role influences.\n\nFrom transcripts, seems many statements about being drunk or werewolf etc. Probably the drunken status relates to Drunk role: swapping with center while not knowing new card. If someone claimed drunk, they might have swapped into center at some point.\n\nAlso mentions troublemaker: triggers swapping of other two.\n\nSimilarly, robber may swap card with another.\n\nBecause the transcript is confusing, maybe the party leader would think that the clear suspect is \"DeAndre\". Many lines (30 to 48) revolve around DeAndre, speculation.\n\n\"Brett: I don't know if I trust Ryan. Ryan, did you swap us? Katie and I?\" Not sure.\n\nWe need to choose a single person to vote for who is most likely a werewolf.\n\nGiven limited clarity, perhaps best guess is DeAndre? Let's examine key line:\n\n[52] possibly: \"That's why …\" Actually line 52: \"DeAndre: Yeah, I guess that's the reason why you keep tanner and minion in the game.\" So maybe DeAndre possibly says something.\n\nLooking at conversation, no explicit claim that anyone specifically is werewolf. But there's suggestion of repeated werewolf claims. For instance: \"[46] Brett: Minion? [46]\" and earlier \"So DeAndre's just claiming drunk over here.\"\n\nIt seems many statements are unclear. Could conclude best guess that DeAndre could be the werewolf/have been a drunk.\n\nAlso earlier line: [44]: \"Brett: The question is, do we vote for him because he's claiming drunk. But he might have been a werewolf. But if he was a drunk, he's drunk turned werewolf.\" That suggests DeAndre may be a werewolf. So target him.\n\nThus vote for DeAndre.\n\nBut we wait: Are there other clues?\n\n\"47: Brett: The question is, what did you do DeAndre? Were you wolfing or were you actually drunken?\"\n\nLine 53 \"Brett: I was. I don't know if I trust Ryan.\" It might be enough.\n\nThus pick DeAndre.\n\nJustification: minimal confusion; select based on hint. Provide reasoning: He repeatedly claims to have drunk role, could indicate he'd swapped into center maybe werewolf. Despite lack of concrete evidence, go with DeAndre.\n\nLet's produce output.",
+  "parsed_output": {
+    "justification": "The dialogue heavily centers around DeAndre’s claims of being \"drunk\" and repeated suggestions that he may have become a werewolf or a minion after the night events. The chatter implies he was likely involved in a swap (either as a rogue *Drunk* or as a *Troublemaker*), making him the most suspicious of all participants. This makes DeAndre the best candidate to vote against in order to maximize the chance of eliminating a potential werewolf.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "{\"justification\":\"The dialogue heavily centers around DeAndre’s claims of being \\\"drunk\\\" and repeated suggestions that he may have become a werewolf or a minion after the night events. The chatter implies he was likely involved in a swap (either as a rogue *Drunk* or as a *Troublemaker*), making him the most suspicious of all participants. This makes DeAndre the best candidate to vote against in order to maximize the chance of eliminating a potential werewolf.\",\"chosen_vote\":\"DeAndre\"}",
+  "response_for_parsing": "{\"justification\":\"The dialogue heavily centers around DeAndre’s claims of being \\\"drunk\\\" and repeated suggestions that he may have become a werewolf or a minion after the night events. The chatter implies he was likely involved in a swap (either as a rogue *Drunk* or as a *Troublemaker*), making him the most suspicious of all participants. This makes DeAndre the best candidate to vote against in order to maximize the chance of eliminating a potential werewolf.\",\"chosen_vote\":\"DeAndre\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "The dialogue heavily centers around DeAndre’s claims of being \"drunk\" and repeated suggestions that he may have become a werewolf or a minion after the night events. The chatter implies he was likely involved in a swap (either as a rogue *Drunk* or as a *Troublemaker*), making him the most suspicious of all participants. This makes DeAndre the best candidate to vote against in order to maximize the chance of eliminating a potential werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3378,
+    "output_token_count": 628,
+    "generation_time_sec": 79.1322455406189,
+    "used_chat_template": true,
+    "input_char_count": 13547,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

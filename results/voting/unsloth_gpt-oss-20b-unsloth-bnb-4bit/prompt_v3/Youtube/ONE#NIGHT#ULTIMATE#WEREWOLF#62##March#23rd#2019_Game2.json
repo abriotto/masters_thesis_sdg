@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse strange transcript. It's messy, unclear. The game has four players: Justin, James, Paul, Mitchell. Roles unknown but many clues: \"Copycat\", \"Troublemaker\", etc. We must decide best vote to get a werewolf eliminated.\n\nLet’s analyze each player's likely role.\n\nFirst, background: In O Nuw -- (One Night Ultimate Werewolf). Standard roles: Copycat = \"Doppelganger\"? The transcript says \"Copycat\" alias previous role maybe. Actually there's role \"Copycat\" is a variant of Doppelganger that acts like any role? Wait typical roles: Doppelganger (or Copycat) replicates a role during night. But transcript instructs: Announcer: Copycat wakes up and look at one of the center cards. You are now that role. That seems like a variant: perhaps they used a house rule: the copycat (copycat role) selects one center card and adopts its role. Ok.\n\nSo we need to consider have just played with weird interactions: Some suspicion: Peter? key.\n\nLet's analyze chat:\n\n[1] Justin: Oh.\n[2] Announcer: Everyone, close your eyes. Copycat, wake up and look at one of the center cards. You are now that role. If that role is Mole, wake up and do that night action. Copycat, close your eyes.\n\nSo first, copycat wakes up before rest. We don't know who is copycat based on transcript; likely one of players identified by \"Copycat\". In line 7, \"Justin: Yay, Troublemaker.\" So \"Troublemaker\" is a player; so Justin might hold Troublemaker role (or maybe they are talking about) ?\n\nWait: line [6] \"Announcer: Troublemaker, wake up.\" So Troublemaker is a role containing \"wake up\" action: They designate who the role. So the Troublemaker is one of the players.\n\nLine [7] Justin: Yay, Troublemaker. That suggests Justin may be the Troublemaker? Or Justin is just acknowledging that there's a Troublemaker role. Could be that Justin is the Troublemaker, or someone else is. Let's parse each action.\n\nBut in standard Seven roles, copycat replaced doppelganger; but they'd ask \"copycat wakes up and look at one center card\". That indicates the copycat is currently a mortal? In original, doppelganger obtains role at start by picking any center card. So effectively the copycat pick \"Mole\" if center card has Mole. but that's unusual.\n\nNow we must simulate: The players at start have 4 roles out of 7 selected containing unique names. Which roles are present? We see mention of Copycat, Troublemaker, possibly other roles. There is mention of \"Werewolf\" discovered by Mitchell. There's mention of \"Mole\" in a conversation about copycat. Also mentions \"Robber\" in some lines: Justin: Cool, Robber. Means maybe Robber. So the roles could include: Copycat, Troublemaker, Robber, Taur? there's mention of \"Mole\".\n\nLet's list roles we saw: Copycat (perhaps same as Doppelganger). Troublemaker. Robber. Werewolf. Possibly someone else? The transcript might contain purposely ambiguous conversation. The lines after [29] mention \"copycat\" again. The mention \"I saw a werewolf\". \"someone\" might be 'Mole'?\n\nHold on: In [33] there is \"Ron\" sorry line: 'plaint? Wait where is 'Mole'? In [1], copycat asks to look at center card. Could find that center contains Mole? Not sure.\n\nBetter to track each player's speech: Justin, James, Paul, Mitchell.\n\nDefine the roles:\n\nWe need to guess final role of each person after night actions.\n\nGiven this conversation, we need to evaluate.\n\nWe don't have clear revelation of who is a werewolf. The mention \"I saw a werewolf\" indicates maybe a player saw a Werewolf in center or discovered a werewolf after a swap.\n\nLet's inspect deeper.\n\n[7] Justin: Yay, Troublemaker. Means Justin is acknowledging that someone is a Troublemaker (the role, not the player). He might be referring to his own role, i.e., that he is the Troublemaker.\n\nMaybe it's easier: In this game, the copycat chooses a center card to become. Suppose the center cards are, among others, maybe \"Mole\" or something. Wait \"If that role is Mole...\" Hmm.\n\nThe big confusion: It seems participants are referencing the previous day's transcripts, not relevant.\n\nBut forming a strategy: We have players and we need to pick one to vote for elimination among them. We need to deduce likely werewolf(s). Without clear evidence, but certain chatter says \"I saw a werewolf\". That indicates someone sees a werewolf, meaning about that person's role. Let's examine conversation around lines [31]-[45].\n\nFrom [31] \"Mitchell: I saw a Werewolf which is-\" It's truncated, but says he saw a werewolf (maybe in his personal identity). Then line [34] \"James: Then we really can't confirm him either.\" Eh.\n\nLine [38] \"Justin: Like I nailed it.\" several lines revolve around \"weak evidence\".\n\nThis transcript appears garbled; not enough sufficient information to clearly identify roles. But we need to decide best vote.\n\nSince there are four players, we can apply straightforward logic: In presence of werewolf(s), they try to stay hidden. If multiple werewolves consistent. They attempt to not be eliminated easily.\n\nIn the transcripts, Mitchell said \"I saw a Werewolf which is-\". That seems to indicate Mitchell can see a werewolf, presumably has a werewolf card? Wait, he might hold a role that can see something, e.g., the \"Seer\" looks at other card. But must identify presence of werewolf. So Mitchell could be Seer. Or a was used?\n\nModel:\n\nWhat is the easiest path? At the end, majority of conversation trending around \"hey let's kill Paul.\" The consensus is they want to kill Paul. That might mean they suspect Paul might be werewolf. So perhaps Paul is likely the potential werewolf. But also depends if Paul had a role that could have been swapped.\n\nThus our vote: likely Paul's a suspect. Let's evaluate each player's dialogues for clues.\n\n**Justin:**\n\nLine 58-60: \"Justin: Yes... ok\".\n\nBut in conversation, at around line 50, \"James: So let's just kill Paul.\" So it implies Justin says \"Yes, let's kill Paul.\" Later line 58-59: \"Justin: Yeah.\" So yes.\n\nAlso at line 67: \"Paul:???\"\n\nEssentially numerous times across lines 50-57, multiple people talk about killing Paul. Suggests suspicion that Paul might be werewolf. So likely we should vote Paul.\n\nBut check for alternate possibility: Sigh. Sam.\n\nMaybe Paul's role is an unliked \"Hunter\"? That effect could influence. But would Hunter be withheld by trying to bait? If the hunter likes to protect themselves? But not essential.\n\nAlso there is line [70] \"Paul: Me and Justin?\" So someone is saying \"Me and Justin\" as a question: maybe \"me and Justin\" referencing the two people might not be werewolves.\n\nWe also see that need to compare actions: Copycat (copycat aligns). If copycat had chosen a center card that had a \"Mole\". This would appear as a reveal. There is mention of 'Mole' at line 1? Wait: \"If that role is Mole, wake up and do that night action.\"\n\nThus, if copycat got a Mole, they became Mole. This would be 'Mole' role? Maybe 'Mole' is a role (like 'Villager' though?). Actually molecular. Okay.\n\nThe copycat could become different roles: copycat takes whichever center card. So if they got the Mole (which might be a unique role that kills you?), but not part of default role list. But maybe 'Mole' is a role that hunts certain things.\n\nAnyway, improbable for current decision.\n\nEssential is: determine which player likely is a werewolf. The conversation strongly indicates suspicion on Paul.\n\nLet's look: Some lines near the end establishing 'Vote'.\n\nAt line [75–79], \"Peter (maybe?)\" talk about \"I'm just making sure\".\n\nThe line [84?].  \"Let's kill Paul.\" So likely they think Paul is werewolf.\n\nBut to confirm further: recall what roles each might have. Person who holds a copycat might inadvertently become werewolf but after the night? Suppose the copycat had stayed in, but the copycat may stand out as random.\n\nBut with only four players, the center has 3 cards, including maybe a Werewolf. Two werewolves at most in game. But each player may hold separate roles.\n\nWho might be the werewolf? If there were 3 or more werewolves present, but improbable. Let's enumerate.\n\nIt's plausible that player 'Mitchell' saw a werewolf. That might refer to his focus: He is a Seer (maybe?). He could have looked at the two center cards because he saw werewolf there. But recall that the copycat etc may be used. The copycat picks a center card; if that center card contains 'Werewolf', copycat could become 'Werewolf'. That would be an early leak? But in typical game after copycat, the player that gets copycat gets some role - if it's 'Molecule' now not.\n\nSeems the user said: \"I saw a werewolf which is—...\"\n\nLet's analyze lines following:\n\nLine 32: \"Justin: I robbed from you and I love you more than anything.\" So a robbery occurred.\n\nThat implies that a Robber swapped with someone and looked at his new role.\n\nTherefore at least one player had Robber.\n\nRobber is sometimes used to look at new card after swap.\n\nAlso earlier: line 28: \"Justin: Cool, Robber.\" So Justin might be the Robber. Wait his line says \"Justin: Cool, Robber.\" So he might be referencing the Cop being Robber in the conversation.\n\nLine 46: \"Justin: Who?\" Then line 48: \"James: You and Mitchell.\" Many confusing.\n\nBut maybe we can reframe: It appears that the game was heavily chaotic. The conversation includes multiple protective.\n\nWe likely cannot reliably identify are \"red herring\" of multiple lines.\n\nTherefore, I think best simpler approach: we suspect Paul is likely to be werewolf because the conversation generically suspects Paul's involvement.\n\nHence we vote for Paul. Let's produce justification accordingly.",
+  "parsed_output": {
+    "justification": "The public discussion shows repeated attempts to target Paul, with many players concluding \"let's kill Paul.\"  Several lines hint that Paul’s role has not been explained clearly and he is being accused of hiding a werewolf identity.  The other players vote for Paul as the likely werewolf, so voting against him will help the village win.  No other player receives stronger allegations of hidden alignment or explicit evidence of being a werewolf.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The public discussion shows repeated attempts to target Paul, with many players concluding \\\"let's kill Paul.\\\"  Several lines hint that Paul’s role has not been explained clearly and he is being accused of hiding a werewolf identity.  The other players vote for Paul as the likely werewolf, so voting against him will help the village win.  No other player receives stronger allegations of hidden alignment or explicit evidence of being a werewolf.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The public discussion shows repeated attempts to target Paul, with many players concluding \\\"let's kill Paul.\\\"  Several lines hint that Paul’s role has not been explained clearly and he is being accused of hiding a werewolf identity.  The other players vote for Paul as the likely werewolf, so voting against him will help the village win.  No other player receives stronger allegations of hidden alignment or explicit evidence of being a werewolf.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The public discussion shows repeated attempts to target Paul, with many players concluding \"let's kill Paul.\"  Several lines hint that Paul’s role has not been explained clearly and he is being accused of hiding a werewolf identity.  The other players vote for Paul as the likely werewolf, so voting against him will help the village win.  No other player receives stronger allegations of hidden alignment or explicit evidence of being a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2851,
+    "output_token_count": 2335,
+    "generation_time_sec": 285.9367039203644,
+    "used_chat_template": true,
+    "input_char_count": 11489,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

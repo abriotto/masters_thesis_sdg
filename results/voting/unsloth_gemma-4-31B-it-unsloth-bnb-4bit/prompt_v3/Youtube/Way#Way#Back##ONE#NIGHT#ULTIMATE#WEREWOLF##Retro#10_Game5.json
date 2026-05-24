@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul: Claims Insomniac (initially), then says he didn't wake up as Insomniac (meaning he was swapped/robbed). Later claims Robber (after Justin's claim).\n    *   Mitchell: Claims Hunter, then claims Tanner (after being accused of being a werewolf).\n    *   Justin: Claims Robber/Seer (initially), then says he stole from Paul (who was Insomniac).\n    *   Laura: Claims Troublemaker (switched James and Mitchell). Later admits to being a Werewolf (at the very end).\n    *   James: Doesn't make a strong role claim, mostly expresses distrust.\n\n    *   Paul: Insomniac -> Robber (claims he woke up as Robber).\n    *   Justin: Robber/Seer (claims he robbed Paul).\n    *   Laura: Troublemaker (claims she switched James and Mitchell).\n    *   Mitchell: Hunter -> Tanner.\n\n    *   Justin says he robbed Paul.\n    *   Paul says he woke up as Robber.\n    *   If Justin robbed Paul, Justin becomes the Robber and Paul becomes whatever Justin was.\n    *   Paul claims he was Insomniac and didn't wake up as such.\n    *   If Paul was Insomniac and Justin robbed him, Justin is now the Robber and Paul is now whatever Justin was.\n    *   Wait, Paul says \"I was the insomniac, and I will be able to confirm because I did not wake up as the insomniac.\" This means Paul *started* as Insomniac but *ended* as something else.\n    *   Justin says \"I obviously stole from Paul. He is the insomniac. He woke up as the robber.\" This is contradictory. If Justin stole from Paul, Justin becomes the Robber. Paul becomes whatever Justin was. Paul wouldn't \"wake up as the robber.\"\n    *   Let's re-read: Justin says \"I obviously stole from Paul. He is the insomniac. He woke up as the robber.\" This phrasing is confusing. Maybe he meant \"I stole from Paul, and Paul (who was the insomniac) now has my card (which was robber)?\" No, the Robber steals the card and *becomes* that role.\n    *   Actually, let's look at the end: Laura admits \"Yes. I'm a werewolf.\"\n\n    *   Laura admits to being a werewolf in line [186].\n    *   The goal of Team Village is to eliminate a werewolf.\n    *   Voting for Laura is the most direct way to achieve this.\n\n    *   Laura claimed Troublemaker and said she switched James and Mitchell.\n    *   She then admitted to being a werewolf.\n    *   The other players (Justin, Paul, Mitchell) were leaning towards voting for her.\n\n    *   Chosen vote: Laura.\n    *   Justification: Laura admitted to being a werewolf at the end of the discussion. Several other players also expressed suspicion toward her after her claim as the Troublemaker seemed inconsistent or suspicious. Eliminating her directly fulfills the Village's win condition.",
+  "parsed_output": {
+    "justification": "Laura explicitly admits to being a werewolf at the end of the discussion (line 186). Throughout the day phase, several players expressed suspicion toward her, and she attempted to bluff as the Troublemaker. Voting for Laura is the most certain way for Team Village to eliminate a werewolf and win the game.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Laura explicitly admits to being a werewolf at the end of the discussion (line 186). Throughout the day phase, several players expressed suspicion toward her, and she attempted to bluff as the Troublemaker. Voting for Laura is the most certain way for Team Village to eliminate a werewolf and win the game.\",\n  \"chosen_vote\": \"Laura\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Laura explicitly admits to being a werewolf at the end of the discussion (line 186). Throughout the day phase, several players expressed suspicion toward her, and she attempted to bluff as the Troublemaker. Voting for Laura is the most certain way for Team Village to eliminate a werewolf and win the game.\",\n  \"chosen_vote\": \"Laura\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Laura explicitly admits to being a werewolf at the end of the discussion (line 186). Throughout the day phase, several players expressed suspicion toward her, and she attempted to bluff as the Troublemaker. Voting for Laura is the most certain way for Team Village to eliminate a werewolf and win the game."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5337,
+    "output_token_count": 800,
+    "generation_time_sec": 87.83646273612976,
+    "used_chat_template": true,
+    "input_char_count": 17410,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

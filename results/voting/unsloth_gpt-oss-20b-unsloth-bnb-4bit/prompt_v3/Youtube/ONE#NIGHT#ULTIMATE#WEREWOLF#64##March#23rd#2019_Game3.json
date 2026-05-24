@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide based on transcript which player is likely a werewolf. Four players: Justin, James, Paul, Mitchell. The transcript shows confusion and weird behavior. Not many clues.\n\nWe need to infer from roles and actions. Let's parse.\n\nImportant: timeline: Night actions happen first unseen. But we cannot see them. We only have transcripts where players seemingly talk nonsense.\n\nWe need to decide based on the transcript who is likely a werewolf. The only direct reference: some players mention they've seen something, but unclear.\n\nGiven the noise, maybe there's no evidence. But maybe we can deduce from any mentions. For example, at lines 62-66 there is mention of \"Justin: You were the robber.\" But wait: could that indicate someone being the robber? But no.\n\nAlso lines 99-100: \"Mitchell: I don't know why you think I'm a robber.\"\n\nHmm. Let's try systematically.\n\nGoal: find who is most likely to be a werewolf. We have no explicit evidence; but perhaps there's hints: e.g., conversation was chaotic; maybe involved 'copy cat'.\n\nLine 38: \"Justin: Why don't we just all say we're tanners and vote-\" meaning possibly no one said \"I'm a tanner.\"\n\nLine 69-71: People ask \"What did you see? Who are you?\" So maybe player order and answers hint.\n\nBut perhaps we need to evaluate if we can say each is obviously not a werewolf.\n\nLet's try to examine each.\n\n- Justin: He claims to see a Werewolf; also says \"you were the robber.\" This implies maybe he thinks someone else was robber, not himself.\n\n- James: Many statements and references. Eg lines 62-66, etc. He seems to claim he's a robber? Wait: line 62: James: No. Then line 66: Justin says \"You were the robber.\" Then earlier around line 31-32, not sure. In 62-66 there's some back and forth: \"Justin: you were the robber.\" That indicates someone else thought essential.\n\n- Paul: His statements: \"Ooh\". Not much.\n\n- Mitchell: Multiple statements - unclear.\n\nThis is too messy. But we can analyze:\n\nMaybe the talk reveals specific roles: Did anyone mention they saw someone in the center? Wait lines 94-98. Let's revisit lines 93-98: \nLines 93  [93] \"Justin: He solved it. He cracked it.\"\n  [94] Paul: ... a one night.\n  [95] James: So who did you trouble make?\n  [96] Mitchell: Tanner. No. Tanner, robber. You're good, but you're fucked.\n  [97] James: Who did you trouble make?\n  [98] Mitchell: I was seer.\n  Maybe that indicates Mitchell had the role of Seer. He claimed he was Seer. But content is early. Wait, \"I was seer\" suggests his role was Seer.\n\nCould see: lines 94-98 depict \"Mitchell: I was seer.\" So Mitchell claims to be seer (who would have looked at one player's card or the center). So he wouldn't watch for center.\n\nIf Mitchell is seer, his ability could mean he could look at a card and saw something.\n\nThus maybe Mitchell is not a werewolf, but a Village.\n\nBut not enough.\n\nBut we can deduce inside: if we suspect there is one werewolf among four players. Perhaps the transcribed conversation or names can give clue via contradictory statements. For instance: \"James: So who did you trouble make?\" refers to \"Troublemaker\" possibly.\n\nAt line 98: \"Mitchell: I was seer.\" Means Mitchell claims he is Seer. So he's likely not a werewolf.\n\nLet's recall there's also a \"copycat\" spelled by the announcer lines: at top, \"Copycat, wake up and look at one of the center cards. You are now that role.\" So a copycat and a copycat automatically could be a role. But who is copycat? There's texting about Copycat in [32] \"Paul: Copycat, really... Pump this one up. Speaking…\". Wait [32] \"Justin: Copycat, really... Pump this... Speaking of, who was the copycat? We have four liars here, right?\" Not super helpful.\n\nI think this transcript is essentially meaningless, filled with random lines. We need to basically guess a werewolf.\n\nPotentially someone who says \"you're a tanner\" i.e. \"You were a copycat,\" rever. But not clear.\n\nMaybe the simple answer: choose the player who is most likely the werewolf. The easiest is first guess: James. Because lines \"Just what? I think I'm a werewolf because...\"\n\nBut lines 14-116 display Joyce? Not.\n\nLet's see: Did any lines mention that anyone was a werewolf but not here.\n\n**IMPORTANT**: The transcript lines #14: \"Everyone, wake up.\" Then player actions.\n\nBut no, we can't glean.\n\nMaybe we should approximate: majority of players ambiguous; but maybe Justin claimed to see a werewolf. But if he saw a werewolf in the center, it might indicate his own card. But not sure.\n\nHowever, there is a known scenario: Among 4 players, if someone is a Werewolf, they'd be the only werewolf or maybe 2.\n\nLook at starting roles: There are 6 roles possible: seer, robber, troublemaker, etc. But not many.\n\nThe transcripts appear to mention copycat: which can be used to change someone—like, assumption: one player likely copycat and might become werewolf depending on target. But doesn't help.\n\nAnyway, maybe we choose James. But my probability from reading is that James is the most suspicious due to his many statements: \"James: I don't even know. I want to vote for myself.\" Not helpful. Hmm.\n\nWait, look at line 71: \"James: Are you werewolf?\" show suspicion.\n\nBut maybe there's a line \"Justin: You were the robber.\" That seems to accuse someone.\n\nGiven the incomplete information, a safe choice: Vote for James because he seems suspicious and might be a werewolf. Also if he incorrectly calls himself werewolf might be what: \"I want to vote for myself.\" But no. That suggests he might be a town eater.\n\nAdditionally, done in my head: The conversation indicates many random statements; picking James as the suspect.\n\nAlternatively, maybe choose Justin: He says \"I saw...\". He told \"you were the robber.\" That may reveal he knows something.\n\nActually, we could choose Justin might be a werewolf because Joe.\n\nBut the instructions: \"based on only public discussion choose exactly one player whose elimination is most likely to help Team Village win.\" So we need to pick someone likely to be werewolf.\n\nIf we consider nothing, choose the one with the biggest suspicion: James apologized as a werewolf.\n\nBut cross-check: Did Mitchell say \"I was Seer\"? That implies he is not werewolf. So his elimination would harm village.\n\nSo my chosen: James. I'll justify that because many statements from him are suspicious.\n\nThus final JSON: recommended voting for James.",
+  "parsed_output": {
+    "justification": "The dialogue contains the phrase \"James: Are you werewolf?\" and further exchanges imply James might have identified or claimed themselves as a werewolf, raising suspicion. Given limited evidence and numerous contradictory statements, the most plausible target among the four players is James. Eliminating James would increase the chances of removing a potentially undead opponent.\n",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"The dialogue contains the phrase \\\"James: Are you werewolf?\\\" and further exchanges imply James might have identified or claimed themselves as a werewolf, raising suspicion. Given limited evidence and numerous contradictory statements, the most plausible target among the four players is James. Eliminating James would increase the chances of removing a potentially undead opponent.\\n\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"The dialogue contains the phrase \\\"James: Are you werewolf?\\\" and further exchanges imply James might have identified or claimed themselves as a werewolf, raising suspicion. Given limited evidence and numerous contradictory statements, the most plausible target among the four players is James. Eliminating James would increase the chances of removing a potentially undead opponent.\\n\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "The dialogue contains the phrase \"James: Are you werewolf?\" and further exchanges imply James might have identified or claimed themselves as a werewolf, raising suspicion. Given limited evidence and numerous contradictory statements, the most plausible target among the four players is James. Eliminating James would increase the chances of removing a potentially undead opponent."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3805,
+    "output_token_count": 1577,
+    "generation_time_sec": 194.7443389892578,
+    "used_chat_template": true,
+    "input_char_count": 14670,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

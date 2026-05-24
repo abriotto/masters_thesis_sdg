@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0_Game2.txt",
+  "player_names": [
+    "Erin",
+    "Sebastian",
+    "Jack",
+    "Brent",
+    "Hailey"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Erin (Announcer)\n    *   Sebastian\n    *   Jack\n    *   Brent\n    *   Hailey\n\n    *   Sebastian claims he was the Robber and swapped cards with Hailey.\n    *   Hailey claims she was a Villager.\n    *   Brent claims he was a Villager.\n    *   Jack claims he was the Troublemaker and swapped cards with Brent.\n    *   Sebastian claims he is now a Villager (because he swapped with Hailey).\n    *   Hailey claims she is now the Robber (because Sebastian swapped with her).\n    *   Jack claims he is now a Villager (because he swapped with Brent).\n    *   Brent claims he is now the Troublemaker (because Jack swapped with him).\n\n    *   *Sebastian's claim:* Robber swapped with Hailey. (Sebastian: Robber -> Villager; Hailey: Villager -> Robber).\n    *   *Jack's claim:* Troublemaker swapped Brent and himself. (Jack: Troublemaker -> Villager; Brent: Villager -> Troublemaker).\n    *   *Wait, look at Jack's claim again:* \"I was a troublemaker... I swapped our cards. So I guess I'm a villager now.\" (Line 75, 80).\n    *   *Troublemaker Rule:* \"The Troublemaker... swaps the cards of two *other* players without looking at them.\"\n    *   *Contradiction:* Jack claims he swapped *his own* card with Brent's. This is impossible for a Troublemaker. A Troublemaker cannot swap their own card.\n\n    *   If Jack is lying about being the Troublemaker (because he claimed to swap his own card), he is likely a Werewolf or the Tanner.\n    *   Sebastian and Hailey's story is consistent with the Robber role (Robber swaps their own card with another).\n    *   Brent's claim of being a Villager is simple.\n    *   Jack's claim is fundamentally flawed based on the game rules.\n\n    *   Sebastian: Claims Robber, swapped with Hailey. (Possible)\n    *   Hailey: Claims Villager, now Robber. (Consistent with Sebastian)\n    *   Brent: Claims Villager, now Troublemaker. (Consistent with Jack's claim, but Jack's claim is illegal)\n    *   Jack: Claims Troublemaker, swapped himself and Brent. (Illegal action)\n\n    *   Jack's claim to be the Troublemaker is a lie because he says he swapped his own card.\n    *   Since he is lying about his role and action, he is the most suspicious player.\n    *   Therefore, voting for Jack is the best move for Team Village.\n\n    *   Could Jack be the Tanner? Possibly.\n    *   Could Jack be a Werewolf? Very likely.\n    *   Could Sebastian/Hailey be lying? They are consistent with each other.\n    *   Could Brent be lying? He just claimed Villager.\n    *   The most glaring error is Jack's misunderstanding/lie about the Troublemaker's ability.\n\n    *   Jack claimed to be the Troublemaker and said he swapped his own card with Brent's.\n    *   According to the rules, the Troublemaker swaps the cards of two *other* players.\n    *   This contradiction makes Jack the most likely Werewolf (or Tanner), and thus the best target for Team Village.",
+  "parsed_output": {
+    "justification": "Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. However, the Troublemaker's ability is to swap the cards of two other players, meaning they cannot swap their own card. This fundamental contradiction in Jack's claim makes him the most likely Werewolf or Tanner, making him the best candidate for elimination to help Team Village win.",
+    "chosen_vote": "Jack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. However, the Troublemaker's ability is to swap the cards of two other players, meaning they cannot swap their own card. This fundamental contradiction in Jack's claim makes him the most likely Werewolf or Tanner, making him the best candidate for elimination to help Team Village win.\",\n  \"chosen_vote\": \"Jack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. However, the Troublemaker's ability is to swap the cards of two other players, meaning they cannot swap their own card. This fundamental contradiction in Jack's claim makes him the most likely Werewolf or Tanner, making him the best candidate for elimination to help Team Village win.\",\n  \"chosen_vote\": \"Jack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jack",
+    "justification": "Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. However, the Troublemaker's ability is to swap the cards of two other players, meaning they cannot swap their own card. This fundamental contradiction in Jack's claim makes him the most likely Werewolf or Tanner, making him the best candidate for elimination to help Team Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5314,
+    "output_token_count": 870,
+    "generation_time_sec": 95.963214635849,
+    "used_chat_template": true,
+    "input_char_count": 17820,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

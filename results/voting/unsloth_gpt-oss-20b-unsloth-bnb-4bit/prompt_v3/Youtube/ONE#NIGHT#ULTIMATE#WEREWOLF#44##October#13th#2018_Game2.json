@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse this transcript. It's messy. Need determine who likely werewolves/others. Let's list players: Justin, Mitchell, Paul, Mike.\n\nRoles possible: We need identify who is werewolf? Let's try reconstruct actions.\n\nTranscript seems incoherent but likely random. Maybe it's a joke, not actual game.\n\nHowever maybe the content: Justin says \"Justin was a seer?\" Actually line 24: \"Mitchell: Seer.\"\n\nLine 25: Justin: \"Hell fucking yes. Well, hell fucking yes, you were the seer. So what am I? I'm the Insomniac. Great.\" So Justin says he is the Insomniac and Mitchell is Seer. So roles inferred: Justin=Insomniac, Mitchell=Seer.\n\nBut lines mentioning roles like \"Mike: I'm the same as the robber.\" At line 29: \"Mike: I'm the same as the robber.\" So Mike might be Robber. Also earlier something about swapping. Also at line 45? Maybe complicated.\n\nLet's parse systematically:\n\nAt start: 4 players -> roles 4+3=7 roles drawn. Unknown which roles among typical list.\n\nThe Night actions: we don't know which werewolves exist.\n\nWe need to deduce final teams. Shots.\n\nFrom transcript: Justin says \"You're a werewolf.\" Several lines mention suspicious. But seems conversation suspicious. In particular, lines 91-92 etc. Hard to decode.\n\nNevertheless maybe the simplest: no clear identification, choose random. But we have a high chance many players didn't are werewolves. The only explicit claim of werewolf is at line 32? At \"William??\" Actually line 32: \"Mike: Classic.\" Not helpful.\n\nBut I see a line at 81: \"Paul: Yeah. I'll kill Mitchell to either kill werewolf or kill a tanner. I don't care.\" indicates someone intending to vote Mitchell.\n\nThus people think Mitchell might be werewolf? Or maybe Mitchel is maybe the werewolf. However not fully certain.\n\nSimplify: Suppose there's at least one werewolf present. Who might it be? Player names and roles: seems at line 24: Mitchell said \"Seer\". Did he actually become Seer? That would be a Village role. Usually villagers wouldn't say \"blah\" unexpectedly.\n\nLine 25: Justin said \"I'm the Insomniac.\" However Insomniac is a village role. So we have at least one villager.\n\nIf Justin is Insomniac and Mike is Robber, then maybe Justin and Mike are villagers. So who could be werewolf? Maybe Paul or Mitchell? Let's check conversation.\n\nIn lines 52-63: Many confusion. At 73: \"Paul: ... No. We kill Mitchell.\" So likely the intended target to eliminate is Mitchell.\n\nSo likely Micheilty are suspect for being werewolf. Maybe they want to kill them. So answer: \"Mitchell\".\n\nWait yet there's earlier \"Justin:\tSo what were you? Tell me who you were.\" and \"Mitchell: Seer.\" So Mitchell claims to be Seer. But if that is correct, then he is a village. But maybe misreport. We have to decide. It seems the conversation indicates that someone is trying to kill the werewolf but unclear.\n\nGiven lack of evidence, maybe we still vote for mitigation.\n\nPossible rational: If Justin is insomniac, his role cannot be werewolf. Mike is robber. So are they both sure? Still unknown.\n\nOk, it's still ambiguous. But let's choose moderate: vote for Mitchell.\n\nLet's output accordingly.",
+  "parsed_output": {
+    "justification": "Based on the transcript, Justin identified himself as the Insomniac and Mitchell claimed to be the Seer. Neither role is associated with werewolves, whereas Mike claims to be the Robber. The conversation repeatedly points toward Mitchell being treated with suspicion – several lines indicate that the workers are targeting him. Given the limited evidence, voting for Mitchell as the most likely werewolf is the most consistent with the available statements.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, Justin identified himself as the Insomniac and Mitchell claimed to be the Seer. Neither role is associated with werewolves, whereas Mike claims to be the Robber. The conversation repeatedly points toward Mitchell being treated with suspicion – several lines indicate that the workers are targeting him. Given the limited evidence, voting for Mitchell as the most likely werewolf is the most consistent with the available statements.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, Justin identified himself as the Insomniac and Mitchell claimed to be the Seer. Neither role is associated with werewolves, whereas Mike claims to be the Robber. The conversation repeatedly points toward Mitchell being treated with suspicion – several lines indicate that the workers are targeting him. Given the limited evidence, voting for Mitchell as the most likely werewolf is the most consistent with the available statements.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Based on the transcript, Justin identified himself as the Insomniac and Mitchell claimed to be the Seer. Neither role is associated with werewolves, whereas Mike claims to be the Robber. The conversation repeatedly points toward Mitchell being treated with suspicion – several lines indicate that the workers are targeting him. Given the limited evidence, voting for Mitchell as the most likely werewolf is the most consistent with the available statements."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3461,
+    "output_token_count": 841,
+    "generation_time_sec": 105.05078554153442,
+    "used_chat_template": true,
+    "input_char_count": 13646,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

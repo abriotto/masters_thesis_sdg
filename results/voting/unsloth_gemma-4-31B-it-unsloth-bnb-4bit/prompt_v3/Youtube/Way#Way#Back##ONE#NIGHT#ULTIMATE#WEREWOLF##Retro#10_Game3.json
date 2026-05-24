@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul claims Troublemaker. He says he switched two players (Justin and James).\n    *   Mitchell claims Insomniac. He says he woke up as Insomniac.\n    *   Justin claims Tanner.\n    *   James claims \"some villager\" (initially), then claims he was the Robber (\"I stole his insomnia\").\n    *   Laura hasn't claimed a specific role, just says she's not a werewolf.\n\n    *   Paul (Troublemaker) says he switched Justin and James.\n    *   Mitchell (Insomniac) confirms he woke up as Insomniac.\n    *   James (Robber) says he robbed Mitchell (the Insomniac).\n    *   Wait, let's re-examine James's claim: \"I stole his insomnia\" (referring to Mitchell).\n    *   If James was the Robber and robbed Mitchell (Insomniac), James becomes the Insomniac.\n    *   Then Paul (Troublemaker) switches Justin and James.\n    *   So James (now Insomniac) is swapped with Justin.\n    *   Justin becomes the Insomniac, and James becomes whatever Justin was.\n    *   Mitchell remains the Insomniac? No, if James robbed Mitchell, Mitchell's card is now with James.\n    *   Let's re-read:\n        *   Mitchell: \"I'm an Insomniac... I can verify whether he [Paul] did or did not switch me.\" (Line 27)\n        *   James: \"I stole his insomnia.\" (Line 74)\n        *   Mitchell: \"I wasn't the robber. I was Insomniac.\" (Line 65)\n        *   James: \"And what'd you wake up as?\" (Line 66)\n        *   Mitchell: \"The Insomniac.\" (Line 67)\n        *   James: \"Oh, Paul switched us. You motherfucker.\" (Line 68)\n        *   Wait, James's logic is confusing. If Mitchell woke up as Insomniac, and James thinks he robbed Mitchell, then James should have the Insomniac card. But if Paul switched James and Justin, then Justin would have the Insomniac card.\n        *   Let's look at the sequence:\n            1.  Robber (James?) wakes up, steals from Mitchell (Insomniac). James is now Insomniac. Mitchell is now Robber.\n            2.  Troublemaker (Paul) wakes up, switches Justin and James. Justin is now Insomniac. James is now whatever Justin was.\n            3.  Insomniac (Justin) wakes up and sees he is the Insomniac.\n            4.  Wait, Mitchell says *he* woke up as the Insomniac (Line 67). If Mitchell woke up as the Insomniac, he must have been the Insomniac at the end of the night.\n            5.  If Mitchell is the Insomniac at the end, then he wasn't robbed, or he was the Robber who stole the Insomniac card, or he was the Troublemaker's target.\n\n    *   Paul: Claims Troublemaker. Switched Justin and James.\n    *   Mitchell: Claims Insomniac. Woke up as Insomniac.\n    *   James: Claims Robber. Says he robbed Mitchell.\n    *   Justin: Claims Tanner.\n    *   Laura: No claim.\n\n    *   If Paul is Troublemaker and switched Justin and James:\n        *   If James was Robber and robbed Mitchell (Insomniac), James became Insomniac.\n        *   Then Paul switched James (Insomniac) and Justin.\n        *   Justin becomes Insomniac.\n        *   Mitchell becomes Robber.\n        *   But Mitchell says he woke up as Insomniac. This contradicts James's claim that he robbed Mitchell.\n\n    *   If Mitchell is Insomniac and woke up as Insomniac:\n        *   He was not robbed by James.\n        *   He was not switched by Paul.\n\n    *   If James is the Werewolf:\n        *   He might be lying about being the Robber to create confusion.\n        *   He's pushing the vote toward Laura.\n\n    *   If Laura is the Werewolf:\n        *   She has remained silent/unclaimed.\n        *   The others (Paul, James, Mitchell) are coordinating their stories (even if they are slightly contradictory).\n\n    *   Paul, James, and Mitchell are all claiming roles that \"confirm\" each other in some way, although the logic is messy.\n    *   Justin is claiming Tanner (wants to die).\n    *   Laura is the only one who hasn't claimed a role and is being targeted by the others.\n\n    *   Paul, James, and Mitchell are actively pushing the vote toward Laura.\n    *   Laura's defense is simply \"I'm not a werewolf.\"\n    *   In One Night Ultimate Werewolf, the player who doesn't claim a role or provides no information is often the Werewolf (or the Tanner, but Justin already claimed Tanner).\n\n    *   Justin: Claims Tanner.\n    *   Laura: No claim.\n    *   Paul: Claims Troublemaker.\n    *   James: Claims Robber.\n    *   Mitchell: Claims Insomniac.\n\n    *   If Paul, James, and Mitchell are telling the truth, Laura must be the Werewolf (or a Villager/Hunter).\n    *   If James is lying about robbing Mitchell, he could be the Werewolf.\n    *   However, the group consensus is strongly leaning toward Laura.\n\n    *   The prompt asks for the vote most likely to help Team Village win.\n    *   Laura is the most suspicious because she has no claim and the other players (who have claimed roles) are targeting her.\n    *   Justin is claiming Tanner, so voting for him helps the Tanner win, not the Village.\n    *   Paul, James, and Mitchell have provided roles (even if the logic is a bit shaky).\n\n    *   Paul (Troublemaker) switched Justin and James.\n    *   James (Robber) robbed Mitchell (Insomniac).\n    *   Wait, if James robbed Mitchell, James is now Insomniac.\n    *   If Paul then switched James and Justin, Justin is now Insomniac.\n    *   Then Mitchell (who was robbed) would be the Robber.\n    *   But Mitchell says he woke up as the Insomniac.\n    *   This means James's claim (\"I stole his insomnia\") is likely a lie.\n    *   If James is lying about being the Robber, he is a strong candidate for the Werewolf.\n\n    *   James says: \"I stole his insomnia\" (Line 74).\n    *   Mitchell says: \"I wasn't the robber. I was Insomniac... [I woke up as] The Insomniac.\" (Lines 65, 67).\n    *   If Mitchell woke up as the Insomniac, he *must* have had the Insomniac card at the end of the night.\n    *   If James had robbed Mitchell, Mitchell would not have the Insomniac card.\n    *   Therefore, James is lying.\n\n    *   James is lying about his role (Robber) and his action (robbing Mitchell).\n    *   James is aggressively pushing the vote toward Laura.\n    *   This behavior is characteristic of a Werewolf.\n\n    *   Wait, Paul also says \"I think the best option is to vote Laura\" (Line 87) and \"I'm voting Laura\" (Line 130).\n    *   James says \"I'm voting Laura\" (Line 127).\n    *   If James is the Werewolf, Paul might be the Minion or just mistaken.\n    *   But James's lie is the most concrete piece of evidence.\n\n    *   Is it possible Mitchell is lying? If Mitchell is the Werewolf, he could claim Insomniac.\n    *   Is it possible Paul is lying? If Paul is the Werewolf, he could claim Troublemaker.\n    *   But James's claim (\"I stole his insomnia\") is directly contradicted by Mitchell's claim (\"I woke up as the Insomniac\"). One of them *must* be lying.\n    *   If James is lying, he's likely the Werewolf.\n    *   If Mitchell is lying, he's likely the Werewolf.\n    *   However, James is the one who initiated the false claim about robbing Mitchell.\n\n    *   James claims he robbed Mitchell.\n    *   Mitchell says he woke up as the Insomniac.\n    *   If Mitchell is the Insomniac, James cannot be the Robber who robbed him.\n    *   James is lying.\n    *   James is pushing the vote to Laura.\n    *   Therefore, James is the most likely Werewolf.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   Line 68: James: \"Oh, Paul switched us. You motherfucker.\"\n    *   Line 69: Mitchell: \"Okay, that would also make sense. So it was either Paul's lying or you're both lying.\"\n    *   Line 72: James: \"Paul is lying about switching you two.\"\n    *   Line 74: James: \"Yeah, but I stole his insomnia.\"\n    *   James is contradicting himself. First he says \"Paul switched us\" (Line 68), then he says \"Paul is lying about switching you two\" (Line 72).\n    *   This inconsistency strongly suggests James is the Werewolf.\n\n    *   James's claims are inconsistent (first saying Paul switched them, then saying Paul lied about switching them).\n    *   James's claim to be the Robber who stole Mitchell's insomnia is contradicted by Mitchell's claim to have woken up as the Insomniac.\n    *   James is aggressively pushing the vote toward Laura.\n    *   These points make James the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "James provides contradictory claims throughout the discussion. He first suggests that Paul switched him and Mitchell (Line 68), but then claims Paul was lying about the switch (Line 72). Furthermore, James claims to be the Robber who stole Mitchell's insomnia (Line 74), but Mitchell confirms he woke up as the Insomniac (Line 67), which makes James's claim impossible. Given these inconsistencies and his aggressive push to vote for Laura, James is the most likely Werewolf.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James provides contradictory claims throughout the discussion. He first suggests that Paul switched him and Mitchell (Line 68), but then claims Paul was lying about the switch (Line 72). Furthermore, James claims to be the Robber who stole Mitchell's insomnia (Line 74), but Mitchell confirms he woke up as the Insomniac (Line 67), which makes James's claim impossible. Given these inconsistencies and his aggressive push to vote for Laura, James is the most likely Werewolf.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James provides contradictory claims throughout the discussion. He first suggests that Paul switched him and Mitchell (Line 68), but then claims Paul was lying about the switch (Line 72). Furthermore, James claims to be the Robber who stole Mitchell's insomnia (Line 74), but Mitchell confirms he woke up as the Insomniac (Line 67), which makes James's claim impossible. Given these inconsistencies and his aggressive push to vote for Laura, James is the most likely Werewolf.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James provides contradictory claims throughout the discussion. He first suggests that Paul switched him and Mitchell (Line 68), but then claims Paul was lying about the switch (Line 72). Furthermore, James claims to be the Robber who stole Mitchell's insomnia (Line 74), but Mitchell confirms he woke up as the Insomniac (Line 67), which makes James's claim impossible. Given these inconsistencies and his aggressive push to vote for Laura, James is the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4614,
+    "output_token_count": 2401,
+    "generation_time_sec": 248.7774691581726,
+    "used_chat_template": true,
+    "input_char_count": 15654,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

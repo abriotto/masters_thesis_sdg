@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#87##November#9th#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#87##November#9th#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Copycat (Doppelganger)\n    *   Werewolf\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   (Other roles mentioned in the rules, but these are the ones called by the announcer)\n\n    *   Announcer calls: Copycat, Werewolves, Seer, Robber, Troublemaker.\n    *   Mike claims he saw one werewolf in the center (as Seer).\n    *   Paul claims he was a werewolf (\"I was a werewolf. I hope you switched me\").\n    *   Justin claims he was the Troublemaker (\"I didn't switch anybody... I picked up your card, put it back down...\").\n    *   Mitchell claims he saw Troublemaker (likely as Seer or Robber, but Mike already claimed Seer). Wait, Mitchell says \"I saw troublemaker\" (line 115).\n    *   Mike says he saw one werewolf and the copycat in the center (lines 11, 74).\n\n    *   Paul: Admits to being a werewolf (starting role). He wants to be voted out (either because he's the werewolf and wants to \"help\" the village, or he's bluffing as the Tanner).\n    *   Justin: Claims to be the Troublemaker and says he didn't switch anyone.\n    *   Mike: Claims to be the Seer and saw a werewolf and a copycat in the center.\n    *   Mitchell: Claims he saw Troublemaker (line 115).\n\n    *   If Mike is the Seer and saw a werewolf and a copycat in the center, then there is only one werewolf card left in play.\n    *   Paul admits he was a werewolf.\n    *   If Justin (Troublemaker) didn't switch anyone, Paul is still the werewolf.\n    *   If Paul is the werewolf, voting for him wins the game for Team Village.\n    *   Paul is actively encouraging people to vote for him (\"Get me\", \"Vote for me\"). This is typical for a Tanner or a werewolf trying to be helpful/confuse the group. However, if he *is* the werewolf, voting him out is the goal.\n\n    *   Could Paul be the Tanner? Tanners want to be voted out.\n    *   Could Justin be lying about not switching? If Justin switched Paul with someone else, Paul is no longer the werewolf.\n    *   Could Mike be lying about the center cards? If Mike is the werewolf/minion, he might lie about the center to confuse the village.\n    *   Could Mitchell be the werewolf? Paul suggests voting for Mitchell at the end.\n\n    *   Paul openly admits to being the werewolf.\n    *   Justin (claiming Troublemaker) says he didn't switch anyone.\n    *   Mike (claiming Seer) says there's a werewolf in the center.\n    *   If these claims are true: Paul = Werewolf, Mike = Seer, Justin = Troublemaker.\n    *   If Paul is the werewolf, voting for him is the correct move for Team Village.\n    *   Even if Paul is the Tanner, voting for him is a risk, but the evidence (his own admission) strongly points to him being the werewolf.\n    *   Wait, if Paul is the Tanner, he'd also say \"Vote for me.\" But he specifically said \"I was a werewolf.\"\n    *   If Paul was the werewolf and Justin (Troublemaker) didn't switch him, Paul is still the werewolf.\n    *   If Paul was the werewolf and Justin *did* switch him with someone (say, Mitchell), then Mitchell would be the werewolf. But Justin insists he didn't switch.\n\n    *   Paul: \"I was a werewolf.\"\n    *   Justin: \"I didn't switch anybody.\"\n    *   Mike: \"I saw one werewolf [in the center].\"\n    *   If these are true, Paul is the only werewolf in play.\n    *   Voting for Paul is the most logical choice for Team Village.\n\n    *   Paul's behavior is very suspicious (too eager to be voted out), which could be a Tanner strategy.\n    *   However, in One Night Ultimate Werewolf, if a player admits to being the werewolf and the Troublemaker claims no switch happened, the most direct path to a Village win is to vote that player.\n    *   Is there any reason to vote Mike or Mitchell?\n        *   Mike: Claimed Seer, saw werewolf/copycat in center.\n        *   Mitchell: Claimed he saw Troublemaker.\n        *   Neither has a strong accusation against them compared to Paul's self-admission.\n\n    *   Paul admits to being the werewolf.\n    *   Justin claims to be the Troublemaker and states he did not swap any cards.\n    *   Mike claims to be the Seer and saw a werewolf in the center, meaning only one werewolf is in play.\n    *   Therefore, Paul is the most likely werewolf.\n    *   Voting for Paul is the best move for Team Village.",
+  "parsed_output": {
+    "justification": "Paul openly admitted to being a werewolf at the start of the discussion. Justin, claiming to be the Troublemaker, stated multiple times that he did not switch any cards, meaning Paul's role would not have changed. Mike, claiming to be the Seer, stated he saw a werewolf in the center, implying only one werewolf is active in the game. Therefore, Paul is the most likely werewolf, and voting for him is the best decision for Team Village.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul openly admitted to being a werewolf at the start of the discussion. Justin, claiming to be the Troublemaker, stated multiple times that he did not switch any cards, meaning Paul's role would not have changed. Mike, claiming to be the Seer, stated he saw a werewolf in the center, implying only one werewolf is active in the game. Therefore, Paul is the most likely werewolf, and voting for him is the best decision for Team Village.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul openly admitted to being a werewolf at the start of the discussion. Justin, claiming to be the Troublemaker, stated multiple times that he did not switch any cards, meaning Paul's role would not have changed. Mike, claiming to be the Seer, stated he saw a werewolf in the center, implying only one werewolf is active in the game. Therefore, Paul is the most likely werewolf, and voting for him is the best decision for Team Village.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul openly admitted to being a werewolf at the start of the discussion. Justin, claiming to be the Troublemaker, stated multiple times that he did not switch any cards, meaning Paul's role would not have changed. Mike, claiming to be the Seer, stated he saw a werewolf in the center, implying only one werewolf is active in the game. Therefore, Paul is the most likely werewolf, and voting for him is the best decision for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4697,
+    "output_token_count": 1256,
+    "generation_time_sec": 132.43115758895874,
+    "used_chat_template": true,
+    "input_char_count": 15981,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

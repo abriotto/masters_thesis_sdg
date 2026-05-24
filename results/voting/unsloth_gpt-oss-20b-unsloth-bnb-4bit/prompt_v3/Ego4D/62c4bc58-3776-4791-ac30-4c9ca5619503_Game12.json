@@ -1,0 +1,70 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game12",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game12.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse the transcript of a One Night Ultimate Werewolf game: players: Kevin, Kaelan, Jessica, Daniel. 4 players. There's a mix of conversation; it's quite garbled. We need to guess roles.\n\nWe need to decide who to vote for—the single player that is likely a Werewolf.\n\nFrom transcript, lots of random words, seems nonsensical. Maybe speaker IDs: [1] Daniel, [2] Kaelan, [3] Kevin, [4] Kaelan, etc. The transcript is weird.\n\nLet's attempt to deduce roles based on remarks about the center and center cards, role swapping. It's confusing.\n\nFrom maybe [6] Kaelan: \"Okay, but I swapped you two as the Troublemaker.\" This indicates that Kaelan swapped two players as Troublemaker? Let's analyze.\n\nIt says \"I swapped you two as the Troublemaker\" — That seems like Kaelan marked himself as Troublemaker? Or did he say to swap two people? Confusing.\n\nBut the roles that swapped: maybe the Troublemaker action: swap two other players' cards (without knowing). They may speak about whether other Masons exist.\n\nAlso [5] Daniel: \"I'll confirm that he was the Mason. Okay.\" Perhaps Daniel confirmed that someone was a Mason?\n\nBut in the conversation, it appears that people talk about 'Mason', 'dui', etc.\n\nAlso [9] maybe Daniel: \"Where did you drunk? Where did you stumble, which bar?\" seems to refer to Drunk or Troublesome.\n\nAnyway, but the important part: we need to guess who is likely werewolf. In 4-player game there might be 1 or 2 werewolf cards. With 4 players + 3 center = 7 cards possibly; there are various roles including werewolf. The presence of 'Mason' and 'Troublemaker' roles indicates the role distribution.\n\nWe need to determine role assignments. We might analyze the conversation for clues about which roles were involved.\n\n- [5] Daniel: \"I'll confirm that he was the Mason.\" This could be saying he [Daniel?] is telling that someone else was Mason.\n\n- [6] Kaelan says: \"Okay, but I swapped you two as the Troublemaker.\" That implies that the original role of two players got swapped. So Kaelan may have been the Troublemaker at the start of night.\n\nAlso later [26] Daniel: \"I'd double check, make sure there wasn't a Tanner.\" Suggests that there's a question about Tanner being present.\n\nHmm.\n\nBut the goal: choose a player that is most likely a werewolf. Typically those with werewolf role may act in ways that spike suspicion. But we have no direct clues. However, let's logically think:\n\n- If there's a troublemaker, they swap two players. So any two players swapped didn't reveal who had whom.\n\n- Also, there's a mention that \"the minion is supposed to draw a sus on themselves\" – maybe that shows the Minion being present. That suggests that there is a Minion in the game. Since Minion is a werewolf ally.\n\n- The conversation: [34] Daniel: \"Nope. Werewolves win. The minion is supposed to draw a sus on themselves.\" That indicates that Daniel thinks that the minion will somehow cause suspicion.\n\n- So there might be a minion present. If minion exists, it will get victims to be suspicious? But that doesn't help us.\n\nWe might suspect that a player with unclear identity is likely to be a werewolf. Which player is suspect? Let's try to guess the participants' roles:\n\nPossible roles: There are 4 players, roles vary. Usually Ongoing suspects: MASON, TROUBLEMAKER, MINION, DRUNK, SEER, ROBBER, DOPPELGANGER, VILLAGER, WOLF.\n\nMaybe each player used the roles: For example, Kaelan might have become the Troublemaker and swapped some people; perhaps the two swapped may not be known to everyone. That introduces confusion.\n\nSince we have no clear evidence, maybe guess that Kaelan is suspect. Alternatively, Kaelan could be the Troublemaker; that gives them mountain to be identified by others. But still, they are more of an ordinary.\n\nHowever, maybe the minimal result: we need to pick a single player to vote for; I must decide based on logic.\n\nGiven the transcript contains many irregular statements, but nothing directly indicating specific role. Could the conversation were all about reminding about Drunk? Possibly Drunk swapped certain card, making reversed role twice. But no direct mention.\n\nNevertheless, we could examine that the person who talked about many times about 'center' and 'drunk' might be Drunk: \"Where did you drunk? Where did you stumble, which bar?\" This might indicate that Daniel or Kaelan is trying to see what happened to the center. That is typical of a Drunk—they will swap them out without seeing them.\n\nThus the player who swapped center card is probably Drunk. That would be Daniel? Because [9] Daniel: \"Where did you drunk? Where did you stumble, which bar?\" That seems to refer to a drunk. So Daniel might be Drunk. Then his card is swapped.\n\nIf Daniel swapped something, hmm.\n\nNow, consider Trevor complaining we are all playing background.\n\nMaybe we can list possibilities:\n\n- If Daniel is Drunk, then he swapped center card but didn't see it. So he doesn't know which card he has, making him unpredictable.\n\n- The Drunk cannot reveal his new card.\n\n- The Troublemaker is a separate role, potentially causing confusion. Maybe this is the player who swapped two others.\n\nNow, if there is a Mister because we had trouble:\n\nAnyway, there might be a Werewolf among those. To maximize chance to kill a werewolf, we vote for the suspected one.\n\nCould look for utterances that sound like defamation: Someone bragged that \"I'm not a werewolf\". But none.\n\nOk, new plan: Without direct evidence, the probably chosen suspect is Kevin? Because he used random statements: \"Where is my brother? Brother!\" He might cheat.\n\nK send vote: Kevin? I'm not fully convinced. But we could instead vote for Kaelan - he said \"swapped you two\", that might confuse others and look suspicious.\n\nWait, observations: Problem: [6] Kaelan: \"Okay, but I swapped you two as the Troublemaker.\" That makes him the Troublemaker? But a Player likely to be the troublemaker could be suspected? Actually, troublemaker doesn't align with any team, but can mislead. He shouldn't be a werewolf.\n\nSo from the conversation, it's hard to determine. Perhaps the simplest answer: You vote for Daniel because he mentions \"The minion is supposed to draw a sus on themselves.\" He might be the minion or suspect. If he is minion, he benefits from suspecting others.\n\nAlternatively, Daniel might be the werewolf? The minion may target killing suspect.\n\nBut I think that Bill might be suspect.\n\nBetter approach: identify real roles: There is a Drunk, Troublemaker, Minion, Mason: we need to map persons.\n\n- Drunk is Daniel.\n- Troublemaker is Kaelan? Wait, it says \"I swapped you two as the Troublemaker.\" So Kaelan may be the Troublemaker.\n- Mina? Not sure.\n\nLet's guess role list: Suppose::\n\n- Daniel: Drunk\n- Kaelan: Troublemaker\n- Sure.\n\nThen left: Kevin and Jessica remain. They might be village or werewolf, unknown.\n\nGiven that Drunk can potentially have any card; but his card could be any role assigned. The troublemaker swapped two others. This uncertain.\n\nNow respondents: \"I'll confirm that he was the Mason. Okay.\" suggests that Daniel says \"he\" might be Mason. That could be him sometimes. \"He\" refers to who? We don't know.\n\nAlso \"where did you drunk? Where did you stumble, which bar?\" indicates who asked about what the Drunk might have done.\n\nThus, we can assume roles: Kevin and Jessica may be whatever. Not enough data.\n\nGiven limited information, I think the best answer is to vote to eliminate Kaelan since he performed a swap and acts suspiciously.\n\nWe'll produce JSON.",
+  "parsed_output": {
+    "justification": "Based on the transcript, Kaelan’s statements suggest he performed the Troublemaker’s swap action, creating confusion but revealing an element of ambiguity around his own identity. The conversation indicates a lack of clarity regarding werewolf presence, and Kaelan’s active role in swapping could make him more likely to be a werewolf or at least a suspect. As such, choosing Kaelan to vote against maximizes the chance of eliminating a werewolf.",
+    "chosen_vote": "Kaelan"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, Kaelan’s statements suggest he performed the Troublemaker’s swap action, creating confusion but revealing an element of ambiguity around his own identity. The conversation indicates a lack of clarity regarding werewolf presence, and Kaelan’s active role in swapping could make him more likely to be a werewolf or at least a suspect. As such, choosing Kaelan to vote against maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Kaelan\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, Kaelan’s statements suggest he performed the Troublemaker’s swap action, creating confusion but revealing an element of ambiguity around his own identity. The conversation indicates a lack of clarity regarding werewolf presence, and Kaelan’s active role in swapping could make him more likely to be a werewolf or at least a suspect. As such, choosing Kaelan to vote against maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Kaelan\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kaelan",
+    "justification": "Based on the transcript, Kaelan’s statements suggest he performed the Troublemaker’s swap action, creating confusion but revealing an element of ambiguity around his own identity. The conversation indicates a lack of clarity regarding werewolf presence, and Kaelan’s active role in swapping could make him more likely to be a werewolf or at least a suspect. As such, choosing Kaelan to vote against maximizes the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2208,
+    "output_token_count": 1828,
+    "generation_time_sec": 224.48337721824646,
+    "used_chat_template": true,
+    "input_char_count": 9233,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

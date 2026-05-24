@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to interpret transcript; it's messy. We need to deduce which players likely ended with Werewolf.\n\nGame has 5 players (Justin, Carly, Paul, Mitchell, Mike). Roles available: various, but we want to find which player is likely Werewolf. Given the mess, extra actions like Trouble Maker, etc.\n\nWe analyze key lines. At [12] \"Carly: Paul, shut up.\" At [17] description of roles. At [18] Paul says \"What am I again?\" That likely indicates he's not sure his role; maybe he's a troublemaker who has swapped.\n\nAt [20], Mitchell asks about minion win if no werewolves. Ok.\n\nOur goal: find any evidence of roles.\n\nTricky: \"Carly: I switched two cards.\" That indicates she was Troublemaker or Robber etc. They said \"I switched two cards.\"\n\nAlso, \"[29] Mike: But he's allowed to die on the werewolf team.\" Hmm.\n\nLet's search narrative for mention of being werewolf. We see [73] \"Carly: Mitchell is a werewolf.\" Similarly [86] \"Carly: Mitchell is the werewolf.\" So many repeated statements.\n\nOn other hand, [39] \"Mike: Because you are?\" It's confusing.\n\nWhere does final reveal of who is where occur? Actually transcripts might be truncated. After [148], 'Announcer: Everyone, three-' incomplete. Probably truncated. So possibly unknown.\n\nGiven context, likely the undermining trust & we need to pick one likely werewolf based on confusion when accusing.\n\nFrom lines, seems like many players ascribe 'werewolf' status to Mitchell or Paul.\n\nNow we look at the central part: [86] \"Carly: Mitchell is the werewolf.\" And before that [85] \"Mitchell: That's so sick.\" That seems contradictory.\n\nBut maybe we can derive via being look at 'Would be that if the center had no werewolves, the minion loses.\n\nBut what if the roles of center attested? Not enough.\n\nThus I'm leaning that \"Mitchell\" is likely who is now werewolf because many statements revolve around him.\n\nTherefore choose Mitchell. But need justification based on evidence.\n\nJustification: In transcript, many accusations highlight Mitchell being the werewolf, and because he is a suspect due to being mentioned as the only suspect. So vote for Mitchell.\n\nOkay. Output JSON.",
+  "parsed_output": {
+    "justification": "The transcript repeatedly mentions \"Mitchell is the werewolf\"—first by Carly at [73] and again at [86]. No credible evidence suggests any other player’s alignment that would allow a safer conviction. Targeting the player most repeatedly accused as a werewolf maximizes chance of eliminating a true werewolf and meets the Village objective.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript repeatedly mentions \\\"Mitchell is the werewolf\\\"—first by Carly at [73] and again at [86]. No credible evidence suggests any other player’s alignment that would allow a safer conviction. Targeting the player most repeatedly accused as a werewolf maximizes chance of eliminating a true werewolf and meets the Village objective.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript repeatedly mentions \\\"Mitchell is the werewolf\\\"—first by Carly at [73] and again at [86]. No credible evidence suggests any other player’s alignment that would allow a safer conviction. Targeting the player most repeatedly accused as a werewolf maximizes chance of eliminating a true werewolf and meets the Village objective.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript repeatedly mentions \"Mitchell is the werewolf\"—first by Carly at [73] and again at [86]. No credible evidence suggests any other player’s alignment that would allow a safer conviction. Targeting the player most repeatedly accused as a werewolf maximizes chance of eliminating a true werewolf and meets the Village objective."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4127,
+    "output_token_count": 580,
+    "generation_time_sec": 75.28264951705933,
+    "used_chat_template": true,
+    "input_char_count": 16010,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

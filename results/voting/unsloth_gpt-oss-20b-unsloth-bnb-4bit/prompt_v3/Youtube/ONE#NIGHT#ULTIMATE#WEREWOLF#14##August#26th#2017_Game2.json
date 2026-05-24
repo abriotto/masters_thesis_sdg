@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have to parse this transcript. But it seems largely incoherent narrative. Likely people are masquerading. Let's try to deduce.\n\nParticipants: Justin, Mitchell, Caitlynn, Mike. There are 4 roles. The game might have 0-4 werewolves. We don't know card distribution. We have the transcript only. They talk in weird ways. Not easy to guess.\n\nBut there are clues: Several references to lack of clarity. Several players talk about being the Troublemaker (Mike claimed). Also mentions of a Revealer. The Revealer role (also known as \"Revealer\"? Actually less common. Likely a role that allows turning cards? In the original \"Revealer\" (also known as the Player?) not sure.\n\nBut the transcript seems too messy. Probably the best vote is someone who is indicated to be a werewolf.\n\nLet's examine mentions like \"I am the troublemaker\" etc.\n\nKey lines:\n\n- \"Mike: I'm definitely the Troublemaker.\" (Line 120)\nSo Mike claims to be Trouble making. But others said he didn't. Strange.\n\nAdditionally \"Mc: Mike: I switched you and Mitchell...\" (Line 75). So Mike says he swapped you and Mitchell, unclear who \"you\" refers to (maybe the speaker).\n\nMaybe it's easier to consider that only one player is a werewolf. Perhaps the most likely is Mike? Because he says he's the troublemaker, but others doubt him.\n\nHowever, check other statements. \"Mitchell says Mike is lying.\" That indicates suspicion, may point to Mike being suspicious.\n\nAlso \"Justin says Justin was the werewolf.\" Actually: line 78 \"Justin: So that means-\" (not clear). line 38: \"Caitlynn: I would say-\". Hard.\n\nBut it also seems certain that Mike might be the troublemaker, but people suspect others. The best vote might be Mike.\n\nAlternatively, maybe Caitlynn is suspect.\n\nBut let's consider roles includes Troublemaker: Morning you don't know. The troublemaker's role is swapping two other players (no look). So he doesn't know anything. He can't be a werewolf. So maybe if Mike claims to be a troublemaker, he might not be a werewolf.\n\nThus maybe out of the four, the most likely werewolf is whoever is not assumed. Others maybe Villagers/Seer combos uncertain.\n\nBut we think a standard approach when everyone says different things: The safest is to vote for the player who claimed to be a troublemaker, because they likely were innocent? Wait troublemaking reduces the chance of werewolf.\n\nYet we want to vote for werewolf. If troublemaker is not werewolf, voting for him is wrong. But the instructions says vote for player who is most likely to be a werewolf. And of all, we need to guess who among them is likely the werewolf.\n\nGiven the confusion, we need to interpret the transcripts.\n\nWhat is \"Revealer\"? The Revealer must be a role that reveals all cards? Actually could be a role \"Revealer\" which is unclear. But basically, the full transcript seems chaotic, perhaps incomplete.\n\nOk let's instead use logic: Each player can be blamed by others. Maybe there's pattern: \"Mike: I switched you and Mitchell.\" That suggests he swapped something between myself (just for the speaker) and Mitchell. That would be the troublemaker's action: he swapped two other players without looking. So the 'you' refers to the person speaking (Justin?), although uncertain.\n\nLater \"Mike: I'm definitely the Troublemaker.\" He says he never swapped anyone? Strange.\n\n\"Mike: I didn't swap anybody.\" So contradictions.\n\nThus maybe it's nonsense.\n\nTherefore, maybe the only legitimate suspect is Mike.\n\nWhen making a decision, we need to choose a single name. I'd choose \"Mike\".\n\nNow we deliver justification: summarizing the key evidence that suggests Mike is suspected of being inferred to be werewolf due to manipulated statements and contradictory claims.\n\nAlright.",
+  "parsed_output": {
+    "justification": "The transcript shows that Mike’s remarks conflict with each other, suggesting deception, while Justin and others reference him as a possible troublemaker or liar. Mike claims to be the troublemaker—an innocuous role—but then repeatedly denies and contradicts that claim, indicating an attempt to distract. These inconsistencies strongly imply that Mike is likely the werewolf trying to hide his identity, so voting for him maximizes the chance of eliminating a werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows that Mike’s remarks conflict with each other, suggesting deception, while Justin and others reference him as a possible troublemaker or liar. Mike claims to be the troublemaker—an innocuous role—but then repeatedly denies and contradicts that claim, indicating an attempt to distract. These inconsistencies strongly imply that Mike is likely the werewolf trying to hide his identity, so voting for him maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows that Mike’s remarks conflict with each other, suggesting deception, while Justin and others reference him as a possible troublemaker or liar. Mike claims to be the troublemaker—an innocuous role—but then repeatedly denies and contradicts that claim, indicating an attempt to distract. These inconsistencies strongly imply that Mike is likely the werewolf trying to hide his identity, so voting for him maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript shows that Mike’s remarks conflict with each other, suggesting deception, while Justin and others reference him as a possible troublemaker or liar. Mike claims to be the troublemaker—an innocuous role—but then repeatedly denies and contradicts that claim, indicating an attempt to distract. These inconsistencies strongly imply that Mike is likely the werewolf trying to hide his identity, so voting for him maximizes the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3908,
+    "output_token_count": 925,
+    "generation_time_sec": 116.97097897529602,
+    "used_chat_template": true,
+    "input_char_count": 15258,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

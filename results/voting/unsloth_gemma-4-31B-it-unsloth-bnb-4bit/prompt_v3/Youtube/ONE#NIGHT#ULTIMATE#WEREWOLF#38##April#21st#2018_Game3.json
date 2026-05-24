@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Robber, robbed Mitchell.\n    *   Caitlynn: Claims Robber, robbed Justin.\n    *   Mitchell: Claims Seer, saw two cards in the center (one was a Minion, one was a Revealer).\n    *   James: Initially confused, then claims he was a Werewolf (\"I was werewolf\", \"Me and Mike are werewolves\").\n    *   Mike: Initially claims Robber, robbed James (saw Revealer). Later claims to be the Tanner (\"I am 100% the tanner\").\n\n    *   Mitchell (Seer) saw two cards in the center.\n    *   Justin (Robber) robbed Mitchell. If Mitchell was the Seer, Justin is now the Seer.\n    *   Caitlynn (Robber) robbed Justin. If Justin was the Robber, Caitlynn is now the Robber.\n    *   Mike (Robber/Tanner) robbed James.\n    *   James (Werewolf) claims he and Mike are werewolves.\n\n    *   Wait, the transcript says \"Revealer\" was called by the announcer. This is a non-standard role for One Night Ultimate Werewolf, but it's in the transcript.\n    *   Announcer: \"Revealer, wake up. You may turn any other player's card face up.\"\n    *   Mike claims he robbed James and saw \"revealer\".\n    *   Mitchell (Seer) says he saw \"some cards in the middle and one of which you're calling out\" (referring to the Revealer).\n\n    *   James admits: \"I was werewolf\" and \"Me and Mike are werewolves\".\n    *   Mike claims: \"I am 100% the tanner\".\n    *   If James is a Werewolf, voting for him helps Team Village.\n    *   If Mike is a Werewolf (as James claimed), voting for him helps Team Village.\n    *   If Mike is the Tanner, voting for him helps the Tanner win.\n\n    *   James's admission is very direct: \"Me and Mike are werewolves.\"\n    *   Mike's claim to be the Tanner is also direct: \"I am 100% the tanner.\"\n    *   If James is a Werewolf and Mike is the Tanner, voting for James is the best move for the Village.\n    *   If both are Werewolves, voting for either is good.\n    *   If James is lying and Mike is the Werewolf, voting for Mike is good.\n    *   However, James's admission \"I was werewolf\" is a strong signal. Even if he was swapped, he believes he is a Werewolf (or is pretending to be).\n\n    *   Justin claims Robber.\n    *   Caitlynn claims Robber.\n    *   Mike claims Robber, then Tanner.\n    *   Mitchell claims Seer.\n    *   James claims Werewolf.\n\n    *   If James is a Werewolf, voting for him wins the game for the Village.\n    *   If Mike is a Werewolf, voting for him wins the game for the Village.\n    *   If Mike is the Tanner, voting for him makes the Tanner win.\n    *   James's admission \"Me and Mike are werewolves\" is the most explicit claim of being a Werewolf in the game.\n\n    *   James: \"I was werewolf.\" (Line 126)\n    *   James: \"Me and Mike are werewolves.\" (Line 153)\n    *   Mike: \"I am 100% the tanner.\" (Line 142)\n    *   If we believe James, he is a Werewolf. If we believe Mike, he is the Tanner.\n    *   Voting for James is the safest bet for Team Village to eliminate a Werewolf.\n\n    *   Wait, James says \"Me and Mike are werewolves.\" If Mike is the Tanner, James might be mistaken or lying. But James's own admission of being a Werewolf is the key.\n\n    *   Justin: Robber (claims)\n    *   Caitlynn: Robber (claims)\n    *   Mitchell: Seer (claims)\n    *   James: Werewolf (claims)\n    *   Mike: Tanner (claims)\n\n    *   The most likely Werewolf is James, as he explicitly admitted to it.\n\n    *   James admitted to being a Werewolf twice (\"I was werewolf\", \"Me and Mike are werewolves\").\n    *   Mike claimed to be the Tanner.\n    *   Voting for James is the most direct way for Team Village to win.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be a Werewolf initially, he later claimed to be the Tanner, which would make him a dangerous vote for the Village. Since James's admission of being a Werewolf is direct and uncontested by himself, he is the most likely target to help Team Village win.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be a Werewolf initially, he later claimed to be the Tanner, which would make him a dangerous vote for the Village. Since James's admission of being a Werewolf is direct and uncontested by himself, he is the most likely target to help Team Village win.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be a Werewolf initially, he later claimed to be the Tanner, which would make him a dangerous vote for the Village. Since James's admission of being a Werewolf is direct and uncontested by himself, he is the most likely target to help Team Village win.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be a Werewolf initially, he later claimed to be the Tanner, which would make him a dangerous vote for the Village. Since James's admission of being a Werewolf is direct and uncontested by himself, he is the most likely target to help Team Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4678,
+    "output_token_count": 1136,
+    "generation_time_sec": 121.59059572219849,
+    "used_chat_template": true,
+    "input_char_count": 15570,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
