@@ -97,8 +97,11 @@ def validate_vote_output(obj: Optional[dict[str, Any]], player_names: list[str])
         report["errors"].append("chosen_vote_not_nonempty_string")
     else:
         chosen_vote = chosen_vote.strip()
-        if chosen_vote not in player_names:
-            report["errors"].append(f"chosen_vote_not_in_player_list:{chosen_vote}")
+        allowed_votes = set(player_names) | {"Circle Vote"}
+        if chosen_vote not in allowed_votes:
+            report["errors"].append(
+                f"chosen_vote_not_in_player_list_or_circle_vote:{chosen_vote}"
+            )
 
     report["justification"] = justification
     report["chosen_vote"] = chosen_vote
@@ -313,6 +316,7 @@ def main() -> None:
     print(f"Top K: {args.top_k}", flush=True)
     print(f"Repetition penalty: {args.repetition_penalty}", flush=True)
     print(f"No-repeat ngram size: {args.no_repeat_ngram_size}", flush=True)
+    print('Allowed chosen_vote values: listed player names or "Circle Vote"', flush=True)
     print(f"Results root: {results_root}", flush=True)
     print_local_model_summary(args.model_name, model_io, model)
 

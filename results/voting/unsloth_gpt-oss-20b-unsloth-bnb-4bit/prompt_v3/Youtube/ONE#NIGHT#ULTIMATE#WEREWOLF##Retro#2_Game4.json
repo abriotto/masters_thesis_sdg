@@ -15,8 +15,8 @@
   "prompt_version": "v3",
   "prompt_path": "src/prompts/voting_prompt_v3.txt",
   "rules_path": "src/prompts/onuw_rules_v2.txt",
-  "max_new_tokens": 8192,
-  "max_seq_length": 16384,
+  "max_new_tokens": 4096,
+  "max_seq_length": 8192,
   "reasoning_effort": "medium",
   "gemma_enable_thinking": false,
   "save_internal_thoughts": true,
@@ -25,17 +25,18 @@
   "top_k": 0,
   "repetition_penalty": 1.05,
   "no_repeat_ngram_size": 0,
-  "internal_thoughts": "We need to interpret transcript. Dialogue is garbled; unclear. We suspect werewolf present. Need to decide who likely werewolf.\n\nLet's parse.\n\nPlayers: Justin, Dan, Mitchell, Caitlynn, Mike\n\nHard to follow. Comments mention \"Mike is a werewolf\" line near ([35]): Caitlynn says \"Mike's a werewolf.\"\n\nLater [71]: Dan says \"I was actually the seer and Mike is a werewolf.\" So Dan claims that Mike is werewolf. But seems many contradicting statements.\n\nWe must decide based on pattern of suspect.\n\nLine [38] Justin: Who did you switch? (likely Daniel) But unclear.\n\nMany mentions \"I did\" (Mike). [47] Mike says \"I did.\" Likely he had swapped through some roles.\n\nWhat's known: In a 5-player game with 5+3=8 role pool. We don't know exact roles distribution. We need to decide most likely werewolf.\n\nWe have claims: Caitlynn says \"It looks like Mike is a werewolf.\" That appears too early.\n\nBut Dan says he's the seer and Mike is werewolf? Wait [71] 'Dan: I was actually the seer and Mike is a werewolf.' That indicates Dan knows whereabouts.\n\nWe need to guess about actions: Robber etc maybe swapped.\n\nBut key: \"Role claims\" are conflicting but some say Mike is werewolf: 4/5 participants might suspect Mike.\n\nThus the best likely suspect: Mike. So vote for Mike.\n\nNow justify with brief.\n\nLet's produce JSON accordingly.",
-  "parsed_output": null,
-  "raw_response": "{\"justification\":\"Several participants state that Mike is the werewolf, including a direct assertion from Caitlynn and later a statement from Dan claiming that Mike is the werewolf. The rest of the conversation contains vague or contradictory comments, but no other player is reliably identified as a werewolf. Consequently, voting for Mike maximizes the chance of eliminating a werewolf.\\n\\n\\\"Mike\\\"}\"",
-  "response_for_parsing": "{\"justification\":\"Several participants state that Mike is the werewolf, including a direct assertion from Caitlynn and later a statement from Dan claiming that Mike is the werewolf. The rest of the conversation contains vague or contradictory comments, but no other player is reliably identified as a werewolf. Consequently, voting for Mike maximizes the chance of eliminating a werewolf.\\n\\n\\\"Mike\\\"}\"",
+  "internal_thoughts": "We need to parse the transcript but it's messy, many missing. Let's reconstruct context: It appears Daniel, Justin, Mitchell etc talk but there's confusion due to crowd. The game likely involved roles: Some of them switched; the DB shows. The goal is to vote to eliminate the likely werewolf.\n\nWe have 5 players: Justin, Dan, Mitchell, Caitlynn, Mike.\n\nFrom transcript: The confusion arises near lines [70], where Mitchell says \"I started as villager.\" Then about a Now to be expected to have a Werewolf. At line 71, \"Dan: I was actually the seer and Mike is a werewolf.\" So someone stated that Dan is actually the seer, and Mike is a werewolf.\n\nBut there may need to intensively parse the transcripts.\n\nGiven that we cannot parse fully due to incomplete transcript. Then our best guess: In his statement, Mitchell says \"I started as villager.\" That suggests he ended as villager or remains? Then other new statements. Actually, line 70: \"Mitchell: I started as villager.\" That could mean that he thought he ended as a villager, not a werewolf. Then lines 71-72 say \"I was actually the seer and Mike is a werewolf...\" So that indicates that at some point there are claims; maybe Dan believed him (I think so). So Michael might be a werewolf. Also line 74: 'Either of them can be a werewolf.' Not sure.\n\nGiven the standard roles, if potentially Mike has been identified as a werewolf. Most likely we should vote for Mike because of the double mention that he might be werewolf. But also there is confusion from lines such as \"Mike: I am the werewolf\" or \"Mike did something else.\" But we need to find which player is most likely a werewolf.\n\nBetter approach: On within the transcript, we see that \"Mike: ... ... it's weird. So at line 69, some states \"Mike: I switched these two.\" Not sure.\n\nLet's parse again: At line 71: \"Dan: I was actually the seer and Mike is a werewolf.\" That's Dan claiming that Mike is the werewolf. That might be the strongest clue. So we vote for Mike.\n\nThus answer: vote Mike. Justify: Because Dan claims Mike is werewolf, and given conversation, it's plausible that Mike swapped with someone else, but this appears consistent with suspect.\n\nLet's produce final JSON.",
+  "parsed_output": {
+    "justification": "Several players discuss a swap that seems to involve Mike, and several comments from other players indicate suspicion toward him.  Dan specifically accuses Mike of being a werewolf, and the overall discussion shows that Mike has performed actions consistent with swapping, suggesting he might have ended up as a werewolf.  The evidence points most strongly toward Mike being the most likely werewolf, making him the best target for voting.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"Several players discuss a swap that seems to involve Mike, and several comments from other players indicate suspicion toward him.  Dan specifically accuses Mike of being a werewolf, and the overall discussion shows that Mike has performed actions consistent with swapping, suggesting he might have ended up as a werewolf.  The evidence points most strongly toward Mike being the most likely werewolf, making him the best target for voting.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"Several players discuss a swap that seems to involve Mike, and several comments from other players indicate suspicion toward him.  Dan specifically accuses Mike of being a werewolf, and the overall discussion shows that Mike has performed actions consistent with swapping, suggesting he might have ended up as a werewolf.  The evidence points most strongly toward Mike being the most likely werewolf, making him the best target for voting.\",\"chosen_vote\":\"Mike\"}",
   "validation": {
-    "is_valid": false,
-    "errors": [
-      "no_parseable_json"
-    ],
-    "chosen_vote": null,
-    "justification": null
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Several players discuss a swap that seems to involve Mike, and several comments from other players indicate suspicion toward him.  Dan specifically accuses Mike of being a werewolf, and the overall discussion shows that Mike has performed actions consistent with swapping, suggesting he might have ended up as a werewolf.  The evidence points most strongly toward Mike being the most likely werewolf, making him the best target for voting."
   },
   "soft_warnings": [],
   "debug_info": {
@@ -43,8 +44,8 @@
     "loader": "FastLanguageModel",
     "model_device": "cuda:0",
     "input_token_count": 3283,
-    "output_token_count": 412,
-    "generation_time_sec": 53.75365710258484,
+    "output_token_count": 611,
+    "generation_time_sec": 181.04457569122314,
     "used_chat_template": true,
     "input_char_count": 13058,
     "model_family": "gpt_oss",
@@ -62,7 +63,7 @@
     "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
     "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
     "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
-    "max_seq_length": 16384,
+    "max_seq_length": 8192,
     "hf_device_map": {
       "": 0
     }
