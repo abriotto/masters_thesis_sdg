@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Tyler\n\n    *   Paul claims Troublemaker (swapped Justin and Tyler).\n    *   Justin claims Robber (initially), then claims Doppelganger (copycatted into a Werewolf).\n    *   Tyler claims Robber (robbed Justin, saw Drunk), then claims Werewolf (woke up with Justin).\n    *   Mitchell claims Drunk.\n\n    *   Paul (Troublemaker): Claims he swapped Justin and Tyler.\n    *   Tyler (Werewolf/Robber): Claims he was a Werewolf, woke up with Justin, but then says he robbed Justin and saw Drunk. Wait, Tyler's story is inconsistent.\n        *   [28] Tyler: \"No, you can't be the robber, because I robbed you.\"\n        *   [31] Tyler: \"He was the drunk.\"\n        *   [53] Tyler: \"It was werewolf\" (referring to his own card in the middle).\n        *   [81] Tyler: \"I woke up with Justin.\"\n    *   Justin (Doppelganger/Werewolf): Claims he copycatted into a Werewolf and joined Tyler.\n    *   Mitchell (Drunk): Claims he was the Drunk.\n\n    *   If Paul is the Troublemaker and swapped Justin and Tyler:\n        *   If Justin was a Werewolf and Tyler was a Werewolf, swapping them doesn't change the fact that they are both Werewolves.\n        *   If Justin was a Werewolf and Tyler was something else, they swapped.\n    *   Tyler's claims are contradictory:\n        *   Claim 1: I robbed Justin and he was the Drunk. (Robber action)\n        *   Claim 2: My card (Werewolf) is in the middle. (Drunk action?)\n        *   Claim 3: I woke up with Justin. (Werewolf action)\n    *   Justin's claims:\n        *   Claim 1: I was the Robber.\n        *   Claim 2: I copycatted into a Werewolf.\n\n    *   Tyler says he woke up with Justin [81].\n    *   Justin says he copycatted into a Werewolf and joined Tyler [55].\n    *   If both are claiming to be Werewolves (or one is a Werewolf and one is a Doppelganger-Werewolf), they are both on Team Werewolf.\n    *   Paul claims he swapped them [11, 76, 84].\n    *   Mitchell claims he was the Drunk [34].\n\n    *   If Justin and Tyler are both Werewolves (or one is a Doppelganger), voting for either of them helps the Village win.\n    *   Justin is more consistently claiming to be a Werewolf/Doppelganger-Werewolf throughout the latter half of the discussion.\n    *   Tyler's story is a mess (Robber, then Werewolf, then saying his card is in the middle).\n    *   Paul and Mitchell seem to be aligned against Justin and Tyler.\n    *   Paul specifically suggests voting for Justin [74, 78].\n    *   Mitchell agrees to vote for Justin [96].\n\n    *   Justin: Claims Doppelganger -> Werewolf.\n    *   Tyler: Claims Werewolf, but also claims he robbed Justin and saw Drunk, and that his card is in the middle.\n    *   If Tyler's card is in the middle, he might have been the Drunk or the Robber (if the Robber swapped with a center card? No, Robber swaps with a player). Wait, the Drunk swaps with the center.\n    *   If Tyler was the Drunk, he swapped his card (Werewolf?) with the center.\n    *   If Justin is a Werewolf/Doppelganger, he is the most likely target.\n\n    *   Justin admits to being a Werewolf (via Doppelganger).\n    *   Tyler also admits to being a Werewolf (though his story is confused).\n    *   Paul and Mitchell are pushing for Justin.\n    *   Voting for Justin is a high-probability win for the Village.\n\n    *   Justin: Claims Doppelganger -> Werewolf.\n    *   Tyler: Claims Werewolf, but also claims he robbed Justin and saw Drunk, and that his card is in the middle.\n    *   Wait, if Tyler's card is in the middle, he might be the Drunk.\n    *   If Justin is the only one remaining as a Werewolf (or Doppelganger-Werewolf), he is the target.\n\n    *   Justin: \"I copycatted into a werewolf and I joined Tyler at night.\"\n    *   Tyler: \"I woke up with Justin.\"\n    *   Both are essentially admitting to being Werewolves.\n    *   Paul and Mitchell are voting Justin.\n\n    *   Justin: Claims Doppelganger -> Werewolf.\n    *   Tyler: Claims Werewolf, but also claims he robbed Justin and saw Drunk, and that his card is in the middle.\n    *   If Tyler's card is in the middle, he is no longer a Werewolf.\n    *   Justin is still claiming to be a Werewolf.\n\n    *   Justin is the most consistent \"Werewolf\" claim.\n    *   Tyler's claims are contradictory, but he also admits to being a Werewolf.\n    *   Paul and Mitchell have converged on Justin.\n\n    *   Justin: \"I copycatted into a werewolf\" [55, 92].\n    *   Tyler: \"I woke up with Justin\" [81].\n    *   Paul: \"I switched two werewolves\" [84].\n    *   If Paul switched two werewolves (Justin and Tyler), then both are still werewolves.\n    *   Voting for either Justin or Tyler would result in a Village win.\n    *   Since Paul and Mitchell are targeting Justin, and Justin is admitting to the role, Justin is the most likely candidate.",
+  "parsed_output": {
+    "justification": "Justin explicitly claims to have copycatted into a Werewolf and joined Tyler during the night. Tyler also admits to waking up with Justin, although his other claims (being the Robber and having his card in the middle) are contradictory. Paul and Mitchell have both agreed to vote for Justin, and since Justin is admitting to being a Werewolf/Doppelganger-Werewolf, eliminating him is the most likely way for Team Village to win.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin explicitly claims to have copycatted into a Werewolf and joined Tyler during the night. Tyler also admits to waking up with Justin, although his other claims (being the Robber and having his card in the middle) are contradictory. Paul and Mitchell have both agreed to vote for Justin, and since Justin is admitting to being a Werewolf/Doppelganger-Werewolf, eliminating him is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin explicitly claims to have copycatted into a Werewolf and joined Tyler during the night. Tyler also admits to waking up with Justin, although his other claims (being the Robber and having his card in the middle) are contradictory. Paul and Mitchell have both agreed to vote for Justin, and since Justin is admitting to being a Werewolf/Doppelganger-Werewolf, eliminating him is the most likely way for Team Village to win.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin explicitly claims to have copycatted into a Werewolf and joined Tyler during the night. Tyler also admits to waking up with Justin, although his other claims (being the Robber and having his card in the middle) are contradictory. Paul and Mitchell have both agreed to vote for Justin, and since Justin is admitting to being a Werewolf/Doppelganger-Werewolf, eliminating him is the most likely way for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3819,
+    "output_token_count": 1454,
+    "generation_time_sec": 150.12375140190125,
+    "used_chat_template": true,
+    "input_char_count": 13213,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

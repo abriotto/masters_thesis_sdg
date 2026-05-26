@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Meghan",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine from transcript which player is likely a Werewolf. Based on confusion. Let's analyze.\n\nRoles: 5 players: Justin, Meghan, Paul, Mitchell, Mike.\n\nAlso the \"Revealer\" role appears in this variation? The transcript says \"Revealer\" as an additional role beyond the usual list (though original list doesn't include Revealer). Might be custom. The person says \"Revealer,\" maybe part of the game adds a new role: Revealer can turn any player's card face up, maybe known as \"Inspectors\" or \"Tracker\". Not standard in official may not appear, but given transcript mention, it's included.\n\nBut we have to deduce likely patterns: There seems to be confusion but many suggestions that some werewolves may exist. We need to decide which player to vote for.\n\nLet's gather clues.\n\nKey events: The \"Troublemaker\" swapped players. The player's actions: \"Justin: Troublemaker. I did switch people.\"\n\nLater on, \"Paul: I'm the robber\" and \"Meghan: I was the robber\" contradictory. Maybe differ. Wait.\n\nThen conversation about drunk: \"Paul: I'm actually the drunk.\" So, Paul's identity: Drunk. Then prior statements: \"Mike: I did look at Meghan's.\" refers to earlier. Let's parse.\n\nLine 31 to: The transcript shows conversation:\n\n- Mike says \"I did look at Meghan's.\"\n- Some earlier lines about \"the revealer goes last\" etc.\n\nThe glitch we might need to understand final status. Perhaps the objective: identified werewolves: It seems that both Meghan and Mike point to each other and talk about viewpoint. Also \"Justin: I'm voting for Meghan\" etc.\n\nI think the main suspected werewolves: Possibly Meghan or Mike. Let's analyze.\n\nFrom conversation: The scenario where \"Justin\" says \"I'm voting for Meghan.\" So several participants cast votes for others. At the end, certain players ended up being voted out. For our purpose, we need to vote for a likely werewolf.\n\nGiven confusion, maybe the conclusion is that there's no werewolf; they all claim not to be werewolf. As a meta commentary, the sed.\n\nBut maybe we need to identify any alignment to determine a suspect: For instance, if the game has no werewolf (i.e., all werewolf cards are in center), then we should vote \"Circle Vote\".\n\nHowever, many times the game is chaotic. But let's examine: The \"Game\" not confirm entire storyline. People talk about being robber, drunk, etc; nothing clear.\n\nMaybe no werewolf present because each claimed to be? Or there is at least one werewolf. They mention \"We only hear 'Yes' etc. Possibly the simplest solution: no werewolf.\n\nBut if we'd answer \"Circle Vote\".\n\nBut must provide justification.\n\nGiven short length: go with \"Circle Vote\" due to uncertainty, or maybe better to pick Mike.\n\nLet's analyze do we have evidence of werewolf? What role arises?\n\n- In evening, role swapping through etc. As someone says \"I'm actually the drunk.\" That indicates someone knows they have drunk meaning have swapped a card with center; but no clear will.\n\n- The Revealer can turn someone's card face up; lead to clarity but they'd need to reveal a werewolf card? That can be used to kill.\n\nBut we haven't seen reveal statement that anyone turned up a werewolf. So perhaps no werewolves.\n\nThus better to choose \"Circle Vote.\" Still we must justify.\n\nOk. Probably best.\n\nReturn JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains no explicit confirmation of any surviving werewolf cards—every player claims either baker, drunk, or other non-werewolf roles, and there is no concrete evidence that a werewolf survived the night. Without clear evidence of a werewolf’s presence among the active players, voting for a specific player would be highly speculative and risk eliminating an innocent villager. Thus the safest option is to leave the vote abstained, i.e., return \"Circle Vote\".",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains no explicit confirmation of any surviving werewolf cards—every player claims either baker, drunk, or other non-werewolf roles, and there is no concrete evidence that a werewolf survived the night. Without clear evidence of a werewolf’s presence among the active players, voting for a specific player would be highly speculative and risk eliminating an innocent villager. Thus the safest option is to leave the vote abstained, i.e., return \\\"Circle Vote\\\".\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains no explicit confirmation of any surviving werewolf cards—every player claims either baker, drunk, or other non-werewolf roles, and there is no concrete evidence that a werewolf survived the night. Without clear evidence of a werewolf’s presence among the active players, voting for a specific player would be highly speculative and risk eliminating an innocent villager. Thus the safest option is to leave the vote abstained, i.e., return \\\"Circle Vote\\\".\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript contains no explicit confirmation of any surviving werewolf cards—every player claims either baker, drunk, or other non-werewolf roles, and there is no concrete evidence that a werewolf survived the night. Without clear evidence of a werewolf’s presence among the active players, voting for a specific player would be highly speculative and risk eliminating an innocent villager. Thus the safest option is to leave the vote abstained, i.e., return \"Circle Vote\"."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4063,
+    "output_token_count": 837,
+    "generation_time_sec": 253.0579183101654,
+    "used_chat_template": true,
+    "input_char_count": 15388,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0_Game1.txt",
+  "player_names": [
+    "Erin",
+    "Sebastian",
+    "Jack",
+    "Brent",
+    "Hailey"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We are given a transcript of a One Night Ultimate Werewolf game, involving 5 players: Erin, Sebastian, Jack, Brent, Hailey. We need to output a JSON with justification and chosen_vote indicating whom to vote for.\n\nWe need to analyze. The transcript seems messy; many lines missing context. They describe swapping, confusion about roles. We need to interpret who performed actions and resulting roles.\n\nLet's try to reconstruct.\n\nPlayer roles unknown. The transcript doesn't specify starting roles but players discuss, referencing that Erin says \"I was the werewolf\" (line 64). Then further lines talk about what happened.\n\nAlso each line is just logs, but mostly noise, repeated statements, confusion, jokes.\n\nExecution: We need to determine who might be likely werewolf. In the transcript, someone claimed to be the werewolf: \"Erin: I was the werewolf.\"\n\nAlso near line 64: \"Erin: I was the werewolf.\" That indicates that they think their role may have changed due to swap. But after the night, they claim. Lines 32 onward: Discussions about what happened, confusion about the troublemaker and the robber.\n\nSpecifically at line 64: \"Erin: I was the werewolf.\" at 64. Then line 65: \"Jack: Oh shit.\" That indicates note.\n\nThen lines 67 & 68: They talk about \"I was\" etc. The verifying of that is unclear.\n\nNo further info about swaps.\n\nWe need to decide the best candidate to target for elimination.\n\nMaybe the easier path: target \"Erin\" because they claimed to be werewolf.\n\nBut might be they were swapped this night (Trub?), but no evidence.\n\nLet's inspect lines:\n\nLine 49 says: \"Brent: ... I was the seer and I looked at Hailey's card and Hailey was the troublemaker.\" So there's something about roles.\n\nAt line 52: \"Sebastian: So I believe you.\"\n\nSo it's likely about different roles. Maybe we can deduce:\n\nSpecifically, lines 61 onwards: People mention troublemaker, and debate about swapping.\n\nBut we lack clear evidence.\n\nIt might be easier to err on voting for a self-declared werewolf: \"Erin\".\n\nBut the problem is that the transcript doesn't confirm that Erin's role hasn't changed (after potential swaps). Since the troublemaker didn't do a swap yet? It may be that troublemaker swapped. However, the troublemaker at line 49 indicates \"Hailey was the troublemaker.\" That implies Hailey is troublemaker. That might affect note of who might have swapped.\n\nAlso, the troublemaker's action would involve swapping two players (not the troublemaker's own). So the troublemaker here swapped two other players. If I know who was swapped, maybe can deduce results.\n\nBut we don't have details.\n\nAlternatively, maybe no werewolf is present, so \"Circle Vote\". But there's claim that Erin says she was werewolf, which seems improbable, but not impossible.\n\nPerhaps no could be certain. The goal is to pick an action that will hopefully eliminate a werewolf. If we think nobody could be, maybe circle vote is safe.\n\nGiven low confidence that any might be werewolf due to confused transcripts, maybe circle vote.\n\nWe will output \"Circle Vote\".\n\nJustification: mention confusion lines and uncertainty.\n\nLet's craft final answer: justification 3-5 sentences.\n\nWe must wrap in JSON.",
+  "parsed_output": {
+    "justification": "The transcript is heavily disjointed and contains almost no concrete evidence about any role changes or deaths. While Erin claims to have been a Werewolf, there is no confirmation that she remained that role through the night, especially given the mention that Hailey was the troublemaker and likely swapped cards. With no reliable indication that any player survived as a Werewolf, the safest approach is to avoid eliminating someone who might be innocent. Therefore, without stronger evidence, a circle vote preserves safety and avoids an incorrect targeting.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is heavily disjointed and contains almost no concrete evidence about any role changes or deaths. While Erin claims to have been a Werewolf, there is no confirmation that she remained that role through the night, especially given the mention that Hailey was the troublemaker and likely swapped cards. With no reliable indication that any player survived as a Werewolf, the safest approach is to avoid eliminating someone who might be innocent. Therefore, without stronger evidence, a circle vote preserves safety and avoids an incorrect targeting.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is heavily disjointed and contains almost no concrete evidence about any role changes or deaths. While Erin claims to have been a Werewolf, there is no confirmation that she remained that role through the night, especially given the mention that Hailey was the troublemaker and likely swapped cards. With no reliable indication that any player survived as a Werewolf, the safest approach is to avoid eliminating someone who might be innocent. Therefore, without stronger evidence, a circle vote preserves safety and avoids an incorrect targeting.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is heavily disjointed and contains almost no concrete evidence about any role changes or deaths. While Erin claims to have been a Werewolf, there is no confirmation that she remained that role through the night, especially given the mention that Hailey was the troublemaker and likely swapped cards. With no reliable indication that any player survived as a Werewolf, the safest approach is to avoid eliminating someone who might be innocent. Therefore, without stronger evidence, a circle vote preserves safety and avoids an incorrect targeting."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4034,
+    "output_token_count": 822,
+    "generation_time_sec": 251.11167073249817,
+    "used_chat_template": true,
+    "input_char_count": 15258,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

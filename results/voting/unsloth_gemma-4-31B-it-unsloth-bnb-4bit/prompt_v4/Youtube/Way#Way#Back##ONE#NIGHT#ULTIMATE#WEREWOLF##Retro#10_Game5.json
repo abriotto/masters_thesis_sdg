@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul: Claims Insomniac (initially), then says he didn't wake up as Insomniac (meaning he was swapped/robbed). Later claims Robber (after Justin's claim).\n    *   Mitchell: Claims Hunter, then claims Tanner (at [109]), then says \"Kill me\" (at [182]).\n    *   Justin: Claims Robber/Seer (at [92]), then says he stole from Paul (at [123]).\n    *   Laura: Claims Troublemaker (at [172]), then admits to being a Werewolf (at [186]).\n    *   James: Doesn't make a clear role claim, mostly expresses distrust.\n\n    *   Paul says he was Insomniac but didn't wake up as one.\n    *   Justin says he is Robber/Seer and robbed Paul.\n    *   If Justin robbed Paul (Insomniac), Justin becomes Insomniac and Paul becomes Robber.\n    *   Paul then confirms he woke up as Robber ([125]).\n    *   Laura claims Troublemaker and says she switched James and Mitchell ([174]).\n    *   Laura eventually admits to being a Werewolf ([186]).\n\n    *   Laura explicitly admits: \"Yes. I'm a werewolf\" ([186]).\n    *   The group consensus at the end is to vote for Laura.\n    *   Mitchell's behavior (claiming Tanner, saying \"Kill me\") suggests he might be the Tanner, but the goal is to eliminate a Werewolf.\n    *   Laura's admission is the strongest piece of evidence.\n\n    *   Team Village wins if at least one Werewolf dies.\n    *   Laura admitted to being a Werewolf.\n    *   Voting for Laura is the most likely way for Team Village to win.",
+  "parsed_output": {
+    "justification": "Laura explicitly admits to being a Werewolf at the end of the discussion ([186]). While Mitchell exhibits behavior consistent with the Tanner (claiming to be the Tanner and asking to be killed), eliminating a confirmed Werewolf is the primary goal for Team Village. Therefore, voting for Laura is the most reliable path to victory.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Laura explicitly admits to being a Werewolf at the end of the discussion ([186]). While Mitchell exhibits behavior consistent with the Tanner (claiming to be the Tanner and asking to be killed), eliminating a confirmed Werewolf is the primary goal for Team Village. Therefore, voting for Laura is the most reliable path to victory.\",\n  \"chosen_vote\": \"Laura\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Laura explicitly admits to being a Werewolf at the end of the discussion ([186]). While Mitchell exhibits behavior consistent with the Tanner (claiming to be the Tanner and asking to be killed), eliminating a confirmed Werewolf is the primary goal for Team Village. Therefore, voting for Laura is the most reliable path to victory.\",\n  \"chosen_vote\": \"Laura\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Laura explicitly admits to being a Werewolf at the end of the discussion ([186]). While Mitchell exhibits behavior consistent with the Tanner (claiming to be the Tanner and asking to be killed), eliminating a confirmed Werewolf is the primary goal for Team Village. Therefore, voting for Laura is the most reliable path to victory."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5222,
+    "output_token_count": 526,
+    "generation_time_sec": 59.70974063873291,
+    "used_chat_template": true,
+    "input_char_count": 16815,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

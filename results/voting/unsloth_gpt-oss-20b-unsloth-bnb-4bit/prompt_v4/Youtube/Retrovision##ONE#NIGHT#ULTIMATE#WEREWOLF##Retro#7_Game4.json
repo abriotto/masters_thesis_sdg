@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze transcript. Very chaotic; try to deduce roles.\n\nGoal: identify werewolf presence and decide who to vote for. After night, roles swap etc. Let's reconstruct approximate actions from transcript: Not consistent. It's tough.\n\nFrom transcript, we see mentions e.g., \"Mississippi (sic) I think you are ...\".\n\nBut maybe simpler: The only mention that someone \"was the troublemaker\" likely indicates a troublemaker action: swapped two others. Also mention of \"insomniac\" being identified, \"Robber\" etc.\n\nWe have five players: Justin, Eric, Paul, Mitchell, Mike.\n\nFrom line 70: \")Mike: I like this. I like this.\" line 68: \"Eric: Both of these two are playing the tanner game?\" Not helpful.\n\nLine 73: \"Paul: I'm not playing the tanner game. I started as a werewolf. I don't think I'm a werewolf anymore.\" So Paul says he started as a werewolf, implying he might still be a werewolf? Possibly a werewolf.\n\nLine 70 shows Mike claims being troublemaker: \"Mike: I was the troublemaker though.\"\n\nBut earlier, lines 23 to 28: Hard to parse but mentions swapping. Look at line 24: \"Mitchell: Oh. I don't know why.\" 27: \"Mitchell: No. It's Mike and Eric. I switched Mike and Eric.\" This indicates a swap involving Mike and Eric.\n\nAlso line 31: \"Mike: Or Justin and Paul.\"\n\nIt suggests confusion.\n\nLet's interpret: The discussion is about who swapped. The actual actions: TroubleMaker swapped two players. Which? In lines 7-9: \"Paul: No. I was the troublemaker.\" At 7-9: Actually at 7: Paul says \"No. I was the troublemaker.\" Then at 8: Mike says \"I was the troublemaker.\" So both claim to be troublemaker. Perhaps they switched roles twice? However, troublemaker can only act once per game.\n\nMaybe due to confusion, some misrepresent—players may have swapped multiple times becausea wrong understanding.\n\nAnother key: at line 104: \"Mike: What were you?\" Many requests for identity.\n\nAt 140: \"Paul: I was the villager.\" So Paul claims his identity.\n\nLater at 167: \"Justin: You're honest with this, as the troublemaker?\" indicates that Justin claims seeing troublemaker?\n\nBut basically it's extremely confusing. Maybe better to pick a player who is obviously you suspect a werewolf based on statements.\n\nLooking at line 159: \"Paul: It's these two.\" But the line seems incomplete; but earlier, at 61: \"Mike: I'm referring to being the troublemaker.\" Hard.\n\nCould we identify werewolf via statement that \"Paul started as a werewolf\" and yet denies being one? That could be suspect. Or maybe the suspect is that there's a confusion: Two participants assert being trouble / swapped. Perhaps the easiest: vote for Paul, because he says \"I was the Villager\" but denies being a werewolf; but we saw that he earlier said \"I started as a werewolf\". That is contradictory. So vote for Paul.\n\nBut let's examine: line 73: \"Paul: I'm not playing the tanner game. I started as a werewolf. I don't think I'm a werewolf anymore.\" That indicates Paul's final role might indeed be recent. The second part: \"I don't think I'm a werewolf anymore.\" Could mean he swapped something? Or perhaps he is a blocked. If so, Paul's conversation reveals he's probably a werewolf. These contradictions may hint that Paul is a werewolf.\n\nAdditionally, earlier, at 70: \"Mike: I also liked this.\" But we can't cross-check.\n\nOk so decide to eliminate Paul.\n\nWe will output JSON with chosen vote: \"Paul\" or \"Justin\"? Let's double-check other suspicious. There was mention that \"Justin: You were the troublemaker?\" indicating either Justin or others.\n\nLewis: There's conflicting. Let's quickly produce a reasoning:\n\n- The troublemaker swapped two players. If the troublemaker swapped Mike and Eric (as indicated), then after swap, Mike & Eric roles changed. That could be werewolf or not. But we don't see that information.\n\nAdditionally, if the troublemaker, after swapping two players, the swapped players might have been are different. But the transcripts show both Paul and Mike claim to have been troublemaker. That can't both be correct, so one lies. Whoever exists truthfully might not have swapped. Anyone claiming wrong could be lying. There's confusion.\n\nSpecifically, lines 7-9: \"Paul: No. I was the troublemaker.\" Another lines 8-9: \"Mike: I was the troublemaker.\" It cannot be both.\n\nMaybe this indicates that some players swapped multiple times due to confusion. But we need to point at likely werewolf.\n\nIf there was no werewolf among the roles in the game, but there are more than 2m whose role unknown. Possibly team players are all village-.\n\nBut given of trust: Maybe no werewolf. But the only evidence is that Paul claimed to start as werewolf. But if that had happened, but we cannot confirm.\n\nIt might be safer to vote for Paul because of suspicion.\n\nHence I propose vote for Paul.\n\nJustify: Paul claimed to have started as werewolf but currently denies it, such contradictions suggest hidden werewolf; others appear ambiguous. So vote for Paul.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Paul claims he started as a werewolf yet later denies it, which indicates he may still be hiding his true identity; the conflicting statements suggest a possible werewolf presence. No other player provides convincing evidence, so targeting Paul seems most plausible.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"Paul claims he started as a werewolf yet later denies it, which indicates he may still be hiding his true identity; the conflicting statements suggest a possible werewolf presence. No other player provides convincing evidence, so targeting Paul seems most plausible.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"Paul claims he started as a werewolf yet later denies it, which indicates he may still be hiding his true identity; the conflicting statements suggest a possible werewolf presence. No other player provides convincing evidence, so targeting Paul seems most plausible.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul claims he started as a werewolf yet later denies it, which indicates he may still be hiding his true identity; the conflicting statements suggest a possible werewolf presence. No other player provides convincing evidence, so targeting Paul seems most plausible."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4316,
+    "output_token_count": 1202,
+    "generation_time_sec": 361.4836513996124,
+    "used_chat_template": true,
+    "input_char_count": 16196,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

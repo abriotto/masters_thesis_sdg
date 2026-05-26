@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through_Game2.txt",
+  "player_names": [
+    "Sarah",
+    "Jordan1",
+    "Haak",
+    "Robin",
+    "Jordan2",
+    "Meryl"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need decide which player likely a werewolf from transcript. There are six players: Sarah, Jordan1, Haak, Robin, Jordan2, Meryl. Many claims. Hard to discern. Need guess who likely a werewolf.\n\nLook at claims: Sarah claims being minion? Actually at line 48 says \"I'm not telling yet, because ...\". There's confusion.\n\nRoles: The transcript seems chaotic; many claim seer etc. People accuse each other. Need pick a suspect. Let's examine who claims to be a werewolf or minion.\n\nLine 54: Jordan1: \"No, bullshit. I was the robber.\" (conflict)\n\nLine 56: Sarah: \"You are a werewolf.\"\n\nThus Sarah says someone is werewolf maybe Jordan1? But context missing.\n\nLine 57: Jordan1: \"I was the robber, and I stole the seer.\"\n\nLine 60: Jordan1: \"Yeah.\" (maybe acceptance)\n\nLine 61: Meryl: \"Why are there two werewolves out?\"\n\nLine 62: Sarah: \"Because there are two werewolves.\"\n\nThis suggests Sarah believes there are two werewolves among players.\n\nLine 68: \"Jordan2: All right. I'm claiming to be the minion. That's my new play.\"\n\nSo multiple roles claiming.\n\nIs there a specific role identifying safe? Look earlier: \"Jordan1: I was the robber\" repeated contradictory.\n\nAlso see \"Jordan1: I was the seer.\" But earlier Jordan2 says I was the seer. There's confusion.\n\nGiven the chaos, accurate deduction tough. Might guess that person accused by most is Jordan2? Many accusing of disinformation.\n\nLet's search for any mention of \"werewolf\" being identified: line 56 says Sarah says \"you are a werewolf.\" But speaker unknown.\n\nBetter to look at the line: 56: Sarah: \"You are a werewolf.\" Who is the addressee? Unknown from transcript snippet.\n\nLet's parse: They might be addressing someone else, but it's ambiguous.\n\nAnother clue: Winning conditions: several claims of seer actions. In ultimate werewolf, seer can see a villager maybe indicates not werewolf. If someone saw a villager in center, they'd be not werewolf. Robert.\n\nBut this whole transcript appears garbled. Maybe this record just noise. In such case, choose Circle Vote.\n\nI'm not confident. We need one likely werewolf. Perhaps it's Jordan1: Many repeated claims. Jordan1 claims multiple roles with conflicting statements: \"I was the robber ...\"\n\nWhile Jordan2 claims minion. Minion would be part of werewolf team. Jordan2 claiming minion; maybe suspect.\n\nIf Jordan2 claims they are minion, they could be a werewolf. That seems suspicious. Also Jordan2 says \"I'm claiming the minion\" – likely false.\n\nAlternatively, maybe Haak got suspicious—he is being shouted as hunter etc.\n\nGiven uncertainty, I'd pick \"Jordan2\" as suspect.\n\nOk. Provide justification.",
+  "parsed_output": {
+    "justification": "From the transcript many players repeatedly declare themselves as inquirers or potential monsters, but Jordan2 explicitly states that he claims to be the minion and then jumps through various conflicting claims about seer and robber roles.  The minion aligns with the Werewolf team, so if Jordan2 truly believes he is a minion it is likely he is a werewolf.  No other player’s claiming strongly indicates a werewolf alignment as convincingly as Jordan2’s declaration of being a minion.  Therefore choosing Jordan2 maximises the chance of eliminating a werewolf.",
+    "chosen_vote": "Jordan2"
+  },
+  "raw_response": "{\"justification\":\"From the transcript many players repeatedly declare themselves as inquirers or potential monsters, but Jordan2 explicitly states that he claims to be the minion and then jumps through various conflicting claims about seer and robber roles.  The minion aligns with the Werewolf team, so if Jordan2 truly believes he is a minion it is likely he is a werewolf.  No other player’s claiming strongly indicates a werewolf alignment as convincingly as Jordan2’s declaration of being a minion.  Therefore choosing Jordan2 maximises the chance of eliminating a werewolf.\",\"chosen_vote\":\"Jordan2\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript many players repeatedly declare themselves as inquirers or potential monsters, but Jordan2 explicitly states that he claims to be the minion and then jumps through various conflicting claims about seer and robber roles.  The minion aligns with the Werewolf team, so if Jordan2 truly believes he is a minion it is likely he is a werewolf.  No other player’s claiming strongly indicates a werewolf alignment as convincingly as Jordan2’s declaration of being a minion.  Therefore choosing Jordan2 maximises the chance of eliminating a werewolf.\",\"chosen_vote\":\"Jordan2\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jordan2",
+    "justification": "From the transcript many players repeatedly declare themselves as inquirers or potential monsters, but Jordan2 explicitly states that he claims to be the minion and then jumps through various conflicting claims about seer and robber roles.  The minion aligns with the Werewolf team, so if Jordan2 truly believes he is a minion it is likely he is a werewolf.  No other player’s claiming strongly indicates a werewolf alignment as convincingly as Jordan2’s declaration of being a minion.  Therefore choosing Jordan2 maximises the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3558,
+    "output_token_count": 750,
+    "generation_time_sec": 226.11762022972107,
+    "used_chat_template": true,
+    "input_char_count": 13451,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

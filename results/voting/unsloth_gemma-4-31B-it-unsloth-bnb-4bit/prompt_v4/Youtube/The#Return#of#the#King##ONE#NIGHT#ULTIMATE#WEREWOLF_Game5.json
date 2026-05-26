@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   James\n    *   Tyler\n\n    *   Justin: Claims Seer (looked at Mitchell, says Mitchell is a Werewolf). Later, Paul says Justin is not the target.\n    *   Mitchell: Claims Robber (robbed someone, but doesn't say who). Later, says he's *not* the Robber (contradiction!). Says Justin is the Werewolf.\n    *   Paul: Claims Troublemaker. Claims he knows everyone's roles: Tyler = Tanner, James = Minion, Mitchell = Werewolf, James = Seer (wait, he said James is Minion and Seer? No, let's re-read).\n        *   Line 89: \"Tyler's Tanner. James is minion.\"\n        *   Line 91: \"Mitchell's Werewolf.\"\n        *   Line 93: \"And you [James] are Seer.\" (Wait, he just called James a minion and a seer. This is a contradiction).\n    *   James: Claims Seer (looked at two center cards).\n    *   Tyler: Claims Troublemaker (switched someone). Later, Paul claims Tyler is Tanner.\n\n    *   Justin: Claims Seer, targets Mitchell.\n    *   Mitchell: Claims Robber, then denies being Robber. Targets Justin.\n    *   Paul: Claims Troublemaker. Targets Mitchell.\n    *   James: Claims Seer. Confused.\n    *   Tyler: Claims Troublemaker.\n\n    *   Mitchell's behavior is very suspicious. He claims to be the Robber (Line 59), then later says \"I'm not the Robber\" (Line 106). This is a blatant contradiction.\n    *   Justin claims to be the Seer and saw Mitchell as a Werewolf.\n    *   Paul claims to be the Troublemaker and says Mitchell is the Werewolf.\n    *   James claims to be the Seer (looking at center cards).\n    *   Tyler claims to be the Troublemaker.\n\n    *   If Mitchell is the Werewolf, Team Village wins by voting him out.\n    *   If Justin is the Werewolf, Team Village wins by voting him out.\n    *   If Paul is the Werewolf, Team Village wins by voting him out.\n    *   If James is the Werewolf, Team Village wins by voting him out.\n    *   If Tyler is the Werewolf, Team Village wins by voting him out.\n\n    *   Mitchell's contradiction (Robber vs. Not Robber) is a huge red flag.\n    *   Justin's claim (Seer saw Mitchell as Werewolf) aligns with Paul's claim (Troublemaker says Mitchell is Werewolf).\n    *   Mitchell's insistence that Justin is the Werewolf (\"It's Justin or lose\") feels like a desperate bluff.\n    *   Paul's claims are a bit chaotic (calling James both Minion and Seer), but he consistently targets Mitchell.\n\n    *   Justin: Seer (claims Mitchell is WW)\n    *   Mitchell: WW (claims Robber, then denies it, targets Justin)\n    *   Paul: Troublemaker (targets Mitchell)\n    *   James: Seer (claims center cards)\n    *   Tyler: Troublemaker (claims switch)\n\n    Wait, if there are two Seers and two Troublemakers claiming, some are lying.\n    *   Seer claims: Justin, James.\n    *   Troublemaker claims: Paul, Tyler.\n    *   Robber claim: Mitchell (then retracted).\n\n    If Mitchell is the Werewolf, he would lie about his role. His contradiction is the strongest piece of evidence.\n\n    *   Justin: \"I seered him [Mitchell] and he's a Werewolf.\"\n    *   Paul: \"Mitchell's Werewolf.\"\n    *   Mitchell: \"I'm voting for Justin.\" \"I'm not the Robber.\" (After saying he was).\n\n    Mitchell's flip-flop on the Robber role is highly indicative of a Werewolf trying to find a believable lie and failing.\n\n    *   Justin: Seer\n    *   Mitchell: Werewolf\n    *   Paul: Troublemaker\n    *   James: Seer (or Minion/Tanner)\n    *   Tyler: Troublemaker (or Tanner)\n\n    Wait, if Paul is Troublemaker and he swapped Mitchell and someone else, Mitchell might not be the Werewolf anymore. But Paul says \"Vote for Mitchell\" *after* claiming to be Troublemaker.\n\n    Let's look at the contradictions again.\n    Mitchell: \"I am a Robber\" -> \"I'm not the Robber\".\n    This is the most concrete evidence of deception.\n\n    Justin and Paul both target Mitchell. Mitchell targets Justin.\n    The most likely Werewolf is Mitchell.\n\n    *   Justin: Claims Seer, targets Mitchell.\n    *   Mitchell: Claims Robber, then denies it, targets Justin.\n    *   Paul: Claims Troublemaker, targets Mitchell.\n    *   James: Claims Seer, confused.\n    *   Tyler: Claims Troublemaker.\n\n    Mitchell's contradiction is the key.\n\n    *   Justification: Mitchell claimed to be the Robber and then later explicitly denied being the Robber, which is a strong indicator of deception. Both Justin (claiming Seer) and Paul (claiming Troublemaker) identified Mitchell as the Werewolf. Mitchell's aggressive attempts to divert the vote toward Justin further suggest he is bluffing to protect himself.\n    *   Chosen Vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mitchell exhibits highly suspicious behavior, specifically claiming to be the Robber (Line 59) and then later explicitly denying it (Line 106). Both Justin, who claims to be the Seer, and Paul, who claims to be the Troublemaker, identify Mitchell as the Werewolf. Mitchell's desperate insistence that the group must vote for Justin to avoid losing is characteristic of a Werewolf attempting to deflect suspicion.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell exhibits highly suspicious behavior, specifically claiming to be the Robber (Line 59) and then later explicitly denying it (Line 106). Both Justin, who claims to be the Seer, and Paul, who claims to be the Troublemaker, identify Mitchell as the Werewolf. Mitchell's desperate insistence that the group must vote for Justin to avoid losing is characteristic of a Werewolf attempting to deflect suspicion.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell exhibits highly suspicious behavior, specifically claiming to be the Robber (Line 59) and then later explicitly denying it (Line 106). Both Justin, who claims to be the Seer, and Paul, who claims to be the Troublemaker, identify Mitchell as the Werewolf. Mitchell's desperate insistence that the group must vote for Justin to avoid losing is characteristic of a Werewolf attempting to deflect suspicion.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell exhibits highly suspicious behavior, specifically claiming to be the Robber (Line 59) and then later explicitly denying it (Line 106). Both Justin, who claims to be the Seer, and Paul, who claims to be the Troublemaker, identify Mitchell as the Werewolf. Mitchell's desperate insistence that the group must vote for Justin to avoid losing is characteristic of a Werewolf attempting to deflect suspicion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4951,
+    "output_token_count": 1359,
+    "generation_time_sec": 144.6047966480255,
+    "used_chat_template": true,
+    "input_char_count": 15909,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

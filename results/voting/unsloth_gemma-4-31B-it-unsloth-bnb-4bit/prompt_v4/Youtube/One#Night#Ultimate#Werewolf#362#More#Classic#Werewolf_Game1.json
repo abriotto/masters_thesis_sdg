@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#362#More#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#362#More#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "George",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete: Claims Minion (multiple times).\n    *   Katie: Claims Drunk.\n    *   Brett: Claims Troublemaker (swapped George and Katie).\n    *   George: Claims Robber (robbed Katie).\n    *   Kelsey: Claims Troublemaker, then Robber (stole Brett's card, claims Brett was Tanner), then says she's a Tanner.\n    *   Dylan: Claims Mason (lonely mason).\n\n    *   *Troublemaker:* Brett claims he is the Troublemaker and swapped George and Katie. Kelsey also claims she was the Troublemaker, then changes her story to Robber.\n    *   *Robber:* George claims he is the Robber and robbed Katie. Kelsey also claims she was the Robber and robbed Brett.\n    *   *Mason:* Dylan claims to be a lonely Mason. Pete also claims to be a Mason at one point (\"I was a mason\" [88]), but then switches to claiming Minion.\n    *   *Minion:* Pete claims to be the Minion.\n    *   *Drunk:* Katie claims to be the Drunk.\n\n    *   Kelsey's claims are highly inconsistent:\n        1.  Claimed Troublemaker [42].\n        2.  Claimed Robber [187], saying she stole Brett's card and he was the Tanner, making her the Tanner [189].\n        3.  Then says she's a Tanner [189] but then denies it when asked if she wants to be picked [247].\n    *   Pete's claims are inconsistent:\n        1.  Claimed Mason [88].\n        2.  Claimed Minion [101, 172, 207, 267].\n    *   Brett's claim: Troublemaker. He's consistent about this.\n    *   George's claim: Robber. He's consistent about this.\n    *   Katie's claim: Drunk. She's consistent about this.\n    *   Dylan's claim: Mason. He's consistent about this.\n\n    *   If Pete is the Minion, he knows who the Werewolves are. He doesn't explicitly name them, but he's very open about his role. Usually, a Minion wouldn't admit to being a Minion unless they are trying to confuse the group or are the Tanner.\n    *   Kelsey's behavior is very suspicious. She claimed Troublemaker, then Robber, then Tanner. This is a classic pattern for a Werewolf or a Tanner trying to create chaos or get voted out.\n    *   Wait, if Kelsey is the Tanner, she *wants* to be voted out. If she's a Werewolf, she's lying to avoid it.\n    *   Let's look at the \"Tanner\" claim. Kelsey says she stole the Tanner card from Brett. If she is the Tanner, she wins if she's voted out. If she's a Werewolf, she's bluffing.\n    *   Pete claiming Minion is very strange. If he's actually the Minion, he's on Team Werewolf. If he's lying, he could be the Werewolf or the Tanner.\n\n    *   Kelsey: Troublemaker -> Robber -> Tanner. (Very unstable)\n    *   Pete: Mason -> Minion. (Unstable)\n    *   Brett: Troublemaker. (Stable)\n    *   George: Robber. (Stable)\n    *   Katie: Drunk. (Stable)\n    *   Dylan: Mason. (Stable)\n\n    *   If Kelsey is the Tanner, voting her out makes the Tanner win.\n    *   If Kelsey is a Werewolf, voting her out makes the Village win.\n    *   If Pete is a Werewolf/Minion, voting him out makes the Village win.\n\n    *   Kelsey's shift from Troublemaker to Robber to Tanner is highly erratic.\n    *   Pete's shift from Mason to Minion is also suspicious.\n    *   However, Kelsey's claims are more contradictory. She claimed to be the Troublemaker, then said she was the Robber who stole the Tanner card.\n    *   Let's re-examine the Robber/Troublemaker interaction.\n        *   George (Robber) robbed Katie (Drunk).\n        *   Brett (Troublemaker) swapped George and Katie.\n        *   If this happened: Katie (Drunk) -> George (Robber) robbed Katie -> George is now Drunk, Katie is now Robber. Then Brett (Troublemaker) swapped George and Katie -> George is now Robber, Katie is now Drunk.\n        *   This sequence is actually consistent with their final claims (George=Robber, Katie=Drunk).\n\n    *   Now look at Kelsey. She claimed to be the Troublemaker, then the Robber. If George and Brett are telling the truth, Kelsey is lying.\n    *   If Kelsey is lying, she is either a Werewolf, Minion, or Tanner.\n    *   If Pete is lying about being the Minion, he is also a candidate.\n\n    *   Kelsey's behavior is more indicative of a Werewolf trying to bluff and failing, or a Tanner trying to get voted out.\n    *   Pete's claim of being a Minion is so blatant that it's either a very bold bluff or he's the Tanner.\n    *   In One Night Ultimate Werewolf, the most suspicious player is usually the one with the most contradictory claims. Kelsey fits this best.\n\n    *   Kelsey claimed Troublemaker, then Robber, then Tanner.\n    *   Pete claimed Mason, then Minion.\n    *   Between the two, Kelsey's claims are more erratic.\n    *   If we have to pick one, Kelsey is a strong candidate for Werewolf (or Tanner).\n    *   Wait, let's look at the transcript again. Pete says \"I'm a minion\" [101, 172, 207, 267]. This is extremely unusual. A Minion's goal is to help the Werewolves survive. Admitting to being a Minion doesn't help the Werewolves unless it's a double-bluff.\n    *   Kelsey's claims: \"I was the troublemaker\" [111] -> \"I lied... I was a robber\" [187] -> \"I'm a tanner\" [189].\n    *   If Kelsey is the Tanner, the Village loses. If she's the Werewolf, the Village wins.\n    *   Is there any other evidence?\n    *   Brett and George's stories are consistent with each other.\n    *   Dylan's claim of being a lonely Mason is plausible.\n    *   Katie's claim of being the Drunk is plausible.\n\n    *   Kelsey's erratic claims make her the most likely Werewolf or Tanner.\n    *   Pete's claim of being a Minion is also very suspicious.\n    *   However, Kelsey's contradictions are more numerous. Let's evaluate the likelihood of her being a Werewolf vs. Pete.\n    *   If Pete is the Minion, he's on the Werewolf team. If he's the Werewolf, he's also on the Werewolf team.\n    *   If Kelsey is the Werewolf, she's on the Werewolf team.\n    *   The prompt asks for the player most likely to be a Werewolf.\n    *   Kelsey's behavior (claiming multiple roles and then claiming to be the Tanner) is a common strategy for Werewolves to confuse the game or for Tanners to get voted out.\n    *   Pete's behavior (claiming to be the Minion) is also a common strategy for Tanners.\n\n    *   Let's look at the voting:\n        *   Brett: Voting Kelsey.\n        *   Katie: Voting George.\n        *   Dylan: Voting Pete.\n        *   Kelsey: Voting George.\n    *   Wait, the transcript ends before the final vote is cast, but the players are stating their intentions.\n    *   Brett is convinced it's Kelsey.\n    *   Dylan is convinced it's Pete.\n    *   Katie and Kelsey are voting George.\n\n    *   Let's re-evaluate George. George claimed Robber. He said he robbed Katie. Katie corroborated that she was the Drunk. This makes George's story plausible.\n    *   Kelsey's story is the least plausible. She claimed Troublemaker, then Robber, then Tanner.\n\n    *   Kelsey's claims are the most inconsistent.\n    *   Pete's claim of being a Minion is bizarre, but Kelsey's shifting roles are more characteristic of a Werewolf bluffing poorly.\n    *   If Kelsey is the Tanner, she wants to be voted out. If she's the Werewolf, she's lying.\n    *   Given the options, Kelsey is the most suspicious.\n\n    *   Wait, let's look at Pete again. He claimed Mason, then Minion. If he's the Minion, he's on the Werewolf team. If he's the Werewolf, he's on the Werewolf team.\n    *   But Kelsey's claims are *so* erratic. Let's go with Kelsey.\n\n    *   Wait, let me double-check the \"Tanner\" possibility. If Kelsey is the Tanner, voting her out is a loss for the Village. But as an external observer, I have to guess who is *most likely* to be the Werewolf.\n    *   Kelsey's claims: Troublemaker -> Robber -> Tanner.\n    *   Pete's claims: Mason -> Minion.\n    *   If Pete is the Minion, he's not the Werewolf (though they are on the same team). The goal is to eliminate a Werewolf.\n    *   If Kelsey is the Werewolf, she's the target.\n    *   Let's consider if Pete is the Werewolf and is bluffing as the Minion.\n    *   Let's consider if Kelsey is the Werewolf and is bluffing as the Troublemaker/Robber/Tanner.\n    *   Kelsey's behavior is more typical of a Werewolf trying to deflect.\n\n    *   Kelsey claimed to be the Troublemaker, then the Robber, then the Tanner.\n    *   This level of inconsistency is a strong indicator of a Werewolf or a Tanner.\n    *   Pete's claim of being a Minion is also suspicious, but Kelsey's shifting narratives are more indicative of a player struggling to maintain a bluff.\n    *   Therefore, Kelsey is the most likely candidate for elimination to help Team Village win.",
+  "parsed_output": {
+    "justification": "Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This erratic behavior is characteristic of a Werewolf attempting to bluff or a Tanner trying to attract votes. While Pete's claim of being a Minion is also suspicious, Kelsey's multiple contradictory role claims make her the most likely candidate for a Werewolf in this scenario.",
+    "chosen_vote": "Kelsey"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This erratic behavior is characteristic of a Werewolf attempting to bluff or a Tanner trying to attract votes. While Pete's claim of being a Minion is also suspicious, Kelsey's multiple contradictory role claims make her the most likely candidate for a Werewolf in this scenario.\",\n  \"chosen_vote\": \"Kelsey\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This erratic behavior is characteristic of a Werewolf attempting to bluff or a Tanner trying to attract votes. While Pete's claim of being a Minion is also suspicious, Kelsey's multiple contradictory role claims make her the most likely candidate for a Werewolf in this scenario.\",\n  \"chosen_vote\": \"Kelsey\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kelsey",
+    "justification": "Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This erratic behavior is characteristic of a Werewolf attempting to bluff or a Tanner trying to attract votes. While Pete's claim of being a Minion is also suspicious, Kelsey's multiple contradictory role claims make her the most likely candidate for a Werewolf in this scenario."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6286,
+    "output_token_count": 2509,
+    "generation_time_sec": 266.78457951545715,
+    "used_chat_template": true,
+    "input_char_count": 19158,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

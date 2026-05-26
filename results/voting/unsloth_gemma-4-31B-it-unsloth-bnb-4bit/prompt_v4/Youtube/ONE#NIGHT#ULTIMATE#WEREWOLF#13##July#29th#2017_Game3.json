@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin, Julie, Mitchell, Mike.\n    *   Roles mentioned/claimed:\n        *   Justin: Claims Werewolf (initially), then Tanner, then Drunk (confusedly).\n        *   Julie: Claims Seer.\n        *   Mitchell: Claims Robber.\n        *   Mike: Claims Troublemaker.\n\n    *   Julie (Seer) says she saw Justin as the Drunk.\n    *   Mitchell (Robber) says he confirms Julie's story.\n    *   Mike (Troublemaker) says he swapped Justin and Julie.\n    *   Justin's behavior: He starts by saying \"I'm a werewolf\" (line 18), then claims he's the Tanner (line 24, 65, 76), then admits he might be the Drunk (line 94).\n\n    *   If Julie is Seer and saw Justin as Drunk:\n        *   Justin was Drunk at the start.\n        *   Robber (Mitchell) might have swapped Justin.\n        *   Troublemaker (Mike) might have swapped Justin and Julie.\n        *   Drunk (Justin) swaps with the center at the end.\n    *   If Justin is the Tanner:\n        *   He wants to be voted out. He's claiming to be a werewolf/Tanner to attract votes.\n    *   If Justin is a Werewolf:\n        *   He might be bluffing as the Tanner to confuse people, but usually, Werewolves try to avoid being voted out. Claiming \"I'm a werewolf\" (line 18) is very unusual for a Werewolf unless they are trying a very complex bluff.\n\n    *   Justin's claims are erratic: \"I'm a werewolf\" -> \"I was the werewolf from the Tanner\" -> \"I was obviously tanner from the beginning\" -> \"I was the drunk\".\n    *   This behavior is highly characteristic of a Tanner trying to get voted out.\n    *   However, the prompt asks for the option *most likely to help Team Village win*.\n    *   Team Village wins if they vote out a Werewolf.\n    *   If Justin is the Tanner, voting him out makes the Tanner win, and Team Village loses (unless there's a Werewolf and they vote them out instead).\n    *   Wait, if Justin is the Tanner, voting him out makes the Tanner win. If Justin is a Werewolf, voting him out makes the Village win.\n    *   Let's look at the other players.\n    *   Julie (Seer), Mitchell (Robber), Mike (Troublemaker).\n    *   If these three are telling the truth, they are all Village-aligned.\n    *   If Justin is the only one left, he must be the Werewolf or the Tanner.\n    *   If Justin is the Werewolf, voting him wins.\n    *   If Justin is the Tanner, voting him loses.\n    *   Is there any evidence that Mitchell or Mike are Werewolves?\n    *   They are confirming each other's stories. This can be a sign of Werewolves/Minions working together, but in a 4-player game, if three people align against one, the one is usually the target.\n\n    *   Justin's claim \"I'm a werewolf\" (line 18) is a huge red flag. Either he's a Werewolf being honest (unlikely), a Tanner trying to get caught, or just trolling.\n    *   Julie's Seer claim: She saw Justin as Drunk.\n    *   If Justin was Drunk, he's Village.\n    *   If Justin was Drunk and then swapped, he could be anything.\n    *   But if Justin is the Tanner, he's trying to get voted out.\n    *   If Justin is the Werewolf, he's trying to get voted out? No, that doesn't make sense.\n    *   Wait, if Justin is the Werewolf, why would he say \"I'm a werewolf\"? To confuse people into thinking he's the Tanner?\n    *   Let's re-read: \"I'm a werewolf\" (line 18). Then \"I was the werewolf from the Tanner\" (line 24). This is confusing phrasing. He probably means \"I'm the Tanner\".\n    *   If Justin is the Tanner, voting him out is a loss for the Village.\n    *   If Justin is the Werewolf, voting him out is a win for the Village.\n    *   If there are no Werewolves (all in center), a Circle Vote wins.\n    *   But in this game, the most suspicious person is Justin due to his contradictory claims.\n\n    *   Justin: Claims Werewolf, then Tanner, then Drunk.\n    *   Julie: Claims Seer.\n    *   Mitchell: Claims Robber.\n    *   Mike: Claims Troublemaker.\n    *   If we believe Julie, Mitchell, and Mike, Justin is the only remaining candidate for Werewolf (or Tanner).\n    *   If Justin is the Tanner, the Village should Circle Vote.\n    *   If Justin is the Werewolf, the Village should vote Justin.\n    *   Given the erratic behavior and the \"I'm a werewolf\" claim, he is the most likely target. Even if he's the Tanner, in these logic puzzles, the person acting most \"suspiciously\" or claiming roles is usually the target unless there's a clear path to a Werewolf.\n\n    *   Justin's claims: Werewolf -> Tanner -> Drunk.\n    *   Julie's claim: Seer (saw Justin as Drunk).\n    *   Mitchell's claim: Robber.\n    *   Mike's claim: Troublemaker.\n    *   If Justin is the Werewolf, he's bluffing as the Tanner.\n    *   If Justin is the Tanner, he's bluffing as the Werewolf.\n    *   If Justin is the Drunk, he's just confused.\n    *   However, the most likely \"Werewolf\" candidate based on the discussion is Justin, as the other three have formed a consistent narrative.\n\n    *   Justin: \"I'm a werewolf.\" (Line 18)\n    *   Justin: \"I was the werewolf from the Tanner.\" (Line 24) - This is very strange. Maybe he meant \"I'm the Tanner\"?\n    *   Justin: \"I was obviously tanner from the beginning.\" (Line 65)\n    *   Justin: \"I was the drunk...\" (Line 94)\n    *   This is classic Tanner behavior: claiming to be the bad guy to get voted out.\n    *   If he is the Tanner, voting him is a mistake.\n    *   But if he is the Werewolf, voting him is the only way to win.\n    *   Is there any other possibility? Could Mike or Mitchell be the Werewolf?\n    *   Mike and Mitchell are corroborating each other.\n    *   If Mike is the Werewolf and Mitchell is the Minion, they could be lying about everything.\n    *   But based on the provided transcript, Justin is the most obvious target.\n\n    *   Justin's claims are completely inconsistent.\n    *   The other three players (Julie, Mitchell, Mike) have a consistent story.\n    *   Justin's initial claim of being a werewolf, followed by claiming to be the Tanner, strongly suggests he is either the Werewolf attempting a reverse-psychology bluff or the Tanner.\n    *   In the absence of other evidence, Justin is the most likely candidate for elimination to attempt a Village win.\n\n    *   Wait, if Justin is the Tanner, the Village loses. If Justin is the Werewolf, the Village wins.\n    *   If the other three are telling the truth, Justin is either the Werewolf or the Tanner.\n    *   If Justin is the Tanner, the only way for the Village to win is to Circle Vote (if no Werewolf is present) or vote for the actual Werewolf.\n    *   But if the other three are telling the truth, there is no other Werewolf.\n    *   So it's either:\n        1. Justin is Werewolf -> Vote Justin (Village wins).\n        2. Justin is Tanner -> Circle Vote (Village wins if no Werewolf exists).\n        3. One of the others is Werewolf -> Vote them (Village wins).\n    *   Given the transcript, Justin is the most likely Werewolf or Tanner. Since we must choose the \"most likely to help Team Village win\", and Justin is the only one acting like a Werewolf/Tanner, he is the primary suspect.\n\n    *   Justin: \"I'm a werewolf.\"\n    *   Justin: \"I was obviously tanner from the beginning.\"\n    *   Justin: \"I was the drunk...\"\n    *   This is a mess. But the other three are aligned.\n    *   The most probable outcome in these scenarios is that the person claiming to be the Werewolf/Tanner is the target.\n\n    *   Justification: Justin's claims are contradictory, starting with a claim to be a Werewolf, then the Tanner, and finally the Drunk. Julie, Mitchell, and Mike have a consistent narrative where they identify Justin as the Drunk or the target of swaps. While Justin's behavior is typical of a Tanner, he is the only plausible Werewolf candidate if the other three are telling the truth.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly contradictory, as he initially claims to be a Werewolf, then the Tanner, and finally the Drunk. In contrast, Julie, Mitchell, and Mike have formed a consistent narrative, with Julie claiming to be the Seer and identifying Justin as the Drunk, and the others corroborating her story. While Justin's erratic behavior is characteristic of a Tanner, he is the only viable candidate for a Werewolf if the other three players are telling the truth.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly contradictory, as he initially claims to be a Werewolf, then the Tanner, and finally the Drunk. In contrast, Julie, Mitchell, and Mike have formed a consistent narrative, with Julie claiming to be the Seer and identifying Justin as the Drunk, and the others corroborating her story. While Justin's erratic behavior is characteristic of a Tanner, he is the only viable candidate for a Werewolf if the other three players are telling the truth.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly contradictory, as he initially claims to be a Werewolf, then the Tanner, and finally the Drunk. In contrast, Julie, Mitchell, and Mike have formed a consistent narrative, with Julie claiming to be the Seer and identifying Justin as the Drunk, and the others corroborating her story. While Justin's erratic behavior is characteristic of a Tanner, he is the only viable candidate for a Werewolf if the other three players are telling the truth.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly contradictory, as he initially claims to be a Werewolf, then the Tanner, and finally the Drunk. In contrast, Julie, Mitchell, and Mike have formed a consistent narrative, with Julie claiming to be the Seer and identifying Justin as the Drunk, and the others corroborating her story. While Justin's erratic behavior is characteristic of a Tanner, he is the only viable candidate for a Werewolf if the other three players are telling the truth."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4034,
+    "output_token_count": 2215,
+    "generation_time_sec": 228.0572545528412,
+    "used_chat_template": true,
+    "input_char_count": 13926,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

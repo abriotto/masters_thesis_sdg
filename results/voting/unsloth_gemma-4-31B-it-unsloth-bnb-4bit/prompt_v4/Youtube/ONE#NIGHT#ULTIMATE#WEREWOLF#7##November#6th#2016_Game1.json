@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Alana: Claims she was the Robber, but is no longer the Robber (T14).\n    *   Mitchell: Claims he was the Troublemaker (T16).\n    *   Alana: Also claims she is the \"old troublemaker\" (T17) - this is confusing. Wait, T17 says \"Yeah, I am the old troublemaker.\" This contradicts T14.\n    *   Mitchell: Asks Alana \"You stole from me?\" (T18).\n    *   Alana: \"I may or may not have\" (T19).\n    *   Mitchell: Claims he switched Caitlynn with someone (T35).\n    *   Caitlynn: Admits she was the Werewolf (T39, T42).\n    *   Mitchell: Reveals he switched Caitlynn and Alana (T60).\n    *   Alana: Now claims she is the Werewolf because Mitchell switched her with Caitlynn (T72).\n    *   Alana: Asks to be voted out (\"Murder death me\") (T65).\n\n    *   Starting Roles (claimed/admitted):\n        *   Caitlynn: Werewolf (T39, T42)\n        *   Mitchell: Troublemaker (T16)\n        *   Alana: Robber (T14)\n        *   Mike: ? (Claims Villager T26)\n    *   Night Actions (claimed):\n        *   Robber (Alana) robbed Mitchell (T18, T91).\n        *   Troublemaker (Mitchell) swapped Caitlynn and Alana (T60).\n    *   Final Roles (based on claims):\n        *   Caitlynn: Started Werewolf -> Swapped with Alana -> Now Alana's role (Robber/Villager?).\n        *   Alana: Started Robber -> Robbed Mitchell (became Troublemaker?) -> Swapped with Caitlynn -> Now Werewolf.\n        *   Mitchell: Started Troublemaker -> Robbed by Alana (became Robber?) -> Now Robber.\n        *   Mike: Villager.\n\n    *   If Alana is the Werewolf, voting for her wins for the Village.\n    *   If Alana is the Tanner, voting for her wins for the Tanner.\n    *   If Alana is lying and someone else is the Werewolf, voting for her loses for the Village.\n\n    *   Alana is very eager to be voted out (\"Murder death me\" T65). This is a classic Tanner behavior.\n    *   However, the narrative provided by the players (Caitlynn was Werewolf, Mitchell swapped her with Alana) points directly to Alana being the Werewolf.\n    *   Let's re-examine the claims:\n        *   Caitlynn: \"I was [the werewolf]\" (T39).\n        *   Mitchell: \"I switched [Caitlynn] with [Alana]\" (T60).\n        *   Alana: \"that makes me the werewolf right?\" (T72).\n    *   If these claims are true, Alana is the Werewolf.\n    *   If Alana is the Tanner, she's trying to trick the group into voting for her.\n    *   If Mitchell is the Werewolf, he's lying about being the Troublemaker and swapping Caitlynn/Alana.\n    *   If Caitlynn is the Werewolf, she's lying about being swapped.\n\n    *   Caitlynn admits to being the Werewolf. This is unusual for a Werewolf unless they know they've been swapped or are bluffing.\n    *   Mitchell claims to be the Troublemaker and says he swapped Caitlynn and Alana.\n    *   Alana claims she was the Robber and robbed Mitchell.\n    *   If Alana was the Robber and robbed Mitchell (Troublemaker), Alana becomes the Troublemaker and Mitchell becomes the Robber.\n    *   Then Mitchell (now Robber) cannot swap anyone. But Mitchell claims he *was* the Troublemaker and swapped Caitlynn and Alana.\n    *   Wait, the order of actions is: Robber, then Troublemaker.\n    *   If Alana (Robber) robbed Mitchell (Troublemaker), Alana becomes the Troublemaker and Mitchell becomes the Robber.\n    *   Then the Troublemaker (now Alana) wakes up and swaps two people.\n    *   But Mitchell claims *he* was the Troublemaker and swapped Caitlynn and Alana.\n    *   If Mitchell was the Troublemaker and swapped Caitlynn and Alana, then Alana (who was the Robber) is now the Werewolf (since Caitlynn was the Werewolf).\n    *   This sequence works:\n        1.  Alana (Robber) robs someone (maybe Mike or a center card, or Mitchell).\n        2.  Mitchell (Troublemaker) swaps Caitlynn (Werewolf) and Alana (Robber).\n        3.  Result: Alana is now the Werewolf.\n\n    *   Alana is actively asking to be voted out.\n    *   Caitlynn and Mitchell are coordinating a story that puts the Werewolf role on Alana.\n    *   In One Night Ultimate Werewolf, the Tanner's goal is to be voted out. The Werewolf's goal is to survive.\n    *   If Alana is the Werewolf, she wouldn't typically ask to be voted out unless she's bluffing as the Tanner.\n    *   If Alana is the Tanner, she's doing exactly what a Tanner does.\n    *   However, the prompt asks for the option *most likely* to help Team Village win.\n    *   If the story is true, Alana is the Werewolf. If the story is a lie, Alana might be the Tanner or a Villager.\n    *   Looking at the transcript, Alana's behavior is very suspicious (\"Murder death me\"). But the logic provided by the other players is consistent.\n    *   Let's check if anyone else could be the Werewolf.\n    *   Mike has stayed quiet and claimed Villager.\n    *   Caitlynn admitted to being the Werewolf, which is a huge tell. Either she's the Werewolf and was swapped, or she's lying to frame Alana.\n    *   If Caitlynn is the Werewolf and wasn't swapped, she's lying.\n    *   If Mitchell is the Werewolf, he's lying about being the Troublemaker.\n\n    *   The most direct evidence (though potentially a bluff) is that Alana is the current Werewolf based on the swap.\n    *   The \"Tanner\" possibility is strong because of her eagerness, but without more info, the most logical target based on the claims is Alana.\n    *   Wait, let's re-read: \"I definitely was the robber. I'm no longer the robber.\" (Alana, T14). This means she was robbed or swapped.\n    *   \"I was the old troublemaker.\" (Mitchell, T16).\n    *   \"I switched [Caitlynn] with [Alana].\" (Mitchell, T60).\n    *   If Mitchell was the Troublemaker and swapped Caitlynn (Werewolf) and Alana (Robber), Alana is now the Werewolf.\n\n    *   Alana is the most likely candidate for the Werewolf based on the discussion, despite her Tanner-like behavior. In these games, often the most obvious target is the correct one unless there's a clear contradiction.\n\n    *   Caitlynn: Werewolf (start) -> Alana (end)\n    *   Alana: Robber (start) -> Caitlynn (end)\n    *   Mitchell: Troublemaker (start) -> Mitchell (end)\n    *   Mike: Villager (start) -> Mike (end)\n    *   Wait, if Alana was the Robber and robbed Mitchell, Alana becomes Troublemaker and Mitchell becomes Robber. Then Alana (Troublemaker) would swap two people. But Mitchell claims he did the swapping. This means Alana didn't rob Mitchell, or Mitchell is lying.\n    *   If Alana robbed Mike, Alana becomes Villager and Mike becomes Robber. Then Mitchell (Troublemaker) swaps Caitlynn (Werewolf) and Alana (Villager). Alana is still the Werewolf.\n    *   The most consistent story is that Alana ended up as the Werewolf.\n\n    *   Justification: Alana is identified as the current Werewolf because Caitlynn admitted to starting as the Werewolf and Mitchell claimed to have swapped Caitlynn's card with Alana's. Although Alana's eagerness to be voted out could suggest she is the Tanner, the logic provided by the other players points to her being the Werewolf. Therefore, voting for Alana is the most likely way for the Village to win.",
+  "parsed_output": {
+    "justification": "Caitlynn admitted to starting as the Werewolf, and Mitchell claimed to be the Troublemaker who swapped Caitlynn's card with Alana's. Based on these claims, Alana would have ended the night as the Werewolf. While Alana's eagerness to be voted out ('Murder death me') is characteristic of the Tanner, the provided narrative logic makes her the most likely target for Team Village to eliminate the Werewolf.",
+    "chosen_vote": "Alana"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn admitted to starting as the Werewolf, and Mitchell claimed to be the Troublemaker who swapped Caitlynn's card with Alana's. Based on these claims, Alana would have ended the night as the Werewolf. While Alana's eagerness to be voted out ('Murder death me') is characteristic of the Tanner, the provided narrative logic makes her the most likely target for Team Village to eliminate the Werewolf.\",\n  \"chosen_vote\": \"Alana\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn admitted to starting as the Werewolf, and Mitchell claimed to be the Troublemaker who swapped Caitlynn's card with Alana's. Based on these claims, Alana would have ended the night as the Werewolf. While Alana's eagerness to be voted out ('Murder death me') is characteristic of the Tanner, the provided narrative logic makes her the most likely target for Team Village to eliminate the Werewolf.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alana",
+    "justification": "Caitlynn admitted to starting as the Werewolf, and Mitchell claimed to be the Troublemaker who swapped Caitlynn's card with Alana's. Based on these claims, Alana would have ended the night as the Werewolf. While Alana's eagerness to be voted out ('Murder death me') is characteristic of the Tanner, the provided narrative logic makes her the most likely target for Team Village to eliminate the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3400,
+    "output_token_count": 2157,
+    "generation_time_sec": 220.18923473358154,
+    "used_chat_template": true,
+    "input_char_count": 11892,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine from transcript which players are likely werewolves and vote accordingly. Let's parse names: Justin, Dan, Mitchell, Caitlynn, Mike. But the transcript seems confusing and garbled due to interface. The logic: many mention \"was stabbed are werewolves.\" Let's attempt to deduce roles from the transcript. It appears that Justin claims he's the tanner; appears unsettled that he's being targeted for elimination. Others mention \"the drunk\" etc. Hard to follow.\n\nImportant will consider the available info: They indicated \"I looked in the center\" Dan said they saw a werewolf there. But ambiguous.\n\nLook at earlier phrases: [79] Dan says he looked in the center. [80] didn't state result? Actually. [84] \"Dan: I saw that there was a werewolf here and a werewolf here.\" -> indicates two werewolves found via center. That would mean two werewolves are in center and not in game. So maybe the only werewolf is one? Wait: Starting roles includes two werewolves? Not necessarily. But these are unknown.\n\nThe crucial: They want to vote for a werewolf. We need to pick the most likely. The transcript includes Mitch believes there is a drunk instance. There's confusion.\n\nWe need more clarity: The best guess is that Dan might be a werewolf. Because others suspect him. Many accuse are like \"Dan is a werewolf\". Also Caitlynn says Justin's a werewolf which contradicts.\n\nAlso there are existence of greenlike: If we assume there's a werewolf among the 5 players; the are some hints that Justin might not be one because he says \"I'm the tanner\" or \"I'm the drunk.\" He may claim. Hard.\n\nBecause there are many claims, we need to weigh the strongest evidence: Dan seems suspicious. The best guess is the safe assumption that Dan is the werewolf. We'll choose Dan. Provide justification: Some player statements indicate Dan or others suspect Dan.\n\nI'll produce JSON.",
+  "parsed_output": {
+    "justification": "The transcripts contain several explicit accusations that Dan is a werewolf and multiple people suspect him (“Dan wastelling demands about seeing werewolf in the center”).  No other player is singled out strongly as a liar or as having purely innocuous role. Other players’ statements are contradictory and do not single out any other role. Therefore, the most probable target for elimination is Dan.",
+    "chosen_vote": "Dan"
+  },
+  "raw_response": "{\"justification\":\"The transcripts contain several explicit accusations that Dan is a werewolf and multiple people suspect him (“Dan wastelling demands about seeing werewolf in the center”).  No other player is singled out strongly as a liar or as having purely innocuous role. Other players’ statements are contradictory and do not single out any other role. Therefore, the most probable target for elimination is Dan.\",\"chosen_vote\":\"Dan\"}",
+  "response_for_parsing": "{\"justification\":\"The transcripts contain several explicit accusations that Dan is a werewolf and multiple people suspect him (“Dan wastelling demands about seeing werewolf in the center”).  No other player is singled out strongly as a liar or as having purely innocuous role. Other players’ statements are contradictory and do not single out any other role. Therefore, the most probable target for elimination is Dan.\",\"chosen_vote\":\"Dan\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dan",
+    "justification": "The transcripts contain several explicit accusations that Dan is a werewolf and multiple people suspect him (“Dan wastelling demands about seeing werewolf in the center”).  No other player is singled out strongly as a liar or as having purely innocuous role. Other players’ statements are contradictory and do not single out any other role. Therefore, the most probable target for elimination is Dan."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3527,
+    "output_token_count": 501,
+    "generation_time_sec": 153.1753089427948,
+    "used_chat_template": true,
+    "input_char_count": 13777,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

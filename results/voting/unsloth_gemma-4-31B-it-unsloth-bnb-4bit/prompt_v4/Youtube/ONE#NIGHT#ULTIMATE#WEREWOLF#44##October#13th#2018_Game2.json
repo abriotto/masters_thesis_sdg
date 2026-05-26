@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mitchell, Paul, Mike.\n    *   Roles involved (claimed/mentioned): Seer, Insomniac, Robber, Troublemaker, Werewolf, Tanner.\n\n    *   [4] Mike: \"Safe.\"\n    *   [5] Mitchell: \"Safe. Can you confirm me?\"\n    *   [6] Mike: \"No.\"\n    *   [8] Justin: \"Can you confirm me?\"\n    *   [9] Mike: \"Maybe.\"\n    *   [18] Paul: \"I switch it to you two.\" (Claiming Troublemaker)\n    *   [21] Paul: \"Which you should be able to confirm, because you're not the Insomniac anymore, right?\" (Addressing Mitchell)\n    *   [22] Mitchell: \"Mm-hmm. Yeah. Correct.\"\n    *   [24] Mitchell: \"Seer.\" (Claiming he was the Seer)\n    *   [25] Justin: \"I'm the Insomniac.\" (Claiming he is the Insomniac)\n    *   [27] Justin: \"I didn't see any of those in the middle.\" (Wait, Insomniacs don't see the middle. Seers do. Justin is confusing his claim or lying).\n    *   [29] Mike: \"I'm the same as the robber.\" (Claiming Robber)\n    *   [31] Justin: \"I saw one. There is a werewolf. There's only one werewolf.\" (Wait, Justin claimed Insomniac, but now says he \"saw\" a werewolf. Insomniacs only see their own card).\n    *   [33] Justin: \"I saw the insomniac.\" (Still claiming he saw something).\n    *   [36] Mitchell: \"Justin's a werewolf and he's trying to put me down.\"\n    *   [46] Mike: \"I either robbed a tanner or a werewolf.\"\n    *   [51] Mitchell: \"I was the tanner. And I totally guessed the seer.\" (Wait, Mitchell just changed his claim from Seer to Tanner).\n    *   [57] Justin: \"Mike actually stole from me, because I was a werewolf... But I'm a tanner, so also kill me.\" (Justin changes claim to Werewolf/Tanner).\n    *   [72] Paul: \"We kill Mitchell, because I actually switched Mike and Mitchell.\" (Paul claiming Troublemaker again).\n    *   [75] Mike: \"No... I actually robbed from him [Mitchell]. So then he's back at the tanner again.\"\n    *   [79] Mike: \"I robbed [Mitchell].\"\n    *   [80] Justin: \"I'll kill Mitchell.\"\n    *   [81] Paul: \"I'll kill Mitchell.\"\n    *   [104] Mike: \"Mitchell is back at the tanner. We kill Justin?\"\n    *   [106] Mitchell: \"No, we vote Justin.\"\n\n    *   Justin: Claimed Insomniac -> Claimed he saw a werewolf (impossible for Insomniac) -> Claimed he was a Werewolf robbed by Mike -> Claimed he is the Tanner.\n    *   Mitchell: Claimed Seer -> Claimed he was the Tanner.\n    *   Paul: Claimed Troublemaker (switched Mike and Mitchell).\n    *   Mike: Claimed Robber (robbed Mitchell).\n\n    *   If Paul is the Troublemaker and switched Mike and Mitchell, and Mike is the Robber who robbed Mitchell:\n        *   Robber (Mike) wakes up, steals Mitchell's card.\n        *   Troublemaker (Paul) wakes up, swaps Mike and Mitchell's cards.\n        *   Result: Mitchell now has the card Mike stole from him. Mike now has the card Mitchell had *after* the robbery (which was Mike's original card).\n    *   Wait, let's re-read the night order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   If Mike (Robber) robbed Mitchell, and then Paul (Troublemaker) swapped Mike and Mitchell:\n        *   Mike (Robber) takes Mitchell's card.\n        *   Paul (Troublemaker) swaps Mike and Mitchell.\n        *   Mitchell now has the card Mike took from him.\n        *   Mike now has his own original card.\n\n    *   Justin's claims are completely incoherent. He claims to be the Insomniac, then says he \"saw\" a werewolf (Insomniacs don't see other players), then says he was a werewolf robbed by Mike, then says he's the Tanner.\n    *   Mitchell's claims are also shifting (Seer to Tanner).\n    *   Paul is consistently claiming Troublemaker.\n    *   Mike is consistently claiming Robber.\n\n    *   Justin is acting very suspiciously. His claims are contradictory and logically impossible for the roles he claims.\n    *   Mitchell is claiming to be the Tanner.\n    *   If Mitchell is the Tanner, voting for him helps the Tanner win, not the Village.\n    *   If Justin is the Werewolf, voting for him helps the Village win.\n    *   Justin's behavior (claiming Insomniac but saying he \"saw\" a werewolf) is a classic sign of a Werewolf bluffing poorly or a very confused player.\n    *   However, Justin eventually claims he is the Tanner (\"I'm a tanner, so also kill me\").\n    *   Mitchell also claims he is the Tanner (\"I was the tanner\").\n\n    *   Justin: \"I'm the Insomniac\" -> \"I saw one [werewolf]\" -> \"I was a werewolf\" -> \"I'm a tanner\".\n    *   Mitchell: \"Seer\" -> \"I was the tanner\".\n    *   Paul: \"Troublemaker\".\n    *   Mike: \"Robber\".\n\n    *   If Justin is the Werewolf, he's trying to confuse the group.\n    *   If Mitchell is the Werewolf, he's claiming Tanner to avoid being voted out (though usually, Tanners *want* to be voted out). Wait, if Mitchell is the Werewolf, claiming Tanner is a bad move because the goal of the Tanner is to be voted out. If he wants to survive, he shouldn't claim Tanner.\n    *   Actually, if Mitchell claims Tanner, he's inviting votes. If he's a Werewolf, he doesn't want votes.\n    *   Justin is also claiming Tanner.\n\n    *   Justin's claims are the most erratic. He claimed Insomniac, then claimed he saw a werewolf (which Insomniacs can't do), then claimed he was a werewolf, then claimed he's the Tanner. This level of inconsistency often points to a Werewolf trying to find a narrative that fits or a Tanner trying to get voted out.\n    *   Let's look at the \"saw a werewolf\" part. If Justin was the Seer, he could see a werewolf. But he claimed Insomniac.\n    *   If Justin is the Werewolf, he might be bluffing as the Insomniac and slipping up.\n\n    *   Paul (Troublemaker) and Mike (Robber) seem to be coordinating a story.\n    *   Paul says he swapped Mike and Mitchell.\n    *   Mike says he robbed Mitchell.\n    *   If Mike robbed Mitchell and Paul swapped them, Mitchell ends up with his own original card.\n    *   If Mitchell's original card was Werewolf, and he's now claiming Tanner, he's lying.\n    *   If Justin's original card was Werewolf, and he's now claiming Tanner, he's lying.\n\n    *   Justin's claims:\n        1. Insomniac.\n        2. \"I saw one [werewolf].\" (Impossible for Insomniac).\n        3. \"I was a werewolf.\"\n        4. \"I'm a tanner.\"\n    *   This is a mess. Usually, the person with the most contradictory and impossible claims is the Werewolf.\n\n    *   Mitchell: \"I was the tanner.\"\n    *   Justin: \"I'm a tanner.\"\n    *   Only one Tanner can be in the game. One of them is lying.\n\n    *   If Justin is the Werewolf, he's bluffing.\n    *   If Mitchell is the Werewolf, he's bluffing.\n    *   Justin's claim to be the Insomniac who \"saw\" a werewolf is a huge red flag.\n\n    *   Justin's contradictions are more severe than Mitchell's.\n    *   Justin claimed to be the Insomniac, then claimed he saw a werewolf. This is a direct contradiction of the role's ability.\n    *   Then he claimed he was a werewolf, then a tanner.\n    *   This suggests Justin is the most likely Werewolf (or a very confused Tanner).\n\n    *   Wait, let's re-read: \"I saw one. There is a werewolf. There's only one werewolf.\" (Justin).\n    *   If Justin was the Seer, he could say this. But he said \"I'm the Insomniac.\"\n    *   If he's the Werewolf, he's lying about being the Insomniac and lying about what he saw.\n\n    *   Paul and Mike are consistently claiming roles (Troublemaker and Robber).\n    *   Mitchell and Justin are both claiming Tanner at some point.\n    *   Justin's claims are far more erratic.\n\n    *   Justin's claims are logically inconsistent (Insomniac seeing a werewolf).\n    *   He admits to being a werewolf at one point (\"I was a werewolf\"), then pivots to being the Tanner.\n    *   This makes him the most suspicious player.\n\n    *   Wait, let's look at the end:\n        [104] Mike: \"Mitchell is back at the tanner. We kill Justin?\"\n        [105] Justin: \"No, we're killing Mitchell.\"\n        [106] Mitchell: \"No, we vote Justin.\"\n        [108] Mitchell: \"We got to vote Justin.\"\n    *   Mike is suggesting voting Justin. Paul and Mike seem to have a consistent story. Justin and Mitchell are fighting.\n\n    *   Justin's claim to be the Insomniac who \"saw\" a werewolf is the biggest giveaway.\n    *   His subsequent claim to have been a werewolf and then a tanner is just chaotic.\n    *   Therefore, Justin is the most likely candidate for elimination.\n\n    *   Wait, let me double-check the Robber/Troublemaker interaction.\n    *   Robber (Mike) robs Mitchell.\n    *   Troublemaker (Paul) swaps Mike and Mitchell.\n    *   If Mitchell was the Werewolf:\n        1. Mike takes Werewolf card.\n        2. Paul swaps Mike (Werewolf) and Mitchell (Robber's old card).\n        3. Mitchell now has the Werewolf card.\n    *   If Justin was the Werewolf:\n        1. Mike robs Mitchell (not Justin).\n        2. Paul swaps Mike and Mitchell.\n        3. Justin still has the Werewolf card.\n    *   In the scenario where Paul and Mike are telling the truth, Justin is the most likely Werewolf because he's the only one not involved in their swap and is making wild claims.\n\n    *   Justin's claims are completely inconsistent. He claims to be the Insomniac but then claims to have \"seen\" a werewolf, which is impossible for that role. He later claims to have been a werewolf and then the Tanner. This erratic behavior and the logical impossibility of his claims make him the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Justin's claims are logically inconsistent and erratic. He first claims to be the Insomniac, but then claims he 'saw' a werewolf, which is impossible as the Insomniac only sees their own card. He subsequently claims he was a werewolf and then claims to be the Tanner, making him the most suspicious player in the game.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are logically inconsistent and erratic. He first claims to be the Insomniac, but then claims he 'saw' a werewolf, which is impossible as the Insomniac only sees their own card. He subsequently claims he was a werewolf and then claims to be the Tanner, making him the most suspicious player in the game.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are logically inconsistent and erratic. He first claims to be the Insomniac, but then claims he 'saw' a werewolf, which is impossible as the Insomniac only sees their own card. He subsequently claims he was a werewolf and then claims to be the Tanner, making him the most suspicious player in the game.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are logically inconsistent and erratic. He first claims to be the Insomniac, but then claims he 'saw' a werewolf, which is impossible as the Insomniac only sees their own card. He subsequently claims he was a werewolf and then claims to be the Tanner, making him the most suspicious player in the game."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3658,
+    "output_token_count": 2770,
+    "generation_time_sec": 282.82397842407227,
+    "used_chat_template": true,
+    "input_char_count": 12750,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

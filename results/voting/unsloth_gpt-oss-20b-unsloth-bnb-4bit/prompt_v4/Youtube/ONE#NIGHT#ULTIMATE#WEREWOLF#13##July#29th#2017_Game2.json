@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need identify who are werewolves among four players: Justin, Julie, Mitchell, Mike. Also possible center none (but we have 4 players only? The game has 4 + 3 = 7 roles each round. So three center cards unknown; not determined.\n\nGiven transcript: confusing mixture of deletions. Might be inventory role. We can attempt to detect that a random early transcribed lines show \"Robber\" etc.\n\nLet's parse: start: Announcer actions: Seer wakes up; someone identifies as Robber at lines [4] Justin: Robert; [5] Mitchell: Robber; seems weird.\n\nThen lines 13-15: \"Julie... Just notice\".\n\nThey say \"I was looking, I'm like, are you fucking making a joke right now?\" So perhaps.\n\nThis transcript seems garbled: maybe referencing entire conversation. Hard.\n\nBut we can try deduction: There's mention \"I was the Troublemaker\" and \"The Robber\" likely did his swap. They mention \"The Troublemaker came out.\" \"Mike, The Robber did something.\"\n\nMaybe re-read parts with assumption. Lines 14-15: Justin: \"I am the Troublemaker.\" Mike says \"I can confirm that.\" So Justin claims to be Troublemaker.\n\nThen later, \"I was one of those characters\" lines 19 etc.\n\nIt appears many conflicting claims.\n\nWe need to figure who might be Werewolf. Maybe relies on rumor.\n\nSomeone says \"Mike: I was actually going to let. I was going to say the Troublemaker come out, because I know there's one out there.\" Unclear.\n\nLet's examine lines 25-32: Justin: Not me. (makes sense). There's mention \"I suspect he's the Tanner.\" etc. Hmm.\n\nHard. Let's adopt a strategy: Because role clarity unknown, we may prefer to circle vote. Since it's uncertain. The prompt says general approach: If multiple contradictory statements, chance maybe none are werewolf. at least maybe one not.\n\nHowever, the transcript indicates confusion about being the Troublemaker etc. There's no concrete evidence a werewolf is present. There is mention of \"Mitchell: I was the Troublemaker.\" but then others disagree.\n\nWe could choose to circle vote. Provide justification for uncertainty.\n\nBut if we expected the best solution, we might decide to vote for a suspect if chances high. According to transcript, \"Essay's talk: The \"Troublemaker\" gets a vote up? The only times the variable \"Bro\" says \"I'm the Troublemaker\" etc. Might indicate the presence of the Troublemaker. Maybe suspect that someone is the \"Troublemaker\".\n\nWait mention: \"Justin: I am the Troublemaker.\" That is not correct because if he's the Troublemaker, there would be swap described. But no.\n\nHowever, line 30-32: \"Justin: I have to think this is what you switched ... Well, I changed ...\"\n\nWe may suspect that a random who may be a werewolf?\n\nPotential is mis communication not containing direct evidence.\n\nThus safe answer is circle.\n\nBut we need to decide explanation: The transcript is unclear and contradicting. (my justification included.)\n\nOk.",
+  "parsed_output": {
+    "justification": "The transcript is highly incoherent and full of conflicting statements; no player’s claims reliably establish a clear identity of a werewolf. The only concrete role claim is Justin calling himself a troublemaker, yet that claim is disputed and inconsistent with subsequent actions. Given the lack of definitive evidence, the safest choice is to avoid targeting anyone and instead opt for a circle vote.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is highly incoherent and full of conflicting statements; no player’s claims reliably establish a clear identity of a werewolf. The only concrete role claim is Justin calling himself a troublemaker, yet that claim is disputed and inconsistent with subsequent actions. Given the lack of definitive evidence, the safest choice is to avoid targeting anyone and instead opt for a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is highly incoherent and full of conflicting statements; no player’s claims reliably establish a clear identity of a werewolf. The only concrete role claim is Justin calling himself a troublemaker, yet that claim is disputed and inconsistent with subsequent actions. Given the lack of definitive evidence, the safest choice is to avoid targeting anyone and instead opt for a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is highly incoherent and full of conflicting statements; no player’s claims reliably establish a clear identity of a werewolf. The only concrete role claim is Justin calling himself a troublemaker, yet that claim is disputed and inconsistent with subsequent actions. Given the lack of definitive evidence, the safest choice is to avoid targeting anyone and instead opt for a circle vote."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3472,
+    "output_token_count": 751,
+    "generation_time_sec": 226.35242891311646,
+    "used_chat_template": true,
+    "input_char_count": 13474,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

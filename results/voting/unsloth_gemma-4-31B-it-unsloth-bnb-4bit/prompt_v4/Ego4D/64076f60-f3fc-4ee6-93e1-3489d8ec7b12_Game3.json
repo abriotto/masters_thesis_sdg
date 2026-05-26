@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "64076f60-f3fc-4ee6-93e1-3489d8ec7b12",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/64076f60-f3fc-4ee6-93e1-3489d8ec7b12_Game3.txt",
+  "player_names": [
+    "Erin",
+    "Sebastian",
+    "Jack",
+    "Brent",
+    "Hailey"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Erin, Sebastian, Jack, Brent, Hailey.\n    *   Roles involved (based on claims): Robber, Troublemaker, Werewolf.\n    *   Night Action Order: Doppelganger -> Werewolves -> Minion -> Masons -> Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n\n    *   Hailey claims: \"I was the robber, so, I swapped... with Erin\" (Line 37, 41).\n    *   Erin claims: \"I was the Troublemaker, and I swapped yours [Hailey's] and Jack's cards\" (Line 43).\n    *   Jack claims: \"I was the Werewolf, but I'm not the Werewolf anymore\" (Line 47).\n    *   Brent: Observes and analyzes.\n    *   Sebastian: Narrator/Player (though he seems to be narrating the night phase, he is listed as a player).\n\n    *   *Scenario 1 (Taking claims at face value):*\n        1.  Hailey (Robber) swaps with Erin.\n        2.  Erin (Troublemaker) swaps Hailey and Jack.\n        *   If Jack started as Werewolf:\n            *   Start: Jack=WW, Hailey=Robber, Erin=Troublemaker.\n            *   Robber (Hailey) swaps with Erin: Hailey=Troublemaker, Erin=Robber.\n            *   Troublemaker (now Hailey) swaps Hailey and Jack: Hailey=WW, Jack=Troublemaker.\n            *   End: Hailey=WW, Jack=Troublemaker, Erin=Robber.\n        *   Wait, Erin claimed *she* was the Troublemaker and swapped Hailey and Jack.\n        *   If Erin was the Troublemaker *after* the Robber swap:\n            *   Start: Erin=Robber, Hailey=Troublemaker.\n            *   Robber (Erin) swaps with Hailey: Erin=Troublemaker, Hailey=Robber.\n            *   Troublemaker (Erin) swaps Hailey and Jack: Hailey=WW (if Jack was WW), Jack=Robber.\n            *   End: Hailey=WW, Jack=Robber, Erin=Troublemaker.\n\n    *   *Analyzing the claims again:*\n        *   Hailey: \"I was the robber... I swapped with Erin.\"\n        *   Erin: \"I was the Troublemaker, and I swapped yours [Hailey's] and Jack's cards.\"\n        *   Jack: \"I was the Werewolf, but I'm not the Werewolf anymore.\"\n\n    *   *Let's trace this:*\n        1.  Starting roles: Jack (Werewolf), Hailey (Robber), Erin (Troublemaker).\n        2.  Robber (Hailey) swaps with Erin: Hailey becomes Troublemaker, Erin becomes Robber.\n        3.  Troublemaker (now Hailey) swaps Hailey and Jack: Hailey becomes Werewolf, Jack becomes Troublemaker.\n        *   Wait, Erin says *she* was the Troublemaker and swapped them.\n        *   If Erin was the Troublemaker and stayed the Troublemaker:\n            1.  Starting roles: Jack (Werewolf), Hailey (Robber), Erin (Troublemaker).\n            2.  Robber (Hailey) swaps with someone else (not Erin).\n            3.  Troublemaker (Erin) swaps Hailey and Jack.\n            *   Result: Hailey becomes Werewolf, Jack becomes Robber.\n\n    *   *Let's look at the post-game reveal (Lines 132-168):*\n        *   Hailey: \"I actually switched mine and Jack's card [as Robber], and Jack was the Werewolf to begin with.\" (Line 132, 140).\n        *   Hailey: \"Then, Erin... switched yours [Hailey's] and mine [Brent's]?\" (Wait, the transcript is messy).\n        *   Line 167: \"I [Hailey] swapped us [Hailey and Jack] but I lied and said that I swapped cards with you [Erin], and then you [Erin] therefore swapped it [the WW card] with Brent.\"\n        *   Wait, let's re-read Line 167 carefully: \"I swapped us [Hailey and Jack] but I lied and said that I swapped cards with you [Erin], and then you [Erin] therefore swapped it with Brent.\"\n        *   This means:\n            1.  Starting: Jack = Werewolf.\n            2.  Robber (Hailey) swaps with Jack: Hailey = Werewolf, Jack = Robber.\n            3.  Troublemaker (Erin) swaps Hailey and Brent: Brent = Werewolf, Hailey = Troublemaker.\n            4.  End: Brent = Werewolf.\n\n    *   *Wait, the task is to decide based on the public discussion (the Day phase), not the post-game reveal.*\n    *   During the discussion:\n        *   Jack admits he was the Werewolf but is no longer (Line 47).\n        *   Erin claims she was the Troublemaker and swapped Hailey and Jack (Line 43).\n        *   Hailey claims she was the Robber and swapped with Erin (Line 37, 41).\n        *   If we believe Jack and Erin:\n            *   Jack started as WW.\n            *   Erin (Troublemaker) swapped Jack and Hailey.\n            *   Therefore, Hailey is now the WW.\n        *   If we believe Hailey's claim (Robber swapped with Erin) and Erin's claim (Troublemaker swapped Hailey and Jack):\n            *   Start: Jack=WW, Hailey=Robber, Erin=Troublemaker.\n            *   Robber (Hailey) swaps with Erin: Hailey=Troublemaker, Erin=Robber.\n            *   Troublemaker (now Hailey) swaps Hailey and Jack: Hailey=WW, Jack=Troublemaker.\n            *   Wait, Erin said *she* was the Troublemaker. If Erin is the Troublemaker, she must have been the Troublemaker at the end of the night.\n            *   If Erin started as Troublemaker and stayed Troublemaker, and Hailey (Robber) swapped with someone else, and then Erin swapped Hailey and Jack... Hailey becomes the WW.\n\n    *   *Conclusion from discussion:* The most consistent theory presented by the players (Jack and Erin) is that Hailey is the Werewolf. Jack openly admits he was the Werewolf and that Erin's swap moved that role to Hailey.\n\n    *   Jack: \"I know 100% who the Werewolf is... Hailey is probably the Werewolf now\" (Line 94, 115).\n    *   Erin: Confirms she was the Troublemaker and swapped the cards (Line 116).\n    *   Brent: Agrees with the logic (Line 115).\n    *   Hailey: Protests, but doesn't provide a convincing counter-argument during the discussion phase.\n\n    *   The most likely candidate for the Werewolf, based on the claims made during the discussion, is Hailey.\n\n    *   Justification: Jack admits he started as the Werewolf. Erin claims she was the Troublemaker and swapped Jack's card with Hailey's. If these claims are true, Hailey is now the Werewolf.\n    *   Chosen vote: Hailey.",
+  "parsed_output": {
+    "justification": "Jack admits that he started the game as the Werewolf but is no longer the Werewolf. Erin claims she was the Troublemaker and swapped the cards of Jack and Hailey. If these claims are true, the Werewolf role was transferred from Jack to Hailey, making Hailey the most likely target for elimination.",
+    "chosen_vote": "Hailey"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jack admits that he started the game as the Werewolf but is no longer the Werewolf. Erin claims she was the Troublemaker and swapped the cards of Jack and Hailey. If these claims are true, the Werewolf role was transferred from Jack to Hailey, making Hailey the most likely target for elimination.\",\n  \"chosen_vote\": \"Hailey\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jack admits that he started the game as the Werewolf but is no longer the Werewolf. Erin claims she was the Troublemaker and swapped the cards of Jack and Hailey. If these claims are true, the Werewolf role was transferred from Jack to Hailey, making Hailey the most likely target for elimination.\",\n  \"chosen_vote\": \"Hailey\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Hailey",
+    "justification": "Jack admits that he started the game as the Werewolf but is no longer the Werewolf. Erin claims she was the Troublemaker and swapped the cards of Jack and Hailey. If these claims are true, the Werewolf role was transferred from Jack to Hailey, making Hailey the most likely target for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6382,
+    "output_token_count": 1749,
+    "generation_time_sec": 192.5823850631714,
+    "used_chat_template": true,
+    "input_char_count": 20156,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

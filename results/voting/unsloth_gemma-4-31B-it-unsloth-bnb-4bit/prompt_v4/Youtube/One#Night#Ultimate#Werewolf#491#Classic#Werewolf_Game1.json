@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#491#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#491#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "Dustin"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete\n    *   Katie\n    *   Brett\n    *   Dustin\n\n    *   Katie: Claims Troublemaker. Swapped Brett and Pete.\n    *   Brett: Claims Werewolf (initially), says he saw Tanner in the center.\n    *   Pete: Claims Seer (looked at center cards, saw Robber). Later claims \"Pirate\" (likely a joke/misstatement for Robber or just nonsense).\n    *   Dustin: Claims Drunk. Later claims he is a Werewolf now (after swapping with center).\n\n    *   Katie (Troublemaker) swapped Brett and Pete.\n    *   If Katie is telling the truth:\n        *   Brett's starting role $\\rightarrow$ Pete's ending role.\n        *   Pete's starting role $\\rightarrow$ Brett's ending role.\n    *   Brett claims he was the Werewolf (starting role). If so, Pete is now the Werewolf.\n    *   Dustin claims he was the Drunk and swapped with the center. He then claims he is now a Werewolf. However, the Drunk doesn't know their new role. Dustin's claim to be a Werewolf *now* is logically inconsistent with the Drunk's ability (unless he's lying or guessing).\n    *   Pete claims he was the Seer and saw the Robber in the center.\n\n    *   Brett's claim: \"I was the Werewolf... I saw the Tanner in the center.\" (Wait, if he's a Werewolf, he looks for other werewolves. If alone, he looks at one center card. This is consistent).\n    *   Katie's claim: \"I trouble made [Brett and Pete].\"\n    *   If Katie is Troublemaker and Brett was Werewolf, Pete is now the Werewolf.\n    *   Dustin's claim: \"I was the Drunk... I'm a Werewolf now.\" (This is highly suspicious because Drunks don't see their cards).\n    *   Pete's claim: \"I looked at [center cards]... The Robber.\" (Seer ability).\n\n    *   If Katie is Troublemaker and Brett was Werewolf $\\rightarrow$ Pete is the Werewolf.\n    *   If Dustin is the Werewolf (or became one via Drunk), he's lying about being the Drunk or just confusing the game.\n    *   If Brett is lying about being the Werewolf to frame Pete (knowing Katie swapped them), he might be the Werewolf (if he wasn't swapped) or just a confused player.\n    *   Wait, if Katie swapped Brett and Pete, and Brett *started* as the Werewolf, then Pete *ended* as the Werewolf.\n    *   If Brett is lying and *isn't* the Werewolf, but wants Pete to be voted out, why would he admit to being the Werewolf? Usually, Werewolves try to hide. However, in One Night Ultimate Werewolf, admitting to being the Werewolf *before* a swap is a common strategy to get the person you were swapped with voted out.\n\n    *   Katie: Troublemaker (swapped Brett/Pete).\n    *   Brett: Starting Werewolf $\\rightarrow$ Ending (something else).\n    *   Pete: Starting (something else) $\\rightarrow$ Ending Werewolf.\n    *   Dustin: Drunk $\\rightarrow$ Ending (something else).\n\n    *   Dustin's claim to be the Drunk and then suddenly \"a Werewolf now\" is very weird. But he says \"I did a Drunk swap with this... I'm a Werewolf now.\" This is impossible unless he's the Robber or something else, as the Drunk doesn't see the card.\n    *   However, the most cohesive narrative provided by the players is: Katie (Troublemaker) swapped Brett and Pete, and Brett (starting Werewolf) is pointing at Pete.\n\n    *   If Brett was the Werewolf and Katie swapped him with Pete, Pete is the Werewolf.\n    *   If Dustin is the Werewolf, he's playing very poorly/confusedly.\n    *   If Katie is the Werewolf, she's lying about being the Troublemaker.\n\n    *   Brett is very insistent that Pete is the target.\n    *   Katie seems to believe Brett's logic (that if she swapped them and Brett was the wolf, Pete is now the wolf).\n    *   Dustin is erratic.\n\n    *   If Brett was the Werewolf and was swapped with Pete, Pete is the current Werewolf.\n    *   Voting for Pete is the most logical move based on the claims of Katie (Troublemaker) and Brett (Starting Werewolf).\n\n    *   Wait, Brett says: \"I was the Werewolf... I saw the Tanner in the center.\"\n    *   Katie says: \"I trouble made [Brett and Pete].\"\n    *   If these are true, Pete is the Werewolf.\n    *   Dustin says: \"I was the Drunk... I'm a Werewolf now.\" This is a contradiction. If he's the Drunk, he doesn't know he's a Werewolf. If he's the Werewolf, he's lying about being the Drunk.\n    *   But if Dustin is the Werewolf, then Brett is lying about being the Werewolf. Why would Brett lie about being the Werewolf? To get Pete voted out? That only makes sense if Brett knows Pete is the Werewolf. But Brett only knows Pete is the Werewolf if Brett was the Werewolf and was swapped.\n\n    *   The most likely scenario for a win is to follow the Troublemaker's swap. Katie (Troublemaker) swapped Brett and Pete. Brett claims he was the Werewolf. Therefore, Pete is the Werewolf.\n\n    *   Pete: Claims Seer, saw Robber in center.\n    *   Brett: Claims Werewolf, saw Tanner in center.\n    *   Katie: Claims Troublemaker, swapped Brett and Pete.\n    *   Dustin: Claims Drunk, then claims he's a Werewolf.\n\n    *   If Katie is Troublemaker and Brett was Werewolf, Pete is the Werewolf.\n    *   If Dustin is the Werewolf, he's just admitting it? \"I'm a Werewolf now.\" But he says he was the Drunk.\n    *   If Dustin is the Werewolf, why would Brett lie and say *he* was the Werewolf?\n    *   The most consistent (though potentially deceptive) path is that Brett was the Werewolf, got swapped by Katie, and is now trying to get Pete (the current Werewolf) voted out.\n\n    *   Chosen vote: Pete.\n    *   Justification: Katie claims to be the Troublemaker and swapped Brett and Pete. Brett claims he was the starting Werewolf. If both are telling the truth, Pete is now the Werewolf. Dustin's claims are contradictory (claiming to be the Drunk but knowing he is now a Werewolf), making him less reliable or a distraction.",
+  "parsed_output": {
+    "justification": "Katie claims to be the Troublemaker and states she swapped the cards of Brett and Pete. Brett claims he was the starting Werewolf, which, if true, means Pete is now the Werewolf due to the swap. While Dustin makes contradictory claims about being the Drunk and then suddenly knowing he is a Werewolf, the most cohesive narrative provided by the players points to Pete as the current Werewolf.",
+    "chosen_vote": "Pete"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Katie claims to be the Troublemaker and states she swapped the cards of Brett and Pete. Brett claims he was the starting Werewolf, which, if true, means Pete is now the Werewolf due to the swap. While Dustin makes contradictory claims about being the Drunk and then suddenly knowing he is a Werewolf, the most cohesive narrative provided by the players points to Pete as the current Werewolf.\",\n  \"chosen_vote\": \"Pete\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Katie claims to be the Troublemaker and states she swapped the cards of Brett and Pete. Brett claims he was the starting Werewolf, which, if true, means Pete is now the Werewolf due to the swap. While Dustin makes contradictory claims about being the Drunk and then suddenly knowing he is a Werewolf, the most cohesive narrative provided by the players points to Pete as the current Werewolf.\",\n  \"chosen_vote\": \"Pete\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Pete",
+    "justification": "Katie claims to be the Troublemaker and states she swapped the cards of Brett and Pete. Brett claims he was the starting Werewolf, which, if true, means Pete is now the Werewolf due to the swap. While Dustin makes contradictory claims about being the Drunk and then suddenly knowing he is a Werewolf, the most cohesive narrative provided by the players points to Pete as the current Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4303,
+    "output_token_count": 1655,
+    "generation_time_sec": 170.20902252197266,
+    "used_chat_template": true,
+    "input_char_count": 14374,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

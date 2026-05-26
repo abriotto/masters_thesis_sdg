@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "698f6bbe-4347-4a06-bd5d-3482f5e4fbbe",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/698f6bbe-4347-4a06-bd5d-3482f5e4fbbe_Game1.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot\n    *   Ashley\n    *   James\n    *   Chris\n    *   Sukeshi\n    *   Sian\n\n    *   Sian: Claims to be the Drunk (starting role).\n    *   Sukeshi: Claims to have switched cards (Troublemaker).\n    *   Chris: Claims to be the Villager.\n    *   James: Claims to be the Seer (starting role), says he saw Chris as a Villager. Later claims he was a Werewolf and Elliot (Robber) switched with him.\n    *   Elliot: Claims to be the Robber, says he swapped with James.\n    *   Ashley: No specific role claim, but accused of being a Minion by Sukeshi.\n\n    *   Sian (Drunk) -> Swaps with center.\n    *   Sukeshi (Troublemaker) -> Swaps two others.\n    *   Elliot (Robber) -> Swaps with another player.\n    *   James (Seer/Werewolf?) -> Claims to be Seer, then claims to be Werewolf.\n\n    *   James claims he was the Seer and saw Chris as a Villager.\n    *   Elliot claims he was the Robber and swapped with James.\n    *   If Elliot was the Robber and swapped with James, and James was the Seer, Elliot is now the Seer and James is now the Robber.\n    *   However, James then changes his story: \"I was a werewolf. So Elliot was the robber and he switched with me... so he's a werewolf now.\"\n    *   If James was a Werewolf and Elliot (Robber) swapped with him, Elliot is now the Werewolf and James is now the Robber.\n\n    *   James's behavior is erratic. He first claims Seer, then claims Werewolf.\n    *   If James is the Tanner, he wants to be voted out. Claiming to be a Werewolf is a classic Tanner move.\n    *   If James is a Werewolf, he might be trying to confuse the group or frame Elliot.\n    *   If Elliot is the Werewolf (via Robber swap), James is telling the truth about the swap.\n    *   Sukeshi suggests voting for Sian.\n    *   James pushes for Elliot.\n    *   Elliot warns not to trust James.\n\n    *   James's claim \"I was a werewolf\" is highly suspicious. In One Night Ultimate Werewolf, admitting to being a werewolf usually means you are either the Tanner or you've given up.\n    *   If James is the Tanner, voting for him helps the Tanner win.\n    *   If James is a Werewolf, voting for him helps the Village win.\n    *   If Elliot is the Werewolf (because he robbed James), voting for Elliot helps the Village win.\n    *   Wait, James says: \"I was a werewolf... Elliot switched with me so he's a werewolf now.\" This means James is claiming he is *no longer* the werewolf, but Elliot is.\n    *   If James was the Werewolf and Elliot robbed him, Elliot is now the Werewolf.\n    *   If James is lying and he is actually the Werewolf, he's trying to frame Elliot.\n\n    *   Sian: Claims Drunk.\n    *   Sukeshi: Claims Troublemaker.\n    *   Chris: Claims Villager.\n    *   James: Claims Seer -> Werewolf (swapped by Robber).\n    *   Elliot: Claims Robber.\n    *   Ashley: No claim.\n\n    *   If James is the Werewolf and is lying about the swap, he's the target.\n    *   If James is telling the truth about the swap, Elliot is the Werewolf.\n    *   If James is the Tanner, he's trying to get himself voted out (though he's currently trying to get Elliot voted out, which is contradictory for a Tanner unless he's playing a very complex game). Actually, James says \"you can kill me\" (line 216), which is a strong Tanner signal.\n\n    *   James: \"I was a werewolf... you can kill me, but I think I'm the robber now. Elliot switched with me so he's a werewolf now.\"\n    *   This is confusing. He's essentially saying \"I was the werewolf, but now Elliot is.\"\n    *   If James is the Tanner, he wants to die.\n    *   If James is the Werewolf, he wants to survive.\n    *   If Elliot is the Werewolf, the Village wins by voting Elliot.\n\n    *   James's sudden shift from Seer to Werewolf is very suspicious.\n    *   Elliot's claim to be the Robber is consistent.\n    *   If James is the Werewolf and is trying to frame Elliot, James is the target.\n    *   If James is the Tanner, voting for him is a loss for the Village.\n    *   However, James's claim \"I was a werewolf\" is so blatant that it's either a very bad bluff or a Tanner play.\n    *   Let's look at the other players. Ashley hasn't said much. Sian claimed Drunk. Sukeshi claimed Troublemaker.\n    *   The most likely Werewolf candidates are James or Elliot.\n    *   Given James's erratic claims (\"I was the Seer\" -> \"I was a werewolf\"), he is the most suspicious player. Even if he's the Tanner, the prompt asks for the player *most likely* to be a Werewolf.\n\n    *   James claims he was a Werewolf and Elliot robbed him.\n    *   If this is true, Elliot is the Werewolf.\n    *   If this is a lie, James is likely the Werewolf (or Tanner).\n    *   In many games, the person making the most chaotic claims is the one to vote for. James's flip-flopping is a huge red flag.\n\n    *   James: \"I was a werewolf... you can kill me... Elliot switched with me so he's a werewolf now.\"\n    *   If James is the Werewolf, he's trying to shift the role to Elliot.\n    *   If James is the Tanner, he's trying to get voted out.\n    *   If James is the Robber (after being robbed), he's just confused.\n    *   But James's claim to have been a Werewolf is the most direct evidence of Werewolf presence, even if he's trying to deflect it.\n\n    *   James is the most suspicious due to contradictory claims (Seer vs. Werewolf).\n    *   Elliot's claim to be the Robber is straightforward.\n    *   Voting for James is the most logical choice for the Village, as he is either the Werewolf or the Tanner (and the prompt asks for the most likely Werewolf).\n\n    *   Wait, if James is the Tanner, voting for him makes the Tanner win.\n    *   If James is the Werewolf, voting for him makes the Village win.\n    *   If Elliot is the Werewolf, voting for Elliot makes the Village win.\n    *   James's claim \"I was a werewolf\" is a huge tell. Whether he's lying to frame Elliot or telling the truth about his starting role, he's the center of the suspicion.\n\n    *   James claims he was the Seer.\n    *   Then he claims he was the Werewolf.\n    *   He claims Elliot robbed him.\n    *   If James was the Werewolf and Elliot robbed him, Elliot is now the Werewolf.\n    *   If James is the Werewolf and is lying about the robbery, James is the Werewolf.\n    *   If James is the Tanner, he's just lying.\n    *   Between James and Elliot, James is the one acting most like a Werewolf/Tanner.\n\n    *   Sukeshi: \"I'm voting for Sian.\"\n    *   James: \"I've got to go with Elliot.\"\n    *   Ashley: \"I'm going over here [pointing to someone, likely Elliot or Sian].\"\n    *   The discussion is fragmented. However, James's behavior is the most anomalous.\n\n    *   James's claim to have been a Werewolf is the strongest lead. Even if he claims he's no longer the Werewolf, the fact that he's associating himself with the role makes him the primary suspect.\n\n    *   James claims he was the Seer, then claims he was the Werewolf.\n    *   He claims Elliot robbed him, making Elliot the Werewolf.\n    *   This is a classic attempt to deflect.\n    *   Therefore, James is the most likely Werewolf.\n\n    *   Wait, if James is the Tanner, he *wants* to be voted out.\n    *   If James is the Werewolf, he *doesn't* want to be voted out.\n    *   James says \"you can kill me\" (line 216). This is a very Tanner-like thing to say.\n    *   But if he's the Tanner, he's not the Werewolf.\n    *   Is there anyone else? Ashley? Sian?\n    *   Sian claimed Drunk. Sukeshi claimed Troublemaker. Chris claimed Villager.\n    *   If James is the Tanner, then who is the Werewolf?\n    *   Maybe Elliot? James says Elliot is the Werewolf.\n    *   But James's claims are so unreliable that his accusation of Elliot is also unreliable.\n    *   In these games, the most erratic player is usually the best bet for the Village, unless they are clearly the Tanner. James's \"you can kill me\" is suspicious, but his \"I was a werewolf\" is even more so.\n\n    *   James's contradictions (Seer vs. Werewolf) and his attempt to frame Elliot make him the most likely candidate for a Werewolf attempting to deceive the group.\n\n    *   James: \"I was a werewolf... Elliot switched with me so he's a werewolf now.\"\n    *   If James is the Werewolf, he's lying about the swap to frame Elliot.\n    *   If James is the Tanner, he's lying to get voted out.\n    *   If James is the Robber, he's just confused.\n    *   The most likely \"Werewolf\" behavior is James's.\n\n    *   Justification: James provides contradictory claims, first stating he was the Seer and later claiming he was a Werewolf. He then attempts to shift the Werewolf role onto Elliot by claiming Elliot robbed him. This erratic behavior and attempt to frame another player are strong indicators that James is either the Werewolf or the Tanner, making him the most likely target for the Village.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James provides highly contradictory claims, first stating he was the Seer and later claiming he was a Werewolf. He then attempts to shift the Werewolf role onto Elliot by claiming Elliot robbed him, which is a common tactic for a Werewolf to deflect suspicion. This erratic behavior and the blatant admission of having been a Werewolf make him the most suspicious player in the game.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James provides highly contradictory claims, first stating he was the Seer and later claiming he was a Werewolf. He then attempts to shift the Werewolf role onto Elliot by claiming Elliot robbed him, which is a common tactic for a Werewolf to deflect suspicion. This erratic behavior and the blatant admission of having been a Werewolf make him the most suspicious player in the game.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James provides highly contradictory claims, first stating he was the Seer and later claiming he was a Werewolf. He then attempts to shift the Werewolf role onto Elliot by claiming Elliot robbed him, which is a common tactic for a Werewolf to deflect suspicion. This erratic behavior and the blatant admission of having been a Werewolf make him the most suspicious player in the game.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James provides highly contradictory claims, first stating he was the Seer and later claiming he was a Werewolf. He then attempts to shift the Werewolf role onto Elliot by claiming Elliot robbed him, which is a common tactic for a Werewolf to deflect suspicion. This erratic behavior and the blatant admission of having been a Werewolf make him the most suspicious player in the game."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5992,
+    "output_token_count": 2495,
+    "generation_time_sec": 263.43321990966797,
+    "used_chat_template": true,
+    "input_char_count": 18114,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

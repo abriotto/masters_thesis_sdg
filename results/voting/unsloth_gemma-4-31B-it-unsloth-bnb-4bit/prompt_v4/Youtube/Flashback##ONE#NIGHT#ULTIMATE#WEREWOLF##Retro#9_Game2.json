@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Switched Paul and Mitchell.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Villager/Robber/Insomniac.\n    *   James: Claims Villager (but previously joked/claimed he was a werewolf).\n    *   Mitchell: Claims Seer. Saw Robber and Insomniac in the center.\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   If Robber and Insomniac are in the center, then the remaining roles are: Villager, Werewolf, Minion, Seer, Troublemaker, etc.\n    *   Wait, let's check the roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   If Robber and Insomniac are in the center, they are not in play.\n    *   Paul claimed he was Villager, Robber, or Insomniac. If Mitchell is telling the truth, Paul cannot be Robber or Insomniac. He must be Villager or something else (like Werewolf).\n\n    *   Justin (Troublemaker) says he switched Paul and Mitchell.\n    *   If Paul was a Werewolf and Mitchell was a Villager, then after the switch, Mitchell is the Werewolf and Paul is the Villager.\n    *   If Paul was a Villager and Mitchell was a Werewolf, then after the switch, Paul is the Werewolf and Mitchell is the Villager.\n\n    *   James claimed he was a werewolf at one point ([114], [138]), then claimed he was a villager ([125], [134]).\n    *   Justin says he *didn't* switch James ([119]).\n    *   Justin says he switched Paul and Mitchell ([117]).\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   Paul claimed he was Villager, Robber, or Insomniac.\n    *   If Mitchell is honest, Paul is either a Villager or lying.\n    *   Justin (Troublemaker) switched Paul and Mitchell.\n    *   If Paul was the Werewolf, Mitchell is now the Werewolf.\n    *   If Mitchell was the Werewolf, Paul is now the Werewolf.\n    *   Wait, Mitchell claims he is the Seer. If he is the Seer, he is Team Village.\n    *   If Mitchell is the Seer and Justin switched him with Paul, then Paul is now the Seer and Mitchell is whatever Paul was.\n    *   If Paul was the Werewolf, Mitchell is now the Werewolf.\n\n    *   James's behavior is erratic. He claimed to be a werewolf, then a villager.\n    *   However, Justin (Troublemaker) specifically says he switched Paul and Mitchell.\n    *   If Justin is telling the truth about the switch:\n        *   Paul (starting role) <-> Mitchell (starting role).\n    *   If Mitchell was the Seer (starting role), then Paul is now the Seer.\n    *   If Paul was the Werewolf (starting role), then Mitchell is now the Werewolf.\n    *   If Paul was a Villager (starting role), then Mitchell is now a Villager.\n\n    *   James claimed to be a werewolf ([114]) but then said he was joking/testing ([138]).\n    *   Justin says he didn't switch James.\n    *   If James is the Werewolf, he stays the Werewolf.\n    *   If James is a Villager, he stays a Villager.\n\n    *   Mitchell claims Seer.\n    *   Justin claims Troublemaker.\n    *   Paul claims Villager/Robber/Insomniac.\n    *   Laura claims Villager.\n    *   James claims Villager (after claiming Werewolf).\n\n    *   If Mitchell is the Seer and saw Robber/Insomniac in the center, then Paul's claim of being Robber/Insomniac is a lie.\n    *   If Paul is lying, he's likely the Werewolf.\n    *   If Paul was the Werewolf and Justin switched him with Mitchell, then Mitchell is now the Werewolf.\n    *   Wait, let's re-read the transcript carefully.\n    *   [111] Justin: \"And Paul. Fuck! So you were the werewolf.\" (Referring to the switch).\n    *   [117] Justin: \"No. You and Paul.\" (Correcting himself, saying he switched Paul and Mitchell).\n    *   [151] Paul: \"...when Justin said no, he didn't actually switch James and somebody, it was actually me and Mitchell.\"\n    *   [156] Paul: \"If I was lying, I would say that Mitchell was because he got switched with me.\"\n\n    *   If Paul was the Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   If James is the Werewolf, he's still the Werewolf.\n    *   James's admission (\"Yeah\" to \"So you were the werewolf\" at [114]) is very suspicious, even if he later retracted it.\n\n    *   Justin (Troublemaker) switched Paul and Mitchell.\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   Paul claimed to be Robber/Insomniac/Villager.\n    *   Since Robber/Insomniac are in the center, Paul is either a Villager or a Werewolf.\n    *   If Paul was the Werewolf, Mitchell is now the Werewolf.\n    *   If James is the Werewolf, he remains the Werewolf.\n\n    *   James's \"confession\" at [114] is a huge red flag.\n    *   Paul's claim to be Robber/Insomniac is contradicted by Mitchell's Seer claim.\n    *   If Paul was the Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   If James is the Werewolf, he's the target.\n\n    *   Let's look at the voting consensus in the transcript.\n    *   [127] Mitchell: \"So kill Mitchell, kill Mitchell!\" (Wait, Mitchell is suggesting killing himself?)\n    *   [128] Paul: \"Kill Mitchell. Should we vote for Mitchell?\"\n    *   [133] Justin: \"I'm good to kill James if you guys are.\"\n    *   [145] Justin: \"No, I think we kill James.\"\n    *   [146] Mitchell: \"I agree.\"\n    *   [155] Justin: \"I think we kill James.\"\n\n    *   James admitted to being the werewolf ([114]), then tried to backtrack ([138]).\n    *   Justin (Troublemaker) did not switch James.\n    *   Therefore, if James was the werewolf, he is still the werewolf.\n    *   The other confusion involves Paul and Mitchell, but James's admission is the most direct evidence.\n\n    *   Wait, let's re-read [111]-[115].\n    *   [111] Justin: \"And Paul. Fuck! So you were the werewolf.\" (Justin is talking to James here? No, the transcript says \"And Paul. Fuck! So you were the werewolf.\" but the context is Justin talking about the switch).\n    *   [113] Justin: \"So you were the werewolf.\" (Talking to James).\n    *   [114] James: \"Yeah.\"\n    *   [115] Justin: \"All right. I switched you two.\" (Justin thinks he switched James and Paul).\n    *   [117] Justin: \"No. You and Paul.\" (Wait, Justin is confusing himself).\n    *   [119] Justin: \"I didn't switch James. I didn't touch James.\"\n    *   [151] Paul: \"...it was actually me and Mitchell.\"\n\n    *   Okay, so Justin switched Paul and Mitchell.\n    *   James admitted to being the werewolf ([114]).\n    *   James was not switched.\n    *   Therefore, James is the most likely werewolf.\n\n    *   James: Admitted to being the werewolf, then retracted. Not switched.\n    *   Paul: Claimed roles that were in the center (according to Mitchell). Switched with Mitchell.\n    *   Mitchell: Claimed Seer. Switched with Paul.\n    *   If James is the werewolf, the village wins by voting him.\n\n    *   Could James be the Tanner? Tanners want to be voted out. Admitting to being a werewolf is a classic Tanner strategy.\n    *   However, in the absence of other strong evidence, the \"confessed\" werewolf is the primary target.\n    *   Let's double-check Paul. Paul claimed Robber/Insomniac. Mitchell (Seer) saw those in the center. This means Paul lied. If Paul lied, he's either a Werewolf or the Tanner.\n    *   If Paul was the Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   But James's admission is more explicit.\n\n    *   James: \"I was this [werewolf]\" ([61]), \"Yeah [I was the werewolf]\" ([114]).\n    *   Then: \"I was a villager\" ([125]), \"I want to see what other people would fucking say\" ([138]).\n    *   This is highly suspicious.\n\n    *   Justin (Troublemaker) switched Paul and Mitchell.\n    *   James was not switched.\n    *   James admitted to being the werewolf.\n    *   Therefore, James is the most likely candidate for elimination.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being the werewolf multiple times during the discussion (e.g., at [61] and [114]), although he later attempted to backtrack by claiming he was testing the other players. Justin, acting as the Troublemaker, confirmed that he did not switch James's card, meaning if James started as a werewolf, he remained one. While Paul's claims were contradicted by Mitchell's Seer information, James's direct admission makes him the most likely target for Team Village.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being the werewolf multiple times during the discussion (e.g., at [61] and [114]), although he later attempted to backtrack by claiming he was testing the other players. Justin, acting as the Troublemaker, confirmed that he did not switch James's card, meaning if James started as a werewolf, he remained one. While Paul's claims were contradicted by Mitchell's Seer information, James's direct admission makes him the most likely target for Team Village.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being the werewolf multiple times during the discussion (e.g., at [61] and [114]), although he later attempted to backtrack by claiming he was testing the other players. Justin, acting as the Troublemaker, confirmed that he did not switch James's card, meaning if James started as a werewolf, he remained one. While Paul's claims were contradicted by Mitchell's Seer information, James's direct admission makes him the most likely target for Team Village.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being the werewolf multiple times during the discussion (e.g., at [61] and [114]), although he later attempted to backtrack by claiming he was testing the other players. Justin, acting as the Troublemaker, confirmed that he did not switch James's card, meaning if James started as a werewolf, he remained one. While Paul's claims were contradicted by Mitchell's Seer information, James's direct admission makes him the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4432,
+    "output_token_count": 2348,
+    "generation_time_sec": 236.96801447868347,
+    "used_chat_template": true,
+    "input_char_count": 15141,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

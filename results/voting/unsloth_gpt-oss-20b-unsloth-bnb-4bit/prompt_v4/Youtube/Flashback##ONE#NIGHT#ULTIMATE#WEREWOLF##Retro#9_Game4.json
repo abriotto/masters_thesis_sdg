@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "The transcript is largely incoherent and lacks clear indications of any player’s identity beyond self‑reported roles (e.g., Paul claiming Robber, Justin claiming Troublemaker). The dialogue offers no concrete evidence pointing to a werewolf amongst the five players. Without reliable evidence to identify a suspect, the safest choice is to use the Circle Vote option.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "<|channel|>analysis<|message|>We need to analyze the transcript. The goal is to determine who is likely the werewolf(s). The transcript appears random and confusing; seems like participants not fully coherent. Probably naive chat, many conflations. Maybe we cannot determine a clear suspect. Might default to Circle Vote.\n\nWe must consider roles list: Justin, Laura, Paul, James, Mitchell. We need to pick someone based on discussion maybe canceled else circle.\n\nLet's parse conversation.\n\nIt started with Announcer: \"Match. Close your eyes.\" Then Justin says \"I forgot what I am.\" etc. But overall it's messy.\n\nKey pieces: \"Paul: I will, right away, tell you I was the Robber.\" So Paul indicates himself as Robber? He said \"I was the Robber.\" That means his starting role was Robber, but now he's describing his action.\n\nAlso, \"Justin: I was a Troublemaker and or a Seer or-\" etc. He claims he was Troublemaker? Later \"Justin: No. I was a Troublemaker.\" So Justin might have been Troublemaker. That would mean during night he swapped two other players. So his post-night role still depends. After Troublemaker, if he wasn't swapped into another role. But the conversation claims he is or was troublemaker. Possibly he is currently a Troublemaker.\n\n\"Miss: ... standard?\".\n\nWe see ambiguity about roles. Based on the discussion, it doesn't clearly indicate who is werewolf. It's quite chaotic.\n\nThus safe answer: Circle Vote.\n\nBut ideally we evaluate: Werewolves would try to not be voted, the rest try to detect they exist. But there is no clear suspicion directed at someone. We can't confidently pick a target.\n\nHence Circle vote.\n\nWe'll output justification: essentially no strong evidence that any player is a werewolf.\n\nLet's produce final JSON.<|channel|>final <|constrain|>json<|message|>{\"justification\":\"The transcript is largely incoherent and lacks clear indications of any player’s identity beyond self‑reported roles (e.g., Paul claiming Robber, Justin claiming Troublemaker). The dialogue offers no concrete evidence pointing to a werewolf amongst the five players. Without reliable evidence to identify a suspect, the safest choice is to use the Circle Vote option.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is largely incoherent and lacks clear indications of any player’s identity beyond self‑reported roles (e.g., Paul claiming Robber, Justin claiming Troublemaker). The dialogue offers no concrete evidence pointing to a werewolf amongst the five players. Without reliable evidence to identify a suspect, the safest choice is to use the Circle Vote option.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is largely incoherent and lacks clear indications of any player’s identity beyond self‑reported roles (e.g., Paul claiming Robber, Justin claiming Troublemaker). The dialogue offers no concrete evidence pointing to a werewolf amongst the five players. Without reliable evidence to identify a suspect, the safest choice is to use the Circle Vote option."
+  },
+  "soft_warnings": [
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3900,
+    "output_token_count": 469,
+    "generation_time_sec": 145.9347369670868,
+    "used_chat_template": true,
+    "input_char_count": 15081,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

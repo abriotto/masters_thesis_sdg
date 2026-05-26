@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine which player is likely a werewolf to suggest voting. We must analyze transcript.\n\nWe have five players: Justin, Carly, Paul, Mitchell, Mike. They talk a lot but noise. Hard to parse roles. The video transcripts likely contains confusion; we can't know roles easily. But start: Announcer instructs werewolves, etc. The actual game likely had roles unknown to us.\n\nWe might assume typical distribution: 5 players -> candidate roles maybe 8 total? With 3 center. Starting roles: random assignment. In games, a common deck is: 2 Werewolves, 1 Minion, 2 Villagers? For 5 players, you often have 8 roles. But not sure.\n\nGiven limited data, we cannot deduce exact roles.\n\nLet's read transcript for clues. There's talk about troublemaker, minion, waswolf.\n\nCarly \"I switched two cards\" implying Troublemaker swapped two cards, or maybe the player doing it is troublemaker. But verifying.\n\nList of statements and interactions:\n\n- Announcer sets up the role sequence: \"Werewolves\" etc. This indicates that there is at least one werewolf. The main pattern: first the Werewolves are referred to (multiple). Suggests possibly there are two werewolves. As Announcer gives instructions for werewolves, ok.\n\n- People mention \"the minion…\" \"He doesn't.\" Actually, the minion usually is on the Werewolf team. It turns out that players like Mike talk about \"Minions\" and \"Tanner.\" There's also talk about \"trouble maker.\"\n\nThe crucial point: we need to identify likely werewolf(s). But we don't exactly know the roles. However, we can infer from origin of each player. Perhaps the initial play after night actions leads to certain roles: Since \"Troublemaker\" will have swapped two other's cards. That could cause misbelief.\n\nBut given the messy transcript, perhaps the simplest conclusion: No obvious clear indicator of who is a werewolf; maybe all 5 are non-werewolf? But probability not.\n\nWe may note this: Justin says \"So if a villager dies and he doesn't die, he's basically a werewolf.\" Not helpful.\n\nLater, Justin says \"Carly says: I switched two cards ...\"\n\nFrom conversation, Paul sets up to be troublemaker: \"Paul: I am going to let you in a secret that I claim troublemaker at the beginning of almost every single game, ...\"\n\nNow more context: There was talk about \"If there's only one Werewolf\" earlier: \"If there is only one werewolf, you may look at a card from the center.\" That refers to order: \"If there are 2 werewolves\".\n\nBut I think the essential identity: Since the game had 5 players, it's likely that the roles are: 2 minions? Can't, only one minion. So for 5 players: maybe 2 werewolves, 1 minion, 2 villagers? But we don't know.\n\nAlternatively, maybe there is a war.\n\nBut I suspect this is chaotic conversation and unpredictable.\n\nWhat is the final aim? The instruction: choose the optionmost likely to help Team Village win. Typically, vote for the player likely a werewolf. The conversation suggests that Paul claims to be troublemaker, but also being suspected by others. But Justin claims \"The right to vote for Paul\" in one place; and \"So no, I think the best is: choose Justin\"? Hmm.\n\nLet's try glean role assignment: We have five players: Justin, Carly, Paul, Mitchell, Mike.\n\nSuppose the starting roles: maybe duplicate: [??]. For 5 players, a typical deck: 3 Villages, 1 Werewolf, 1 Minion? Actually one Minion. That would be 5 roles: 1 Werewolf, 1 Minion, 3 villagers. So 1 werewolf, 1 minion, 3 villagers. But there might be one werewolf for standard, or two. Hard to decide.\n\nBut note the instructions: \"If there is only one werewolf, etc.\" This indicates that there may be 1 werewolf. So maybe roles: 1 wolf, 1 minion, 3 villagers (untouched). The conversation indicates \"Har\".\n\nAnyway, let's decide: In any case, we might vote for \"Carly\" because she is suspected of being troublemaker and may have switched 2 cards.\n\nHowever, many transcripts mention \"Carly: I switched two cards,\" but it's unclear if she is troublemaker: maybe a player who can swap; if the problem describes that she said \"I switched two cards,\" that means she might be the troublemaker. So if she is the troublemaker, she is a village player and may not be werewolf. But the troublemaker could be on either team. It depends.\n\nThey talk about “I'm going to let you in a secret that I claim troublemaker at the beginning of almost every single game.”\n\nMeanwhile, some say \"Paul had to be the troublemaker\" but then someone said \"Mitchell is a werewolf.\" So maybe the werewolf is Mitchell. Many say \"Mitchell is a werewolf.\" Then Justin votes for Mitchell.\n\nBut there's confusion: At line 86: \"Carly: Mitchell is the werewolf.\" Then Justin says \"Sure. I'll vote for Mitchell.\" So at that point it seems many think Mitchell is the werewolf. But is it? It's uncertain.\n\nGiven all this confusion, I think the most plausible target to vote for would be Mitchell. Because many suspect he's the werewolf, he is a likely target for voting to eliminate.\n\nTherefore, I'd output \"Mitchell\" as chosen vote.\n\nNow produce output JSON.\n\nAlso justification: mention that numerous players suspect Mitchell; conversation support that he might be a werewolf, so voting for Mitchell likely to help Village win.",
+  "parsed_output": {
+    "justification": "The discussion shows several players repeatedly identifying Mitchell as the suspect arewolf—Carly explicitly states \"Mitchell is the werewolf\" and others express conviction that he is a werewolf. No strong evidence suggests another player holds a wolf role, and eliminating Mitchell offers the highest chance of removing a would-be wolf and winning for the Village. Since the village's goal is to kill at least one werewolf, targeting Mitchell maximizes that probability. This aligns with the most probable outcome based on available dialogue.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The discussion shows several players repeatedly identifying Mitchell as the suspect arewolf—Carly explicitly states \\\"Mitchell is the werewolf\\\" and others express conviction that he is a werewolf. No strong evidence suggests another player holds a wolf role, and eliminating Mitchell offers the highest chance of removing a would-be wolf and winning for the Village. Since the village's goal is to kill at least one werewolf, targeting Mitchell maximizes that probability. This aligns with the most probable outcome based on available dialogue.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The discussion shows several players repeatedly identifying Mitchell as the suspect arewolf—Carly explicitly states \\\"Mitchell is the werewolf\\\" and others express conviction that he is a werewolf. No strong evidence suggests another player holds a wolf role, and eliminating Mitchell offers the highest chance of removing a would-be wolf and winning for the Village. Since the village's goal is to kill at least one werewolf, targeting Mitchell maximizes that probability. This aligns with the most probable outcome based on available dialogue.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The discussion shows several players repeatedly identifying Mitchell as the suspect arewolf—Carly explicitly states \"Mitchell is the werewolf\" and others express conviction that he is a werewolf. No strong evidence suggests another player holds a wolf role, and eliminating Mitchell offers the highest chance of removing a would-be wolf and winning for the Village. Since the village's goal is to kill at least one werewolf, targeting Mitchell maximizes that probability. This aligns with the most probable outcome based on available dialogue."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4020,
+    "output_token_count": 1330,
+    "generation_time_sec": 401.00637698173523,
+    "used_chat_template": true,
+    "input_char_count": 15415,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

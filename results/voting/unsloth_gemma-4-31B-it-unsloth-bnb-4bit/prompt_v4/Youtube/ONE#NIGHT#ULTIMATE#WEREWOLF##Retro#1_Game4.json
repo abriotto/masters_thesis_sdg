@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Alvin\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Robber, switched with Alvin.\n    *   Alvin: Claims Villager (starting).\n    *   James: Initially claims Villager, then claims Seer (saw Werewolf and Troublemaker in the center).\n    *   Mitchell: Claims Villager.\n\n    *   James: Claims Seer, saw Werewolf and Troublemaker in the center.\n    *   Justin: Claims Robber, switched with Alvin.\n    *   Alvin: Claims Villager.\n    *   Mitchell: Claims Villager.\n\n    *   If James is the Seer and saw a Werewolf and a Troublemaker in the center, then there is only one Werewolf card left in the game (since there are usually 2-3 werewolves in a standard deck, but the rules say \"up to two Masons\" and \"at most one of each other listed role\", but Werewolves can be multiple). Wait, the rules say \"multiple Villagers and multiple Werewolves\".\n    *   If James saw a Werewolf and a Troublemaker in the center, and there are 4 players, the total cards are 7 (4 players + 3 center).\n    *   Center cards: Werewolf, Troublemaker, [Unknown].\n    *   If James is telling the truth, the remaining cards are: Seer (James), Robber (Justin), Villager (Alvin), Villager (Mitchell), and one more card in the center.\n    *   Wait, if James saw a Werewolf in the center, and there's only one Werewolf card in the center, there could still be another Werewolf in the game.\n    *   However, if James is lying about being the Seer, he is likely the Werewolf.\n\n    *   Justin claims Robber and switched with Alvin.\n    *   If Justin is the Robber and switched with Alvin, and Alvin was a Villager, Justin is now a Villager and Alvin is now the Robber.\n    *   If Justin is the Robber and switched with Alvin, and Alvin was a Werewolf, Justin is now the Werewolf and Alvin is now the Robber.\n\n    *   James claimed Villager first, then suddenly claimed Seer. This is a common bluffing pattern for Werewolves.\n    *   James says he saw a Werewolf and a Troublemaker in the center. If he's lying, he's trying to convince the group that the Werewolf is in the center (to get a Circle Vote) or to distract from himself.\n    *   Mitchell is suspicious of James.\n    *   Alvin is suspicious of Mitchell.\n    *   Justin is suspicious of James.\n\n    *   James's shift from \"Villager\" to \"Seer\" is highly suspicious.\n    *   If James is the Werewolf, he wants to avoid being voted out. Claiming Seer and saying a Werewolf is in the center is a classic strategy to encourage a Circle Vote or shift suspicion.\n    *   Justin's claim as Robber is relatively consistent.\n    *   Alvin and Mitchell both claim Villager.\n\n    *   If James is the Werewolf, voting for him wins for the Village.\n    *   If James is the Seer, then the Werewolf is either Justin, Alvin, or Mitchell (or in the center).\n    *   If James is the Seer and saw a Werewolf in the center, and there's only one Werewolf in the game, then the Village wins by Circle Voting. But if there are two Werewolves, one is still in play.\n    *   However, James's behavior (changing his claim) is the strongest indicator of deception.\n\n    *   Justin: Robber (switched with Alvin).\n    *   Alvin: Villager.\n    *   James: Seer (claims center: Werewolf, Troublemaker).\n    *   Mitchell: Villager.\n    *   If this is true, who is the Werewolf? If James saw one Werewolf in the center, and there's only one Werewolf in the game, then no one is a Werewolf. If there are two, one is among the players.\n    *   But James's sudden change in claim is the most \"Werewolf-like\" behavior here.\n\n    *   James: \"I'm a fucking villager\" -> \"I know I'm not a werewolf because I'm a seer.\"\n    *   This is a blatant contradiction. He first claimed to be a Villager (no special ability) and then claimed to be the Seer.\n\n    *   James is the most likely Werewolf due to the contradictory claims.\n\n    *   Justin: Robber (switched with Alvin).\n    *   Alvin: Villager.\n    *   James: Seer (claims center: Werewolf, Troublemaker).\n    *   Mitchell: Villager.\n    *   If James is the Seer, and he saw a Werewolf in the center, and there's only one Werewolf in the game, then the Village wins by Circle Vote.\n    *   But James's lie/contradiction makes him the prime suspect.\n\n    *   Justin: \"I think it's James.\"\n    *   Alvin: \"I think it's Mitchell.\"\n    *   James: \"I think it's Mitchell\" (after claiming Seer).\n    *   Mitchell: \"I think James is the werewolf.\"\n\n    *   James's claim shift is the most damning evidence. He claimed to be a Villager, then later claimed to be the Seer. In One Night Ultimate Werewolf, players usually stick to their role or explain a swap. James didn't explain a swap; he just changed his claim.\n\n    *   Justification: James initially claimed to be a Villager but later changed his claim to be the Seer, which is a strong indicator of bluffing. He claimed to see a Werewolf and a Troublemaker in the center, likely to divert suspicion or encourage a Circle Vote. Given the contradiction in his claims, he is the most likely candidate for the Werewolf.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James is the most suspicious player because he contradicts his own claims. He initially stated he was a Villager, but later claimed to be the Seer who saw a Werewolf and a Troublemaker in the center. This sudden shift in identity is a common bluffing tactic used by Werewolves to avoid detection or to manipulate the group into a Circle Vote.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James is the most suspicious player because he contradicts his own claims. He initially stated he was a Villager, but later claimed to be the Seer who saw a Werewolf and a Troublemaker in the center. This sudden shift in identity is a common bluffing tactic used by Werewolves to avoid detection or to manipulate the group into a Circle Vote.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James is the most suspicious player because he contradicts his own claims. He initially stated he was a Villager, but later claimed to be the Seer who saw a Werewolf and a Troublemaker in the center. This sudden shift in identity is a common bluffing tactic used by Werewolves to avoid detection or to manipulate the group into a Circle Vote.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James is the most suspicious player because he contradicts his own claims. He initially stated he was a Villager, but later claimed to be the Seer who saw a Werewolf and a Troublemaker in the center. This sudden shift in identity is a common bluffing tactic used by Werewolves to avoid detection or to manipulate the group into a Circle Vote."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4260,
+    "output_token_count": 1456,
+    "generation_time_sec": 152.13697814941406,
+    "used_chat_template": true,
+    "input_char_count": 14746,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles involved (based on announcer): Werewolf, Seer, Robber, Troublemaker, Insomniac. (Note: The announcer calls these, but not all might be in play. The rules say candidate roles = players + 3, so 3+3=6 roles were selected).\n\n    *   [2] Werewolves wake up.\n    *   [4] Seer, Robber, Troublemaker, Insomniac wake up.\n    *   [9] Paul: \"I have some information.\"\n    *   [10] Justin: \"I don't.\"\n    *   [13] Mitchell: \"He's a werewolf. He's a Seer.\" (Confusing statement, likely speculating about Paul).\n    *   [14] Justin: \"Paul and I are werewolves.\" (Likely joking or bluffing).\n    *   [19] Paul: \"If he [Justin] has no info, he's this and he woke up as the insomniac or, as a troublemaker, and didn't do anything. I don't buy it.\" (Paul is suspicious of Justin).\n    *   [36] Paul: \"These are both werewolves.\" (Referring to Justin and Mitchell).\n    *   [42] Mitchell: \"I was the troublemaker.\"\n    *   [49] Justin: \"I was an insomniac, I woke up as the insomniac.\"\n    *   [52] Mitchell: \"I didn't switch anything.\"\n    *   [57] Mitchell: \"You're both werewolves, aren't you?\"\n    *   [61] Mitchell: \"They're both werewolves. Calling it right now.\"\n\n    *   Justin claims to be the Insomniac.\n    *   Mitchell claims to be the Troublemaker (and says he didn't switch anyone).\n    *   Paul claims to have information and believes both Justin and Mitchell are werewolves.\n\n    *   If Mitchell is the Troublemaker and didn't switch anyone, and Justin is the Insomniac, then Paul must be the Werewolf (or the Seer/Robber/etc.).\n    *   If Paul is the Werewolf, he would want to frame others. He claims both others are werewolves.\n    *   If Justin is the Werewolf, he might claim to be the Insomniac.\n    *   If Mitchell is the Werewolf, he might claim to be the Troublemaker.\n    *   Wait, if Paul says \"I have some information\" and then claims both others are werewolves, he's likely the Seer or the Werewolf.\n    *   If Paul were the Seer, he could have seen one person's card. He couldn't have seen *both* Justin and Mitchell's cards unless he looked at the center cards (but then he wouldn't know who the werewolves are unless he saw two werewolf cards in the center, meaning no werewolves are in play).\n    *   If Paul is the Werewolf, he knows he is a werewolf and wants to deflect.\n    *   Let's look at the claims:\n        *   Justin: Insomniac.\n        *   Mitchell: Troublemaker (no switch).\n        *   Paul: Claims both are werewolves.\n\n    *   If Justin is Insomniac and Mitchell is Troublemaker, Paul is the only one left to be the Werewolf.\n    *   If Paul is the Werewolf, his claim that \"both are werewolves\" is a blatant lie to cause confusion or a circle vote (though in a 3-player game, if he convinces them both are werewolves, they might split the vote or he might get them to vote for each other).\n    *   Wait, if Paul is the Seer, he could have seen one person's card. If he saw Justin was a werewolf, he might claim both are werewolves to be safe or to confuse. But he says \"I know some shit\" and then \"These are both werewolves.\"\n    *   If Paul is the Werewolf, he's the most likely target.\n\n    *   Justin: Claims Insomniac.\n    *   Mitchell: Claims Troublemaker.\n    *   Paul: Claims both are werewolves.\n    *   In a 3-player game, if two people claim roles that provide no \"attack\" information (Insomniac, Troublemaker) and the third person claims they are both werewolves, the third person is often the werewolf bluffing.\n\n    *   If Paul is the Werewolf, voting for him wins for the Village.\n    *   If Justin or Mitchell is the Werewolf, voting for them wins.\n    *   Paul's behavior is the most aggressive and least consistent with a helpful Village role (unless he's a very confused Seer).\n\n    *   Paul says \"I have some information\" [9].\n    *   Then he says \"These are both werewolves\" [36].\n    *   If he were the Seer, he could only know one person's role (or the center). He cannot know *both* are werewolves unless he's a werewolf himself (and knows he's one, and maybe knows the other is one? No, in a 3-player game, there's usually only one werewolf unless specified otherwise, but the rules say \"multiple werewolves\" are possible).\n    *   However, if Paul is the Werewolf, he's lying.\n    *   If Paul is the Seer and saw one werewolf, he might be lying about the other to be \"safe\".\n    *   But the most suspicious player is Paul because he's making a bold claim (\"both are werewolves\") that is logically impossible for a Seer to verify (unless he looked at the center and saw no werewolves, but then he'd be lying about them being werewolves).\n\n    *   Justin: Insomniac.\n    *   Mitchell: Troublemaker.\n    *   Paul: ? (Claims both are werewolves).\n    *   If Paul is the Werewolf, voting for him is the correct move.\n\n    *   Could Justin be the Werewolf? He joked \"Paul and I are werewolves\" [14]. This is a common \"troll\" move.\n    *   Could Mitchell be the Werewolf? He claims Troublemaker.\n    *   Paul's claim that *both* are werewolves is the most suspicious part of the transcript. In a 3-player game, having two werewolves is possible but less common. If Paul is the only one not claiming a specific \"Village\" role (he just says \"I have information\"), he's the prime suspect.\n\n    *   Paul claims both Justin and Mitchell are werewolves.\n    *   Justin claims Insomniac.\n    *   Mitchell claims Troublemaker.\n    *   If Paul is the Werewolf, he is lying to avoid being caught.\n    *   If Paul is the Seer, he could only know one person's role.\n    *   Therefore, Paul is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Paul claims to have information and asserts that both Justin and Mitchell are werewolves. However, in a three-player game, it is highly unlikely that two players are werewolves, and even if they were, a Seer could not have verified both of their roles in one night. Justin and Mitchell both claim specific village roles (Insomniac and Troublemaker), making Paul's aggressive and logically inconsistent accusation the most suspicious behavior.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claims to have information and asserts that both Justin and Mitchell are werewolves. However, in a three-player game, it is highly unlikely that two players are werewolves, and even if they were, a Seer could not have verified both of their roles in one night. Justin and Mitchell both claim specific village roles (Insomniac and Troublemaker), making Paul's aggressive and logically inconsistent accusation the most suspicious behavior.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claims to have information and asserts that both Justin and Mitchell are werewolves. However, in a three-player game, it is highly unlikely that two players are werewolves, and even if they were, a Seer could not have verified both of their roles in one night. Justin and Mitchell both claim specific village roles (Insomniac and Troublemaker), making Paul's aggressive and logically inconsistent accusation the most suspicious behavior.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul claims to have information and asserts that both Justin and Mitchell are werewolves. However, in a three-player game, it is highly unlikely that two players are werewolves, and even if they were, a Seer could not have verified both of their roles in one night. Justin and Mitchell both claim specific village roles (Insomniac and Troublemaker), making Paul's aggressive and logically inconsistent accusation the most suspicious behavior."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2708,
+    "output_token_count": 1687,
+    "generation_time_sec": 169.81096482276917,
+    "used_chat_template": true,
+    "input_char_count": 9897,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

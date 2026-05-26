@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#361#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#361#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "George",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete: Claims Mason (later says he's Drunk after Brett's Troublemaker swap).\n    *   Katie: Claims Drunk (later says she's Mason after Brett's Troublemaker swap).\n    *   Brett: Claims Troublemaker. Swapped Pete and Katie.\n    *   George: Claims he didn't wake up (Tanner/Villager).\n    *   Kelsey: Claims she woke up (initially vague), then claims Robber and robbed Katie.\n    *   Dylan: Claims Werewolf (initially), then says he's hoping he was robbed/trouble-made.\n\n    *   Dylan claimed Werewolf early on ([64]). This is highly unusual. Usually, this is a Tanner strategy or a very bold Minion/Werewolf bluff.\n    *   Kelsey claimed she woke up ([38], [44], [152], [192]). Later, she claimed Robber and robbed Katie ([284], [287], [301]).\n    *   Brett claimed Troublemaker and swapped Pete and Katie ([99], [255]).\n    *   Pete claimed Mason ([143], [199], [221]).\n    *   Katie claimed Drunk ([159], [250]).\n    *   George claimed he didn't wake up ([160], [178]).\n\n    *   If Brett is the Troublemaker and swapped Pete and Katie:\n        *   Pete (Mason) $\\leftrightarrow$ Katie (Drunk).\n        *   Pete becomes Drunk, Katie becomes Mason.\n    *   If Kelsey is the Robber and robbed Katie:\n        *   Kelsey swaps her card with Katie's.\n        *   If Katie was Mason (after Brett's swap), Kelsey becomes Mason and Katie becomes whatever Kelsey was.\n    *   Wait, the order of actions is: Robber (6), then Troublemaker (7).\n        *   Robber (Kelsey) acts first.\n        *   Troublemaker (Brett) acts second.\n    *   Let's re-evaluate:\n        1.  Kelsey (Robber) robs Katie. Kelsey gets Katie's card.\n        2.  Brett (Troublemaker) swaps Pete and Katie.\n    *   If Kelsey is the Robber and robbed Katie, and Brett is the Troublemaker and swapped Pete and Katie:\n        *   Kelsey now has Katie's *starting* card.\n        *   Katie now has Pete's *starting* card.\n        *   Pete now has Katie's *current* card (which was the card Kelsey took).\n\n    *   Dylan's claim: \"I was the Werewolf but I'm hoping someone trouble made me or robbed me\" ([90], [92]). This is a classic Tanner move to get voted out.\n    *   Kelsey's claim: She claimed Robber very late ([284]). Her behavior was suspicious (\"I'm not giving you that information\" [194]).\n    *   George's claim: Didn't wake up. This could be a Villager or Tanner.\n    *   Brett's claim: Troublemaker.\n    *   Pete/Katie: Claiming Mason/Drunk.\n\n    *   Dylan is almost certainly the Tanner because he openly claimed Werewolf to attract votes.\n    *   Kelsey's claim to be the Robber came very late and felt forced.\n    *   If Dylan is the Tanner, who is the Werewolf?\n    *   Let's look at the claims again.\n        *   Brett: Troublemaker.\n        *   Pete: Mason.\n        *   Katie: Drunk.\n        *   Kelsey: Robber.\n        *   George: Didn't wake up.\n        *   Dylan: Werewolf (claiming Tanner).\n    *   If these roles are true, the only role left for the Werewolf is George (who claimed he didn't wake up) or one of the others is lying.\n    *   Wait, if Dylan is the Tanner, and George didn't wake up, George could be a Villager.\n    *   If Kelsey is lying about being the Robber, she could be the Werewolf.\n    *   Let's check the \"waking up\" claims:\n        *   Kelsey: Woke up.\n        *   Pete: Woke up.\n        *   Katie: Woke up (claimed Drunk).\n        *   Brett: Woke up (claimed Troublemaker).\n        *   Dylan: Woke up (claimed Werewolf).\n        *   George: Did NOT wake up.\n    *   Roles that wake up: Werewolf, Minion, Mason, Seer, Robber, Troublemaker, Drunk, Insomniac, Doppelganger.\n    *   Roles that don't wake up: Villager, Hunter, Tanner.\n    *   George claiming he didn't wake up means he is either a Villager, Hunter, or Tanner.\n    *   Dylan claiming he was a Werewolf but wants to be voted out strongly suggests he is the Tanner.\n    *   If Dylan is the Tanner and George is a Villager/Hunter, the Werewolf must be among the others.\n    *   Kelsey's claim to be the Robber was very late and suspicious. If she is the Werewolf, she would want to claim a role that wakes up.\n\n    *   Dylan: Claimed Werewolf $\\rightarrow$ likely Tanner.\n    *   Kelsey: Claimed Robber late $\\rightarrow$ potentially Werewolf.\n    *   George: Didn't wake up $\\rightarrow$ likely Villager/Hunter.\n    *   Brett: Claimed Troublemaker $\\rightarrow$ potentially Werewolf (but less likely given the confidence).\n    *   Pete/Katie: Claiming Mason/Drunk $\\rightarrow$ likely Village.\n\n    *   If Dylan is the Tanner, voting for him helps the Tanner win.\n    *   If Kelsey is the Werewolf, voting for her helps the Village win.\n    *   If George is the Werewolf, he's lying about not waking up. But Werewolves *always* wake up. So if George is the Werewolf, he's lying. If he's the Tanner, he's lying (Tanners don't wake up, so he'd be telling the truth). Wait, if George is the Tanner, he'd want votes. If Dylan is the Tanner, he'd want votes. Only one Tanner per game.\n    *   Dylan's claim is much more \"Tanner-like\" than George's.\n    *   Kelsey's claim to be the Robber is the most suspicious part of the discussion. She was evasive and then suddenly claimed Robber.\n\n    *   Dylan: \"I was the Werewolf but I'm hoping someone trouble made me or robbed me\" ([90], [92]).\n    *   Kelsey: \"I just woke up\" ([38], [44], [152], [192]) $\\rightarrow$ \"I robbed Katie\" ([284], [287], [301]).\n    *   If Dylan is the Tanner, the Village needs to find the Werewolf.\n    *   Is Kelsey the Werewolf? She claimed Robber. If she's the Werewolf, she's lying.\n    *   Is George the Werewolf? He claimed he didn't wake up. If he's the Werewolf, he's lying.\n    *   Is Brett the Werewolf? He claimed Troublemaker.\n    *   Looking at the transcript, the players themselves are leaning towards Kelsey or Dylan. Katie says \"I'm voting for Kelsey\" ([310], [316]). Brett says \"I'm voting for Dylan\" ([311]).\n    *   Given the role of the Tanner, Dylan is the most obvious candidate for it. Therefore, the most likely Werewolf is someone else. Kelsey's late and suspicious claim makes her a strong candidate.\n\n    *   Dylan: Claimed Werewolf $\\rightarrow$ Tanner.\n    *   Kelsey: Claimed Robber late $\\rightarrow$ Werewolf.\n    *   George: Didn't wake up $\\rightarrow$ Villager.\n    *   Brett: Troublemaker $\\rightarrow$ Village.\n    *   Pete/Katie: Mason/Drunk $\\rightarrow$ Village.\n    *   This distribution fits the roles and the behavior.\n\n    *   Wait, if Dylan is the Tanner, and the Village votes for him, the Tanner wins.\n    *   The goal is to help Team Village win.\n    *   Therefore, we should avoid voting for Dylan and instead vote for the most likely Werewolf.\n    *   Kelsey's behavior is the most suspicious among the remaining players.\n\n    *   Dylan's claim to be a Werewolf is a classic Tanner bluff.\n    *   Kelsey's claim to be the Robber is late and inconsistent with her earlier evasiveness.\n    *   George's claim of not waking up is consistent with being a Villager.\n    *   Brett, Pete, and Katie's claims are relatively consistent.\n    *   Therefore, Kelsey is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Dylan's open claim to be a Werewolf is a classic strategy for the Tanner to attract votes and win. George's claim that he did not wake up is consistent with being a Villager or Hunter. Kelsey's claim to be the Robber was made very late in the discussion and followed a period of evasiveness, making her the most suspicious candidate for the Werewolf role.",
+    "chosen_vote": "Kelsey"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan's open claim to be a Werewolf is a classic strategy for the Tanner to attract votes and win. George's claim that he did not wake up is consistent with being a Villager or Hunter. Kelsey's claim to be the Robber was made very late in the discussion and followed a period of evasiveness, making her the most suspicious candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Kelsey\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan's open claim to be a Werewolf is a classic strategy for the Tanner to attract votes and win. George's claim that he did not wake up is consistent with being a Villager or Hunter. Kelsey's claim to be the Robber was made very late in the discussion and followed a period of evasiveness, making her the most suspicious candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Kelsey\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kelsey",
+    "justification": "Dylan's open claim to be a Werewolf is a classic strategy for the Tanner to attract votes and win. George's claim that he did not wake up is consistent with being a Villager or Hunter. Kelsey's claim to be the Robber was made very late in the discussion and followed a period of evasiveness, making her the most suspicious candidate for the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6884,
+    "output_token_count": 2157,
+    "generation_time_sec": 232.76594734191895,
+    "used_chat_template": true,
+    "input_char_count": 20522,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

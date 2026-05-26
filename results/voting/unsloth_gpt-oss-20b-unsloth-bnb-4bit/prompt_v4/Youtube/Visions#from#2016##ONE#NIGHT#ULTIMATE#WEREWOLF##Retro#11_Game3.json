@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript to determine when to choose a player to vote for (i.e., who likely is a Werewolf). We have 5 players: Justin, Laura, Paul, James, Mitchell.\n\nWe have no direct information about initial roles, but given the transcript is confusing and unclear. There's a lot of chatter, ambiguous. Some statements: \"Laura: I was the Werewolf\" (line 106). That indicates Laura says she was a Werewolf. Many others talk about switchings etc. There's confusion.\n\nLook at whose roles: mention: Mitchell says \"I was the Hunter\". James says \"I was Troublemaker\". Justin claims maybe Hunter. They get swapped. This transcript probably from real game, likely unstructured.\n\nBut we cannot deduce certain facts. We need to guess in general voting: best guess whoever likely is a Werewolf returns to doing that? In the context, just pick a name.\n\nGiven the transcript indicates that \"Laura\" asserts she was the Werewolf, but could be false. It's ambiguous. But if someone truly says they were the Werewolf, we also must consider that these roles might have changed via swapping so they might be lying. But who seems more suspect? James says \"I was Troublemaker\". He was the Troublemaker, presumably swapped others. He has claims. The transcript shows that James swapped Paul and Laura, but doesn't confirm these are correct.\n\nCould be that the werewolf is among those who swapped or who said \"I was the Werewolf\": that is Laura. I'd lean that the werewolf might be among \"Laura\" because she says she was Werewolf but might be lying? Actually, there may be no werewolf if all three were moved to center. But possible that there is a werewolf among the fox? Many sites of the game include deceptions.\n\nGiven no definite evidence, perhaps \"Circle Vote\" is safer. However, we should decide: best answer thinks we should pick someone: maybe James? He writes \"I was Troublemaker\" was uncertain. Over a lot, but unclear. Usually in overwhelming confusion, simplest is \"Circle Vote\".\n\nSo I'd output \"Circle Vote\". Let's produce final JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript lacks clear evidence of any confirmed werewolf; many remarks are ambiguous and possibly self‑inconsistent. Without concrete markers of werewolf identity, the safest choice is to avoid targeting anyone and instead opt for a circle vote.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript lacks clear evidence of any confirmed werewolf; many remarks are ambiguous and possibly self‑inconsistent. Without concrete markers of werewolf identity, the safest choice is to avoid targeting anyone and instead opt for a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript lacks clear evidence of any confirmed werewolf; many remarks are ambiguous and possibly self‑inconsistent. Without concrete markers of werewolf identity, the safest choice is to avoid targeting anyone and instead opt for a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript lacks clear evidence of any confirmed werewolf; many remarks are ambiguous and possibly self‑inconsistent. Without concrete markers of werewolf identity, the safest choice is to avoid targeting anyone and instead opt for a circle vote."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3695,
+    "output_token_count": 513,
+    "generation_time_sec": 156.1576054096222,
+    "used_chat_template": true,
+    "input_char_count": 14402,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

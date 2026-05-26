@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide whom to vote. The transcript seems garbled. Let's interpret: There are five players: Justin, Eric, Paul, Mitchell, Mike. No explicit roles known. We need to guess likely werewolf.\n\nTrying to infer. Maybe the conversation indicates someone says “I was a hunter” (Mitchell). Also some talk about being the tanner. Hard to parse.\n\nThe text: At line 61, Mitchell says \"I was a hunter.\" That might indicate his role. But it could be deception. Typically, if someone says their role, it's either when they have the ability to claim or they are telling truth? Actually in this game, a role holder cannot reveal it. But maybe they are doing productive discussion to mislead.\n\nAlternatively, maybe no clear evidence. The best guess is that the only possible werewolf would be Paul or Mike? But it mentions \"I was a hunter\" maybe suggesting someone is hunter. But if being hunter, they might be village.\n\nMaybe the known possible roles: Unknown.\n\nThink simpler: The safest route: choose Circle Vote because uncertain.\n\nWe should choose Circle Vote if uncertain.\n\nBut the task: Based on public discussion choose the option most likely to help Team Village win. So we need to pick a player to eliminate if we suspect a werewolf.\n\nSince the transcript is incoherent, I'd say best to do circle vote.\n\nThus output: chosen_vote: \"Circle Vote\".\n\nJustification about inability to determine a werewolf.",
+  "parsed_output": {
+    "justification": "The transcript contains no clear information identifying a player’s role. Statements such as \"I was a hunter\" are ambiguous, and no direct evidence points to a concrete werewolf among the five players. Without reliable clues, voting for a non‑werewolf risks eliminating a villager or an innocent. Therefore the safest course for the Village is to avoid killing anyone and cast a circle vote.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains no clear information identifying a player’s role. Statements such as \\\"I was a hunter\\\" are ambiguous, and no direct evidence points to a concrete werewolf among the five players. Without reliable clues, voting for a non‑werewolf risks eliminating a villager or an innocent. Therefore the safest course for the Village is to avoid killing anyone and cast a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains no clear information identifying a player’s role. Statements such as \\\"I was a hunter\\\" are ambiguous, and no direct evidence points to a concrete werewolf among the five players. Without reliable clues, voting for a non‑werewolf risks eliminating a villager or an innocent. Therefore the safest course for the Village is to avoid killing anyone and cast a circle vote.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript contains no clear information identifying a player’s role. Statements such as \"I was a hunter\" are ambiguous, and no direct evidence points to a concrete werewolf among the five players. Without reliable clues, voting for a non‑werewolf risks eliminating a villager or an innocent. Therefore the safest course for the Village is to avoid killing anyone and cast a circle vote."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3604,
+    "output_token_count": 396,
+    "generation_time_sec": 122.35013341903687,
+    "used_chat_template": true,
+    "input_char_count": 13734,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

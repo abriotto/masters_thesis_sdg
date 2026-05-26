@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript 1, that we need to analyze. This is a vent in unknown environment: roles list: Justin, James, Paul, Mitchell.\n\nWe have to determine the likely werewolf. Let's read the transcript carefully.\n\nWe have the entire transcript lines. It seems like a conversation in a small group. They talk about roles. Several lines skip from 0 to 80, but not super coherent. Hard to parse because the transcript seems garbled.\n\nLet's see what we can glean:\n\nLine 1: Justin: Oh.\nLine 2-6: The announcer gives roles instructions: copycat (doppel). Wait it's a \"Copycat\" so like doppelganger? Wait copycat refers to \"Copycat\"? It's dub apt? Possibly a \"Doppelganger\" uses phrase \"copycat\".\n\nIt says: Everyone, close your eyes. Copycat, wake up and look at one of the center cards. You are now that role. If that role is Mole, wake up and do that night action. Copycat, close your eyes.\n\nEssentially, the \"copycat\" is doppelgänger.\n\nBut the game description may have phrase \"Copycat\" as not standard role: Actually Copycat is an alias for the Doppelganger: you get the role of the chosen center card and can perform that role's abilities in night.\n\nGiven that, the `\"Doppelganger\"` is part of the list.\n\nOk.\n\nThen line 2: is \"Werewolves, wake up and look for other Werewolves.\"\n\nWe have unknown if there's any werewolf present.\n\nLine 3: Seer wakes up and may look at a player's card or two center cards.\n\nLine 4: Robber wakes up: exchange with another player's card and then view new.\n\nLine 5: Troublemaker wakes up: exchange between two other players.\n\nSo we need to track who is which.\n\nImportant: It's a 4-player game; there are many roles possible. The number of candidate roles equals number of players + 3 = 7. So there are 7 role cards dealt, 4 to players, 3 to center. Each player knows his own card at start, then night actions could alter anything. But participants don't know exactly because no one sees replacements unless certain role actions allow them.\n\nNow the transcript is extremely minimal. Hard to derive who is which.\n\nBecause we cannot track the action flows: We need to infer from conversation.\n\nWe can suspect players may have known their roles and voicing them. Jacked conversation attempt: The players perhaps share suspicion: \"I saw one Werewolf there\" etc.\n\nNow to decide who likely is werewolf.\n\nLet's pick from conversation glimpses:\n\nThey mention a \"copycat\" (the doppelganger) and \"tanner\", \"Minion\" etc. However, the screenshot mentions no minion etc.\n\nFocus: Lines 34-35: \"Justin: What?\"? Hard.\n\nNeeds to differentiate.\n\nAlternatively, we could choose \"Circle Vote\" because we don't know any werewolf.\n\nBut we can better analyze.\n\nLet's break lines along conversation lines referencing other words.\n\nFrom lines 30-5: There's mention that \"I looked at two in the middle so I can verify... I know what that is.\" This indicates maybe a seer looked at two center cards.\n\nLine 34: \"I saw a Werewolf which is-\" Actually line 31: \"Mitchell: I saw a Werewolf which is-\". That could imply that someone concluded that there is a werewolf somewhere. But the actual status we don't know.\n\nAdditionally earlier: \"I looked at two in the middle so I can verify... I know what that is.\" So maybe some players incorrectly or spontaneously guessed.\n\nLet's map scenario.\n\nBetter to parse from early lines:\n\n- [1] Justin: Oh. Not clear.\n\n- [2] Announcer calls copycat, seer, robber, etc.\n\n- [6] Announcer: Troublemaker, wakes up; exchange between two other players.\n\n- Lines 7-8: \"Justin: Yay, Troublemaker.\" Maybe no.\n\n- They then talk about a duplication confusion. Since the puzzle is huge ambiguous, assignment may be easier:\n\nWe need to guess which name is likely werewolf.\n\nBut we don't know per se. Could be that no werewolf present.\n\nThus choose Circle Vote.\n\nBut we should produce justification.\n\nThe only way is to parse kind of random conversation. No clear indication that there is a werewolf.\n\nMaybe there is no werewolf, because no suspect emerges. But the conversation shows emotional clarity courtesy to killers.\n\nBetter to safe and choose Circle Vote: no werewolf identified.\n\nExplain: no strong hints.\n\nHence: return JSON.\n\nBut demonstration maybe says to look at \"I saw a Werewolf\" that indicates someone found one. Look again lines 32-33.\n\nLet's re-run lines 32-33:\n\n- line 32: Justin: I robbed from you and I love you more than anything. etc weird.\n\nThis does not indicate role deduction.\n\nHold on.\n\nWe might examine further.\n\nI will search for word \"Werewolf\" in transcript. Yes lines:\n\n- 31: \"I saw a Werewolf which is-\" perfect.\n\n- later, fallback. Let's parse that.\n\nHere let's note: the transcript seems garbled but lines 31; As text: \"Mitchell: I saw a Werewolf which is-\" So Mitchell (or someone) says true?\n\nLet's inspect earlier lines where \"I saw a Could there be a werewolf?\n\nLet's quickly scan transcripts more thoroughly:\n\n```\n[1] Justin: Oh.\n[2] Announcer: Everyone, close your eyes. Copycat, wake up...\n\nline 3-6 mention usual action. Then \"Trick of 7 lines: 'Justin: Yay, Troublemaker.' lines 9-10: \"Paul: Who wants it?\" etc.\n\nHowever, direct mention \"I saw a werewolf\" is potentially crucial: someone says \"I saw a Werewolf in the center\" or something.\n\nBut the entire conversation is likely nonsense. Perhaps with lines: \"I saw a werewolf which\"\n\nLooking at brain:\n\nPotential outcome: suspect \"Justin\" maybe ended up as robber or something.\n\nWe cannot determine more obviously; as we don't have knowledge, the safest route is \"Circle Vote\" because no evidence.\n\nTherefore output: { \"justification\": \"...\", \"chosen_vote\": \"Circle Vote\" }\n\nWe have to format JSON accordingly. Let's craft a short justification: In the transcript of limited info, no concrete identification of a werewolf; thus circle vote.",
+  "parsed_output": {
+    "justification": "The discussion given does not provide sufficient clues indicating the presence or identity of a werewolf. With no clear signals or role revelations, the safest move is to vote for no one.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The discussion given does not provide sufficient clues indicating the presence or identity of a werewolf. With no clear signals or role revelations, the safest move is to vote for no one.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The discussion given does not provide sufficient clues indicating the presence or identity of a werewolf. With no clear signals or role revelations, the safest move is to vote for no one.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The discussion given does not provide sufficient clues indicating the presence or identity of a werewolf. With no clear signals or role revelations, the safest move is to vote for no one."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2744,
+    "output_token_count": 1412,
+    "generation_time_sec": 422.6996955871582,
+    "used_chat_template": true,
+    "input_char_count": 10894,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

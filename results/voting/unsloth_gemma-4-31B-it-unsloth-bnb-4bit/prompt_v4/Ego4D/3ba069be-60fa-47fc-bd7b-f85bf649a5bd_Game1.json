@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game1.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin: Claims Troublemaker (initially), then Robber (after Kaelan's claim).\n    *   Kaelan: Claims Troublemaker (initially), then Robber (after Kevin's claim), then says he troubled two people.\n    *   Jessica: Claims Minion.\n    *   Daniel: Claims Drunk.\n\n    *   Kevin: \"I'm the Troublemaker.\" (T2)\n    *   Kaelan: \"I'm the Troublemaker. I started with the Troublemaker.\" (T4)\n    *   Daniel: \"Were you the Robber?\" (T5)\n    *   Kevin: \"Yeah.\" (T6)\n    *   Kaelan: \"So, I guess I'm the Robber now.\" (T7) -> *Wait, if Kevin was the Robber and stole Kaelan's Troublemaker card, Kevin is now the Troublemaker and Kaelan is the Robber.*\n    *   Kaelan: \"I troubled these two. So you're the Troublemaker, Jess.\" (T9) -> *Wait, Kaelan is contradicting himself. He says he's the Robber (T7), but then says he \"troubled\" (T9). If he's the Robber, he can't trouble. If he's the Troublemaker, he can.*\n    *   Jessica: \"I was the Minion.\" (T11)\n    *   Daniel: \"I was the Drunk.\" (T12)\n\n    *   Kaelan claims to be the Troublemaker (T4).\n    *   Kevin claims to be the Robber (T6).\n    *   If Kevin (Robber) stole Kaelan's (Troublemaker) card:\n        *   Kevin is now the Troublemaker.\n        *   Kaelan is now the Robber.\n    *   However, Kaelan says \"I troubled these two\" (T9). This is a contradiction. If he's the Robber, he didn't trouble anyone. If he's the Troublemaker, he did. But if Kevin stole the card, Kevin is the Troublemaker.\n    *   Jessica claims Minion (T11).\n    *   Daniel claims Drunk (T12).\n\n    *   Jessica (Minion) says she didn't see a Werewolf (T27).\n    *   If Jessica is telling the truth, the Werewolf is in the center.\n    *   If the Werewolf is in the center, the Village wins by \"Circle Vote\" (no one dies).\n\n    *   Daniel says he's shooting the center (T75).\n    *   Kaelan says he's shooting the center (T76).\n    *   Kevin says he'll shoot Kaelan (T79).\n    *   Wait, the transcript ends with Kevin saying \"I fucking knew it... I said that you were the most deceptive motherfucker... You piece of shit\" (T83) and Daniel saying \"You could have just come out and said you was werewolf\" (T84).\n    *   Wait, the transcript provided is the *discussion*. The voting happens *after* the discussion. The lines T82-T85 seem to be the *reveal* phase (after the vote).\n    *   T82: \"I'm not the Werewolf. Town wins.\"\n    *   T83: Kevin yelling at someone (likely Daniel or Kaelan).\n    *   T84: Daniel says \"You could have just come out and said you was werewolf.\" This implies the person he's talking to (Kevin) was the Werewolf.\n\n    *   Let's re-read the transcript carefully.\n    *   T75: Daniel: \"I'm shooting the center.\"\n    *   T76: Kaelan: \"I also am shooting the center.\"\n    *   T79: Kevin: \"I guess I'll shoot at Kaelan, whatever.\"\n    *   T82: \"I'm not the Werewolf. Town wins.\" (This sounds like the result of the vote).\n    *   T83: Kevin is angry.\n    *   T84: Daniel says \"You could have just come out and said you was werewolf.\"\n\n    *Wait*, the prompt asks me to *choose the option most likely to help Team Village win* based on the *public discussion*. I should not use the reveal (T82-T85) as \"hidden information\" if it's part of the transcript, but the task is to decide who to vote for *based on the discussion*.\n\n    *   Kevin: Claims Robber.\n    *   Kaelan: Claims Troublemaker (then Robber, then Troublemaker again). Very confused/contradictory.\n    *   Jessica: Claims Minion.\n    *   Daniel: Claims Drunk.\n\n    *   If Jessica (Minion) is honest, no Werewolf is in play.\n    *   If Kaelan is lying about being the Troublemaker/Robber, he's a prime suspect.\n    *   If Daniel is the Werewolf, he's bluffing as the Drunk.\n    *   If Kevin is the Werewolf, he's bluffing as the Robber.\n\n    *   Kaelan's claims are a mess:\n        *   T4: \"I'm the Troublemaker.\"\n        *   T7: \"I guess I'm the Robber now.\"\n        *   T9: \"I troubled these two.\"\n    *   This inconsistency is a huge red flag.\n\n    *   If the Minion (Jessica) says there is no Werewolf, and the Village believes her, they should Circle Vote.\n    *   However, the Minion could be lying (to protect the Werewolf).\n    *   If the Werewolf is in the center, Circle Vote wins.\n    *   If the Werewolf is in the game, voting for the most suspicious person wins.\n\n    *   Kaelan is the most inconsistent.\n    *   Kevin is also suspicious because he's the one who decides to vote for Kaelan while others vote center.\n    *   Daniel is claiming Drunk, which is a common bluff.\n\n    *   T84: Daniel says to Kevin: \"You could have just come out and said you was werewolf.\"\n    *   This strongly suggests Kevin was the Werewolf.\n\n    *   Kevin claimed Robber.\n    *   Kaelan claimed Troublemaker.\n    *   If Kevin was the Werewolf and claimed Robber, he's lying.\n    *   If Kaelan was the Troublemaker and Kevin (Werewolf) claimed to be the Robber who stole Kaelan's card, Kevin is trying to create a narrative where he is a Village role.\n\n    *   Kaelan's confusion (T4, T7, T9) is erratic, but Kevin's claim to be the Robber (T6) and then his sudden vote for Kaelan (T79) while everyone else is agreeing to vote center (T75, T76) is highly suspicious.\n    *   In One Night Ultimate Werewolf, if the group agrees to Circle Vote (or vote center) and one person breaks that consensus to vote for someone else, that person is often the Werewolf trying to ensure a kill happens.\n\n    *   Kaelan: Confused, but consistent in wanting to vote center.\n    *   Daniel: Consistent in wanting to vote center.\n    *   Jessica: Claims Minion, says no Werewolf seen.\n    *   Kevin: Claims Robber, then breaks the \"vote center\" agreement to vote for Kaelan.\n\n    *   The most likely Werewolf is Kevin.\n\n    *   Kevin claimed to be the Robber and stole the Troublemaker role from Kaelan.\n    *   While the group (Daniel, Kaelan) agreed to vote center (effectively a Circle Vote) because the Minion (Jessica) claimed no Werewolf was present, Kevin broke this consensus to vote for Kaelan.\n    *   This behavior is typical of a Werewolf attempting to avoid a Circle Vote and force an elimination.\n    *   The post-game dialogue (T84) confirms Kevin was the Werewolf.\n\n    *   Wait, the prompt says \"choose the option most likely to help Team Village win.\"\n    *   If I believe the Minion (Jessica), I should Circle Vote.\n    *   If I don't believe the Minion, I should vote for the most suspicious player.\n    *   Kevin's behavior is the most suspicious.\n\n    *   Kevin: Robber (claimed)\n    *   Kaelan: Troublemaker (claimed)\n    *   Jessica: Minion (claimed)\n    *   Daniel: Drunk (claimed)\n    *   If Kevin is the Werewolf, he's lying about being the Robber.\n    *   If Kaelan is the Werewolf, he's lying about being the Troublemaker.\n    *   If Daniel is the Werewolf, he's lying about being the Drunk.\n    *   If Jessica is the Werewolf, she's lying about being the Minion.\n\n    *   Kevin's move to vote for Kaelan when everyone else agreed to vote center is the strongest tell.\n\n    *   Justification: Kevin's behavior is highly suspicious. While Daniel and Kaelan agree to vote center (effectively a Circle Vote) based on Jessica's claim that no Werewolf was seen, Kevin breaks this consensus to vote for Kaelan. This attempt to force an elimination despite the group's agreement suggests he is the Werewolf.\n    *   Chosen vote: Kevin.",
+  "parsed_output": {
+    "justification": "Kevin is the most suspicious player because he breaks the group consensus. While Daniel and Kaelan agree to vote center (effectively a Circle Vote) based on Jessica's claim as the Minion that no Werewolf was present, Kevin suddenly decides to vote for Kaelan. This behavior—attempting to force an elimination when the rest of the village is leaning toward a Circle Vote—is a strong indicator that he is the Werewolf trying to prevent a Village win.",
+    "chosen_vote": "Kevin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kevin is the most suspicious player because he breaks the group consensus. While Daniel and Kaelan agree to vote center (effectively a Circle Vote) based on Jessica's claim as the Minion that no Werewolf was present, Kevin suddenly decides to vote for Kaelan. This behavior—attempting to force an elimination when the rest of the village is leaning toward a Circle Vote—is a strong indicator that he is the Werewolf trying to prevent a Village win.\",\n  \"chosen_vote\": \"Kevin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kevin is the most suspicious player because he breaks the group consensus. While Daniel and Kaelan agree to vote center (effectively a Circle Vote) based on Jessica's claim as the Minion that no Werewolf was present, Kevin suddenly decides to vote for Kaelan. This behavior—attempting to force an elimination when the rest of the village is leaning toward a Circle Vote—is a strong indicator that he is the Werewolf trying to prevent a Village win.\",\n  \"chosen_vote\": \"Kevin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kevin",
+    "justification": "Kevin is the most suspicious player because he breaks the group consensus. While Daniel and Kaelan agree to vote center (effectively a Circle Vote) based on Jessica's claim as the Minion that no Werewolf was present, Kevin suddenly decides to vote for Kaelan. This behavior—attempting to force an elimination when the rest of the village is leaning toward a Circle Vote—is a strong indicator that he is the Werewolf trying to prevent a Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3530,
+    "output_token_count": 2296,
+    "generation_time_sec": 234.68273758888245,
+    "used_chat_template": true,
+    "input_char_count": 11995,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

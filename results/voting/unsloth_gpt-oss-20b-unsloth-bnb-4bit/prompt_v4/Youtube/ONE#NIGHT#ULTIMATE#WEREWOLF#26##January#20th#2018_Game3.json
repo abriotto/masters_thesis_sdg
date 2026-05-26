@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Meghan",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a messy transcript. We need decide who likely is werewolf. Need candidate? We know there are 5 players: Justin, Meghan, Paul, Mitchell, Mike. We need to deduce roles.\n\nLikely roles: 5 roles plus 3 in center. Roles possible: one of each unique known? standard: maybe no duplicates except Mason.\n\nWe see from transcript many mentions: \"Justin was the tanner?\" There's confusion. Let's parse.\n\nSome references: \"Mike: ...\" etc. Hard.\n\nAlso mention: \"Revealer\" at line [4] - Some sort of freelance? hmm.\n\nImportant: All roles used? reveals?\n\nLet's try to decode. Maybe the game is non-standard. But we can guess roles:\n\n- Justin claims to be Tanner (line 94 or 10??). Actually at line 94: \"Justin: I mean you can really throw me a bone and just say you saw two werewolves anyway…\"\n\nBut line 99 says \"Justin: yes.\" Actually at 99: \"Justin: Yes.\" lines 9? Actually 99: \"Justin: Yes.\" That likely refers to \"if you are the tanner\" from line 98. So yes, Justin says yes he is the Tanner.\n\nHowever other players debate. At 97, someone says no.\n\nThus maybe Justin is Tanner. That means the group will try to kill him eventually.\n\nWe need determine best target to eliminate: ideally a werewolf if present, not the Tanner. Or maybe if there's none werewolves among players, circle vote.\n\nWe need to see whether there is werewolf among these five.\n\nThe conversation suggests there is a werewolf disguised speak. Possibly \"Mike\" maybe?\n\nThe transcript at [54] says: \"Paul: I will tell you a total honesty about my trouble making. I switched diagonal.\" He could have swapped other players.\n\nThis is confusing.\n\nInstead maybe we consider the simplest: Are there any werewolves based on the given behavior? We know that if just approximate random, with 5 players + 3 center, are we expecting a werewolf? Usually 1+ werewolf often.\n\nFrom behaviour: \"Justin: I think I'm okay to be the tanner.\" Many participants suspect. A repeated mention: \"Justin: I was the seer\" \"Mitchell: I'm the seer\" etc.\n\nWait but past lines: \"Mitchell: I was the seer.\" It seems Mitchell claims to be seer.\n\nBut wait: Two roles: seer and werewolf often lean. The game typical: seer looks at others at night. So if Mitchell was seer, then maybe he was actually seer.\n\nWho else was seer? Maybe Mike? But at 1? Not.\n\nThe transcript: line 28: \"Meghan: So what'd you see?\" That may refer to Mitchell seeing something.\n\nPotentially we should ignore all. Instead, maybe just decide that there's no werewolf visible.\n\nBut let's search else: There might be a werewolf but many players also mention maybe \"Clarence\".\n\nGiven the confusion, I'd lean to Circle Vote: no clear werewolf.\n\nBut maybe there is clue: line 47: \"Paul: That's the truth.\" Not.\n\nMaybe at line 62: \"Mitchell: I did see-\" maybe hint. There's mention that there was a werewolf in the center.\n\n\"If there was a werewolf in center\" meaning a werewolf card in the center v center.\n\nSo if there's aWerewolf left as center, can still exist werewolves not among players. But that means there might be zero werewolves among players. So villages wins by default - we can't find a werewolf to target. So Circle Vote might be appropriate.\n\nBut there might be one among players: e.g., \"Mike\".\n\nBut let's read lines: line 54: \"Paul: I will tell you a total honesty about my trouble making… I switched diagonal...\"\n\nThis could indicate that Paul swapped some players (troublemaker action). Trouble maker swaps two other people's cards, but he cannot see them. But if he sees if someone is werewolf? He cannot.\n\nThus no known. He's mixing.\n\n\"At 73: Justin: I'm not doing a good job...\"\n\n\"Kinda chaotic. lines 74-106: nothing.\n\nWe can't convincingly deduce anything. So circle vote may be reasonable.\n\nTherefore, output \"Circle Vote\" as chosen vote. Provide brief justification.",
+  "parsed_output": {
+    "justification": "The transcript is highly disjointed with mostly conflicting statements about identities; there is no clear indication that any player confirms a werewolf among the five. All dialogue hints at confusion or misinformation rather than concrete evidence of a werewolf. Consequently, the safest assumption is that there may be no werewolves among the active players and that the outcome would result in the victory of Team Village with no deaths. This leads to the conclusion that voting for any specific player would be unfounded.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is highly disjointed with mostly conflicting statements about identities; there is no clear indication that any player confirms a werewolf among the five. All dialogue hints at confusion or misinformation rather than concrete evidence of a werewolf. Consequently, the safest assumption is that there may be no werewolves among the active players and that the outcome would result in the victory of Team Village with no deaths. This leads to the conclusion that voting for any specific player would be unfounded.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is highly disjointed with mostly conflicting statements about identities; there is no clear indication that any player confirms a werewolf among the five. All dialogue hints at confusion or misinformation rather than concrete evidence of a werewolf. Consequently, the safest assumption is that there may be no werewolves among the active players and that the outcome would result in the victory of Team Village with no deaths. This leads to the conclusion that voting for any specific player would be unfounded.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is highly disjointed with mostly conflicting statements about identities; there is no clear indication that any player confirms a werewolf among the five. All dialogue hints at confusion or misinformation rather than concrete evidence of a werewolf. Consequently, the safest assumption is that there may be no werewolves among the active players and that the outcome would result in the victory of Team Village with no deaths. This leads to the conclusion that voting for any specific player would be unfounded."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3745,
+    "output_token_count": 1025,
+    "generation_time_sec": 309.1897747516632,
+    "used_chat_template": true,
+    "input_char_count": 14668,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

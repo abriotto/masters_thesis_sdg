@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript. The transcript is extremely garbled; seems random conversation with missing context. We need to decide based on available discussion who is likely a werewolf. Hard to parse.\n\nPlayers: Justin, Dan, Mitchell, Caitlynn, Mike.\n\nRole identification: we only have early lines.\n\nLine summaries: At line 1, Justin says \"I'm a Seer. Mitchell is a werewolf.\" Justin claims his role is Seer; but he may be lying. The transcript shows confusion about who swapped etc. There appears to be speculation about who did what (e.g., did someone swap). The storyline suggests multiple people claim they've seen or swapped etc.\n\nKey lines:\n\nLine 1: Justin: \"I'm a Seer. Mitchell is a werewolf.\" This is a strong claim from Justin. He might be wrong. Others potentially suspect him are being are.\n\nAt line 49 etc: People discussing if Justin was the werewolf.\n\nWe suspect multiple people may be lying or misremembering due to pixel.\n\nGoal: choose the best candidate to vote for to eliminate a werewolf if one exists. We have to determine which player is most likely a werewolf given this chat.\n\nObservations: Many allegations suspicious: \"Mitchell: Absolutely.\" “Mitchell: Absolutely.” There are mentions of \"double werewolf\" literal double. Some lines mention \"Double werewolf.\"\n\nGiven the confusion, maybe the player most likely are the ones claiming being a werewolf multiple times: Connor: Justin says he's a Seer; but he is suspected by multiple quickly: \"Dan: He says I'm the werewolf,\" etc.\n\nLook at lines: \"Justin: I'm a Seer. Mitchell is a werewolf.\" So Justin claims that the role. But others may doubt. People suspect Justin might actually be a werewolf disguised as Seer optimally.\n\nAlso some mention of \"tanner\" scenario: \"Dan: What are you?\"\n\n\"Dan: Werewolf and tanner.\" That implies Dan claims he's both Werewolf and Tanner? That is contradictory. But the line \"Caitlynn: I switched them here\" etc.\n\nPerhaps the easiest: choose Justin to vote, because many mention his claim that he's Seer but denies that he's werewolf. Several others suspect him. Also line about \"Justin's the werewolf\" appears in conversation.\n\nThus choose Justin.\n\nBut there's also mention of \"Mitchell\" being the werewolf. Several lines: e.g. \"Mitchell: Absolutely.\" \"Mitchell: Yes.\" Ultimately many uncertain.\n\nHowever maybe the conversation indicates that Justin is the only one consistently claiming to be werewolf or by others losing trust.\n\nSome lines: \"Mike: Maybe the werewolf...\" \"Ben: I suspect the werewolf\" (not present). But okay.\n\nPeople: existence of a tanner seems ambiguous.\n\nWe need to consider that if no werewolf present, Circle Vote. If we suspect Justin is werewolf, vote Justin.\n\nIn the transcript, there is no clarity of who is werewolf. Everyone uncertain. The only concrete claims of roles are Justin says he is seer, but it's false? Justin also says \"I'm a seer.\" The latter line may be game mis-simulated.\n\nAt line 1, Justin claims he is Seer and that Mitchell is a werewolf. Could be misinformed.\n\nMaybe it's best to trust the most likely filler: Justin is werewolf.\n\nBut the transcripts also mention \"Justin: I'm a Seer. Mitchell is a werewolf.\" That is a direct statement. If Justin is lying about being a Seer, maybe he is the werewolf.\n\nThus vote for Justin.\n\nAlternatively, perhaps it's simpler to circle vote due to lack of evidence.\n\nBut the direction indicates if a werewolf is likely present, pick that one.\n\nGiven the transcript includes many untrustworthy statements, the best approach might be to vote for Justin because everyone else is confused.\n\nWe'll output JSON recommending Justin.\n\nBut include justification.\n\nSo final answer: output JSON with chosen_vote: Justin.\n\nLet's craft explanation: The transcript is incomplete. Justin claims to be a Seer but also among those who suspect him. He is likely malicious. So best to vote for Justin to eliminate a potential werewolf.\n\nWe'll produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "The conversation is highly confused, but Justin’s opening claim declares him a Seer and blames Mitchell, a suspect still floating. Multiple lines later suggest Justin may be the one who repeatedly denies being the werewolf and attempts to shift blame, raising suspicion that he could secretly be a Werewolf. With limited concrete evidence from the others, targeting Justin sways the assessment toward a werewolf presence. No unequivocal proof from the others is available, making Justin the most likely suspect.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The conversation is highly confused, but Justin’s opening claim declares him a Seer and blames Mitchell, a suspect still floating. Multiple lines later suggest Justin may be the one who repeatedly denies being the werewolf and attempts to shift blame, raising suspicion that he could secretly be a Werewolf. With limited concrete evidence from the others, targeting Justin sways the assessment toward a werewolf presence. No unequivocal proof from the others is available, making Justin the most likely suspect.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The conversation is highly confused, but Justin’s opening claim declares him a Seer and blames Mitchell, a suspect still floating. Multiple lines later suggest Justin may be the one who repeatedly denies being the werewolf and attempts to shift blame, raising suspicion that he could secretly be a Werewolf. With limited concrete evidence from the others, targeting Justin sways the assessment toward a werewolf presence. No unequivocal proof from the others is available, making Justin the most likely suspect.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The conversation is highly confused, but Justin’s opening claim declares him a Seer and blames Mitchell, a suspect still floating. Multiple lines later suggest Justin may be the one who repeatedly denies being the werewolf and attempts to shift blame, raising suspicion that he could secretly be a Werewolf. With limited concrete evidence from the others, targeting Justin sways the assessment toward a werewolf presence. No unequivocal proof from the others is available, making Justin the most likely suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4162,
+    "output_token_count": 984,
+    "generation_time_sec": 299.81769490242004,
+    "used_chat_template": true,
+    "input_char_count": 15825,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

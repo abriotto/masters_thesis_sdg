@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game5.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Zack\n    *   Sean\n    *   Hunter\n    *   Jacob\n\n    *   Jacob admits: \"I started as a werewolf\" [37].\n    *   Jacob believes his card was swapped [39].\n    *   Hunter claims: \"I know the Troublemaker swapped those two\" [61] (referring to Jacob and Sean).\n    *   Hunter admits: \"I troubled-muk\" [107] (meaning Hunter is the Troublemaker).\n    *   Hunter says he swapped Jacob and Sean [108].\n    *   Zack claims: \"I started as a villager, and nothing happened. So I'm still a Villager\" [91, 144, 146].\n    *   Sean is reluctant to reveal his role [74], then claims \"I am the tanner even thought the tanner isn't in play\" [143], then later says \"I've got 25 seconds to explain why I'm the villager\" [162].\n\n    *   Jacob (Starting: Werewolf) -> Swapped by Hunter (Troublemaker) with Sean.\n    *   Sean (Starting: ?) -> Swapped by Hunter (Troublemaker) with Jacob.\n    *   Hunter (Starting: Troublemaker) -> Swapped Jacob and Sean.\n    *   Zack (Starting: Villager) -> No action mentioned.\n\n    *   If Jacob started as a Werewolf and Hunter (Troublemaker) swapped Jacob and Sean, then Sean is now the Werewolf.\n    *   Jacob is now whatever Sean started as.\n    *   Hunter is the Troublemaker (Village).\n    *   Zack is a Villager (Village).\n\n    *   Jacob's admission of starting as a Werewolf is very strong evidence.\n    *   Hunter's admission of being the Troublemaker and swapping Jacob and Sean is very strong evidence.\n    *   If both are true, Sean is the current Werewolf.\n    *   Sean's behavior (evasiveness, claiming to be the Tanner, then claiming to be a Villager) is consistent with a Werewolf trying to deflect.\n\n    *   Could Jacob be lying about starting as a Werewolf? (Possible, but unlikely in this context).\n    *   Could Hunter be lying about being the Troublemaker? (Possible, but he's providing specific details).\n    *   Could the Robber have changed things? (Robber acts before Troublemaker. If the Robber swapped someone, the Troublemaker's swap still happens last).\n    *   If Jacob started as Werewolf and was swapped with Sean, Sean is the Werewolf.\n\n    *   Sean is the most likely candidate for the Werewolf based on the claims made by Jacob and Hunter.\n\n    *   Jacob admitted to starting as a Werewolf.\n    *   Hunter admitted to being the Troublemaker and swapping Jacob's card with Sean's.\n    *   Therefore, Sean is now the Werewolf.\n    *   Sean's inconsistent claims about his role (Tanner, then Villager) further support this.",
+  "parsed_output": {
+    "justification": "Jacob admitted to starting as a Werewolf, and Hunter admitted to being the Troublemaker and swapping the cards of Jacob and Sean. Since the Troublemaker's action occurs after the Robber's, this swap is the final change to their roles. Consequently, Sean is now the Werewolf, which is further supported by his evasive behavior and inconsistent claims about being the Tanner and a Villager.",
+    "chosen_vote": "Sean"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jacob admitted to starting as a Werewolf, and Hunter admitted to being the Troublemaker and swapping the cards of Jacob and Sean. Since the Troublemaker's action occurs after the Robber's, this swap is the final change to their roles. Consequently, Sean is now the Werewolf, which is further supported by his evasive behavior and inconsistent claims about being the Tanner and a Villager.\",\n  \"chosen_vote\": \"Sean\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jacob admitted to starting as a Werewolf, and Hunter admitted to being the Troublemaker and swapping the cards of Jacob and Sean. Since the Troublemaker's action occurs after the Robber's, this swap is the final change to their roles. Consequently, Sean is now the Werewolf, which is further supported by his evasive behavior and inconsistent claims about being the Tanner and a Villager.\",\n  \"chosen_vote\": \"Sean\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sean",
+    "justification": "Jacob admitted to starting as a Werewolf, and Hunter admitted to being the Troublemaker and swapping the cards of Jacob and Sean. Since the Troublemaker's action occurs after the Robber's, this swap is the final change to their roles. Consequently, Sean is now the Werewolf, which is further supported by his evasive behavior and inconsistent claims about being the Tanner and a Villager."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4681,
+    "output_token_count": 801,
+    "generation_time_sec": 86.98667097091675,
+    "used_chat_template": true,
+    "input_char_count": 15420,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

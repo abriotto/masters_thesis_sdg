@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game11.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "The transcript shows only mentions of the drunk and insomniac roles, with no explicit indications that a werewolf is present. All speakers seem uncertain and scramble through banter without identifying a werewolf. Without evidence of a werewolf, the safest choice is to vote for an absence of a target.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "<|channel|>analysis<|message|>We need to understand the transcript contents. We see confusion; maybe this game is unusual? People speaking about roles and actions. They mention \"drunk,\" \"insomniac,\" etc. Actually they say \"I was drunk,\" \"I was the insomniac,\" etc. From transcript, it seems some are mixing up roles. But important thing: who is likely to be werewolf(s). Based on n=4 players: Zack, Sean, Hunter, Jacob. Roles: there are as many roles as players+3 = 7. So the role set contains first 7 distinct roles. They mention \"drunk\" and \"insomniac\" roles. We need determine where they might be in this game.\n\nTranscript: a dialogue where they mention Black. They state that Xavier cannot actually.\n\nBut maybe simpler: In such games, if someone claims to be a drunken role incorrectly, it's maybe false or confusion. However final lines: They talk about having to vote.\n\nGiven the unlabeled, but final part: \"Hunter: I'm voting for myself.\" \"Jacob says I'm gonna do self.\" The final bits likely incorporate miscommunication. So there is confusion; but is there a Werewolf?\n\nAllow for algorithm: A player wanting to win is suspect suspicious. If a player says \"I'm going to resign\" etc. But nobody claims to be werewolf. So unclear.\n\nWe might choose \"Circle Vote\" as no bloody evidence of werewolf present.\n\nSo output: chosen_vote: \"Circle Vote\". Let's produce justification brief.\n\n<|channel|>final <|constrain|>json<|message|>{\"justification\":\"The transcript shows only mentions of the drunk and insomniac roles, with no explicit indications that a werewolf is present. All speakers seem uncertain and scramble through banter without identifying a werewolf. Without evidence of a werewolf, the safest choice is to vote for an absence of a target.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows only mentions of the drunk and insomniac roles, with no explicit indications that a werewolf is present. All speakers seem uncertain and scramble through banter without identifying a werewolf. Without evidence of a werewolf, the safest choice is to vote for an absence of a target.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript shows only mentions of the drunk and insomniac roles, with no explicit indications that a werewolf is present. All speakers seem uncertain and scramble through banter without identifying a werewolf. Without evidence of a werewolf, the safest choice is to vote for an absence of a target."
+  },
+  "soft_warnings": [
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3943,
+    "output_token_count": 396,
+    "generation_time_sec": 122.8861734867096,
+    "used_chat_template": true,
+    "input_char_count": 15064,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

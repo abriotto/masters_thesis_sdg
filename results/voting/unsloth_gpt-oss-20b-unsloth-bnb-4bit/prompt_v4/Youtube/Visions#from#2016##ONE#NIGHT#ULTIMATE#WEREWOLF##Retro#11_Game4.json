@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze. The impartial observer sees just the transcript containing a lot of nonsensical conversation presumably from a livestream. Hard to parse. Need to determine who is likely to be a werewolf.\n\nWe have five players: Justin, Laura, Paul, James, Mitchell.\n\nThey speak in some unstructured conversation. There're statements about being werewolf, messing with each other. Many contradictory statements. Perhaps it's a random glitch; maybe no werewolves flagged. Some claim themselves are werewolves.\n\nGoal: choose one player to eliminate if it's clear. Otherwise circle vote.\n\nTruth seems muddled. We can't determine identity of werewolf with certainty. For safety, likely no one is werewolf? We suspect maybe James? However often players claiming werewolf.\n\nLet’s examine key statements: In transcript, many mention “I was the werewolf.” Example: line 83: Mitchell: I was a werewolf. 84: Justin: You were. 94: Paul: Vote to left. 95: James: I'll vote left. 96: Justin: I'm good to vote now if you guys are. 92-94: Kill Paul, you must be.\n\nBut there's quite a bit of nonsense.\n\nGiven uncertainty, I think best to suggest Circle Vote.\n\nAlso mention that no clear evidence.\n\nThus output JSON with justification.",
+  "parsed_output": {
+    "justification": "The transcript is chaotic and contains conflicting self‑claims of who is a werewolf. No single player consistently demonstrates that they are consistently aligned with the Werewolf side; most statements are contradictory or seem to be acting out of a scripted performance. Because there is insufficient reliable evidence that any particular player is definitely a werewolf, it is safer to refrain from voting any specific name and choose a default “Circle Vote”.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is chaotic and contains conflicting self‑claims of who is a werewolf. No single player consistently demonstrates that they are consistently aligned with the Werewolf side; most statements are contradictory or seem to be acting out of a scripted performance. Because there is insufficient reliable evidence that any particular player is definitely a werewolf, it is safer to refrain from voting any specific name and choose a default “Circle Vote”.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is chaotic and contains conflicting self‑claims of who is a werewolf. No single player consistently demonstrates that they are consistently aligned with the Werewolf side; most statements are contradictory or seem to be acting out of a scripted performance. Because there is insufficient reliable evidence that any particular player is definitely a werewolf, it is safer to refrain from voting any specific name and choose a default “Circle Vote”.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is chaotic and contains conflicting self‑claims of who is a werewolf. No single player consistently demonstrates that they are consistently aligned with the Werewolf side; most statements are contradictory or seem to be acting out of a scripted performance. Because there is insufficient reliable evidence that any particular player is definitely a werewolf, it is safer to refrain from voting any specific name and choose a default “Circle Vote”."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3499,
+    "output_token_count": 372,
+    "generation_time_sec": 114.52133846282959,
+    "used_chat_template": true,
+    "input_char_count": 13622,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

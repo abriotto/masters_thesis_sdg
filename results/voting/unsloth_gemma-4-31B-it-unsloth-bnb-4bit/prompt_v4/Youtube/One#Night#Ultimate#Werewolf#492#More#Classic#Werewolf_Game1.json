@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#492#More#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#492#More#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "Dustin"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Pete, Katie, Brett, Dustin.\n    *   Roles involved (claimed/mentioned):\n        *   Pete: Claims Werewolf (at [24]), then claims Seer (at [94]), then claims Brett and Dustin are wolves (at [89], [97], [183]).\n        *   Katie: Claims Drunk (at [27], [29], [105]).\n        *   Brett: Claims Robber (at [80]), says he robbed Dustin's Seer card (at [84]), so he is now the Seer and Dustin is the Robber (at [86]).\n        *   Dustin: Claims Seer (at [44]), says he looked at two center cards and both were Werewolves (at [46]).\n\n    *   Dustin claims Seer and saw two Werewolves in the center.\n    *   If Dustin is telling the truth, there are no Werewolves among the players.\n    *   Brett claims Robber and robbed Dustin's Seer card.\n    *   If Brett is telling the truth, Dustin was the Seer, and Brett is now the Seer.\n    *   Katie claims Drunk.\n    *   Pete claims Werewolf initially ([24]), but then shifts to claiming he's the Seer ([94]) and that Brett and Dustin are wolves.\n\n    *   If Dustin (Seer) saw two Werewolves in the center, then no player is a Werewolf.\n    *   If no player is a Werewolf, the Village wins by \"Circle Voting\" (everyone voting for someone different or no one dying).\n    *   Wait, the rules say: \"Team Village wins: If no player is a Werewolf and no one dies. This can happen if all Werewolf cards are in the center.\"\n    *   Dustin and Brett are coordinating to \"circle vote\" ([149], [151], [156], [157]).\n    *   Pete is aggressively accusing Brett and Dustin of being wolves.\n    *   Katie is claiming Drunk.\n\n    *   Pete's behavior is suspicious. He starts by claiming to be the werewolf (\"this time I'm the werewolf\"), which is a classic Tanner move (trying to get voted out).\n    *   Then he claims to be the Seer and says Brett and Dustin are wolves.\n    *   If Dustin really saw two Werewolves in the center, then Pete *must* be the Tanner or a non-wolf.\n    *   If Pete is the Tanner, voting for him makes the Tanner win.\n    *   If Dustin is lying and is actually a Werewolf, voting for him helps the Village.\n    *   However, Dustin and Brett's stories are consistent (Dustin was Seer, Brett robbed him). If they are both Werewolves, they are coordinating a very complex lie. But in a 4-player game, if there are 2 Werewolves in the center, then no one is a Werewolf.\n\n    *   Dustin: Seer (starting) -> Robber (ending)\n    *   Brett: Robber (starting) -> Seer (ending)\n    *   Katie: Drunk (starting) -> ? (ending)\n    *   Pete: ? (starting) -> ? (ending)\n    *   Center: Werewolf, Werewolf, ?\n\n    If this is true, no one is a Werewolf. The best move for the Village is a Circle Vote.\n\n    *   Pete claims he is the Seer and that Brett and Dustin are wolves.\n    *   But Pete also claimed he was the werewolf at the start of the discussion. This is highly contradictory.\n    *   If Pete is the Tanner, he wants to be voted out.\n    *   If Pete is a Werewolf, he's lying about being the Seer.\n\n    *   Dustin and Brett are pushing for a Circle Vote.\n    *   If there are no werewolves, Circle Vote is the only way for the Village to win.\n    *   If there is a werewolf, the Village needs to vote them out.\n    *   Given the claims:\n        *   Dustin (Seer) saw 2 wolves in center.\n        *   Brett (Robber) took Dustin's Seer card.\n        *   Katie (Drunk) swapped with center.\n    *   If Dustin's claim is true, no one is a werewolf.\n    *   If Dustin is lying, he's likely a werewolf. But Brett is backing him up. If both are werewolves, they are trying to trick the village into a circle vote so they survive.\n    *   Wait, if there are 2 werewolves in the center, then there are no werewolves among the players.\n    *   If Dustin is a werewolf, he wouldn't claim to see 2 werewolves in the center unless he's trying to induce a circle vote.\n    *   But if Dustin is a werewolf, and Brett is the Robber, Brett would know Dustin is a werewolf (if he robbed him). Brett says he robbed the Seer. This means either:\n        1.  Dustin was the Seer.\n        2.  Brett is lying and is a werewolf/minion.\n\n    *   Pete's claim to be the werewolf at [24] is very strong evidence for Tanner.\n    *   Tanners want to be voted out.\n    *   If Pete is the Tanner, voting for him loses the game for the Village.\n    *   If Dustin and Brett are telling the truth, no one is a werewolf.\n\n    *   If no one is a werewolf, Circle Vote wins.\n    *   If Pete is the Tanner, voting for him loses.\n    *   If Dustin/Brett are werewolves, they are lying. But they are claiming the werewolves are in the center.\n    *   In a 4-player game, if 2 werewolves are in the center, the only remaining roles are distributed among the 4 players.\n    *   Let's look at the roles: Seer, Robber, Drunk, Tanner, etc.\n    *   If Dustin was Seer, Brett was Robber, Katie was Drunk, and Pete was Tanner, and 2 Werewolves were in the center... that fits perfectly.\n\n    *   Dustin and Brett are actively coordinating a circle vote.\n    *   Pete is acting like a Tanner (claiming to be the wolf, then claiming to be the seer).\n    *   The most likely scenario for a Village win is that no werewolves are present and they circle vote.\n\n    *   Wait, the prompt asks for the option \"most likely to help Team Village win.\"\n    *   If no werewolf is present, \"Circle Vote\" is the correct answer.\n    *   If a werewolf is present, we need to name them.\n    *   Is there any evidence Pete is a werewolf? He claimed he was one, but then changed his story. Werewolves usually don't admit to being werewolves unless they are bluffing as the Tanner. But Tanners *do* admit to being werewolves to get voted out.\n    *   Is there any evidence Dustin or Brett are werewolves? They are claiming the werewolves are in the center. If they are lying, they are the werewolves.\n    *   However, the coordination between Dustin and Brett and the suspicious behavior of Pete (Tanner-like) suggests that the \"no werewolf\" scenario is more probable.\n\n    *   Dustin: \"I was a seer and I looked at these two cards... Both werewolves.\"\n    *   Brett: \"I was the robber... Dustin's seer... I confirm that he is the seer.\"\n    *   This is a very strong claim. If they are lying, they are both in on it (Werewolf + Minion).\n    *   But Pete's behavior is classic Tanner.\n    *   If the werewolves are in the center, the Village wins by not voting anyone out (or circle voting).\n\n    *   \"Circle Vote\" is an option.\n    *   If the evidence points to no werewolves being active, \"Circle Vote\" is the best choice.\n\n    *   Dustin claims Seer, saw 2 wolves in center.\n    *   Brett claims Robber, robbed Dustin's Seer card.\n    *   Pete claims to be the werewolf, then claims to be the Seer.\n    *   Katie claims Drunk.\n    *   The most consistent interpretation is that Dustin and Brett are telling the truth, Pete is the Tanner, and the werewolves are in the center.\n    *   In this case, the Village wins by Circle Voting.",
+  "parsed_output": {
+    "justification": "Dustin claimed to be the Seer and saw two Werewolf cards in the center, which would mean no active players are Werewolves. Brett supported this by claiming he was the Robber and robbed Dustin's Seer card, confirming Dustin's role. Pete's behavior is highly characteristic of the Tanner, as he initially claimed to be the Werewolf to attract votes and later made contradictory claims about being the Seer. If no Werewolves are present among the players, the Village wins by ensuring no one is eliminated, which is achieved through a Circle Vote.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dustin claimed to be the Seer and saw two Werewolf cards in the center, which would mean no active players are Werewolves. Brett supported this by claiming he was the Robber and robbed Dustin's Seer card, confirming Dustin's role. Pete's behavior is highly characteristic of the Tanner, as he initially claimed to be the Werewolf to attract votes and later made contradictory claims about being the Seer. If no Werewolves are present among the players, the Village wins by ensuring no one is eliminated, which is achieved through a Circle Vote.\",\n  \"chosen_vote\": \"Circle Vote\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dustin claimed to be the Seer and saw two Werewolf cards in the center, which would mean no active players are Werewolves. Brett supported this by claiming he was the Robber and robbed Dustin's Seer card, confirming Dustin's role. Pete's behavior is highly characteristic of the Tanner, as he initially claimed to be the Werewolf to attract votes and later made contradictory claims about being the Seer. If no Werewolves are present among the players, the Village wins by ensuring no one is eliminated, which is achieved through a Circle Vote.\",\n  \"chosen_vote\": \"Circle Vote\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "Dustin claimed to be the Seer and saw two Werewolf cards in the center, which would mean no active players are Werewolves. Brett supported this by claiming he was the Robber and robbed Dustin's Seer card, confirming Dustin's role. Pete's behavior is highly characteristic of the Tanner, as he initially claimed to be the Werewolf to attract votes and later made contradictory claims about being the Seer. If no Werewolves are present among the players, the Village wins by ensuring no one is eliminated, which is achieved through a Circle Vote."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4773,
+    "output_token_count": 2040,
+    "generation_time_sec": 213.8689467906952,
+    "used_chat_template": true,
+    "input_char_count": 15194,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

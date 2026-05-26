@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript where roles considered include many names, but key is to decide who is werewolf. The transcript appears messy and incoherent. Likely pieces: characters mention 'tanner', 'robber', etc. In the commentary, might be that at least one werewolf present. Possibly the mess signals that bad info. We see mention: \"I think you're onto something, James.\" we're supposed to pick a vote: choose a name likely to be werewolf.\n\nLet's analyze:\n\nParticipants: Justin, Mike, James, Mitchell.\n\nIn transcript, they are speaking about stolen actions. There's talk of 'robber, ... stole something.' There's mention of 'Mike swapped with someone'.\n\nSome lines show that there is confusion: \"Mike, on a scale of 1 to 10. How exciting is the character that you stole?\" suggests whoever 'stealing' will be the robber who swapped? Could be that the robber swapped with some person and might have become a villain.\n\nWe need to decide which of those players likely is a Werewolf.\n\nObservations: Many lines have weird conversation. They mention 'town' 'ga'.\n\nCould be that there is no werewolves (They claim none) but someone stole something. But the instructions say that as an observer, choose the one most likely to be werewolf. In lack of clear evidence, best option may be to Circle Vote. But let's find clues.\n\nConsider the statements: early in transcript there's 'Announcer: Everyone, close your eyes. Werewolves, wake up and look for other werewolves. Seer wakes, etc. There seems to be a Seer? There is likely a special role. Who is Seer? Hard to parse.\n\nI suspect many players mis-generated, but question specifically: 'Choose the option most likely to help Team Village win. In most cases, this means voting for the player most likely to be a Werewolf.'\n\nSo we must pick a candidate. Without clear evidence of a werewolf, we choose Circle Vote.\n\nBut need to justify.\n\nWe can maybe say that no definitive evidence that any player has been a werewolf; many suspect each other.\n\nBut there might be reference to a tanner. For instance, out-of-order conversation includes \"I was the tanner and Mike switched with me.\" That suggests Mitchell says \"I was the tanner\" indicates perhaps they can't trust them. The notion that 'the tanner' is someone else? If Mitchell is the tanner, they already want to die. However the goal of village is to eliminate a werewolf. Since we don't know any werewolf present, Circle Vote is preferable.\n\nLet's produce justification accordingly: No solid evidence that any player is a Werewolf; they'd better not kill anyone; Circle Vote. Also worthwhile to note that the conversation is incoherent and ambiguous.\n\nHence final JSON with chosen_vote as \"Circle Vote\".\n\nLet's do that.",
+  "parsed_output": {
+    "justification": "The transcript shows conflicting claims and no clear indication that any player performed a werewolf action or demonstrates old identity. Players talk about stealing and swapping but do not reveal confirmed werewolf status. With insufficient evidence to single out a werewolf, the safest choice is a neutral vote for no suspect.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows conflicting claims and no clear indication that any player performed a werewolf action or demonstrates old identity. Players talk about stealing and swapping but do not reveal confirmed werewolf status. With insufficient evidence to single out a werewolf, the safest choice is a neutral vote for no suspect.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows conflicting claims and no clear indication that any player performed a werewolf action or demonstrates old identity. Players talk about stealing and swapping but do not reveal confirmed werewolf status. With insufficient evidence to single out a werewolf, the safest choice is a neutral vote for no suspect.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript shows conflicting claims and no clear indication that any player performed a werewolf action or demonstrates old identity. Players talk about stealing and swapping but do not reveal confirmed werewolf status. With insufficient evidence to single out a werewolf, the safest choice is a neutral vote for no suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3506,
+    "output_token_count": 664,
+    "generation_time_sec": 202.41760206222534,
+    "used_chat_template": true,
+    "input_char_count": 13698,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

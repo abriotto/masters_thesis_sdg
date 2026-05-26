@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript to identify the roles. Inferring from actions and dialogue, but many lines are nonsensical. Determine who might be who. We know roles: Justin, Mitchell, Paul, Mike: 4 players. Centre 3 roles.\\nWe saw players referencing \"Troublemaker\" etc. They have to recall who is who. Let's examine transcripts carefully:\n\nLine numbers: Have to parse content, but some parts are corrupted / missing context. Let's find explicit evidence: e.g., line 3: entire night actions described by announcer. Data: Are \"Justin, Mitchell, Paul, Mike\" starting roles? Not given. But we do see conversation.\n\nImportant lines:\n\n- Line 5: Mike: Confirmed. (not context)\n- Lines 4-6: Justin says he's a seer; he says \"I'm not going to say what I saw until someone can confirm me.\" Could indicate he is the Seer or thinks so. He claims he saw might in center? Not sure.\n\n- Lines 15-19: Paul's confusion about troublemaker. Lines 18-21 mention \"Paul was the troublemaker.\" Might hint that Paul is the Trouble maker, but the challenge: Troublemaker wakes up during the night but they appear to not know. Yet conversation shows them debating.\n\n- lines 16-19 suggest: Mike asks: \"Actually you woke up as insomniac?\" So Mike could be Insomniac.\n\n- some lines mention \"tanner\" and \"werewolf\".\n\nEssentially, we need to identify a likely suspect being a werewolf. Use each player's role potential:\n\nPossible roles across 4 players: each role pretty unique: There are 7 in each game but small sample.\n\nWe need to check: Who said \"I'm the troublemaker\" or \"I'm not the troublemaker\"?\n\nNotice: lines 18-20: Paul: \"Okay. You got me there.\" ... \"But the reason you got me there is because I woke up, well, I didn't wake up. I was the troublemaker.\" So maybe Paul says he woke up? Actually, he says \"I was the troublemaker.\"\n\nPlate: \n\nLet's consider actual roles:\n\nWe likely have 4 players: maybe roles: Seer, Troublemaker, Insomniac, Drunk?? Actually only these four maybe.\n\nLooking at pre-game instructions: \"All players are allotted 1 role each out of the chosen set.\" But we can't guess.\n\nMaybe we deduce: When a player claims to be a troublemaker, they might be telling truth (makes sense). But troublemaker doesn't wake up during night, so conversation about \"troublemaker\" indicates they discovered someone is the troublemaker. Suppose Paul is troublemaker. If someone else is troublemaker, they would get credit.\n\nBut if Paul is troublemaker, his action is swapping two other players' cards. It might glean info: He swapped \"you two\" earlier mention line 56: \"I can't either. I switched you two.\" So that's plausible.\n\nThus, two players swapped. That means some information: everyone's final roles changed. That's tough.\n\nGiven many random lines, let's attempt to deduce roles:\n\nAt line 8 (only partial), \"Oh dang. All right. These two were in the center.\" So maybe Justin looked at two center cards and found something. He might be the Seer.\n\nAt line 6: Justin: \"...the two were in the center.\" He claims he saw? maybe discovered that werewolves were in center? maybe referencing two center cards like Werewolves? Eh.\n\nBetter to approximate: Suppose Justin is Seer; he looked at two center cards: maybe saw that one of them was a werewolf, so he knows that there are two werewolves in the center? But he says \"These two were in the center.\" That sounds like he saw they were \"in the center.\" Could be \"these two were in the center\" meaning two werewolves in center? Unlikely; only two werewolves max. Actually, maximum had 2.\n\nLet's analyze: At line 5: Mike: Confirmed. So presumably something that Justin saw was confirmed by Mike.\n\nConclusion: It's going to be extremely uncertain.\n\nHowever, we must produce a vote. Suggest eliminating the player most likely to be Werewolf.\n\nWe have to decide: which player is likely werewolf? Let's evaluate evidence:\n\n- Justin seems to claim he saw something (maybe a seer). He claims \"I'm not going to say what I saw until someone can confirm me.\" And says \"So either we're looking at this or someone-\". Snakes.\n\n- If Justin is Seer, he sees at night.\n\n- Paul mentions \"I was the troublemaker\" (he says he was the troublemaker). So Paul likely is Troublemaker. But troublemaker's action is swapping two other players' cards. That would replace their roles as well. Considering that, after swapping, the troublemaker would not know their new roles.\n\nAt line \"I switched you two\" indicates he might have swapped other players (maybe Mike and Justin?). So maybe we have confusion.\n\nIf Paul is troublemaker, then the action was to swap two other players: the two players he swapped might be Justin and Mike? Perhaps.\n\nThus, after swap, those two have new roles. If Justin originally was Seer, he swapped with Mike, etc.\n\nWe need to guess who ended up being Werewolf. Problem unsolvable from weird transcript.\n\nAlternatively, perhaps trick: The game shows confusion; likely no werewolf present, as everyone appears confused. None could identify being werewolf. Maybe we choose \"Circle Vote\".\n\nWe could treat however that the conversation didn't reveal any werewolf. The biggest suspect is the troublemaker's action may expose a Werewolf? Actually, the troublemaker may inadvertently bring in a werewolf to the center? Unclear.\n\nConclusion: Without clear evidence, safe to choose Circle Vote. Because decision must be implied. Only safe if no werewolf exists.\n\nOr maybe viable suspect: Justin didn't specify his role. Suppose he's seer. He wasn't attacked by being swapped. So maybe justeliminate Justin? But he might be werewolf according to his confusion? I think it's safer to choose Circle Vote.\n\nUse justification: due to ambiguity and confusion, no reliable detection of werewolf.\n\nThus output: {justification: \"Given the transcript's disjointed nature and lack of key indicators that definitively identify a werewolf, there is insufficient evidence to conclude any player is definitely a werewolf. Therefore, a circle vote avoids erroneously eliminating an innocent player.\", \"chosen_vote\":\"Circle Vote\"}",
+  "parsed_output": {
+    "justification": "The transcript contains a mix of incomplete statements and unclear references to roles, making it impossible to confidently identify any player as a werewolf.  No explicit mention of a seer seeing any werewolf card or any player confirming that a werewolf is somewhere is evident.  Consequently, there is no reliable indication that a specific player is definitely a werewolf, so a circle vote best preserves fairness.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains a mix of incomplete statements and unclear references to roles, making it impossible to confidently identify any player as a werewolf.  No explicit mention of a seer seeing any werewolf card or any player confirming that a werewolf is somewhere is evident.  Consequently, there is no reliable indication that a specific player is definitely a werewolf, so a circle vote best preserves fairness.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains a mix of incomplete statements and unclear references to roles, making it impossible to confidently identify any player as a werewolf.  No explicit mention of a seer seeing any werewolf card or any player confirming that a werewolf is somewhere is evident.  Consequently, there is no reliable indication that a specific player is definitely a werewolf, so a circle vote best preserves fairness.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript contains a mix of incomplete statements and unclear references to roles, making it impossible to confidently identify any player as a werewolf.  No explicit mention of a seer seeing any werewolf card or any player confirming that a werewolf is somewhere is evident.  Consequently, there is no reliable indication that a specific player is definitely a werewolf, so a circle vote best preserves fairness."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3145,
+    "output_token_count": 1459,
+    "generation_time_sec": 436.7124104499817,
+    "used_chat_template": true,
+    "input_char_count": 12520,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

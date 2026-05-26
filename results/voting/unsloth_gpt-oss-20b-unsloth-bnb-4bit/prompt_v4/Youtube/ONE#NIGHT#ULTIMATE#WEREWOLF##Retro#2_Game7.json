@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a messy transcript with many contradictions. Hard to parse. Need to find who is likely a Wolf.\n\nWe know the rules: 5 players. Roles possible? Standard selection includes 4+? For 5 players plus 3 center = 8 distinct roles maybe. Could be standard; suppose typical: 5 roles: maybe Villager, Seer, Drunk, etc. Hard.\n\nBut playing as observer: we need decide from transcript which is suspect.\n\nFrom the transcript we see names: Justin, Dan, Mitchell, Caitlynn, Mike. They connect conversation. Some talk about being drunk, being a werewolf, the roles. There's confusion: For example, at line [36] \"Justin: Cause he's a werewolf.\" So Justin states someone is a werewolf (maybe \"he\" refers to someone earlier). Not clear.\n\nThey talk about who is werewolf: #72 indicates \"Mike: I can agree with that. That means Caitlin's a werewolf.\" So Mike claims Caitlynn is the werewolf. Also at #74 [74] \"Mike: That means Caitlin's the werewolf.\" Also Dan says #75: \"Those are the two werewolves, and Caitlin's a werewolf.\" Wait contradictory: two werewolves? at 75: if they are all telling this correctly, there are two werewolves, and Caitlin a werewolf. So indicates two Werewolves: maybe marking ones.\n\nBut the transcripts are garbled. Could conclude that the primary suspect is Mike.\n\nAlternatively might be deceased or tru.\n\nWe need find the player most likely to be a werewolf. Observed sample lines: at [72] \"Mike: I can agree with that. That means Caitlin's a werewolf.\" This indicates Mike is claiming someone else is a werewolf. But that seems like a defamation: says that Caitlynn is the werewolf. The person being accused could be a werewolf or scap neutral.\n\nAlso lines: [70] \"Dan: I don't think he did. I think he stole from either Mike or I.\"??\n\nIn \"At [70]\"? Possibly indicating suspect of theft. Anyway.\n\nThus I'm leaning that front speculation point to Joe-if/like.\n\nBut guess: According to lines [35-38], there's confusion: “How can you say that?” and then \"Justin: Cause he's a werewolf.\" (line 36). Maybe who is \"he\"? Possibly referring to \"Caitlynn\"? Let's search earlier context: [34] \"Mike: Sweet.\" [35] \"Mitchell: How can you say that?\" Not sure.\n\nThe phrase earlier: \"Justin: Looking at people\". Possibly.\n\nMaybe the correct suspect is Mike. Because at lines 70-75, Dan says \"Those are the two werewolves, and Caitlin's a werewolf.\" So maybe both Dan and Mike claim Caitlin is werewolf. But perhaps Kim's case.\n\nBut maybe the actual body: Person making accusations might be a liar. We need choose who to eliminate. I'd choose Mike, because?\n\nBetter to examine each line for role-specific clues:\n\nAt lines 68-72: \"Mitchell: I was a Tanner, ...\" Nonsense.\n\nHard.\n\nLet's look at the pattern: There is a stop at 116: \"Announcer: Time is up. Everyone. Three.\" That's the end.\n\nNot enough for conclusive determination.\n\nI will consider that the consensus in conversation indicates there are possibly werewolves but there is confusion.\n\nHence you pick which name has the highest separate suspicion. Possibly John.\n\nOk.\n\nLet's craft explanation: because multiple lines indicate that Mike is accused of being the werewolf, choose Mike? Or simply \"Circle Vote\".\n\nBut we are told that to help Village win, we want to eliminate a werewolf. Let’s pick Mike.\n\nReturn JSON.",
+  "parsed_output": {
+    "justification": "The transcript shows a jumble of accusations, but in several key statements (lines 72–75) participants explicitly identify Caitlynn as the werewolf and implicitly imply that another player is also a werewolf. None of the speakers’ statements are consistent or convincing enough to designate a clear suspect. Given this uncertainty, the safest strategy for the Village is to avoid targeting someone potentially innocent, so a non‑fatal vote is preferable.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows a jumble of accusations, but in several key statements (lines 72–75) participants explicitly identify Caitlynn as the werewolf and implicitly imply that another player is also a werewolf. None of the speakers’ statements are consistent or convincing enough to designate a clear suspect. Given this uncertainty, the safest strategy for the Village is to avoid targeting someone potentially innocent, so a non‑fatal vote is preferable.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows a jumble of accusations, but in several key statements (lines 72–75) participants explicitly identify Caitlynn as the werewolf and implicitly imply that another player is also a werewolf. None of the speakers’ statements are consistent or convincing enough to designate a clear suspect. Given this uncertainty, the safest strategy for the Village is to avoid targeting someone potentially innocent, so a non‑fatal vote is preferable.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript shows a jumble of accusations, but in several key statements (lines 72–75) participants explicitly identify Caitlynn as the werewolf and implicitly imply that another player is also a werewolf. None of the speakers’ statements are consistent or convincing enough to designate a clear suspect. Given this uncertainty, the safest strategy for the Village is to avoid targeting someone potentially innocent, so a non‑fatal vote is preferable."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3532,
+    "output_token_count": 893,
+    "generation_time_sec": 270.88944578170776,
+    "used_chat_template": true,
+    "input_char_count": 13693,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

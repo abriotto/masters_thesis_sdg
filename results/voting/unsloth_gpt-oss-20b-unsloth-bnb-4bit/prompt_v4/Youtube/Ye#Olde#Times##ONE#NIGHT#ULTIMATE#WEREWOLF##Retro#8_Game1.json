@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to find whether there's a werewolf in game. Players: Justin, Eric, Paul, Mitchell, Mike. Transcript shows confusion, fewer coherent statements. Roles: Some mention \"I was the Robber\", \"I stole from somebody\", etc. There is mention \"I was the Hunter.\" Mike says \"I am the Hunter.\" He claims to be Hunter, but could also indicate being player after swapping? Also mentions \"I didn't steal from.\" sentence may be incomplete.\n\nBetter parse: Justin said at 35: \"I was the Werewolf. I saw the InOn??? This is confusing.\n\nBut we may glean: \"Mike: I am the Hunter.\" So Mike is Hunter? Hunter only if voted out; but described.\n\nAlso at 45: \"I am the Hunter.\" So Mike.\n\nBut are we being told? Not sure.\n\nLet's analyze roles: unknown but we can infer from actions.\n\nMechanics: Each player may not know their role after swapping. The discussion may reveal roles but we have prior knowledge of starting roles? No.\n\nWe suspect the transcript indicates that \"Mike\" claims to be Hunter but maybe was the Robber earlier? It's unclear.\n\nHowever, the objective is to choose player to vote elimination to get a Werewolf.\n\nWe need to identify werewolf: Possibly Justin says \"I was the Werewolf.\"\n\nAt 35, Justin: \"I was the Werewolf. I saw the Insomniac in the center.\" That suggests that Justin originally had Werewolf card. But they cannot confirm? At start, roles are random. If Justin started as Werewolf, they'd still susceptible to being swapped? It seems they didn't talk about being swapped.\n\nBut let's parse earlier transcript lines: Line 35 is ambiguous: They might have been part of the early night. The conversation seems messy.\n\nWe need assumption: The most likely werewolf might be Justin, because he says being werewolf. Others claim being hunter etc.\n\nFind any contradictions: Mike says being Hunter (line 45). But Hunter only exist in final phase; says \"I am the Hunter,\" but role may have changed??\n\nAlternative: Maybe the simply correct answer is \"Circle Vote\" because no known werewolf.\n\nBut there's mention of Justin being the Werewolf. That is strong evidence that Justin was werewolf starting role or ended up being werewolf. However, the transcript indicates \"I was the Werewolf\" is possibly from a rumor. It doesn't confirm final role.\n\nIn standard instructions, we only base decision on conversation which indicates suspected werewolves.\n\nGiven confusion, safe choice might be to vote for Justin. Because he's claiming to be werewolf. It's like the villain is telling truth? But we can't rely.\n\nAnother approach: The transcript is garbled, but might represent a typical scenario: The protagonist reveals being werewolf; the rest are suspects. So choose Justin.\n\nAlright, return JSON with justification and vote for Justin.",
+  "parsed_output": {
+    "justification": "From the transcript, several players claim identities, but none convincingly dispel the possibility that Justin is a werewolf. He explicitly states, \"I was the Werewolf,\" indicating he had the werewolf card at game start. Without evidence that he was swapped or misidentified, Justin is the most plausible suspect. Consequently, voting for Justin would most likely eliminate a werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, several players claim identities, but none convincingly dispel the possibility that Justin is a werewolf. He explicitly states, \\\"I was the Werewolf,\\\" indicating he had the werewolf card at game start. Without evidence that he was swapped or misidentified, Justin is the most plausible suspect. Consequently, voting for Justin would most likely eliminate a werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, several players claim identities, but none convincingly dispel the possibility that Justin is a werewolf. He explicitly states, \\\"I was the Werewolf,\\\" indicating he had the werewolf card at game start. Without evidence that he was swapped or misidentified, Justin is the most plausible suspect. Consequently, voting for Justin would most likely eliminate a werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "From the transcript, several players claim identities, but none convincingly dispel the possibility that Justin is a werewolf. He explicitly states, \"I was the Werewolf,\" indicating he had the werewolf card at game start. Without evidence that he was swapped or misidentified, Justin is the most plausible suspect. Consequently, voting for Justin would most likely eliminate a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2852,
+    "output_token_count": 686,
+    "generation_time_sec": 206.74516582489014,
+    "used_chat_template": true,
+    "input_char_count": 11235,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

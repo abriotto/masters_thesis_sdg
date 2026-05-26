@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse the transcript to deduce roles maybe. But it's messy. There's characters: Justin, Dan, Mitchell, Caitlynn, Mike. We need decide which player likely a Werewolf and vote accordingly.\n\nLet's analyze.\n\nIt looks like the transcript is garbled; no clear role action info.\n\nBut we can try to track night action descriptions. We have announcements that the roles wake up: Werewolves (absent maybe all are Villagers initially?), Seer etc.\n\nBut due to chaotic, maybe no Werewolf. But we need to decide as observer.\n\nWe should check if they mention being Switched are likely challenging.\n\nPossible clues: Justin says \"Am I Troublemaker?\" Mike says \"Yeah\" implicating that Mike is Troublemaker. Also Justin said \"No.\" Wait: Look at #19 Justin: Am I Troublemaker? #20 Mike: Yeah. So Mike is Troublemaker. That means Mike began as Troublemaker. So their action: \"Troublemaker. Wake up. You may exchange cards between two other players.\" So tonight, Mike swapped two others. So his original role is Troublemaker, swapped with something else. Does he still have his starting role? Actually after swapping, he might end up with a different role, unless swapped with himself. But the suspect is beginning with Troublemaker; he could be attempting to trick.\n\nBut we need to know final alignments. The action of Trailer: He swapped two other players' cards, not his. So his own card remains Troublemaker? No, his card swapped? He swapped others so his card remains unchanged. In game, when troublemaker wakes up, they swap two others, and then close eye. They don't change their own card. So final role for Mike remains Troublemaker. So, he remains on Village team. But other players had swap.\n\nSo possible werewolf for 5 players? Maybe none.\n\nAt transcript, Mike says \"I almost got one from the center.\" At night action, the Drunk maybe swapped his card with center. But not necessary.\n\nWe have evidence: \"Mike: I almost got one from the center.\" There is also \"...' here it is. Found it!\" likely refers to center card? Hard.\n\nNow basically at the end, we have multiple metastatic sounds, nonspecific.\n\nProbably there is no Werewolf.\n\nBut we need to choose a target: maybe Justin? Let's examine conversation; Justin first asks \"Justin: Am i Troublemaker?\" Mike says \"yeah\" implying Mike is Troublemaker. So we know Mike's role.\n\nJustin likely to have confusion. He says \"Justin: Am I Troublemaker? ' 19. Mike says yes. That suggests Justin is not Troublemaker. Might be other role.\n\nDid anyone mention werewolves? In conversation:\n\nAnnouncement: Are Talks: \"Who did say 'Hello', \" Justin? not used.\n\nOk.\n\nAlso some talk about 'Tanner', but no.\n\nGiven limited info, any decision? Not enough.\n\nAlternatively maybe Justin is indeed werewolf. He later: \"Justin: Let's go through it.\" He says \"I'm going to talk.\" No real logistic.\n\nMaybe the discussion unfortunately incomplete; we may deem no known werewolf.\n\nThus choose \"Circle Vote\".\n\nNow produce JSON output with justification.",
+  "parsed_output": {
+    "justification": "The transcript provides insufficient evidence of a werewolf's presence; key actions point to a Troublemaker (Mike) and unclear role distribution. No player’s behavior or admissions strongly suggest werewolf activity, and all participants appear to belong to the Village team or the center. To avoid mistakenly eliminating a non-werewolf, circulating the vote preserves the status quo.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript provides insufficient evidence of a werewolf's presence; key actions point to a Troublemaker (Mike) and unclear role distribution. No player’s behavior or admissions strongly suggest werewolf activity, and all participants appear to belong to the Village team or the center. To avoid mistakenly eliminating a non-werewolf, circulating the vote preserves the status quo.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript provides insufficient evidence of a werewolf's presence; key actions point to a Troublemaker (Mike) and unclear role distribution. No player’s behavior or admissions strongly suggest werewolf activity, and all participants appear to belong to the Village team or the center. To avoid mistakenly eliminating a non-werewolf, circulating the vote preserves the status quo.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript provides insufficient evidence of a werewolf's presence; key actions point to a Troublemaker (Mike) and unclear role distribution. No player’s behavior or admissions strongly suggest werewolf activity, and all participants appear to belong to the Village team or the center. To avoid mistakenly eliminating a non-werewolf, circulating the vote preserves the status quo."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2511,
+    "output_token_count": 767,
+    "generation_time_sec": 232.57464146614075,
+    "used_chat_template": true,
+    "input_char_count": 10035,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

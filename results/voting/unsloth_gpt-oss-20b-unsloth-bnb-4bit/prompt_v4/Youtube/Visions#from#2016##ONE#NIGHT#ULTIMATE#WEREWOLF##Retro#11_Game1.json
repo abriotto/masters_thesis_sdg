@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide which player to vote for. Need to interpret gameplay. Interpret roles:\n\nWe need to deduce who the Werewolves might be. We have five players: Justin, Laura, Paul, James, Mitchell. Information in transcript is messy; maybe confusion. The roles suspected appear to involve swap from TroubleMaker etc.\n\nWe should consider that roles can be swapped. At day 2, we need to identify who is likely a Werewolf. The metadata suggests some confusion.\n\nLet's parse:\n\n- Roles available: any candidate roles with 8 players? Actually with 5 players + 3 = 8 roles. Candidate list could include: at most 2 Masons, but one of each else.\n\nPlayers mention: \"Laura: I was Robber ... and then I switched.\" Indicating that Laura was Robber and swapped? She might be the new \"Robber\" player from role swap? The text says: \"I was Robber and except I was switch\". Also: \"James: I'm the seer obviously.\" \"John ? Maybe.\n\nAlso \"Bruce:...\"\n\nLet’s decode a bit: They said Laura says \"I was Robber and then I switched. I know random.\" Suggests that Laura had role Robber, swapped with someone.\n\nImportant: At start we had roles determined maybe: None? Hard to determine.\n\nPlayers speak. Let's try to figure from lines near end. Starting from line 28: \"Justin: So we have... Seer... Is James's saying he's the Seer, Laura's saying she's Insomniac, Mitchell is saying he's robber, Paul and I have said nothing, James has said Tanner and Werewolf in the center.\" This implies initial belief: James claims he's seer, Laura claims she's insomniac, Mitchell says he's robber. There's mention of Tanner and Werewolves in center.\n\nLine 29: \"Laura: But I will say that I switched with Mitchell and that's why he is the Robber now and I'm the Insomniac because I was the Robber and he was the insomniac.\"\n\nSo it seems to say: Laura switched with Mitchell; after that she is Insomniac, until reading 'that'.\n\nLater, lines 30-38 etc: Confusing commentary. People suspect roles.\n\nIt looks like we have a cluster where a mixture of roles legitimately swapped as per Troublemaker/Robber attempts?\n\nThen near the end lines 164: \"Lucy: ...\"\n\nActually, after line 160: \"[151]...\" The transcript ends at lines 160-162. Let's examine last part: lines 157: \"Justin: I got to do a vote. Who's everyone going for?\" Then at line 158: \"Paul: I'm voting for Justin.\" So Paul is voting for Justin (i.e., targeting Justin as suspect). 159: \"Laura: I guess I'll vote for James?\" 160: \"Mitchell: I'm voting left.\" 161: \"Justin: No, don't vote left.\" 162: \"Mitchell: Why?\"\n\nSo it seems at the vote at the end: Paul wants to vote for Justin (i.e., we suspect Justin is the werewolf), Laura maybe votes for James, and Mitchell says \"I'm voting left.\" Not sure.\n\nNow our task: choose one player to eliminate, or circle if none. We need to choose the most likely werewolf based on statements.\n\nWe need to identify most logical because of roles swap: If we suspect that some are werewolves. Potential suspects: Justin might be werewolf or maybe not.\n\nFrom the transcripts: \"Justin: ... I'm going to stick to my guns...\" Hard.\n\nLook at earlier: \"James: I'm the seer obviously.\" That indicates James thinks he's seer; he might be SEER or at least player speaking about.\n\nBut if so, his claim \"I'm the seer\" is seldom true? Might be false.\n\nAlso: \"Laura: I'm the Insomniac.\" She says she is insomniac.\n\nIf she were insomniac, she cannot claim to be the seer. She is insomniac. Not working.\n\nBut earlier \"Laura: I'm the Inst.\" Actually.\n\nLet's examine the items about 'Troublemaker' maybe. The Troublemaker would swap two players. He might have swapped players but not told them.\n\nBecause of confusion, let's think: The arrangement: game had 5 players: Justin, Laura, Paul, James, Mitchell. Others (no roles) unknown. The center has 3 roles.\n\nAt start, the game has some roles possibly: \"He said 'I do' maybe.\n\nWe can use typical probability: We don't know unless we suspect a werewolf among players. Not enough info.\n\nBut also note that players mention \"James: I'm the seer obviously.\" Means James claims he's Seer, but is Seer truly? As a seer, his only ability is to look at a player or two center stones. But he didn't? Wait that is only at night. In the transcript, we have them stating \"Ja\".\n\nBut we need to decide.\n\nPotentially, from earlier lines, Justin might be suspect because he claimed to have 'robbed' when he was \"robber\" but had a swap.\n\nMaybe we should say that Justin (maybe Robber) might have predator as someone?\n\nAlternatively, might target James. But we need more nuance. Let's focus on conversation near the bottom: 157-162.\n\nWe have for example:\n\nline 157: Justin: \"I got to do a vote. Who's everyone going for?\"\n158: Paul: \"I'm voting for Justin.\"\n159: Laura: \"I guess I'll vote for James?\"\n160: Mitchell: \"I'm voting left.\"\n161: Justin: \"No, don't vote left.\"\n162: Mitchell: \"Why?\".\n\nIt doesn't show a vote for James or Justin being widely suspected. But Paul is clearly pointing to Justin. That may indicate that Justin is considered suspect.\n\nThus likely do vote for Justin.\n\nThus my answer: \"Justin\" as chosen vote.\n\nNow explanation: Why? Because Paul says that, and Paul is a trustworthy place? Additionally, because of the given statements about being always at last.\n\nThus output JSON accordingly.",
+  "parsed_output": {
+    "justification": "The main clue comes from Paul’s explicit statement that he is voting for Justin, indicating a consensus that Justin might be a Werewolf.  The rest of the conversation shows confusion and mixed roles, but there is no other strong indication that another player is definitely the Werewolf.  Therefore, the most logical suspect to eliminate is Justin.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The main clue comes from Paul’s explicit statement that he is voting for Justin, indicating a consensus that Justin might be a Werewolf.  The rest of the conversation shows confusion and mixed roles, but there is no other strong indication that another player is definitely the Werewolf.  Therefore, the most logical suspect to eliminate is Justin.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The main clue comes from Paul’s explicit statement that he is voting for Justin, indicating a consensus that Justin might be a Werewolf.  The rest of the conversation shows confusion and mixed roles, but there is no other strong indication that another player is definitely the Werewolf.  Therefore, the most logical suspect to eliminate is Justin.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The main clue comes from Paul’s explicit statement that he is voting for Justin, indicating a consensus that Justin might be a Werewolf.  The rest of the conversation shows confusion and mixed roles, but there is no other strong indication that another player is definitely the Werewolf.  Therefore, the most logical suspect to eliminate is Justin."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4174,
+    "output_token_count": 1363,
+    "generation_time_sec": 410.7464191913605,
+    "used_chat_template": true,
+    "input_char_count": 15830,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

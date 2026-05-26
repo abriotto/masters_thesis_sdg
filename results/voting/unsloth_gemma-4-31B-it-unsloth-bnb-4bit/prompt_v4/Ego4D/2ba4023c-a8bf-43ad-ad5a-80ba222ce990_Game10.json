@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "2ba4023c-a8bf-43ad-ad5a-80ba222ce990",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/2ba4023c-a8bf-43ad-ad5a-80ba222ce990_Game10.txt",
+  "player_names": [
+    "Tyler",
+    "Margaret",
+    "Erin",
+    "Clint"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Tyler\n    *   Margaret\n    *   Erin\n    *   Clint\n\n    *   Margaret: Claims Tanner (wants to be killed).\n    *   Clint: Claims Robber, says he robbed Erin and became the Insomniac.\n    *   Tyler: Claims Troublemaker.\n    *   Erin: Doesn't claim a starting role initially, but later says her card was the Robber (or she is now the Robber).\n\n    *   Margaret claims Tanner.\n    *   Clint claims Robber -> Insomniac (robbed Erin).\n    *   Tyler claims Troublemaker.\n    *   Erin says her card was the Robber (meaning Clint's claim that he robbed her and became the Insomniac is suspicious).\n\n    *   If Clint was the Robber and robbed Erin, he would know Erin's card. He says he became the Insomniac.\n    *   Erin says her card was the Robber. This is confusing. If Erin *was* the Robber, Clint couldn't have robbed her and become the Insomniac unless the Robber card was already with Erin. But the Robber is a starting role.\n    *   Wait, Erin says: \"this card was the Robber card, but that wasn't the Insomniac card\" (Line 106). Then \"That's a Robber\" (Line 123).\n    *   If Erin is the Insomniac, she checks her card at the end of the night. If she sees the Robber card, it means someone (the Robber) robbed her, or the Troublemaker swapped her card with the Robber.\n    *   Clint claimed he was the Robber and robbed Erin and became the Insomniac. If Clint became the Insomniac, he would have the Insomniac card. If Erin now has the Robber card, it means Clint (the Robber) took the Insomniac card from her and gave her the Robber card.\n    *   Wait, the Robber swaps their card with another player's card. If Clint (Robber) swaps with Erin (Insomniac), Clint becomes the Insomniac and Erin becomes the Robber. This matches Clint's claim.\n    *   However, Erin says: \"this card was the Robber card, but that wasn't the Insomniac card\" (Line 106). This is slightly ambiguous. Does she mean she *is* the Insomniac and saw the Robber card? Or she *was* the Robber?\n    *   Let's re-read: \"I'm wondering why you would lie about what card it became\" (Line 106). This suggests Erin knows what card Clint *should* have become.\n    *   If Erin was the Insomniac, she woke up at the end of the night and saw her current card. If she saw the Robber card, it means she was robbed by the Robber.\n    *   Clint says: \"I swapped with Erin and now I'm the insomniac\" (Line 38).\n    *   If Clint is the Robber and Erin is the Insomniac, and they swap, Clint becomes the Insomniac and Erin becomes the Robber.\n    *   Erin says: \"this card was the Robber card, but that wasn't the Insomniac card\" (Line 106). This is the confusing part. If she is the Insomniac, she sees her *current* card. If she sees the Robber card, then Clint's story (that he robbed her and became the Insomniac) is consistent.\n    *   But Erin says \"I'm wondering why you would lie about what card it became\" (Line 106). This implies she thinks Clint is lying. Why? Maybe she didn't start as the Insomniac?\n    *   If Erin started as the Robber, then Clint couldn't have robbed her and become the Insomniac (unless he was the Robber and robbed the Insomniac, but he said he robbed Erin).\n    *   Let's look at the claims again:\n        *   Margaret: Tanner.\n        *   Clint: Robber -> Insomniac.\n        *   Tyler: Troublemaker.\n        *   Erin: (Implies she knows Clint is lying).\n\n    *   If Margaret is the Tanner, she wants to be voted out.\n    *   If Clint is a Werewolf, he might be lying about being the Robber.\n    *   If Tyler is a Werewolf, he might be lying about being the Troublemaker.\n    *   If Erin is a Werewolf, she might be lying about Clint.\n\n    *   Clint's claim: Robber -> Insomniac (robbed Erin).\n    *   Erin's reaction: \"I'm wondering why you would lie about what card it became\" (Line 106).\n    *   This suggests Erin has information that contradicts Clint. If Erin is the Insomniac, she knows her current card. If she sees the Robber card, then Clint's claim is actually *consistent* with her being the Insomniac.\n    *   Wait, if Erin is the Insomniac and sees the Robber card, then Clint (the Robber) took the Insomniac card and gave her the Robber card. So Clint is now the Insomniac.\n    *   Why does Erin say he's lying? \"this card was the Robber card, but that wasn't the Insomniac card\" (Line 106).\n    *   Maybe Erin means: \"My card is the Robber card, but [the card I had before] wasn't the Insomniac card.\"\n    *   If Erin didn't start as the Insomniac, then Clint couldn't have become the Insomniac by robbing her.\n    *   If Erin started as, say, a Villager, and Clint robbed her, Clint would become a Villager. But Clint claims he became the Insomniac. Therefore, Clint is lying.\n\n    *   If Clint is lying about being the Robber/Insomniac, he is likely a Werewolf.\n    *   Margaret claiming Tanner is a common bluff for Werewolves or just the Tanner.\n    *   Tyler claiming Troublemaker is also a possible bluff.\n    *   However, the conflict between Clint and Erin is the most direct evidence. Erin's statement that Clint is lying about the card he became is a strong indicator that Clint is the Werewolf.\n\n    *   Clint claims he robbed Erin and became the Insomniac.\n    *   Erin states that her card is the Robber card, but she was not the Insomniac.\n    *   If Erin was not the Insomniac, Clint could not have become the Insomniac by robbing her.\n    *   Therefore, Clint is lying.\n    *   Lying about your role in this game usually indicates you are a Werewolf (or the Tanner, but Margaret already claimed Tanner).\n\n    *   Margaret: Tanner (claims she wants to die).\n    *   Tyler: Troublemaker.\n    *   Erin: (Likely Insomniac or Villager, providing the contradiction).\n    *   Clint: (Lying about the Robber/Insomniac swap).\n\n    *   If Margaret is the Tanner, voting for her makes the Tanner win.\n    *   If Clint is the Werewolf, voting for him makes the Village win.\n    *   The most likely Werewolf based on the contradiction is Clint.\n\n    *   Wait, let me re-read Line 106: \"Well, I'm wondering ... so this card was the Robber card, but that wasn't the Insomniac card. So I'm wondering why you would lie about what card it became.\"\n    *   This is a bit garbled, but the core is that Erin believes Clint is lying about the result of the robbery.\n    *   If Clint is lying about being the Robber and becoming the Insomniac, he's the most suspicious player.\n\n    *   Could Tyler be the Werewolf? He claims Troublemaker.\n    *   Could Margaret be the Werewolf? She claims Tanner.\n    *   Could Erin be the Werewolf? She's the one pointing out the lie.\n    *   In these games, the person caught in a logical contradiction (Clint) is usually the intended target.\n\n    *   Clint claimed to be the Robber and to have robbed Erin, becoming the Insomniac.\n    *   Erin contradicted this, stating that while she now has the Robber card, she was not the Insomniac.\n    *   This means Clint could not have become the Insomniac by robbing Erin.\n    *   Since Clint is lying about his role and actions, he is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Clint claimed to be the Robber and stated that he robbed Erin and became the Insomniac. However, Erin contradicted this by stating that although she now holds the Robber card, she was not the Insomniac. If Erin was not the Insomniac, Clint could not have become the Insomniac by robbing her, meaning Clint is lying about his role and actions. This makes Clint the most likely Werewolf among the players.",
+    "chosen_vote": "Clint"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Clint claimed to be the Robber and stated that he robbed Erin and became the Insomniac. However, Erin contradicted this by stating that although she now holds the Robber card, she was not the Insomniac. If Erin was not the Insomniac, Clint could not have become the Insomniac by robbing her, meaning Clint is lying about his role and actions. This makes Clint the most likely Werewolf among the players.\",\n  \"chosen_vote\": \"Clint\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Clint claimed to be the Robber and stated that he robbed Erin and became the Insomniac. However, Erin contradicted this by stating that although she now holds the Robber card, she was not the Insomniac. If Erin was not the Insomniac, Clint could not have become the Insomniac by robbing her, meaning Clint is lying about his role and actions. This makes Clint the most likely Werewolf among the players.\",\n  \"chosen_vote\": \"Clint\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Clint",
+    "justification": "Clint claimed to be the Robber and stated that he robbed Erin and became the Insomniac. However, Erin contradicted this by stating that although she now holds the Robber card, she was not the Insomniac. If Erin was not the Insomniac, Clint could not have become the Insomniac by robbing her, meaning Clint is lying about his role and actions. This makes Clint the most likely Werewolf among the players."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4135,
+    "output_token_count": 2066,
+    "generation_time_sec": 212.671204328537,
+    "used_chat_template": true,
+    "input_char_count": 14113,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

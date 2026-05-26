@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game10.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Zack\n    *   Sean\n    *   Hunter\n    *   Jacob\n\n    *   Sean claims Villager (T21, T44, T181).\n    *   Jacob claims Drunk (T32), but doesn't know his current role (T36, T70).\n    *   Zack claims Seer (T47), but admits he forgot the card (T47). Hunter tells him he's not the Seer (T48). Zack then accepts he's a Villager (T54).\n    *   Hunter claims Troublemaker (T68, T102, T164). He claims he swapped Zack and Jacob (T66).\n\n    *   Hunter (Troublemaker) says he swapped Zack and Jacob.\n    *   If Hunter is telling the truth:\n        *   Zack (starting Seer/Villager/etc.) and Jacob (starting Drunk) swapped.\n        *   Jacob is now whatever Zack was, and Zack is now whatever Jacob was.\n    *   If Hunter is lying:\n        *   He might be the Werewolf trying to confuse the group.\n\n    *   Zack claimed Seer but was very unconvincing (T47-T51).\n    *   Jacob claimed Drunk (T32).\n    *   Sean claimed Villager (T21).\n    *   Hunter claimed Troublemaker (T68).\n\n    *   If Hunter is the Troublemaker and swapped Zack and Jacob:\n        *   Jacob (Drunk) swapped with Zack (Seer/Villager).\n        *   Jacob is now the Seer/Villager.\n        *   Zack is now the Drunk.\n    *   Wait, let's look at the Werewolf. Who is the Werewolf?\n    *   Sean claims Villager.\n    *   Zack claims Seer (then Villager).\n    *   Jacob claims Drunk.\n    *   Hunter claims Troublemaker.\n    *   If everyone is telling the truth about their *starting* roles, where is the Werewolf?\n    *   Starting roles claimed:\n        *   Sean: Villager\n        *   Jacob: Drunk\n        *   Zack: Seer\n        *   Hunter: Troublemaker\n    *   This accounts for 4 roles. But there must be a Werewolf in the game (unless all Werewolves are in the center).\n    *   If there is a Werewolf, someone is lying.\n\n    *   Zack's Seer claim was weak (\"I forgot what the card was\"). This is highly suspicious.\n    *   Hunter's Troublemaker claim is confident.\n    *   Sean's Villager claim is simple.\n    *   Jacob's Drunk claim is consistent.\n\n    *   If Zack was the Werewolf and lied about being the Seer:\n        *   He'd want to avoid being voted out.\n    *   If Hunter is the Werewolf and lied about being the Troublemaker:\n        *   He'd want to divert attention. He claims he swapped Zack and Jacob. This creates confusion about who is who.\n    *   If Sean is the Werewolf and lied about being the Villager:\n        *   He's playing it safe.\n\n    *   Hunter claims he swapped Zack and Jacob.\n    *   If Hunter is the Werewolf, he's inventing a swap to make the others doubt their own roles or to frame someone.\n    *   If Hunter is the Troublemaker, he actually swapped them.\n\n    *   Zack: \"I'm a seer, and I looked in there and I forgot what the card was.\" (T47) -> This is a terrible claim. Usually, a Seer knows what they saw.\n    *   Hunter: \"Well I hate to tell you chief, but you're not the seer.\" (T48) -> Hunter is very quick to dismiss Zack.\n    *   Hunter: \"Cause these two got swapped.\" (T66) -> Hunter claims he swapped Zack and Jacob.\n    *   Hunter: \"I know I switched those two.\" (T186)\n\n    *   If Hunter is the Werewolf, he's trying to control the narrative.\n    *   If Zack is the Werewolf, he made a bad Seer claim.\n    *   If Sean is the Werewolf, he's just claiming Villager.\n    *   If Jacob is the Werewolf, he's claiming Drunk.\n\n    *   Zack's claim to be Seer was so bad that he immediately gave it up when challenged. This could be a bluff gone wrong or just a confused player.\n    *   Hunter is driving the conversation, claiming to be the Troublemaker and claiming a swap.\n    *   In One Night Ultimate Werewolf, the Troublemaker is a powerful role to fake because it allows you to redefine other people's roles.\n\n    *   Zack: Claimed Seer (failed), then Villager.\n    *   Sean: Claimed Villager.\n    *   Jacob: Claimed Drunk.\n    *   Hunter: Claimed Troublemaker.\n    *   One of these must be the Werewolf.\n    *   If Hunter is the Troublemaker, and he swapped Zack (Seer) and Jacob (Drunk), then Jacob is now the Seer and Zack is now the Drunk.\n    *   But wait, if Hunter is the Troublemaker, who is the Werewolf? Sean?\n    *   If Sean is the Werewolf, he's just claiming Villager.\n    *   If Zack is the Werewolf, he's claiming Seer/Villager.\n    *   If Jacob is the Werewolf, he's claiming Drunk.\n\n    *   Zack's \"I forgot the card\" is extremely suspicious.\n    *   However, Hunter's insistence on the swap and his dominance in the conversation could be a Werewolf strategy.\n    *   Let's look at the transcript again.\n    *   T186: Hunter says \"I know I switched those two. So even if we vote him [Zack] out, you [Sean] still won't win.\"\n    *   Wait, why would Sean win if Zack is voted out? Hunter is saying that if Zack was the Werewolf, voting him out would make the Village win. But Hunter says \"you still won't win,\" implying Sean is the Werewolf? No, that doesn't make sense.\n    *   T196: \"He wouldn't lose, he'd win.\" (Referring to the Village winning).\n\n    *   Zack's claim was very weak.\n    *   Hunter's claim is strong but could be a bluff.\n    *   Sean is passive.\n    *   Jacob is confused.\n\n    *   If Zack is the Werewolf: He tried to claim Seer, failed, and then pretended to be a Villager.\n    *   If Hunter is the Werewolf: He's pretending to be the Troublemaker to confuse the roles of Zack and Jacob.\n    *   If Sean is the Werewolf: He's just claiming Villager.\n\n    *   Zack's behavior (claiming Seer and then immediately retracting it because he \"forgot\") is very characteristic of a Werewolf who doesn't know what to say or a very confused Villager.\n    *   However, Hunter's claim to be the Troublemaker is the only thing that explains why Zack and Jacob's roles would change. If Hunter is lying, he's the most likely Werewolf because he's fabricating a game-changing event (the swap).\n\n    *   Zack: Claimed Seer, then Villager.\n    *   Sean: Claimed Villager.\n    *   Jacob: Claimed Drunk.\n    *   Hunter: Claimed Troublemaker.\n    *   If we assume one is the Werewolf:\n        *   If Zack is WW: He lied about Seer.\n        *   If Sean is WW: He lied about Villager.\n        *   If Jacob is WW: He lied about Drunk.\n        *   If Hunter is WW: He lied about Troublemaker.\n\n    *   Zack's \"I forgot\" is a huge red flag.\n    *   Hunter's \"I swapped them\" is a bold claim.\n    *   In many of these games, the person making the most complex claim (like Troublemaker) is often the one bluffing, but the person making the most obviously fake claim (Zack's Seer claim) is also a prime suspect.\n\n    *   Zack's claim: \"I'm a seer, and I looked in there and I forgot what the card was.\" (T47)\n    *   This is almost certainly a lie. A Seer doesn't \"forget\" the card they just looked at in the Night phase.\n    *   If Zack is lying about being the Seer, he is either the Werewolf or the Tanner.\n    *   Since there is no Tanner in this game (T150-152), Zack is likely the Werewolf.\n\n    *   Wait, Hunter says he swapped Zack and Jacob.\n    *   If Hunter is the Troublemaker and he swapped Zack (Seer) and Jacob (Drunk):\n        *   Zack is now the Drunk.\n        *   Jacob is now the Seer.\n    *   If Zack is now the Drunk, he wouldn't know his role, which might explain why he's confused. But he claimed he *was* the Seer (past tense).\n    *   If Zack was the Seer and got swapped to Drunk, he would still remember that he *was* the Seer. He wouldn't \"forget\" the card he saw.\n\n    *   Zack's claim to be Seer was a lie.\n    *   He is the most likely Werewolf.\n\n    *   Zack: Claimed Seer, then Villager. (Suspicious)\n    *   Sean: Claimed Villager. (Neutral)\n    *   Jacob: Claimed Drunk. (Neutral)\n    *   Hunter: Claimed Troublemaker. (Bold, but consistent)\n    *   The most suspicious action is Zack's failed Seer claim.\n\n    *   Zack's claim to be the Seer was immediately retracted and was poorly executed (\"I forgot what the card was\"), which is a strong indicator of a bluff.\n    *   Since the Tanner is not in the game, a false claim to a power role like the Seer strongly suggests the player is a Werewolf.\n    *   While Hunter's claim to be the Troublemaker is bold, there is more direct evidence of deception from Zack.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   T2: Sean says \"Everyone knows who the werewolf is.\"\n    *   T3: Zack asks \"Me?\"\n    *   T4: Sean says \"Yeah.\"\n    *   This happened *immediately* after the Night phase. Sean is pointing at Zack right away.\n    *   T47: Zack claims Seer, then fails.\n    *   T66: Hunter claims he swapped Zack and Jacob.\n    *   T186: Hunter says \"I know I switched those two. So even if we vote him [Zack] out, you [Sean] still won't win.\"\n    *   This is confusing. If Zack is the Werewolf, voting him out *would* make the Village win. Hunter's logic in T186 is a bit muddled, but he seems to be arguing that he (Hunter) is the Troublemaker and that he knows what happened.\n\n    *   Zack is the most likely candidate for the Werewolf due to the failed Seer claim and Sean's immediate accusation.",
+  "parsed_output": {
+    "justification": "Zack makes a highly suspicious and unconvincing claim to be the Seer, stating he 'forgot' what card he saw, which is atypical for a player who actually performed the Seer's action. Since the Tanner is confirmed not to be in the game, this failed bluff strongly suggests that Zack is the Werewolf. While Hunter claims to be the Troublemaker and asserts a swap occurred, Zack's immediate and poor attempt to claim a power role is the most direct evidence of deception.",
+    "chosen_vote": "Zack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Zack makes a highly suspicious and unconvincing claim to be the Seer, stating he 'forgot' what card he saw, which is atypical for a player who actually performed the Seer's action. Since the Tanner is confirmed not to be in the game, this failed bluff strongly suggests that Zack is the Werewolf. While Hunter claims to be the Troublemaker and asserts a swap occurred, Zack's immediate and poor attempt to claim a power role is the most direct evidence of deception.\",\n  \"chosen_vote\": \"Zack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Zack makes a highly suspicious and unconvincing claim to be the Seer, stating he 'forgot' what card he saw, which is atypical for a player who actually performed the Seer's action. Since the Tanner is confirmed not to be in the game, this failed bluff strongly suggests that Zack is the Werewolf. While Hunter claims to be the Troublemaker and asserts a swap occurred, Zack's immediate and poor attempt to claim a power role is the most direct evidence of deception.\",\n  \"chosen_vote\": \"Zack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Zack",
+    "justification": "Zack makes a highly suspicious and unconvincing claim to be the Seer, stating he 'forgot' what card he saw, which is atypical for a player who actually performed the Seer's action. Since the Tanner is confirmed not to be in the game, this failed bluff strongly suggests that Zack is the Werewolf. While Hunter claims to be the Troublemaker and asserts a swap occurred, Zack's immediate and poor attempt to claim a power role is the most direct evidence of deception."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5267,
+    "output_token_count": 2766,
+    "generation_time_sec": 292.6018912792206,
+    "used_chat_template": true,
+    "input_char_count": 16890,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

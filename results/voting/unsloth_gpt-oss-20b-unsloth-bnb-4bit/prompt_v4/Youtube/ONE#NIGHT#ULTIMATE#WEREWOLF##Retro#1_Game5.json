@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript (likely noisy). Need to determine which player is likely a werewolf. Players: Justin, Alvin, James, Mitchell. Roles available: Could be any of the standard roles; classic set includes 4 players so roles chosen maybe like typical TS? But here we have glimpses of roles: Many mentions: \"Justin: I was a villager.\" Then Alvin claims he was the drunk and that he swapped with a center card, etc. Then James says he's a hunter? He says he was hunter. But also he says \"I was a robber\", later says \"I was a hunter\".\n\nWe need to interpret. The transcript seems incomplete and messy. We assume each player started with a role assigned. Alright let's parse.\n\nKey events:\n\n- Justin claims: \"I was a villager.\" So Justin presumably still villager.\n\n- Alvin: \"I was the drunk.\" So Alvin claimed drunk.\n\n- James: Initially says \"I was a robber.\" later says \"I was a hunter\". Perhaps confusion or mislead.\n\n- Mitchell: claims \"I was the seer.\" Also says \"I looked at Alvin's.\" So he claims that he looked at Alvin's card.\n\nImportant: The discusions reveal possibly role interactions. If someone was drunk, they'd have swapped card with center, but we don't see actual swap results.\n\nJustin says \"I was a villager.\" So Justin stays as villager.\n\nJames is claiming multiple roles; maybe he's one of: hunter, robber or others. Many *unclear*.\n\nWe need to determine from the transcript, who likely is werewolf.\n\nWe've seen that James says \"I was a hunter\" vs earlier \"I was a robber\". Hmm.\n\nMaybe we deduce that the only case where someone could be werewolf is if they are a Hunter or something. The Hunters rarely become werewolves unless they had other roles swapped with center. But multiple roles discovered: Drunk, Seer ... Let's examine each:\n\nWhen a player is a Drunk, they are a villager (checks out) and they're swapped, but after that they can be a different role. But still used for team.\n\nIf James claimed to be hunter, maybe he is victim? But if James is hunter, not werewolf. Victim can be instantiating.\n\nIf James was a robber? Given that he said he was a hunter later; unclear.\n\nMitchell says he was the seer; maybe he's a real seer who looked at Alvin's card. If he turned out to be werewolf, then he would want to point out. But seer is village alignment, not werewolf.\n\nIf a werewolf would not be seer. So Mitchell is likely not werewolf.\n\nAlvin was drunk. The drunk swaped his card; maybe ended up as someone else, but aligns with village.\n\nSo likely no werewolves. However, we need to look carefully: needed to use possible interactions.\n\nThe game's standard mix: with 4 players, common roles: maybe preset selection: only a few possible roles can be werewolf. But we don't know.\n\nLet's interrogate the transcript.\n\nSequence: At start, after day, there was some confusion. At line 30: \"I was a villager.\" That suggests Justin at that point is still villager. That means he caught minimize.\n\nAlvin: \"I was the drunk.\" So he had that role. Drunk swapped with center: maybe became another role. Drunk swapped card with center perhaps now villain.\n\nBut maybe the center now contains roles including werewolf. They could be in center; then nobody is werewolf.\n\nUsing that logic: Since contestants identified only 3 unique \"special roles\" as: Drunk, Seer. So perhaps as givens at the start: set of 7 roles (hunter missing?). Hard.\n\nInstead, we can treat as unknown.\n\nWe need to guess most likely werewolf. Let's analyze:\n\n- If there was a werewolf, they'd remain werewolf after night. Unless swapped with center or robber. But we don't know.\n\n- Alvin, who was drunk, would swap.\n\nGiven that no one reported being werewolf directly, maybe no werewolf present. But having been played weird roles, I'm uncertain.\n\nBecause the transcript includes a lot of noise.\n\nWe need to look at the final stage: James says \"I think Mitchell is the werewolf.\" So many participants suspect Mitchell object.\n\nSo possibly Mitchell appears suspicious; he claimed to be seer but might fake, but has suspicion.\n\nOne possibility: Mitchell actually is that suspicious, possibly a werewolf disguised as seer.\n\nBut also, note that in transcript, Justin says \"I was a villager.\" At earlier stage, his role may not be 100% fixed. He never swapped. Others: James claims both robber and hunter, weird. The only role that can mimic something like that is wrong.\n\nWait: He said \"I was a robber\" then \"I was hunter.\" Could be that he cannot be? So it's random.\n\nGiven confusion, we might assume due to uncertainty that the best result is to vote for Mitchell, because many lines indicate suspicion on him and he claims to have looked at other players. Possibly he's lying. So we can yield that he could be a werewolf.\n\nThus, final answer: \"Mitchell\".\n\nLet's produce output accordingly.",
+  "parsed_output": {
+    "justification": "The transcript shows considerable doubt about Mitchell’s honesty—he claims to have been the Seer and to have looked at Alvin’s card, but many participants express disbelief in his statements.  Throughout the discussion, the majority of suspicions and accusations point toward Mitchell as the likely suspect.  While other players’ roles (e.g., Justin as villager, Alvin as drunk) seem consistent with non‑werewolf roles, the repeated hinting of deceit with Mitchell suggests he may be a werewolf.  Therefore, voting for Mitchell maximizes the chance of eliminating a werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows considerable doubt about Mitchell’s honesty—he claims to have been the Seer and to have looked at Alvin’s card, but many participants express disbelief in his statements.  Throughout the discussion, the majority of suspicions and accusations point toward Mitchell as the likely suspect.  While other players’ roles (e.g., Justin as villager, Alvin as drunk) seem consistent with non‑werewolf roles, the repeated hinting of deceit with Mitchell suggests he may be a werewolf.  Therefore, voting for Mitchell maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows considerable doubt about Mitchell’s honesty—he claims to have been the Seer and to have looked at Alvin’s card, but many participants express disbelief in his statements.  Throughout the discussion, the majority of suspicions and accusations point toward Mitchell as the likely suspect.  While other players’ roles (e.g., Justin as villager, Alvin as drunk) seem consistent with non‑werewolf roles, the repeated hinting of deceit with Mitchell suggests he may be a werewolf.  Therefore, voting for Mitchell maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript shows considerable doubt about Mitchell’s honesty—he claims to have been the Seer and to have looked at Alvin’s card, but many participants express disbelief in his statements.  Throughout the discussion, the majority of suspicions and accusations point toward Mitchell as the likely suspect.  While other players’ roles (e.g., Justin as villager, Alvin as drunk) seem consistent with non‑werewolf roles, the repeated hinting of deceit with Mitchell suggests he may be a werewolf.  Therefore, voting for Mitchell maximizes the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3335,
+    "output_token_count": 1222,
+    "generation_time_sec": 370.26995968818665,
+    "used_chat_template": true,
+    "input_char_count": 12993,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

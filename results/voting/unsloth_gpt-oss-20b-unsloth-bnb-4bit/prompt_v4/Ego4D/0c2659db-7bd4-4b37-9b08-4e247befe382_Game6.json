@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game6.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine who might be werewolf. We have list: Elliot, Ashley, James, Chris, Sukeshi, Sian. The transcript is spammy, unclear. Many claims about roles. Let's analyze:\n\nWe know roles: Duplications: The initial game included roles that may include multiple roles. Could size? 6 players. So likely we have 9 roles chosen for 6 players + 3 center. But could be other combinations. Not given.\n\nBut we suspect there are werewolves in the group. But can we deduce which names likely are werewolves?\n\nLet’s examine claims:\n\n- [25] Elliot says: \"I was the doppelganger and I took on the insomniac role.\" Confusing. That might imply he was a doppelganger starting. Final role unknown.\n\n- [33]: \"I'm the hunter,\" etc.\n\n- [45]: Sian says \"I'm the hunter.\" So Sian asserts being hunter.\n\n- People talk about being lub, etc.\n\n- Many statements are contradictory.\n\nGiven the chaos, maybe there are no werewolves? Could be subterfuge.\n\nLet's weigh possibilities.\n\nLook at [45] Sian saying \"I'm the hunter.\" Usually Hunter only speaks if being hunted; might be lying.\n\nPeople mention \"insomniac\" etc.\n\nImportant: The werewolf could be someone who claims to be werewolf or shows suspicious actions. Might be James? Many claim James is werewolf, but there's no direct evidence. Possibly James is suspect.\n\nWe want to eliminate a werewolf. Who likely to be werewolf?\n\nTry to condense credible info:\n\n- James says: \"I'm the troublemaker.\" Also says that he switched someone. Also said \"I was the troublemaker\" in lines. Actually line 76: “James: I'm the troublemaker. I switched you and Chris.” That indicates his role is troublemaker.\n\nIf James is troublemaker, then he's village: he swapped two other players but can't be werewolf.\n\nBut the problem is that his statement might be false.\n\n- Chris says he's hunter possibly or says he was hunter. But sometimes.\n\n- Sian said \"I'm the hunter.\" Could have been vandalizing about skepticism. But in [45] \"Sian: I'm the hunter.\" may mean Sian is hunter. That would be village. So Sian not werewolf.\n\n- James may be werewolf. He claims to be troublemaker. If he is werewolf, he would claim something else. Not sure.\n\n- Sian says \"I am the Tanner.\" Actually the transcript: [40] \"Ashley: I try to kill me, a lot.\" No. Let's find regarding Tanner: # Wait in transcript at 139-140: \"Ashley: Yup, as the Tanner.\" No, line appears \"Ashley: Yup, as the Tanner.\" Wait. Let's scroll.\n\nLine 139: “Ashley: Yup, as the Tanner.” This is at line 139: \"Ashley: Yup, as the Tanner.\" Actually the transcript lines 139-140: \"Ashley: Yup, as the Tanner.\" \"Mount\" line 133? Let's re-check. Might be mis-parsed.\n\nBut we see exit that maybe some say they are Tanner.\n\nMaybe our best lever: choose \"Circle Vote\".\n\nHowever key: The training weights: For any suspect, we should make best guess. We need to decide if there is a werewolf. Not clear.\n\nWe can scan transcript for being mention of \"werewolf\".\n\nLines 129 ~? 131 \"Chris: I think he might be, too.\" Might refer to werewolf.\n\nLet's search: lines near 149-152: \"Sukesh: I think James might be the Werewolf.\" So someone says that James is werewolf. Then line 150: \"Chris: I think he might be, too.\" Possibly hinting that James and maybe another?\n\nLater lines 155-158 also speak of being etc. There's a contest.\n\nSome lines [161] \"Sian: I'm the hunter.\" That's repeated.\n\nIf James is suspect, what's evidence that he's werewolf? He claimed to be troublemaker; but had other people talk about him being troublemaker - maybe that's false. Sian suggested him as werewolf.\n\nAdditionally, multiple references to \"was a why\" etc.\n\nAlso conversation about \"ret\".\n\nLet's decode: Look positions of \"You are the\", \"you are\". The system may purposely mask.\n\nOne approach: We interpret that many people suspect James. He might be werewolf. But James says \"I'm the troublesome.\" But maybe he is an impostor? If he says he's troublemaker, maybe that implies his role is troublemaker. If he is werewolf, it's suspicious because being troublemaker would not be typically werewolf. But players may lie. However if he was a werewolf, he might also claim to be troublemaker. But known that troublemaker is a villager role that can change other's roles.\n\nBetter perhaps to pick \"Circle Vote\" if nothing conclusive.\n\nBut question expects choose a player to eliminate.\n\nLet's decide: suspect James.\n\nIs there any other suspect? For example, 'Elliot' claims he's doppelganger and insomniac; might be misdirection. But being insomniac vs being werewolf doesn't matter. But does he appear as likely werewolf? He never says 'Werewolf.' Others suspect he may be werewolf. 'Elliot' says: \"I'm the damn dirty, rotten liar.\" But that could be negative.\n\nline 133: \"Is that the suspect?\"\n\nThere's no clarity.\n\nGiven the high noise, and many conflicting claims, likely nobody is certain. Possibly there is no werewolf due to center containing all werewolves. But risk remains.\n\nWe might choose \"Circle Vote\" which states no probable werewolf found.\n\nBut requirement: \"if you see suspect, choose that.\"\n\nOk choices: Because James repeatedly mentioned as suspicious. I'll respond with \"James\". Provide justification: fraudulent claims, 'troublemaker', someone suspects him.\n\nLet's craft final.",
+  "parsed_output": {
+    "justification": "After reviewing the discussion, James is repeatedly labeled as suspicious—multiple participants point out that he may be the werewolf. Several mentions indicate he was called a troublemaker; however this role historically belongs to the Village side. The confusion, plus accusations that he might be a werewolf by several players, suggests James is the most likely candidate to be an adversary. No clear confirmation exists for any other player, making James the best target.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"After reviewing the discussion, James is repeatedly labeled as suspicious—multiple participants point out that he may be the werewolf. Several mentions indicate he was called a troublemaker; however this role historically belongs to the Village side. The confusion, plus accusations that he might be a werewolf by several players, suggests James is the most likely candidate to be an adversary. No clear confirmation exists for any other player, making James the best target.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"After reviewing the discussion, James is repeatedly labeled as suspicious—multiple participants point out that he may be the werewolf. Several mentions indicate he was called a troublemaker; however this role historically belongs to the Village side. The confusion, plus accusations that he might be a werewolf by several players, suggests James is the most likely candidate to be an adversary. No clear confirmation exists for any other player, making James the best target.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "After reviewing the discussion, James is repeatedly labeled as suspicious—multiple participants point out that he may be the werewolf. Several mentions indicate he was called a troublemaker; however this role historically belongs to the Village side. The confusion, plus accusations that he might be a werewolf by several players, suggests James is the most likely candidate to be an adversary. No clear confirmation exists for any other player, making James the best target."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4536,
+    "output_token_count": 1352,
+    "generation_time_sec": 407.7387776374817,
+    "used_chat_template": true,
+    "input_char_count": 16283,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a game with four players: Justin, Mitchell, Paul, Tyler. Very chaotic transcript. Need determine likely werewolf(s). We need decide who to vote.\n\nFirst, roles available: up to 4 players +3 center -> 7 roles chosen. We have text about copycat (doppelganger), etc. The transcript mentions copycat, troublemaker, etc. People reference \"Copycat\" earlier: \"Copycat, wake up...\" after \"Announcer: Copycat, wake up and look at one of the center cards.\" So someone started as copycat? Not sure what starting role is.\n\nLet's try to parse the text.\n\nIt seems like multiple people call for roles. The transcript looks highly garbled. But maybe we can deduce some facts.\n\nRoles present might be: copycat = doppelganger. They were told to wake up and look at a center card. Then says \"You are now that role.\" So the person that was originally copycat now becomes the card looked up? Actually copycat wakes up and looks at one of the center cards, then becomes that role? Wait the transcript lines:\n\n[3] Announcer: Copycat, wake up and look at one of the center cards.\n[4] Justin: I would just love the Robber or Troublemaker to not interact with me.\n\n...\n\nActually let's step through timeline.\n\nAnnouncer: Everyone, close your eyes. That's start.\n\nPaul: early comment.\n\nThen [3] \"Announcer: Copycat, wake up and look at one of the center cards.\"\n\nNow copycat is a role that would look at a card and become that role. So the copycat woken up, looked at center card, became that card.\n\nBut earlier [4], Justin: ... his comment.\n\nLater [9]: Justin etc. Hard to parse.\n\nAlso they mention \"I saw things as a seer.\" So somewhere, someone plays as seer. Perhaps the copycat turned into seer at some point.\n\nBut at [13] \"Justin: Do you guys remember when we would play this game...?\" (didn't help).\n\nThen at [14], Mitchell and Paul talk about something else.\n\nAt [16] \"Announcer: Seer, close your eyes.\" So seer wakes.\n\nAt [19], \"Announcer: Robber, wake up.\" etc.\n\nThus the list of roles present: copycat (doppelganger), seer, robber, troublemaker, drunk. So looks like 5 roles? But we have four players, so can't be more than 4 unique roles per player. However many roles can be assigned to center. Since number of roles equals #players + 3 = 7, there will be 7 roles potentially in the set. The selected roles could be anything; but we have note at [3] \"Copycat, wake up...\" meaning someone had copycat starting.\n\nOk.\n\nGoal: Find most likely werewolf.\n\nWe need to deduce from the transcripts some suspect. Many people suspect each other's role.\n\nObservations: Many statements like \"Tyler: You want to say who you moved?\" \"Justin: Not yet.\" They talk about \"You were one of the people I switched.\" The confusion is high.\n\nPerhaps easiest approach: However, given the script, at [38] \"Tyler: I know why he's having trouble figuring out because I looked at his card.\" Ok.\n\nseeing note [39]: Paul had a comment \"I'm the troublemaker\"? hmm.\n\nBut the key lines: [41] \"Tyler: He's Werewolf.\" So Tyler claims that someone is werewolf. Who? Not specified but likely a player. I'd guess Paul?\n\nWait [42] \"Mitchell: That is not true.\" So Tyler says someone is werewolf, Mitchell denies.\n\nAt [45] \"Tyler: So really, did you switch him with me or Paul or yourself?\" etc. They talk about switching. \"Did you switch him with yourself?\" That's about after copycat turned.\n\nConfusing.\n\nBetter path: Provide a safe vote: \"Circle Vote\" if uncertain. But let's analyze more.\n\nThere's also claim about \"witch\" at [50-51]. Possibly a confusion.\n\nGiven all this chaos, seems impossible to identify actual werewolf convincingly. Might be best vote \"Circle Vote\". But instructions: We should choose an option that helps Team Village win. So if you don't have reliable evidence, default to Circle Vote.\n\nBut we might find a strong suspect: At [41] \"Tyler: He's Werewolf.\" The pronoun \"he\" refers perhaps to the person who was originally copycat? Eh.\n\nLet's search specifically for mention of Paul: [35] \"Justin: The Troublemaker!\"\n\n[36] \"All right. We know for a fact Paul's lying.\"\n\nSo Paul is being accused of lying. But no direct mention of who is werewolf. At [41], Tyler says \"He's Werewolf.\" The pronoun could refer to Paul, given earlier on.\n\nAlso at [46] \"Justin: I can't say, man. I can't say.\" e.g. not helpful.\n\nAt [55-59] many talk of Robber, etc.\n\nMaybe the most obvious suspect: The main suspect appears to be Mitchell? There are multiple conflicting messages about votes.\n\nWe are allowed to propose \"Circle Vote\" if no suspect.\n\nThus, simplest and safest answer: \"Circle Vote\".\n\nHowever, use justification: have reasonable explanation.\n\nOk.",
+  "parsed_output": {
+    "justification": "The transcript is chaotic and no definitive evidence identifies any player as a Werewolf. The comments refer to various role swaps, lie accusations, and conflicting claims, making it impossible to single out a credible target. The safest approach to prevent accidental elimination of non‑werewolves is to abstain, i.e., vote for a circle.  Therefore, we err towards a no‑vote to preserve credibility for any future rounds.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is chaotic and no definitive evidence identifies any player as a Werewolf. The comments refer to various role swaps, lie accusations, and conflicting claims, making it impossible to single out a credible target. The safest approach to prevent accidental elimination of non‑werewolves is to abstain, i.e., vote for a circle.  Therefore, we err towards a no‑vote to preserve credibility for any future rounds.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is chaotic and no definitive evidence identifies any player as a Werewolf. The comments refer to various role swaps, lie accusations, and conflicting claims, making it impossible to single out a credible target. The safest approach to prevent accidental elimination of non‑werewolves is to abstain, i.e., vote for a circle.  Therefore, we err towards a no‑vote to preserve credibility for any future rounds.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is chaotic and no definitive evidence identifies any player as a Werewolf. The comments refer to various role swaps, lie accusations, and conflicting claims, making it impossible to single out a credible target. The safest approach to prevent accidental elimination of non‑werewolves is to abstain, i.e., vote for a circle.  Therefore, we err towards a no‑vote to preserve credibility for any future rounds."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3793,
+    "output_token_count": 1227,
+    "generation_time_sec": 372.97333550453186,
+    "used_chat_template": true,
+    "input_char_count": 14848,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

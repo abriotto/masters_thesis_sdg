@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game5.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a bizarre transcript; many lines are nonsensical / incomplete. Need to deduce roles.\n\nPlayers: Justin, James, Paul, Mitchell.\n\nOnly 4 players. So we have 4 roles + 3 center cards -> total 7 cards. Roles are chosen from the list, unique except duplicates behind restrictions (two Masons allowed). The roles set unknown but should include at most one of each.\n\nNeed to determine who is werewolf(s), if any, from the comments.\n\nLet's parse the transcript: Not many direct statements of who is who. Some claims: Justin says \"I was the seer.\" So Justin starts as Seer? Wait: we only know starting roles. He says \"I was the seer.\" So his starting role is Seer. That means at night, Seer will have looked at card(s) etc.\n\nBut we also see mention of copycat movie? Let's read: The Announcer lines 1-6 deal with roles: First brief lines describing we \"close your eyes. Copy cat, wake up and look at all the center cards...\" start of Night. They call out role order. But it's not telling us specifics about individuals' roles? Hmm.\n\nAfter line 1: \"Mitchell: Let's rock.\" Not relevant.\n\nLine 2: The Announcer presumably speaking. It looks slightly confusing. Possibly a mis-transcription of a random group conversation. This game might be during nights? Hard.\n\nHowever, given the transcripts are poor, maybe this is not a typical recorded game. Might be a trick: we may not able to deduce clear roles, so perhaps best answer is Circle Vote.\n\nBut we need to produce justification that indicates we can't determine.\n\nLet's examine the transcript: I see mention of roles: \"Copy cat\" may be copycat role? But no, copycat is not in official list; maybe copying. But role names are fixed: there is no \"copycat\". However, there is a \"copycat\" role in some variants? I'm not aware. The transcript mentions \"copy cat, wake up\" \"copy cat werewolf\"? It's weird.\n\nAlso: \"Copy cat, close your eyes.\" This seems like a role \"Copy cat\" which looks at all center cards and copies role only if roles changed? Actually the \"copy cat\" can copy the roles of other players. Wait the cheat: There is no copy cat role officially; there is \"Doppelganger\" role which copies role of another player. So maybe \"copy cat\" refers to Doppelganger.\n\nIf Justin says \"I was the seer.\" he should also know about \"copy cat\" look at center? Hmm.\n\nGiven context, this may not provide enough info to determine werewolf.\n\nThus propose to circle vote.\n\nBut before finalize, let's check known typed statements with potential to reveal werewolf.\n\nPossible key parts:\n\n- \"Justin: I was the seer.\" So Justin at start is Seer. So he looked at someone or the center.\n\n- \"Justin: I see a werewolf and a tanner.\"\n\n- \"James: You saw a werewolf and a tanner.\" Ok.\n\n- \"Now, let’s evaluate potential who was the copycat maybe?\n\nA copycat/doppelganger might copy a werewolf and become werewolf; they'd address that.\n\nBut we have no certainty.\n\nHence safest to choose \"Circle Vote\" because nothing decisive.\n\nHowever, we might also choose a particular player if we can deduce no werewolf present? Possibly.\n\nLook at the last lines: At line 131: \"Justin: So we kill Mitchell, right?\" That's suggestion. This implies perhaps Mitchell might be a werewolf? Not quite.\n\nBetween the transcribed late part: \"Paul: I think they're the tanner? no\".\n\nWe lack clarity.\n\nThus final output:\n\n{\n \"justification\":\"No conclusive evidence identifies a werewolf. The transcript shows contradictory claims and ambiguous statements. Therefore, no definitive target stands out.\",\n \"chosen_vote\":\"Circle Vote\"\n}\n\nOk.",
+  "parsed_output": {
+    "justification": "The transcript contains mainly conflicting claims and vague statements with no clear indication that any player is a Werewolf. Multiple speakers reference being “the seer” or mentioning seeing a werewolf, but none provide concrete evidence or actions that definitively identify a role. Without reliable proof of a Werewolf’s identity, and because no single player appears convincingly guilty, it’s safest not to target anyone.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains mainly conflicting claims and vague statements with no clear indication that any player is a Werewolf. Multiple speakers reference being “the seer” or mentioning seeing a werewolf, but none provide concrete evidence or actions that definitively identify a role. Without reliable proof of a Werewolf’s identity, and because no single player appears convincingly guilty, it’s safest not to target anyone.\", \"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains mainly conflicting claims and vague statements with no clear indication that any player is a Werewolf. Multiple speakers reference being “the seer” or mentioning seeing a werewolf, but none provide concrete evidence or actions that definitively identify a role. Without reliable proof of a Werewolf’s identity, and because no single player appears convincingly guilty, it’s safest not to target anyone.\", \"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript contains mainly conflicting claims and vague statements with no clear indication that any player is a Werewolf. Multiple speakers reference being “the seer” or mentioning seeing a werewolf, but none provide concrete evidence or actions that definitively identify a role. Without reliable proof of a Werewolf’s identity, and because no single player appears convincingly guilty, it’s safest not to target anyone."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3608,
+    "output_token_count": 921,
+    "generation_time_sec": 277.41936588287354,
+    "used_chat_template": true,
+    "input_char_count": 14007,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

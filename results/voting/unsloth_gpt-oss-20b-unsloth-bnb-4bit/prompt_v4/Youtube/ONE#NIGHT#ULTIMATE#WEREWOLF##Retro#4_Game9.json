@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have transcript noisy; it's hard to parse roles. We need determine likely werewolf. We have players: Justin, Caitlynn, Mike, James, Mitchell.\n\nWe need deduce from discussion: Many suspect drinks.\n\nSo roles: We suspect drinkers? Several mention being drunk. So the drunk role is special. Drunk swaps his card with a center card and doesn't know his new role. So the Drunk might end up as some role unknown.\n\nPotentially, someone acted as a mirror impersonation etc.\n\nIt seems there's confusion. The main part shows:\n\n- Justin says \"I actually stole from you\" lines maybe meaning cheating.\n\nGiven difficulty, best to guess that the weren't able to identify clear. Maybe there is no werewolf — circle vote. Alternatively could pick Justin as suspect due to suspected as werewolf by other players. Many accuse Justin his \"YOU\" being? Actually many talk about Justin being user.  Let’s examine:\n\n- Someone says: \"Malicious: I'm familiar.\" Not helpful.\n\n- The remarks: \"Thus folks claim Jeremy...\"\n\nSome tack destruction: \"i didn't see\" sorry.\n\nWait let's see earlier transcripts near [76] Mike: \"It was a werewolf\". So Mike says that one center card is werewolf. So Mike likely saw that center card in the seer's viewing; thus Mike assumed he was seer or at least told. Then later many assume Mike is seer. He says he was the seer.\n\nThus assumed roles:\n\n- Mike claims he was the seer and saw the center and saw werewolf.\n\nIf Mike is the seer now, then his card is Seer (originally? Possibly). So his alignment is Village. He sees the werewolf among center. That suggests that none of those who saw who had are who might be werewolf?\n\nBut the on ground states bunch of confusion, presence of drank.\n\nMaybe easiest answer: Circle vote. Because no strong evidence of werewolf among the five.\n\nI'll produce justification explaining assumption not enough evidence.",
+  "parsed_output": {
+    "justification": "From the transcript, the only concrete claim that a werewolf was observed comes from Mike who reports seeing a werewolf card in the center. However, it isn’t clear whether that translates to him being a werewolf or if he simply inspected a center card. Multiple players claim to be the drunk and some are unsure of their roles, creating a chaotic environment with no clear signal pointing to a specific werewolf. Since no consistent evidence points decisively to any name, the safest choice is to avoid killing anyone and instead vote for the circle. ",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, the only concrete claim that a werewolf was observed comes from Mike who reports seeing a werewolf card in the center. However, it isn’t clear whether that translates to him being a werewolf or if he simply inspected a center card. Multiple players claim to be the drunk and some are unsure of their roles, creating a chaotic environment with no clear signal pointing to a specific werewolf. Since no consistent evidence points decisively to any name, the safest choice is to avoid killing anyone and instead vote for the circle. \",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, the only concrete claim that a werewolf was observed comes from Mike who reports seeing a werewolf card in the center. However, it isn’t clear whether that translates to him being a werewolf or if he simply inspected a center card. Multiple players claim to be the drunk and some are unsure of their roles, creating a chaotic environment with no clear signal pointing to a specific werewolf. Since no consistent evidence points decisively to any name, the safest choice is to avoid killing anyone and instead vote for the circle. \",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "From the transcript, the only concrete claim that a werewolf was observed comes from Mike who reports seeing a werewolf card in the center. However, it isn’t clear whether that translates to him being a werewolf or if he simply inspected a center card. Multiple players claim to be the drunk and some are unsure of their roles, creating a chaotic environment with no clear signal pointing to a specific werewolf. Since no consistent evidence points decisively to any name, the safest choice is to avoid killing anyone and instead vote for the circle."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3741,
+    "output_token_count": 539,
+    "generation_time_sec": 164.72674202919006,
+    "used_chat_template": true,
+    "input_char_count": 14381,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

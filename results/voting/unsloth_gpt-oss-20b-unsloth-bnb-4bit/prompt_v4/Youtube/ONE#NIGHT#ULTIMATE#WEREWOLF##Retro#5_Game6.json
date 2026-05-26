@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to identify who is likely werewolf. There are three players: Justin, Paul, Mitchell. Transcript ambiguous; but threats/claims: Paul claims he's a werewolf. Hard to know ownership more: We suspect maybe multiple roles: The game uses one werewolf or more. They claim about being led to look at card, trying to swap etc. Let's analyze: At line [9], Seer wakes up. At [10], Paul's scan expression says \"I’m dead.\" Possibly someone died? Wait: [10] Paul: I'm dead. That might mean he was killed? But the transcript shows he's alive and speaking. Possibly mis-transcribed.\n\nIn line 36: Paul says \"Ok I'm a werewolf. Because that means that you're a werewolf now.\" That indicates possibly two werewolves: Paul and others. But we only have three players. This is perplexing - maybe the conversation is chaotic.\n\nLook for explicit contradictions: [36] Paul: That's ambiguous. The line says \"I don't know, because I was lying. Because. Ok I was a werewolf. That means that you're a werewolf now.\" That indicates Paul's claim that his identity is werewolf and states \"that means that you're a werewolf now\" meaning the other player has become werewolf? That implies swapping.\n\nThe text says \"Because then our stories would check out.\" So tasks.\n\nMaybe it's unclear who is actually a werewolf vs who is not. We only have maybe 1 werewolf? I suspect that the absence of second person spontaneously suggests that only Paul is werewolf? Could also be that all three might be werewolves? But rules: Only one werewolf maximum, at most one werewolf? Actually can have more than one werewolf? The rule says up to two werewolves. So could have 2.\n\nBut let's deduce: At Night, Seer looked at one other player card or two center cards. However, we don't see any direct information. Then Robber, Troublemaker, Drunk, etc.\n\nGiven the transcripts, at [22] \"Justin: What did you look at? Because-\" It appears Justin asked about what Mitchell looked at? No, he's telling about people entering talk.\n\nHard to glean exactly.\n\nMaybe answer: choose a player who claims to be a werewolf? None of them?\n\nLet's read more carefully.\n\nEpisode transcripts seem garbled; but perhaps Paul claims to be werewolf, so we might vote Paul.\n\nHowever, maybe it's safer to \"Circle Vote\" if uncertain. But we want to maximize chance of eliminating werewolf.\n\nLet's parse lines 36-41: \n[36] Paul: So… \"I don't know, because I was lying. Because. Okay I was a werewolf. But that means that you're a werewolf now.\"\n[37] Mitchell: \"Come on Mitchell, come up with something\"\n[38] Paul: \"This is the insomniac.\"\n[39] Mitchell: \"Come up with something quick.\"\n[40] Paul: \"Odds on my cards on the table.\"\n[41] Mitchell: \"Jokes on you guys, he didn't switch us. He didn't, you're still the werewolf. Right Justin?\"\n[42] Justin: \"No, this time I definitely switched. I did switch this one.\"\n\nThese dialogues suggest confusion about roles. Seems like they used a lot of swapped roles.\n\nFrom the transcript, most logically we probably can't identify any werewolf. Maybe didn't adjust.\n\nThus I think \"Circle Vote\" is safe.\n\nBetter to respond with \"Circle Vote\" (no elimination). Provide rationale.\n\nLet's produce justification of why uncertain.\n\nThus output JSON.",
+  "parsed_output": {
+    "justification": "The transcript is highly fragmented and lacks clear evidence that any player definitively holds a Werewolf role. Several statements suggest confusion, possible role swapping, and no conclusive claim that a player is a definite Werewolf. As a result, identifying a target becomes unreliable, so attempting to guess would risk incorrectly targeting a non-Werewolf. Therefore, casting a vote for all players to remain alive (circle vote) is prudent.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is highly fragmented and lacks clear evidence that any player definitively holds a Werewolf role. Several statements suggest confusion, possible role swapping, and no conclusive claim that a player is a definite Werewolf. As a result, identifying a target becomes unreliable, so attempting to guess would risk incorrectly targeting a non-Werewolf. Therefore, casting a vote for all players to remain alive (circle vote) is prudent.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is highly fragmented and lacks clear evidence that any player definitively holds a Werewolf role. Several statements suggest confusion, possible role swapping, and no conclusive claim that a player is a definite Werewolf. As a result, identifying a target becomes unreliable, so attempting to guess would risk incorrectly targeting a non-Werewolf. Therefore, casting a vote for all players to remain alive (circle vote) is prudent.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is highly fragmented and lacks clear evidence that any player definitively holds a Werewolf role. Several statements suggest confusion, possible role swapping, and no conclusive claim that a player is a definite Werewolf. As a result, identifying a target becomes unreliable, so attempting to guess would risk incorrectly targeting a non-Werewolf. Therefore, casting a vote for all players to remain alive (circle vote) is prudent."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2344,
+    "output_token_count": 849,
+    "generation_time_sec": 254.20120072364807,
+    "used_chat_template": true,
+    "input_char_count": 9595,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

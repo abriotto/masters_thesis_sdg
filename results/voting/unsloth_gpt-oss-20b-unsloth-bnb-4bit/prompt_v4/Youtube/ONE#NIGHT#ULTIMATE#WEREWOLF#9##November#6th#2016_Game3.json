@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game3.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript. The players: Caitlynn, Mitchell, Alana, Mike.\n\nWe need to produce JSON with justification and chosen_vote.\n\nWe need to determine who to vote for. The best guess: who may be a Werewolf?\n\nLet’s analyze what we know about roles.\n\nPlayer list: 4 players plus the 3 center.\n\nWe only have transcript of comments.\n\nWe need to infer possible roles. There's talk about thieves and being werewolf.\n\nLet's parse conversation lines and identify any roles based on actions.\n\nThe transcript shows many jokes, unknown.\n\nKey: \"Seer\" wakes up / says \"Seer, insomniac.\" There is mention of \"Seer comes before everybody else.\" But I suspect this is just playful; no direct actual info.\n\nBut the transcript seems nonsensical with tweets \"the first person to claim to be an insomniac\" etc. Maybe a placeholder.\n\nWe need to surface clues.\n\nPoints:\n\n- \"Alana\" said \"All right. No trapping...\" refers to game start.\n\n- Many lines refer to \"insomniac,\" \"robber,\" \"tanner.\"\n\nWe need to deduce who might be hidden as a Werewolf by analyzing line numbers.\n\nObservation:\n\n- There's specific content: \"I was the insomniac.\" That indicates a player claims to have been an Insomniac (i.e., \"I was the insomniac\"). This suggests that player had a role change? But they claim to be insomniac.\n\nLook at line 15: \"Mike: I think they'd invited? Wait says: [15] Alana: Because I was the insomniac.\" Actually line 15 says \"Alana: Because I was the insomniac.\" So Alana states she was the insomniac. That indicates Alana originally had role \"Insomniac\"? Or at some point, she was the insomniac.\n\nLine 16: [16] Mitchel: \"But you ended up with the card that I started with.\" So Mike says that Alana ended with the card that Mike started with. This suggests a role swap.\n\nSo maybe Alana's initial card was different from what she ends up with.\n\nAlso line 18: [18] \"I'm not sure why. Wait hmm.\n\nLine 17: [17] \"Which is the robber. Yes. So that makes... Where's our robber?\" So there's talk about \"Where's our robber?\" Suggest that maybe the robber changed?\n\nLine 24: [24] \"Caitlynn: I looked at Mitchell's robber.\" So Caitlynn looked at Mitchell's robber? So maybe \"Robber\" swapped with someone's card.\n\nLine 25: [25] \"Alana: Yeah. Robber's switched to be insomniac.\" Means the robber's swapped to become insomniac.\n\nNo clear conclusion.\n\nThis transcript appears to be scrambled and random. Possibly incomplete.\n\nGoal: Choose best guess based on pattern—if any of the players might be conceal. Considering typical strategies: if there's a single werewolf, let's try to find hints.\n\nWe must interpret that in conversation, there's suspicion about \"Mike\" possibly being a werewolf or a Tanner.\n\nRepeated lines talk about \"If he was the tanner... we kill him.\" Then \"If he's the werewolf... we might kill him too.\" So maybe there is uncertainty.\n\nGiven that, the game might not have any werewolves present. Let's consider possibilities.\n\nThere are 4 players plus 3 center. Are there any werewolves among them? If there is none, all would be in town and the only risk is killers or players can star.\n\nSuppose none are are werewolves. Then the proper vote is \"Circle Vote\".\n\nBut we need to rationalize.\n\nPotentially there's no werewolf; the \"Mike\" may be a Tanner. Even if Tanners are independent. But local have no indication that any player is werewolf.\n\nThus the most plausible is that there's no werewolves among players, given contradictory statements.\n\nHowever, there is mention: \"If I'm the werewolf and we all vote to the left, then I would win.\" -> line 79. So a son says \"If I'm the werewolf ...\" So Mike acknowledges being werewolf.\n\nTherefore, maybe player Mike might be a werewolf. So we might vote for Mike.\n\nLet's parse lines 79 onwards:\n\n[79] Mike: If I'm the werewolf and we all vote to the left, then I would win.\n\nIndicates Mike acknowledging being werewolf.\n\nAlso line 86: \"But I think it's 50/50 draw.\" Unclear.\n\nBut earlier line 77: Not letting him vote. Eh.\n\nMaybe we target Mike.\n\nWe also see: \"Caitlynn: So there's…\"\n\nThe conversation is heavily ambiguous; but we can assume Mike may be a werewolf. So vote for Mike.\n\nThus chosen_vote: Mike.\n\nNow we need justification: 3-5 sentences: Must explain reasoning.\n\nShould mention: Based on conversation, Mike mentions possibilities of being werewolf. Also appears to be suspect.\n\nLet's craft.",
+  "parsed_output": {
+    "justification": "Mike repeatedly discusses the possibility of him being the werewolf and describes how he could win by leaping to the left spot. The comments suggest his anonymity and odd posture raise suspicion, whereas other players—particularly Alana—express uncertainty about Mike’s role and have no direct evidence to discredit him. Since the goal is to eliminate a probable werewolf, voting for Mike maximizes the chance of removing a hostile player and increases the likelihood of a Village victory. Therefore, eliminating Mike also aligns with making the primary threat vanish.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"Mike repeatedly discusses the possibility of him being the werewolf and describes how he could win by leaping to the left spot. The comments suggest his anonymity and odd posture raise suspicion, whereas other players—particularly Alana—express uncertainty about Mike’s role and have no direct evidence to discredit him. Since the goal is to eliminate a probable werewolf, voting for Mike maximizes the chance of removing a hostile player and increases the likelihood of a Village victory. Therefore, eliminating Mike also aligns with making the primary threat vanish.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"Mike repeatedly discusses the possibility of him being the werewolf and describes how he could win by leaping to the left spot. The comments suggest his anonymity and odd posture raise suspicion, whereas other players—particularly Alana—express uncertainty about Mike’s role and have no direct evidence to discredit him. Since the goal is to eliminate a probable werewolf, voting for Mike maximizes the chance of removing a hostile player and increases the likelihood of a Village victory. Therefore, eliminating Mike also aligns with making the primary threat vanish.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike repeatedly discusses the possibility of him being the werewolf and describes how he could win by leaping to the left spot. The comments suggest his anonymity and odd posture raise suspicion, whereas other players—particularly Alana—express uncertainty about Mike’s role and have no direct evidence to discredit him. Since the goal is to eliminate a probable werewolf, voting for Mike maximizes the chance of removing a hostile player and increases the likelihood of a Village victory. Therefore, eliminating Mike also aligns with making the primary threat vanish."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3543,
+    "output_token_count": 1183,
+    "generation_time_sec": 356.1483597755432,
+    "used_chat_template": true,
+    "input_char_count": 13695,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

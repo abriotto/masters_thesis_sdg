@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to read transcripts and decide: who likely is werewolf? There are four speakers: Justin, Paul, Mitchell. I see conversation: after night, they talk.\n\nKey details: They have roles: \"Robber\", \"Troublemaker\" appears. Some claims: \"I was a Robber\" etc. But are there actually any roles consistent? Let's analyze.\n\nThere might have been swaps: Robber is a player, but some talk indicates confusion.\n\nWe want to pick a player likely to be a werewolf.\n\nThe conversation is chaotic and seems off. But maybe known outcomes: Justin says \"I'm a Werewolf\" (some lines). Wait:\n\nLine 24: Justin: \"I killed us all last game. I'm sorry.\" Not relevant.\n\nAt line 27: \"Justin: Mitchell is the Werewolf.\" So Justin accuses Mitchell, but that is wrong? He says \"Mitchell is the Werewolf.\" Then further lines: Both accuse anyone else. The script is muddled.\n\nHowever, we can deduce possible roles: According to night actions:\n\n- We have 3 players. Starting roles could include at least two werewolf? Could be. But we need logic.\n\nAlso there's mention of troublemaker: line 43: \"Paul: I was a Troublemaker so we know what happened.\" So Paul claims to be troublemaker. That implies that while he is troublemaker, he didn't swap any cards.\n\nWait: It says \"I was a Trouble maker so we know what happened.\" That seems like his claim: \"I was a troublemaker\". If Paul is troublemaker, he'll have swapped two other players. But we only have 3 players. So as troublemaker, Paul would have swapped the other two? That might involve swapping roles of Justin and Mitchell. According to his statement: line 42: \"Justin: I'll go to the left.\" \"Paul: okay. I was a trouble maker so we know what happened.\" So yes, that means Paul's night action is to swap other two players' roles.\n\nIf Paul has swapped Justin and Mitchell, they'd take each other's roles: So whatever was originally at each swapped.\n\nNow later, conversation mentions that \"they had swapped\" line. Let's parse:\n\nline 52: \"Mitchell: So are you a Werewolf and now I'm a Werewolf?\" Not sure.\n\nLater: \"Justin: No, I was a Robber, and I can confirm that you were a Villager.\" That suggests Justin was Robber starting; he swapped with someone. But says \"you were a Villager.\" That seems to indicate something.\n\nHigh level: The story is chaotic.\n\nMaybe we should assume the simplest: In three-player game, only one role has ability overlapping, troublemaker. Perhaps there cannot be more than one werewolf.\n\nWe need to determine which player is a werewolf. Maybe the only suspect is Paul? Because while playing troublemaker, the person can swap two other players. If so, we suspect that whoever ends up being a werewolf after *swap* is the person with the original werewolf role? This is confusing.\n\nBut there may be no reason to vote for a particular one aside from plausibility. Given the conversation, Justin claims \"I was a Werewolf\" and then denies at later. There is a loop.\n\nGiven anonymity, we may decide nothing obvious, thus maybe circle vote due to uncertainty.\n\nBut we should provide justification.\n\nWe look at lines: 79: \"Mitchell: No you weren't.\" 81: \"Justin: He is defendant because he wants to win as the Werewolf.\" Not clear.\n\nThe roles may have concluded that there is no werewolf. The most plausible: None of the three is a werewolf. The transcript doesn't show any explicit accusation. The people are contradicting. So Likely none. If no werewolf among players, we do Circle Vote.\n\nThus I will output \"Circle Vote\". Provide justification: nothing indicates werewolf. Maybe there were two werewolves? But improbable attempt to identify. However we can't confirm.\n\nLet's produce final.",
+  "parsed_output": {
+    "justification": "The transcript shows no conclusive evidence or credible accusation that any of the three players is a werewolf. The comments are largely contradictory and seem to stem from misunderstandings or personal jokes rather than solid observations of role swaps or identities. Without reliable information on a player’s alignment, the safest course is to abstain from targeting anyone.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows no conclusive evidence or credible accusation that any of the three players is a werewolf. The comments are largely contradictory and seem to stem from misunderstandings or personal jokes rather than solid observations of role swaps or identities. Without reliable information on a player’s alignment, the safest course is to abstain from targeting anyone.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows no conclusive evidence or credible accusation that any of the three players is a werewolf. The comments are largely contradictory and seem to stem from misunderstandings or personal jokes rather than solid observations of role swaps or identities. Without reliable information on a player’s alignment, the safest course is to abstain from targeting anyone.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript shows no conclusive evidence or credible accusation that any of the three players is a werewolf. The comments are largely contradictory and seem to stem from misunderstandings or personal jokes rather than solid observations of role swaps or identities. Without reliable information on a player’s alignment, the safest course is to abstain from targeting anyone."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3164,
+    "output_token_count": 915,
+    "generation_time_sec": 275.3567817211151,
+    "used_chat_template": true,
+    "input_char_count": 12450,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

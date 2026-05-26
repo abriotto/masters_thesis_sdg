@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a confusing transcript. We must perform reasoning: There are 4 players: Justin, Mitchell, Paul, Mike. Roles unknown. Based on transcript, what is likely?\n\nWe need to identify likely roles: looks like there is insane debate about roles swapped. Looks like people are claiming to have been swapped.\n\nNeed to understand potential actions:\n\n- The only role that kills are werewolf or minion, but appears none. But a big confusion.\n\nGiven roles list possible: Justin could be on meta.\n\nWe are told: \"source: youtube\" the transcript messy. Hard to decode.\n\nFrom transcript: at round [2] Paul says \"I'm doing Troublemaker, even though he got it.\" suggests being the Troublemaker.\n\nBut might be referencing some other line.\n\nIt says \"Paul: I'm still doing it.\" etc.\n\nLet's read:\n\n[2] Paul: I'm doing Troublemaker, even though he got it. (this may refer to he's assigned a trouble maker role.)\n\nCheck other lines: [14] Justin: Did you switch Paul? Possibly referring to action by the Troublemaker.\n\nSeems to be confusion about who volunteered. But not sure.\n\nAnyway, known roles: Troublemaker can swap two others. The announcer called Troublemaker next after Robber, meaning they start wrong. But I'm guessing them.\n\nSince we can't see the actual starting roles.\n\nGiven it's a 4 player game. Usually center will have 3 cards. Suppose the roles available: may include 1 werewolf, 1 minion etc.\n\nIn this weird transcript, nothing seems consistent.\n\nSo our guess: Maybe there are no werewolves; the conversation: [93-96] \"the villagers win! As long as we don't kill the Tanner\". Suggest that no werewolves exist. But the presence of the Tanner is unknown.\n\nOk, maybe find what roles each person could be.\n\nIf there's no werewolf, then any vote will result in no death. So best to vote there is no werewolf. But the prompt says choose a player to eliminate or circle vote.\n\nGiven confusion, I think it's safer to \"Circle Vote\". Because it is too ambiguous.\n\nHowever, the instructions: \"most likely to help Team Village win is to eliminate likely werewolf.\" In absence of evidence of werewolves, we should Circle Vote.\n\nThus output: Circle Vote.\n\nBut let's double-check: there are indications Tyler may be werewolf. For example, [39] Mike: \"I switched you with somebody. I'm not going to say who yet.\" [41] Mike: \"I think Mitchell is the Tanner.\" So there might be a Tanner. Not werewolves.\n\nThus best to choose Circle Vote.\n\nYes.\n\nNow output JSON: { \"justification\": \"...\", \"chosen_vote\": \"Circle Vote\"}",
+  "parsed_output": {
+    "justification": "The transcript shows chaotic and contradictory claims with no clear indication that any player is a werewolf; the discussion largely focuses on player‑switch accusations and the possibility of the Tanner. With no solid evidence of a werewolf’s presence, a safe strategy is to avoid eliminating an innocent participant. Therefore, a circle vote is the prudent choice.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows chaotic and contradictory claims with no clear indication that any player is a werewolf; the discussion largely focuses on player‑switch accusations and the possibility of the Tanner. With no solid evidence of a werewolf’s presence, a safe strategy is to avoid eliminating an innocent participant. Therefore, a circle vote is the prudent choice.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows chaotic and contradictory claims with no clear indication that any player is a werewolf; the discussion largely focuses on player‑switch accusations and the possibility of the Tanner. With no solid evidence of a werewolf’s presence, a safe strategy is to avoid eliminating an innocent participant. Therefore, a circle vote is the prudent choice.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript shows chaotic and contradictory claims with no clear indication that any player is a werewolf; the discussion largely focuses on player‑switch accusations and the possibility of the Tanner. With no solid evidence of a werewolf’s presence, a safe strategy is to avoid eliminating an innocent participant. Therefore, a circle vote is the prudent choice."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3279,
+    "output_token_count": 655,
+    "generation_time_sec": 198.23734664916992,
+    "used_chat_template": true,
+    "input_char_count": 12759,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

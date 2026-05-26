@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#89##November#30th#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#89##November#30th#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mitchell, Paul, James.\n    *   Roles mentioned/claimed:\n        *   James: Troublemaker (claimed).\n        *   Paul: Witch (claimed).\n        *   Mitchell: Robber (implied/claimed by Paul/James).\n        *   Justin: No specific claim, but mentions being a Tanner at one point (\"But I have a tanner\").\n\n    *   *Wait, the roles listed in the rules are different from the roles mentioned in the transcript.*\n    *   Rules list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   Transcript mentions: \"Apprentice Seer\" and \"Witch\".\n    *   *Correction:* The transcript is from a specific game session where custom or variant roles (Apprentice Seer, Witch) were used. However, the prompt asks me to use the *provided rules*.\n    *   *Conflict:* The rules provided do not include \"Apprentice Seer\" or \"Witch\". But the transcript is the only source of player claims. I must interpret the transcript based on the provided rules as much as possible, or treat the \"Witch\" and \"Apprentice Seer\" as roles that function similarly to the ones in the rules (e.g., the Witch swaps cards, similar to the Troublemaker or Robber).\n\n    *   James claims Troublemaker. He says he swapped Justin and Paul.\n    *   Paul claims Witch. He says he swapped Mitchell into the Apprentice Seer.\n    *   Mitchell is implied to be the Robber (Paul says \"you robbed from me\" or similar, though the transcript is a bit messy).\n    *   Justin mentions he might be the Tanner (\"But I have a tanner\").\n\n    *   James (Troublemaker) -> Swapped Justin and Paul.\n    *   Paul (Witch) -> Swapped Mitchell into Apprentice Seer.\n    *   If Paul was a Werewolf and James swapped Paul and Justin, then Justin is now the Werewolf.\n    *   Justin says: \"I think Paul turned himself into a werewolf... James, who did you switch? ... James: Swap Justin and Paul.\"\n    *   Justin then says: \"Because now I'm a were... I'm okay with being a [inaudible]\".\n    *   Paul argues: \"If you think I witched myself into a werewolf... you switched us... so we kill you.\"\n\n    *   Justin admits he might be the werewolf (or is pretending to be the Tanner to get voted out).\n    *   James and Mitchell both conclude Justin is the werewolf.\n    *   Paul also suggests voting for Justin.\n    *   Justin's behavior is erratic: he claims he's a Tanner, then says he's a werewolf because he was swapped.\n\n    *   If Justin is the Tanner, voting him out makes the Tanner win.\n    *   If Justin is the Werewolf, voting him out makes the Village win.\n    *   If Paul is the Werewolf and James swapped him with Justin, Justin is now the Werewolf.\n    *   If Paul is the Werewolf and wasn't swapped, Paul is the Werewolf.\n    *   However, the discussion heavily leans towards Justin. Justin himself says \"I would rather you all vote for me\" and \"I'm okay with being a [werewolf]\".\n\n    *   Justin's claim to be the Tanner is a strong signal. In One Night Ultimate Werewolf, the Tanner *wants* to be voted out.\n    *   If Justin is the Tanner, the Village loses (Tanner wins).\n    *   If Justin is the Werewolf, the Village wins.\n    *   Is there any evidence Paul is the Werewolf? Justin and Mitchell suspect Paul \"witched himself into a werewolf\".\n    *   Wait, the \"Witch\" role (not in the rules) apparently allows swapping a center card with a player's card. If Paul swapped a Werewolf card from the center into himself, he'd be the Werewolf. Then if James (Troublemaker) swapped Paul and Justin, Justin becomes the Werewolf.\n\n    *   Justin: Claims Tanner, then claims he's the Werewolf because of the swap.\n    *   James: Claims Troublemaker.\n    *   Paul: Claims Witch.\n    *   Mitchell: Likely Robber/Apprentice Seer.\n\n    *   If Justin is the Tanner, he's lying about being the Werewolf to ensure he gets voted out.\n    *   If Justin is the Werewolf, he's just accepting his fate.\n    *   Given the transcript, the most likely target for the vote is Justin. The other players (James, Mitchell, Paul) have all converged on him.\n\n    *   Justin's behavior is highly suspicious (claiming Tanner, then claiming to be the Werewolf).\n    *   James (Troublemaker) and Paul (Witch) both performed swaps.\n    *   If Paul became a Werewolf and James swapped Paul and Justin, Justin is the Werewolf.\n    *   The consensus among the players is to vote for Justin.\n\n    *   *Self-Correction on \"Tanner\":* If Justin is the Tanner, the Village should *not* vote for him. But as an external observer, I have to decide who is *most likely* to be the Werewolf.\n    *   If Justin is the Tanner, he's not the Werewolf.\n    *   If Paul is the Werewolf, the Village wins by voting Paul.\n    *   But the logic provided by the players (Paul -> Werewolf, James swaps Paul/Justin -> Justin is Werewolf) points to Justin.\n\n    *   Justin: \"I would rather you all vote for me.\" (Tanner behavior)\n    *   Justin: \"I think Paul turned himself into a werewolf... James: Swap Justin and Paul... Justin: Because now I'm a were...\"\n    *   This is a classic \"Tanner\" play—trying to convince people you are the Werewolf so they vote you out.\n    *   However, if we assume the players are telling the truth about their roles (James as Troublemaker, Paul as Witch), and Paul actually did swap a Werewolf card into himself, then Justin *is* the Werewolf.\n    *   Between the two, the most \"likely\" Werewolf based on the internal logic of the game's discussion is Justin, even if he's bluffing as a Tanner. But wait, if he's the Tanner, he's *not* the Werewolf.\n    *   Let's look at Paul. Paul claimed to be the Witch. If Paul is the Werewolf, he's lying about being the Witch.\n    *   If James is the Werewolf, he's lying about being the Troublemaker.\n    *   The most evidence (even if contradictory) points to Justin.\n\n    *   Justin's admission (\"I'm a were...\") and the other players' consensus make him the primary target.\n    *   Whether he is the Tanner or the Werewolf, he is the most likely candidate for elimination based on the discussion.\n    *   Wait, the task is to \"choose the option most likely to help Team Village win.\"\n    *   If Justin is the Tanner, voting him out makes the Tanner win, and the Village loses.\n    *   If Justin is the Werewolf, voting him out makes the Village win.\n    *   If Paul is the Werewolf, voting Paul makes the Village win.\n    *   Is there any reason to suspect Paul more than Justin? Justin's claim to be the Tanner is a huge red flag. Tanners *want* to be voted out. Werewolves *don't*.\n    *   If Justin is the Tanner, then who is the Werewolf? Maybe Paul?\n    *   But the prompt asks for the player *most likely* to be a Werewolf.\n    *   Justin's behavior is consistent with either a Tanner or a Werewolf who has given up.\n    *   Given the players' consensus, Justin is the most probable target.\n\n    *   Justin claims to be the Tanner.\n    *   Justin claims he became the Werewolf due to James's swap.\n    *   James, Mitchell, and Paul all agree to vote for Justin.\n    *   The most likely outcome for the Village is to vote for the person the group has identified as the Werewolf, despite the Tanner possibility.\n\n    *   *Wait*, let's re-read: \"Justin: I would rather you all vote for me.\" \"Justin: But I have a tanner.\"\n    *   This is almost certainly a Tanner. If Justin is the Tanner, voting him out is a loss for the Village.\n    *   Is there anyone else? Paul? Paul claimed to be the Witch. If Paul is the Werewolf, he's lying.\n    *   But in these games, the \"Tanner\" often tries to trick the village into thinking they are the Werewolf.\n    *   If Justin is the Tanner, then the Werewolf is likely Paul or James.\n    *   However, without more information, the most \"likely\" Werewolf (based on the players' logic) is Justin.\n\n    *   *Wait*, let's look at the \"Witch\" and \"Apprentice Seer\" again. These aren't in the rules. The rules say \"Seer\" and \"Robber\" etc.\n    *   If I must stick *strictly* to the rules, the \"Witch\" and \"Apprentice Seer\" are invalid roles. But the transcript is the only evidence. I'll assume they are just variants of the roles provided (Witch = Troublemaker/Robber hybrid, Apprentice Seer = Seer).\n\n    *   Justin is the most likely candidate for elimination because he explicitly claims to be the Werewolf (even if he also claims to be the Tanner). In the absence of other strong evidence, the player who admits to being the Werewolf (or is identified as such by the majority) is the most likely target.\n\n    *   Justification: Justin claims to be the Tanner and later suggests he has become the Werewolf due to a swap performed by James (the Troublemaker). While this behavior is characteristic of a Tanner, the other players (James, Mitchell, and Paul) have reached a consensus that Justin is the Werewolf. Therefore, Justin is the most likely candidate for elimination to help Team Village win.",
+  "parsed_output": {
+    "justification": "Justin's behavior is highly suspicious; he explicitly claims to be the Tanner and later suggests he has become the Werewolf due to a swap performed by James (the Troublemaker). While claiming to be the Tanner is a common strategy to attract votes, the other three players (James, Mitchell, and Paul) have reached a consensus that Justin is the Werewolf. Given the players' collective reasoning and Justin's own admissions, he is the most likely candidate for elimination.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's behavior is highly suspicious; he explicitly claims to be the Tanner and later suggests he has become the Werewolf due to a swap performed by James (the Troublemaker). While claiming to be the Tanner is a common strategy to attract votes, the other three players (James, Mitchell, and Paul) have reached a consensus that Justin is the Werewolf. Given the players' collective reasoning and Justin's own admissions, he is the most likely candidate for elimination.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's behavior is highly suspicious; he explicitly claims to be the Tanner and later suggests he has become the Werewolf due to a swap performed by James (the Troublemaker). While claiming to be the Tanner is a common strategy to attract votes, the other three players (James, Mitchell, and Paul) have reached a consensus that Justin is the Werewolf. Given the players' collective reasoning and Justin's own admissions, he is the most likely candidate for elimination.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's behavior is highly suspicious; he explicitly claims to be the Tanner and later suggests he has become the Werewolf due to a swap performed by James (the Troublemaker). While claiming to be the Tanner is a common strategy to attract votes, the other three players (James, Mitchell, and Paul) have reached a consensus that Justin is the Werewolf. Given the players' collective reasoning and Justin's own admissions, he is the most likely candidate for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4135,
+    "output_token_count": 2417,
+    "generation_time_sec": 245.94822764396667,
+    "used_chat_template": true,
+    "input_char_count": 14115,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

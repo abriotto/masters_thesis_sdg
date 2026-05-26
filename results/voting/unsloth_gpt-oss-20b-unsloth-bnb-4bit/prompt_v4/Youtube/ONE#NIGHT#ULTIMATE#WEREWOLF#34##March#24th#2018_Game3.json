@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a long transcript, but it's basically garbled conversation. There's confusion with revealing roles etc. Hard to deduce actual roles from discussion. There was mention of \"revealer\" - a role that reveals others. And we saw mentions \"Troublemaker\" being irrelevant, \"reveal\". Also \"I am the seer.\" But many participants claim they've looked at others etc. In utterances many names respond to \"I looked at him\".\n\nWe have players: Justin, Carly, Paul, Mitchell, Mike.\n\nNeed to decide who to vote for. Without knowledge of which are werewolves (possible centers?). The ground truth: The roles selected at beginning unknown. From the transcript, we see mention that someone was revealed to be \"tanner\" maybe? Let's parse key bits.\n\nAt line 98-104: \"Justin: Let's live that lie.\" This seems not helpful.\n\nLine 104: \"Justin: What am I then?\" maybe tries to declare his role. Then \"Mitchell: I saw it. You're a tanner.\" So maybe Justin is told that he was tanner. But I think there is confusion.\n\nOk, better approach: In One Night Ultimate Werewolf, the best consistent strategy is to consider that during the day, players may result in elimination of the actual werewolf(s). If we can't identify, choose Circle Vote if uncertain. But sometimes mention of being a werewolf. See line 136: \"Mike: A hundred percent she's now the werewolf, Mitchell is the other werewolf.\" That suggests Mike claims that Mitchell and someone else are werewolves. Does that mean Mitchell is a werewolf? That line occurs: \"Mike: A hundred percent she's now the werewolf, Mitchell is the other werewolf.\" Could be mis-typo but could be \"he is the other werewolf\"? It's uncertain.\n\nLine 155? Actually there is line 64? I'd better find all lines referencing \"werewolf.\"\n\nSearch for \"werewolf\". There is at line 13? Let's scan transcript again.\n\nLines:\n\n1. [1] Paul: Enter it every time.\n\n...\n\nScrolling through, I see various lines. For easier analysis, let's approximate key statements:\n\n- At 117: \"Paul: And then talk about it while you're doing it.\" not helpful.\n\n- At 136: \"Mike: A hundred percent she's now the werewolf, Mitchell is the other werewolf.\"\n\nThis suggests a claim that Mitchell is a werewolf too. But also maybe the speaker mis-says.\n\nBut we don't know actual role distribution. Without further evidence, maybe there is no werewolf present: suspect.\n\nThere is mention: \"Neill: It etc??\"\n\nAlternatively, I suspect there are a few players suspect each other. For safe, we might choose Circle Vote.\n\nBut the instruction said: In most cases, choose who to vote for. Might random.\n\nProbably this transcript isn't giving enough info to pinpoint a werewolf. Many confusion, no clear evidence.\n\nThus the safest: \"Circle Vote\" as we cannot deduce a werewolf.\n\nBut the question: \"Based on the public discussion, choose the option most likely to help Team Village win.\" The players want to eliminate a werewolf unless none. If it's unclear, Circle Vote.\n\nWe should provide justification: they are uncertain, couldn't identify a werewolf. Add reasoning about ambiguous statements, confusion about revealers and tanners.\n\nSo output: {\"justification\":\"...\",\"chosen_vote\":\"Circle Vote\"}",
+  "parsed_output": {
+    "justification": "The transcript is heavily garbled and the roles that were revealed are unclear. Several participants claim to have seen or tracked the revealer, but no definitive confirmation that a werewolf is present is given. Since the statements about who might be a werewolf are either contradictory or unverified, it is safest to assume that a definite werewolf cannot be identified and vote for the “Circle Vote” outcome.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is heavily garbled and the roles that were revealed are unclear. Several participants claim to have seen or tracked the revealer, but no definitive confirmation that a werewolf is present is given. Since the statements about who might be a werewolf are either contradictory or unverified, it is safest to assume that a definite werewolf cannot be identified and vote for the “Circle Vote” outcome.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is heavily garbled and the roles that were revealed are unclear. Several participants claim to have seen or tracked the revealer, but no definitive confirmation that a werewolf is present is given. Since the statements about who might be a werewolf are either contradictory or unverified, it is safest to assume that a definite werewolf cannot be identified and vote for the “Circle Vote” outcome.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is heavily garbled and the roles that were revealed are unclear. Several participants claim to have seen or tracked the revealer, but no definitive confirmation that a werewolf is present is given. Since the statements about who might be a werewolf are either contradictory or unverified, it is safest to assume that a definite werewolf cannot be identified and vote for the “Circle Vote” outcome."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3756,
+    "output_token_count": 806,
+    "generation_time_sec": 244.26886773109436,
+    "used_chat_template": true,
+    "input_char_count": 14453,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

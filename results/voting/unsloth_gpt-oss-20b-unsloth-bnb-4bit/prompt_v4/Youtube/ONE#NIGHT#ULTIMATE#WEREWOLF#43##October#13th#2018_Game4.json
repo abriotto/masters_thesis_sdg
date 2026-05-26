@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to select a likely werewolf to vote for. Players: Justin, Mitchell, Paul, Mike. From transcript, huge confusion. No clear roles. We deduce some roles. Everyone is talking weirdly, many state \"I'm werewolf\" etc. Hmm. Deducing likely werewolves. The transcript presents many contradictions. Perhaps the correct answer is to \"Circle Vote\" because can't identify a werewolf. But maybe Mike is suspected.\n\nWe need choose the most plausible suspect. There's mention \"Mike: I'm the villager.\" suggests he says he is villager; Mitchell says \"I'm a troublemaker\"? Actually not.\n\nBut we should evaluate:\n\n- Players content: \n   * Justin's statements: \"All right.\", then \"I'm not even. I'm a troublemaker. I'm tired ... I'm going. I'm switching you.\n   * Many statements ambiguous.\n\n- Mike: is a repeated suspect being a werewolf?\n\nLooking at line references: Strange talk but somewhere mention \"Mitchell: All right. Who's team am I on? Let's vote Mike.\" (line 33). He suspects Mike? He suggests: \"Mitchell: All right. Who's team am I on? Let's vote Mike.\"\n\nLater: Lines 35: Mike: I think we've a confusion.\n\nLater at line 39: ... maybe confusion.\n\nGiven lack of clarity, safer to vote for Mike because he is suspect. But maybe all ended as sure there were no werewolves? Maybe too chaotic.\n\nBetter check: On lines 19 and 20, Paul states: \"Paul: Mitchell and Mike are werewolves.\" so presumably he thinks both are werewolves. So suspecting Mike also. So likely vote for Mike. So \"Mike\".\n\nThus output: chosen_vote: \"Mike\". And justification.\n\nThis matches generic instructions: choose one listed player to eliminate. We'll output JSON accordingly.",
+  "parsed_output": {
+    "justification": "From the transcript, several comments suggest that Mitchell and Mike may be werewolves—particularly when Paul states that Mitchell and Mike are werewolves, and later Mitchell repeatedly expresses suspicion toward Mike. The uncertainty and contradictory statements make it difficult to conclusively determine an alignments, but the pattern of accusations leans toward Mike being the most likely werewolf. Voting for Mike therefore maximizes our chance of eliminating a werewolf if indeed Mike is one.\n",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, several comments suggest that Mitchell and Mike may be werewolves—particularly when Paul states that Mitchell and Mike are werewolves, and later Mitchell repeatedly expresses suspicion toward Mike. The uncertainty and contradictory statements make it difficult to conclusively determine an alignments, but the pattern of accusations leans toward Mike being the most likely werewolf. Voting for Mike therefore maximizes our chance of eliminating a werewolf if indeed Mike is one.\\n\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, several comments suggest that Mitchell and Mike may be werewolves—particularly when Paul states that Mitchell and Mike are werewolves, and later Mitchell repeatedly expresses suspicion toward Mike. The uncertainty and contradictory statements make it difficult to conclusively determine an alignments, but the pattern of accusations leans toward Mike being the most likely werewolf. Voting for Mike therefore maximizes our chance of eliminating a werewolf if indeed Mike is one.\\n\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "From the transcript, several comments suggest that Mitchell and Mike may be werewolves—particularly when Paul states that Mitchell and Mike are werewolves, and later Mitchell repeatedly expresses suspicion toward Mike. The uncertainty and contradictory statements make it difficult to conclusively determine an alignments, but the pattern of accusations leans toward Mike being the most likely werewolf. Voting for Mike therefore maximizes our chance of eliminating a werewolf if indeed Mike is one."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2815,
+    "output_token_count": 487,
+    "generation_time_sec": 148.10593557357788,
+    "used_chat_template": true,
+    "input_char_count": 11093,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

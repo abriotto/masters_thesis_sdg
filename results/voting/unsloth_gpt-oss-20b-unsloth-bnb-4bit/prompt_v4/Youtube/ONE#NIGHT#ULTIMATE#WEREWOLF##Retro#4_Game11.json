@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game11.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to inspect transcript, derive who might be werewolf. Many players swapped and claimed roles incorrectly. Let's analyze logically.\n\nPlayers: Justin, Caitlynn, Mike, James, Mitchell.\n\nWe need to identify possible werewolf based on interactions.\n\nImportant: roles might have swapped via various actions. The night order: says order: doppelganger, wolves, minion, masons, seer, robber, troublemaker, drunk, insomniac. In transcript, there is confusion mis-order.\n\nBut only roles present: There is a \"minion\" mention etc. But we don't know exact action events unless we parse.\n\nFrom lines:\n\nLine [0] not relevant. They talk.\n\nLet's parse the lines near [14]. \"I was a minion and he was a werewolf, and so now you swapped it and I know he is a werewolf and he's not a robber.\" So apparently someone's starting role was minion, other started werewolf. Then swapped: That means the minion is physically swapping roles? Not fully clear.\n\nLine shows the player's mention of \"okay. Is there a robber out there?\" maybe they suspect that.\n\nThey also mention \"he was a werewolf\" etc. Possibly they describe their current state.\n\nAlso lines about seeing a drunk; \"I saw a drunk and a werewolf.\" The Seer looked at them.\n\nAnd Mike says \"I was the seer. I looked in the center.\" He saw a drunk and a werewolf. So center cards had a drunk and werewolf? Wait, no, the center is not for player.\n\nRole selection: one of the 3 center cards is often included. Minimum: If I recall, roles need 5 players + 3 center = 8 roles selected.\n\nThus each player may hold a card.\n\nGoal: Identify any werewolf.\n\nOne key cross-check: If the Seer looked at two center cards (center), presumably he saw whether there's werewolf or not.\n\nIf center had a werewolf card, that would indicate a werewolf exists but not at a player. But they'd have to be aware.\n\nBut the goal: Which player is likely a werewolf? Let's compile roles.\n\nRoles consistent: If someone claimed to be Minion, they usually have knowledge of werewolves at night. However being minion requires at night after swap. Alternatively \"When a minion wakes up, they can look for werewolves\" but actually minion knows role? Wait, minion's ability is to know the werewolves at the start, but not to reveal. But at night he might know that if they are minion, but they are not telling others? But they might swap.\n\nThe transcripts show contradictions.\n\nLet's examine certain lines.\n\nLine [10]: \"Because I was this, so whatever you two were is backwards.\"\n\"backwards\" indicates reversed roles? Suggests someone swapped roles successfully. This suggests that at that point, Pete indicates he swapped with someone else (maybe the Drunk or similar). Also, \"Due to swap, can be werewolf after swap.\"\n\nAt [12], they say \"Mike: ... which now I swapped role mistakenly. He comments: 'Now we got a Minion and a Werewolf' after swapping.\n\nThus it seems among the players: Justin, Caitlynn, Mike, James, Mitchell. They call each other names.\n\nAnother pointer: In [23], Justin says that \"Justin: So Mitchell is immediately putting me under the bus.\"\n\nIn [31], \"Mitchell: Does anyone not want to go to a vote?\"\n\nVarious conversation lines do not provide info about which player is werewolf.\n\nLet's try to deduce:\n\nThe narrator: We have 3 center cards. Let's call them A,B,C.\n\nRoles likely present in selected roles: We know each role can appear at most once. So only one of each other role.\n\nWhich roles are definitely present? We have Minion (seed as a string), maybe a Werewolf.\n\nMinion: Showed up. So minion is at least one.\n\nMinion always gets an extra info: they know who the werewolf is. But if minion swapped with someone this could be identified.\n\nDoppleganger could replicate someone else but not relevant.\n\nRobber: sees other roles.\n\nTroublemaker: swapped others.\n\nDrunk: unknown.\n\nInsomniac: they can see final card but not earlier.\n\nWe cannot reconstruct exact role assignments without a detailed timeline. However, we might base on being missing: if someone was a Now So?\n\nAlternatively, perhaps the only clear point: One of the players claims to be a 'werewolf': \"Perhaps Justin.\" Some mention \"Just in\").\n\nIn [71-74] lines: \"Mike: And now I'm the werewolf.\" So Mike says that he became the werewolf. Wait, let's examine.\n\nLine 71: \"Mike: And now I'm the werewolf.\" Actually earlier at [71], \"Mike: And now I'm the werewolf.\" It indicates that at that point, Mike became the werewolf, perhaps after swap.\n\nThus it's probable Mike ended with werewolf.\n\nBut is that plausible?\n\nSimulate: Suppose Mike originally had role X; after night actions, his card changed. He claims to have become werewolf. That indicates that the who is werewolf may be Mike. But other participants might disagree or have reason to doubt.\n\nNow, we need to decide best elimination.\n\nWe need to guess the likely werewolf. We want to maximize our chance of eliminating one.\n\nIf we pick one name as elimination, we need to consider the evidence.\n\nThe transcripts reveal most of players claim for different roles, but not to recall these.\n\nImportant: In \"Mike: And now I'm the werewolf,\" this is a statement made by Mike, and possible that Mike's statement is lie; since no one else confirms.\n\nGiven this conundrum, choose who.\n\nOur goal is to find someone likely werewolf; we must choose who to vote for.\n\nLine 71 assert, in that case, Mike could be suspect. Let's check earlier lines: \"Mike: I was the seer. I looked in the center. I saw a drunk and a werewolf.\" That was earlier, but still. That could show he was Seer. However his statement that he saw a drunk and a werewolf may match that the center had the werewolf. This indicates that at start, there was a werewolf in the center, but not as player. However it's from his perspective.\n\nLet's cross-check line 55: \"Mike: Yeah.\"\n\nLine 56: \"Mitchell: And I just saw one werewolf.\" This indicates that after dealing with the minion, he saw werewolf.\n\nSo MI may confirm: In line 56, \"Mitchell: And I just saw one werewolf.\" Might refer to the Seer's observation or to the minion having seen the werewolf from the minion's ability.\n\nThis might be ambiguous.\n\nHowever, we mention earlier 'Mike: And now I'm the werewolf', but perhaps some misreading. Let's cross-check again.\n\nLooking at transcript, but unchanged.\n\nIt's easier to search for the line numbers: At [71], \"Mike: And now I'm the werewolf.\" That implies that something like a change occurred earlier; or can't be sure.\n\nNow who else possible werewolf? \"Justin\" might be rabbit. But see: At 49, Justin: \"I'm just testing the waters to see what answers you guys find most believable.\" Nothing about werewolf.\n\nFrom early transcripts, the only explicit claim of being werewolf was \"Mike says he is now werewolf.\" But might be false.\n\nAlternatively, \"Jamie\" maybe typed incorrectly.\n\nWe may decide to eliminate Mike.\n\nConfidence: moderate.\n\nTherefore chosen_vote: Mike. Provide justification summarizing ambiguous but likely.",
+  "parsed_output": {
+    "justification": "After reviewing the discussion transcript, several players claim knowledge of or sightings of a werewolf, but none consistently confirm it in a way that can be trusted. The only explicit statement that a player ends up with the werewolf card is Mike, who asserts he became a werewolf after a swap sequence. No other player clarifies their identity with similar certainty, making Mike the most suspicious. Consequently, targeting Mike increases the chance that a werewolf will be eliminated.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"After reviewing the discussion transcript, several players claim knowledge of or sightings of a werewolf, but none consistently confirm it in a way that can be trusted. The only explicit statement that a player ends up with the werewolf card is Mike, who asserts he became a werewolf after a swap sequence. No other player clarifies their identity with similar certainty, making Mike the most suspicious. Consequently, targeting Mike increases the chance that a werewolf will be eliminated.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"After reviewing the discussion transcript, several players claim knowledge of or sightings of a werewolf, but none consistently confirm it in a way that can be trusted. The only explicit statement that a player ends up with the werewolf card is Mike, who asserts he became a werewolf after a swap sequence. No other player clarifies their identity with similar certainty, making Mike the most suspicious. Consequently, targeting Mike increases the chance that a werewolf will be eliminated.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "After reviewing the discussion transcript, several players claim knowledge of or sightings of a werewolf, but none consistently confirm it in a way that can be trusted. The only explicit statement that a player ends up with the werewolf card is Mike, who asserts he became a werewolf after a swap sequence. No other player clarifies their identity with similar certainty, making Mike the most suspicious. Consequently, targeting Mike increases the chance that a werewolf will be eliminated."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3483,
+    "output_token_count": 1708,
+    "generation_time_sec": 511.2212026119232,
+    "used_chat_template": true,
+    "input_char_count": 13536,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

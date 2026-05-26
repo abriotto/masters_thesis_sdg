@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Mike claims to be the Seer (initially).\n    *   Mitchell claims to be the Robber who robbed Mike.\n    *   Mitchell says he is now the Seer (since he robbed Mike).\n    *   Mike says he is now the Robber (since Mitchell robbed him).\n    *   Wait, let's re-read:\n        *   [14] Caitlynn: \"Mike is the seer!\" (Caitlynn is accusing/claiming for Mike?)\n        *   [15] Mike: \"I'm playing the-\"\n        *   [16] Mitchell: \"Did you look at people or middle?\"\n        *   [32] Mitchell: \"I can verify Mike's story.\"\n        *   [33] Mike: \"Did you rob from me?\"\n        *   [34] Mitchell: \"I did.\"\n        *   [36] Mitchell: \"I was the robber. So I started as the robber.\"\n        *   [38] Mike: \"And now he's the seer.\"\n        *   [39] Mitchell: \"Now I'm the seer.\"\n        *   [40] Alana: \"So you guys are claiming you just swapped.\"\n        *   [41] Mitchell: \"Yes.\"\n        *   [42] Mike: \"Yup.\"\n    *   So, Mike (starting Seer) and Mitchell (starting Robber) swapped. Mitchell is now the Seer, Mike is now the Robber.\n    *   Mitchell/Mike claim they saw a Drunk in the center [63, 70, 72].\n    *   Mitchell/Mike claim they saw a Werewolf in the center [79].\n    *   This means there is only one Werewolf in the game (since one is in the center).\n    *   The remaining players are Caitlynn and Alana.\n    *   One is the Werewolf, one is the Tanner (according to Mitchell/Mike's logic).\n\n    *   Caitlynn:\n        *   [19] \"Mike's a werewolf.\" (Early accusation, likely a bluff).\n        *   [26] \"I found the werewolf.\"\n        *   [28] \"I'm a cute fluffy wolf.\" (Joking/bluffing).\n        *   [89] \"Because one of us wants to be killed, and one of us doesn't.\" (Referring to herself and Alana).\n    *   Alana:\n        *   [12] \"I don't really know how to play this game either.\"\n        *   [56] \"I'm not really sure how to play by person, so I'm just going to sit back for a minute.\"\n        *   [108] \"See, you get me in my third game, and I'm all of a sudden strategizing.\"\n        *   Alana is playing very passively.\n\n    *   Mitchell thinks Caitlynn is the Werewolf and Alana is the Tanner [113].\n    *   Reasoning: \"Caitlynn came out and took a role\" [115]. (Wait, what role did she take? She didn't really claim a role, she just made accusations).\n    *   Actually, Mitchell says: \"I think she took that role because she saw it in the middle\" [117]. This is confusing. Caitlynn didn't claim a role.\n    *   Let's re-examine:\n        *   [14] Caitlynn: \"Mike is the seer!\"\n        *   [19] Caitlynn: \"Mike's a werewolf.\"\n        *   [26] Caitlynn: \"I found the werewolf.\"\n        *   [28] Caitlynn: \"I'm a cute fluffy wolf.\"\n    *   Caitlynn is being very erratic and provocative. This is often a sign of a Werewolf trying to confuse the group or a Tanner trying to get voted out.\n    *   Alana is being very quiet.\n\n    *   If Mitchell and Mike are telling the truth:\n        *   Starting roles: Mike (Seer), Mitchell (Robber).\n        *   Action: Mitchell robbed Mike.\n        *   Current roles: Mitchell (Seer), Mike (Robber).\n        *   Center cards: Drunk, Werewolf, and one other.\n        *   Remaining players: Caitlynn, Alana.\n        *   Remaining roles: Werewolf, Tanner (or Villager/etc., but they suspect Werewolf and Tanner).\n    *   If Mitchell and Mike are lying (e.g., they are Werewolves/Minion):\n        *   They are coordinating a story to frame Caitlynn or Alana.\n        *   However, in a 4-player game, if two people are Werewolves/Minions, they have a strong advantage. But the transcript suggests they are genuinely trying to deduce between Caitlynn and Alana.\n\n    *   Caitlynn's behavior: \"I'm a cute fluffy wolf\" [28], \"I found the werewolf\" [26]. She's actively trying to steer the conversation.\n    *   Alana's behavior: Passive, claiming not to know how to play.\n    *   Mitchell's conclusion: Caitlynn is the Werewolf, Alana is the Tanner [113].\n    *   Mike's conclusion: Agrees with Mitchell [116].\n\n    *   If Caitlynn is the Tanner, she wants to be voted out.\n    *   If Caitlynn is the Werewolf, she wants to avoid being voted out.\n    *   Caitlynn's jokes about being a wolf could be a Tanner's attempt to get voted out or a Werewolf's reverse psychology.\n    *   However, Alana's extreme passivity is also suspicious, but usually, the \"loud\" player is the one the Village targets if the \"quiet\" player seems genuinely confused.\n    *   The prompt asks for the option *most likely* to help Team Village win.\n    *   If we believe Mitchell and Mike's deduction (that one of the two is a Werewolf and one is a Tanner), and they've settled on Caitlynn as the Werewolf, that's the strongest lead.\n\n    *   Wait, let's look at [115] again: \"Caitlynn came out and took a role.\"\n    *   Looking back at the transcript, Caitlynn didn't actually claim a role. She said \"Mike is the seer\" and \"Mike's a werewolf\".\n    *   Maybe Mitchell meant she \"took a position\" or \"started the accusations\".\n    *   Regardless, the consensus between the two players who claim to have information (Mitchell and Mike) is that Caitlynn is the Werewolf.\n\n    *   If Mitchell and Mike are the Werewolves, they would want to vote for someone else. But they are the ones pushing the vote toward Caitlynn. If they were Werewolves, they would likely try to protect each other and frame one person.\n    *   If Mitchell is the Seer (current) and Mike is the Robber (current), their information about the center cards (Drunk, Werewolf) is the key.\n    *   If there is one Werewolf in the center, there is only one Werewolf left in the game.\n    *   If Alana is the Tanner and Caitlynn is the Werewolf, voting Caitlynn wins for the Village.\n    *   If Alana is the Werewolf and Caitlynn is the Tanner, voting Caitlynn wins for the Tanner.\n    *   Given the behavior, Caitlynn is more likely to be the Werewolf (trying to cause chaos) or the Tanner (trying to get voted out). Alana's passivity is less characteristic of a Werewolf in a small game.\n\n    *   Mitchell and Mike are aligned in their theory.\n    *   They believe Caitlynn is the Werewolf.\n    *   Caitlynn's behavior is erratic.\n    *   Alana is passive.\n    *   The most likely target for Team Village, based on the available discussion, is Caitlynn.\n\n    *   Wait, let me re-read [142-146]:\n        *   Mitchell: \"Wait, who are you voting for? No, I'm voting for her.\"\n        *   Mike: \"No, you're back on her now?\"\n        *   Mitchell: \"I think she's a werewolf, and I think she's the tanner.\"\n        *   Mike: \"Oh.\"\n        *   Mitchell: \"So I'm going to vote the werewolf out.\"\n    *   Mitchell is explicitly stating he's voting for Caitlynn because he believes she's the Werewolf.\n\n    *   Is there any chance Alana is the Werewolf?\n    *   If Alana is the Werewolf, she's playing a very \"quiet\" game.\n    *   If Caitlynn is the Tanner, she's playing a very \"loud\" game.\n    *   In One Night Ultimate Werewolf, the Tanner often acts erratic to get votes.\n    *   However, without more information, the most evidence-based (or at least consensus-based) target is Caitlynn.\n\n    *   Justification: Mitchell and Mike claim to have swapped roles (Robber and Seer) and believe there is only one Werewolf in the game, with one Werewolf card in the center. They have deduced that either Caitlynn or Alana is the Werewolf, and they lean toward Caitlynn due to her erratic behavior and accusations. Since the goal is to eliminate a Werewolf, Caitlynn is the most likely candidate based on the players' discussion.\n    *   Chosen vote: Caitlynn.",
+  "parsed_output": {
+    "justification": "Mitchell and Mike claim to have swapped roles (Robber and Seer) and believe there is only one Werewolf in the game, as they claim to have seen a Werewolf card in the center. They have narrowed the potential Werewolf down to either Caitlynn or Alana. Based on Caitlynn's erratic behavior and provocative claims during the discussion, Mitchell and Mike conclude that she is the most likely Werewolf, while Alana is likely the Tanner.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell and Mike claim to have swapped roles (Robber and Seer) and believe there is only one Werewolf in the game, as they claim to have seen a Werewolf card in the center. They have narrowed the potential Werewolf down to either Caitlynn or Alana. Based on Caitlynn's erratic behavior and provocative claims during the discussion, Mitchell and Mike conclude that she is the most likely Werewolf, while Alana is likely the Tanner.\",\n  \"chosen_vote\": \"Caitlynn\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell and Mike claim to have swapped roles (Robber and Seer) and believe there is only one Werewolf in the game, as they claim to have seen a Werewolf card in the center. They have narrowed the potential Werewolf down to either Caitlynn or Alana. Based on Caitlynn's erratic behavior and provocative claims during the discussion, Mitchell and Mike conclude that she is the most likely Werewolf, while Alana is likely the Tanner.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Mitchell and Mike claim to have swapped roles (Robber and Seer) and believe there is only one Werewolf in the game, as they claim to have seen a Werewolf card in the center. They have narrowed the potential Werewolf down to either Caitlynn or Alana. Based on Caitlynn's erratic behavior and provocative claims during the discussion, Mitchell and Mike conclude that she is the most likely Werewolf, while Alana is likely the Tanner."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4221,
+    "output_token_count": 2333,
+    "generation_time_sec": 241.28862476348877,
+    "used_chat_template": true,
+    "input_char_count": 13887,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

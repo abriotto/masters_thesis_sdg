@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide on the player to vote for based only on transcript. We have four players: Ryan, Katie, Brett, DeAndre. Their roles unknown.\n\nWe must interpret: It looks like DeAndre claimed to be drunk? Actually transcript shows DeAndre saying \"I was drunk.\". Maybe it's that he said he was drunk; perhaps he is the drunk role (center swap). But the transcript is messy. Several parts seem garbled. We need to figure out likely roles using ambiguous statements.\n\nGoal: Eliminate a werewolf if present. We need to see clues.\n\nLet's parse key lines:\n\nLine 13: \"DeAndre: I was drunk.\" This suggests DeAndre claims to be drunk. Drunk is a village role but swaps a card with a center card. They don't know what they got.\n\nLine 28: \"DeAndre: You may not want to know.\" (not helpful)\nLine 29: \"Katie: There's no way you can be a werewolf again. You've been a werewolf three times.\" (strange)\n\nVarious lines later mention \"Brett: That's what we believe. That Brett is actually the minion. Cause he might've actually been tanner. In which case she still doesn't want us to vote for her. Because she didn't have a tanner card.\"\n\nOverall confusion. Hard to follow.\n\nWe know the roles available: There are 4 players + 3 center = 7 roles chosen at random. We don't know specifics.\n\nWe need to guess who is likely Werewolf.\n\nFrom transcript, there are accusations about DeAndre and maybe Katie.\n\nLine 63: \"I think we should vote for DeAndre again.\" indicates that possibly DeAndre is suspect.\n\nLine 64: \"x. Brett: So we should vote for DeAndre again.\" There's suggestion that DeAndre is suspect.\n\nHowever, earlier lines: \"DeAndre: I was drunk.\" Perhaps originally he's drunk. But has he turned into something else? The Dun?\n\nLet's look at line 68: \"I wish I negative...\"\n\nBut overall, the transcript is almost meaningless.\n\nWe can deduce maybe the safer choice: Without clear evidence, best to vote \"Circle Vote\". But the problem expects we pick one of names.\n\nCould it be easier: Possibly DeAndre being drunk would put him as what? The drunk swaps with a center card; after that, his role becomes whatever card was in the center. He might become something else. So uncertain.\n\nGiven confusion, I'd lean that there's likely a werewolf among them—maybe DeAndre. Many lines talk about him being suspect.\n\nTherefore I'd choose DeAndre as the vote.\n\nBut we must consider possibility that Ryan or Katie could be werewolves. The statements: \"Ryan: Really can't trust Ryan\"... Hard to deduce.\n\nLook again: Lines 70-72: \"Attn: ...\" That's not helpful.\n\nLet's consider: Perhaps the only safe safe is to vote for \"Circle Vote\" if we can't determine. But we should decide.\n\nLine 63: \"So we should vote for DeAndre again.\" He thinks DeAndre might be something else. If he's a drunk, he'd not be a werewolf. But if his depressed? Not sure.\n\nLine 73: \"Which it's either minion or werewolf or or drunk? No.\" suggests speculation.\n\nThus I'd answer by voting for DeAndre.\n\nBut confirm: Lines 64-70 mention that instance \"If you want to talk you need to ...\"\n\nOk.\n\nAlright, my answer: vote for DeAndre.\n\nBut also we must justify.\n\nOkay let's produce final JSON.",
+  "parsed_output": {
+    "justification": "The only coherent indication from the discussion points to DeAndre being a potential werewolf status. He repeatedly claims to be drunk, and there is no further clarity that suggests anyone else is a werewolf. In the absence of better evidence, targeting DeAndre maximizes the chance of removing a werewolf.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "{\"justification\":\"The only coherent indication from the discussion points to DeAndre being a potential werewolf status. He repeatedly claims to be drunk, and there is no further clarity that suggests anyone else is a werewolf. In the absence of better evidence, targeting DeAndre maximizes the chance of removing a werewolf.\", \"chosen_vote\":\"DeAndre\"}",
+  "response_for_parsing": "{\"justification\":\"The only coherent indication from the discussion points to DeAndre being a potential werewolf status. He repeatedly claims to be drunk, and there is no further clarity that suggests anyone else is a werewolf. In the absence of better evidence, targeting DeAndre maximizes the chance of removing a werewolf.\", \"chosen_vote\":\"DeAndre\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "The only coherent indication from the discussion points to DeAndre being a potential werewolf status. He repeatedly claims to be drunk, and there is no further clarity that suggests anyone else is a werewolf. In the absence of better evidence, targeting DeAndre maximizes the chance of removing a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3271,
+    "output_token_count": 942,
+    "generation_time_sec": 283.9457564353943,
+    "used_chat_template": true,
+    "input_char_count": 12952,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

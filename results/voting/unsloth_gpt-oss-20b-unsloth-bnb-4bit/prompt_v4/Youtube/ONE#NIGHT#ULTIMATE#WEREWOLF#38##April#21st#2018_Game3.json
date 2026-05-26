@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to read the transcript and decide which player likely is a werewolf and vote accordingly. However the video transcript seems garbled, repeated miscommunication; it's challenging to parse participants roles. Let's analyze.\n\nPlayers: Justin, Caitlynn, Mitchell, James, Mike.\n\nRoles unknown; they used robber, except some claim but not clear. Many claims about swaps: \"Robbed\" indicates Robber action. It seems multiple people claimed to be Robber, leading to confusion. From transcripts, we see statements like \"Mike: I robbed.\" and \"Justin: I was a robber,\" etc. But they might be mistaken.\n\nGoal: maximize chance to vote for a werewolf. Did any player state that they were not a werewolf? If we can't find evidence, circle.\n\nLet's look: who might be werewolf? Some mention \"Mind line\" possibly: \"Justin: I was a robber.\" \"Mike: I robbed.\" So maybe they are the Robber. But werewolves would be silent? Have they could claim werewolf? There's \"James: I'm a werewolf.\" (in line 155). Indeed line 155 says: \"James: So who interacted with us?\" Wait line 155: \"James: So who interacted with us?\" Hard.\n\nLine 155 says \"James: So who interacted with us?\" Not clear. But line 156 says \"Mitchell: No one.\" Later line 157: \"Justin: No one.\" etc.\n\nBut earlier lines say: \"Mike: I robbed.\" That suggests Mike's role was Robber. At the start, \"Robber: wake up... exchange your card with another player's card\". So after being Robber, the person ends with the player's new card. They will trade then know their new card but may not know the original. The Robber should not be a werewolf because they trade at night to attempt to be safe. But if the Robber ends up with a werewolf card, they'd be played as a Werewolf. That could happen. Many people are exchanging.\n\nWe need to deduce likely final roles. Let's consider the game: 5 players, there are 5+3=8 roles chosen. Likely typical roles: Werewolf(s) maybe one or two. There is a minion possibility. There's Reverend? Possibly 'revealer' appears in transcript; but there is no official role 'revealer'; this is unusual. Might be a random action. Actually, yes some texts mention \"Revealer\", but that might not be standard. The transcript might correspond to an event where players play roles themselves; but given the long confusion, perhaps no one ended up as werewolf.\n\nIf no werewolf present, best to circle? The instruction says: \"choose the option most likely to help Team Village win.\" If no werewolf, then the optimum is Circle Vote. But we need to be sure if there's a werewolf present. I'm leaning that there is a werewolf (the transcripts mention \"James: So who interacted with us?\" Could be like a werewolf. Also \"Mike says he is 100% the tanner\", so someone else cannot be werewolf? The statement \"James: I'm a werewolf.\" indicates at line 155: \"James: So who interacted with us?\" Wait check again: line 153: \"James: Me and Mike are werewolves.\" That is explicit: \"James: Me and Mike are werewolves.\" So indeed that line states that James and Mike are werewolves. So there's at least 2 werewolves: James and Mike. So we must vote for among them or others? Typically we vote for a werewolf. Which candidate? It says both James and Mike claim being werewolves but might be lying? Let's analyze.\n\nLine 153: \"James: Me and Mike are werewolves.\" The line indicates the speaker (maybe a misinterpretation). That indicates that both James and Mike are telling the truth? The quote: \"James: Me and Mike are werewolves.\" indicates that James and Mike are being werewolf roles. Could be James outright stating that he and Mike are werewolves. That is clear: they are presumably werewolves. We need to decide who to vote for: the one that might be the werewolf. There's no need to get a double; but we can vote for some weren't known as werewolf. We only can vote for one. Usually, if you know both James and Mike are werewolves, you could pick either. I'd choose Mike because line mentions \"Mike: I robbed. I told it's maybe not; but James says 2 werewolves?\n\nHold on. Actually line 155 might be quoting: \"James: So who interacted with us?\" Actually reading original transcript, line 155 - after some earlier lines - but I'd re-check: line 153 mentions: \"James: Me and Mike are werewolves.\" That line suggests that they are claiming to be werewolves. That is direct knowledge. So we should vote for the one that is a known werewolf based on explicit statement: they might both be werewolves—two werewolves.\n\nThus choose one: Mountain? I'd select \"Mike\" because he claims to have robbed and is implicated. But if James also a werewolf, we could vote for Jim too. Well chooses one. I'll pick Mike as the target because his actions? Let's also review: Did Justin claim to be a: \"Justin: I was a robber.\" The Robber is a villager. But if Justin has Robber role, he could be a non-werewolf. So the werewolves are likely Mike and James.\n\nTherefore the best vote is for Mike or James. Possibly Mike, because he was formerly a Robber? But \"Mike: I robbed.\" indicates Mike may have been a Robber initially, but he could have swapped. But the line \"James: Me and Mike are werewolves.\" implies your current being liar? uncertain.\n\nGiven that, I'll vote for \"Mike\" as the werewolf. Alternatively \"James\".\n\nI'll decide. I'll choose \"Mike\".",
+  "parsed_output": {
+    "justification": "The transcript contains an explicit statement that both James and Mike are werewolves (\"James: Me and Mike are werewolves.\"). This means at least one of them is guaranteed to be a Werewolf. To maximize the chance of eliminating a Werewolf and helping the Village group win, we should target one of them. Since Mike claims to have robbed (suggesting he played a Hardened role initially but could have ended up as Werewolf), voting for Mike will likely remove a Werewolf if he remains in that role.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains an explicit statement that both James and Mike are werewolves (\\\"James: Me and Mike are werewolves.\\\"). This means at least one of them is guaranteed to be a Werewolf. To maximize the chance of eliminating a Werewolf and helping the Village group win, we should target one of them. Since Mike claims to have robbed (suggesting he played a Hardened role initially but could have ended up as Werewolf), voting for Mike will likely remove a Werewolf if he remains in that role.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains an explicit statement that both James and Mike are werewolves (\\\"James: Me and Mike are werewolves.\\\"). This means at least one of them is guaranteed to be a Werewolf. To maximize the chance of eliminating a Werewolf and helping the Village group win, we should target one of them. Since Mike claims to have robbed (suggesting he played a Hardened role initially but could have ended up as Werewolf), voting for Mike will likely remove a Werewolf if he remains in that role.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript contains an explicit statement that both James and Mike are werewolves (\"James: Me and Mike are werewolves.\"). This means at least one of them is guaranteed to be a Werewolf. To maximize the chance of eliminating a Werewolf and helping the Village group win, we should target one of them. Since Mike claims to have robbed (suggesting he played a Hardened role initially but could have ended up as Werewolf), voting for Mike will likely remove a Werewolf if he remains in that role."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4010,
+    "output_token_count": 1360,
+    "generation_time_sec": 409.15972328186035,
+    "used_chat_template": true,
+    "input_char_count": 15276,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

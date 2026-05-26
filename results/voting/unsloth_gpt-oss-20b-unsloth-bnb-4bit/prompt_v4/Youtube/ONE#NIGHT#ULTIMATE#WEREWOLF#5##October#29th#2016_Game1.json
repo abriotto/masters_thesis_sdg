@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016_Game1.txt",
+  "player_names": [
+    "Mitchell",
+    "Chris",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine best vote returning one name or circle vote. Must analyze roles based on transcript. Need to deduce who might be werewolf. Let's parse: players: Mitchell, Chris, Caitlynn, Mike. Roles unknown.\n\nFrom transcript, we peek through confusion: \"Seer\" (player?)…\n\nWe need to see the roles: each player may have been started with some role; we don't know which ones appear. But watch conversation: There seems to have been a Seer, mentions \"two seers\". Also \"Trouble maker\" mention. Checking: This is one of few transcripts maybe capturing random talk. Hard.\n\nThe transcript indicates confusion; not much content about roles.\n\nAdditionally, earlier: \"I was the seer.\" The conversation includes lines: at line 27: \"Chris: I was the seer.\" So Chris started as seer? Wait that line: \"Chris: I was the seer.\" That is presumably at start, perhaps narrative: \"at the start of the game, Chris says 'I was the seer'\".\n\nThus Chris is claimed to be seer. Another line says \"Mike: Oh, no. I don't think you were.\" vs earlier \"Mike: I was a seer.\" One line says: \"Mike: I was a seer.\" Actually earlier at 51: \"Mike: No, I was a seer.\" So unclear.\n\nLet's parse chronology and dynamic:\n\n- Game: at start, no quotes indicating roles discovered.\n\nBut we can think of roles that are widely possible: each if suspect. Without proper info, I'm leaning that no conclusive evidence points to a werewolf among players, maybe all not. Might be center contains werewolf. But there's \"Mike: I saw a werewolf, etc.\" But not certain.\n\nImplications: They mention \"I was the seer\" twice: one for Chris and one for Mike. Could mean that multiple players claim to be seer. Only one can have had seer role.\n\nThis indicates confusion. The transcript is almost gibberish albeit some indications that each claims to be seer.\n\nAlso they mention \"There was two seer.\" but physically only one seer per game. So unsound.\n\nPerhaps this conversation is intentionally unspecific, maybe purposely trolling. In such, safe strategy is to Circle Vote: no clear suspect. I'd likely choose \"Circle Vote\" as per guidelines unless evidence of werewolf.\n\nLet's assess: Did anyone say that they had no werewolf? No. The conversation states nobody says they are definitely not a werewolf, but many suspect each other; no definitive algorithmic identification.\n\nTherefore choice: \"Circle Vote\". Provide justification: no clear evidence.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript is largely incoherent and does not reveal any concrete evidence that any player is a Werewolf. Although several players claim to have had the Seer role or accuse each other of switching, there is insufficient information to confidently identify a Werewolf. Without definitive clues, it is safest to vote against all players, which means choosing to Circle Vote.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript is largely incoherent and does not reveal any concrete evidence that any player is a Werewolf. Although several players claim to have had the Seer role or accuse each other of switching, there is insufficient information to confidently identify a Werewolf. Without definitive clues, it is safest to vote against all players, which means choosing to Circle Vote.\",\n  \"chosen_vote\": \"Circle Vote\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript is largely incoherent and does not reveal any concrete evidence that any player is a Werewolf. Although several players claim to have had the Seer role or accuse each other of switching, there is insufficient information to confidently identify a Werewolf. Without definitive clues, it is safest to vote against all players, which means choosing to Circle Vote.\",\n  \"chosen_vote\": \"Circle Vote\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is largely incoherent and does not reveal any concrete evidence that any player is a Werewolf. Although several players claim to have had the Seer role or accuse each other of switching, there is insufficient information to confidently identify a Werewolf. Without definitive clues, it is safest to vote against all players, which means choosing to Circle Vote."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3385,
+    "output_token_count": 651,
+    "generation_time_sec": 196.92168879508972,
+    "used_chat_template": true,
+    "input_char_count": 13142,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

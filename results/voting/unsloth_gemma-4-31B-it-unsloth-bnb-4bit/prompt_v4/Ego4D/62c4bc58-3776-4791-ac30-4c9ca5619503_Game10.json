@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game10.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Kevin, Kaelan, Jessica, Daniel.\n    *   Goal: Identify the Werewolf (Team Village win) or Circle Vote (if no Werewolf).\n\n    *   Kaelan: Claims to be a Villager ([3]).\n    *   Jessica: Claims to be a Villager ([4]).\n    *   Daniel: Suggests Kaelan might be the Tanner ([5]) or the Werewolf ([10]).\n    *   Kevin: Doesn't make any claims, mostly complaining about phones ([9]) and agreeing with Daniel about the center ([15]).\n    *   The conversation is very fragmented and lacks substantial information.\n\n    *   Kaelan claims Villager.\n    *   Jessica claims Villager.\n    *   Daniel is pushing the narrative that Kaelan is either the Tanner or the Werewolf.\n    *   Kevin is passive.\n\n    *   There is almost no evidence.\n    *   Kaelan and Jessica both claim Villager.\n    *   Daniel is actively accusing Kaelan.\n    *   In One Night Ultimate Werewolf, when players claim Villager and there's no other information, the person making accusations without evidence is often the Werewolf or Minion trying to deflect. However, Daniel's accusations are vague (\"maybe he's the Werewolf?\").\n    *   Wait, let's look at the transcript again.\n    *   [1] Kaelan: \"I don't know why this is necessary considering... saw the card.\" (This is vague).\n    *   [3] Kaelan: \"I am... a Villager.\"\n    *   [4] Jessica: \"Same.\"\n    *   [5] Daniel: \"So he's the Tanner.\"\n    *   [10] Daniel: \"So maybe he's the Werewolf?\"\n    *   The conversation ends abruptly.\n\n    *   Kaelan and Jessica both claim Villager.\n    *   Daniel is the one pushing for Kaelan to be eliminated.\n    *   Kevin is barely participating.\n    *   Usually, if someone claims Villager and another person immediately says \"So he's the Tanner\" or \"Maybe he's the Werewolf\" without any evidence (like a Seer claim), the accuser is more suspicious.\n    *   However, there are no role claims other than \"Villager\".\n    *   If we have to pick someone, Daniel's behavior is the most aggressive/suspicious, but there's no proof.\n    *   Let's re-read: \"I don't know why this is necessary considering [crosstalk] saw the card.\" This might imply Kaelan knows something.\n    *   Actually, looking at the transcript, it's very short. There's no clear Werewolf.\n    *   If no one is clearly the Werewolf, \"Circle Vote\" is an option. But usually, in these tasks, a specific player is intended.\n    *   Let's look at Daniel again. He's trying to lead the vote toward Kaelan.\n    *   Wait, look at [14] Daniel: \"So we're all good with the center?\" and [15] Kevin: \"Yeah.\" This suggests they might be checking if the Werewolf is in the center.\n    *   If the Werewolf is in the center, Team Village wins by Circle Voting.\n    *   But Daniel's comments [5] and [10] are attempts to get Kaelan voted out.\n\n    *   Kaelan: Claims Villager.\n    *   Jessica: Claims Villager.\n    *   Daniel: Accuses Kaelan.\n    *   Kevin: Passive.\n    *   If Daniel is the Werewolf, he wants to frame Kaelan.\n    *   If Kaelan is the Werewolf, he's lying about being a Villager.\n    *   If Kaelan is the Tanner, he wants to be voted out.\n    *   Given the lack of information, it's hard to be certain. However, Daniel's immediate jump to \"he's the Tanner\" or \"maybe he's the Werewolf\" after a simple Villager claim is a common Werewolf tactic to create doubt.\n\n    *   Is there any other clue?\n    *   [1] Kaelan: \"I don't know why this is necessary considering [crosstalk] saw the card.\" This is very confusing. Who saw the card?\n    *   If Kaelan is the Seer or Robber, he might be talking about that. But he claims Villager.\n    *   The transcript is very poor quality (\"inaudible\", \"crosstalk\").\n    *   Let's look at the players again: Kevin, Kaelan, Jessica, Daniel.\n    *   Daniel is the most active in trying to shift the vote.\n    *   Let's consider if Daniel is the Werewolf. He's trying to convince others to vote for Kaelan.\n    *   Let's consider if Kaelan is the Werewolf. He's claiming Villager.\n    *   Let's consider if Kaelan is the Tanner. He's claiming Villager (which is a bad strategy for a Tanner, but possible).\n    *   In many of these scenarios, the person pushing the vote without evidence is the suspect.\n\n    *   Kaelan and Jessica both claim Villager.\n    *   Daniel tries to paint Kaelan as the Tanner or Werewolf without any evidence.\n    *   Kevin is passive.\n    *   The most suspicious behavior is Daniel's.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   [1] Kaelan: \"I don't know why this is necessary considering [crosstalk] [inaudible] saw the card.\"\n    *   [3] Kaelan: \"I am [inaudible] a Villager.\"\n    *   [4] Jessica: \"Same.\"\n    *   [5] Daniel: \"So he's the Tanner.\"\n    *   [10] Daniel: \"So maybe he's the Werewolf?\"\n    *   Daniel is definitely the one driving the accusation. In the absence of other info, the aggressor is often the Werewolf.\n\n    *   Could it be a Circle Vote? \"If no player is a Werewolf and no one dies... Team Village wins.\"\n    *   But the prompt asks for the player \"most likely to be a Werewolf\".\n    *   If Daniel is the Werewolf, he's trying to get Kaelan out.\n    *   If Kaelan is the Werewolf, he's lying.\n    *   If Kaelan is the Tanner, he's lying (or just claiming Villager).\n    *   Usually, the person making baseless accusations is the one to vote for.\n\n    *   Justification: Kaelan and Jessica both claim to be Villagers. Daniel attempts to convince the group that Kaelan is either the Tanner or the Werewolf without providing any evidence or role-based reasoning. This aggressive behavior without supporting information is characteristic of a Werewolf attempting to deflect suspicion.\n    *   Chosen vote: Daniel.\n\n    *   Wait, let me double-check the transcript again.\n    *   [14] Daniel: \"So we're all good with the center?\"\n    *   [15] Kevin: \"Yeah.\"\n    *   This part is weird. \"Good with the center\" might mean they think the Werewolf is in the center. If they think the Werewolf is in the center, they would Circle Vote.\n    *   But Daniel *also* said \"maybe he's the Werewolf?\" about Kaelan.\n    *   This is contradictory. First he says Kaelan is the Tanner/Werewolf, then he asks if they are \"good with the center\".\n    *   If Daniel is the Werewolf, he might be testing the waters.\n    *   Let's look at the players again. Kevin, Kaelan, Jessica, Daniel.\n    *   If Daniel is trying to lead the group to a Circle Vote *after* trying to frame Kaelan, he might be the Werewolf trying to ensure no one is voted out.\n    *   Actually, if the Werewolf wants to win, they want *no* Werewolf to die. A Circle Vote (where no one dies) is a win for the Werewolf *if* a Werewolf is still in the game.\n    *   Wait, the rules say: \"Team Village wins: If no player is a Werewolf and no one dies.\"\n    *   \"Team Werewolf wins: If no Werewolves die.\"\n    *   So if a Werewolf is in the game, a Circle Vote (no one dies) results in a Werewolf win.\n    *   Therefore, Daniel suggesting \"we're all good with the center\" (implying a Circle Vote) is very suspicious if he is the Werewolf.\n\n    *   Kaelan: Claims Villager.\n    *   Jessica: Claims Villager.\n    *   Daniel: Accuses Kaelan, then suggests the Werewolf might be in the center (leading to a Circle Vote).\n    *   Kevin: Passive.\n    *   Daniel's behavior is the most inconsistent and manipulative.\n\n    *   Justification: Kaelan and Jessica both claim to be Villagers. Daniel first suggests Kaelan is the Tanner or Werewolf without evidence, and then later suggests the group is \"good with the center,\" which would lead to a Circle Vote. This inconsistency and attempt to manipulate the vote toward either a specific target or a Circle Vote suggests Daniel is the Werewolf.\n    *   Chosen vote: Daniel.",
+  "parsed_output": {
+    "justification": "Kaelan and Jessica both claim to be Villagers. Daniel attempts to cast suspicion on Kaelan by suggesting he is the Tanner or the Werewolf without providing any evidence. Furthermore, Daniel later suggests the group is 'good with the center,' which would lead to a Circle Vote; since a Circle Vote allows any present Werewolves to survive, this behavior is highly suspicious and characteristic of a Werewolf attempting to manipulate the outcome.",
+    "chosen_vote": "Daniel"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kaelan and Jessica both claim to be Villagers. Daniel attempts to cast suspicion on Kaelan by suggesting he is the Tanner or the Werewolf without providing any evidence. Furthermore, Daniel later suggests the group is 'good with the center,' which would lead to a Circle Vote; since a Circle Vote allows any present Werewolves to survive, this behavior is highly suspicious and characteristic of a Werewolf attempting to manipulate the outcome.\",\n  \"chosen_vote\": \"Daniel\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kaelan and Jessica both claim to be Villagers. Daniel attempts to cast suspicion on Kaelan by suggesting he is the Tanner or the Werewolf without providing any evidence. Furthermore, Daniel later suggests the group is 'good with the center,' which would lead to a Circle Vote; since a Circle Vote allows any present Werewolves to survive, this behavior is highly suspicious and characteristic of a Werewolf attempting to manipulate the outcome.\",\n  \"chosen_vote\": \"Daniel\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Daniel",
+    "justification": "Kaelan and Jessica both claim to be Villagers. Daniel attempts to cast suspicion on Kaelan by suggesting he is the Tanner or the Werewolf without providing any evidence. Furthermore, Daniel later suggests the group is 'good with the center,' which would lead to a Circle Vote; since a Circle Vote allows any present Werewolves to survive, this behavior is highly suspicious and characteristic of a Werewolf attempting to manipulate the outcome."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1954,
+    "output_token_count": 2262,
+    "generation_time_sec": 220.76299905776978,
+    "used_chat_template": true,
+    "input_char_count": 7544,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#382#Game#100!!",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#382#Game#100!!_Game1.txt",
+  "player_names": [
+    "Ed",
+    "Dustin",
+    "Katie",
+    "Brett",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze transcript. It's messy. We have unreliable statements. Goal: find most likely werewolf among active players: Ed, Dustin, Katie, Brett, Kelsey, Dylan. We consider known roles: some claims: Let's parse possible roles.\n\nAt beginning: starting abilities known; we have a mixture. The mention: \"We see some conversation but many false statements.\" The key: the known reveals: \"I think it's safe that we vote for Dustin.\" That line suggests suspect: Dustin might be werewolf. But confirm: at the end, lines show someone identified as Werewolf: \"I was the werewolf and I woke up alone.\" That looks like Dylan (line 137). Let's check: line 137: \"Dylan: I was the werewolf and I woke up alone.\" That implies Dylan is Werewolf. But then later conversation indicates that multiple participants claim roles.\n\nLet's parse earlier: line 92 says \"How am I a werewolf?\" etc. Many ambiguous.\n\nBut which player appears to have consistent information about their role?\n\nWe have hints that the game might be messed up, but we have: \n\n- They know: \"The second of players: 'I'm not...'... The best evidence: \"I was the werewolf...\". Others talk about no werewolves. Stupid.\n\nSpecifically: line 131: \"Katie: I Django's \"??\"??\n\nLet's analyze analysis: after line 98: \"What are you?\" But no clarity.\n\nThe correct approach: find plausible werewolf based on self-claim: Dustin states: \"I was the werewolf and I woke up alone.\" That suggests that indeed is a self-reported werewolf. However lines 137 says \"Dylan: I was the werewolf...\" (makes sense could be accurate). So possibility that Dylan is werewolf.\n\nAlso some earlier lines: line 47 says \"Dustin: Because I don't have the robber. That's the Doppelganger.\" This seems irrelevant.\n\nGiven confusion, the most likely candidate to be werewolf: Dylan. Alex?\n\nHence just vote for Dylan. But check each player's final role if potential: Possibly the \"who surrendered to a fact?\" Actually lines 92 to 100:\n\nLet's quickly read smarter: Actually list includes 6 players: Ed, Dustin, Katie, Brett, Kelsey, Dylan.\n\nWhich of these could be werewolves? If the game had at least one werewolf among roles. Might be that werewolves are removed via removal. But internal conversation suggests improbable: \"Dylan: I was the werewolf\" suggests he is Are. Historically, it's improbable that all would extr truly. But given weirdness, I'd choose Dylan.\n\nTherefore propose: Choose vote for Dylan.\n\nAdditionally, justification: We think Dylan is werewolf.\n\nOk.",
+  "parsed_output": {
+    "justification": "The transcript contains several direct claims that a player is a Werewolf, specifically line 137 where Dylan states “I was the werewolf and I woke up alone,” suggesting his view of his own role. Throughout the discussion, other players either contradict or doubt this admission, implying that Dylan’s self‑report stands out as the only credible indication. Given the confusion and lack of clear evidence that any other player exhibits typical werewolf behavior, the most probable target is Dylan.",
+    "chosen_vote": "Dylan"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains several direct claims that a player is a Werewolf, specifically line 137 where Dylan states “I was the werewolf and I woke up alone,” suggesting his view of his own role. Throughout the discussion, other players either contradict or doubt this admission, implying that Dylan’s self‑report stands out as the only credible indication. Given the confusion and lack of clear evidence that any other player exhibits typical werewolf behavior, the most probable target is Dylan.\",\"chosen_vote\":\"Dylan\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains several direct claims that a player is a Werewolf, specifically line 137 where Dylan states “I was the werewolf and I woke up alone,” suggesting his view of his own role. Throughout the discussion, other players either contradict or doubt this admission, implying that Dylan’s self‑report stands out as the only credible indication. Given the confusion and lack of clear evidence that any other player exhibits typical werewolf behavior, the most probable target is Dylan.\",\"chosen_vote\":\"Dylan\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dylan",
+    "justification": "The transcript contains several direct claims that a player is a Werewolf, specifically line 137 where Dylan states “I was the werewolf and I woke up alone,” suggesting his view of his own role. Throughout the discussion, other players either contradict or doubt this admission, implying that Dylan’s self‑report stands out as the only credible indication. Given the confusion and lack of clear evidence that any other player exhibits typical werewolf behavior, the most probable target is Dylan."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4240,
+    "output_token_count": 681,
+    "generation_time_sec": 207.3666353225708,
+    "used_chat_template": true,
+    "input_char_count": 15935,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

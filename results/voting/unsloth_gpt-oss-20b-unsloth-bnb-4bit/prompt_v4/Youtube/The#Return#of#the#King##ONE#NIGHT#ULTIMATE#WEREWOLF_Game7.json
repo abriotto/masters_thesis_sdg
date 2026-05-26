@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript that looks confusing. We need to decide which player is likely a werewolf. The transcript shows multiple claims, confusion. There's mention of \"Copycat\" and \"seer\", \"tanner.\" Many claims. I'd need to interpret. But that's too messy. Instead, maybe guess that there's no werewolf present? We need to consider likely roles. Zero werewolves? I'd guess likely scenario: The game may have three werewolves and minion etc. But it's unstructured.\n\nGiven the chaos, may decide \"Circle Vote\". Probably safer. Let's read: There is talk about \"I see two werewolves...\". In transcripts. People think there were two werewolves? Let's examine names: Justin, Mitchell, Paul, James, Tyler.\n\nOne line: \"I saw a werewolf in the center.\" That's Tyler: \"Tyler: I saw a card in the middle. I saw two cards in the middle.\" Actually Tyler at line 44: Tyler says: \"I saw at least one werewolf in the middle.\"\n\nAlso, line: \"Tyler: I saw werewolf from the center.\" So Tyler claims to have seen a werewolf in center. That suggests center cards may contain werewolves. That would mean there are werewolves, but could be center. There are 3 center cards. We need to account for sliding.\n\nAnyway, deciding \"Circle Vote\" seems safe. Because it's unclear.\n\nThus output: justification succinct that we can't confidently identify any werewolf, so circle vote.\n\nLet's produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript is highly ambiguous and contains conflicting claims about role identities. No clear evidence confirms a specific player as a Werewolf; many statements hinge on other players’ misidentifications or rumors. Without clear proof that any active player is a known Werewolf, voting for any single individual could mistakenly eliminate a Villager or mislead the outcome. Therefore the safest choice is to abstain and not vote for anyone.",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is highly ambiguous and contains conflicting claims about role identities. No clear evidence confirms a specific player as a Werewolf; many statements hinge on other players’ misidentifications or rumors. Without clear proof that any active player is a known Werewolf, voting for any single individual could mistakenly eliminate a Villager or mislead the outcome. Therefore the safest choice is to abstain and not vote for anyone.\",\"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is highly ambiguous and contains conflicting claims about role identities. No clear evidence confirms a specific player as a Werewolf; many statements hinge on other players’ misidentifications or rumors. Without clear proof that any active player is a known Werewolf, voting for any single individual could mistakenly eliminate a Villager or mislead the outcome. Therefore the safest choice is to abstain and not vote for anyone.\",\"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is highly ambiguous and contains conflicting claims about role identities. No clear evidence confirms a specific player as a Werewolf; many statements hinge on other players’ misidentifications or rumors. Without clear proof that any active player is a known Werewolf, voting for any single individual could mistakenly eliminate a Villager or mislead the outcome. Therefore the safest choice is to abstain and not vote for anyone."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3791,
+    "output_token_count": 414,
+    "generation_time_sec": 127.24348545074463,
+    "used_chat_template": true,
+    "input_char_count": 14535,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

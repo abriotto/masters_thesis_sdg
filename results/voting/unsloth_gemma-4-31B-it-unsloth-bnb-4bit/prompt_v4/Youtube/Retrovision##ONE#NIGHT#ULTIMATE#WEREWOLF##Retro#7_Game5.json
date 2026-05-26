@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8192,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Eric\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Paul claims to be the \"Village Idiot\" (which isn't a standard role in the provided rules, but the announcer calls it \"Village idiot\" in the transcript [16]). *Wait, the rules provided don't list \"Village Idiot\", but the transcript does. Let's check the rules again.*\n    *   *Correction:* The rules provided list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Observation:* The announcer in the transcript mentions \"Village idiot\" [16]. This role is not in the provided rules list. However, the transcript is the primary source of the game's events. The \"Village Idiot\" (likely a custom or variant role) apparently moves cards.\n    *   Paul claims he was the Village Idiot and didn't move anyone [43, 80], then later says he moved everyone clockwise [136].\n    *   Mike claims to be the Troublemaker [75 - Justin says it, Mike doesn't deny it, but later Mike says he switched people [147]].\n    *   Justin claims he started as the Robber [149] and robbed Mitchell [151], who he thought was the Tanner [154].\n    *   Mitchell claims he started as a Werewolf [192, 198].\n    *   Eric claims he started as a Werewolf [203] and saw another werewolf.\n\n    *   *Werewolves:* Eric and Mitchell both claim to have started as Werewolves.\n    *   *Troublemaker:* Mike claims to have switched Justin and Mitchell [193, 195].\n    *   *Village Idiot (Drunk/Custom):* Paul claims to have moved cards clockwise [136].\n    *   *Robber:* Justin claims he robbed Mitchell.\n\n    *   If Mitchell started as a Werewolf [192] and Justin robbed him [151], Justin becomes the Werewolf and Mitchell becomes the Robber.\n    *   If Mike (Troublemaker) then switched Justin and Mitchell [193], Justin (now Werewolf) and Mitchell (now Robber) swap back. So Mitchell is the Werewolf again and Justin is the Robber.\n    *   If Paul (Village Idiot) then moved everyone clockwise [136], the roles shift again.\n\n    *Wait, let's look at the claims again.*\n    *   Eric: \"I started as the werewolf, and I saw another werewolf\" [203].\n    *   Mitchell: \"I started as a werewolf\" [192, 198].\n    *   If both are telling the truth about starting as Werewolves, there are two Werewolves.\n    *   If Eric is a Werewolf and Mitchell is a Werewolf, the Village wins by voting either of them.\n\n    *   Eric is very aggressive in accusing others and claiming he's a Werewolf (which is odd, unless he's trying to confuse people or is the Tanner).\n    *   Mitchell also admits to starting as a Werewolf.\n    *   Mike's behavior is suspicious (refusing to reveal who he switched), but he's claiming to be the Troublemaker.\n    *   Paul's role (\"Village Idiot\") is confusing and not in the rules, but he's acting as a facilitator.\n\n    *   If Eric and Mitchell both claim to be Werewolves, and the goal is to eliminate a Werewolf, voting for either of them is a strong bet.\n    *   However, Eric's claim \"I started as the werewolf, and I saw another werewolf\" [203] is a very bold claim. Usually, Werewolves don't admit they are Werewolves unless they are bluffing or trying to create chaos.\n    *   Mitchell also admits it [192].\n    *   Let's look at the \"Tanner\" possibility. The Tanner wants to be voted out. Could Eric or Mitchell be the Tanner?\n    *   Justin claimed Mitchell was the Tanner [154].\n    *   If Mitchell is the Tanner, voting for him loses the game for the Village.\n    *   If Eric is the Werewolf, voting for him wins.\n\n    *   Eric: \"I started as the werewolf... Let's vote for this guy [Mitchell]\" [171, 173].\n    *   Mitchell: \"I started as a werewolf\" [192].\n    *   If both claim to be Werewolves, one might be the Tanner or a liar.\n    *   But if we have to pick one, Eric's claim is more definitive (\"I saw another werewolf\").\n    *   Wait, if Eric is a Werewolf and Mitchell is a Werewolf, voting for either works.\n    *   If Eric is a Werewolf and Mitchell is the Tanner, voting for Eric wins.\n    *   If Mitchell is a Werewolf and Eric is the Tanner, voting for Mitchell wins.\n\n    *   Justin says: \"I started as the robber... I might have robbed... Mitchell... He was the tanner\" [149, 151, 154].\n    *   If Justin is telling the truth, Mitchell started as the Tanner.\n    *   If Mitchell started as the Tanner, he is not a Werewolf.\n    *   Then Eric's claim to be a Werewolf becomes more likely to be true (or he's the Tanner).\n\n    *   Eric claims to be a Werewolf.\n    *   Mitchell claims to be a Werewolf.\n    *   Justin claims Mitchell was the Tanner.\n    *   If Mitchell is the Tanner, Eric is the most likely Werewolf.\n    *   If Mitchell is the Werewolf, Eric might be the Tanner.\n    *   However, Eric is pushing the vote toward Mitchell [173, 179].\n    *   Usually, the person pushing the vote is trying to deflect.\n\n    *   Eric: \"I started as the werewolf... Let's vote for this guy [Mitchell]\" [171, 173].\n    *   This is a very strange strategy for a Werewolf. Why admit you are a Werewolf and then point to someone else?\n    *   Unless... he's the Tanner? Or he's just playing very chaotically.\n    *   Let's re-read: \"I started as the werewolf, and I saw another werewolf in the- [Mitchell interrupts]\" [203].\n    *   If Eric is a Werewolf, he wants to avoid being voted out. Admitting he's a Werewolf is counter-intuitive.\n    *   If Mitchell is a Werewolf, he also admitted it [192].\n\n    *   Wait, look at the transcript again.\n    *   Eric: \"I started as the werewolf... Let's vote for this guy [Mitchell]\" [171, 173].\n    *   Mitchell: \"I started as a werewolf\" [192].\n    *   If both are claiming to be Werewolves, and Justin thinks Mitchell is the Tanner, then Eric is the most likely actual Werewolf.\n\n    *   Justin (Robber) -> Robbed Mitchell (Tanner) -> Justin is now Tanner, Mitchell is now Robber.\n    *   Mike (Troublemaker) -> Switched Justin (Tanner) and Mitchell (Robber) -> Justin is now Robber, Mitchell is now Tanner.\n    *   Paul (Village Idiot) -> Moved everyone clockwise.\n    *   If this sequence happened, Mitchell is currently the Tanner.\n    *   If Mitchell is the Tanner, voting for him is a loss.\n    *   That leaves Eric as the most likely Werewolf.\n\n    *   Eric claims to be a Werewolf.\n    *   Mitchell claims to be a Werewolf.\n    *   Justin's information suggests Mitchell is the Tanner.\n    *   Therefore, Eric is the most probable Werewolf.\n\n    *   Wait, Eric says \"I started as the werewolf... Let's vote for this guy [Mitchell]\" [171, 173].\n    *   If Eric is the Werewolf, he's trying to get Mitchell (the Tanner) voted out so the Werewolves survive. This is a classic Werewolf move: trick the village into voting for the Tanner.\n\n    *   Justin: Robber (claims)\n    *   Eric: Werewolf (claims)\n    *   Paul: Village Idiot (claims)\n    *   Mitchell: Werewolf (claims) / Tanner (Justin's claim)\n    *   Mike: Troublemaker (claims)\n\n    *   If Eric is a Werewolf and Mitchell is the Tanner, voting Eric wins.\n    *   If Eric is the Tanner and Mitchell is a Werewolf, voting Mitchell wins.\n    *   Given Eric's attempt to push the vote onto Mitchell, Eric is more likely to be the Werewolf.\n\n    *   Wait, let me double-check the \"Village Idiot\" role. The announcer says \"Village idiot, wake up. You may move everyone's card, except your own, to the left or to the right.\" [16].\n    *   Paul says he moved them clockwise [136].\n    *   If Paul moved everyone clockwise, the roles shifted.\n    *   Player order: Justin, Eric, Paul, Mitchell, Mike.\n    *   Clockwise shift:\n        *   Justin's card goes to Eric.\n        *   Eric's card goes to Paul.\n        *   Paul's card goes to Mitchell.\n        *   Mitchell's card goes to Mike.\n        *   Mike's card goes to Justin.\n    *   If Mitchell was the Tanner (after the Robber/Troublemaker swaps), and Paul moved everyone clockwise, then Mike is now the Tanner.\n    *   If Eric was the Werewolf, and Paul moved everyone clockwise, then Paul is now the Werewolf.\n    *   This is getting complex. But the prompt asks for the player *most likely* to be a Werewolf.\n\n    *   Eric and Mitchell both admitted to starting as Werewolves.\n    *   Eric is actively trying to get Mitchell voted out.\n    *   In One Night Ultimate Werewolf, admitting you are a Werewolf is often a bluff or a sign of the Tanner.\n    *   However, if we have to choose between Eric and Mitchell, and Eric is pushing the vote, Eric is the more suspicious one.\n\n    *   Wait, let's look at Eric's claim again: \"I started as the werewolf, and I saw another werewolf\" [203].\n    *   If he's a Werewolf, he knows who the other Werewolf is.\n    *   If he's the Tanner, he's lying to get votes.\n    *   If he's a Villager, he's lying for some reason.\n    *   If Mitchell also claims to be a Werewolf [192], and Eric is pushing the vote toward him, Eric is likely the Werewolf trying to sacrifice a teammate or the Tanner. But the Tanner wants votes for *himself*. Eric is not asking for votes; he's asking for votes for Mitchell.\n    *   Therefore, Eric is likely a Werewolf.\n\n    *   Justin: Robber\n    *   Eric: Werewolf\n    *   Paul: Village Idiot\n    *   Mitchell: Werewolf/Tanner\n    *   Mike: Troublemaker\n    *   If Eric is a Werewolf, voting for him helps the village.\n\n    *   Wait, if Eric is a Werewolf and Mitchell is also a Werewolf, voting for either wins.\n    *   If Eric is a Werewolf and Mitchell is the Tanner, voting for Eric wins.\n    *   If Eric is the Tanner and Mitchell is a Werewolf, voting for Mitchell wins.\n    *   But Eric is not trying to get himself voted out; he's trying to get Mitchell voted out. This makes it less likely that Eric is the Tanner.\n\n    *   Conclusion: Eric is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Both Eric and Mitchell claim to have started as Werewolves. However, Eric is actively attempting to direct the vote toward Mitchell, which is a common strategy for a Werewolf trying to deflect suspicion or sacrifice a teammate/Tanner to ensure their own survival. Justin's claim that Mitchell was the Tanner further suggests that Mitchell may not be a Werewolf, making Eric the most likely candidate for elimination to secure a Village win.",
+    "chosen_vote": "Eric"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Both Eric and Mitchell claim to have started as Werewolves. However, Eric is actively attempting to direct the vote toward Mitchell, which is a common strategy for a Werewolf trying to deflect suspicion or sacrifice a teammate/Tanner to ensure their own survival. Justin's claim that Mitchell was the Tanner further suggests that Mitchell may not be a Werewolf, making Eric the most likely candidate for elimination to secure a Village win.\",\n  \"chosen_vote\": \"Eric\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Both Eric and Mitchell claim to have started as Werewolves. However, Eric is actively attempting to direct the vote toward Mitchell, which is a common strategy for a Werewolf trying to deflect suspicion or sacrifice a teammate/Tanner to ensure their own survival. Justin's claim that Mitchell was the Tanner further suggests that Mitchell may not be a Werewolf, making Eric the most likely candidate for elimination to secure a Village win.\",\n  \"chosen_vote\": \"Eric\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Eric",
+    "justification": "Both Eric and Mitchell claim to have started as Werewolves. However, Eric is actively attempting to direct the vote toward Mitchell, which is a common strategy for a Werewolf trying to deflect suspicion or sacrifice a teammate/Tanner to ensure their own survival. Justin's claim that Mitchell was the Tanner further suggests that Mitchell may not be a Werewolf, making Eric the most likely candidate for elimination to secure a Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5272,
+    "output_token_count": 2804,
+    "generation_time_sec": 294.94771552085876,
+    "used_chat_template": true,
+    "input_char_count": 16734,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
