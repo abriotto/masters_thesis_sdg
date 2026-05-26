@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v4",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 2048,
+  "max_seq_length": 12000,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript that's garbled and random; it seems largely irrelevant. Our task: Based on public discussion, choose the option most likely to help Team Village win—i.e., which player to vote. We need to analyze the transcript and deduce who might be the Werewolf(s). The transcript is noisy. Let's parse names: Dan, Ed, Katie, Brett, Audrey, Dylan. Their roles unknown.\n\nThe transcript indicates many conflicting statements, but we can see that many mention \"I'm a Villager\" multiple times. There is talk about \"I'm a Villager,\" but also accusations that someone might be a Werewolf.\n\nThe examples: At line 25: Audrey says \"What are you?\" She says “I’m a Villager.” They call that? Many people say they’re Villager.\n\nThere's mention that \"the werewolf\" maybe is either one of them? The transcript shows \"Audrey thinks you're a Werewolf\" (line 109, Brett suggests \"maybe you two are both Werewolves\"). Then someone says \"you are...\".\n\nThe transcripts seem messy.\n\nBut we also have to consider that roles can swap. For example, Trouble-maker reading may have swapped roles. If somebody was troublemaker last night (night 1?), they'd have swapped roles between other players.\n\nHowever, this is a single turn example? They say \"everyone start,\" etc.\n\nFocus: We have just a single session with 6 players. The transcript reveals confusion, but may reveal someone like \"Brett\" or \"Alex\"? Let's read lines in context:\n\nFrom 140-155: There's mentions of votes: \"We have four claims for Villager, there's only two Villagers.\" This suggests that the werewolves could be the ones who claimed to be two. But the transcript is clearly erroneous.\n\nLet's consider options. We need to pick someone likely to be a werewolf. Maybe based on the claims \"I was a Villager\" many times. Which participant seems to be contradictory? Note that someone who claimed \"I was a Villager\" multiple times might therefore be lying if he's a suspect. But we can guess that a particular suspect would have hidden evidence.\n\nHowever, if we look at transcripts, a strong suspicion arises: Lines 212-213: \"Dan: If we point it-\" The snippet ends. And then earlier at line 80, Dan says \"I want to speak. I'm the Seer and I looked at your card and you're a Werewolf and you're 100% lying.\" He claims he's a Seer and found someone to be a Werewolf. He tries to accuse someone. But he's possibly lying; if he's a Seer, he would not be a werewolf. So he might be a suspect.\n\nSimilarly, \"I was a Villager\" repeated many times across participants (Ed, Dan). This indicates they might be lying.\n\nGiven uncertainty: Let's approach systematically: Possibly no werewolf present? Because they all claim Villagers. But somewhere, \"I was a Villager\" repeats. That doesn't prove anyone as werewolf. They could be all actual villagers. The normal assumption is that a genuine werewolf would be someone saying things like \"I was a Troubleshooter\" or \"I am a Werewolf\" etc. We see some confusion: lines 246? Hard.\n\nBut we need to choose best vote.\n\nGiven the chaotic transcript, would best guess that there is a werewolf but unsaid. The most suspicious person might be Dan. But how identify?\n\nLet's search for any direct statement of \"I am a werewolf\" like \"I think you two are both werewolves.\" But no direct explicit.\n\nPerhaps the suspect might be \"Brett\". Since there's talk: On line 209: there is \"I was a Villager\" and \"Alex\"? I'm not seeing. The transcript: 208: \"Dan: If we point it-\". Maybe conversation ended incomplete.\n\nBut we suspect that given the confusion, it's likely that there is no werewolf, or at least the players are all lies; but we can still vote for someone as suspect.\n\nAlso interplay: \"57: Dan says 'If I was a Seer...'? Actually at line 80: Dan says \"I'm the Seer I looked at your card you're a werewolf\". That might be false, so Dan could be a lie. He might be a suspect.\n\nThus best answer might be to vote for Dan because of suspicious statements.\n\nWe have possible strong candidate: Dan seems to claim aut asking so it might be suspect.\n\nAlternatively, maybe no werewolf present => Circle Vote. But the instruction instructs \"When in doubt, circle vote\" if no clear werewolf. Because the transcript looks like a glitch.\n\nThe question: \"In most cases, this means voting for the player most likely to be a werewolf.\" But if you have no information, choose \"Circle Vote\". Here we lack clear evidence, maybe default circle vote. So answer may be \"Circle Vote\".\n\nBut we might see the transcript indicates that \"audrey\" is being directed that someone is a werewolf. But nothing conclusive.\n\nGiven the nature of the transcript that seems like nothing decisive about roles, erratic. It might be safe to choose Circle Vote.\n\nThus output is JSON: justification, chosen_vote.\n\nUser expects \"Circle Vote\".\n\nHence produce:\n\n{\n  \"justification\": \"...\",\n  \"chosen_vote\": \"Circle Vote\"\n}\n\nNow produce.\n\nWe must put short justification.\n\nLet's write: 3-5 sentences, referencing missing evidence, chaotic conversation, can't determine.",
+  "parsed_output": {
+    "justification": "The transcript is highly fragmented and contains no clear evidence that any player definitively acts as a Werewolf. Everyone repeatedly claims to be a Villager, and several statements appear contradictory or nonsensical. Without solid clues indicating a malicious role, the safest choice is to avoid unjustly accusing someone who may actually belong to Team Village.\n",
+    "chosen_vote": "Circle Vote"
+  },
+  "raw_response": "{\"justification\":\"The transcript is highly fragmented and contains no clear evidence that any player definitively acts as a Werewolf. Everyone repeatedly claims to be a Villager, and several statements appear contradictory or nonsensical. Without solid clues indicating a malicious role, the safest choice is to avoid unjustly accusing someone who may actually belong to Team Village.\\n\", \"chosen_vote\":\"Circle Vote\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is highly fragmented and contains no clear evidence that any player definitively acts as a Werewolf. Everyone repeatedly claims to be a Villager, and several statements appear contradictory or nonsensical. Without solid clues indicating a malicious role, the safest choice is to avoid unjustly accusing someone who may actually belong to Team Village.\\n\", \"chosen_vote\":\"Circle Vote\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Circle Vote",
+    "justification": "The transcript is highly fragmented and contains no clear evidence that any player definitively acts as a Werewolf. Everyone repeatedly claims to be a Villager, and several statements appear contradictory or nonsensical. Without solid clues indicating a malicious role, the safest choice is to avoid unjustly accusing someone who may actually belong to Team Village."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5176,
+    "output_token_count": 1218,
+    "generation_time_sec": 155.2985134124756,
+    "used_chat_template": true,
+    "input_char_count": 19441,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 12000,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}
