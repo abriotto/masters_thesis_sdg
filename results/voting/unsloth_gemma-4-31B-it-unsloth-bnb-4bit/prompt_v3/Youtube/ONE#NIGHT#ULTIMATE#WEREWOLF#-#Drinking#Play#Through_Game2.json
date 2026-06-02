@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through_Game2.txt",
+  "player_names": [
+    "Sarah",
+    "Jordan1",
+    "Haak",
+    "Robin",
+    "Jordan2",
+    "Meryl"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Sarah\n    *   Jordan1\n    *   Haak\n    *   Robin\n    *   Jordan2\n    *   Meryl\n\n    *   Jordan2: Claims Seer (looked at Meryl, saw Villager). Later claims Minion (as a joke/new play).\n    *   Sarah: Claims Robber (stole from Jordan2, who she says was Drunk). Later says she is now the Drunk.\n    *   Robin: Claims Seer (saw Haak as Drunk).\n    *   Jordan1: Claims Robber (stole Seer from Jordan2).\n    *   Meryl: Claims Troublemaker. Later says she saw Troublemaker and Werewolf in the middle (contradicting her Troublemaker claim).\n    *   Haak: Claims Hunter.\n\n    *   *Seer Claims:* Jordan2, Robin.\n    *   *Robber Claims:* Sarah, Jordan1.\n    *   *Troublemaker Claim:* Meryl.\n    *   *Hunter Claim:* Haak.\n\n    *   Jordan2 says he's Seer and saw Meryl as Villager.\n    *   Robin says he's Seer and saw Haak as Drunk.\n    *   Sarah says she was Robber and stole from Jordan2 (Drunk).\n    *   Jordan1 says he was Robber and stole Seer from Jordan2.\n    *   Meryl says she was Troublemaker, but then says she saw Troublemaker and Werewolf in the center (which is a Seer action).\n\n    *   If Jordan1 is the Robber and stole the Seer from Jordan2, then Jordan1 is now the Seer and Jordan2 is now the Robber.\n    *   If Sarah is the Robber and stole from Jordan2 (Drunk), then Sarah is now the Drunk and Jordan2 is now the Robber.\n    *   Wait, Sarah says Jordan2 was the Drunk. If Sarah is the Robber and stole from Jordan2, she becomes the Drunk.\n    *   Robin claims to be the Seer and saw Haak as the Drunk.\n    *   Meryl's claims are inconsistent (Troublemaker vs. Seer seeing center cards).\n\n    *   Jordan2: Claims Seer, then Minion.\n    *   Jordan1: Claims Robber, stole Seer.\n    *   Robin: Claims Seer, saw Haak as Drunk.\n    *   Sarah: Claims Robber, stole from Jordan2 (Drunk).\n    *   Meryl: Claims Troublemaker, then claims Seer actions (seeing center cards).\n    *   Haak: Claims Hunter.\n\n    *   If Robin is the Seer and saw Haak as the Drunk, and Sarah claims she stole from Jordan2 (Drunk), there's a conflict.\n    *   If Jordan1 is the Robber and stole the Seer from Jordan2, then Jordan1 is the Seer.\n    *   Meryl is very suspicious because she switches between Troublemaker and Seer (seeing center cards).\n\n    *   Jordan2: Claims Seer, then Minion.\n    *   Jordan1: Claims Robber, stole Seer.\n    *   Robin: Claims Seer, saw Haak as Drunk.\n    *   Sarah: Claims Robber, stole from Jordan2.\n    *   Meryl: Claims Troublemaker, then claims Seer actions.\n    *   Haak: Claims Hunter.\n\n    *   Meryl's inconsistency is a huge red flag. She claims to be the Troublemaker, then says she saw the Troublemaker and Werewolf in the center (Seer action).\n    *   Jordan1 and Sarah both claim Robber.\n    *   Jordan2 and Robin both claim Seer.\n\n    *   If Meryl is the Werewolf, she might be bluffing as Troublemaker/Seer to confuse the group.\n    *   If Jordan1 is the Werewolf, he's claiming Robber to explain why he has the Seer role.\n    *   If Jordan2 is the Werewolf, he's claiming Seer.\n\n    *   Meryl's flip-flopping is the most obvious sign of deception. She claims Troublemaker, then says she saw the Troublemaker in the center. This is a direct contradiction.\n    *   Jordan2's \"I'm claiming to be the minion\" is likely a joke.\n    *   Robin's claim is consistent.\n    *   Haak's claim is late but simple.\n\n    *   Meryl claims Troublemaker (T[45]).\n    *   Meryl then says \"I definitely saw a troublemaker and a werewolf in the middle\" (T[67]).\n    *   This is a contradiction. If she is the Troublemaker, she cannot see the Troublemaker in the middle. If she saw the Troublemaker in the middle, she is the Seer.\n    *   But she also claims she was the Troublemaker (T[81]).\n    *   This level of confusion/contradiction often points to a Werewolf trying to fit into multiple roles or a very confused player.\n\n    *   Jordan1 claims Robber and stole Seer from Jordan2.\n    *   Sarah claims Robber and stole from Jordan2.\n    *   If Jordan1 is the Robber, Sarah is lying.\n    *   If Sarah is the Robber, Jordan1 is lying.\n    *   If Jordan2 was the Seer, and Jordan1 stole it, Jordan1 is now the Seer.\n    *   If Jordan2 was the Drunk, and Sarah stole it, Sarah is now the Drunk.\n\n    *   Meryl's contradictions are the most glaring. She claims to be the Troublemaker, then claims to have seen the Troublemaker in the center (a Seer action), then tries to explain it away. This is classic Werewolf behavior—trying to claim a role and then accidentally claiming another role's information.\n\n    *   Jordan2: Seer -> Minion (joke)\n    *   Jordan1: Robber (stole Seer)\n    *   Robin: Seer (saw Haak as Drunk)\n    *   Sarah: Robber (stole from Jordan2)\n    *   Meryl: Troublemaker -> Seer (saw center)\n    *   Haak: Hunter\n\n    *   Wait, if Robin is the Seer and saw Haak as the Drunk, and Sarah says she stole from Jordan2 (Drunk), then Sarah is claiming Jordan2 was the Drunk.\n    *   If Robin is the Seer and saw Haak as the Drunk, then Haak is the Drunk.\n    *   If Haak is the Drunk, he can't be the Hunter.\n    *   If Haak is the Hunter, Robin is lying.\n\n    *   Meryl's contradictions are the most blatant. She claims to be the Troublemaker, then claims to have seen the Troublemaker in the center (Seer action), then claims she was the Seer three times in previous games. This confusion makes her a prime suspect.\n\n    *   Jordan2: Seer (T[15])\n    *   Sarah: Robber (T[24])\n    *   Robin: Seer (T[25])\n    *   Jordan1: Robber (T[27])\n    *   Meryl: Troublemaker (T[45]) -> Seer (T[67])\n    *   Haak: Hunter (T[117])\n\n    *   Meryl's claim to be the Troublemaker is contradicted by her claim to have seen the Troublemaker in the center. This is a clear lie or a massive mistake, both of which are common for Werewolves attempting to bluff.\n\n    *   Jordan2 claims Seer.\n    *   Robin claims Seer.\n    *   Jordan1 claims Robber (stole Seer).\n    *   Sarah claims Robber (stole from Jordan2).\n    *   Meryl claims Troublemaker/Seer.\n    *   Haak claims Hunter.\n\n    *   If Meryl is the Werewolf, she's bluffing.\n    *   If Jordan1 is the Werewolf, he's bluffing as Robber.\n    *   If Jordan2 is the Werewolf, he's bluffing as Seer.\n\n    *   Meryl's contradictions are the most suspicious. She claims to be the Troublemaker, then claims to have seen the Troublemaker in the center (Seer action), then claims she was the Seer in previous games. This is a strong indicator of a Werewolf bluffing poorly.\n\n    *   Wait, let's look at Jordan1. He claims he stole the Seer from Jordan2. If Jordan2 was the Seer, and Jordan1 stole it, then Jordan1 is now the Seer.\n    *   But Robin also claims to be the Seer.\n    *   If Robin is the Seer, then Jordan2 and Jordan1 are lying.\n    *   If Jordan2 was the Seer and Jordan1 stole it, then Robin is lying.\n\n    *   Let's re-evaluate Meryl. She says \"I definitely saw a troublemaker and a werewolf in the middle\" (T[67]). This is a Seer action. But she also says \"I was the troublemaker\" (T[45], T[81]). This is a direct contradiction.\n\n    *   Meryl's contradictions are the most blatant. She claims to be the Troublemaker, then claims to have seen the Troublemaker in the center (Seer action). This inconsistency strongly suggests she is the Werewolf.\n\n    *   Justification: Meryl's claims are contradictory; she first claims to be the Troublemaker, but then claims to have seen the Troublemaker and a Werewolf in the center, which is an action only the Seer can perform. This inconsistency is a strong indicator of a Werewolf bluffing. Other players' claims are also conflicting, but Meryl's internal contradiction is the most suspicious.\n    *   Chosen vote: Meryl.",
+  "parsed_output": {
+    "justification": "Meryl's claims are internally contradictory, which is a strong indicator of a Werewolf bluffing. She initially claims to be the Troublemaker, but later states she saw the Troublemaker and a Werewolf in the center, an action only possible for the Seer. This inconsistency, combined with her confusion when questioned, makes her the most suspicious player.",
+    "chosen_vote": "Meryl"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Meryl's claims are internally contradictory, which is a strong indicator of a Werewolf bluffing. She initially claims to be the Troublemaker, but later states she saw the Troublemaker and a Werewolf in the center, an action only possible for the Seer. This inconsistency, combined with her confusion when questioned, makes her the most suspicious player.\",\n  \"chosen_vote\": \"Meryl\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Meryl's claims are internally contradictory, which is a strong indicator of a Werewolf bluffing. She initially claims to be the Troublemaker, but later states she saw the Troublemaker and a Werewolf in the center, an action only possible for the Seer. This inconsistency, combined with her confusion when questioned, makes her the most suspicious player.\",\n  \"chosen_vote\": \"Meryl\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Meryl",
+    "justification": "Meryl's claims are internally contradictory, which is a strong indicator of a Werewolf bluffing. She initially claims to be the Troublemaker, but later states she saw the Troublemaker and a Werewolf in the center, an action only possible for the Seer. This inconsistency, combined with her confusion when questioned, makes her the most suspicious player."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3825,
+    "output_token_count": 2353,
+    "generation_time_sec": 240.03283095359802,
+    "used_chat_template": true,
+    "input_char_count": 12880,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

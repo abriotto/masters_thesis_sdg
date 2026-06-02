@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker.\n    *   Julie: Claims Seer.\n    *   Mitchell: Claims Robber, then claims Tanner, then claims Werewolf, then claims Robber again.\n    *   Mike: Claims Robber.\n\n    *   Justin (Troublemaker) says he switched people.\n    *   Mike (Robber) says he robbed Justin and saw Troublemaker.\n    *   Julie (Seer) says she looked at Justin and saw Troublemaker.\n    *   Mitchell claims he was \"one of those characters\" (Troublemaker/Robber), then claims he was the Troublemaker, then claims he was the Robber, then claims he's the Tanner.\n\n    *   If Mike is the Robber and robbed Justin (Troublemaker), Mike becomes the Troublemaker.\n    *   If Justin is the Troublemaker, he swaps two other players.\n    *   If Julie is the Seer, she sees Justin as the Troublemaker.\n    *   Wait, if Mike robbed Justin, Mike is now the Troublemaker. But Justin claims he is the Troublemaker.\n    *   If Justin started as Troublemaker and Mike robbed him, Mike is now the Troublemaker and Justin is now the Robber.\n    *   However, Justin continues to claim he is the Troublemaker and that he switched people.\n    *   If Justin is the Troublemaker, Mike cannot be the Robber who robbed Justin (because then Mike would be the Troublemaker).\n    *   Let's re-examine:\n        *   Justin: \"I am the Troublemaker.\"\n        *   Mike: \"I can confirm that... I robbed him... and I saw the Troublemaker.\"\n        *   If Mike robbed Justin, Mike is now the Troublemaker. Justin is now the Robber.\n        *   But Justin says \"I did switch some people\" (Troublemaker action).\n        *   If Justin is the Robber (after being robbed), he cannot switch people.\n        *   If Justin is the Troublemaker, Mike cannot have robbed him and still be the Robber.\n\n    *   Mitchell's claims are erratic:\n        *   \"I was one of those characters\" (T-maker/Robber).\n        *   \"I was the Troublemaker.\"\n        *   \"I was the Robber.\"\n        *   \"I'm the Tanner.\"\n        *   \"Actually I was a Werewolf.\"\n        *   \"No, I really was the Robber.\"\n    *   This behavior is highly characteristic of a Tanner (trying to get voted out) or a Werewolf (confused/bluffing poorly).\n\n    *   Justin, Julie, and Mike seem to be coordinating or agreeing on a narrative (Justin=T-maker, Julie=Seer, Mike=Robber).\n    *   Mitchell is the odd one out.\n    *   Justin says \"I didn't switch anybody\" at the end (contradicting his earlier claim).\n    *   Wait, Justin says: \"I didn't switch anybody\" (Line 102, 111).\n    *   Earlier Justin said: \"I did switch some people\" (Line 30).\n    *   This is very confusing. Let's look at the final consensus.\n    *   They decide to vote \"to the left\" (which usually means a non-player or a way to avoid killing anyone) to avoid killing the Tanner.\n    *   However, the task is to vote for the player I believe is the Werewolf.\n\n    *   If Justin is the Troublemaker, Mike is the Robber, and Julie is the Seer, then Mitchell must be the Werewolf (or Tanner).\n    *   Mitchell's claims are completely inconsistent. He claims to be Troublemaker, Robber, Tanner, and Werewolf.\n    *   In One Night Ultimate Werewolf, the Tanner often makes wild claims to attract votes.\n    *   But the Werewolf also bluffs.\n    *   If Mitchell is the Werewolf, he's doing a bad job.\n    *   If Mitchell is the Tanner, he's doing a great job.\n    *   Let's look at the roles: Justin, Julie, Mike, Mitchell.\n    *   Roles mentioned: Troublemaker, Seer, Robber, Tanner, Werewolf.\n    *   If Justin=Troublemaker, Julie=Seer, Mike=Robber, then Mitchell is the remaining role.\n    *   If the roles were Troublemaker, Seer, Robber, and Werewolf, then Mitchell is the Werewolf.\n    *   If the roles were Troublemaker, Seer, Robber, and Tanner, then Mitchell is the Tanner.\n\n    *   Justin claims Troublemaker.\n    *   Mike claims Robber.\n    *   Julie claims Seer.\n    *   These three are consistent with each other (Mike robbed Justin, Julie saw Justin).\n    *   Wait, if Mike robbed Justin, Mike is now the Troublemaker. Justin is now the Robber.\n    *   If Justin is the Robber, he can't switch people. But he says he did.\n    *   If Justin is the Troublemaker, Mike can't be the Robber who robbed him.\n    *   This means at least one of them (Justin or Mike) is lying.\n    *   If Mike is the Werewolf, he might be pretending to be the Robber to frame Justin or just to fit in.\n    *   If Justin is the Werewolf, he's pretending to be the Troublemaker.\n    *   But Mitchell is the one acting most suspiciously. He literally says \"Actually I was a Werewolf\" (Line 103), although he immediately retracts it.\n\n    *   Mitchell's behavior is classic Tanner. He's throwing out every possible role to get people to vote for him.\n    *   However, the prompt asks me to vote for the player I believe is the Werewolf.\n    *   If Mitchell is the Tanner, who is the Werewolf?\n    *   Maybe Mike? Mike's story about robbing Justin is logically inconsistent with Justin's claim of being the Troublemaker who switched people.\n    *   Let's re-read:\n        *   Justin: \"I am the Troublemaker.\"\n        *   Mike: \"I robbed him... and I saw the Troublemaker.\"\n        *   If Mike robbed Justin, Mike is now the Troublemaker. Justin is now the Robber.\n        *   Justin: \"I did switch some people.\" (Only a Troublemaker can do this).\n        *   If Justin is the Robber, he can't switch people.\n        *   Therefore, Justin and Mike cannot both be telling the truth.\n        *   If Justin is the Troublemaker, Mike is lying about robbing him.\n        *   If Mike is the Robber and robbed Justin, Justin is lying about switching people.\n\n    *   Wait, look at Line 100: \"I didn't switch anybody.\"\n    *   Justin contradicts himself. First he says he switched people, then he says he didn't.\n    *   This suggests Justin might be the Werewolf or the Tanner.\n    *   But Mitchell is the one who explicitly said \"Actually I was a Werewolf.\" Even if he retracted it, in these games, that's often a slip or a bluff.\n\n    *   Mitchell's claims: Troublemaker -> Robber -> Tanner -> Werewolf -> Robber.\n    *   This is extremely erratic.\n    *   If we assume the other three are telling a (mostly) consistent story, Mitchell is the most likely candidate for Werewolf or Tanner.\n    *   Given the options, Mitchell is the most suspicious.\n\n    *   Justin: Troublemaker (claims)\n    *   Julie: Seer (claims)\n    *   Mike: Robber (claims)\n    *   Mitchell: ? (claims everything)\n    *   If the roles are Seer, Robber, Troublemaker, and Werewolf, Mitchell is the Werewolf.\n    *   If the roles are Seer, Robber, Troublemaker, and Tanner, Mitchell is the Tanner.\n    *   Usually, in these transcripts, the person acting most chaotic is the target.\n\n    *   Justin: \"I am the Troublemaker.\"\n    *   Mike: \"I robbed him... I saw the Troublemaker.\"\n    *   If Mike robbed Justin, Mike is now the Troublemaker.\n    *   Justin: \"I did switch some people.\" (Wait, if he's the Robber now, he can't).\n    *   Justin: \"I didn't switch anybody.\" (Now he's consistent with being the Robber).\n    *   So: Justin started as Troublemaker, Mike (Robber) robbed him. Mike is now Troublemaker, Justin is now Robber.\n    *   This makes Justin, Mike, and Julie a consistent group.\n    *   That leaves Mitchell as the Werewolf.\n\n    *   Mitchell's erratic claims and the consistency of the other three players point to him being the Werewolf (or Tanner). Since I must vote for a Werewolf, Mitchell is the strongest candidate.",
+  "parsed_output": {
+    "justification": "Justin, Julie, and Mike provide a mostly consistent narrative: Justin started as the Troublemaker, Mike was the Robber who robbed Justin, and Julie was the Seer who identified Justin's starting role. This leaves Mitchell as the outlier, whose claims are erratic and contradictory, as he claims to be the Troublemaker, Robber, Tanner, and even admits to being a Werewolf at one point. While his behavior is characteristic of a Tanner, in the absence of other evidence, he is the most likely candidate for the Werewolf role.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin, Julie, and Mike provide a mostly consistent narrative: Justin started as the Troublemaker, Mike was the Robber who robbed Justin, and Julie was the Seer who identified Justin's starting role. This leaves Mitchell as the outlier, whose claims are erratic and contradictory, as he claims to be the Troublemaker, Robber, Tanner, and even admits to being a Werewolf at one point. While his behavior is characteristic of a Tanner, in the absence of other evidence, he is the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin, Julie, and Mike provide a mostly consistent narrative: Justin started as the Troublemaker, Mike was the Robber who robbed Justin, and Julie was the Seer who identified Justin's starting role. This leaves Mitchell as the outlier, whose claims are erratic and contradictory, as he claims to be the Troublemaker, Robber, Tanner, and even admits to being a Werewolf at one point. While his behavior is characteristic of a Tanner, in the absence of other evidence, he is the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Justin, Julie, and Mike provide a mostly consistent narrative: Justin started as the Troublemaker, Mike was the Robber who robbed Justin, and Julie was the Seer who identified Justin's starting role. This leaves Mitchell as the outlier, whose claims are erratic and contradictory, as he claims to be the Troublemaker, Robber, Tanner, and even admits to being a Werewolf at one point. While his behavior is characteristic of a Tanner, in the absence of other evidence, he is the most likely candidate for the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3796,
+    "output_token_count": 2191,
+    "generation_time_sec": 223.19330406188965,
+    "used_chat_template": true,
+    "input_char_count": 12903,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

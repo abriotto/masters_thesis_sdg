@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a complicated transcript. We must identify werewolf(s). The transcript is messy; many lines omitted. But we have names: Justin, Eric, Paul, Mitchell, Mike. Five players. In this instance, since there are five players, the number of candidate roles equals 8. So there are 8 cards, 5 dealt to players, 3 center cards.\n\nWe need to decide which player most likely is a werewolf based solely on the transcript content.\n\nWe must analyze the possible roles they claimed. Essentially each player claims or says their role. Let's parse logs:\n\nLine 15: Justin: \"Mike says he was the robber. I will say I was the seer.\" So Justin claims Justin is Seer? Actually \"I will say I was the seer.\" Might refer to self? It's ambiguous. They declare their own role perhaps.\n\nLine 16: Paul: \"... check.\" Statement.\n\nthen line 17: Justin: \"Eric was the villager.\" So Justin says \"Eric was the villager\". So Justin says Eric's role is villager.\n\nLine 18: Eric says \"Yup.\" That's presumably answering \"Eric was...\"\n\nOk.\n\nLine 20: ???\n\nLet's search near lines referencing roles.\n\nLine 40: \"Mitchell: I want to figure out why that would happen before...\"\n\nLine 45: \"Justin: ...\"\n\nLine 52: \"Eric: Okay.\"\n\nLine 53: \"Mike: Okay\"\n\nLine 56: \"Mitchell: Why?\"\n\nLine 59: \"Paul: I don't understand what you're, you've confused me so hard.\"\n\nLine 60: \"Eric: Yeah. What are you trying to do? You are basically the werewolf, is what I know.\"\n\nLine 63: \"Mike: That's a good idea.\"\n\nLine 70: \"If you're the troublemaker, who did you switch?\" hmm.\n\nLine 71: \"Paul: I switched Justin with somebody.\"\n\nLine 73: \"Eric: Did you actually get the troublemaker though?\"\n\nLine 74: \"Paul: This time, I did.\"\n\nSo we identify that Paul is claiming to be troublemaker? Let's check: Line 71 says \"Paul: I switched Justin with somebody.\" But troublemaker swaps two other players. So Paul's statement indicates that as troublemaker, they swapped three people? Actually troublemaker swaps two others: just two other people's cards. Paul says: \"I switched Justin with somebody\"? That would require him to not be troublemaker? Actually troublemaker cannot look at cards, they simply swap two others. Usually they specify relative to the players.\n\n\"Paul: I switched Justin with somebody.\" That could correspond to being troublemaker @ 2.\n\nHowever the question: \"One minute remaining\".\n\nAlso lines about \"Joe is a werewolf\" etc. There are many claims that 3 people might be werewolves: Daniel?\n\nBut we want to detect a werewolf. Perhaps it's Mike? Because Mike appears to say \"I think I am a robber.\" Or \"Mike: I am for sure a robber.\" and \"Mike: I am for sure a robber.\" Let's locate that line.\n\nLine 65: \"Mike: I am for sure a robber.\" So at line 65: Mike says \"I am for sure a robber\". That could be self-claim. So Mike is a robber. So his role independent.\n\nThen line 68: \"Mike: I am for sure a robber.\"]. So he's a robber.\n\nAlso earlier, line 17: Justin says \"Eric was the villager.\" So Justin thinks Eric is villager.\n\nLine 78: \"Justin: I am a seer.\"\n\nLine 78: \"... says he sees seer in the middle.\"\n\nBut we need to determine final roles. To play this, we should consider the roles' arrangement and who swaps. It seems that the troublemaker swapped something: here, in line 71, Paul says: \"I switched Justin with somebody.\" That implies there was a swap of justin's card with someone else's. That likely was as troublemaker. So Paul might be troublemaker.\n\nBut the transcript shows catching: \"I guess our roles: Mike - Robber, Justin - Seer? Paul - TroubleMaker. That leaves Eric, and Mitchell maybe?\"\n\nLet's find B: \"Paul: I switched Justin with somebody.\" So Paul's role among the candidate roles: troublemaker.\n\nNow, if the troublemaker swaps two card holders, they must stand between them. They swapped between two other players. Does 'Justin: John'.\n\nAlternatively, we still need to deduce which player's final card may be a Werewolf. Could be the one that werewolf ended where originally nothing? The majority of votes (line 106: \"Paul: Okay, Mitchell is for sure a werewolf.\" line 106. So a claim of being a werewolf.\n\nSo it seems someone named Mitchell is suspected to be a werewolf.\n\nThe narrator guess: Should choose \"Mitchell\"? Because many statements refer to Mitchell as suspect.\n\nLet's explore data: line 64: \"Mike: That's a good idea.\" line 68: \"Mike: I am for sure a robber.\" Then line 65: \"Mike: I am for sure a robber.\" Good.\n\nLine 69: \"Mike: ...\"\n\nGiven the confusion, it's improbable to pin down a single murderer.\n\nBut we need to do a best guess.\n\nPossibly the clear suspect is:\n\n- Justin says \"You are a werewolf.\" At line 106: \"Paul: Okay, Mitchell is for sure a werewolf.\" But I'd read that line 106: \"Paul: Okay, Mitchell is for sure a werewolf.\" That indicates a claim that Mitchell is werewolf. So we can compute that the actual werewolf may be Mitchell. Also earlier, line 69: \"Mike: I think there's two werewolves in a deck.\" People indicate there are two werewolves. So more than one werewolf present maybe. But the game also may have two werewolves? Yes.\n\nBut if Mike is Robber, he cannot be werewolf. Because Robber start role might be from any role. Actually Robber could be any role? Or he can't guarantee? Let's recall: Robber is participant. Starting role unknown, but they have ability to swap and then reveal their new card. So they can indeed become a Werewolf after swap. So if Mike was initially a Robber, his final role could be werewolf. So it might be that Mike is the werewolf. But if we believe that being robbed by troublemaker leads to potential werewolf. Potentially.\n\nFurthermore, line 66: \"Mitchell: I think there are two werewolves and one...\"\n\nAt line 59: \"Paul: I don't understand what you're, you've confused me so hard.\" line 60: \"Eric: yeah ... what are you trying to do? You are basically the werewolf.\" So some confusion, but apparently at times people assume that certain persons are werewolves. We have no definitive info.\n\nNevertheless, it might be simpler: The obvious suspect is that the transcript is chaotic but it mentions that previously there are potentially three werewolves or a pair. But one important creation: \"Justin: You are a werewolf.\" He says that? Let's parse the lines 101-103: lines 101: \"Justin: I think we kill Mitchell. He's the only one who hasn't given out any information.\" 102: \"Paul: That literally makes the most sense here.\" 103: \"Mitchell: Justin is the werewolf, the Tanner took my role.\"\n\nWait.\n\nThis particular part: \"Mitchell: Justin is the werewolf, the Tanner took my role.\" So indeed someone says Mitchell that Justin is the werewolf.\n\nBut earlier, line 106, Paul says that \"Mitchell is for sure a werewolf.\"\n\nNow there is contradictory: In line 105, Mitchell says \"Paul is the tanner. Paul is the Tanner. Justin is the werewolf. He saw a Seer in the middle. And now he's trying to control everything.\"\n\nOk.\n\nSo it looks like many contradictions as typical. I'd suspect the suspect is Mitchell.\n\nBut is there enough evidence that Mitchell is werewolf? Many denials. But given the confusion, I'd pick \"Mitchell\".\n\nThus the final answer should be: \"Mitchell\".\n\nLet's craft justification: Provide brief reasoning: based on multiple statements claiming that Mitchell was a werewolf by Paul and himself, arguable that he might have had a werewolf. So I'll output that pick.\n\nMake sure to output JSON with \"justification\" string and \"chosen_vote\" name: \"Mitchell\".",
+  "parsed_output": {
+    "justification": "The transcripts contain several claims that Mitchell is a werewolf—both Paul and other participants repeatedly point to Mitchell as such, and the discussion is largely centered on identifying a werewolf. No other player receives similar direct accusations or demonstrates characteristics consistent with the remaining roles (e.g., the Robber role claimed by Mike, the Seer by Justin, the Troublemaker by Paul). Given the lack of evidence for another role and the weight of accusation against Mitchell, it is most plausible that Mitchell is the werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcripts contain several claims that Mitchell is a werewolf—both Paul and other participants repeatedly point to Mitchell as such, and the discussion is largely centered on identifying a werewolf. No other player receives similar direct accusations or demonstrates characteristics consistent with the remaining roles (e.g., the Robber role claimed by Mike, the Seer by Justin, the Troublemaker by Paul). Given the lack of evidence for another role and the weight of accusation against Mitchell, it is most plausible that Mitchell is the werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcripts contain several claims that Mitchell is a werewolf—both Paul and other participants repeatedly point to Mitchell as such, and the discussion is largely centered on identifying a werewolf. No other player receives similar direct accusations or demonstrates characteristics consistent with the remaining roles (e.g., the Robber role claimed by Mike, the Seer by Justin, the Troublemaker by Paul). Given the lack of evidence for another role and the weight of accusation against Mitchell, it is most plausible that Mitchell is the werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcripts contain several claims that Mitchell is a werewolf—both Paul and other participants repeatedly point to Mitchell as such, and the discussion is largely centered on identifying a werewolf. No other player receives similar direct accusations or demonstrates characteristics consistent with the remaining roles (e.g., the Robber role claimed by Mike, the Seer by Justin, the Troublemaker by Paul). Given the lack of evidence for another role and the weight of accusation against Mitchell, it is most plausible that Mitchell is the werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3751,
+    "output_token_count": 1895,
+    "generation_time_sec": 570.0212199687958,
+    "used_chat_template": true,
+    "input_char_count": 14503,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

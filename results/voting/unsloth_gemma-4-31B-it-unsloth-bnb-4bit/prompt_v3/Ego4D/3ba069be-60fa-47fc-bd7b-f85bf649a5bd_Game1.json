@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game1.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin: Claims Troublemaker (initially), then Robber (later clarifies he was Robber and swapped with Kaelan).\n    *   Kaelan: Claims Troublemaker (initially), then says he's the Robber (confused), then clarifies he was the Troublemaker and swapped Kevin and Jessica.\n    *   Jessica: Claims Minion.\n    *   Daniel: Claims Drunk.\n\n    *   Kevin: Started as Robber. Swapped with Kaelan (who was Troublemaker). Kevin is now Troublemaker.\n    *   Kaelan: Started as Troublemaker. Swapped with Kevin (Robber). Kaelan is now Robber.\n    *   Kaelan (as Troublemaker) swapped two other players. He says he swapped \"these two\" (likely Kevin and Jessica, or Jessica and Daniel). Let's re-read: \"I troubled these two. So you're the Troublemaker, Jess.\" (Wait, Kaelan says Jess is the Troublemaker? This is confusing).\n    *   Let's re-examine the transcript carefully.\n        *   [2] Kevin: \"I'm the Troublemaker.\"\n        *   [4] Kaelan: \"I'm the Troublemaker. I started with the Troublemaker.\"\n        *   [5] Daniel: \"Were you the Robber? Is that what happened there?\"\n        *   [6] Kevin: \"Yeah.\" (Kevin admits he was the Robber).\n        *   [7] Kaelan: \"So, I guess I'm the Robber now.\" (Kaelan was Troublemaker, Kevin was Robber. Robber swaps with another player. Kevin swapped with Kaelan. So Kevin is now Troublemaker, Kaelan is now Robber).\n        *   [9] Kaelan: \"I troubled these two. So you're the Troublemaker, Jess.\" (Kaelan, as the starting Troublemaker, swapped two people. He says he swapped \"these two\" and then says \"you're the Troublemaker, Jess\". This is contradictory because Kevin already claimed Troublemaker and Kaelan just said he (Kaelan) was the Robber now).\n        *   Wait, let's look at [49]-[52]:\n            *   [49] Kevin: \"I was a Robber. So I switched cards with you. You were the Troublemaker.\"\n            *   [50] Kaelan: \"Yeah.\"\n            *   [51] Kevin: \"And you switched who, again?\"\n            *   [52] Kaelan: \"I switched you guys.\" (Kaelan swapped Kevin and Jessica).\n\n    *   Starting Roles:\n        *   Kevin: Robber\n        *   Kaelan: Troublemaker\n        *   Jessica: Minion\n        *   Daniel: Drunk\n    *   Night Actions:\n        1.  Robber (Kevin) swaps with Kaelan.\n            *   Kevin becomes Troublemaker.\n            *   Kaelan becomes Robber.\n        2.  Troublemaker (Kaelan - *Wait*, the Troublemaker is the *starting* role. Kaelan started as Troublemaker).\n            *   Kaelan swaps Kevin and Jessica.\n            *   Kevin (now Troublemaker) swaps with Jessica (Minion).\n            *   Kevin becomes Minion.\n            *   Jessica becomes Troublemaker.\n        3.  Drunk (Daniel) swaps with center.\n            *   Daniel becomes [Center Card].\n            *   [Center Card] becomes Drunk.\n\n    *   Final Roles:\n        *   Kevin: Minion\n        *   Kaelan: Robber\n        *   Jessica: Troublemaker\n        *   Daniel: [Center Card]\n\n    *   Wait, let's re-read the transcript again. Did anyone claim Werewolf?\n    *   [84] Daniel: \"You could have just come out and said you was werewolf.\"\n    *   [85] Jessica: \"I didn't think that...\"\n    *   This suggests Jessica might be the Werewolf. Let's re-evaluate.\n\n    *   If Jessica was the Werewolf:\n        *   Starting Roles:\n            *   Kevin: Robber\n            *   Kaelan: Troublemaker\n            *   Jessica: Werewolf\n            *   Daniel: Drunk\n        *   Night Actions:\n            1.  Robber (Kevin) swaps with Kaelan.\n                *   Kevin: Troublemaker\n                *   Kaelan: Robber\n            2.  Troublemaker (Kaelan) swaps Kevin and Jessica.\n                *   Kevin: Werewolf\n                *   Jessica: Troublemaker\n            3.  Drunk (Daniel) swaps with center.\n                *   Daniel: [Center Card]\n        *   Final Roles:\n            *   Kevin: Werewolf\n            *   Kaelan: Robber\n            *   Jessica: Troublemaker\n            *   Daniel: [Center Card]\n\n    *   Wait, let's look at the claims again.\n        *   Jessica claimed Minion [11].\n        *   If Jessica was the Werewolf, she would lie and claim Minion to protect herself or divert attention.\n        *   If Jessica was the Minion, she would know who the Werewolf is. She said she didn't see a Werewolf [27].\n\n    *   Let's look at the end of the transcript.\n        *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n        *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\" (Kevin is talking to someone).\n        *   [84] Daniel: \"You could have just come out and said you was werewolf.\"\n        *   [85] Jessica: \"I didn't think that...\"\n        *   This strongly implies Jessica was the Werewolf.\n\n    *   Let's check the logic if Jessica was the Werewolf:\n        *   Jessica claims Minion.\n        *   Kaelan (Troublemaker) swaps Kevin and Jessica.\n        *   If Jessica started as Werewolf, and Kevin started as Robber, and Kaelan started as Troublemaker:\n            *   Robber (Kevin) swaps with Kaelan. (Kevin=Trouble, Kaelan=Robber).\n            *   Troublemaker (Kaelan) swaps Kevin and Jessica. (Kevin=Werewolf, Jessica=Trouble).\n            *   Wait, if Kevin is the Werewolf, then Kevin should be the one voted out.\n            *   But the transcript says \"Town wins\" and Daniel says to Jessica \"You could have just come out and said you was werewolf.\"\n\n    *   Let's re-read the swap again.\n        *   [52] Kaelan: \"I switched you guys.\" (Referring to Kevin and Jessica).\n        *   If Kaelan swapped Jessica and Daniel?\n        *   [9] Kaelan: \"I troubled these two. So you're the Troublemaker, Jess.\"\n        *   If Kaelan swapped Jessica and Daniel:\n            *   Starting: Kevin (Robber), Kaelan (Trouble), Jessica (Werewolf), Daniel (Drunk).\n            *   Robber (Kevin) swaps with Kaelan. (Kevin=Trouble, Kaelan=Robber).\n            *   Troublemaker (Kaelan) swaps Jessica and Daniel. (Jessica=Drunk, Daniel=Werewolf).\n            *   Drunk (Jessica) swaps with center. (Jessica=Center, Center=Drunk).\n            *   Final: Kevin=Trouble, Kaelan=Robber, Jessica=Center, Daniel=Werewolf.\n            *   In this case, Daniel is the Werewolf.\n\n    *   Let's re-read the very end again.\n        *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\"\n        *   [84] Daniel: \"You could have just come out and said you was werewolf.\"\n        *   [85] Jessica: \"I didn't think that...\"\n        *   This conversation is between Daniel and Jessica. Daniel is telling Jessica she could have admitted she was the werewolf. This means Jessica is the werewolf.\n\n    *   How could Jessica be the werewolf at the end?\n        *   Starting: Jessica (Werewolf), Kevin (Robber), Kaelan (Trouble), Daniel (Drunk).\n        *   Robber (Kevin) swaps with Kaelan. (Kevin=Trouble, Kaelan=Robber).\n        *   Troublemaker (Kaelan) swaps Kevin and Daniel. (Kevin=Drunk, Daniel=Trouble).\n        *   Drunk (Kevin) swaps with center. (Kevin=Center, Center=Drunk).\n        *   Final: Jessica=Werewolf, Kaelan=Robber, Daniel=Trouble, Kevin=Center.\n        *   This fits! Jessica remains the Werewolf.\n\n    *   Let's double check the claims:\n        *   Jessica claimed Minion. (Lying, she's the Werewolf).\n        *   Kevin claimed Troublemaker, then Robber. (He started as Robber, then became Troublemaker, then became Drunk, then became Center).\n        *   Kaelan claimed Troublemaker. (He started as Troublemaker, then became Robber).\n        *   Daniel claimed Drunk. (He started as Drunk, then became Troublemaker).\n\n    *   Wait, let's re-verify the \"Town wins\" part.\n        *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n        *   This means a Werewolf was voted out.\n        *   Who was voted out?\n        *   [79] Kevin: \"I guess I'll shoot at Kaelan, whatever.\"\n        *   [75] Daniel: \"I'm shooting the center.\"\n        *   [76] Kaelan: \"I also am shooting the center.\"\n        *   Wait, if they shot the center, and the center was a Werewolf, Town wins.\n        *   But Daniel says to Jessica \"You could have just come out and said you was werewolf.\"\n        *   This implies Jessica was the one who died.\n        *   If Jessica was voted out, then Kevin, Kaelan, and Daniel must have voted for her.\n        *   Let's re-read the voting:\n            *   Daniel: \"I'm shooting the center.\"\n            *   Kaelan: \"I also am shooting the center.\"\n            *   Kevin: \"I guess I'll shoot at Kaelan, whatever.\"\n            *   This doesn't look like they voted for Jessica.\n\n    *   Let's re-read the transcript one more time.\n        *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n        *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\"\n        *   [84] Daniel: \"You could have just come out and said you was werewolf.\"\n        *   [85] Jessica: \"I didn't think that...\"\n        *   This sequence is very strong. It's almost certain Jessica is the Werewolf. The voting discussion might have been cut off or they changed their minds.\n\n    *   Wait, look at [82] again. Kevin says \"I'm not the Werewolf. Town wins.\" This is usually said *after* the results are announced. If the result was that Jessica died and she was the Werewolf, then Town wins.\n\n    *   Conclusion: Jessica is the Werewolf.\n\n    *   Jessica claimed Minion.\n    *   Minions are on the Werewolf team.\n    *   Werewolves often claim Minion or other village roles to blend in.\n    *   The final dialogue [84-85] is a direct admission/accusation of her being the Werewolf.\n\n    *   Justification: Jessica claimed to be the Minion, but the concluding dialogue strongly indicates she was actually the Werewolf. Daniel explicitly tells her she could have admitted to being the Werewolf, and Kevin celebrates the town's victory. This suggests that Jessica was the target of the vote and her role was revealed as the Werewolf.\n    *   Chosen Vote: Jessica.",
+  "parsed_output": {
+    "justification": "Jessica claimed to be the Minion, but the concluding dialogue strongly indicates she was actually the Werewolf. Daniel explicitly tells her she could have admitted to being the Werewolf, and Kevin celebrates the town's victory immediately after. This implies that Jessica was voted out and her role was revealed as the Werewolf.",
+    "chosen_vote": "Jessica"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jessica claimed to be the Minion, but the concluding dialogue strongly indicates she was actually the Werewolf. Daniel explicitly tells her she could have admitted to being the Werewolf, and Kevin celebrates the town's victory immediately after. This implies that Jessica was voted out and her role was revealed as the Werewolf.\",\n  \"chosen_vote\": \"Jessica\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jessica claimed to be the Minion, but the concluding dialogue strongly indicates she was actually the Werewolf. Daniel explicitly tells her she could have admitted to being the Werewolf, and Kevin celebrates the town's victory immediately after. This implies that Jessica was voted out and her role was revealed as the Werewolf.\",\n  \"chosen_vote\": \"Jessica\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jessica",
+    "justification": "Jessica claimed to be the Minion, but the concluding dialogue strongly indicates she was actually the Werewolf. Daniel explicitly tells her she could have admitted to being the Werewolf, and Kevin celebrates the town's victory immediately after. This implies that Jessica was voted out and her role was revealed as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3466,
+    "output_token_count": 2891,
+    "generation_time_sec": 287.9653351306915,
+    "used_chat_template": true,
+    "input_char_count": 11725,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

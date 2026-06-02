@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Werewolf (Team Werewolf)\n    *   Seer (Team Village)\n    *   Robber (Team Village)\n    *   Troublemaker (Team Village)\n    *   Villager (Team Village)\n    *   (Other roles possible, but these are the ones mentioned/claimed)\n\n    *   Alana claims Troublemaker (T).\n    *   Mitchell claims Villager (V), then Robber (R).\n    *   Mike claims Werewolf (W).\n    *   Caitlynn claims Werewolf (W).\n\n    *   Mitchell says: \"I was a robber. I robbed from Caitlynn.\"\n    *   Caitlynn says: \"I was a werewolf.\"\n    *   Mitchell says: \"Which I robbed first. Then it was swapped. So I became the werewolf. Then she [Alana] swapped us. So you're now the werewolf.\"\n    *   Wait, let's re-read the transcript carefully.\n    *   [46] Mitchell: \"I was a villager.\"\n    *   [49] Mike: \"Well, I was a werewolf.\"\n    *   [50] Mitchell: \"I was a robber.\" (Contradicts his previous claim of being a villager).\n    *   [53] Mitchell: \"I robbed from Caitlynn.\"\n    *   [56] Caitlynn: \"I was a werewolf.\"\n    *   [61] Mitchell: \"Which I robbed first. Then it was swapped. So I became the werewolf. Then she swapped us. So you're now the werewolf.\" (Referring to Alana as the Troublemaker).\n\n    *   If Mitchell was the Robber and robbed Caitlynn (who was a Werewolf), Mitchell becomes the Werewolf and Caitlynn becomes the Robber.\n    *   Then Alana (Troublemaker) swaps two players. If Alana swapped Mitchell and Caitlynn, then Caitlynn becomes the Werewolf again and Mitchell becomes the Robber again.\n    *   Wait, Mitchell's logic is: \"I robbed first [Caitlynn]. Then it was swapped [by Alana]. So I became the werewolf [after robbing]. Then she swapped us [Mitchell and Caitlynn]. So you're now the werewolf [Caitlynn].\"\n\n    *   Mike claims he was a werewolf [49].\n    *   Caitlynn claims she was a werewolf [56].\n    *   Mitchell claims he was the Robber and robbed Caitlynn [50, 53].\n    *   Alana claims she was the Troublemaker [42].\n\n    *   If Mike is a Werewolf and Caitlynn is a Werewolf, there are two Werewolves.\n    *   If Mitchell robbed Caitlynn, Mitchell becomes a Werewolf.\n    *   If Alana swapped Mitchell and Caitlynn, Caitlynn becomes a Werewolf again.\n    *   So, if Mike is a Werewolf and Caitlynn is a Werewolf, Team Werewolf wins if neither is voted out.\n    *   However, Mike is actively pushing the vote toward Caitlynn [71, 75]. This is strange for a Werewolf unless he's trying to save himself or is actually a different role (like a Minion or just bluffing).\n    *   Wait, Mike says \"I was a werewolf\" [49]. Then he agrees to vote for Caitlynn [71]. If Mike is a Werewolf, why would he want Caitlynn (another Werewolf) to be voted out?\n    *   Maybe Mike is the Minion? Or maybe Mike is bluffing?\n    *   Let's look at the claims again.\n    *   Caitlynn: \"I was a werewolf.\"\n    *   Mitchell: \"I was a robber... I robbed from Caitlynn.\"\n    *   Alana: \"I was the trouble maker.\"\n    *   Mike: \"I was a werewolf.\"\n\n    *   If Mike is a Werewolf and Caitlynn is a Werewolf, and Mitchell is the Robber, and Alana is the Troublemaker.\n    *   Night sequence:\n        1.  Werewolves (Mike, Caitlynn) wake up.\n        2.  Robber (Mitchell) robs Caitlynn. Mitchell becomes Werewolf, Caitlynn becomes Robber.\n        3.  Troublemaker (Alana) swaps Mitchell and Caitlynn. Mitchell becomes Robber, Caitlynn becomes Werewolf.\n    *   End state: Mike (Werewolf), Caitlynn (Werewolf), Mitchell (Robber), Alana (Troublemaker).\n    *   In this scenario, Caitlynn and Mike are both Werewolves.\n\n    *   Why would Mike admit to being a Werewolf?\n    *   Maybe he's the Tanner? The Tanner wants to be voted out. But Mike is pushing the vote to Caitlynn.\n    *   Maybe Mike is just playing poorly or trying to confuse the group.\n    *   Or maybe Mike is the Minion? The Minion is on Team Werewolf.\n    *   Wait, if Mike is a Werewolf and he wants Caitlynn to be voted out, he's helping the Village. That doesn't make sense for a Werewolf.\n    *   Unless... Mike is *not* a Werewolf and is bluffing to see reactions, or he's the Tanner and failed to get votes.\n    *   Actually, look at [49]: \"Well, I was a werewolf.\" This is a very bold claim.\n    *   Look at [56]: \"I was a werewolf.\" Caitlynn also admits it.\n    *   This is a very strange game. Both Mike and Caitlynn are claiming to be Werewolves.\n\n    *   If Caitlynn is the Werewolf, voting her out wins for the Village.\n    *   If Mike is the Werewolf, voting him out wins for the Village.\n    *   If both are Werewolves, voting either wins for the Village.\n    *   If neither is a Werewolf (e.g., they are both bluffing or are the Tanner), then the Village might lose.\n    *   But based on the claims:\n        *   Caitlynn admits it.\n        *   Mitchell's \"logic\" (Robber -> Troublemaker swap) points to Caitlynn.\n        *   Mike admits it but pushes the vote to Caitlynn.\n\n    *   If Mike is a Werewolf, why would he say it?\n    *   If Caitlynn is a Werewolf, why would she say it?\n    *   Maybe one of them is the Tanner? The Tanner wants to be voted out.\n    *   If Caitlynn is the Tanner, she'd claim to be a Werewolf to get votes.\n    *   If Mike is the Tanner, he'd claim to be a Werewolf to get votes.\n    *   But Mike is directing the vote *away* from himself and toward Caitlynn. This suggests Mike is not the Tanner.\n    *   Caitlynn is not fighting the vote. She's admitting she was a werewolf.\n\n    *   Caitlynn: Claims Werewolf.\n    *   Mike: Claims Werewolf.\n    *   Mitchell: Claims Robber (who robbed Caitlynn).\n    *   Alana: Claims Troublemaker (who swapped Mitchell and Caitlynn).\n    *   If we believe Mitchell and Alana, Caitlynn is definitely a Werewolf at the end of the night.\n    *   If we believe Mike, he is also a Werewolf.\n    *   The most likely target for a Werewolf is Caitlynn, as she is the one being pointed to by the \"logic\" of the Robber/Troublemaker claims and she herself admitted it.\n\n    *   Caitlynn admits to being a werewolf.\n    *   Mitchell claims to be the Robber who robbed Caitlynn, and Alana claims to be the Troublemaker who swapped them back.\n    *   This sequence (Robber takes Werewolf card -> Troublemaker swaps it back) results in Caitlynn ending the night as the Werewolf.\n    *   Mike also claims to be a werewolf, but he is actively supporting the vote for Caitlynn.\n    *   Therefore, Caitlynn is the most probable Werewolf.",
+  "parsed_output": {
+    "justification": "Caitlynn explicitly claims to be a werewolf. Mitchell claims to be the Robber who robbed Caitlynn, and Alana claims to be the Troublemaker who swapped Mitchell and Caitlynn. According to this sequence, Caitlynn would have started as a werewolf, lost the role to Mitchell, and then regained it via the Troublemaker's swap, making her the werewolf at the end of the night.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn explicitly claims to be a werewolf. Mitchell claims to be the Robber who robbed Caitlynn, and Alana claims to be the Troublemaker who swapped Mitchell and Caitlynn. According to this sequence, Caitlynn would have started as a werewolf, lost the role to Mitchell, and then regained it via the Troublemaker's swap, making her the werewolf at the end of the night.\",\n  \"chosen_vote\": \"Caitlynn\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn explicitly claims to be a werewolf. Mitchell claims to be the Robber who robbed Caitlynn, and Alana claims to be the Troublemaker who swapped Mitchell and Caitlynn. According to this sequence, Caitlynn would have started as a werewolf, lost the role to Mitchell, and then regained it via the Troublemaker's swap, making her the werewolf at the end of the night.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Caitlynn explicitly claims to be a werewolf. Mitchell claims to be the Robber who robbed Caitlynn, and Alana claims to be the Troublemaker who swapped Mitchell and Caitlynn. According to this sequence, Caitlynn would have started as a werewolf, lost the role to Mitchell, and then regained it via the Troublemaker's swap, making her the werewolf at the end of the night."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3130,
+    "output_token_count": 1994,
+    "generation_time_sec": 200.99054551124573,
+    "used_chat_template": true,
+    "input_char_count": 11197,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

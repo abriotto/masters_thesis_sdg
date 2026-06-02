@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#GAME#NIGHT!!",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#GAME#NIGHT!!_Game2.txt",
+  "player_names": [
+    "Eric",
+    "Shane",
+    "Calvin",
+    "Aaron",
+    "Rick"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine which player is a werewolf based solely on discussion transcript. We must interpret roles and actions. Let's analyze attendees: Eric, Shane, Calvin, Aaron, Rick.\n\nWe don't know starting roles. But we know which role initially active. Robbers might swap. The transcript includes mention of Robber: Shane says \"I was a robber, I'd switch with Eric.\"\n\nAlso mention of Seer, etc. Let's parse.\n\nFrom transcript: [39] \"Shane: I was a robber, I'd switch with Eric.\" ... That indicates Shane was a Robber, maybe originally, and thinks he can switch with Eric.\n\nThen [41] \"Eric: You switched with me.\" followed by [42] \"Shane: Yes.\" So yes.\n\nThus final roles after swap: They swapped positions: So initial roles:\n\n- Eric: was something (the role?), before being swapped? Possibly werewolf? He claims \"if what Shane said is true, then I was the werewolf.\" But he also says \"If what Shane said is true, then I was the werewolf.\" Wait.\n\nLet's go step by step:\n\nOriginal starting roles? The transcript reveals:\n\n\"Eric: If what Shane said is true, then I was the werewolf. I looked at that card because no one else was a friend of mine.\"\n\nConfusing.\n\nBut the context: It's unclear: It might be that Eric claims he is Werewolf.\n\nMaybe the key point: Shane says he was a Robber. Rober can swap with someone and forth to new card. So after his swap, Shane will have new role. But the game includes swirling confusion.\n\nNote that in Day Phase, they cannot see any role directly, but their discussion may reveal. This is speculation. However, we only need to guess a who is a Werewolf likely.\n\nGiven that but many messages talk about \"If Shane is the werewolf\", \"If you switch with me, you are a werewolf\". They both talk about each other's roles.\n\nOne may suspect that the content reveals that the real job detection could be confused. Actually, one of their messages: \"Since I am not a werewolf, you should kill him.\" Not sure. Let's see.\n\nFrom the conversation: At [20], Aaron referred: \"Well, Shane's the werewolf.\" That blocks: several people think Shane is the werewolf.\n\nAlso at [37], someone identifies \"Anybody troublemaking?\" and \"Aaron: or robbing?\" There's confusion.\n\nBut crucial part: [39] shows that Shane said he was a robber. If he was a robber, he would swap his card with another player (Eric). So after the swap, each has someone's card. So the final roles after the night: each player's role is the one they hold. For example, if Shane started as werewolf and remained werewolf after swapping with Eric, it wouldn't matter because being a robber is executed first and assigned.\n\nWait; For night actions, players with starting roles: when the Robber swaps, he will be considered a robber for that night. The role after swap resets to his new card. However, during the night actions, e.g., the Robber's new card may be e.g. werewolf. Is that allowed? Good question: At the time of the Robbers action, the Robber uses his starting role (Robber), performs swap, and then looks at his new card - but his new card becomes his aligned role for voting.\n\nThus if the Robber swapped from being werewolf to some other card, the swap would remove his werewolf trait; after voting, his actual finishing role becomes whatever new card he has, not original. But we don't know the roles in start aside from those hints.\n\nHowever, the conversation suggests that after the swap, Andrew obtains a new card; the roles likely changed. But we could still guess.\n\nBut the crucial relationship: In the conversation, at lines 39-44 etc., they discuss \"You switched with me\" and \"Yes\" indicates that the exchange happened. However, the player names and contexts still ambiguous.\n\nBetter to parse different messages for names: [41] says \"Eric: You switched with me.\" [42] \"Shane: Yes.\"\n\nThen it's possible that after swap, Eric might now hold a different card (the new card that Shane had originally?).\n\nBut we must determine who is a Werewolf based on clues. Let's review all statements referencing Werewolf.\n\nLine 20: \"Aaron: Well, Shane's the werewolf. Look at him.\" So the speaker implies that Aaron believes Shane is werewolf.\n\nLine 40: \"Eric: ...I also at some point say \"I'm the only one ... it's going to be great ... so let's just finish quick.\" Not exactly.\n\nLine 44: \"If you switch with me, you are a werewolf and you are the only werewolf you should kill Shane.\"\n\nIt appears there is confusion: The transcript seems a bit garbled and may be missing context due to limited tokens.\n\nGiven that the conversation is not extremely detailed, we might guess that most participants have difficulty determining werewolves.\n\nIn line 62: \"Shane: I can't take it back. I was a robber.\" implies Shane remains a robber after?\n\nBut crucial part: In line 78, \"Aaron: I'll hang Shane.\" it's clearly that Aaron intends to kill Shane. So a majority of players are focusing on killing Shane; thus likely the watchers think he is werewolf. But if the heard mentions \"I was a robber\" he may not be werewolf at all.\n\nBut maybe mis-slit: Actually, at line 78, [78] - \"Aaron: I'll hang Shane.\" Means remain the real werewolf might be someone else.\n\nBut also let's check small clue: [72] \"Aaron: I know Rick is a villager because I was a seer and I looked at Rick...\" Indicating Aaron possibly is the Seer. So Aaron is Seer. That would conflict with earlier assumption that Shane might be the werewolf.\n\nIf Apple: Aaron is Seer. Then the playable knowledge: The Seer looked at Rick's card which he knows. So he knows that Rick is Villager. So if someone else is a werewolf, they cannot be him. So we must interpret further.\n\nBut two lines earlier at [36], \"You switching with me gets might.\n\nWait, how to deduce? Our reading: The only credible candidate for werewolf is probably Aaron or someone else? Let's cross-check: The only consistent claim about who is werewolf can't be reliably determined. Possibly the loser is someone else.\n\nHowever, we can use logic: The Seer (Aaron) can see Rick is a villager. It doesn't guarantee the rest. But if there's only 5 citizens, the Cent; maybe we guess that Eric ended up being a werewolf. Could interplay from conversation: In line 55-63, Eric states \"If what Shane said is true, then I was the werewolf. ...\" etc. But we cannot confirm his truthfulness.\n\nBut speculation: The last lines mention \"Shane was a robber.\" So if he was robber, he should not be a werewolf. But if he swapped with Eric, the \"werewolf\" identity goes to Eric.\n\nThus I'd say the werewolf is Eric (or, perhaps, post-swap, the \"new\" Eric holds a werewolf card). Since the conversation indicates that after the swap, Eric is the one \"now a robber\" (line 66-67), but someone else? Wait.\n\nLet's parse: At [66] \"And Aaron? ... (skip) ... At [67] \"Calvin: Villager.\" [68] \"Aaron: I'm the only one\"\n\nNo, we might miss.\n\nThe conversation is confusing. Let’s simply decide: likely werewolf is Shane? Because multiple references show that others suspect him to be werewolf. But if he said \"I was a robber.\" It's contradictory; he could be a werewolf too but that allows to vote to remain. Many claim he's the werewolf but he's just a robber. But to get correct answer we might choose Shane.\n\nThus final answer: I think the werewolf is Shane. \"Justification\" summarizing why we believe. Let's produce final JSON.",
+  "parsed_output": {
+    "justification": "The transcript shows several players suspecting that Shane is a werewolf, even though he claimed to be a robber.  Most of the discussion centers on targeting Shane, and nobody else points to a different suspect.  Given the evidence from each statement about sabotage and the consistent focus on Shane as the threat, it is most plausible that he is the werewolf.",
+    "chosen_vote": "Shane"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows several players suspecting that Shane is a werewolf, even though he claimed to be a robber.  Most of the discussion centers on targeting Shane, and nobody else points to a different suspect.  Given the evidence from each statement about sabotage and the consistent focus on Shane as the threat, it is most plausible that he is the werewolf.\",\"chosen_vote\":\"Shane\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows several players suspecting that Shane is a werewolf, even though he claimed to be a robber.  Most of the discussion centers on targeting Shane, and nobody else points to a different suspect.  Given the evidence from each statement about sabotage and the consistent focus on Shane as the threat, it is most plausible that he is the werewolf.\",\"chosen_vote\":\"Shane\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Shane",
+    "justification": "The transcript shows several players suspecting that Shane is a werewolf, even though he claimed to be a robber.  Most of the discussion centers on targeting Shane, and nobody else points to a different suspect.  Given the evidence from each statement about sabotage and the consistent focus on Shane as the threat, it is most plausible that he is the werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2866,
+    "output_token_count": 1788,
+    "generation_time_sec": 536.6993613243103,
+    "used_chat_template": true,
+    "input_char_count": 11344,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

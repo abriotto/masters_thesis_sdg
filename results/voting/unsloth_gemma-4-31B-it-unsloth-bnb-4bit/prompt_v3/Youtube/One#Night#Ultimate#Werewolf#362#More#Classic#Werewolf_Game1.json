@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#362#More#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#362#More#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "George",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete: Claims Minion (multiple times).\n    *   Katie: Claims Drunk.\n    *   Brett: Claims Troublemaker (swapped George and Katie).\n    *   George: Claims Robber (robbed Katie).\n    *   Kelsey: Claims Troublemaker, then Robber (stole Brett's card, claims Brett was Tanner), then says she's a Tanner.\n    *   Dylan: Claims Mason (lonely mason).\n\n    *   *Troublemaker:* Brett claims he is the Troublemaker and swapped George and Katie. Kelsey also claims she was the Troublemaker.\n    *   *Robber:* George claims he is the Robber and robbed Katie. Kelsey later claims she is the Robber and robbed Brett.\n    *   *Mason:* Dylan claims to be a lonely Mason. Pete also claims to be a Mason at one point (\"I was a mason\").\n    *   *Minion:* Pete claims to be the Minion.\n    *   *Drunk:* Katie claims to be the Drunk.\n\n    *   Kelsey's claims are highly inconsistent:\n        1.  Claimed Troublemaker.\n        2.  Claimed Robber (stole Brett's card).\n        3.  Claimed she is now a Tanner.\n    *   This pattern (changing roles rapidly and claiming to be the Tanner) is often a sign of either a Tanner trying to get voted out or a Werewolf bluffing poorly. However, claiming to be the Tanner *after* claiming to be the Robber is a strange pivot.\n    *   Pete's claim to be the Minion is very bold. Usually, Minions don't reveal themselves unless they are trying to confuse the group or are the Tanner.\n    *   Brett's claim to be the Troublemaker is consistent.\n    *   George's claim to be the Robber is consistent.\n    *   Katie's claim to be the Drunk is consistent.\n\n    *   If George is the Robber and robbed Katie (Drunk), George becomes the Drunk and Katie becomes whatever George was.\n    *   If Brett is the Troublemaker and swapped George and Katie, then George and Katie's roles are swapped again.\n    *   Wait, the order is Robber then Troublemaker.\n    *   If George (Robber) robbed Katie (Drunk), George is now Drunk.\n    *   Then Brett (Troublemaker) swapped George (Drunk) and Katie (George's original role).\n    *   So Katie is now Drunk and George is George's original role.\n    *   This aligns with Katie's claim that she is the Drunk.\n\n    *   Kelsey's behavior is the most suspicious. She claimed Troublemaker, then Robber, then Tanner.\n    *   Pete claiming Minion is also suspicious, but in One Night Ultimate Werewolf, claiming a \"bad\" role like Minion can be a bluff or a way to distract.\n    *   However, Kelsey's rapid shifts in identity are classic \"Tanner\" or \"Werewolf\" behavior.\n    *   Let's look at the \"Tanner\" possibility. If Kelsey is the Tanner, she wants to be voted out. If she's a Werewolf, she's doing a bad job of bluffing.\n    *   Wait, Pete claiming Minion is very unusual. If he's the Minion, he's on the Werewolf team. If he's a Werewolf, he's claiming Minion to hide his identity.\n    *   Let's re-evaluate Kelsey. She says she robbed Brett and he was the Tanner. If she is the Robber and stole the Tanner card, she is now the Tanner. This is a possible sequence.\n\n    *   Kelsey: Troublemaker -> Robber -> Tanner.\n    *   Pete: Mason -> Minion.\n    *   Brett: Troublemaker.\n    *   George: Robber.\n    *   Katie: Drunk.\n    *   Dylan: Mason.\n\n    If Kelsey is the Werewolf, she's trying to create chaos. If she's the Tanner, she's trying to get voted out.\n    If Pete is the Werewolf, claiming Minion is a bold bluff.\n\n    Looking at the transcript, Kelsey's claims are the most erratic. She claims to be the Troublemaker, then changes to Robber, then claims she's the Tanner. This is highly characteristic of a player trying to manipulate the vote or a Tanner. However, the prompt asks for the \"Werewolf\".\n\n    Let's look at Pete. He claims to be the Minion. In many games, the Minion is a helpful role for the Werewolf. If Pete is the Minion, who is the Werewolf?\n    If Kelsey is the Werewolf, she might be pretending to be the Tanner to avoid being seen as a Werewolf, or she might actually be the Tanner.\n\n    Wait, let's look at the claims again.\n    Brett: Troublemaker.\n    George: Robber.\n    Katie: Drunk.\n    Dylan: Mason.\n    Pete: Minion.\n    Kelsey: Tanner/Robber/Troublemaker.\n\n    If we assume Brett, George, Katie, and Dylan are telling the truth (or are at least consistent), we are left with Pete and Kelsey.\n    Pete claims Minion. Kelsey claims Tanner.\n    If there is one Werewolf and one Minion, and Pete is the Minion, then Kelsey must be the Werewolf.\n    If Kelsey is the Tanner, then Pete could be the Werewolf claiming to be the Minion.\n\n    However, Kelsey's behavior is much more erratic. She claimed Troublemaker, then Robber, then Tanner. This is a lot of lying. While Tanners lie to get voted out, Werewolves also lie to avoid it. But claiming to be the Tanner is a specific strategy to get voted out.\n\n    Let's re-read: \"Kelsey: I lied. I lied. I was a robber. And I took Brett's card. And he was a tanner. And now I'm a tanner.\"\n    If she is the Robber and took the Tanner card, she is now the Tanner.\n    If she is the Werewolf, she is lying about everything.\n\n    Let's look at Pete again. \"I'm a minion.\" \"I'm pretty sure I'm a minion.\"\n    If Pete is the Werewolf, claiming to be the Minion is a way to admit to being on the \"evil\" team without admitting to being the Werewolf (the target of the vote).\n\n    Comparing Kelsey and Pete:\n    Kelsey's claims: Troublemaker -> Robber -> Tanner.\n    Pete's claims: Mason -> Minion.\n\n    Kelsey's behavior is more typical of a Tanner. Pete's claim to be the Minion is a common bluff for a Werewolf.\n\n    Wait, let's look at the voting:\n    Brett votes Kelsey.\n    Katie votes George.\n    Dylan votes Pete.\n    Kelsey votes George.\n\n    This is a split vote.\n\n    Let's think about the roles again.\n    If Pete is the Werewolf, he claims Minion to divert the vote.\n    If Kelsey is the Werewolf, she's claiming Tanner to... wait, why would a Werewolf claim Tanner? To make people think she's the Tanner and therefore *not* the Werewolf? No, the Tanner *wants* to be voted out. If people think you are the Tanner, they *will* vote for you. A Werewolf would not want that.\n\n    Therefore, Kelsey is more likely the Tanner.\n    Pete claiming to be the Minion is a strong signal. If he's not the Minion, he's likely the Werewolf.\n\n    Let's double-check the roles.\n    Werewolf, Minion, Tanner, Robber, Troublemaker, Mason, Drunk, etc.\n    If Pete is the Werewolf and claims Minion, he's trying to confuse the village.\n    If Kelsey is the Tanner, she's trying to get voted out.\n\n    Wait, let's look at the transcript again.\n    Pete: \"I'm a minion.\"\n    Kelsey: \"I lied... I was a robber... I'm a tanner.\"\n    If Kelsey is the Tanner, she wins if she's voted out.\n    If Pete is the Werewolf, he wins if he survives.\n\n    Is there any other possibility?\n    Could Kelsey be the Werewolf? If she's the Werewolf, she's claiming to be the Tanner to trick people into thinking she's not the Werewolf? No, that doesn't make sense. If people think she's the Tanner, they'll vote for her, and the Werewolf loses.\n\n    So, Pete is the most likely candidate for the Werewolf, using the Minion claim as a cover.\n\n    Wait, let me re-read the transcript one more time.\n    Pete: \"I could've sworn I was a troublemaker.\" (Line 49)\n    Pete: \"I was a mason.\" (Line 88)\n    Pete: \"I'm a minion.\" (Line 101)\n    Pete: \"I'm a minion.\" (Line 172)\n    Pete: \"I'm pretty sure I'm a minion.\" (Line 207)\n\n    Pete has claimed three different roles: Troublemaker, Mason, and Minion. This is extremely suspicious.\n\n    Kelsey has claimed: Troublemaker, Robber, and Tanner.\n\n    Both are lying. But Pete's shift to \"Minion\" is a very specific kind of bluff.\n\n    Let's consider the possibility that Kelsey is the Werewolf and is just playing very chaotically. But the \"Tanner\" claim is a huge red flag for being the actual Tanner.\n\n    Let's look at the players' reactions.\n    Brett: \"I'm voting Kelsey.\"\n    Dylan: \"I'm voting Pete.\"\n    Katie: \"I'm voting George.\"\n\n    If I have to pick one Werewolf, Pete's consistent claim to be the Minion (after claiming other things) and his overall inconsistency make him a strong candidate. However, Kelsey's inconsistency is even greater.\n\n    Let's re-evaluate the \"Tanner\" claim. If Kelsey is the Werewolf and claims to be the Tanner, she is essentially asking to be voted out, which is the opposite of what a Werewolf wants. Thus, Kelsey is almost certainly the Tanner.\n\n    If Kelsey is the Tanner, then Pete is the most likely Werewolf.\n\n    Wait, let me check the roles again.\n    Could Pete be the Minion and someone else be the Werewolf?\n    If Pete is the Minion, who is the Werewolf?\n    Brett, George, Katie, Dylan?\n    Brett and George have been consistent. Katie has been consistent. Dylan has been consistent.\n    If Pete is the Minion, the Werewolf must be one of the others. But they all have consistent stories.\n\n    If Pete is the Werewolf, he can claim to be the Minion.\n\n    Let's look at the \"Minion\" claim again.\n    Pete: \"I'm a minion.\"\n    If he is the Werewolf, he's claiming to be his teammate. This is a common strategy to confuse the village.\n\n    Final check:\n    Kelsey: Claims Tanner (likely Tanner).\n    Pete: Claims Minion, but previously claimed Mason and Troublemaker (likely Werewolf).\n    Brett: Consistent Troublemaker.\n    George: Consistent Robber.\n    Katie: Consistent Drunk.\n    Dylan: Consistent Mason.\n\n    The most logical conclusion is that Pete is the Werewolf.",
+  "parsed_output": {
+    "justification": "Pete's claims are highly inconsistent, as he claimed to be the Troublemaker, then a Mason, and finally the Minion. While Kelsey also changed her claims, her final claim to be the Tanner is a strong indicator that she is the Tanner, as a Werewolf would not want to attract votes. Pete's claim to be the Minion is a common bluff for a Werewolf to divert suspicion from their actual role while admitting to being on the 'evil' team.",
+    "chosen_vote": "Pete"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Pete's claims are highly inconsistent, as he claimed to be the Troublemaker, then a Mason, and finally the Minion. While Kelsey also changed her claims, her final claim to be the Tanner is a strong indicator that she is the Tanner, as a Werewolf would not want to attract votes. Pete's claim to be the Minion is a common bluff for a Werewolf to divert suspicion from their actual role while admitting to being on the 'evil' team.\",\n  \"chosen_vote\": \"Pete\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Pete's claims are highly inconsistent, as he claimed to be the Troublemaker, then a Mason, and finally the Minion. While Kelsey also changed her claims, her final claim to be the Tanner is a strong indicator that she is the Tanner, as a Werewolf would not want to attract votes. Pete's claim to be the Minion is a common bluff for a Werewolf to divert suspicion from their actual role while admitting to being on the 'evil' team.\",\n  \"chosen_vote\": \"Pete\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Pete",
+    "justification": "Pete's claims are highly inconsistent, as he claimed to be the Troublemaker, then a Mason, and finally the Minion. While Kelsey also changed her claims, her final claim to be the Tanner is a strong indicator that she is the Tanner, as a Werewolf would not want to attract votes. Pete's claim to be the Minion is a common bluff for a Werewolf to divert suspicion from their actual role while admitting to being on the 'evil' team."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6222,
+    "output_token_count": 2745,
+    "generation_time_sec": 290.62100744247437,
+    "used_chat_template": true,
+    "input_char_count": 18888,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

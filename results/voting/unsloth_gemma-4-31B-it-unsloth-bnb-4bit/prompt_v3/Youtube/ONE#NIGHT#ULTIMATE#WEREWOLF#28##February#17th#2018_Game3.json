@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Alysha: Claims Seer. Saw Justin as Werewolf.\n    *   Justin: Claims Troublemaker.\n    *   Mike: Claims Troublemaker. Says he switched Paul with someone.\n    *   Mitchell: Claims Robber. Says he robbed Caitlynn (implied by \"I robbed from her\" and \"I can verify that story [Caitlynn's]\").\n    *   Caitlynn: Claims Revealer. Says she revealed a card and it was a Tanner.\n    *   Paul: Claims Minion (initially), then claims Tanner (at the end).\n\n    *   *Alysha (Seer):* Saw Justin as Werewolf.\n    *   *Justin (Troublemaker):* Claims he is Troublemaker.\n    *   *Mike (Troublemaker):* Also claims Troublemaker. Says he switched Paul.\n    *   *Mitchell (Robber):* Claims he robbed Caitlynn.\n    *   *Caitlynn (Revealer):* Claims she revealed a card and it was a Tanner.\n    *   *Paul (Minion/Tanner):* Claims he started as Minion, then says he's actually the Tanner.\n\n    *   Two people claim Troublemaker: Justin and Mike. Only one can be the Troublemaker.\n    *   Caitlynn claims Revealer. Mitchell claims Robber.\n    *   Alysha claims Seer.\n    *   Paul claims Minion/Tanner.\n\n    *   If Alysha is the Seer and saw Justin as a Werewolf, Justin is a strong candidate.\n    *   If Mike is the Troublemaker, he says he switched Paul.\n    *   If Paul started as Minion, he is on Team Werewolf.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Justin is the Werewolf, he would lie about being the Troublemaker.\n    *   If Mike is the Werewolf, he would lie about being the Troublemaker.\n\n    *   Alysha (Seer) -> Justin (Werewolf).\n    *   Mike claims Troublemaker and says he switched Paul.\n    *   Paul claims Minion (Team Werewolf) then Tanner.\n    *   Justin claims Troublemaker.\n\n    Wait, let's look at the claims again.\n    Justin: Troublemaker.\n    Mike: Troublemaker.\n    One of them is lying.\n\n    If Alysha is the Seer and saw Justin as a Werewolf, then Justin is lying about being the Troublemaker.\n    If Justin is the Werewolf, then Mike might be the real Troublemaker.\n    If Mike is the Troublemaker, he switched Paul.\n    Paul says he started as Minion. Minions are Team Werewolf.\n\n    Wait, if Paul is the Minion and Justin is the Werewolf, Team Werewolf has two members.\n\n    Let's check Caitlynn (Revealer). She says she revealed a card and it was a Tanner. Who did she reveal?\n    Line 79: \"I actually revealed your card.\" (Addressing Paul).\n    Line 71: \"No, it was a Tanner.\"\n    So Caitlynn (Revealer) says Paul is the Tanner.\n\n    If Paul is the Tanner, then Paul's claim of being the Minion was a lie to attract votes or just confusion.\n    If Paul is the Tanner, then the Minion must be someone else or in the center.\n\n    Let's re-evaluate:\n    Alysha (Seer) -> Justin (Werewolf).\n    Caitlynn (Revealer) -> Paul (Tanner).\n    Mitchell (Robber) -> Robbed Caitlynn.\n    Mike (Troublemaker) -> Switched Paul.\n\n    If these are true:\n    Justin = Werewolf.\n    Paul = Tanner.\n    Caitlynn = Revealer (or Robber's target).\n    Mitchell = Robber.\n    Mike = Troublemaker.\n    Alysha = Seer.\n\n    Wait, if Mitchell robbed Caitlynn, he took her card.\n    If Caitlynn was the Revealer, Mitchell is now the Revealer.\n    But Mitchell claims he is the Robber. (The Robber knows their new role).\n    If Mitchell robbed the Revealer, Mitchell is now the Revealer.\n    But Mitchell says \"I robbed from her and I can verify that story. It is a revealer.\"\n    This means Mitchell knows Caitlynn was the Revealer because he stole the card.\n\n    Wait, if Mitchell is the Robber and stole the Revealer card, then Mitchell is the Revealer.\n    But the Revealer doesn't swap cards. The Robber swaps.\n    If Mitchell (Robber) stole the Revealer card from Caitlynn, Mitchell is now the Revealer.\n    Then Caitlynn is now the Robber.\n\n    Let's look at the roles again:\n    Alysha: Seer (Saw Justin = Werewolf)\n    Justin: Werewolf (Lying about being Troublemaker)\n    Mike: Troublemaker (Switched Paul)\n    Paul: Tanner (Revealed by Caitlynn/Mitchell)\n    Caitlynn: Robber (Was Revealer, now Robber)\n    Mitchell: Revealer (Was Robber, now Revealer)\n\n    Wait, the Robber swaps *their* card with another.\n    If Mitchell was the Robber and swapped with Caitlynn (Revealer), Mitchell becomes the Revealer and Caitlynn becomes the Robber.\n    This fits.\n\n    So, who is the Werewolf?\n    Alysha (Seer) saw Justin as a Werewolf.\n    Justin claims to be the Troublemaker, but Mike also claims to be the Troublemaker.\n    If Mike is the Troublemaker, Justin is lying.\n    If Justin is the Werewolf, he is lying.\n\n    Is there any other possibility?\n    Could Mike be the Werewolf?\n    If Mike is the Werewolf, he's lying about being the Troublemaker.\n    But Alysha's Seer claim specifically points to Justin.\n\n    Let's check Paul's claim. Paul says he started as Minion.\n    If Paul started as Minion, and Mike (Troublemaker) switched him, Paul is no longer the Minion.\n    But Caitlynn (Revealer) says Paul is the Tanner.\n    If Paul is the Tanner, he's not the Minion.\n\n    Wait, if Paul is the Tanner, then who is the Minion?\n    Maybe the Minion is in the center? Or maybe Mike is the Minion?\n    If Mike is the Minion, he knows who the Werewolves are.\n    Mike says \"I'm not trying to throw shade off Justin, I'm trying to put shade on Justin.\"\n    This suggests Mike knows Justin is the Werewolf.\n\n    Let's double-check the roles:\n    Seer: Alysha\n    Werewolf: Justin\n    Tanner: Paul\n    Troublemaker: Mike\n    Robber: Mitchell (became Revealer)\n    Revealer: Caitlynn (became Robber)\n\n    This seems consistent. Alysha's information is the most direct: \"I looked at Justin's card... He was the werewolf.\"\n\n    Is there any reason to doubt Alysha?\n    If Alysha is the Werewolf/Minion, she could be lying.\n    But if Justin is the Werewolf, he's definitely lying about being the Troublemaker (since Mike also claims it and Paul's status as Tanner/Minion is being discussed).\n\n    Let's look at the voting:\n    Mitchell: Voting Mike.\n    Alysha: Voting Justin.\n    Paul: Voting \"left\" (meaning Justin or Mike).\n\n    Wait, Mitchell is voting Mike. Why?\n    Mitchell says \"Mike is getting weird.\"\n    But Mitchell also says \"I can verify that story [Caitlynn's]. It is a revealer.\"\n    If Mitchell is the Robber who stole the Revealer card, he knows Caitlynn was the Revealer.\n    Caitlynn said Paul was the Tanner.\n    If Paul is the Tanner, then the Werewolf must be someone else.\n    Alysha says Justin is the Werewolf.\n\n    Why would Mitchell vote Mike?\n    Maybe Mitchell thinks Mike is the Werewolf?\n    But the evidence against Justin (Seer claim) is stronger than the evidence against Mike (just \"getting weird\").\n\n    Let's re-examine Mike.\n    Mike claims Troublemaker.\n    Justin claims Troublemaker.\n    If Justin is the Werewolf, he's lying.\n    If Mike is the Werewolf, he's lying.\n    If Alysha is the Seer, Justin is the Werewolf.\n\n    Conclusion: Justin is the most likely Werewolf.\n\n    *   Alysha (Seer) -> Justin (Werewolf).\n    *   Caitlynn (Revealer) -> Paul (Tanner).\n    *   Mike (Troublemaker) -> Switched Paul.\n    *   Mitchell (Robber) -> Swapped with Caitlynn.\n    *   Justin (Werewolf) -> Lying about being Troublemaker.\n\n    This covers all players and roles.\n    Justin: Werewolf\n    Paul: Tanner\n    Alysha: Seer\n    Mike: Troublemaker\n    Caitlynn: Robber (end role)\n    Mitchell: Revealer (end role)\n\n    Wait, let's check the \"Revealer\" role.\n    The rules provided in the prompt *do not* list \"Revealer\" in the \"Information and roles\" or \"Roles and abilities\" sections.\n    Wait, let me re-read.\n    \"The selected roles may include: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\"\n    Revealer is *not* in the list.\n    However, the transcript mentions a \"Revealer\" (Line 16, 17, 68, 69, 79).\n    The Announcer even calls the Revealer: \"[16] Announcer: Revealer, wake up. You may turn any other player's card face up. If the card you reveal is a werewolf or a Tanner, turn it back over, face down. Revealer, close your eyes.\"\n    This means the \"Revealer\" is a role in this specific game, even though it wasn't in the provided \"Information and roles\" list. I must use the information from the transcript.\n\n    The Revealer's ability: \"turn any other player's card face up. If the card you reveal is a werewolf or a Tanner, turn it back over, face down.\"\n    Caitlynn says: \"I actually revealed your card [Paul's]... No, it was a Tanner.\"\n    Wait, if the card is a Tanner, the Revealer turns it *back over*.\n    So Caitlynn saw Paul's card, saw it was a Tanner, and turned it back over.\n    This confirms Paul is the Tanner.\n\n    Now, back to Justin.\n    Alysha (Seer) says Justin is the Werewolf.\n    Justin and Mike both claim to be the Troublemaker.\n    If Paul is the Tanner, and Alysha is the Seer, then Justin is the most likely Werewolf.\n\n    Is there any other possibility?\n    Could Alysha be the Werewolf and be lying?\n    If Alysha is the Werewolf, then Justin might be the Troublemaker.\n    But if Justin is the Troublemaker, then Mike must be lying.\n    If Mike is lying, Mike could be the Werewolf.\n    But we have a Seer claim (Alysha) and a Revealer claim (Caitlynn).\n    The Revealer's information (Paul = Tanner) is very specific.\n    The Seer's information (Justin = Werewolf) is also very specific.\n\n    If we trust the Revealer (Caitlynn), then Paul is the Tanner.\n    If we trust the Seer (Alysha), then Justin is the Werewolf.\n    This leaves Mike as the Troublemaker.\n    This is a consistent set of roles.\n\n    Final check:\n    Justin: Werewolf\n    Paul: Tanner\n    Alysha: Seer\n    Mike: Troublemaker\n    Caitlynn: Robber (end role)\n    Mitchell: Revealer (end role)\n    (Wait, Mitchell said he robbed Caitlynn, so he's the Revealer now, and she's the Robber).\n\n    Wait, if Mitchell is the Revealer, he would know what Paul's card was.\n    Mitchell says: \"I robbed from her and I can verify that story. It is a revealer.\"\n    This means Mitchell knows Caitlynn was the Revealer.\n    Caitlynn says she revealed Paul as the Tanner.\n    This all fits.\n\n    The most likely Werewolf is Justin.",
+  "parsed_output": {
+    "justification": "Alysha claims to be the Seer and states she saw Justin's card, which was a Werewolf. While both Justin and Mike claim to be the Troublemaker, Caitlynn (the Revealer) identifies Paul as the Tanner, and Mitchell (the Robber) confirms Caitlynn's role. Given the consistency of the other roles, Alysha's identification of Justin as the Werewolf is the most reliable piece of information.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claims to be the Seer and states she saw Justin's card, which was a Werewolf. While both Justin and Mike claim to be the Troublemaker, Caitlynn (the Revealer) identifies Paul as the Tanner, and Mitchell (the Robber) confirms Caitlynn's role. Given the consistency of the other roles, Alysha's identification of Justin as the Werewolf is the most reliable piece of information.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claims to be the Seer and states she saw Justin's card, which was a Werewolf. While both Justin and Mike claim to be the Troublemaker, Caitlynn (the Revealer) identifies Paul as the Tanner, and Mitchell (the Robber) confirms Caitlynn's role. Given the consistency of the other roles, Alysha's identification of Justin as the Werewolf is the most reliable piece of information.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alysha claims to be the Seer and states she saw Justin's card, which was a Werewolf. While both Justin and Mike claim to be the Troublemaker, Caitlynn (the Revealer) identifies Paul as the Tanner, and Mitchell (the Robber) confirms Caitlynn's role. Given the consistency of the other roles, Alysha's identification of Justin as the Werewolf is the most reliable piece of information."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4170,
+    "output_token_count": 3065,
+    "generation_time_sec": 314.0943338871002,
+    "used_chat_template": true,
+    "input_char_count": 14119,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

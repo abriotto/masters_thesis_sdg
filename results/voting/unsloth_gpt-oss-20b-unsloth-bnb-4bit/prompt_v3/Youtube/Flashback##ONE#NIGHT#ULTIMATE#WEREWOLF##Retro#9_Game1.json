@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to interpret the transcript to determine who is likely the Werewolf(s). We only have public discussion, not the actual actions. Let's analyze roles.\n\nList: Justin, Laura, Paul, James, Mitchell.\n\nFrom transcripts of statements: Some lines mention roles:\n\n- \"I was villager\" when Paul says.\n- \"I was insomniac\" when Mitchell says.\n- \"I was the Robber\" when Justin says.\n- \"I was the Seer\" when it's mentioned? Not directly, but there's mention \"I was the Seer\" maybe Lucy? Let's parse:\n\nLet's go through transcript better.\n\nLine [10]: Justin says: \"All right. So these are the tokens we can use to represent people. So Paul is saying he was a villager.\" So at [10], Paul says his starting role was villager presumably.\n\n[11] Paul: \"I was the villager. I have no information.\" Confirmed.\n\n[12] Mitchell: \"I was insomniac.\"\n\n[13] Laura: \"I was villager.\"\n\nSo person roles that we know from statements:\n\n- Paul: villager\n- Mitchell: insomniac\n- Laura: villager\n\nWhat about Justin? In [22], says \"So you were the Robber.\" Probably he means he was the robber? Wait [23] \"James: I was.\" [24] \"Justin: And you stole from him.\" ... Let's see.\n\nAt [22] Justin refers to someone was the Robber. How?\n\nWe should maybe reconstruct diverging conversation:\n\nFrom [22]:\n\nJustin: So you were the Robber.\n\nIt seems Justin is talking to someone (maybe James?). Actually [21] hasn't clarified: [21] Justin says: \"So you were the Robber.\" Might refer to James? Let's read near lines: [21]\n\n[20] Mitchell: \"Mitchell, if you want to talk, now you go ahead.\" [21] James: \"Last I saw that was the situation.\" Not clear.\n\nLet's examine ID references:\n\nWe're told players and discussion are with names. This transcript is messy; basically players had various statements. But key is the starting roles known.\n\nBut we still need to figure out possible werewolf.\n\nLet's search where \"Was the Seer\" or \"I was the Seer\" appears? Not clearly.\n\nLook at [37] Justin: (line in statement) \"Justin: Is it? Actually ...\"\n\nBut anyway:\n\nPotential werewolves: Among players not identified as villager, but someone unknown.\n\nBut also, from roles knowledge: When werewolf is among players, he may speak as a liar or not.\n\nWe can parse logic: People who said \"I was villager\" cannot be werewolf because they had to be honest? Not necessarily; they might lie.\n\nBut this is a simple deduction: If someone is known to look at a card (as werewolf), they'd see other werewolf. We don't have that.\n\nWe maybe should consider possible werewolves: People whose starting roles were not listed. The only roles left: Werewolf, Minion, etc. But given that we don't have secret reveal of roles, we can't deduce.\n\nWe need to pick a suspected werewolf. From discussion, it seems that players mention each other's role claims. Some statements seem contradictory eg: \"If you can't trust...\".\n\nLet's parse positions:\n\nImportant lines where suspect of werewolf emerges:\n\n[30] “Is this real life because is this just a fuzzy wuzzy?” Not relevant.\n\n[32] Mitchell: \"Here's what could happen? I could be Werewolf because I have no alibi. He also could be.\" - Suggests that Mitchell believes they could be werewolf.\n\n[36] Laura: \"Technically I could also be a Werewolf.\" So Laura acknowledges possibility.\n\n[42] Justin: there is narrative: ??? \"I went...\"\n\n[51] Justin: \"I feel like maybe, or he is saying that because he was the insomniac and he woke up the insomniac.\" Not clear.\n\n[54] Justin: \"It would be safe thing.\" Not relevant.\n\n[59] James: \"I'm going to hedge my bets on Mitchell lying.\"\n\n[63] Mitchell: \"What if me and Justin are both Werewolves?\" So suggests that Mitchell thinks possible.\n\n[69] William? no.\n\n[72] Laura says: \"I'd be so pissed if I was the Werewolf. Because I was Hitler last time so much.\" - This suggests she doesn't think herself is werewolf currently.\n\n[80] Look, [80] says: \"James: My vote is for Mitchell.\" So someone is voting for Mitchell.\n\nLater [90]-[92] mention uncertain.\n\nBut overall confusion.\n\nAnyway, the question: \"Vote for player you believe is a Werewolf.\"\n\nWe need to choose one of five names.\n\nWe need to justify based on discussion.\n\nWe need to consider what indicates suspicious behavior. Possibly that being werewolves often misrepresent themselves lightly. But we lack evidence of any werewolf. It's possible the only unsaid but likely werewolf might be someone claiming unknown (not admitted). E.g., we don't know exactly who could have a role that isn't described; we know that some starting roles:\n\nJason may have the \"Seer\" as led? But no mention.\n\nLet's revisit specifics: winner is the player with most votes. But we don't have actual votes yet. We need to predict.\n\nLet's parse more systematically:\n\nTranscript started: At [1], the Announcer called night actions and gave roles: being a responding to being a werewolf.\n\nWe need to assess which player speaks about removing suspicion.\n\nMaybe in the discussion some mention of \"the Robber\" or \"Troublemaker\".\n\nLet's try to glean roles from conversation.\n\nIf a player claims to be desperate to whom: Let's glean each player's line:\n\n- Justin: Many lines from [10] about himself, etc. At [22], \"Justin: So you were the Robber.\" It's unclear who he addresses.. Might refer to James or to someone else. He seems to hold that that someone's role was Robber.\n\n- At [22], \"So you were the Robber\" implies that the person currently after the line in [20] etc. Not essential.\n\nNevertheless, we know that \"Justin: I was the Robber\" might be indicated earlier.\n\nAt [63] Mitchell says: \"What if me and Justin are both Werewolves?\" So that implies that Mitchell thinks that he and Justin might both be werewolves? This implies that those two might have roles that are ambiguous. Also, no one in conversation claims they were Werewolves.\n\nAlso note: Everyone who claimed to have a role, up until Miss [12], [13], there were explicit directionaries. But I don't see mention of Seer anywhere else. That may indicate that the seer didn't claim anything publicly.\n\nThus, list of roles known:\n\n- Justin: sure that he was Robber? But not confirmed by he says his starting role? In [22], he says \"So you were the Robber\" referencing earlier statement might be maybe he says he was the robber? Not clear though. But it's likely that Justin has Robber role.\n\n- Mitchell: Insomniac.\n\n- Paul: Villager.\n\n- Laura: Villager.\n\n- James: He says \"I was\" crazy but not explicit. He might have been a Werewolf? Could be that he was liar.\n\nThus remaining role: Are there any other roles left? The only unknown is Seer. Which might be held by someone not singled out.\n\nNow key: Insomniac after Night, they look again at current card; they may have changed but if they looked at original card. Starting role insomniac does not change, unless they were swapped by someone else. But because the insomniac didn't swap with the rule? Wait: The insomniac's ability: They can be swapped by someone else, but in this game, the troublemaker may swap them with someone else. Since we don't know.\n\nHowever, the transcript didn't show any swapping. It's messy.\n\nGiven limited clarity, perhaps guess that being werewolf might be one of the persons who enacted a liar while claiming to have certain generic. For instance, the line at [44]: Justin: \"I saw your card.\" This indicates that Justin claims to have seen James's card? That may mean Justin saw James as a robber? Not sure.\n\nGiven the confusion, we might default to choosing a random but rational guess: James, because he's not directly admitted as a villager; he hasn't stated his starting role. Lacking a public role claim suggests it's possible that he's a werewolf. Indeed, lines like [23] \"James: I was.\" might refer to his role unknown. But \"I was\" could simply be acknowledging that he was. But if that line is ambiguous.\n\nAlternatively, the suspect might be Mitchell, as he claims to be the insomniac, but also claims \"if I was the werewolf I'd get defensive.\" However, the line that mentions \"What if me and Justin are both werewolves?\" suggests that Mitchell might suspect himself as potentially a werewolf. But is that a hint?\n\nWhat about Justin? He is possibly suspect due to boasting about being the Robber. But if Justin had a different role, maybe he's lying. Yet he remains ambiguous.\n\nTo make a choice, I'd choose James seems suspect.\n\nBut propose a justification: The discussion contains several incoherent comments from James, less specificity, and he may have been suspicious. Additionally, storyline doesn't contain way for James to claim a role or to speak about being a victim. Also James might be overshadowed.\n\nThus answer: Choose James.\n\nBut I'm not fully confident. Let’s just decide that.\n\nAdd justification: In the transcript, the only player who never declared a specific role is James. His comments about \"I was\" are ambiguous. He tries to borrow some only. That might indicate that he's a Werewolf. Additionally, he has been known to suspect other players and hasn't shown consistency.\n\nOk.",
+  "parsed_output": {
+    "justification": "The only player who never plainly states a starting role is James, and his remarks are vague and fragmented throughout the transcript. No other player has shown any deeds or claims that would strongly indicate a werewolf alignment. Because of this lack of clarity about James’ role, he stands out as a likely suspect for being a werewolf.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\n  \"justification\": \"The only player who never plainly states a starting role is James, and his remarks are vague and fragmented throughout the transcript. No other player has shown any deeds or claims that would strongly indicate a werewolf alignment. Because of this lack of clarity about James’ role, he stands out as a likely suspect for being a werewolf.\",\n  \"chosen_vote\": \"James\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The only player who never plainly states a starting role is James, and his remarks are vague and fragmented throughout the transcript. No other player has shown any deeds or claims that would strongly indicate a werewolf alignment. Because of this lack of clarity about James’ role, he stands out as a likely suspect for being a werewolf.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "The only player who never plainly states a starting role is James, and his remarks are vague and fragmented throughout the transcript. No other player has shown any deeds or claims that would strongly indicate a werewolf alignment. Because of this lack of clarity about James’ role, he stands out as a likely suspect for being a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3639,
+    "output_token_count": 2163,
+    "generation_time_sec": 661.9743580818176,
+    "used_chat_template": true,
+    "input_char_count": 14157,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

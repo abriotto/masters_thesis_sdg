@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game4.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin\n    *   Kaelan\n    *   Jessica\n    *   Daniel\n\n    *   Kaelan: Claims Seer. Says they saw a Werewolf (pointing to someone, likely Jessica or Daniel based on context).\n    *   Daniel: Claims Robber. Says Kaelan is not the Seer, but a Minion.\n    *   Jessica: Denies Daniel's claim. Claims she robbed someone (likely Kaelan or Daniel).\n    *   Kevin: Claims Troublemaker. Says he swapped Daniel and Jessica.\n    *   Daniel: Claims he was the Minion (at the end).\n\n    *   Kaelan (Seer) -> Sees Werewolf.\n    *   Daniel (Robber) -> Swaps with someone.\n    *   Kevin (Troublemaker) -> Swaps Daniel and Jessica.\n    *   (Wait, the transcript is messy).\n\n    *   Kaelan: \"I'm the Seer and I know the Werewolf's right there.\" (Pointing to someone).\n    *   Daniel: \"I was the Robber.\"\n    *   Jessica: \"No, you weren't... I robbed the.. I robbed your role.\" (Jessica claims Robber).\n    *   Kevin: \"I'm the Troublemaker... You two [Daniel and Jessica].\" (Kevin claims Troublemaker and swapped Daniel and Jessica).\n    *   Daniel: \"I was the Minion.\" (At the end).\n\n    *   If Kevin is the Troublemaker and swapped Daniel and Jessica:\n        *   If Daniel started as Robber and Jessica started as something else, they swapped.\n        *   If Jessica started as Robber and Daniel started as something else, they swapped.\n    *   Kaelan claims Seer.\n    *   Daniel claims Minion at the end.\n\n    *   Kaelan claims Seer.\n    *   Kevin claims Troublemaker.\n    *   Jessica claims Robber.\n    *   Daniel claims Minion.\n\n    *   If Daniel is the Minion, he is on Team Werewolf.\n    *   If Kaelan is the Seer, he is Team Village.\n    *   If Kevin is the Troublemaker, he is Team Village.\n    *   If Jessica is the Robber, she is Team Village.\n\n    *   Wait, Daniel says \"I was the Minion\" at the end. This is a very strange claim for a Minion to make unless they are trying to confuse people or they've given up. However, the Minion is on Team Werewolf.\n    *   Kaelan says \"I saw the Werewolf as being... [pointing]\".\n    *   Daniel says \"I think that's the Werewolf there\" (pointing to someone).\n\n    *   Kaelan: Seer (Village)\n    *   Kevin: Troublemaker (Village)\n    *   Jessica: Robber (Village)\n    *   Daniel: Minion (Werewolf)\n\n    *   If Daniel is the Minion, who is the Werewolf?\n    *   The Minion knows who the Werewolf is.\n    *   Kaelan (Seer) saw a Werewolf.\n    *   If Daniel is the Minion, he might be trying to deflect or he might be the only Werewolf-aligned player if the actual Werewolf is in the center.\n    *   Wait, the prompt asks to vote for the player you believe is a *Werewolf*. The Minion is part of Team Werewolf.\n\n    *   Kaelan claims Seer.\n    *   Kevin claims Troublemaker.\n    *   Jessica claims Robber.\n    *   Daniel claims Minion.\n    *   If these claims are true, Daniel is the only one on Team Werewolf.\n\n    *   Kaelan: \"I'm the Seer and I know the Werewolf's right there.\" (Pointing to someone).\n    *   Daniel: \"I was the Robber.\" (Later changes to \"I was the Minion\").\n    *   Jessica: \"I robbed your role.\"\n    *   Kevin: \"I'm the Troublemaker... You two [Daniel and Jessica].\"\n\n    *   If Kevin (Troublemaker) swapped Daniel and Jessica:\n        *   If Daniel was Robber and Jessica was Werewolf, they swapped. Now Daniel is Werewolf and Jessica is Robber.\n        *   If Daniel was Werewolf and Jessica was Robber, they swapped. Now Daniel is Robber and Jessica is Werewolf.\n        *   If Daniel was Minion and Jessica was something else, they swapped.\n\n    *   Daniel's admission \"I was the Minion\" is the strongest piece of evidence. Even if he's lying, claiming to be the Minion is a very poor strategy for a Villager and a very odd strategy for a Werewolf unless they are trying to bait a vote (Tanner) or just being honest. But the Minion is Team Werewolf.\n\n    *   Kaelan (Seer) -> Village\n    *   Kevin (Troublemaker) -> Village\n    *   Jessica (Robber) -> Village\n    *   Daniel (Minion) -> Werewolf Team\n\n    *   Is Daniel the Werewolf or the Minion? The prompt asks for the \"Werewolf as their end role\". The Minion is part of Team Werewolf. In many versions of this game, \"Werewolf\" refers to the team.\n\n    *   Kaelan claims Seer.\n    *   Kevin claims Troublemaker.\n    *   Jessica claims Robber.\n    *   Daniel claims Minion.\n    *   If Daniel is the Minion, he is the only one on Team Werewolf.\n\n    *   Wait, let's re-read: \"I was the Minion\" (Daniel).\n    *   If Daniel is the Minion, he is on Team Werewolf.\n    *   If Kaelan is the Seer, he saw a Werewolf. Who did he see?\n    *   Kaelan: \"I know the Werewolf's right there\" (pointing).\n    *   Daniel: \"I think that's the Werewolf there\" (pointing).\n    *   It's unclear who they are pointing at in the transcript, but Daniel's own admission is the most direct evidence.\n\n    *   Daniel claimed Robber, then later claimed Minion.\n    *   Jessica claimed Robber.\n    *   Kevin claimed Troublemaker.\n    *   Kaelan claimed Seer.\n    *   If Daniel is the Minion, he is the most likely candidate for Team Werewolf.\n\n    *   Could Daniel be the Tanner? Tanners want to be voted out. Claiming to be the Minion would attract votes.\n    *   However, based on the available information, Daniel is the only one who admitted to being on Team Werewolf.\n\n    *   Kaelan: Seer\n    *   Kevin: Troublemaker\n    *   Jessica: Robber\n    *   Daniel: Minion\n    *   If Daniel is the Minion, he is the only one on Team Werewolf.\n\n    *   Wait, if Daniel is the Minion, who is the Werewolf?\n    *   The Minion knows who the Werewolf is.\n    *   If the Werewolf is in the center, the Minion still wins if no Werewolves die.\n    *   If Daniel is the Minion, he is the target.\n\n    *   Daniel's claim to be the Minion is the most explicit link to Team Werewolf.\n    *   Kaelan, Kevin, and Jessica all claimed Village roles (Seer, Troublemaker, Robber).\n    *   Therefore, Daniel is the most likely Werewolf-aligned player.\n\n    *   \"I was the robber\" (Daniel)\n    *   \"I robbed your role\" (Jessica)\n    *   \"I'm the Troublemaker... You two [Daniel and Jessica]\" (Kevin)\n    *   \"I was the Minion\" (Daniel)\n    *   If Kevin swapped Daniel and Jessica, and Daniel was the Minion, then Jessica became the Minion and Daniel became whatever Jessica was.\n    *   Wait:\n        *   Start: Daniel (Minion), Jessica (Robber)\n        *   Kevin (Troublemaker) swaps Daniel and Jessica.\n        *   End: Daniel (Robber), Jessica (Minion).\n    *   OR:\n        *   Start: Daniel (Robber), Jessica (Minion)\n        *   Kevin (Troublemaker) swaps Daniel and Jessica.\n        *   End: Daniel (Minion), Jessica (Robber).\n    *   In either case, one of them is the Minion. Daniel admits \"I was the Minion\". If he means he *started* as the Minion, and Kevin swapped him, then Jessica is the Minion. If he means he *is* the Minion, then he is the target.\n    *   However, Daniel's claim \"I was the Minion\" is the only admission of a Werewolf-team role.\n\n    *   Kaelan: Seer\n    *   Kevin: Troublemaker\n    *   Jessica: Robber\n    *   Daniel: Minion\n    *   If Daniel is the Minion, he is the only one on Team Werewolf.\n\n    *   Wait, let's look at Kaelan's claim again. \"I'm the Seer and I know the Werewolf's right there.\"\n    *   If Kaelan is the Seer and Daniel is the Minion, who is the Werewolf?\n    *   Maybe Jessica is the Werewolf?\n    *   If Jessica is the Werewolf and Daniel is the Minion:\n        *   Kevin (Troublemaker) swaps Daniel (Minion) and Jessica (Werewolf).\n        *   Now Daniel is the Werewolf and Jessica is the Minion.\n    *   This fits perfectly. Daniel's admission \"I was the Minion\" (meaning he started as the Minion) and the result of the swap makes him the Werewolf.\n\n    *   Daniel: Started as Minion.\n    *   Jessica: Started as Werewolf.\n    *   Kevin: Troublemaker, swapped Daniel and Jessica.\n    *   End roles: Daniel = Werewolf, Jessica = Minion.\n    *   Kaelan: Seer, saw Jessica as Werewolf (which she was at the time).\n    *   This makes Daniel the final Werewolf.\n\n    *   Daniel is the most suspicious player as he claimed to be the Minion, and the combination of Kevin's Troublemaker swap and Kaelan's Seer claim suggests Daniel ended up as the Werewolf.\n\n    *   Wait, if Daniel says \"I was the Minion\", and he was swapped with Jessica, then Jessica is now the Minion and Daniel is now whatever Jessica was. If Jessica was the Werewolf, Daniel is now the Werewolf.\n    *   This is the most logical conclusion.\n\n    *   Justification: Daniel admitted to being the Minion, and Kevin claimed to be the Troublemaker who swapped Daniel and Jessica. If Jessica was the Werewolf (as Kaelan the Seer suggested), the swap would make Daniel the Werewolf. Thus, Daniel is the most likely candidate for the Werewolf role.\n    *   Chosen vote: Daniel.",
+  "parsed_output": {
+    "justification": "Daniel admitted to being the Minion, and Kevin claimed to be the Troublemaker who swapped Daniel and Jessica. Kaelan, claiming to be the Seer, indicated that the Werewolf was among the group. If Jessica started as the Werewolf and was swapped with Daniel (the Minion), Daniel would end the game as the Werewolf.",
+    "chosen_vote": "Daniel"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Daniel admitted to being the Minion, and Kevin claimed to be the Troublemaker who swapped Daniel and Jessica. Kaelan, claiming to be the Seer, indicated that the Werewolf was among the group. If Jessica started as the Werewolf and was swapped with Daniel (the Minion), Daniel would end the game as the Werewolf.\",\n  \"chosen_vote\": \"Daniel\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Daniel admitted to being the Minion, and Kevin claimed to be the Troublemaker who swapped Daniel and Jessica. Kaelan, claiming to be the Seer, indicated that the Werewolf was among the group. If Jessica started as the Werewolf and was swapped with Daniel (the Minion), Daniel would end the game as the Werewolf.\",\n  \"chosen_vote\": \"Daniel\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Daniel",
+    "justification": "Daniel admitted to being the Minion, and Kevin claimed to be the Troublemaker who swapped Daniel and Jessica. Kaelan, claiming to be the Seer, indicated that the Werewolf was among the group. If Jessica started as the Werewolf and was swapped with Daniel (the Minion), Daniel would end the game as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2702,
+    "output_token_count": 2607,
+    "generation_time_sec": 256.8293151855469,
+    "used_chat_template": true,
+    "input_char_count": 9462,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

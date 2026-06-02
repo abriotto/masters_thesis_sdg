@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to identify likely werewolf from transcript comments. Roles? Not known. Let's deduce.\n\nPlayers: Justin, Caitlynn, Mike, James, Mitchell.\n\nThey mention various roles: I saw \"minion\" awakened separately? Let's parse transcript shows: Actors talk. There's confusion about being robbed, drunk etc.\n\nPotential suspect: Archer: \"I'm a robber\", \"I took a card ... got a werewolf.\" That seems a clue: Mike says \"I switched these two.\" But who still unclear.\n\nAlso mentions: \"I have bad news for you.\" Comments. Trying to understand the log: It seems like role swapping is ambiguous. problematic conversation indicates possibly many lines garbled. Hard to identify.)\n\nWait let’s analyze calls: The Announcer sequence: He wakes up certain roles in order. The transcript includes player's remarks. Might indicate key roles.\n\nWe have 5 players; only 3 roles (since extra 3 center). Starting roles unknown. We need to guess final role assignments after possible swaps.\n\nLet's track each potential: hypothetical initial role could be random among 8 roles but here small group.\n\nKey mentions: \"Justin: I'm the Insomniac\" (Line 63). So loose. And also \"Justin: ... pop something\".\n\nIf Justin says he's Insomniac, maybe he looked at his current card at the end. That implies he ended up with that role.\n\nMike says: \"I switched these two\" that likely refers to Troublemaker swapping two others. Also \"Mike: I switched last.\" Might refer to discussing troublemaker.\n\nMitchell comments about being drunk: says \"my answer is drunk\" and \"I did not switch with you.\" Possibly he ended up as drunk? He says he had a werewolf earlier?\n\nGeneral pattern: Hard.\n\nBut we need choose someone likely werewolf—maybe Mitchell? He seems suspect: \"It says that I had a had bad one and I switch it for one of the middle ones\" suggests he ended up with a werewolf.\n\nAlso mentions: \"No one saw any of the middle cards?\" indicates uncertainty.\n\nAnother clue: \"This sounds suspicious if he says that's a werewolf.\" But also some players say they'd have a chance to be a werewolf.\n\nHe said \"I don't know: 60% chance that I'm a bad dude\" - that indicates he hasn't confirmed identity.\n\nThe best conclusion: Probably the werewolf is Mitchell because he appears confused about his role but claims to have been a robbed etc.\n\nOk finalize: vote Mitchell.\"",
+  "parsed_output": {
+    "justification": "During the night, several swaps and role‑changing moments are reported, but only one player consistently indicates uncertainty about ending up as a non‑werewolf role—Mi­tchell. He repeatedly states he might have ended up with a werewolf card from the center or that he has insufficient evidence that he is safe. His statements such as “I had a bad one and I switched it for one of the middle ones” suggest that his final card is likely a Werewolf. Consequently, he is the most probable target for dismissal.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"During the night, several swaps and role‑changing moments are reported, but only one player consistently indicates uncertainty about ending up as a non‑werewolf role—Mi­tchell. He repeatedly states he might have ended up with a werewolf card from the center or that he has insufficient evidence that he is safe. His statements such as “I had a bad one and I switched it for one of the middle ones” suggest that his final card is likely a Werewolf. Consequently, he is the most probable target for dismissal.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"During the night, several swaps and role‑changing moments are reported, but only one player consistently indicates uncertainty about ending up as a non‑werewolf role—Mi­tchell. He repeatedly states he might have ended up with a werewolf card from the center or that he has insufficient evidence that he is safe. His statements such as “I had a bad one and I switched it for one of the middle ones” suggest that his final card is likely a Werewolf. Consequently, he is the most probable target for dismissal.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "During the night, several swaps and role‑changing moments are reported, but only one player consistently indicates uncertainty about ending up as a non‑werewolf role—Mi­tchell. He repeatedly states he might have ended up with a werewolf card from the center or that he has insufficient evidence that he is safe. His statements such as “I had a bad one and I switched it for one of the middle ones” suggest that his final card is likely a Werewolf. Consequently, he is the most probable target for dismissal."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2700,
+    "output_token_count": 640,
+    "generation_time_sec": 193.59193801879883,
+    "used_chat_template": true,
+    "input_char_count": 10568,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

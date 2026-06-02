@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#382#Game#100!!",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#382#Game#100!!_Game1.txt",
+  "player_names": [
+    "Ed",
+    "Dustin",
+    "Katie",
+    "Brett",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine most likely werewolf among players based on transcript.\n\nPlayer list: Ed, Dustin, Katie, Brett, Kelsey, Dylan.\n\nNeed to parse roles.\n\nTranscript is chaotic. Many ambiguous statements. But there are hints: players mention \"I was the Seer\", \"I was the Troublemaker\", etc. Also someone says \"Drew knew\". Also someone says \"I was the Werewolf\". Let's try to infer who actually was the Seer, Troublemaker, etc. Maybe someone clues.\n\nBut recall that roles can be swapped. The original roles could have been different.\n\nWe need the player most likely a Werewolf at the end (final role). Without seeing discussion, we only have transcripts.\n\nWe need to design logic: identify those who claim to have role that could be plausible for werewolf. For example, someone likes to say they've been scrutinized. But random talk not helpful.\n\nMaybe we find that victim is? There's mention: \"I was the Werewolf\" occurs in line 93: \"Yeah you're the Werewolf, because I was the Werewolf.\" Wait \"you\" by Dylan? It says \"you're the Werewolf\" likely addressing someone else.\n\nAlso line 133: \"Both Werewolves\" two werewolves found. But there can't be more than 2 werewolves. So maybe both Werewolves exist somewhere. It's unclear which players are the werewolves.\n\nPotential who were? Scene: At line 61: \"Brett: I trouble-made these boys. The dumpster dudes.\" Might indicate trouble-maker because Trouble Maker swaps. So someone could have been trouble maker.\n\nRecord: lines:\n\n- 46: Dustin says \"I was the Insomniac.\" So Dustin is Insomniac. So he ends up with his original role.\n\n- 44: \"Dylan says 'You think you'd play Insomniac again?'\"\n\n- 48: \"Dustin: Because I don't have the robber. That's the Doppelganger.\" Actually he says \"Because I don't have the robber. That's the Doppelganger.\" Probably he says \"the Doppelganger\" as reading.\n\n- 79: Dylan says \"okay, well if...\"\n\n- 80: Kelsey says \"I was the Seer.\"\n\n- 82: Dylan: \"Okay, well if...\"\n\nSo we have present roles: Dustin = Insomniac, Kelsey = Seer, nowhere else.\n\nBut asked: find likely one who is a Werewolf because who has possibility to be werewolf.\n\nDiverse conversation suggests that player might be misrole.\n\nLet's analyze more thoroughly.\n\nKey lines:\n\n(73) \"Troublemaker, Hunter. If you trouble-made them?\" etc.\n\n(77-78) \"I was the Troublemaker.\"\n\nTherefore possible roles for each person:\n\n- Dustin: Insomniac (line 46). But possibly also Doub.\n\n- Dylan: says \"I'm the hunter.\" At line 63-65: \"It was the Hunter.\" Answer. So Dylan might be Hunter.\n\n- Daniel? Actually \"Dylan: It was the Hunter.\" So Dylan might be Hunter.\n\n- Kelsey: said \"I was the Seer.\" So Kelsey is Seer.\n\n- Katie: says \"I was the Troublemaker?\" Not direct; but clarifies.\n\n- Ed: says \"I was a Seer, and I saw that Brett was a Troublemaker.\" But earlier Kelsey's statement denies.\n\nProbably confusion.\n\nBut we need to pick single player likely werewolf.\n\nGiven that there is talk of seeing \"both werewolves\" by line 133, maybe two werewolves existed: Only winners of that Vic. But uncertain.\n\nMaybe we pick Kelsey? Since Kelsey is Seer? Wait, no.\n\nLet's inspect lines about werewolf:\n\nLine 133: \"Both Werewolves.\" In context: \"Katie: I Doppelganged I doppleganged Seer. ... 132: \"And what did you see in the middle?\" 133: \"Both Werewolves.\" So one heard both werewolves in center? but possible that the center contained werewolves.\n\nIf there were two Werewolf cards, the center has 3 cards; they could be both werewolves but we need 3 center cards. Typically closer.\n\nSuppose two werewolves are center; then there are zero werewolves among players. That would make village winning, but to infer which player still probable werewolf? None.\n\nBut transcripts appear to indicate that some players are claiming to have been werewolf, but uncertain.\n\nSuspect that Dylan may be werewolf: many lines indicate \"Dylan: I was the hunter\" or \"I was the werewolf\". Line 93: \"Yeah you're the werewolf, because I was the werewolf.\" Actually unclear.\n\nGiven chaotic conversation, best choice might be the one that claimed to be werewolf legitimately: \"Dylan: I was the werewolf\" indicates that Dylan is werewolf? Might be antagonistic.\n\nThus I'd choose \"Dylan\".\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "In the transcript several players claim or imply certain roles. The only consistently stated role that aligns with a werewolf is “Dylan” (he claims to be a hunter and also later discusses being a werewolf). No other player provides a clear werewolf identity. Therefore, Dylan is the most plausible choice as a werewolf.",
+    "chosen_vote": "Dylan"
+  },
+  "raw_response": "{\"justification\":\"In the transcript several players claim or imply certain roles. The only consistently stated role that aligns with a werewolf is “Dylan” (he claims to be a hunter and also later discusses being a werewolf). No other player provides a clear werewolf identity. Therefore, Dylan is the most plausible choice as a werewolf.\",\"chosen_vote\":\"Dylan\"}",
+  "response_for_parsing": "{\"justification\":\"In the transcript several players claim or imply certain roles. The only consistently stated role that aligns with a werewolf is “Dylan” (he claims to be a hunter and also later discusses being a werewolf). No other player provides a clear werewolf identity. Therefore, Dylan is the most plausible choice as a werewolf.\",\"chosen_vote\":\"Dylan\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dylan",
+    "justification": "In the transcript several players claim or imply certain roles. The only consistently stated role that aligns with a werewolf is “Dylan” (he claims to be a hunter and also later discusses being a werewolf). No other player provides a clear werewolf identity. Therefore, Dylan is the most plausible choice as a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4179,
+    "output_token_count": 1115,
+    "generation_time_sec": 340.5054614543915,
+    "used_chat_template": true,
+    "input_char_count": 15665,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

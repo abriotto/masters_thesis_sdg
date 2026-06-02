@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game4.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have four players: Caitlynn, Mitchell, Alana, Mike. The transcript is garbled, unclear. We need to choose a player to accuse as a Werewolf based on observation. This is ambiguous, but we must come up with justification.\n\nLet's parse.\n\nAt start of game, players likely had unique roles; but the discussion suggests confusion about who has what. The transcript shows miscommunication. However, we can glean certain key statements:\n\n- Mitch says: \"All right, here... *table: ...*\n\n- User # is or maybe confusion.\n\nWe can see: \"Alana: The 3 lines clockwise etc.\" Hard.\n\nBut basically, we suspect that Caitlynn might be suspect, because the transcripts show many statements about her being a werewolf etc. The transcripts mention a \"werewolf\" somewhere about \"there is a werewolf\". But which references?\n\nLet's find explicit claims:\n\nFrom line 29-30:  \n> Mitch: It's fair.  \n> Alana: To counteract that. No, I'm the seer. I was, at least. If there's a troublemaker on the table, might not be anymore, if he claims to not have been moved.\n\nThis indicates confusion.\n\nLater lines:  \n\nLine 69: \"Mitchell: Yes. I think we both-\" no further info.\n\nAt line 96: \"Mitchell: We absolutely have to vote for Caitlynn\"\n\nSo Mitchell wants to kill Caitlynn. He thinks Caitlynn is suspected. So maybe Caitlynn is the suspect.\n\nAlso earlier line 35: \"Mitchell: Okay. So she was a lone werewolf, she looked in the middle, she saw troublemaker.\"\n\nBut the transcript is very chaotic. The best guess: Caitlynn might be the werewolf. The rest might be lying.\n\nThus, the answer: results want a single person. Justification: Based on the observation that the player consistently being blamed is Caitlynn, who is constantly accused of being werewolf.\n\nCheck assassin: The player \"Caitlynn\" appears suspect.\n\nThus, we should vote for Caitlynn.\n\nNo other evidence tells us someone else: the statements from mitigation revolve around problem with conversation other than Caitlynn. The most obvious suspect is Caitlynn.\n\nTherefore, choose Caitlynn. Let's produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript reveals a repeated pattern of accusations aimed at Caitlynn, with multiple players calling her a suspect in various threads suggesting she might have swapped or hidden a werewolf card. Given that Lauren is the only name mentioned most often as a possible manipulator and several points in the discussion (e.g., “Mitchell: We absolutely have to vote for Caitlynn”) point to Caitlynn as the primary target, she is the most likely werewolf given the lack of clear other evidence.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "{\"justification\":\"The transcript reveals a repeated pattern of accusations aimed at Caitlynn, with multiple players calling her a suspect in various threads suggesting she might have swapped or hidden a werewolf card. Given that Lauren is the only name mentioned most often as a possible manipulator and several points in the discussion (e.g., “Mitchell: We absolutely have to vote for Caitlynn”) point to Caitlynn as the primary target, she is the most likely werewolf given the lack of clear other evidence.\",\"chosen_vote\":\"Caitlynn\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript reveals a repeated pattern of accusations aimed at Caitlynn, with multiple players calling her a suspect in various threads suggesting she might have swapped or hidden a werewolf card. Given that Lauren is the only name mentioned most often as a possible manipulator and several points in the discussion (e.g., “Mitchell: We absolutely have to vote for Caitlynn”) point to Caitlynn as the primary target, she is the most likely werewolf given the lack of clear other evidence.\",\"chosen_vote\":\"Caitlynn\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "The transcript reveals a repeated pattern of accusations aimed at Caitlynn, with multiple players calling her a suspect in various threads suggesting she might have swapped or hidden a werewolf card. Given that Lauren is the only name mentioned most often as a possible manipulator and several points in the discussion (e.g., “Mitchell: We absolutely have to vote for Caitlynn”) point to Caitlynn as the primary target, she is the most likely werewolf given the lack of clear other evidence."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3680,
+    "output_token_count": 600,
+    "generation_time_sec": 182.99731135368347,
+    "used_chat_template": true,
+    "input_char_count": 14031,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

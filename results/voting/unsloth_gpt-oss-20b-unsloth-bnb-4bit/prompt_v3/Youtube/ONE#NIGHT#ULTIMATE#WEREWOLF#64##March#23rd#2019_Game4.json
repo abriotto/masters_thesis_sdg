@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game4.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to examine the transcript. It's garbled. They refer to certain roles like Copycat (likely referring to doppelganger). There's mention of \"Troublemaker\" etc. There are 4 players: Justin, James, Paul, Mitchell. We need to guess which player is werewolf based on the discussion.\n\nThe transcript is problematic; many lines are out-of-context maybe being mis-copied. In such scenario, we might use logic: Among 4 players, some might widely suspect particular individuals.\n\nKey phrases: \nLine [20] \"Like this? 100%\". It's unclear. \nlines around 25: \"I am out of that.\" \nline [50] \"Mitchell: How?\" \nThis is nonsense possibly due to copy.\n\nAlso there is \"Mitchell: I think these two guys are werewolves.\" That hints that maybe someone thought two guys are werewolves: maybe two among four? Actually lines near 27: \"[27] Mitchell: James, I trust you...\"\n\nIt says “These two guys are werewolves.” Could be referring to \"two werewolves\" but with only 4 players, there can be up to two werewolves. It seems maybe their suspect target(s) is James? read point 26: \"I'm going to pause...\" line 54: \"James: A werewolf.\"\n\nThey keep saying \"who are the two werewolves?\"\n\nline 57-58: \"James: He could be a tanner. No, you guys woke up together. Because you want to claim troublemaker... \".\n\nConfusing but eventually maybe the players think that certain individuals have been \"waking up\" like certain roles performed. The only role that can wake up is Copycat (Doppelganger), but here mentions \"Copycat wake up,\" \"Werewolves wake up\".\n\nGiven the summary might hint that Justin is a troublemaker. But the copy of transcript says 82: \"Justin: I switched you two, by the way. You don't have to-\" Then earlier 89: \"Justin: …\". The \"troublemaker is right there.\" That indicates some confusion re: what role.\n\nBut we might deduce something: If Justin is a troublemaker, after performing the action at line 4, they'd exchange two other players. That would cause role switches—then the actual werewolf(s) may be buried somewhere else. But our goal is to guess which player is a werewolf.\n\nFrom the transcript, it seems many debriefs revolve around suspicion of James being a werewolf (maybe?), or perhaps Paul? However see 31 - \"This was: The two guys are werewolves,\" lines 29-32 where \"Mitchell: I think these two guys are werewolves.\" Another says \"These aren't really?\".\n\nGiven the poorly formatted transcript, we cannot be sure.\n\nHowever we may rely on typical pattern: In small group of four, if one knows which categories: Usually, in pure 4-player game with 1 center card difference (we have 3 center cards, 3 extra). If this game were: roles: copycat turns into whatever other role. But the transcript references \"Copycat, wake up and look at one of the center cards\". So there's a copycat probably at start: they will become whatever card is in center. People maybe know that on that card.\n\nAlso the game says Who had roles? Possibly it's a standard random selection.\n\nBut our job: choose a player to vote as werewolf. Maybe we could guess that James is a werewolf? Actually line 44: \"James: Let's kill them, should we?\" (victim?). Perhaps the key is that Justin later says he's troublemaker and did not actually provide an action? Actually he says \"Justin: Troublemaker.\" He posts at line 59: \"Justin: Troublemaker.\" That indicates Justin was a troublemaker at the beginning, before any swap. Then they might have swapped. But after swapping, he likely ended up being in center.\n\nActually literal statement: at line 59 \"Justin: Troublemaker.\"\n\nHe claims \"I switched you two, by the way.\" refers to something else.\n\nWait, let's tempt that the players all shouted etc interplay.\n\nIn this game, perhaps the only real suspicious is \"James\" who often claims \"He's a werewolf.\" So I'd choose James as likely werewolf.\n\nThus answer: justify with above reasoning and choose James.\n\nLet's produce final JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains repeated accusations that only a few specific players, notably James and an unnamed second player, were suspected of being werewolves. Several statements such as \"These two guys are werewolves,\" and a claim that James is a werewolf are direct claims. Minor inconsistencies in the dialogue suggest misinformation, but James’ most frequent and explicit references as a suspect point to him. Consequently, the most likely werewolf among those discussed appears to be James.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains repeated accusations that only a few specific players, notably James and an unnamed second player, were suspected of being werewolves. Several statements such as \\\"These two guys are werewolves,\\\" and a claim that James is a werewolf are direct claims. Minor inconsistencies in the dialogue suggest misinformation, but James’ most frequent and explicit references as a suspect point to him. Consequently, the most likely werewolf among those discussed appears to be James.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains repeated accusations that only a few specific players, notably James and an unnamed second player, were suspected of being werewolves. Several statements such as \\\"These two guys are werewolves,\\\" and a claim that James is a werewolf are direct claims. Minor inconsistencies in the dialogue suggest misinformation, but James’ most frequent and explicit references as a suspect point to him. Consequently, the most likely werewolf among those discussed appears to be James.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "The transcript contains repeated accusations that only a few specific players, notably James and an unnamed second player, were suspected of being werewolves. Several statements such as \"These two guys are werewolves,\" and a claim that James is a werewolf are direct claims. Minor inconsistencies in the dialogue suggest misinformation, but James’ most frequent and explicit references as a suspect point to him. Consequently, the most likely werewolf among those discussed appears to be James."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2989,
+    "output_token_count": 1021,
+    "generation_time_sec": 307.7941794395447,
+    "used_chat_template": true,
+    "input_char_count": 11708,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

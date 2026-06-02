@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game1.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Roles mentioned/claimed:\n        *   Jacob: Villager (Claimed at [60])\n        *   Sean: Robber (Claimed at [98])\n        *   Zack: Troublemaker (Claimed at [115])\n        *   Hunter: Claimed to be \"one of the cards that messes up other people... robber or troublemaker\" ([140]).\n\n    *   Jacob claims Villager.\n    *   Sean claims Robber.\n    *   Zack claims Troublemaker.\n    *   Hunter claims Robber or Troublemaker.\n\n    *   If Sean is Robber and Zack is Troublemaker, Hunter cannot be either (unless he's lying or was swapped).\n    *   If Hunter is Robber or Troublemaker, then either Sean or Zack must be lying (or swapped).\n    *   Wait, Hunter admitted to looking at his card when he wasn't supposed to ([14], [153]). This might mean he knows his role but is playing loosely.\n\n    *   Werewolves want to avoid being voted out.\n    *   Villagers want to vote out a Werewolf.\n    *   Tanner wants to be voted out.\n\n    *   Jacob: Claims Villager.\n    *   Sean: Claims Robber.\n    *   Zack: Claims Troublemaker.\n    *   Hunter: Claims Robber/Troublemaker.\n\n    *   If Sean is Robber and Zack is Troublemaker, Hunter's claim is contradictory.\n    *   If Hunter is actually a Werewolf, he's trying to blend in by claiming a role that \"messes up other people.\"\n    *   However, the discussion is very chaotic and doesn't follow a strict logic. The players are treating it as a \"test run.\"\n\n    *   Jacob: Villager.\n    *   Sean: Robber.\n    *   Zack: Troublemaker.\n    *   Hunter: Claims Robber/Troublemaker.\n\n    If Sean is Robber and Zack is Troublemaker, Hunter is the odd one out. He claims to be one of those roles, but both are already claimed. This makes Hunter the most suspicious.\n\n    *   Wait, did anyone actually vote?\n    *   [235] Jacob: \"I vote myself.\"\n    *   The transcript ends there. The task is to vote for the player I believe is a Werewolf.\n\n    *   Jacob: Claims Villager.\n    *   Sean: Claims Robber.\n    *   Zack: Claims Troublemaker.\n    *   Hunter: Claims Robber or Troublemaker.\n    *   Since Robber and Troublemaker are unique roles, and Sean and Zack claimed them, Hunter's claim is logically impossible if the others are telling the truth.\n    *   Hunter also admitted to cheating/looking at his card ([14]), which might be a cover or just a mistake.\n    *   In a game of 4 players, if 3 claim Village roles (Villager, Robber, Troublemaker), the 4th is the most likely Werewolf.\n\n    *   Could Hunter be the Tanner? (Wants to be voted out).\n    *   Could Sean or Zack be the Werewolf? (Bluffing as Robber/Troublemaker).\n    *   Could Jacob be the Werewolf? (Bluffing as Villager).\n    *   Hunter's claim is the most vague (\"robber or troublemaker\"). Usually, Werewolves bluff roles. Claiming a role that is already claimed by two other people is a poor bluff, but it's the only inconsistency in the claims.\n\n    *   Jacob: Villager\n    *   Sean: Robber\n    *   Zack: Troublemaker\n    *   Hunter: Robber/Troublemaker (Contradiction)\n\n    Hunter is the most likely candidate for Werewolf because his claim conflicts with both Sean's and Zack's specific claims.\n\n    *   Wait, let's re-read:\n        [140] Hunter: \"I am one of the cards that messes up other people. So robber or troublemaker.\"\n        [145] Sean: \"But if he says troublemaker and I'm robber...\"\n        [146] Hunter: \"Then Zack's lying.\"\n        [148] Hunter: \"But if Zack's troublemaker and you say you're the robber and I'm the robber, then you're lying.\"\n        [150] Hunter: \"But you both could be telling the truth and I could be lying.\"\n\n    Hunter is openly admitting he might be lying or that others might be. This is typical of a Werewolf trying to create confusion or a Tanner trying to get voted out. However, based on the claims, Hunter is the only one whose claim is not a specific role but a category that is already filled by others.\n\n    *   Jacob: Villager\n    *   Sean: Robber\n    *   Zack: Troublemaker\n    *   Hunter: ? (Claims Robber/Troublemaker)\n\n    If we assume the others are telling the truth, Hunter must be the Werewolf.\n\n    *   Justification: Jacob, Sean, and Zack claimed specific village roles (Villager, Robber, and Troublemaker, respectively). Hunter claimed to be either the Robber or the Troublemaker, which contradicts the specific claims made by Sean and Zack. Since these roles are unique, Hunter's claim is logically inconsistent with the others, making him the most likely Werewolf.\n    *   Chosen vote: Hunter.",
+  "parsed_output": {
+    "justification": "Jacob, Sean, and Zack each claimed a specific village role: Villager, Robber, and Troublemaker, respectively. Hunter claimed to be either the Robber or the Troublemaker, which directly contradicts the specific claims made by Sean and Zack. Since these roles are unique, Hunter's claim is logically inconsistent with the others, making him the most likely Werewolf.",
+    "chosen_vote": "Hunter"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jacob, Sean, and Zack each claimed a specific village role: Villager, Robber, and Troublemaker, respectively. Hunter claimed to be either the Robber or the Troublemaker, which directly contradicts the specific claims made by Sean and Zack. Since these roles are unique, Hunter's claim is logically inconsistent with the others, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Hunter\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jacob, Sean, and Zack each claimed a specific village role: Villager, Robber, and Troublemaker, respectively. Hunter claimed to be either the Robber or the Troublemaker, which directly contradicts the specific claims made by Sean and Zack. Since these roles are unique, Hunter's claim is logically inconsistent with the others, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Hunter\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Hunter",
+    "justification": "Jacob, Sean, and Zack each claimed a specific village role: Villager, Robber, and Troublemaker, respectively. Hunter claimed to be either the Robber or the Troublemaker, which directly contradicts the specific claims made by Sean and Zack. Since these roles are unique, Hunter's claim is logically inconsistent with the others, making him the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5574,
+    "output_token_count": 1355,
+    "generation_time_sec": 143.64569902420044,
+    "used_chat_template": true,
+    "input_char_count": 17517,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   Night Action Order: Doppelganger -> Werewolves -> Minion -> Masons -> Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n\n    *   Alvin: Claims Villager.\n    *   Mitchell: Claims Seer. Says he verified Alvin as a Villager.\n    *   Justin: Claims Seer. Says he looked at the center cards and saw a Werewolf and a Drunk.\n    *   James: Doesn't claim a role but is very confident that Mitchell is the Werewolf.\n\n    *   Two players (Mitchell and Justin) both claim to be the Seer. Only one Seer can exist (unless there's a Doppelganger).\n    *   Mitchell claims he saw Alvin (Villager).\n    *   Justin claims he saw a Werewolf and a Drunk in the center.\n    *   If Justin is the Seer and saw a Werewolf and a Drunk in the center, then there is only one Werewolf card left in the game (since there are 4 players and 3 center cards, total 7 cards). Wait, the rules say \"number of candidate roles is always equal to the number of players plus 3\". So 4 players + 3 = 7 roles.\n    *   If Justin saw a Werewolf and a Drunk in the center, and Alvin is a Villager, then the remaining roles are distributed among James, Mitchell, and Justin.\n    *   If Justin is the Seer, and Mitchell is lying about being the Seer, Mitchell could be the Werewolf or the Tanner.\n    *   If Mitchell is the Seer, and Justin is lying, Justin could be the Werewolf or the Tanner.\n\n    *   James is extremely confident that Mitchell is the Werewolf.\n    *   Alvin thinks Justin is the Werewolf and Mitchell is the Tanner.\n    *   Justin suggests Mitchell is the Tanner.\n    *   Mitchell argues Justin is the Werewolf.\n\n    *   Justin's claim: Seer, saw Werewolf and Drunk in center.\n    *   Mitchell's claim: Seer, saw Alvin (Villager).\n    *   If Justin is telling the truth about the center cards (Werewolf and Drunk), then only one Werewolf card is in play.\n    *   If Mitchell is the Werewolf, he would want to divert suspicion. Claiming Seer and verifying Alvin (who claimed Villager) is a common strategy.\n    *   If Justin is the Werewolf, he might claim Seer and say the Werewolf is in the center to make himself seem safe.\n    *   James's confidence: James is very adamant that Mitchell is the target. While James doesn't reveal his role, his certainty is a strong signal in these games (though not definitive).\n\n    *   Alvin: Claims Villager.\n    *   James: No claim, but strongly suspects Mitchell.\n    *   Mitchell: Claims Seer, verifies Alvin.\n    *   Justin: Claims Seer, says Werewolf/Drunk are in center.\n\n    *   If Justin is the Werewolf: He claims Seer and says a Werewolf is in the center to deflect.\n    *   If Mitchell is the Werewolf: He claims Seer and verifies Alvin to gain trust.\n    *   If Mitchell is the Tanner: He wants to be voted out. He claims Seer and gets into a fight with Justin.\n    *   If Justin is the Tanner: He claims Seer and fights with Mitchell.\n\n    *   James is very confident Mitchell is the Werewolf.\n    *   Alvin thinks Justin is the Werewolf and Mitchell is the Tanner.\n    *   Wait, Alvin says \"I think Justin's the werewolf and Mitchell is the tanner.\"\n    *   James says \"No matter what anyone says my vote is Mitchell.\"\n\n    *   If Mitchell is the Werewolf, he's lying about being the Seer.\n    *   If Justin is the Werewolf, he's lying about being the Seer.\n    *   Looking at the transcript, Mitchell's claim to be Seer came first. Justin countered immediately.\n    *   Mitchell's verification of Alvin is a \"safe\" play.\n    *   Justin's claim about the center cards (Werewolf and Drunk) is a \"bold\" play (claiming the Werewolf is not in play/only one is).\n\n    *   James's insistence on Mitchell is the strongest piece of \"meta\" evidence.\n    *   Alvin's suspicion of Justin is also there, but he also thinks Mitchell is the Tanner.\n    *   If Mitchell is the Tanner, voting for him makes the Tanner win. If Mitchell is the Werewolf, voting for him makes the Village win.\n    *   The prompt asks to vote for the player I believe is a Werewolf.\n\n    *   Justin claims Seer (center: Werewolf, Drunk).\n    *   Mitchell claims Seer (Alvin: Villager).\n    *   Alvin claims Villager.\n    *   James: No claim, votes Mitchell.\n    *   If Justin is the Seer, and he saw a Werewolf in the center, then there is only one Werewolf card left. If Mitchell is the Werewolf, then the Village wins by voting him.\n    *   If Mitchell is the Seer, and Justin is the Werewolf, Justin is lying about the center cards.\n    *   James's confidence is the deciding factor here. In these games, players often have a \"gut feeling\" or specific info (like being the Robber or Insomniac) that they don't explicitly state. James's absolute certainty (\"I guarantee you... my vote is Mitchell\") suggests he might have information.\n\n    *   Wait, let's look at the transcript again.\n    *   [75] James: \"No matter what anyone says my vote is Mitchell.\"\n    *   [119] James: \"I'm so confident it's Mitchel.\"\n    *   Alvin: \"I vote for Justin I think.\"\n    *   Justin and Mitchell are fighting.\n\n    *   If Mitchell is the Werewolf, he's bluffing as Seer.\n    *   If Justin is the Werewolf, he's bluffing as Seer.\n    *   If James is the Robber or Insomniac, he might know something.\n    *   Let's re-evaluate Mitchell's behavior. He claims Seer and verifies Alvin. This is a classic Werewolf move to build an alliance.\n    *   Justin's claim about the center cards is more specific.\n\n    *   James is very confident Mitchell is the Werewolf.\n    *   Alvin thinks Justin is the Werewolf.\n    *   Mitchell and Justin both claim Seer.\n    *   Given the options, Mitchell's behavior (claiming Seer and verifying a Villager) is slightly more indicative of a Werewolf trying to blend in, whereas Justin's claim is more disruptive. However, James's absolute certainty is a strong indicator.\n\n    *   Wait, let's look at the roles again. Could James be the Robber? If James was the Robber and stole Mitchell's card, he would know Mitchell's starting role. If Mitchell started as a Werewolf, James would be certain.\n    *   If James is the Robber and stole Mitchell's card, and it was a Werewolf card, then Mitchell is the Werewolf (unless the Troublemaker swapped him).\n    *   This makes James's confidence make sense.\n\n    *   Chosen vote: Mitchell.\n    *   Justification: Mitchell and Justin both claim to be the Seer, meaning at least one is lying. James expresses extreme confidence that Mitchell is the Werewolf, which suggests he may have information from a role like the Robber. Mitchell's strategy of claiming Seer and verifying Alvin's Villager claim is a common tactic for Werewolves to gain trust.",
+  "parsed_output": {
+    "justification": "Mitchell and Justin both claim to be the Seer, meaning at least one is lying. James expresses absolute confidence that Mitchell is the Werewolf, which suggests he may have acquired information from a role like the Robber or Insomniac. Mitchell's strategy of claiming Seer and verifying Alvin's Villager claim is a common tactic for Werewolves to establish trust and divert suspicion.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell and Justin both claim to be the Seer, meaning at least one is lying. James expresses absolute confidence that Mitchell is the Werewolf, which suggests he may have acquired information from a role like the Robber or Insomniac. Mitchell's strategy of claiming Seer and verifying Alvin's Villager claim is a common tactic for Werewolves to establish trust and divert suspicion.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell and Justin both claim to be the Seer, meaning at least one is lying. James expresses absolute confidence that Mitchell is the Werewolf, which suggests he may have acquired information from a role like the Robber or Insomniac. Mitchell's strategy of claiming Seer and verifying Alvin's Villager claim is a common tactic for Werewolves to establish trust and divert suspicion.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell and Justin both claim to be the Seer, meaning at least one is lying. James expresses absolute confidence that Mitchell is the Werewolf, which suggests he may have acquired information from a role like the Robber or Insomniac. Mitchell's strategy of claiming Seer and verifying Alvin's Villager claim is a common tactic for Werewolves to establish trust and divert suspicion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3973,
+    "output_token_count": 1892,
+    "generation_time_sec": 194.66821718215942,
+    "used_chat_template": true,
+    "input_char_count": 14116,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

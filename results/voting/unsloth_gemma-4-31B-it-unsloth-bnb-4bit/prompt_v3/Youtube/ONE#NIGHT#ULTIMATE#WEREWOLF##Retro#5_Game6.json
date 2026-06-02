@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles available: (Not explicitly listed, but the transcript mentions Insomniac, Seer, Robber, Troublemaker, Werewolf).\n\n    *   [1-8]: Paul, Justin, and Mitchell are joking around. Justin and Mitchell seem to be pretending to be werewolves (\"Goodnight fellow werewolves\", \"Do you think he'll buy it?\"). This is likely bluffing/joking before the game officially starts or during the night phase (though the announcer is speaking). Wait, the transcript shows them talking *during* the night phase? Let's re-read.\n    *   [4-15]: The Announcer is calling roles.\n    *   [18]: Paul says: \"I start as the insomniac. I did not wake up as the insomniac.\" (Wait, if he started as Insomniac and didn't wake up, he must have been swapped).\n    *   [21]: Justin says: \"I switched you two.\" (Claiming Troublemaker).\n    *   [29-31]: Mitchell says: \"I looked at yours [Justin's]... and saw troublemaker.\" (Claiming Seer).\n    *   [32-33]: Justin asks Mitchell if he woke up as the Seer.\n    *   [36]: Paul says: \"I was lying. Because. Okay I was a werewolf. But that means that you're a werewolf now.\" (Paul claims he was a werewolf and Justin swapped him with Mitchell).\n    *   [41]: Mitchell says: \"Jokes on you guys, he didn't switch us. He didn't, you're still the werewolf. Right Justin?\" (Mitchell is contradicting Justin's claim of being the Troublemaker).\n    *   [42]: Justin insists: \"No, this time I definitely switched.\"\n\n    *   Justin claims Troublemaker (swapped Paul and Mitchell).\n    *   Mitchell claims Seer (saw Justin as Troublemaker).\n    *   Paul claims Werewolf (and says he was swapped with Mitchell).\n\n    *Wait, let's look at the logic:*\n    If Justin is Troublemaker and swapped Paul (Werewolf) and Mitchell (Seer):\n    - Paul (Werewolf) becomes Seer.\n    - Mitchell (Seer) becomes Werewolf.\n    - Justin remains Troublemaker.\n    - Paul (now Seer) would not have woken up as Insomniac (which he claimed he started as).\n\n    *Wait, Paul's claim is confusing:*\n    [18] Paul: \"I start as the insomniac. I did not wake up as the insomniac.\"\n    [36] Paul: \"I was lying... I was a werewolf.\"\n\n    If Paul was the Werewolf and Justin (Troublemaker) swapped Paul and Mitchell:\n    - Paul is now whatever Mitchell was.\n    - Mitchell is now Werewolf.\n\n    If Mitchell is the Werewolf:\n    - Mitchell claims he is the Seer and saw Justin as Troublemaker.\n    - If Mitchell is lying about being the Seer, he's likely the Werewolf.\n\n    Let's re-examine the \"joking\" at the start:\n    [7] Mitchell: \"Goodnight fellow werewolves.\"\n    [8] Justin: \"Yeah, goodnight Mitchell. Do you think he'll buy it?\"\n    This suggests Justin and Mitchell were pretending to be werewolves to confuse Paul.\n\n    Now look at the end:\n    Paul claims he was the werewolf and was swapped.\n    Mitchell claims Justin didn't switch them and Paul is still the werewolf.\n    Justin insists he did switch them.\n\n    If Justin is the Troublemaker and he swapped Paul (Werewolf) and Mitchell (Seer/Villager):\n    - Mitchell is now the Werewolf.\n    - Paul is now the Seer/Villager.\n\n    If Justin is lying and is actually the Werewolf:\n    - He's trying to frame Mitchell or Paul.\n\n    Let's look at the claims again:\n    Paul: \"I was a werewolf.\" (Admitting it, but claiming he was swapped).\n    Mitchell: \"He didn't switch us... you're still the werewolf [Paul].\"\n    Justin: \"I definitely switched.\"\n\n    If Paul is telling the truth about being the Werewolf and Justin is telling the truth about being the Troublemaker, then Mitchell is the current Werewolf.\n    If Paul is lying about being the Werewolf (Tanner?), and Justin is lying about being the Troublemaker, then Justin or Paul could be the Werewolf.\n\n    However, in these games, the person who admits to being the werewolf but claims they were swapped is often the one trying to shift the role to someone else, or the person being swapped *into* the werewolf role is the target.\n\n    Let's evaluate Mitchell:\n    Mitchell claims he is the Seer and saw Justin as Troublemaker.\n    If Mitchell is the Werewolf, he's lying about being the Seer.\n    If Justin is the Troublemaker and swapped Paul (Werewolf) and Mitchell (Seer), then Mitchell is now the Werewolf.\n\n    Wait, Paul's statement [18] \"I start as the insomniac. I did not wake up as the insomniac\" is very strange. If he started as Insomniac, he *should* have woken up at the end of the night unless he was swapped. If he was swapped by the Troublemaker, he wouldn't wake up as Insomniac. But then he says [36] \"I was lying... I was a werewolf.\"\n\n    If Paul was the Werewolf and Justin (Troublemaker) swapped Paul and Mitchell, then Mitchell is the Werewolf.\n    If Paul is the Tanner, he wants to be voted out.\n    If Mitchell is the Werewolf, he wants to avoid being voted out.\n\n    Let's look at the interaction:\n    Justin: \"I switched you two.\"\n    Mitchell: \"He didn't switch us... you're still the werewolf [Paul].\"\n    Paul: \"I was a werewolf... you're a werewolf now [Mitchell].\"\n\n    If Justin is the Troublemaker, he knows he swapped them. If he says he swapped Paul and Mitchell, and Paul says he was the werewolf, then Mitchell is the werewolf.\n\n    Is there any reason to believe Justin is the werewolf?\n    If Justin is the werewolf, he's lying about being the Troublemaker. He's trying to make Mitchell the werewolf by claiming a swap happened.\n\n    Is there any reason to believe Paul is the werewolf?\n    Paul admitted it, but then claimed he was swapped. If he wasn't swapped, he's the werewolf.\n\n    Let's look at the \"joking\" again. Justin and Mitchell were acting like werewolves. This often means they are the ones actually playing the roles or trying to confuse the other.\n\n    If Justin is the Troublemaker and Paul was the Werewolf, then Mitchell is the Werewolf.\n    If Justin is the Werewolf and is lying about being the Troublemaker, then Justin is the Werewolf.\n\n    Wait, Paul's claim \"I start as the insomniac. I did not wake up as the insomniac\" followed by \"I was lying... I was a werewolf\" is a huge red flag. He's contradicting himself.\n\n    Let's re-read:\n    Paul: \"I start as the insomniac. I did not wake up as the insomniac.\"\n    (Justin claims he swapped Paul and Mitchell).\n    Paul: \"I was lying... I was a werewolf. But that means that you're a werewolf now [Mitchell].\"\n\n    If Paul was the Werewolf and Justin swapped him with Mitchell, Mitchell is now the Werewolf.\n    If Paul is the Tanner, he's just lying to get voted.\n    If Mitchell is the Werewolf, he's lying about being the Seer.\n\n    In a 3-player game, if one person claims Troublemaker and says they swapped the other two, and one of those two admits to being the Werewolf, the person who was swapped *into* the Werewolf role is the target.\n\n    Let's check the roles again.\n    Justin: Troublemaker (claimed)\n    Paul: Werewolf (starting role claimed)\n    Mitchell: Seer (starting role claimed)\n\n    If this is true:\n    Starting: Justin (Troublemaker), Paul (Werewolf), Mitchell (Seer).\n    Action: Justin swaps Paul and Mitchell.\n    Ending: Justin (Troublemaker), Paul (Seer), Mitchell (Werewolf).\n\n    Mitchell's response: \"Jokes on you guys, he didn't switch us. He didn't, you're still the werewolf. Right Justin?\"\n    Mitchell is trying to deny the swap happened to keep the Werewolf role on Paul. This is classic Werewolf behavior (diverting suspicion).\n\n    Therefore, Mitchell is the most likely Werewolf.\n\n    *   Justin claims Troublemaker and says he swapped Paul and Mitchell.\n    *   Paul admits he started as the Werewolf.\n    *   If the swap happened, Mitchell is now the Werewolf.\n    *   Mitchell denies the swap happened and tries to keep the suspicion on Paul.\n    *   This makes Mitchell the most likely candidate for the final Werewolf role.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Troublemaker and states he swapped Paul and Mitchell. Paul admits he started as the Werewolf, which would mean that after the swap, Mitchell became the Werewolf. Mitchell attempts to divert suspicion by denying the swap occurred and insisting Paul is still the Werewolf, which is consistent with Werewolf behavior.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Troublemaker and states he swapped Paul and Mitchell. Paul admits he started as the Werewolf, which would mean that after the swap, Mitchell became the Werewolf. Mitchell attempts to divert suspicion by denying the swap occurred and insisting Paul is still the Werewolf, which is consistent with Werewolf behavior.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Troublemaker and states he swapped Paul and Mitchell. Paul admits he started as the Werewolf, which would mean that after the swap, Mitchell became the Werewolf. Mitchell attempts to divert suspicion by denying the swap occurred and insisting Paul is still the Werewolf, which is consistent with Werewolf behavior.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Justin claims to be the Troublemaker and states he swapped Paul and Mitchell. Paul admits he started as the Werewolf, which would mean that after the swap, Mitchell became the Werewolf. Mitchell attempts to divert suspicion by denying the swap occurred and insisting Paul is still the Werewolf, which is consistent with Werewolf behavior."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2378,
+    "output_token_count": 2173,
+    "generation_time_sec": 212.1292941570282,
+    "used_chat_template": true,
+    "input_char_count": 9024,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin: Claims to be Troublemaker (T). Says he switched Mike with someone (Paul).\n    *   Mitchell: Claims to be Robber (R). Says he robbed Paul.\n    *   Paul: Claims to be Robber (R). Says he robbed Justin.\n    *   Mike: Claims to be Seer (S) / Copycat (C). Initially says he didn't see a werewolf in the center, then changes his story to say he *did* see a werewolf as Seer, but lied as Copycat.\n\n    *   *Mike's claims:* Mike's story is very inconsistent. He says he's the Copycat who became the Seer. He says he didn't see a werewolf in the center (which would be a weird thing for a Seer to say if they were trying to convince people they are the Seer), then changes it to \"I saw a werewolf as the Seer, but lied as the Copycat.\" This is confusing and sounds like a bluff.\n    *   *Paul and Mitchell's claims:* Both claim to be the Robber. Only one Robber exists. One of them is lying.\n    *   *Justin's claim:* Justin claims to be the Troublemaker. He says he switched Mike with Paul.\n\n    *   If Justin is the Troublemaker and switched Mike and Paul:\n        *   Mike's current role is Paul's starting role.\n        *   Paul's current role is Mike's starting role.\n    *   If Paul is the Robber and robbed Justin:\n        *   Paul's starting role was Robber.\n        *   Paul's current role (before Troublemaker) was whatever Justin had.\n    *   If Mitchell is the Robber and robbed Paul:\n        *   Mitchell's starting role was Robber.\n        *   Mitchell's current role (before Troublemaker) was whatever Paul had.\n\n    *   Mike's behavior is highly suspicious. He contradicts himself immediately.\n    *   Paul and Mitchell are fighting over the Robber role.\n    *   Justin is acting as the coordinator/judge.\n\n    *   Wait, let's look at the transcript again.\n    *   Mike: \"I did not see a werewolf.\" (Line 51)\n    *   Justin: \"I don't believe that for a second.\" (Line 52)\n    *   Mike: \"No, I saw a werewolf.\" (Line 100)\n    *   Mike: \"As the copycat, I did not see werewolves. As the seer, I saw werewolves.\" (Lines 102-104)\n    *   This is a blatant contradiction. If he was the Copycat who became the Seer, he only has one set of information (the Seer's information). He can't \"see\" something as one and \"not see\" it as the other unless he's talking about different times, but the Seer action happens *after* the Copycat action. If the Copycat becomes the Seer, they perform the Seer's action.\n\n    *   Werewolves want to divert suspicion.\n    *   Tanners want to be voted out.\n    *   Paul says \"I think I'm going to need to probably die\" (Line 98) and \"I hope you vote for me\" (Line 140). This is classic Tanner behavior.\n    *   Mitchell and Paul both claiming Robber: One is likely lying. If Paul is the Tanner, he might claim Robber to seem like a village role but then act suspicious to get voted out.\n\n    *   Justin says he switched Mike and Paul.\n    *   If Mike was the Werewolf and Paul was the Villager, and Justin switched them, Paul is now the Werewolf.\n    *   If Mike was the Villager and Paul was the Werewolf, and Justin switched them, Mike is now the Werewolf.\n\n    *   Mike's claims are the most erratic. He claims to be the Copycat/Seer but contradicts his own findings.\n    *   Paul is openly inviting votes (\"I hope you vote for me\"), which strongly suggests he is the Tanner.\n    *   Mitchell claims Robber.\n    *   Justin claims Troublemaker.\n\n    *   If Paul is the Tanner, and Justin switched Mike and Paul, then Mike is now the Tanner and Paul is whatever Mike was.\n    *   If Mike was the Werewolf and Justin switched him with Paul, Paul is now the Werewolf.\n    *   However, Mike's lying is very poor. Usually, Werewolves try to blend in. Mike is just confusing everyone.\n\n    *   Let's re-evaluate Mike. He says he saw a werewolf. If he's the Seer, he knows who the werewolf is. But he doesn't name anyone.\n    *   Wait, if Mike is the Werewolf, he would lie about being the Seer.\n    *   If Paul is the Tanner, he wants to die.\n    *   If Mitchell is the Werewolf, he's claiming Robber to hide.\n\n    *   Justin: Troublemaker (claims)\n    *   Mitchell: Robber (claims)\n    *   Paul: Robber (claims) / Tanner (behavior)\n    *   Mike: Seer/Copycat (claims)\n\n    *   If Paul is the Tanner, he's not the Werewolf.\n    *   If Justin is the Troublemaker, he's not the Werewolf.\n    *   That leaves Mitchell and Mike.\n    *   Mike's story is a mess. Mitchell's story is simple (I'm the Robber).\n    *   In One Night Ultimate Werewolf, the person with the most convoluted and contradictory story is often the Werewolf or the Tanner.\n    *   Mike's contradiction: \"I did not see a werewolf\" -> \"No, I saw a werewolf.\"\n    *   This is a huge red flag.\n\n    *   Justin votes Paul.\n    *   Mitchell votes Paul.\n    *   Mike votes Paul.\n    *   Paul votes \"not Mitchell\" (effectively Justin or Mike).\n    *   Mitchell then changes to Justin.\n\n    *   Wait, the prompt asks me to vote for the player I believe is the Werewolf.\n    *   If Paul is the Tanner, voting for him doesn't help the village.\n    *   If Mike is the Werewolf, he's doing a bad job of lying.\n    *   If Mitchell is the Werewolf, he's claiming Robber.\n\n    *   Let's look at the roles again. Copycat, Werewolf, Seer, Robber, Troublemaker, etc.\n    *   Mike claims Copycat -> Seer.\n    *   If Mike is the Werewolf, he's lying about being the Seer.\n    *   If Paul is the Tanner, he's lying about being the Robber.\n    *   If Mitchell is the Robber, he's telling the truth.\n    *   If Justin is the Troublemaker, he's telling the truth.\n\n    *   This distribution (Justin: T, Mitchell: R, Paul: Tanner, Mike: W) fits the behavior.\n    *   Mike's contradiction is the strongest evidence of deception.\n\n    *   Mike's claims are contradictory and illogical (claiming to be a Copycat-Seer but changing his answer about seeing a werewolf).\n    *   Paul's behavior (asking to be voted out) is highly indicative of the Tanner.\n    *   Justin and Mitchell's claims are consistent with their roles.\n    *   Therefore, Mike is the most likely candidate for the Werewolf.\n\n    *   Wait, Justin says he switched Mike and Paul.\n    *   If Mike was the Werewolf and Paul was the Tanner, and Justin switched them:\n        *   Paul is now the Werewolf.\n        *   Mike is now the Tanner.\n    *   If Paul is now the Werewolf, he might be pretending to be the Tanner to avoid being caught? No, that's counter-intuitive.\n    *   If Mike is now the Tanner, he might be acting crazy.\n    *   But if Paul was the Werewolf and Mike was the Tanner, and Justin switched them:\n        *   Mike is now the Werewolf.\n        *   Paul is now the Tanner.\n    *   This fits perfectly. Paul (now Tanner) wants to die. Mike (now Werewolf) is lying poorly.\n\n    *   Wait, let's check the \"Tanner\" logic again. The Tanner wins if they die. Paul is actively encouraging people to vote for him. This is the strongest signal in the game.\n    *   If Paul is the Tanner, he cannot be the Werewolf.\n    *   If Justin is the Troublemaker, he is not the Werewolf.\n    *   Between Mike and Mitchell, Mike's contradictions are far more suspicious.\n\n    *   Mike's claim to be the Copycat/Seer is inconsistent.\n    *   Paul's desire to be voted out suggests he is the Tanner.\n    *   Justin's claim to be the Troublemaker and his action of switching Mike and Paul suggests a role swap occurred.\n    *   If Paul ended as the Tanner, Mike likely ended as the Werewolf (or vice versa, but Mike's lying is more characteristic of a Werewolf trying to fake a power role).\n\n    *   Wait, if Mike is the Werewolf, why would he say \"I saw a werewolf\"? A Werewolf would usually say \"I saw a villager\" or \"I saw the center cards\" to avoid suspicion. Saying \"I saw a werewolf\" but not naming anyone is a weird bluff.\n    *   Actually, saying \"I saw a werewolf\" (meaning in the center) is a way to claim Seer without accusing anyone. But he first said \"I did not see a werewolf.\"\n    *   This inconsistency is the key.\n\n    *   Chosen vote: Mike.\n    *   Justification: Mike's claims are contradictory; he first stated he didn't see a werewolf in the center, then claimed he did as the Seer. Paul's behavior strongly suggests he is the Tanner, as he explicitly asks to be voted out. Justin and Mitchell's claims are more consistent, leaving Mike as the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mike's claims are highly contradictory; he initially stated he did not see a werewolf in the center, then later claimed he did as the Seer, which is an illogical inconsistency for a player claiming a specific role. Paul's behavior—explicitly asking to be voted out and stating he 'needs to probably die'—is a strong indicator that he is the Tanner. Given that Justin and Mitchell's claims are relatively consistent, Mike's erratic deception makes him the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike's claims are highly contradictory; he initially stated he did not see a werewolf in the center, then later claimed he did as the Seer, which is an illogical inconsistency for a player claiming a specific role. Paul's behavior—explicitly asking to be voted out and stating he 'needs to probably die'—is a strong indicator that he is the Tanner. Given that Justin and Mitchell's claims are relatively consistent, Mike's erratic deception makes him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike's claims are highly contradictory; he initially stated he did not see a werewolf in the center, then later claimed he did as the Seer, which is an illogical inconsistency for a player claiming a specific role. Paul's behavior—explicitly asking to be voted out and stating he 'needs to probably die'—is a strong indicator that he is the Tanner. Given that Justin and Mitchell's claims are relatively consistent, Mike's erratic deception makes him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike's claims are highly contradictory; he initially stated he did not see a werewolf in the center, then later claimed he did as the Seer, which is an illogical inconsistency for a player claiming a specific role. Paul's behavior—explicitly asking to be voted out and stating he 'needs to probably die'—is a strong indicator that he is the Tanner. Given that Justin and Mitchell's claims are relatively consistent, Mike's erratic deception makes him the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4342,
+    "output_token_count": 2426,
+    "generation_time_sec": 244.3912971019745,
+    "used_chat_template": true,
+    "input_char_count": 14462,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

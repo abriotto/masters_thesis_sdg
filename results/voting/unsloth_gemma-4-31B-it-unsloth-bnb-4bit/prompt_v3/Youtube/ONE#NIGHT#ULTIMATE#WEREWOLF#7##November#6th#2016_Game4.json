@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game4.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Alana: Claims she was the Seer (at least initially) and saw a werewolf (at [21], [30], [69], [73]).\n    *   Mitchell: Claims he is the Insomniac and woke up as the Insomniac (at [16], [20], [36], [63], [66]).\n    *   Mike: Claims he was the Insomniac and woke up as the Seer (at [37], [43], [51], [109]).\n    *   Caitlynn: Doesn't explicitly claim a role for herself, but supports Mike's story (at [52]).\n\n    *   Mitchell and Mike both claim to be the Insomniac. Only one Insomniac exists.\n    *   Alana claims to be the Seer. Mike claims he woke up as the Seer.\n    *   If Mike was the Insomniac and woke up as the Seer, he must have been swapped by the Robber or Troublemaker.\n    *   If Mitchell is the Insomniac and woke up as the Insomniac, he wasn't swapped.\n    *   Alana says she saw a werewolf. She doesn't explicitly say who, but later implies it was Caitlynn (at [102], [104]). Wait, let's re-read.\n    *   At [34], Alana says \"the werewolf was you\" to Mitchell? No, looking at the transcript:\n        [34] Alana: Serious horseplay, because the werewolf was you.\n        [35] Caitlynn: Oh.\n        [36] Mitchell: Okay. So she was a lone werewolf...\n        Wait, Alana said \"the werewolf was you\" to Mitchell. But then later she says \"we'll just kill her\" referring to Caitlynn. Let's re-examine.\n    *   [102] Alana: \"So she was a werewolf before and now she's claimed be the troublemaker. Either way, she's still a werewolf because she couldn't have moved her own card.\"\n    *   Wait, did Caitlynn claim to be the Troublemaker?\n        [52] Caitlynn: \"I can confirm that story\" (referring to Mike's story of being Insomniac and waking up as Seer).\n        [102] Alana says Caitlynn \"claimed be the troublemaker\". I don't see Caitlynn claiming Troublemaker in the transcript. Maybe it was implied or happened off-transcript/inaudibly.\n\n    *   Alana claims Seer.\n    *   Mitchell claims Insomniac.\n    *   Mike claims Insomniac -> Seer.\n    *   Caitlynn is the target of Alana and Mitchell's final agreement.\n\n    *   If Alana is the Seer and saw a werewolf, and she's pointing at Caitlynn, Caitlynn is a strong candidate.\n    *   If Mike is the Insomniac and woke up as the Seer, he was swapped.\n    *   If Mitchell is the Insomniac and woke up as the Insomniac, he wasn't swapped.\n    *   Only one Insomniac. Either Mitchell or Mike is lying.\n    *   Alana and Mitchell eventually agree to vote for Caitlynn.\n    *   Alana's logic: \"she was a werewolf before and now she's claimed be the troublemaker\" (though the transcript doesn't show the claim).\n\n    *   Alana: Claims Seer, saw a werewolf.\n    *   Mitchell: Claims Insomniac.\n    *   Mike: Claims Insomniac -> Seer.\n    *   Caitlynn: Quiet, supports Mike.\n\n    If Alana is the Seer and saw Caitlynn as a werewolf, and Mitchell (Insomniac) believes Alana, then Caitlynn is the likely werewolf.\n    Wait, Alana's statement at [34] \"the werewolf was you\" was directed at Mitchell. But then at [102] she says \"she was a werewolf before\" referring to Caitlynn. This is contradictory. Let's re-read carefully.\n\n    [34] Alana: \"Serious horseplay, because the werewolf was you.\" (Addressing Mitchell)\n    [36] Mitchell: \"Okay. So she was a lone werewolf...\" (Addressing Alana? Or Caitlynn?)\n    [102] Alana: \"So she was a werewolf before and now she's claimed be the troublemaker. Either way, she's still a werewolf...\" (Addressing Caitlynn)\n\n    It seems Alana changed her target from Mitchell to Caitlynn.\n\n    Let's look at the claims again:\n    - Alana: Seer.\n    - Mitchell: Insomniac.\n    - Mike: Insomniac -> Seer.\n    - Caitlynn: (No clear claim, but Alana says she claimed Troublemaker).\n\n    If Mike is the Insomniac and woke up as the Seer, he was swapped. If Alana was the Seer and was swapped with Mike, then Mike is now the Seer and Alana is now the Insomniac. But Alana claims she is the Seer.\n\n    If Mitchell is the Insomniac and woke up as the Insomniac, he wasn't swapped.\n\n    If Alana is the Seer and saw Caitlynn as a werewolf, then Caitlynn is the werewolf.\n\n    Wait, Alana's behavior is erratic. She first calls Mitchell the werewolf, then calls Caitlynn the werewolf.\n\n    Let's look at the final consensus:\n    [104] Alana: \"We just have to kill one wear Wolf, we'll just kill her.\"\n    [105] Mitchell: \"Yes. Problem solved.\"\n    [98] Mitchell: \"I'm so confident she's the werewolf.\" (Referring to Caitlynn)\n\n    Both Alana and Mitchell are pushing for Caitlynn. Mike is defending Caitlynn.\n\n    If Alana is the Seer and saw Caitlynn as a werewolf, then Caitlynn is the werewolf.\n    If Alana is the Tanner, she wants to be voted out.\n    If Mitchell is the werewolf, he wants to divert suspicion.\n\n    Let's re-evaluate Alana's claim:\n    [21] Alana: \"I know there's a werewolf on the table.\"\n    [30] Alana: \"I'm the seer. I was, at least.\"\n    [73] Alana: \"I saw a werewolf there.\" (Pointing to someone)\n\n    In the end, Alana and Mitchell agree that Caitlynn is the werewolf.\n\n    Is there any evidence Caitlynn is the werewolf?\n    She doesn't claim a role, she just supports Mike.\n    If Mike is lying about being the Insomniac (because Mitchell is), then Mike and Caitlynn might be the werewolf team.\n\n    Let's check the roles again.\n    If Mike is the werewolf and Caitlynn is the minion (or vice versa), they would support each other.\n    If Alana is the Seer and saw Caitlynn as a werewolf, then Caitlynn is the werewolf.\n\n    The most consistent narrative for the village is that Alana (Seer) saw Caitlynn (Werewolf). Mitchell (Insomniac) confirms he wasn't swapped, which means the Robber/Troublemaker didn't touch him.\n\n    Wait, if Mike claims he was Insomniac and woke up as Seer, he's claiming he was swapped. If Mitchell claims he was Insomniac and woke up as Insomniac, he's claiming he wasn't. Only one can be the Insomniac.\n\n    If Mitchell is the Insomniac, Mike is lying. If Mike is lying and Caitlynn is supporting him, they are likely the werewolf team.\n\n    Therefore, Caitlynn is a very strong candidate for the werewolf.\n\n    - Alana: Seer (claims to have seen a werewolf).\n    - Mitchell: Insomniac (claims he didn't move).\n    - Mike: Claims Insomniac -> Seer (contradicts Mitchell).\n    - Caitlynn: Supports Mike.\n\n    If Mitchell is telling the truth about being the Insomniac, Mike is lying. If Mike is lying, he's likely a werewolf or minion. Since Caitlynn is supporting Mike's lie, she is also likely part of the werewolf team.\n\n    Alana and Mitchell both conclude Caitlynn is the werewolf.\n\n    Wait, Alana's shift from Mitchell to Caitlynn is weird, but her final conclusion is Caitlynn.\n\n    Let's double-check the transcript for any other clues.\n    [102] Alana: \"So she was a werewolf before and now she's claimed be the troublemaker.\"\n    This suggests Alana believes she saw Caitlynn as a werewolf.\n\n    Final vote: Caitlynn.",
+  "parsed_output": {
+    "justification": "Alana claims to be the Seer and states she saw a werewolf, eventually identifying Caitlynn as that player. Mitchell claims to be the Insomniac and confirms he was not swapped, which contradicts Mike's claim of being the Insomniac who woke up as the Seer. Since Mike and Caitlynn are supporting each other's stories while contradicting Mitchell's, it is highly probable that they are the werewolf team, with Caitlynn being the Werewolf.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alana claims to be the Seer and states she saw a werewolf, eventually identifying Caitlynn as that player. Mitchell claims to be the Insomniac and confirms he was not swapped, which contradicts Mike's claim of being the Insomniac who woke up as the Seer. Since Mike and Caitlynn are supporting each other's stories while contradicting Mitchell's, it is highly probable that they are the werewolf team, with Caitlynn being the Werewolf.\",\n  \"chosen_vote\": \"Caitlynn\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alana claims to be the Seer and states she saw a werewolf, eventually identifying Caitlynn as that player. Mitchell claims to be the Insomniac and confirms he was not swapped, which contradicts Mike's claim of being the Insomniac who woke up as the Seer. Since Mike and Caitlynn are supporting each other's stories while contradicting Mitchell's, it is highly probable that they are the werewolf team, with Caitlynn being the Werewolf.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Alana claims to be the Seer and states she saw a werewolf, eventually identifying Caitlynn as that player. Mitchell claims to be the Insomniac and confirms he was not swapped, which contradicts Mike's claim of being the Insomniac who woke up as the Seer. Since Mike and Caitlynn are supporting each other's stories while contradicting Mitchell's, it is highly probable that they are the werewolf team, with Caitlynn being the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4047,
+    "output_token_count": 2172,
+    "generation_time_sec": 218.18787837028503,
+    "used_chat_template": true,
+    "input_char_count": 13730,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

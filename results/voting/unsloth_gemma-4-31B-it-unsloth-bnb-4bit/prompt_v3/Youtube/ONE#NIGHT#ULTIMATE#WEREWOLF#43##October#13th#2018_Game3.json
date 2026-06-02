@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin: Claims Seer (initially), then claims Werewolf (at the end).\n    *   Mitchell: Claims Troublemaker.\n    *   Paul: Claims Robber, then claims Tanner.\n    *   Mike: Claims Tanner (initially), then claims Robber.\n\n    *   Mitchell claims he is the Troublemaker and swapped Paul and Justin.\n    *   Paul claims he was the Robber and robbed Justin.\n    *   Justin claims he was the Seer and looked in the center (saw Drunk and Werewolf).\n    *   Mike claims he was the Tanner, then later claims he was the Robber.\n\n    *   Justin: \"I was a werewolf, so there's a werewolf in here.\" (Line 123)\n    *   Paul: \"I was the tanner.\" (Line 106)\n    *   Mike: \"I think I might be the tanner.\" (Line 39, 43)\n    *   Mitchell: Claims Troublemaker.\n\n    *   If Justin is the Werewolf (as he claimed at the end), he wins if he survives.\n    *   If Paul is the Tanner, he wins if he is voted out.\n    *   If Mitchell is the Troublemaker, he is Team Village.\n    *   If Mike is the Robber/Tanner, he is either Team Village or Tanner.\n\n    *   Justin's sudden confession (\"I was a werewolf\") is highly suspicious. In One Night Ultimate Werewolf, players often bluff. However, if he's admitting it right before the vote, he might be trying to confuse the group or he might actually be the Werewolf trying to steer the vote away from himself (though that's counter-intuitive). Wait, if he admits he's the werewolf, people will vote for him. Why would a werewolf do that? Maybe he's the Tanner?\n    *   Paul claims he was the Tanner. Tanners *want* to be voted out.\n    *   Mitchell claims Troublemaker. He's been very active in trying to direct the vote.\n    *   Mike has been very vague and contradictory (\"I might be the tanner\", \"I was actually the robber\").\n\n    *   Justin: Seer -> Werewolf.\n    *   Paul: Robber -> Tanner.\n    *   Mike: Tanner -> Robber.\n    *   Mitchell: Troublemaker.\n\n    *   If Justin is the Werewolf, he's the target.\n    *   If Paul is the Tanner, he's the target (for him).\n    *   If Mike is the Werewolf, he's the target.\n\n    Let's look at the claims again.\n    Justin says: \"I was a werewolf, so there's a werewolf in here.\" (Line 123).\n    This is a very strange claim. Usually, players don't admit to being the werewolf unless they are the Tanner or they've already been caught.\n\n    Wait, let's re-read the transcript carefully.\n    Line 8: Mitchell says \"Okay, you are a werewolf. You robbed from him. I troublemade you both back.\" (This is Mitchell talking to Paul/Justin).\n    Line 13: Paul says \"I was a werewolf who got cold feet... Now I'm a werewolf.\"\n    Line 32: Paul says \"I was actually the robber.\"\n    Line 106: Paul says \"I was the tanner.\"\n    Line 123: Justin says \"I was a werewolf, so there's a werewolf in here.\"\n\n    This game is chaotic. Everyone is claiming everything.\n\n    Let's evaluate the most likely Werewolf.\n    Justin's final claim is that he was a werewolf.\n    Paul's final claim is that he was the tanner.\n    Mike's final claim is that he was the robber.\n    Mitchell's claim is that he was the troublemaker.\n\n    If Justin is the Werewolf, he's admitting it.\n    If Paul is the Tanner, he's admitting it.\n    If Mike is the Werewolf, he's lying about being the robber.\n    If Mitchell is the Werewolf, he's lying about being the troublemaker.\n\n    Looking at the flow:\n    Mitchell tries to pin it on Paul early on.\n    Then Justin and Mike start targeting Mitchell.\n    Then Paul claims Tanner.\n    Then Justin claims Werewolf.\n\n    In these games, the person who claims to be the Werewolf at the very end is often the Tanner trying to get voted out, or a confused player. But the prompt asks me to vote for the player I believe is the Werewolf.\n\n    If Justin says \"I was a werewolf\", and Paul says \"I was the tanner\", and Mike says \"I was the robber\", and Mitchell says \"I was the troublemaker\"...\n    If we take them at their word:\n    Justin = Werewolf\n    Paul = Tanner\n    Mike = Robber\n    Mitchell = Troublemaker\n\n    Does this fit?\n    If Justin was the Werewolf, and Paul was the Robber, and Mitchell was the Troublemaker...\n    Robber (Paul) robs Justin (Werewolf). Paul is now Werewolf, Justin is now Robber.\n    Troublemaker (Mitchell) swaps Paul (Werewolf) and Justin (Robber). Paul is now Robber, Justin is now Werewolf.\n    This matches Mitchell's claim: \"You robbed from him. I troublemade you both back.\"\n\n    So, if Mitchell's story is true:\n    Justin ends as Werewolf.\n    Paul ends as Robber.\n    Mitchell ends as Troublemaker.\n    Mike ends as whatever is left (Tanner/Villager).\n\n    Wait, Paul claimed he was the Tanner at the end. If Paul is the Tanner, then Mike must be the Robber.\n    If Mike is the Robber:\n    Mike (Robber) robs Justin (Werewolf). Mike is now Werewolf, Justin is now Robber.\n    Mitchell (Troublemaker) swaps Mike (Werewolf) and Justin (Robber). Mike is now Robber, Justin is now Werewolf.\n    This also matches Mitchell's logic.\n\n    In both scenarios where Mitchell is telling the truth, Justin ends up as the Werewolf.\n\n    Is Mitchell lying? He's the one driving the narrative. But Justin eventually agrees he was the werewolf.\n\n    Let's check Justin's claim again: \"I was a werewolf, so there's a werewolf in here.\"\n    If Justin is the Werewolf, he's admitting it. If he's the Tanner, he's lying to get voted out.\n    But Paul also claimed to be the Tanner. Only one Tanner per game.\n\n    If Paul is the Tanner, then Justin's claim to be the Werewolf is more likely to be true (or he's just confused).\n\n    Let's look at the roles:\n    Justin: Werewolf (final)\n    Mitchell: Troublemaker\n    Paul: Tanner\n    Mike: Robber\n\n    This distribution fits the claims and the mechanics.\n\n    Final check:\n    Justin: \"I was a werewolf\"\n    Paul: \"I was the tanner\"\n    Mike: \"I was actually the robber\"\n    Mitchell: \"I'm the troublemaker\"\n\n    If these are their final roles, Justin is the Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Troublemaker and stated he swapped two players (Justin and Paul/Mike) after a robbery occurred. Justin eventually admitted, 'I was a werewolf, so there's a werewolf in here,' and Paul claimed to be the Tanner. If Mitchell's account of the swaps is accurate, Justin ends the game as the Werewolf regardless of whether Paul or Mike was the Robber.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated he swapped two players (Justin and Paul/Mike) after a robbery occurred. Justin eventually admitted, 'I was a werewolf, so there's a werewolf in here,' and Paul claimed to be the Tanner. If Mitchell's account of the swaps is accurate, Justin ends the game as the Werewolf regardless of whether Paul or Mike was the Robber.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated he swapped two players (Justin and Paul/Mike) after a robbery occurred. Justin eventually admitted, 'I was a werewolf, so there's a werewolf in here,' and Paul claimed to be the Tanner. If Mitchell's account of the swaps is accurate, Justin ends the game as the Werewolf regardless of whether Paul or Mike was the Robber.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Mitchell claimed to be the Troublemaker and stated he swapped two players (Justin and Paul/Mike) after a robbery occurred. Justin eventually admitted, 'I was a werewolf, so there's a werewolf in here,' and Paul claimed to be the Tanner. If Mitchell's account of the swaps is accurate, Justin ends the game as the Werewolf regardless of whether Paul or Mike was the Robber."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4034,
+    "output_token_count": 1771,
+    "generation_time_sec": 181.45768809318542,
+    "used_chat_template": true,
+    "input_char_count": 13800,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

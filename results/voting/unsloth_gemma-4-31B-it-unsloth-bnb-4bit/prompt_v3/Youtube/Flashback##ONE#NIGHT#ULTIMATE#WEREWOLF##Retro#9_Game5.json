@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Insomniac.\n    *   Laura: Claims Werewolf (after Paul says he switched her and Mitchell).\n    *   Paul: Claims Troublemaker.\n    *   James: Claims Seer (saw Tanner and Insomniac in the center).\n    *   Mitchell: Claims Villager.\n\n    *   James (Seer) says Tanner and Insomniac are in the center.\n    *   Justin (Insomniac) says he is the Insomniac.\n    *   Conflict: If Justin is the Insomniac, James is lying about the center cards. If James is telling the truth, Justin is lying.\n\n    *   Paul (Troublemaker) claims he switched Laura and Mitchell.\n    *   Laura admits she was a Werewolf (starting role).\n    *   If Paul is the Troublemaker and he switched Laura (Werewolf) and Mitchell (Villager), then Mitchell is now the Werewolf and Laura is now the Villager.\n\n    *   If James is the Seer and saw the Insomniac in the center, Justin cannot be the Insomniac.\n    *   If Justin is the Insomniac, James is lying.\n    *   If James is lying, he could be the Werewolf or the Tanner.\n    *   However, Paul's claim about switching Laura and Mitchell is very specific. Laura admits she was a Werewolf. This strongly suggests Paul is the Troublemaker and Mitchell is now the Werewolf.\n\n    *   If Mitchell is the Werewolf (via swap), then James might be telling the truth about the center cards (Tanner and Insomniac).\n    *   Wait, if James saw the Insomniac in the center, then Justin cannot be the Insomniac.\n    *   If Justin is not the Insomniac, what is he? He could be the Tanner or a Werewolf.\n    *   But if Mitchell is the Werewolf, and there's only one Werewolf (or two), let's check the roles.\n    *   Roles mentioned: Seer (James), Troublemaker (Paul), Insomniac (Justin), Villager (Mitchell), Werewolf (Laura).\n    *   If Paul switched Laura (Werewolf) and Mitchell (Villager), Mitchell is now the Werewolf.\n    *   If James is the Seer and saw the Insomniac in the center, then Justin is lying about being the Insomniac.\n    *   If Justin is lying, he could be the Tanner.\n    *   Let's re-evaluate:\n        *   James: Seer (claims center: Tanner, Insomniac)\n        *   Paul: Troublemaker (swapped Laura and Mitchell)\n        *   Laura: Starting Werewolf -> now Villager\n        *   Mitchell: Starting Villager -> now Werewolf\n        *   Justin: Claims Insomniac (but James says Insomniac is in center). If James is right, Justin is the Tanner.\n\n    *   If Mitchell is the Werewolf, the Village wins by voting him out.\n    *   If Justin is the Tanner, the Village loses if they vote him out (Tanner wins).\n    *   If James is the Werewolf and lying about being the Seer, the Village wins by voting him out.\n\n    *   Paul (Troublemaker) and Laura (Starting Werewolf) both agree that Mitchell is now the Werewolf.\n    *   Laura's admission (\"I was a werewolf\") is a huge tell. Usually, Werewolves don't admit they were Werewolves unless they've been swapped and no longer are.\n    *   If Laura was the Werewolf and Paul swapped her with Mitchell, Mitchell is definitely the Werewolf now.\n\n    *   James claims he saw the Insomniac in the center.\n    *   Justin claims he is the Insomniac.\n    *   If Mitchell is the Werewolf, then James is likely the Seer (telling the truth) and Justin is likely the Tanner (lying about being the Insomniac to get votes, or just confused).\n    *   Wait, if Justin is the Tanner, he *wants* to be voted out.\n    *   If James is the Werewolf, he would lie about the center cards to frame Justin or create confusion. But we already have a very strong lead on Mitchell.\n\n    *   Paul (Troublemaker) swapped Laura (Werewolf) and Mitchell (Villager).\n    *   Mitchell is now the Werewolf.\n    *   Laura is now a Villager.\n    *   James is the Seer.\n    *   Justin is the Tanner (claiming Insomniac).\n    *   This fits all the statements.\n\n    *   Could James be the Werewolf? If James is the Werewolf, he's lying about being the Seer. But then who is the Troublemaker? Paul claims to be. If Paul is also lying, the whole thing falls apart. But Laura's admission is the key. Why would Laura admit to being a Werewolf if she wasn't? If she was the Werewolf and got swapped, she's now a Villager and has no reason to lie about her *starting* role if it helps the village find the current Werewolf (Mitchell).\n\n    *   Mitchell is the most likely candidate for the end-role Werewolf because Paul (Troublemaker) swapped him with Laura (who admitted to being a Werewolf).\n\n    *   Justin: Claims Insomniac.\n    *   James: Claims Seer, says Insomniac is in center.\n    *   Paul: Claims Troublemaker, swapped Laura and Mitchell.\n    *   Laura: Admits starting as Werewolf.\n    *   Mitchell: Admits starting as Villager.\n    *   Conclusion: Mitchell is the current Werewolf.\n\n    *   Wait, if James is the Seer and saw the Insomniac in the center, then Justin is lying. If Justin is lying, he's either the Werewolf or the Tanner.\n    *   But we already found a Werewolf (Mitchell).\n    *   Can there be two Werewolves? Yes.\n    *   If Mitchell is one, could Justin be another?\n    *   If Justin is a Werewolf, he'd lie about being the Insomniac.\n    *   But if Paul swapped Laura and Mitchell, and Laura was a Werewolf, then Mitchell is definitely a Werewolf.\n    *   If there's only one Werewolf card in the game, then Mitchell is the only one.\n    *   If there are two, Justin could be one.\n    *   However, the most concrete evidence is the Troublemaker swap.\n\n    *   Paul: \"I switched Lauren and Mitchell.\"\n    *   Laura: \"I was a werewolf. That means you [Mitchell] are a werewolf now.\"\n    *   Mitchell: \"I've grown some fur.\"\n    *   This is a very strong chain of evidence.\n\n    *   James: \"I'm the seer... I found the tanner and the Insomniac in the center.\"\n    *   Justin: \"I'm the Insomniac.\"\n    *   If James is the Seer, Justin is the Tanner.\n    *   If Justin is the Insomniac, James is the Werewolf/Tanner.\n    *   But the Laura/Paul/Mitchell interaction is more definitive.\n\n    *   Chosen vote: Mitchell.\n    *   Justification: Paul (Troublemaker) stated he swapped Laura and Mitchell. Laura admitted she was the starting Werewolf, which means Mitchell is now the Werewolf. This is supported by Mitchell's own admission that he \"grew some fur.\"",
+  "parsed_output": {
+    "justification": "Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura admitted that her starting role was the Werewolf, which means that after the swap, Mitchell became the Werewolf. Mitchell himself acknowledged this shift in alignment during the discussion, making him the most likely candidate for the final Werewolf role.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura admitted that her starting role was the Werewolf, which means that after the swap, Mitchell became the Werewolf. Mitchell himself acknowledged this shift in alignment during the discussion, making him the most likely candidate for the final Werewolf role.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura admitted that her starting role was the Werewolf, which means that after the swap, Mitchell became the Werewolf. Mitchell himself acknowledged this shift in alignment during the discussion, making him the most likely candidate for the final Werewolf role.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Paul claimed to be the Troublemaker and stated that he swapped the cards of Laura and Mitchell. Laura admitted that her starting role was the Werewolf, which means that after the swap, Mitchell became the Werewolf. Mitchell himself acknowledged this shift in alignment during the discussion, making him the most likely candidate for the final Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3501,
+    "output_token_count": 1764,
+    "generation_time_sec": 177.91856145858765,
+    "used_chat_template": true,
+    "input_char_count": 12741,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

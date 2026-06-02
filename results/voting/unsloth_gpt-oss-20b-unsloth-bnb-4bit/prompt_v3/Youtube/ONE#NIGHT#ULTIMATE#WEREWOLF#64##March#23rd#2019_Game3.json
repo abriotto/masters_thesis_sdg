@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to choose a victim (vote). There are 4 players: Justin, James, Paul, Mitchell. The transcript seems heavily garbled, many unrelated responses. Not easy to parse.\n\nGoal: suspect who maybe werewolf based on discussion clues.\n\nLet's try to piece possible identities. Over chat, there are many mentions of being 'robbing', etc. Potentially, the original roles might have messed up. But there's mention of copycat (Doppelganger) waking up, look at a center card. So the copycat became whatever the center card they looked at.\n\nAlso, the rest: Seer wakes up; likely they saw something. The text: [10] Justin: Seer. So probably Justin was the Seer initially. [109] ... not sure.\n\nAt [150], \"Justin: Oh-\". Not clear.\n\nI propose that the werewolf is likely James. Because the transcript indicates at [112] James says \"And he was a werewolf. So unless, you trouble made me, I'm a werewolf.\" Many confusing.\n\nBut perhaps we deduce that James is the werewolf due to inconsistent exchanges.\n\nAlternatively could be Mitchell? In later, Justin says \"I looked at this card\" suggesting Luke from earlier maybe the center card... Hard.\n\nOk, the best guess: James is the werewolf.\n\nI'll produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "Based on the inconsistent dialog and repeated accusations, the suspect that consistently claims to have seen or acted like a werewolf appears to be James. Several lines specifically hint that James identifies himself as the werewolf or accuses others of being the werewolf, and other players hurtly express mistrust in him. Given these indications, voting for James as the werewolf most aligns with the evidence in the transcript.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"Based on the inconsistent dialog and repeated accusations, the suspect that consistently claims to have seen or acted like a werewolf appears to be James. Several lines specifically hint that James identifies himself as the werewolf or accuses others of being the werewolf, and other players hurtly express mistrust in him. Given these indications, voting for James as the werewolf most aligns with the evidence in the transcript.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the inconsistent dialog and repeated accusations, the suspect that consistently claims to have seen or acted like a werewolf appears to be James. Several lines specifically hint that James identifies himself as the werewolf or accuses others of being the werewolf, and other players hurtly express mistrust in him. Given these indications, voting for James as the werewolf most aligns with the evidence in the transcript.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "Based on the inconsistent dialog and repeated accusations, the suspect that consistently claims to have seen or acted like a werewolf appears to be James. Several lines specifically hint that James identifies himself as the werewolf or accuses others of being the werewolf, and other players hurtly express mistrust in him. Given these indications, voting for James as the werewolf most aligns with the evidence in the transcript."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3637,
+    "output_token_count": 379,
+    "generation_time_sec": 116.87752509117126,
+    "used_chat_template": true,
+    "input_char_count": 13805,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

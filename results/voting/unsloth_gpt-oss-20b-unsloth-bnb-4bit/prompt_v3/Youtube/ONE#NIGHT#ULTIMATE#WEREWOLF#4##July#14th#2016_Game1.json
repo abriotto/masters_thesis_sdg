@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine from transcript which player likely is the Werewolf. This transcript is messy, but look for statements indicating who is drunk etc.\n\nPlayers: Justin, Paul, Mitchell, Mike.\n\nKey lines:\n\n📌 #26: \"Mitchell: I was the drunk.\" Later contradict later this says I guess he's not the drunk.\n\nBut later Justin denies: \"I was the drunk\" #66, similar.\n\nConfusing.\n\nFrom transcript we can glean each player's claimed roles. Let’s summarize:\n\n- Justin claims at various points: He was the robber (#40). He also says he was the drunk (#66, #65). He also says \"I am probably a Waswolf cause I was the drunk\" (#144). He says \"I'm not a Tanner\". Confusing.\n\n- Mitchell says he was the drunk (#26). Later says again he was the drunk (#73). However there's confusion on whether he was the drunk or not.\n\n- Mike says \"I saw two werewolves in the center\" (#27, #29). That indicates he must have seen center cards. Who can see center? Seer or Troublemaker or Robber maybe? Actually at night, the drunk can see center? Not exactly. The A (drunk swaps with center but does not see).\n\nBut the statement \"I saw two werewolves in the center\" implies he looked at center by Seer or Troublemaker? Wait: Seer can look at two center cards; Troublemaker can look at two… Actually trouble maker cannot look. So likely Mike is Seer? But we need to what roles present in this game: There's unclear list.\n\nList of candidate roles at start: selection includes duplicates? Possible roles list: 7 roles maybe?\n\nBut interestingly, the transcript reveals confusion.\n\nLet’s parse.\n\nWhich entries have clarity:\n\nFrom line #14: \"Paul: I was like, what the fuck.\" That was after earlier actions.\n\nImportant: At #15: \"Announcer: Troublemaker, wake up...\" indicates Troublemaker goes.\n\nAlso #10: \"All other players etc.\"\n\nNow, user claims they're the drunk.\n\nWho appears to be drunk? The Drunk swaps card with a center card, doesn't know what they get. They rarely claim to have visited center.\n\nBut spec: \"I was the drunk.\" others say like that.\n\nBut \"Mike: I saw two werewolves in the center.\" That can't come from Drunk because they'd not know what's in center until after swap they might see? Actually when Drunk swaps with a center card, they don't see center. They don't know what card they get. So they wouldn't see center.\n\nTherefore Mike's statement implies he was Seer or Troublemaker, possibly. He says \"What were you, Paul?\" Right; but he says \"I saw two werewolves in the center.\" implies he looked at center to find two werewolves. That suggests he had the Seer ability: Seer can look at two center cards only if there is only one werewolf maybe? Actually if there is only one werewolf, you can look at a card from center. But usually Seer can look at a center card if only one werewolf OR look at two center cards if more than one? Wait the rule: Seer may look at one other player's card or look at two center cards. The rules state: The Seer may look at two cards in the center if there is more than one Werewolf. But there is rule: \"If there is only one werewolf, you may look at a card from the center.\" So typically Seer gets to look at two center cards when more werewolves.\n\nThus, Mike looked at center two cards, got two werewolves.\n\nThus, Mike was Seer.\n\nHence Mike is starting as Seer. He then performed his action (looked at two center cards). He cannot swap. So his final role remains Seer? But tough.\n\nNow identity of werewolves likely to be deduced: The werewolves swapped? Did any role that changed alignments? Example: Werewolves or minion may have swapped.\n\nLet's examine this scenario: Starting roles unknown. But from transcript, it appears roles are each presumably announced by the player at the end? People claiming they are drunk etc.\n\nBut the confusion arises from self claims being possibly false.\n\nWe need to find the plausible werewolf. One possibility: The player claiming \"Tanner\" or \"drunk\" may be misled. Investigate who is a suspect: People identified as drunk, but they didn't see center. There's no mention of any \"Werewolf\" role. But someone may be the unexpected may blow at the start.\n\nLet's track: According to transcripts:\n\n- Justin: \"I was the robber.\" Accept infection? He says: \"Justin: I was a Robber.\"\n- #39: \"Mike: What were you Justin?\" #43: \"Justin: I was the drunk.\" earlier #40: at #39 says \"Justin: I was a Robber.\"\n- So Justin claims he was the thief? Wait: In the line #40 said \"Justin: I was a Robber.\" That seems contradictory to other lines where he says \"I was the drunk.\"\n\nHe said both times. So he may be lying.\n\n- Likely real roles uses analysis: An honest Seer would announce they saw something.\n\nOk, possible werewolf: maybe Justin or Paul? Let's see: Paul also ambiguous.\n\nLine #30: \"Paul: What did I do?\" That suggests player answered question.\n\nOk, I think the best approach: Identify which player is Unlikely to be Drunk: The player's statements: not self.\n\nBecause the being drunk can appear random. But considering the final location: Suppose the role that is most likely is the multiple suspicious contradictions: Justin. He claimed he was \"Robber,\" then \"drunk,\" then \"probably a Werewolf cause I was the drunk.\" Very confusing. It's possible he might be werewolf disguised as drunk.\n\nThus, likely suspect: Justin.\n\nThus, answer: vote Justin.\n\nJustification: Because Justin's conflicting claims illustrate deception typical of werewolves: The lines indicate that he may be lying about being robber or drunk, he claims to have drunk incorrectly and asserts he's \"probably a werewolf...\"\n\nBut also note that \"Mike: I saw two werewolves in the center\" suggests that somewhere we have at least two werewolves among center? But how?\n\nBut for vote: Choose Justin.\n\nSo final JSON: {\"justification\":\"...\", \"chosen_vote\":\"Justin\"}\n\nLet's craft justification in 3-5 sentences:\n\n\"Justin repeatedly accused himself of being a robber and a drunk and ended up saying he was 'probably a werewolf', which signals possible deception typical of werewolf players in order to remain unseen. His inconsistent claims imply he could be the werewolf even if unaware of possible swapping. Additionally, no other player explicitly stated or observed werewolf status besides the Seer noticing two werewolves in the center, implying that the werewolves must still be among the players, not solely in center. Because Justin the most suspect, I vote for Justin.\"\n\nMake sure format is JSON.",
+  "parsed_output": {
+    "justification": "Justin’s frequent statements self‑alleged roles—first “Robber,” then “Drunk,” and finally admitting “probably a Werewolf”—indicate intentional deception characteristic of a werewolf.  He claims the social knowledge that means he didn’t face a direct reveal of his card, suggesting he still holds the werewolf card after the night.  No other player declared seeing a werewolf among themselves or identifying a clear role swap that would remove an werewolf from the active player set.  Therefore, he is the most likely werewolf in this scenario.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Justin’s frequent statements self‑alleged roles—first “Robber,” then “Drunk,” and finally admitting “probably a Werewolf”—indicate intentional deception characteristic of a werewolf.  He claims the social knowledge that means he didn’t face a direct reveal of his card, suggesting he still holds the werewolf card after the night.  No other player declared seeing a werewolf among themselves or identifying a clear role swap that would remove an werewolf from the active player set.  Therefore, he is the most likely werewolf in this scenario.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Justin’s frequent statements self‑alleged roles—first “Robber,” then “Drunk,” and finally admitting “probably a Werewolf”—indicate intentional deception characteristic of a werewolf.  He claims the social knowledge that means he didn’t face a direct reveal of his card, suggesting he still holds the werewolf card after the night.  No other player declared seeing a werewolf among themselves or identifying a clear role swap that would remove an werewolf from the active player set.  Therefore, he is the most likely werewolf in this scenario.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin’s frequent statements self‑alleged roles—first “Robber,” then “Drunk,” and finally admitting “probably a Werewolf”—indicate intentional deception characteristic of a werewolf.  He claims the social knowledge that means he didn’t face a direct reveal of his card, suggesting he still holds the werewolf card after the night.  No other player declared seeing a werewolf among themselves or identifying a clear role swap that would remove an werewolf from the active player set.  Therefore, he is the most likely werewolf in this scenario."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3856,
+    "output_token_count": 1593,
+    "generation_time_sec": 482.6503875255585,
+    "used_chat_template": true,
+    "input_char_count": 14836,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to infer the best suspect based on transcript. Let's parse key events:\n\n- Roles exist: Justin, Paul, Mitchell. The roles chosen equal players + 3 = 6 roles. They include typical roles but unclear which are present. The transcript shows actions:\n\nNight actions: announcement shows some speakers.\n\nWe have investigation: the transcript appears chaotic due to confusion/lameness; difficult to track.\n\nWe need to determine who is werewolf.\n\nLet's examine what we might deduce.\n\nThe transcript includes hints like \"Mitchell: I was not the robber.\" \"Justin: Was you the robber? Did you steal a werewolf from Paul.\" \"Paul: Could have been Robber.\" So someone mentions being the Robber etc.\n\nAlso \"Mitchell: I was the seer.\"\n\nBut let's try to walk through logically:\n\nWe have 3 players; roles: possible roles: Werewolf (maybe >0). Try to guess given actions.\n\nOne approach: identify calls of actions allegiance.\n\nDuring night, the actions: Werewolves, Seer, Robbers, Troublemaker, Insomniac. So we have to correlate who could be what.\n\nGiven at night, the Announcer says: Werewolves awaken; Seer awakens; Robber; Troublemaker; Insomniac. If someone claims to be Seer or Robber, it might align.\n\nFrom transcript: \"Justin: I was the troublemaker.\" \"Ment: I was not the robber.\" \"Mitchell: I'm the seer.\" So maybe Justin to be troublemaker, Mitchell to be seer, Paul to be werewolf?\n\nLet's read more carefully.\n\n[20] Justin: I was the troublemaker. So Justin says he was troublemaker, implying that he indeed is troublemaker. The troublemaker would swap two other players' cards. At day phase, Justin says \"I was troublemaker\" maybe indicating his starting role, but can't guarantee that he avoided making a mistake.\n\n[21-26] There is confusion, people claim are lying.\n\nThe transcripts mention \"Paul: Mitchell is werewolf.\"\n\nSo possibly Paul thinks Mitchell is werewolf.\n\nBut at [31], Paul says \"That's so weird. I don't know why he would lie.\"\n\nThen [33] Justin says \"Paul: Mitchell is lying.\" So conflict.\n\nLook at [45] \"Justin: You guys are both werewolves aren't you?\" So maybe both Justin and Mitchell are werewolves? That seems odd because 3 players but two weaks.\n\nBut we have only one werewolf per game typically? Not necessary, but since roles available include number of werewolves maybe up to two? The transcript suggests there's talk about \"two werewolves\".\n\nAt [74] \"Paul: So now he's the insomniac. He knows he is a werewolf. That's what's up. Yeah. That's what's up.\" So Paul says that the insomniac (perhaps Paul) now knows he's a werewolf? That seems contradictory.\n\nBut hold on: In general, the are not consistent.\n\nLet's check the list of participants: Justin, Paul, Mitchell. Let's see names only.\n\nWe need to choose one to vote for. Out of the three, we probably should pick the player who is most likely werewolf based on evidence.\n\nFind evidence that the person is a werewolf.\n\nObservations: People mention passed to each other about seer etc.\n\nCandidates: Paul might claim to be the werewolf: [67] Paul: \"No, I was werewolf. A hundred percent. This is a werewolf card.\"\n\nBut that might be self-deception. However, \"I was started as the werewolf...\" indicates Paul's start was werewolf (maybe). But then some argue Paul is not really a werewolf. In [79], \"Paul: Or he could have been Robber. Yeah! \"It suggests Paul suspect other.\n\nLook at [68]: \"Mitchell: In the beginning. Guys. That two werewolves right here.\" Suggests that Mitchell thinks there are two werewolves.\n\nBut perhaps we need to analyze dynamic events: The players with possible roles.\n\nPossible roles in this game: Let's assume we have at least 3 werewolves? Actually, 3 players replaced maybe werewolf(s). Typically each game can have up to 2 werewolves. In 3 players, maybe there'll be 1 werewolf. But the transcript indicates suspicion of two werewolves.\n\nWe can consult easily logic: In the group, if it's a 3-player game, roles are 6 selected. But it's common to have 1 werewolf. But not predetermined.\n\nOk but let's consider actions: \"Troublemaker\" swapped two other players. Justin says \"I was the troublemaker.\" So Justin swapped two players. That would mean Justin is change? If Justin swapped others, he purposely changed some roles. But he says \"I was the troublemaker.\" So he's telling truth? Possibly he had the troublemaker role. So he performed an action: swapped two other players' cards. So he basically swapped people which might misinform.\n\nTherefore, if Justin swapped two players' cards, their roles changed.\n\nAt the end of night, some people will hold different roles than originally. This may be visible from comments.\n\nBut we can simply decide that Paul is likely the werewolf because he claims to be werewolf in many segments. He says \"I am werewolf.\" Example [67] \"Paul: No, I was werewolf. ... This is a werewolf card.\" He claims to be werewolf. He also states that there were no other werewolves.\n\nBut those claims may be false purposely. Since werewolves want to fool.\n\nHowever, \"Justin: I was the TroubleMaker\" is less suspicious. Since troublemaker isn't notably a werewolf.\n\nNow \"Mitchell: I was not the robber. Justin: Who broke? \"Justin: Justin: I wasn't the robber.\"\n\nBut typical logic: The werewolf tries to avoid detection; they will claim to be plural and misdirect.\n\nNevertheless, to choose one, we look at claims.\n\nOne strong statement: [45] \"Justin: You guys are both werewolves aren't you?\" Suggests both Justin and Mitchell accused as werewolves.\n\nAlso [47] \"Mitchell: What are you?\" \"Paul: I don't understand why you're lying.\" That shows confusion. So basically ambiguous.\n\nWe also see [48] \"Paul: I don't understand why you are lying.\" It's unclear.\n\nLet's parse each important numeric line:\n\nline numbers approximate as they appear over the transcript are not labeled with numbers. I'll label them approximate.\n\nLet's re-sing some sections:\n\n[**Noting conversation around lines 20-30**] 20: \"Justin: I was the troublemaker.\" So Justin says that.\n\nLine 26: \"Mitchell: I saw two werewolves here, I'm the seer.\" So Mitchell says he saw two werewolves: improbable if he's seer. The seer can only look at one or two. But they claim to have seen two werewolves. That suggests there are at least two werewolves or at least Mist confusion.\n\nLine 29: \"Justin: Why?\" 30 \"Mitchell: What you doing?\" 31 \"Paul: That's weird.\" Hard to decode.\n\nPlot: There is confusion due to all messing with the story.\n\nKey lines: [32] \"Paul: Mitchell's werewolf.\" So Paul thinks Mitchell is werewolf. Good.\n\n[68] \"Mitchell: In the beginning. Guys. This because there are two werewolves.\" Then 79: \"Paul: Or he could have been Robber.\" etc.\n\nLook at [90] \"Mitchell: This is so fucked.\"\n\nNow, probably the best choice: Paul is most likely the werewolf because there's repeated reference to him being suspect. However, we can also consider that some think Justin is werewolf as well; lines [47] \"Justin: You guys are both werewolves aren't you?\" indicates suspicion on Justin also.\n\nBut maybe the correct target is Justin; both statements indicate they are both werewolves. But are both werewolves? impossible unless there are two werewolves overall.\n\nBut the overall ask: \"Vote for the player you believe is a Werewolf as their end role.\" So we need only one vote. Choose based on evidence.\n\nNow, reading the transcript, we can see that Paul says \"If you didn't switch us, I'm werewolf.\" So he claims to be werewolf. That seems plausible.\n\nBut is there evidence that the is.\n\nExamining the lines near [98] \"Paul: If you didn't switch us, then I'm werewolf.\" So if you didn't switch me, I'm werewolf. This implies that he didn't get his card swapped, meaning he remained the same. That suggests that Paul is in indeed the werewolf; he didn't get swapped. Usually, when a player is swapped again, they'd be different now. If he still sees his card unchanged, he may be the werewolf.\n\nThus the best result: Paul is likely werewolf.\n\nSo final vote: Paul.\n\nProvide justification in 3-5 sentences.\n\nLet's produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript shows Paul repeatedly identifying himself as the werewolf, especially in the exchange where he states, “If you didn’t switch us, then I’m werewolf.” This implies he remained in his original position and eliminated any chance of being disguised as another role. Other players’ claims conflict, but Paul’s certainty signals an attempt to conceal that they actually started as werewolf and have not been swapped. Consequently, Paul is the most likely end‑role werewolf.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows Paul repeatedly identifying himself as the werewolf, especially in the exchange where he states, “If you didn’t switch us, then I’m werewolf.” This implies he remained in his original position and eliminated any chance of being disguised as another role. Other players’ claims conflict, but Paul’s certainty signals an attempt to conceal that they actually started as werewolf and have not been swapped. Consequently, Paul is the most likely end‑role werewolf.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows Paul repeatedly identifying himself as the werewolf, especially in the exchange where he states, “If you didn’t switch us, then I’m werewolf.” This implies he remained in his original position and eliminated any chance of being disguised as another role. Other players’ claims conflict, but Paul’s certainty signals an attempt to conceal that they actually started as werewolf and have not been swapped. Consequently, Paul is the most likely end‑role werewolf.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcript shows Paul repeatedly identifying himself as the werewolf, especially in the exchange where he states, “If you didn’t switch us, then I’m werewolf.” This implies he remained in his original position and eliminated any chance of being disguised as another role. Other players’ claims conflict, but Paul’s certainty signals an attempt to conceal that they actually started as werewolf and have not been swapped. Consequently, Paul is the most likely end‑role werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3394,
+    "output_token_count": 1980,
+    "generation_time_sec": 592.4666237831116,
+    "used_chat_template": true,
+    "input_char_count": 13265,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

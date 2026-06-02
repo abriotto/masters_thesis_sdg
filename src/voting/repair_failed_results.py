@@ -18,7 +18,7 @@ from typing import Any, Optional
 
 from src.utils.experiment_utils import prepare_response_for_json, save_json
 
-CIRCLE_VOTE = "Circle Vote"
+CIRCLE_VOTE = "No Werewolf"
 
 
 def parse_json_object(text: Any) -> Optional[dict[str, Any]]:

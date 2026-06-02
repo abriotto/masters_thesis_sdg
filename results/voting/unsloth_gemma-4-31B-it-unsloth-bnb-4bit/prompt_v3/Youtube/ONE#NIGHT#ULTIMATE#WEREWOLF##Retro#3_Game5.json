@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims to be the Troublemaker (T). Says he switched Mike and James (or Mitchell and James? Let's re-read).\n    *   Mike: Claims to be the Robber (R). Says he robbed Justin.\n    *   James: Claims he started as the Insomniac (I). Later says \"Mitchell is bullshitting and I am the werewolf so...\" (Wait, what?).\n    *   Mitchell: Claims he started as a Werewolf (W), then claims he was the Tanner (T).\n\n    *   [35] Justin: \"I was the troublemaker.\"\n    *   [54] Mike: \"I want to know who you switched before I reveal who I robbed.\"\n    *   [81] Mike: \"I did not rob from James.\"\n    *   [82] Justin: \"I switched these two.\" (Pointing to James and Mitchell? Or Mike and James? Context: [81] Mike says he didn't rob James, [82] Justin says \"I switched these two\" referring to the people he's talking about).\n    *   [93] Mike: \"No, I stole from you [Justin].\"\n    *   [94] Justin: \"You stole from me. Can you back up my story?\"\n    *   [95] Mike: \"Yes.\"\n    *   [103] Justin: \"Right? So now you're the insomniac [Mitchell]. So does this story check out for everybody?\" (This implies Justin thinks Mitchell is now the Insomniac).\n\n    *   James claims he started as Insomniac [29, 117].\n    *   James says he knows he was robbed or trouble made [43, 49].\n    *   Mitchell claims he started as Werewolf [60, 63, 89, 102], then changes to Tanner [108, 110].\n    *   James's weird confession: [129] \"Mitchell is bullshitting and I am the werewolf so...\"\n\n    *   If Justin is Troublemaker and Mike is Robber:\n        *   Mike robbed Justin.\n        *   Justin switched James and Mitchell.\n    *   If James started as Insomniac and Mitchell started as Werewolf:\n        *   After the switch, James is now the Werewolf and Mitchell is now the Insomniac.\n    *   Wait, James says [129] \"I am the werewolf\". This is a huge tell. Even if he's bluffing or trolling, it's a direct admission.\n    *   Mitchell's behavior is erratic (claiming Werewolf, then Tanner). This is classic Tanner behavior (trying to get voted out).\n\n    *   James: Claims Insomniac -> admits to being Werewolf.\n    *   Mitchell: Claims Werewolf -> claims Tanner.\n    *   Justin: Claims Troublemaker.\n    *   Mike: Claims Robber.\n\n    *   If James is the Werewolf (either starting or ending), voting for him wins for the Village.\n    *   If Mitchell is the Tanner, voting for him wins for the Tanner.\n    *   James's admission [129] \"I am the werewolf\" is the strongest piece of evidence, regardless of whether he's lying or telling the truth (if he's lying to protect someone, he's still a suspect; if he's telling the truth, he's the target).\n\n    *   Justin (Troublemaker) switched James and Mitchell.\n    *   James (Insomniac) <-> Mitchell (Werewolf).\n    *   Result: James is now the Werewolf.\n    *   This aligns with James's admission.\n\n    *   James admitted to being the werewolf in line [129].\n    *   The narrative constructed by Justin (Troublemaker) and Mike (Robber) suggests a swap occurred between James and Mitchell.\n    *   If Mitchell started as the Werewolf and was swapped with James, James is the current Werewolf.\n    *   Mitchell's claim to be the Tanner is a common tactic to confuse the group or a genuine attempt to be voted out.\n\n    *   Wait, let's re-read [129]: \"Mitchell is bullshitting and I am the werewolf so...\"\n    *   Is he trolling? In One Night Ultimate Werewolf, players often troll. But as an observer, an admission of being the werewolf is the primary lead.\n    *   Let's check if James could be the Tanner. If James is the Tanner, he wants to be voted out. If James is the Werewolf, he wants to avoid it.\n    *   However, the prompt asks to vote for the player I believe is a Werewolf. James explicitly stated he is the werewolf.\n\n    *   Justin: Troublemaker.\n    *   Mike: Robber.\n    *   Mitchell: Started Werewolf/Tanner.\n    *   James: Started Insomniac.\n    *   Swap: James <-> Mitchell.\n    *   End state: James = Werewolf, Mitchell = Insomniac.\n    *   This makes James the Werewolf.\n\n    *   Justin: \"I switched these two [James and Mitchell].\"\n    *   Mike: \"I stole from you [Justin].\"\n    *   James: \"I am the werewolf.\"\n    *   Mitchell: \"I was a Tanner.\"\n    *   If Justin and Mike are telling the truth, and Mitchell started as Werewolf, then James is the current Werewolf. If James is telling the truth about being the werewolf, he is the target.\n\n    *   Justification: James explicitly admitted to being the werewolf in the final moments of the discussion. Furthermore, the claims made by Justin (Troublemaker) and Mike (Robber) suggest a card swap occurred between James and Mitchell, which would have transferred the Werewolf role to James if Mitchell had started with it. Mitchell's contradictory claims about being a Werewolf and then a Tanner further suggest he is not the primary target.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being the werewolf in the final moments of the discussion ('I am the werewolf'). Additionally, Justin (claiming Troublemaker) and Mike (claiming Robber) described a scenario where a swap occurred between James and Mitchell, which would have transferred the Werewolf role to James if Mitchell had started with it. Mitchell's erratic claims of being both a Werewolf and a Tanner suggest he was attempting to distract the group or act as the Tanner.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being the werewolf in the final moments of the discussion ('I am the werewolf'). Additionally, Justin (claiming Troublemaker) and Mike (claiming Robber) described a scenario where a swap occurred between James and Mitchell, which would have transferred the Werewolf role to James if Mitchell had started with it. Mitchell's erratic claims of being both a Werewolf and a Tanner suggest he was attempting to distract the group or act as the Tanner.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being the werewolf in the final moments of the discussion ('I am the werewolf'). Additionally, Justin (claiming Troublemaker) and Mike (claiming Robber) described a scenario where a swap occurred between James and Mitchell, which would have transferred the Werewolf role to James if Mitchell had started with it. Mitchell's erratic claims of being both a Werewolf and a Tanner suggest he was attempting to distract the group or act as the Tanner.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being the werewolf in the final moments of the discussion ('I am the werewolf'). Additionally, Justin (claiming Troublemaker) and Mike (claiming Robber) described a scenario where a swap occurred between James and Mitchell, which would have transferred the Werewolf role to James if Mitchell had started with it. Mitchell's erratic claims of being both a Werewolf and a Tanner suggest he was attempting to distract the group or act as the Tanner."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3992,
+    "output_token_count": 1480,
+    "generation_time_sec": 151.3988618850708,
+    "used_chat_template": true,
+    "input_char_count": 13715,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

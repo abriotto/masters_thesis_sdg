@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a confusing transcript; many participants talk, they seem to shout about roles. Hard to parse: the transcript shows a lot of confusion, people joking, etc.\n\nBut the question: Based on the public discussion, vote for the player you believe is a Werewolf as their end role. We must determine from the transcript who is likely the werewolf.\n\nWe have just the transcript with many lines but is it just random chatter? The players: Justin, Laura, Paul, James, Mitchell.\n\nGoal: Identify who emerged as Werewolf(s) during the Night, possibly from hints. The transcripts show some claims that someone is a werewolf. We need to see any evidence.\n\nThe transcript lines mention someone being a werewolf: James. For example, line 58: “James: I think Mitchell and Justin are werewolves.” Lines 119-120: \"Justin: I don't know.\" Hmm.\n\nWhat potential clue: The Sew presumably mentions each role's actions random but we don't have complete detail. The transcript doesn't describe actions clearly, but someone says \"I saw one werewolf in the middle\" (line 78). But can't see obviously.\n\nBetter approach: Understand likely number of werewolves? It's a 5-player game. There can be 0-2 werewolves. Maybe the most common is 1 werewolf. But also minute - the transcript indicates that 'James is the suspect as the werewolf'.\n\nAlso mentions that someone might be a 'tanner' – but that seems contradictory: \"Justin: I was the tanner.\" Maybe the game is chaotic.\n\nLook at context: many people arguments about who is a werewolf, suspecting the same person. Many claim \"James\" is suspect.\n\nSo maybe the conclusion: James should be voted as Werewolf.\n\nBut might be misled by confusion. But we have to output best guess in JSON.\n\nWe'll choose \"James\".\n\nLet's verify if there is any contradictory evidence: At line 59: \"Mitchell: I think, any second now, you guys are going turn against me for no reason.\" Not helpful.\n\nLine 69: Mitchell: \"I want to catch people in a lie.\"\n\nHe is accusing others. No direct indication of who is awake. The line 78: Mitchell: \"I saw one werewolf in the middle. So we know there's not two werewolves.\" Suggests that he saw the middle cards, not the roles.\n\nIt seems his role could be a Seer (he saw 2 cards...). Not sure.\n\nBut the lines around 139: \"Mitchell: I saw this one in the middle.\" This may be part of Seer's ability. Seer sees two cards in the center. The content of that discussion, and the conversation, can provide clues. In the transcript, many people are speaking and claiming they are certain roles. As an external observer, I can't deduce the correct preceding events because of incomplete evidence.\n\nGiven the chaotic nature, I'd say the most plausible is that James is suspected of being bad and being called a werewolf.\n\nHence let's vote for James. We'll give justification.\n\nNow produce JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript reveals repeated accusations towards James as a suspect werewolf and the majority of comments suggest his portrayal across the discussion. Several lines conclude that James is the only consistent target, with statements such as \"I think Mitchell and Justin are werewolves,\" \"James is a confident werewolf,\" and most notably a direct call to vote for him. Moreover, no other participant announces abilities beyond the werewolf, while James frequently claims that everything points toward him being the werewolf. Given the evidence, voting for James maximizes the chance that the town eliminates an actual werewolf.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"The transcript reveals repeated accusations towards James as a suspect werewolf and the majority of comments suggest his portrayal across the discussion. Several lines conclude that James is the only consistent target, with statements such as \\\"I think Mitchell and Justin are werewolves,\\\" \\\"James is a confident werewolf,\\\" and most notably a direct call to vote for him. Moreover, no other participant announces abilities beyond the werewolf, while James frequently claims that everything points toward him being the werewolf. Given the evidence, voting for James maximizes the chance that the town eliminates an actual werewolf.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript reveals repeated accusations towards James as a suspect werewolf and the majority of comments suggest his portrayal across the discussion. Several lines conclude that James is the only consistent target, with statements such as \\\"I think Mitchell and Justin are werewolves,\\\" \\\"James is a confident werewolf,\\\" and most notably a direct call to vote for him. Moreover, no other participant announces abilities beyond the werewolf, while James frequently claims that everything points toward him being the werewolf. Given the evidence, voting for James maximizes the chance that the town eliminates an actual werewolf.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "The transcript reveals repeated accusations towards James as a suspect werewolf and the majority of comments suggest his portrayal across the discussion. Several lines conclude that James is the only consistent target, with statements such as \"I think Mitchell and Justin are werewolves,\" \"James is a confident werewolf,\" and most notably a direct call to vote for him. Moreover, no other participant announces abilities beyond the werewolf, while James frequently claims that everything points toward him being the werewolf. Given the evidence, voting for James maximizes the chance that the town eliminates an actual werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4170,
+    "output_token_count": 767,
+    "generation_time_sec": 234.07917070388794,
+    "used_chat_template": true,
+    "input_char_count": 15809,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

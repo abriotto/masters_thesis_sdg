@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#30##February#17th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#30##February#17th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Insomniac [2], then Witch [47], then Tanner [114].\n    *   Caitlynn: Claims Insomniac [3] (contradicts Justin).\n    *   Paul: Claims Werewolf [83, 105].\n    *   Alysha: Claims Seer [15, 34]. Saw Minion and Witch in the center [39, 57].\n    *   Mitchell: Claims Troublemaker [44], but says he didn't actually swap anyone [61, 72, 77].\n    *   Mike: Claims Robber [30], then Minion [117].\n\n    *   Seer (Alysha) saw Minion and Witch in the center.\n    *   If Alysha is telling the truth:\n        *   Minion is in the center.\n        *   Witch is in the center.\n        *   Therefore, anyone claiming to be Minion or Witch is lying.\n        *   Mike claims Minion [117] -> Lying.\n        *   Justin claims Witch [47] -> Lying.\n\n    *   Paul admits to being a Werewolf [83, 105]. In One Night Ultimate Werewolf, players rarely admit to being a Werewolf unless they are the Tanner or trying to confuse others, but Paul explicitly says \"I started as a werewolf by myself\" [105].\n    *   Wait, if Paul is a Werewolf, why would he admit it? Maybe he's the Tanner? Or maybe he's just playing chaotic.\n    *   Mike claims to be the Robber [30] and then the Minion [117]. If the Minion is in the center (per Alysha), Mike is lying.\n    *   Mitchell claims to be the Troublemaker but didn't swap anyone. This is highly suspicious.\n\n    *   Alysha (Seer) says Minion and Witch are in the center.\n    *   If Minion and Witch are in the center, then:\n        *   Mike (claiming Minion) is lying.\n        *   Justin (claiming Witch) is lying.\n    *   Paul admits to being a Werewolf. If he is actually a Werewolf, the Village wins by voting him.\n    *   However, Mike's behavior is very erratic (Robber -> Minion).\n    *   Let's look at Paul again. He says \"I was a werewolf\" [83]. If he's the Werewolf, he's basically handing the game to the Village. Or he's the Tanner.\n\n    *   Justin: Insomniac -> Witch -> Tanner. (Very inconsistent).\n    *   Caitlynn: Insomniac. (Quiet).\n    *   Paul: Werewolf. (Admits it).\n    *   Alysha: Seer. (Consistent).\n    *   Mitchell: Troublemaker (didn't act). (Suspicious).\n    *   Mike: Robber -> Minion. (Inconsistent).\n\n    *   If Paul is the Werewolf, he's the obvious target.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Mike is the Werewolf, he's lying about being the Robber/Minion.\n    *   If Mitchell is the Werewolf, he's lying about being the Troublemaker.\n\n    *   Paul says: \"I was a werewolf\" [83].\n    *   Paul says: \"I started as a werewolf by myself\" [105].\n    *   In a game of Werewolf, admitting you are the Werewolf is either a very bad move for a Werewolf, a very good move for a Tanner, or a bluff.\n    *   However, the prompt asks to vote for the player I believe is a Werewolf.\n    *   If Paul is telling the truth about his starting role, he is a Werewolf. Even if he was swapped, he's the most direct admission.\n    *   But wait, Mike's claims are even more suspicious. He claims Robber, then Minion. If Alysha (Seer) is honest, the Minion is in the center. This makes Mike a liar.\n    *   Mitchell's claim to be Troublemaker but not acting is also a classic Werewolf bluff.\n\n    *   Paul: \"I was a werewolf.\"\n    *   Mike: \"I'm minion.\" (But Seer says Minion is in center).\n    *   Mitchell: \"I was the troublemaker... I actually just didn't do it.\"\n\n    If Paul is the Werewolf, the game is simple. If Paul is the Tanner, then Mike or Mitchell is the Werewolf.\n    Looking at the transcript, Paul's admission is very explicit. In these logic puzzles, usually, the most direct evidence (even if it seems counter-intuitive for the role) is the key. However, Mike's contradiction with the Seer is a stronger logical lead.\n\n    Wait, let's re-read Paul: \"I was a werewolf\" [83]. \"I started as a werewolf by myself\" [105].\n    If Paul is the Werewolf, he wins if he survives. Admitting it is the opposite of that.\n    If Paul is the Tanner, he wins if he dies. Admitting it is a great way to get voted out.\n    If Mike is the Werewolf, he's lying about being the Robber and Minion.\n\n    Let's look at the Seer (Alysha) again. She saw Minion and Witch in the center.\n    If Alysha is the Seer:\n    - Minion is in center.\n    - Witch is in center.\n    - Mike (claiming Minion) is lying.\n    - Justin (claiming Witch) is lying.\n\n    If Mike is lying about being the Minion, what is he? He could be the Werewolf.\n    If Paul is admitting to being the Werewolf, he's likely the Tanner.\n\n    Let's check the roles again.\n    Players: Justin, Caitlynn, Paul, Alysha, Mitchell, Mike.\n    Roles mentioned: Insomniac, Seer, Robber, Troublemaker, Witch, Minion, Werewolf, Tanner.\n\n    If Paul is the Tanner, and Mike is the Werewolf, and Alysha is the Seer...\n    This fits the pattern of deception.\n\n    Wait, Paul says \"I started as a werewolf by myself\" [105]. If he's the Werewolf, why would he say that? To confuse people? To make them think he's the Tanner?\n    But Mike's claim to be the Minion when the Seer says the Minion is in the center is a huge red flag.\n\n    Let's re-evaluate Paul. If Paul is the Werewolf, he's just playing very strangely. If Mike is the Werewolf, he's lying.\n    Usually, the \"Werewolf\" is the one lying. Paul is being \"honest\" (or pretending to be). Mike is lying.\n\n    Let's look at Mitchell. He claimed Troublemaker but didn't swap. That's also a lie/suspicious.\n    But Mike's lie is more direct (claiming a role the Seer saw in the center).\n\n    Wait, Paul says \"I was a werewolf\" [83]. Then he says \"Mike is another werewolf, I think\" [105].\n    If Paul is a Werewolf, he might be trying to drag Mike down with him? No, that doesn't make sense for a Werewolf.\n    If Paul is the Tanner, he wants to be voted out.\n    If Mike is the Werewolf, he's lying about being the Minion.\n\n    Let's consider the possibility that Paul is the Werewolf and is just trolling. But Mike's claim to be the Minion is a blatant lie if Alysha is the Seer.\n\n    Let's look at the roles again.\n    Alysha: Seer (saw Minion, Witch in center).\n    Mike: Claims Robber, then Minion. (Lying if Alysha is Seer).\n    Paul: Claims Werewolf. (Likely Tanner).\n    Justin: Claims Insomniac, Witch, Tanner. (Lying/Confused).\n    Mitchell: Claims Troublemaker (didn't act). (Suspicious).\n\n    Between Mike and Mitchell, Mike's lie is more explicit. He claims to be the Minion, a role that the Seer explicitly placed in the center.\n\n    Wait, Paul says \"I started as a werewolf by myself\" [105]. If he's the Werewolf, he's the most likely candidate for the vote. But the prompt asks who I *believe* is the Werewolf.\n\n    Let's think about the \"Tanner\" strategy. The Tanner wants to be voted out. Paul admitting he's a Werewolf is a classic Tanner move.\n    Mike claiming to be the Minion (when the Minion is in the center) is a classic Werewolf move (trying to claim a role that protects them or confuses the village).\n\n    Therefore, Mike is the most likely Werewolf.\n\n    Wait, let me double check the transcript.\n    [117] Mike: \"But I would know. I'm minion.\"\n    [57] Alysha: \"...the two that I saw in the middle, one was the minion.\"\n    This is a direct contradiction. If Alysha is the Seer, Mike is lying.\n\n    Is there any reason to believe Alysha is lying?\n    She's been consistent.\n    Is there any reason to believe Paul is the Werewolf?\n    He said he was. But that's too easy.\n\n    Let's check Mitchell.\n    [44] Mitchell: \"I was actually the troublemaker.\"\n    [61] Mitchell: \"No [I didn't trouble make].\"\n    This is also suspicious, but Mike's claim to be the Minion is a more definitive lie based on the Seer's information.\n\n    Wait, Paul says \"I started as a werewolf by myself\" [105]. If he's the Werewolf, he's the one. But if he's the Tanner, he's just trying to get voted.\n    In these games, the person who admits to being the Werewolf is almost always the Tanner.\n\n    Let's look at Mike again.\n    Mike claims Robber [30].\n    Then Mike claims Minion [117].\n    This is a huge shift in role.\n\n    Conclusion: Mike is the most likely Werewolf.\n\n    Wait, let me re-read Paul's part.\n    [83] Paul: \"I was a werewolf.\"\n    [105] Paul: \"I started as a werewolf by myself. Mike is another werewolf, I think.\"\n    If Paul is a Werewolf, he's admitting it and then accusing Mike. This is very strange behavior for a Werewolf.\n    If Paul is the Tanner, he's admitting it to get voted and then just guessing/lying about Mike.\n    If Mike is the Werewolf, he's lying about being the Robber and the Minion.\n\n    Let's check the roles again.\n    Seer (Alysha) saw Minion and Witch in center.\n    Mike claims Minion.\n    This is the strongest piece of evidence.\n\n    One more check: Could Paul be the Werewolf and Mike be the Minion?\n    No, because the Seer saw the Minion in the center.\n    Could Mike be the Werewolf and Paul be the Tanner?\n    Yes. This fits all the evidence.\n\n    Final check on Mike:\n    - Claimed Robber.\n    - Claimed Minion.\n    - Seer says Minion is in center.\n    - Therefore, Mike is lying.\n    - Lying players are usually Werewolves or Tanners.\n    - Paul is already acting like the Tanner.\n    - Therefore, Mike is the Werewolf.",
+  "parsed_output": {
+    "justification": "Alysha claims to be the Seer and states that she saw the Minion and the Witch in the center. Mike contradicts this by claiming to be the Minion, which makes him a likely liar. Paul's admission to being a Werewolf is highly characteristic of the Tanner role, who wants to be voted out, whereas Mike's shifting claims (Robber then Minion) are more typical of a Werewolf attempting to deceive the group.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claims to be the Seer and states that she saw the Minion and the Witch in the center. Mike contradicts this by claiming to be the Minion, which makes him a likely liar. Paul's admission to being a Werewolf is highly characteristic of the Tanner role, who wants to be voted out, whereas Mike's shifting claims (Robber then Minion) are more typical of a Werewolf attempting to deceive the group.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claims to be the Seer and states that she saw the Minion and the Witch in the center. Mike contradicts this by claiming to be the Minion, which makes him a likely liar. Paul's admission to being a Werewolf is highly characteristic of the Tanner role, who wants to be voted out, whereas Mike's shifting claims (Robber then Minion) are more typical of a Werewolf attempting to deceive the group.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Alysha claims to be the Seer and states that she saw the Minion and the Witch in the center. Mike contradicts this by claiming to be the Minion, which makes him a likely liar. Paul's admission to being a Werewolf is highly characteristic of the Tanner role, who wants to be voted out, whereas Mike's shifting claims (Robber then Minion) are more typical of a Werewolf attempting to deceive the group."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4022,
+    "output_token_count": 2797,
+    "generation_time_sec": 287.3522300720215,
+    "used_chat_template": true,
+    "input_char_count": 13606,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

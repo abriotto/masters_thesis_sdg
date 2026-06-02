@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "The transcript is chaotic and many participants claim different roles, but the most explicit self‑identification comes from Mitchell who states at line 123 that \"I was the werewolf,\" which strongly suggests his final role. Other claims of being a tanner or denied are inconsistent and likely intentional misdirection by other players. No clear evidence links any other player to the werewolf role. Therefore the most plausible suspect is Mitchell.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "<|channel|>analysis<|message|>We need to determine from transcript likely werewolf. But transcript is messy. Must parse: conversation about roles reveals confusion. People mention Mitchell as werewolf etc. But we don't know with certainty. Let's analyze roles: players: Matt, Caitlynn, Mitchell, Alana, Mike.\n\nThe transcript appears garbled; maybe they tried to mock game with meta commentary. Hard to extract.\n\nWe need pick who likely is werewolf based on discussion: many accuse each other, but conclusion?\n\nLook towards end: lines 123-125: Mitchell says \"I really wasn't the tanner. I was the werewolf.\" Then Mike says \"You really were the tanner.\" That implies contradictions. So perhaps Mitchell was werewolf.\n\nAlso earlier we see \"I was the tanner\" statements from earlier. At line 38-39 etc. This seems random.\n\nProbably easiest pick: choose Mitchell as werewolf as he claims to be werewolf. But might be lying to mislead. One job: to predict werewolf: likely the person emphasized being werewolf.\n\nThus choose Mitchell. Provide justification: confusion, etc.<|channel|>final <|constrain|>json<|message|>{\"justification\":\"The transcript is chaotic and many participants claim different roles, but the most explicit self‑identification comes from Mitchell who states at line 123 that \\\"I was the werewolf,\\\" which strongly suggests his final role. Other claims of being a tanner or denied are inconsistent and likely intentional misdirection by other players. No clear evidence links any other player to the werewolf role. Therefore the most plausible suspect is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is chaotic and many participants claim different roles, but the most explicit self‑identification comes from Mitchell who states at line 123 that \\\"I was the werewolf,\\\" which strongly suggests his final role. Other claims of being a tanner or denied are inconsistent and likely intentional misdirection by other players. No clear evidence links any other player to the werewolf role. Therefore the most plausible suspect is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript is chaotic and many participants claim different roles, but the most explicit self‑identification comes from Mitchell who states at line 123 that \"I was the werewolf,\" which strongly suggests his final role. Other claims of being a tanner or denied are inconsistent and likely intentional misdirection by other players. No clear evidence links any other player to the werewolf role. Therefore the most plausible suspect is Mitchell."
+  },
+  "soft_warnings": [
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4008,
+    "output_token_count": 332,
+    "generation_time_sec": 103.38415384292603,
+    "used_chat_template": true,
+    "input_char_count": 14833,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

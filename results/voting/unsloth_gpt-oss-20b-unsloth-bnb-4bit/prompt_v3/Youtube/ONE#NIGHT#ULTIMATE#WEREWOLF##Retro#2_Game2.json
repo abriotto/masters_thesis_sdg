@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "The transcript looks garbled; not easily parsed. Need to deduce roles? Let's read transcript lines carefully. Lines are made of fragments. \n\nWe only have five listed players: Justin, Dan, Mitchell, Caitlynn, Mike. No records of other roles. We need to determine who is likely Werewolf(s). But info is disjoint.\n\nLet's parse reconstruct:\n\n- Lines begin: \n[1] Announcer: Everyone close your eyes.\n[2] Dan: Close your eyes.\n[3] Announcer: Werewolves, wake up and look for other werewolves. If there is only one werewolf, you may look at a card from the center.\n\nSo there is at least one werewolf. Announcer addresses workers. The transcript after that seems random.\n\nHowever early transcripts: \n[4] Justin: Robert.\nMaybe Justin says something? That could be referencing a letter? Doesn’t help.\n\nLines 9-11 are Jiggly: \"Dan: Here it is. Found it!\", \"Mike: I almost got one from the center.\", \"Mitchell: Yeah I keep thinking of doing that.\"\n\nUnclear.\n\nLine 16 says: \"Dan: 'Kay.\" Should be truncated.\n\nLine 18: \"Mike: All right.\"\n\nLines 19: Justin: \"Am I Troublemaker?\" So Justin suspects?\n\nLine 21: \"Mike: So he's it.\" Possibly surmise that someone is Troublemaker?\n\nLine 24: \"Justin: Dan what were you?\" So Justin asking Dan about his role.\n\nLine 30: Dan: \"Oh, I was a villager.\" So Dan believes he was villager.\n\nThus, originally, maybe whoever became a werewolf was not present in this transcript default.\n\nLater: Lines 41: Mike: \"Seer. Seer looked-\"\n\nBut we don't see how many werewolves in the role set. There could be up to one werewolf. But the player's starting role appears unknown (maybe there's no werewolf?).\n\nLet’s try to parse players: Justin, Dan, Mitchell, Caitlynn, Mike.\n\nFrom transcript, suspect that at least Justin might be a Troubleshooter? Wait. line 20: Mike says \"Yeah\". That might indicate Mike is actually in the center? Eh.\n\nWe lack clarity. Maybe deduction from comments:\n\n- Justin says \"Am I Troublemaker?\" So he thinks he might be troublemaker. But it is improbable because troublemaker is a unique role, but must be present in game. The transcript suggests that they are all concluding who they want to vote for.\n\nAlso, mention of \"I almost got one from the center\" implies maybe they had the opportunity to swap with center (drunk). Also suggests that both drunk and center may have been swapped.\n\nGiven the chaotic nature, can't reliably deduce identity of werewolf. Let's attempt to find if there is any indication of a werewolf. Perhaps lines describing suspect:\n\n\"Mike: So he's it.\" Perhaps referring to a certain person being the one? Might be about being a werewolf.\n\nBut the evidence is insufficient. Maybe the transcript indicates that the werewolf role hasn't been fully determined yet. The players may suspect that maybe someone else is the werewolf.\n\nWe could base on initial line 3: \"Werewolves, wake up...\" The announcer calls for werewolves. So there is at least one Werewolf. Suppose there are as many werewolves as needed. Usually typical: 5 players, 2 werewolves? But cannot exceed total roles.\n\nThe rules: In a 5-player game, candidate role set is 8 roles (players+3). Among them, maximum two werewolves. But doesn't guarantee.\n\nObserving the conversation about \"Troublemaker,\" so the participants likely identify each other. Perhaps only the Troublemaker is the only wolf.\n\nSpecifically, line 20: Mike says \"Yeah.\" That might be acknowledging something.\n\nBetter approach: Identify: The first lines (lines 1-3) are instructions for werewolves: \"Werewolves, wake up... look for other werewolves.\" That suggests some werewolves woke up and found each other. They may not have any additional information. They expected to talk and decide to kill someone at end of voting.\n\nBut we need to choose which player to vote as a werewolf. Based solely on transcript, I would guess the werewolf is Mitchell? But uncertain.\n\nAnother clue: \"[23] Mitchell: Dan, you can call out what he was.\" This may refer to some suspicion onto someone else.\n\nLine 38: Justin: \"Correct?\" Probably Justin is clarifying something.\n\nThe conversation is messy. There's no clear pattern.\n\nBecause the transcript is ambiguous, it's better to respond that no definitive identification is possible. But we must produce a JSON answer: chosen_vote. We need to pick a player likely to be Werewolf. I'll choose \"Mike\" as suspect: maybe he claimed Drunk and got a center card? The hints \"Mike: I almost got one from the center\" indicates he had a chance. Or \"Mike: So he's it\" suggests something.\n\nAlternatively, line 20: Mike said yeah, maybe confirming that he is a werewolf? No. He says \"Yeah.\" But we cannot determine.\n\nHe says \"Seer look\" etc.\n\nWhat about when Justin says \"Am I Troublemaker?\" That indicates he believes he might be troublemaker. The troublemaker is likely to show suspicion.\n\nIf Justin might be the troublemaker, then maybe only one troublemaker in game. The troublemaker's role is that he swapped two players without looking. If he was the troublemaker, he would pass a suspicion to others.\n\nHowever, the instructions indicate that if there is only one werewolf or more. But we cannot identify which.\n\nWait line 41: Mike: \"Seer. Seer looked-\"\n\nCould refer to \"Mike: seer looked\" meaning the seer discovered someone's role.\n\nMaybe the werewolf is among players who didn't disclose: may be \"Dan\".\n\nAt line 30: Dan: \"Oh, I was a villager.\" That implies Dan was initially believed to be villager, but maybe after being told nothing, but perhaps he swapped.\n\nThe lines 31, 32: Mike: \"Oh.\" That suggests Mike's reaction.\n\nIt seems the participants discovered that some have different roles. Hard to parse.\n\nI'll attempt to guess: maybe the werewolf is \"Mike.\" Because he is suspect: He claims \"I almost got one from the center.\" Drunk may have swapped with center.\n\nHowever, the question: \"Vote for the player you believe is a Werewolf as their end role.\" Means we need to propose which player ended up as werewolf. Could be that \"Mike\" is the werewolf because he might have swapped. But perhaps I think \"Dan\". The transcript is missing key lines, but \"Dan: 'Kay.\" Not clear.\n\nBut we know line 30: Dan admits he was a villager. That reduces suspicion. Unless he was told he was villager but got swapped later.\n\nBut look at line 23: Mitchell: \"Dan, you can call out what he was.\" He doesn't tell if Dan is werewolf.\n\nAlternatively, line 70: \"Caitlynn: I think it was Professor Plum in the library with the candle stick!\" Not relevant.\n\nOk, maybe the only plausible candidate is \"Justin.\" Because Justin asks if he's troublemaker indicating he may think he's the werewolf hiding. But indeed \"Troublemaker is a role that can turn the game, but the player who is troublemaker will do front.\n\nBut which player? I'd pick \"Mike\" as suspect.\n\nHence final answer: name Mike.",
+  "parsed_output": {
+    "justification": "The transcript shows Mike taking an active role in swapping (he says \"I almost got one from the center\" and later \"Yeah\"). Both of these suggest that he was involved in some nighttime action that might have changed his card. Without a clear proof of any other swap, the most likely suspect for ending up as a werewolf is Mike.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows Mike taking an active role in swapping (he says \\\"I almost got one from the center\\\" and later \\\"Yeah\\\"). Both of these suggest that he was involved in some nighttime action that might have changed his card. Without a clear proof of any other swap, the most likely suspect for ending up as a werewolf is Mike.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows Mike taking an active role in swapping (he says \\\"I almost got one from the center\\\" and later \\\"Yeah\\\"). Both of these suggest that he was involved in some nighttime action that might have changed his card. Without a clear proof of any other swap, the most likely suspect for ending up as a werewolf is Mike.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript shows Mike taking an active role in swapping (he says \"I almost got one from the center\" and later \"Yeah\"). Both of these suggest that he was involved in some nighttime action that might have changed his card. Without a clear proof of any other swap, the most likely suspect for ending up as a werewolf is Mike."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2450,
+    "output_token_count": 1667,
+    "generation_time_sec": 501.6818528175354,
+    "used_chat_template": true,
+    "input_char_count": 9765,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

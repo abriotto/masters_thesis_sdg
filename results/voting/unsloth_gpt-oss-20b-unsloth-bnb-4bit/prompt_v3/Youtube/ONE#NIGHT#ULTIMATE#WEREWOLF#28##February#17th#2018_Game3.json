@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a very messy transcript. It seems many irrelevant lines, including disagreements. Our task: Based on the public discussion, vote for the player we believe is a Werewolf as their end role. Must output justification and chosen vote in JSON.\n\nWe need to decide which player is likely the werewolf. There are six players: Justin, Caitlynn, Paul, Alysha, Mitchell, Mike. The transcript is chaotic. I need to identify clues.\n\nRemember that the Start roles are random, but end roles determined by swaps. We have to guess from the conversation, but the transcript seems nonsense. I suspect the transcript doesn't provide clear info. Maybe a meta puzzle where the real answer is that Justin is the werewolf or something.\n\nLet's parse anomalies:\n\nLine 41-42: \"Justin: That's not true.\" \"Alysha: Unless you traded his card...he's still the werewolf.\"\n\nLine 38-41: Alysha says she looked at Justin's card. They claim Justin was the werewolf.\n\nLine 66: Mike says \"No, I'm troublemaker.\" So Mike is troublemaker (villager align). But that would mean he is Village. He says \"I didn't explore or trade\" etc.\n\nLine 56: Justin: \"Who'd you Rob?\" referencing Mike's action. Mike says ignoring.\n\nWe need to find the werewolf among the six based on conversation.\n\nFrom the transcript, many claim they are troublemakers but we don't know which roles swapped. Let's think: There is possibly only one werewolf. But the transcript suggests more. There is talk about \"two werewolves\" and \"one\"? Some mention \"two werewolves starting\", \"already\" etc. Many people claim they can't be sure.\n\nPerhaps the correct werewolf is Mike because he claimed to be troublemaker? Wait the line 55 (line 55: \"Mike: ...But I troublemade you.\") So he might have helped. Actually it's confusing.\n\nWe can maybe infer: Because the game has a Drunk role that may swap. There's likely only one werewolf. The transcript refers to Justin being a werewolf. Several lines indicate \"Justin was a werewolf.\" But many claims may be false.\n\nThe best candidate might be Mike. He claims he's troublemaker but maybe he's actually a werewolf. There is conflict but we can't confirm.\n\nWait: \"Mike: I ... (100)**  but no, the transcript says \"Mike: ...\"\n\nOne clue: There's line 67: \"Alysha: Okay robber, tell me. What'd you do?\" \"Mike: ...\"\n\nLine 70: \"Mitchell: Tanner or werewolf? You looked at Justin's?\" Then 71: \"Caitlynn: No, it was a Tanner.\" This indicates that someone looked at Justin's card and found it to be a Tanner. That implies Justin isn't a werewolf, perhaps is a Tanner. That would mean Justin is Tanner. If Justin is Tanner, he would be alone, not a werewolf.\n\nBut then, his statement about Justin being a werewolf contradicts. Could be confusion.\n\nOk think: The team of the werewolf wants to survive, so they don't openly confess. The treacherous spree of conversation suggests that the sole werewolf may be Mike or Paul or Caitlynn. Let’s search for definite \"I'm a troublemaker.\" We'll search.\n\nLine 56: Mike says \"I did not ...\"\n\nLine 59-60: Mike says uncertain. Hard.\n\nAnother line: 52: Mike: \"I don't want to reveal that half yet.\" He would be hiding his identity.\n\nWe might not trust the transcript.\n\nBecause nothing seems conclusive: Several lines contradict each other: \"Alysha: I bet they're both werewolves.\" \"Mike: No, I'm troublemaker.\"\n\nOur guidance: choose one person as the werewolf. Might guess \"Mike\" or \"Justin\" or something.\n\nLet's see other clues: In this game, only one player will have a center role of minion/werewolf. Perhaps the conversation points to \"Justin was a werewolf.\" Another part: \"Mike says 'I did a hundred percent.'\"\n\nLine 119: Justin: \"I'm a fucking troublemaker.\" That indicates he's a troublemaker originally? But he may have swapped to become a werewolf.\n\nBut just because someone says \"I'm a trouble?\" might not matter.\n\nAnother angle: The function talk. The dialogue seems unsorted, but sees people confusion.\n\nNo discusions about actual knowledge of card?\n\nWe might guess \"Mike\" because he says \"I did trade Justin.\" But he's trask.\n\nLet’s decide: I think Justin is the werewolf, because he repeatedly claims he is the werewolf, seemingly consistent. But a counter: line says \"Justin: That's not true.\" Could indicate disagreement about his statements.\n\nThe data is highly unreliable. Option: pick \"Justin\" as the werewolf.\n\nAlternatively, \"Mike\" because he's troublemaker, but he claims he's trouble.\n\nBetter choose \"Justin.\"\n\nThus output:\n\n{\n  \"justification\": \"The transcript suggests a strong focus on Justin being identified as a werewolf, with multiple participants voting and accusing him. Although contradictory statements exist, the pattern of accusations tends toward Justin.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "parsed_output": {
+    "justification": "The transcript contains several direct claims that Justin was one of the werewolves and that other players accuse him to convince that he is the target of the vote. Despite some contradictory statements, the overall tone blaming Justin weaves a narrative that he is the likely “wicked” player. Since there is no other consistent evidence pointing to another player being a potential werewolf, the most coherent guess is that Justin is the werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains several direct claims that Justin was one of the werewolves and that other players accuse him to convince that he is the target of the vote. Despite some contradictory statements, the overall tone blaming Justin weaves a narrative that he is the likely “wicked” player. Since there is no other consistent evidence pointing to another player being a potential werewolf, the most coherent guess is that Justin is the werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains several direct claims that Justin was one of the werewolves and that other players accuse him to convince that he is the target of the vote. Despite some contradictory statements, the overall tone blaming Justin weaves a narrative that he is the likely “wicked” player. Since there is no other consistent evidence pointing to another player being a potential werewolf, the most coherent guess is that Justin is the werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The transcript contains several direct claims that Justin was one of the werewolves and that other players accuse him to convince that he is the target of the vote. Despite some contradictory statements, the overall tone blaming Justin weaves a narrative that he is the likely “wicked” player. Since there is no other consistent evidence pointing to another player being a potential werewolf, the most coherent guess is that Justin is the werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3733,
+    "output_token_count": 1187,
+    "generation_time_sec": 361.5941779613495,
+    "used_chat_template": true,
+    "input_char_count": 14420,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

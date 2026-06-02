@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Tyler\n\n    *   Justin: Claims Troublemaker (T), then says he didn't switch anyone (which is impossible for a Troublemaker unless he's lying or was the Robber/Drunk/etc.).\n    *   Tyler: Claims Seer (S), says he saw Mitchell as a Werewolf (W).\n    *   Paul: Claims Copycat (C) into Drunk (D).\n    *   Mitchell: Initially denies being a Werewolf, then later admits \"I was the werewolf\" but claims he was robbed.\n\n    *   Tyler (Seer) says Mitchell is a Werewolf.\n    *   Justin (Troublemaker) says he switched people, then later says he didn't switch anyone.\n    *   Mitchell admits he was a Werewolf but claims he was robbed.\n    *   Paul claims Copycat into Drunk.\n\n    *   If Tyler is the Seer and saw Mitchell as a Werewolf, Mitchell is a strong candidate.\n    *   If Mitchell was a Werewolf and was robbed, the Robber now has the Werewolf card.\n    *   Who is the Robber?\n        *   Justin claims Troublemaker, but his behavior is inconsistent (saying he switched people, then saying he didn't).\n        *   Mitchell claims Justin robbed him.\n    *   Let's look at the roles:\n        *   Tyler: Seer (claims)\n        *   Paul: Copycat -> Drunk (claims)\n        *   Justin: Troublemaker (claims)\n        *   Mitchell: Werewolf (admits)\n\n    *   If Mitchell was the Werewolf and Justin was the Robber, Justin now has the Werewolf card.\n    *   If Justin is the Troublemaker and didn't switch anyone, he's lying about his role or the game state.\n    *   Wait, Mitchell says \"I was the werewolf\" and \"Justin robbed from me\". If Justin is the Robber, Justin is now the Werewolf.\n    *   If Justin is the Troublemaker and didn't switch anyone, he's lying.\n    *   If Tyler is the Seer, Mitchell was indeed a Werewolf.\n\n    *   Mitchell admits he was a Werewolf.\n    *   If he was robbed, the Robber is now the Werewolf.\n    *   If he wasn't robbed, he is still the Werewolf.\n    *   Justin's claims are very contradictory. He claims Troublemaker, then says he switched people, then says he didn't switch anyone. This is classic bluffing.\n    *   Mitchell claims Justin robbed him. If Justin is the Robber and robbed Mitchell (the Werewolf), Justin is now the Werewolf.\n    *   However, the goal is to vote out *a* Werewolf. If Mitchell is still the Werewolf (because Justin is lying about robbing him), Mitchell is the target. If Justin is the Werewolf (because he robbed Mitchell), Justin is the target.\n\n    *   Tyler (Seer) -> Mitchell (Werewolf).\n    *   Mitchell admits he was a Werewolf.\n    *   Justin claims Troublemaker, but his story is messy.\n    *   If Mitchell is the Werewolf and wasn't robbed, he's the target.\n    *   If Mitchell was robbed by Justin, Justin is the target.\n    *   But wait, Mitchell says \"I was the werewolf\" and \"I got robbed\". If he's the Tanner, he wants to be voted out. If he's the Werewolf and wasn't robbed, he's trying to deflect.\n    *   Let's re-read: Mitchell says \"I was the werewolf. I don't deny that.\" and \"Justin robbed from me.\"\n    *   If Mitchell is the Werewolf and *wasn't* robbed, he's just admitting it (unlikely for a Werewolf unless he's the Tanner).\n    *   If Mitchell is the Tanner, he's lying about being the Werewolf to get votes.\n    *   If Mitchell is the Werewolf and *was* robbed, Justin is now the Werewolf.\n\n    *   Justin claims Troublemaker.\n    *   Justin says \"I actually didn't switch anybody.\" (A Troublemaker *must* switch two other players). This is a huge red flag. He's either lying about being the Troublemaker or lying about not switching.\n    *   Mitchell says \"Justin robbed from me.\"\n    *   If Justin is the Robber and robbed Mitchell (the Werewolf), Justin is now the Werewolf.\n    *   If Justin is the Werewolf and is lying about being the Troublemaker, he's the target.\n\n    *   Tyler (Seer) saw Mitchell as Werewolf.\n    *   Mitchell admits he was Werewolf.\n    *   Justin's behavior is highly suspicious (contradictory claims about Troublemaker).\n    *   If Mitchell was the Werewolf and Justin robbed him, Justin is the current Werewolf.\n    *   If Mitchell was the Werewolf and wasn't robbed, Mitchell is the current Werewolf.\n    *   Given Justin's blatant lie about the Troublemaker's ability (\"I'm the troublemaker... I actually didn't switch anybody\"), Justin is the most likely liar/Werewolf.\n\n    *   Wait, if Mitchell is the Tanner, he'd admit to being the Werewolf to get voted out.\n    *   If Mitchell is the Werewolf and was robbed, he's now a Villager (Robber's role) and Justin is the Werewolf.\n    *   If Mitchell is the Werewolf and wasn't robbed, he's still the Werewolf.\n    *   But Justin's claim to be Troublemaker while saying he didn't switch anyone is an impossible statement. This suggests Justin is bluffing.\n\n    *   Tyler: Seer (Consistent)\n    *   Paul: Copycat -> Drunk (Consistent)\n    *   Mitchell: Werewolf (Admits it, claims robbed)\n    *   Justin: Troublemaker (Inconsistent)\n\n    If Mitchell was the Werewolf and Justin robbed him, Justin is the Werewolf.\n    If Mitchell was the Werewolf and Justin is lying about robbing him, Mitchell is the Werewolf.\n    However, Justin's claim to be Troublemaker and not switch anyone is a direct contradiction of the role's rules. This makes Justin the most suspicious player.\n\n    *   Mitchell: \"I was the werewolf. I don't deny that.\"\n    *   Justin: \"I'm the troublemaker and I didn't switch anybody.\"\n    *   If Justin is the Robber and robbed Mitchell, Justin is the Werewolf.\n    *   If Justin is the Werewolf and is lying about everything, he's the Werewolf.\n    *   Either way, Justin's contradictions make him the primary suspect.\n\n    *   Wait, if Mitchell is the Tanner, he's just trying to get voted out.\n    *   But the prompt asks for the player I believe is a Werewolf.\n    *   If Mitchell was the Werewolf and Justin robbed him, Justin is the Werewolf.\n    *   If Mitchell is the Werewolf and wasn't robbed, Mitchell is the Werewolf.\n    *   Justin's lie about the Troublemaker role is the most telling piece of evidence. A player who claims a role but then describes an action that is impossible for that role is almost certainly lying.\n\n    *   Justin claims Troublemaker.\n    *   Justin says he didn't switch anyone.\n    *   Troublemakers *must* switch two other players.\n    *   Therefore, Justin is lying about his role.\n    *   Mitchell admits he was a Werewolf and claims Justin robbed him.\n    *   If Justin is the Robber and robbed the Werewolf, Justin is now the Werewolf.\n    *   If Justin is the Werewolf and is bluffing as the Troublemaker, he is the Werewolf.\n    *   In both scenarios, Justin is the most likely candidate for the final Werewolf role.",
+  "parsed_output": {
+    "justification": "Tyler claimed to be the Seer and identified Mitchell as the Werewolf, which Mitchell eventually admitted to. However, Mitchell claimed that Justin robbed him, which would transfer the Werewolf role to Justin. Justin's claims are highly contradictory; he claimed to be the Troublemaker but then stated he did not switch anyone, which is impossible for that role. This inconsistency, combined with Mitchell's claim of being robbed, strongly suggests that Justin is the current Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Tyler claimed to be the Seer and identified Mitchell as the Werewolf, which Mitchell eventually admitted to. However, Mitchell claimed that Justin robbed him, which would transfer the Werewolf role to Justin. Justin's claims are highly contradictory; he claimed to be the Troublemaker but then stated he did not switch anyone, which is impossible for that role. This inconsistency, combined with Mitchell's claim of being robbed, strongly suggests that Justin is the current Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Tyler claimed to be the Seer and identified Mitchell as the Werewolf, which Mitchell eventually admitted to. However, Mitchell claimed that Justin robbed him, which would transfer the Werewolf role to Justin. Justin's claims are highly contradictory; he claimed to be the Troublemaker but then stated he did not switch anyone, which is impossible for that role. This inconsistency, combined with Mitchell's claim of being robbed, strongly suggests that Justin is the current Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Tyler claimed to be the Seer and identified Mitchell as the Werewolf, which Mitchell eventually admitted to. However, Mitchell claimed that Justin robbed him, which would transfer the Werewolf role to Justin. Justin's claims are highly contradictory; he claimed to be the Troublemaker but then stated he did not switch anyone, which is impossible for that role. This inconsistency, combined with Mitchell's claim of being robbed, strongly suggests that Justin is the current Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4160,
+    "output_token_count": 1923,
+    "generation_time_sec": 197.13729786872864,
+    "used_chat_template": true,
+    "input_char_count": 14277,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

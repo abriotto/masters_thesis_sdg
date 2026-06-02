@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to select whom to vote as werewolf based on transcript. There's confusion. There are 4 players: Justin, Mike, James, Mitchell. We need to deduce starting roles from transcript.\n\nLet's parse.\n\nTranscript describes night actions, players being Seer, etc.\n\nScene: The announcement: \"Everyone. Close your eyes. Werewolves, wake up... are. Seer. Robber. Troublemaker. Insomniac. ... Everyone wake up.\" That's the standard rules.\n\nWe do not know specific identities. But the transcript shows players discussing roles. Let's look at names and statements.\n\nImportant random aspects: Some statements mention who is a werewolf. People claim.\n\nKey statements:\n\nLine [4]: Justin says \"I'm going to actually push for communication with the villagers this time. I was the seer.\"\nSo Justin claims his starting role was Seer.\n\nLine [10], [11], [12] etc. sort of debate Tanner.\n\nLines [17]: \"He started off as werewolf, now he's very uncomfortable.\" That could be referring to Mike maybe? Wait: \"Mitchell: I'll tell you where he started off. He started off as werewolf, now he's very uncomfortable.\" It's unclear if this refers to a person.\n\nThen line [42]: \"If we've been trouble made. Mitchell is the werewolf.\" That indicates someone says Mitchell is the werewolf.\n\nLine [53]: \"Because if you trouble made us... And, well, I know I was the Tanner, so I know Mitchell wasn't the fucking Tanner.\" So James says he was the Tanner.\n\nLet's parse systematically.\n\nWe have four players: Justin, Mike, James, Mitchell.\n\nAt night, roles were assumed: Seer (Justin), whatever others.\n\nBut we don't know actual shipments. Might need to infer.\n\nPossible roles that could be present: Seer, Robber, Troublemaker, Insomniac. Those four roles.\n\nAdditionally, might be werewolves or Tanner.\n\nBut just trust what transcript says: Justin claims to be Seer. So he knows his role and his starting role is Seer. Therefore no chance of being a Werewolf; Seer belongs to Village. So Justin cannot be a werewolf.\n\nMike: appears conflict at line [16]. \"Mike: I don't really want to reveal that yet. Is there robber out there?\" So Mike doesn't reveal own role but certain lines show that the \"Robber\" was perhaps a separate player? Actually Robber could be Mike but uncertain.\n\nThat suggests that the robber's identity is unknown to others.\n\nLooking at lines:\n\n[47] Mike: Are you sure you didn't start it off as the werewolf? Wait, line 47: \"Mike: Are you sure you didn't start it off as the werewolf?\" This implies a question directed at someone else? The preceding context: [46] James: No, Mitchell, you're the werewolf. Mitchell is the werewolf. So someone says Mitchell is werewolf. Mike asks \"Are you sure you didn't start it off as the werewolf?\" Hmm.\n\nAt 48: \"James: I'm 9000% sure.\" Possibly answering.\n\nSo seems there is argument over which player might be werewolf.\n\nLine (72): \"Justin: But you're going to win if you're the Tanner.\" In that line, someone is being told to be the Tanner. Maybe Justin addressing a person who said something about being a Tanner.\n\nLine [61]: \"What happened here?\" presumably a rhetorical question.\n\nLet's compile possible observations: The main confusion is everyone is debating who is the werewolf vs. Tanner with claims.\n\nBut ultimately we need to choose a player to vote as the werewolf that seems likely.\n\nFrom the transcript, it seems people are mostly accusing Mitchell as werewolf, at least lines [7], [40], [43], [46], [49], [58], [70] indicating Mitchell. Also lines [23], [24], [28] mention James; [53] and [57] mention James. But the consensus from multiple lines: Several participants label Mitchell as werewolf.\n\nHence we should vote for Mitchell.\n\nBut let's analyze RN. Are there any contradictions? Lines [74]: \"Mitchell: You pushed the wrong button. Shit.\" That might be rhetorical about something else.\n\nGiven that multiple players call Mitchell the werewolf, it's likely correct. No other lines strongly suggesting other werewolf suspects. So choose Mitchell.\n\nThus output: chosen_vote = \"Mitchell\".\n\nJustification: mention that many players explicitly accuse Mitchell as werewolf; other players claim different roles but no evidence for them being werewolf. Therefore vote Mitchell.\n\nMake sure to format JSON properly with justification etc.\n\nAnswer.",
+  "parsed_output": {
+    "justification": "Most of the discussion points toward Mitchell being the Werewolf. Several players explicitly accuse Mitchell of being a Werewolf, and no one other presents a compelling argument for another suspect. As none of the others claim or confirm a Werewolf role, the safest choice is to vote for Mitchell.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"Most of the discussion points toward Mitchell being the Werewolf. Several players explicitly accuse Mitchell of being a Werewolf, and no one other presents a compelling argument for another suspect. As none of the others claim or confirm a Werewolf role, the safest choice is to vote for Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"Most of the discussion points toward Mitchell being the Werewolf. Several players explicitly accuse Mitchell of being a Werewolf, and no one other presents a compelling argument for another suspect. As none of the others claim or confirm a Werewolf role, the safest choice is to vote for Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Most of the discussion points toward Mitchell being the Werewolf. Several players explicitly accuse Mitchell of being a Werewolf, and no one other presents a compelling argument for another suspect. As none of the others claim or confirm a Werewolf role, the safest choice is to vote for Mitchell."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2862,
+    "output_token_count": 1035,
+    "generation_time_sec": 311.9924473762512,
+    "used_chat_template": true,
+    "input_char_count": 11526,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

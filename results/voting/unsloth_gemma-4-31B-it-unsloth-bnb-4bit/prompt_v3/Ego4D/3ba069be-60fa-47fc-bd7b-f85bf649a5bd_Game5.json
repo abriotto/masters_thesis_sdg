@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game5.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin: Claims Troublemaker. Says he swapped Jessica and himself (though Daniel points out you can't swap yourself).\n    *   Jessica: Initially claims Villager, then corrects to Tanner.\n    *   Kaelan: Claims Drunk.\n    *   Daniel: Doesn't claim a role, is evasive (\"I don't have a good answer for this\").\n\n    *   Kevin (Troublemaker) -> Swapped Jessica and himself (invalid move, but he claims it).\n    *   Jessica (Tanner) -> If Kevin swapped her with himself, Kevin is now the Tanner and Jessica is the Troublemaker.\n    *   Kaelan (Drunk) -> Swapped with a center card.\n    *   Daniel (Unknown) -> Evasive.\n\n    *   If Kevin is the Troublemaker and swapped Jessica (Tanner) with himself, Kevin is now the Tanner.\n    *   If Jessica is the Tanner, she wants to be voted out.\n    *   If Daniel is the Werewolf, he would be evasive to avoid suspicion.\n    *   Kaelan claims Drunk, which is a plausible role for someone who doesn't know their current role.\n\n    *   Kevin says he's voting for Jessica.\n    *   Jessica suggests voting for the middle (which isn't a player) or implies Daniel wants to be voted.\n    *   Kaelan doesn't trust Daniel or Jessica.\n    *   Daniel is acting very suspiciously by not claiming a role and being evasive.\n\n    *   Kevin: Claims Troublemaker.\n    *   Jessica: Claims Tanner.\n    *   Kaelan: Claims Drunk.\n    *   Daniel: No claim, evasive.\n\n    In One Night Ultimate Werewolf, the player who refuses to claim or is overly evasive is often the Werewolf trying to blend in or avoid committing to a lie that can be debunked. Daniel's refusal to provide a \"good answer\" when asked for his role is a strong indicator of being the Werewolf.\n\n    *   If Daniel is the Werewolf, he doesn't want to claim a role that could be contradicted by others' claims (like Seer or Robber).\n    *   If Jessica is the Tanner, she wants to be voted out, but the goal is to find the Werewolf.\n    *   If Kevin is the Troublemaker, he's Village.\n    *   If Kaelan is the Drunk, he's Village.\n\n    Daniel's behavior is the most suspicious. He avoids claiming a role entirely, which is a common strategy for Werewolves to avoid being caught in a lie.\n\n    *   Kevin: Troublemaker (Village)\n    *   Jessica: Tanner (Tanner)\n    *   Kaelan: Drunk (Village)\n    *   Daniel: Werewolf (Werewolf)\n\n    Wait, let's re-read the transcript.\n    Kevin: \"I am [Troublemaker]. ... Who did you trouble? ... Jess [and] me.\"\n    Daniel: \"You technically, you can't do yourself.\"\n    Jessica: \"I was the Tanner.\"\n    Kaelan: \"I was the Drunk.\"\n    Daniel: \"I don't have a good answer for this because...\"\n\n    Daniel's lack of a claim is the biggest red flag.\n\n    *   Justification: Daniel is the only player who refuses to claim a role, remaining evasive throughout the discussion. While Jessica claims to be the Tanner and Kevin claims to be the Troublemaker, Daniel's inability to provide a \"good answer\" regarding his identity is highly suspicious. In this game format, such evasion often indicates a Werewolf attempting to avoid making a falsifiable claim.\n    *   Chosen vote: Daniel.",
+  "parsed_output": {
+    "justification": "Daniel is the only player who refuses to claim a role, remaining evasive throughout the discussion. While Jessica claims to be the Tanner and Kevin claims to be the Troublemaker, Daniel's inability to provide a 'good answer' regarding his identity is highly suspicious. In this game format, such evasion often indicates a Werewolf attempting to avoid making a falsifiable claim.",
+    "chosen_vote": "Daniel"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Daniel is the only player who refuses to claim a role, remaining evasive throughout the discussion. While Jessica claims to be the Tanner and Kevin claims to be the Troublemaker, Daniel's inability to provide a 'good answer' regarding his identity is highly suspicious. In this game format, such evasion often indicates a Werewolf attempting to avoid making a falsifiable claim.\",\n  \"chosen_vote\": \"Daniel\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Daniel is the only player who refuses to claim a role, remaining evasive throughout the discussion. While Jessica claims to be the Tanner and Kevin claims to be the Troublemaker, Daniel's inability to provide a 'good answer' regarding his identity is highly suspicious. In this game format, such evasion often indicates a Werewolf attempting to avoid making a falsifiable claim.\",\n  \"chosen_vote\": \"Daniel\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Daniel",
+    "justification": "Daniel is the only player who refuses to claim a role, remaining evasive throughout the discussion. While Jessica claims to be the Tanner and Kevin claims to be the Troublemaker, Daniel's inability to provide a 'good answer' regarding his identity is highly suspicious. In this game format, such evasion often indicates a Werewolf attempting to avoid making a falsifiable claim."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2681,
+    "output_token_count": 928,
+    "generation_time_sec": 91.84328722953796,
+    "used_chat_template": true,
+    "input_char_count": 9492,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

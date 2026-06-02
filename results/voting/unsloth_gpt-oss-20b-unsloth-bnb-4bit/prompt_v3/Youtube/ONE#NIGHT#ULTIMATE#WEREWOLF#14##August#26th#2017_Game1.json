@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript of someone playing One Night Ultimate Werewolf game with four players: Justin, Mitchell, Caitlynn, Mike. The transcript appears garbled; participants speak weird weird lines.\n\nWe need to determine who is likely a werewolf. They will vote on the player who they think is a werewolf. We need to analyze transcript to find evidence that one or more players might be werewolf (i.e., at end of game, maybe they are the werewolf alignment). The transcript is confusing due to many nonspecific or meaningless statements. It's possibly random. But we can parse some content.\n\nBut note that the roles list includes multiple roles available: Das visible roles possible: The game includes 4 players plus 3 center cards. Starting roles might be: Werewolf (at least one). In this particular session, there might be multiple werewolves; the transcript says \"two werewolves\" sometimes. Some mention \"two werewolves\". Let's examine details.\n\nThere are positions where player names are mentioned. Follow the transcript step by step:\n\nWe need to output chosen_vote string among the names: Justin, Mitchell, Caitlynn, Mike.\n\nFrom transcript: \n- The opener line [1] shows only announcer's instruction. Medical details: \"Everyone close your eyes..\".\n\nAnother approach: Maybe the participants do not follow any roles; the transcript may be largely jokes/ nonsense. So it's hard to identify who is which.\n\nHowever, we might parse identified states from transcripts. For instance:\n\nAt [39], Mitchell says: \"I am the insomniac.\" So Mitchell sees his own card? He might have discovered he's insomniac. That means he didn't wake up; but insomniac would have checked his own role at the end of night. In our game, the \"insomniac\" is a role that will check his own role after the night. So if they self-report \"I am the insomniac,\" that implies they saw their card after their night, presumably an insomniac. So Mitchell's night assignment: he ended as insomniac. That may suggest he was a victim? Wait insomniac is different: Each day, it should have looked at his role. But in the game, insomniac may be the only role that looks at their role after all night actions. But if he says he is insomniac, that indicates that he sees his role as insomniac after night.\n\nBut we do not have enough data about what happened: was there a troublemaker? Did someone swap more? At [51], Jerry: [Coun 'makes sense]. The transcript appears to contain many improbable statements.\n\nGiven the randomness, maybe there's no werewolf? But that seems wrong because the transcript suggests some confusion but not convict.\n\nAlternatively, we can interpret: Some lines indicate speculation about each other. For example, at [79] earlier: \"I trust Mike.\" Not important.\n\nAt [80]: Mike says \"Caitlynn's the werewolf.\" This is presumably true or false? It could be correct. So the actual werewolf may be Caitlynn? Wait there's mention that at [80] Mike says \"Caitlynn's the werewolf.\" Might be a claim; if it was correct, they'd give evidence[i]. Then at [81], Caitlynn says \"I am the werewolf.\" She asserts she is the werewolf; though that could be false, they might be lying? But user says \"I am the werewolf.\" Could be truth or fiction. There's a possibility that Caitlynn is indeed the werewolf.\n\nBut the transcript shows at [93-96] conversation: \"What did you see? ... if your reveal that one of you are a troublemaker?\". No good.\n\nBut at [139-141], the last few lines say \"self: DA site (?) from transcript. The final lines adapt to end: \"Mike: Yeah. ... I think she might be the tanner too.\" The general context: They try to figure out who is werewolf; they suspect each other.\n\nWe need to pick one to vote: choose \"Caitlynn\" as the suspect seems plausible because Mike says earlier: \"Caitlynn's the werewolf.\" That is a direct claim that seems logically credible.\n\nThus we choose to vote for Caitlynn.\n\nBut we should present justification in same style.\n\nLet's produce a 3-5 sentence justification summarizing. E.g.:\n\n\"From transcript, Mike publicly states Caitlynn is the werewolf and later Caitlynn claims she is the werewolf. No other evidence suggests any other worker forgot. So the most probable werewolf is Caitlynn. Vote for Caitlynn.\"\n\nI'll output accordingly.",
+  "parsed_output": {
+    "justification": "The transcript contains a clear claim that Mike explicitly identifies Caitlynn as the werewolf, and Caitlynn herself declares she is the werewolf. No other player has provided corroborating evidence of a werewolf identity. The lack of contradictory claims and the weight of direct accusations lead to the conclusion that Caitlynn is most likely the werewolf.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains a clear claim that Mike explicitly identifies Caitlynn as the werewolf, and Caitlynn herself declares she is the werewolf. No other player has provided corroborating evidence of a werewolf identity. The lack of contradictory claims and the weight of direct accusations lead to the conclusion that Caitlynn is most likely the werewolf.\",\"chosen_vote\":\"Caitlynn\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains a clear claim that Mike explicitly identifies Caitlynn as the werewolf, and Caitlynn herself declares she is the werewolf. No other player has provided corroborating evidence of a werewolf identity. The lack of contradictory claims and the weight of direct accusations lead to the conclusion that Caitlynn is most likely the werewolf.\",\"chosen_vote\":\"Caitlynn\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "The transcript contains a clear claim that Mike explicitly identifies Caitlynn as the werewolf, and Caitlynn herself declares she is the werewolf. No other player has provided corroborating evidence of a werewolf identity. The lack of contradictory claims and the weight of direct accusations lead to the conclusion that Caitlynn is most likely the werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3888,
+    "output_token_count": 1067,
+    "generation_time_sec": 325.2326018810272,
+    "used_chat_template": true,
+    "input_char_count": 14906,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

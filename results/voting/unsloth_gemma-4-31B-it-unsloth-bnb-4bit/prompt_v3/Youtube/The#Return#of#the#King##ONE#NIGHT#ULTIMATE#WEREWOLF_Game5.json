@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   James\n    *   Tyler\n\n    *   Justin: Claims Seer (looked at someone's card), says Mitchell is a Werewolf, James is Minion/Werewolf/Tanner.\n    *   James: Claims Seer (looked at two center cards), says Justin and Paul are Werewolves/Minion.\n    *   Tyler: Claims Troublemaker (switched someone), later seems confused/passive.\n    *   Mitchell: Claims Robber (robbed someone), then later says \"I'm not the Robber\" (contradiction!), says Justin is the Werewolf.\n    *   Paul: Claims Troublemaker (knows everyone's roles), says Mitchell is Werewolf, James is Minion, Tyler is Tanner.\n\n    *   Justin claims Seer.\n    *   James claims Seer.\n    *   Paul claims Troublemaker.\n    *   Tyler claims Troublemaker.\n    *   Mitchell claims Robber, then denies it.\n\n    *   Mitchell's behavior is highly suspicious. He first claims to be the Robber (\"I am a Robber and I robbed\" - [59]), then later says \"I'm not the Robber\" ([106]). This is a blatant contradiction.\n    *   Justin claims he seered Mitchell as a Werewolf ([50]).\n    *   Paul claims Mitchell is a Werewolf ([91]) and that he (Paul) is the Troublemaker ([116], [171]).\n    *   Mitchell is aggressively pushing the vote toward Justin ([102], [108], [151], [176], [181], [185], [190], [192]).\n    *   James is confused but generally aligns with Mitchell's push against Justin/Paul at times, though he also accuses them.\n    *   Tyler is vague.\n\n    *   If Paul is the Troublemaker, he might have swapped roles.\n    *   If Mitchell is a Werewolf, he would lie about being the Robber and then potentially slip up or change his story to confuse the group.\n    *   Justin's claim to be Seer and seeing Mitchell as a Werewolf is a strong accusation.\n    *   Mitchell's contradiction (\"I am a Robber\" vs \"I'm not the Robber\") is a huge red flag.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber -> Denies Robber. Pushes Justin.\n    *   Paul: Claims Troublemaker. Pushes Mitchell.\n    *   James: Claims Seer.\n    *   Tyler: Claims Troublemaker.\n\n    *   Mitchell's contradiction is the most telling piece of evidence. In One Night Ultimate Werewolf, players often bluff, but changing a claim mid-discussion usually indicates desperation or a mistake by a Werewolf/Minion.\n    *   Justin and Paul both target Mitchell.\n    *   Mitchell's insistence that \"It's Justin or lose\" ([181]) sounds like a Werewolf trying to divert attention.\n\n    *   Justin: Seer?\n    *   Mitchell: Werewolf? (Contradicted himself on Robber claim).\n    *   Paul: Troublemaker?\n    *   James: Seer? (Two people claiming Seer).\n    *   Tyler: Troublemaker? (Two people claiming Troublemaker).\n\n    Wait, if Paul is Troublemaker and Tyler is Troublemaker, one is lying. If Justin is Seer and James is Seer, one is lying.\n\n    Let's look at Mitchell again. He claimed Robber, then denied it. If he were the Robber, he would know his new role. If he were a Werewolf, he'd bluff Robber, then maybe realize that doesn't help him and try to pivot.\n\n    Paul's claim: Mitchell = Werewolf, James = Minion, Tyler = Tanner.\n    Justin's claim: Mitchell = Werewolf, James = Minion/Werewolf/Tanner.\n\n    Both Justin and Paul are targeting Mitchell. Mitchell is targeting Justin.\n\n    The most inconsistent player is Mitchell.\n\n    *   Justification: Mitchell claimed to be the Robber early in the discussion but later explicitly denied being the Robber. This contradiction is a strong indicator of bluffing. Both Justin and Paul identified Mitchell as a Werewolf, and Mitchell's aggressive attempts to divert the vote toward Justin are characteristic of a Werewolf trying to survive.\n    *   Chosen Vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mitchell exhibits highly suspicious behavior by contradicting his own role claim; he initially asserts he is the Robber (line 59) but later explicitly denies it (line 106). Both Justin and Paul identify Mitchell as a Werewolf, and Mitchell's aggressive insistence that the group must vote for Justin to win (lines 181, 190) is a common diversion tactic used by Werewolves. Given the contradiction and the accusations from multiple players, Mitchell is the most likely Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell exhibits highly suspicious behavior by contradicting his own role claim; he initially asserts he is the Robber (line 59) but later explicitly denies it (line 106). Both Justin and Paul identify Mitchell as a Werewolf, and Mitchell's aggressive insistence that the group must vote for Justin to win (lines 181, 190) is a common diversion tactic used by Werewolves. Given the contradiction and the accusations from multiple players, Mitchell is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell exhibits highly suspicious behavior by contradicting his own role claim; he initially asserts he is the Robber (line 59) but later explicitly denies it (line 106). Both Justin and Paul identify Mitchell as a Werewolf, and Mitchell's aggressive insistence that the group must vote for Justin to win (lines 181, 190) is a common diversion tactic used by Werewolves. Given the contradiction and the accusations from multiple players, Mitchell is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell exhibits highly suspicious behavior by contradicting his own role claim; he initially asserts he is the Robber (line 59) but later explicitly denies it (line 106). Both Justin and Paul identify Mitchell as a Werewolf, and Mitchell's aggressive insistence that the group must vote for Justin to win (lines 181, 190) is a common diversion tactic used by Werewolves. Given the contradiction and the accusations from multiple players, Mitchell is the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4887,
+    "output_token_count": 1139,
+    "generation_time_sec": 121.74859547615051,
+    "used_chat_template": true,
+    "input_char_count": 15639,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mike, James, Mitchell.\n    *   Roles involved (based on discussion): Seer, Robber, Villager.\n    *   Mitchell claims to be the Seer and says he saw two werewolves (in the center).\n    *   Mike claims to be the Robber and says he switched cards with Mitchell.\n    *   Justin claims to be a Villager.\n    *   James is the remaining player.\n\n    *   Mitchell: Claims Seer. Says he saw two werewolves (center cards).\n    *   Mike: Claims Robber. Says he switched with Mitchell.\n    *   Justin: Claims Villager.\n    *   James: Doesn't make a specific claim but wants to talk first (though he's interrupted/doesn't provide a clear role).\n\n    *   If Mike was the Robber and switched with Mitchell (the Seer), then Mike is now the Seer and Mitchell is now the Robber.\n    *   If Mitchell was the Seer and saw two werewolves in the center, then there are no werewolves among the players (since there are only 3 center cards and 2 werewolves are there, and only 1 werewolf card could possibly be left, but the rules say \"up to two werewolves\"). Wait, if Mitchell saw two werewolves in the center, then no one is a werewolf?\n    *   Wait, let's re-read: \"Mitchell: I saw two werewolves.\" (Line 40).\n    *   If Mitchell saw two werewolves in the center, then no one is a werewolf. But the goal of the village is to vote out a werewolf. If no one is a werewolf, the village wins if no one dies.\n    *   However, Mike says he switched with Mitchell. If Mike (Robber) switched with Mitchell (Seer), then Mitchell is now the Robber and Mike is now the Seer.\n    *   But Mitchell's claim \"I saw two werewolves\" happened *after* the night phase. If he was the Seer *during* the night phase, he saw the cards. If he was then swapped by the Robber, he is now the Robber, but he still has the information he gained as the Seer.\n    *   Wait, if Mitchell saw two werewolves in the center, then there are no werewolves among the players. This would mean the village wins if no one is voted out.\n    *   But look at the players' behavior. Justin suggests voting for James (Line 36).\n    *   Let's look at James. James tried to speak first (Line 31) but didn't actually say anything before Mitchell and Mike started their claims.\n    *   If Mitchell and Mike are telling the truth:\n        *   Mitchell (starting Seer) saw 2 werewolves in the center.\n        *   Mike (starting Robber) swapped with Mitchell.\n        *   Current roles: Mitchell (Robber), Mike (Seer), Justin (Villager), James (?).\n        *   If 2 werewolves are in the center, and there are 4 players and 3 center cards (total 7 cards), the roles were: Seer, Robber, Villager, and something else. If 2 werewolves are in the center, the 7th card is also in the center.\n        *   Wait, if 2 werewolves are in the center, then no one is a werewolf.\n    *   Is it possible Mitchell is lying? If Mitchell is a werewolf, he would want to divert suspicion. Claiming to be the Seer and saying the werewolves are in the center is a classic werewolf bluff to prevent anyone from being voted out.\n    *   Is it possible Mike is lying? Mike backs Mitchell. If they are both werewolves (or one werewolf and one minion), they would coordinate.\n    *   Let's look at James again. James was very quiet after the initial interruption.\n    *   Wait, look at the transcript again.\n        [31] James: No, I'm- I want to talk first.\n        [32] Mike: Who'd you look at?\n        [33] James: I'm just going to open up with this and then shut my mouth for the rest of the game.\n        [34] Mitchell: All right.\n        [35] Mike: That story doesn't work. I've tried it multiple.\n        (Wait, James didn't actually say his story. Mike interrupted him or responded to something not fully captured?)\n        [36] Justin: All right, let's all vote for James?\n    *   Justin immediately suggests voting for James.\n    *   If Mitchell and Mike are telling the truth, no one is a werewolf.\n    *   If Mitchell is lying (Werewolf), he wants to avoid being voted out.\n    *   If James is the werewolf, he might be trying to claim something, but he was cut off.\n    *   Let's re-evaluate the \"two werewolves in the center\" claim. If there are two werewolves in the center, then no one is a werewolf. In that case, the village wins if no one dies. Why would the players want to vote someone out?\n    *   Justin says \"let's all vote for James\". This is strange if he believes Mitchell.\n    *   Wait, Mitchell says \"I saw two werewolves\" (Line 40). Mike says \"I was the robber. I switched with you\" (Line 39).\n    *   If Mike is the Robber and switched with Mitchell (Seer), then Mike is now the Seer and Mitchell is now the Robber.\n    *   If Mitchell saw two werewolves in the center, then no one is a werewolf.\n    *   But if Mitchell is a werewolf, he's lying to save himself.\n    *   If James is the werewolf, he's the one being targeted.\n    *   Let's look at the flow:\n        James tries to speak -> Mike interrupts/questions -> Mitchell claims Seer/saw 2 werewolves in center -> Mike claims Robber/swapped with Mitchell -> Justin suggests voting James.\n    *   This is very confusing. If Mitchell saw 2 werewolves in the center, why is Justin voting for James?\n    *   Maybe Justin doesn't believe Mitchell? Or maybe Justin is the werewolf and is trying to frame James?\n    *   Wait, look at Line 35: \"Mike: That story doesn't work. I've tried it multiple.\" This is before Mitchell's claim. It seems Mike is reacting to something James said (or tried to say).\n    *   If James tried to claim something and Mike immediately shut him down, and then Mitchell and Mike coordinated a story (Seer/Robber), it's highly likely that Mitchell and Mike are the Werewolf/Minion team.\n    *   Werewolves often coordinate to claim roles that protect them. A Seer claiming the werewolves are in the center is a perfect way to stop the village from voting. But then why would they let James be the target? Actually, if they can get the village to vote for James (a villager), they win as long as no werewolf dies.\n    *   Wait, if Mitchell and Mike are the werewolf team, they want to avoid being voted out. By claiming Seer and Robber, they create a \"confirmed\" block.\n    *   Let's look at James. He tried to speak, was shut down, and then became the target.\n    *   If James is the werewolf, he might have tried to claim a role, but Mike (the Robber/Seer) shut him down.\n    *   However, the \"two werewolves in the center\" claim is very suspicious. If there are two werewolves in the center, the game is essentially over (Village wins if no one dies). Why would a real Seer say that and then let the group vote someone out?\n    *   Actually, if the Seer sees two werewolves in the center, they should be telling everyone *not* to vote.\n    *   Mitchell says \"I saw two werewolves\" and then \"Vote now\" (Line 48). This is contradictory. If he's the Seer and saw the werewolves in the center, he should want to avoid voting anyone out.\n    *   Therefore, Mitchell is likely lying. If Mitchell is lying, he is likely a Werewolf.\n\n    *   Mitchell claims Seer, says werewolves are in center, but then encourages voting.\n    *   Mike supports Mitchell's claim by claiming Robber and saying he swapped with him.\n    *   This coordination suggests they are on the same team (Werewolf/Minion).\n    *   James was interrupted and then targeted.\n    *   Justin is suggesting the vote for James.\n    *   If Mitchell and Mike are the werewolf team, they are successfully diverting attention to James.\n    *   Wait, if Mitchell is the werewolf, he wins if he isn't voted out.\n    *   Let's check the roles again. If Mitchell is the werewolf and Mike is the minion, they both win if no werewolf is voted out.\n    *   The most suspicious behavior is Mitchell's claim of seeing two werewolves in the center while simultaneously pushing for a vote.\n\n    *   Could James be the werewolf? He tried to speak, was shut down, and is now the target.\n    *   Could Justin be the werewolf? He's the one pushing the vote for James.\n    *   But the Mitchell/Mike coordination is the most blatant \"play\". The \"two werewolves in the center\" claim is a common bluff for werewolves to make the village think they are safe, but Mitchell's push to \"Vote now\" makes it a clumsy bluff.\n\n    *   Mitchell claims Seer and says werewolves are in the center.\n    *   Mike claims Robber and says he swapped with Mitchell.\n    *   This coordination is highly suspicious.\n    *   Mitchell's claim that werewolves are in the center should lead to no one being voted out, yet he says \"Vote now\".\n    *   This inconsistency strongly suggests Mitchell is a Werewolf bluffing.\n\n    *   Wait, if Mitchell is the werewolf and Mike is the minion, they are both Team Werewolf.\n    *   The question asks for \"the player you believe is a Werewolf\".\n    *   Mitchell is the one making the primary false claim.\n\n    *   Justin: \"All right, let's all vote for James?\"\n    *   Mitchell: \"Vote now.\"\n    *   Mike: \"He's not [a werewolf]. He's not.\" (Referring to Mitchell).\n    *   It seems Mitchell, Mike, and Justin are all leaning towards voting James.\n    *   If Mitchell and Mike are the werewolf team, they've successfully framed James.\n    *   If James is the werewolf, he's just been outplayed.\n    *   But the \"two werewolves in the center\" claim is the key. If it were true, the village would win by not voting. A real Seer would not say \"two werewolves in the center\" and then \"Vote now\".\n\n    *   Mitchell's claim to be the Seer and see two werewolves in the center is contradictory to his urge to \"Vote now.\"\n    *   Mike's immediate support of Mitchell's claim (claiming to be the Robber who swapped with him) suggests a coordinated effort to deceive the group.\n    *   This pattern is typical of a Werewolf and Minion working together to divert suspicion.\n    *   Therefore, Mitchell is the most likely candidate for the Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves in the center, which would mean no players are werewolves. However, he immediately contradicts this by urging the group to 'Vote now,' which is illogical for a genuine Seer in that situation. Mike's immediate coordination in claiming to be the Robber who swapped with Mitchell suggests they are working together as a Werewolf/Minion team to deceive the group and frame James.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves in the center, which would mean no players are werewolves. However, he immediately contradicts this by urging the group to 'Vote now,' which is illogical for a genuine Seer in that situation. Mike's immediate coordination in claiming to be the Robber who swapped with Mitchell suggests they are working together as a Werewolf/Minion team to deceive the group and frame James.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves in the center, which would mean no players are werewolves. However, he immediately contradicts this by urging the group to 'Vote now,' which is illogical for a genuine Seer in that situation. Mike's immediate coordination in claiming to be the Robber who swapped with Mitchell suggests they are working together as a Werewolf/Minion team to deceive the group and frame James.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves in the center, which would mean no players are werewolves. However, he immediately contradicts this by urging the group to 'Vote now,' which is illogical for a genuine Seer in that situation. Mike's immediate coordination in claiming to be the Robber who swapped with Mitchell suggests they are working together as a Werewolf/Minion team to deceive the group and frame James."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2326,
+    "output_token_count": 2671,
+    "generation_time_sec": 258.81630516052246,
+    "used_chat_template": true,
+    "input_char_count": 8628,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

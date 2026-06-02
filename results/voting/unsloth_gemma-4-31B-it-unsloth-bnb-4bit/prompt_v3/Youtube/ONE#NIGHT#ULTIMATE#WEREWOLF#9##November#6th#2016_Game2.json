@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Caitlynn, Mitchell, Alana, Mike.\n    *   Roles mentioned/claimed:\n        *   Caitlynn: Claims she looked at the center (Seer?).\n        *   Mitchell: Claims he was the Robber and robbed Mike (then later says he did *not* rob Mike).\n        *   Mike: Claims he was the Troublemaker (then later says he didn't switch anyone).\n        *   Alana: No specific role claim, but is the target of discussion.\n\n    *   Caitlynn says she looked at the center (Line 11). This is a Seer action.\n    *   Mitchell claims to be the Robber (Line 18). He initially says he robbed Mike (Line 20), then changes his mind and says he did *not* rob Mike (Line 33).\n    *   Mike claims to be the Troublemaker (Line 22). He initially says he switched people (Line 38), then says he didn't switch anyone (Line 49).\n    *   The conversation becomes very chaotic and jokingly contradictory.\n    *   Caitlynn says \"we kill Alana because that's what I saw in the center\" (Line 23). This is a strange statement. If she saw a Werewolf card in the center, Alana cannot be the Werewolf. If she saw something else, it's unclear. Wait, if she saw the Werewolf card in the center, then there are no Werewolves among the players (unless there are two).\n    *   Wait, let's re-read Line 23: \"we kill Alana because that's what I saw in the center.\" This is logically backward for a Seer unless she's bluffing or confused. If the Werewolf card is in the center, Alana isn't the Werewolf.\n    *   However, the players then start joking around (\"You're a hundred percent the werewolf\", \"I'm the seer\", etc.).\n    *   Looking at the tone: The players are laughing and contradicting themselves. Mike says \"I didn't switch anybody\" (Line 49). Mitchell says \"I actually, I did not rob from Mike\" (Line 33).\n    *   Let's look for consistency.\n    *   Caitlynn says she looked at the center.\n    *   Mitchell claims Robber.\n    *   Mike claims Troublemaker.\n    *   Alana is the only one who hasn't claimed a role.\n\n    *   If Caitlynn is the Seer and saw a Werewolf in the center, then the Werewolf is either in the center or there are two Werewolves.\n    *   If Mitchell is the Robber and Mike is the Troublemaker, and neither actually performed a swap (as they later claimed), then the roles didn't change.\n    *   If Alana is the only one left, and the others are claiming roles that are Village-aligned (Seer, Robber, Troublemaker), Alana is the most likely candidate for Werewolf by elimination, *unless* someone is lying.\n    *   Wait, look at Line 23 again: \"we kill Alana because that's what I saw in the center.\" This is so confusing. If she saw a Werewolf card in the center, Alana *cannot* be the Werewolf. But if she saw something else (like a Villager card), it doesn't help identify Alana.\n    *   Actually, in these casual games, players often say things ironically.\n    *   Let's re-examine the claims:\n        *   Caitlynn: Seer (looked at center).\n        *   Mitchell: Robber.\n        *   Mike: Troublemaker.\n        *   Alana: ?\n    *   If these three are telling the truth, Alana must be the Werewolf.\n    *   But Mitchell and Mike both retracted their actions. Mitchell said he didn't rob Mike. Mike said he didn't switch anyone.\n    *   If Mike is the Troublemaker and didn't switch anyone, and Mitchell is the Robber and didn't rob anyone (wait, Robber *must* swap and look, they can't just \"not rob\" unless they are lying about being the Robber), then the roles are stable.\n    *   Wait, the Robber rule: \"The Robber... swaps their card with another player's card, then looks at their new card.\" The Robber *must* swap. If Mitchell says he's the Robber but didn't rob anyone, he's lying.\n    *   The Troublemaker rule: \"The Troublemaker... swaps the cards of two other players.\" The Troublemaker *may* swap? No, the rules provided say \"The Troublemaker... swaps the cards of two other players.\" However, in the transcript, Mike argues that the Troublemaker \"may\" switch (Line 57, 59). The provided rules say \"The Troublemaker... swaps the cards of two other players,\" but the transcript shows the players debating the \"may\" part.\n    *   Let's look at the claims again.\n        *   Caitlynn: Seer.\n        *   Mitchell: Robber.\n        *   Mike: Troublemaker.\n        *   Alana: No claim.\n    *   In a 4-player game, if three people claim Village roles, the fourth is usually the target.\n    *   Caitlynn specifically targets Alana (Line 23).\n    *   Mike and Mitchell eventually agree that Alana is the target (Line 42, 43, 67).\n    *   Despite the chaotic nature of the conversation, the consensus among the other three players is to vote for Alana.\n\n    *   Caitlynn: Claims Seer (looked at center).\n    *   Mitchell: Claims Robber.\n    *   Mike: Claims Troublemaker.\n    *   Alana: No claim, becomes the target.\n    *   The players are joking, but the direction of the vote is clearly toward Alana.\n\n    *   Caitlynn says \"we kill Alana because that's what I saw in the center.\" If she saw a Werewolf card in the center, Alana is *not* the werewolf. But if she saw a *different* card (like a Villager card), it doesn't prove Alana is the werewolf.\n    *   Wait, if she saw the *only* Werewolf card in the center, then no one is the werewolf.\n    *   But the prompt asks me to vote for the player I believe is a Werewolf.\n    *   Given the claims, Alana is the only one not claiming a Village role.\n    *   The other players (Caitlynn, Mitchell, Mike) are all aligning against Alana.\n\n    *   Caitlynn: Seer (Village)\n    *   Mitchell: Robber (Village)\n    *   Mike: Troublemaker (Village)\n    *   Alana: ? (Werewolf)\n    *   This is the most straightforward interpretation of the claims, despite the players' confusing banter.\n\n    *   Caitlynn: \"we kill Alana because that's what I saw in the center.\" (Confusing, but targets Alana).\n    *   Mike: \"You're a hundred percent the werewolf\" (to Alana, Line 42).\n    *   Alana: \"I feel like I do not know this rule\" (Line 55).\n    *   The group consensus is Alana.\n\n    *   Justification: Caitlynn, Mitchell, and Mike all claimed roles aligned with the Village (Seer, Robber, and Troublemaker, respectively). Alana did not claim a role and became the primary target of the other players' suspicions. Despite the confusing and joking nature of the discussion, the other three players converged on Alana as the most likely Werewolf.\n    *   Chosen vote: Alana.",
+  "parsed_output": {
+    "justification": "Caitlynn, Mitchell, and Mike all claimed roles aligned with the Village (Seer, Robber, and Troublemaker, respectively), while Alana did not claim a specific role. Although the conversation was chaotic and the players frequently contradicted their own actions for comedic effect, the group consensus shifted toward Alana. Since the other three players claimed roles that would make them Village-aligned, Alana is the most likely candidate for the Werewolf by process of elimination.",
+    "chosen_vote": "Alana"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn, Mitchell, and Mike all claimed roles aligned with the Village (Seer, Robber, and Troublemaker, respectively), while Alana did not claim a specific role. Although the conversation was chaotic and the players frequently contradicted their own actions for comedic effect, the group consensus shifted toward Alana. Since the other three players claimed roles that would make them Village-aligned, Alana is the most likely candidate for the Werewolf by process of elimination.\",\n  \"chosen_vote\": \"Alana\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn, Mitchell, and Mike all claimed roles aligned with the Village (Seer, Robber, and Troublemaker, respectively), while Alana did not claim a specific role. Although the conversation was chaotic and the players frequently contradicted their own actions for comedic effect, the group consensus shifted toward Alana. Since the other three players claimed roles that would make them Village-aligned, Alana is the most likely candidate for the Werewolf by process of elimination.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alana",
+    "justification": "Caitlynn, Mitchell, and Mike all claimed roles aligned with the Village (Seer, Robber, and Troublemaker, respectively), while Alana did not claim a specific role. Although the conversation was chaotic and the players frequently contradicted their own actions for comedic effect, the group consensus shifted toward Alana. Since the other three players claimed roles that would make them Village-aligned, Alana is the most likely candidate for the Werewolf by process of elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3494,
+    "output_token_count": 1899,
+    "generation_time_sec": 192.916645526886,
+    "used_chat_template": true,
+    "input_char_count": 12250,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

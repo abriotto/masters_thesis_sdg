@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a session: Four players: Justin, James, Paul, Mitchell. There's a transcript but seems garbled? There's a lot of unclear conversation. But the main aim: we need to pick one player to vote for as likely Werewolf based on transcripts. Need to infer roles.\n\nWe know roles many include a werewolf maybe. Each role might appear in players. We need guess.\n\nLet's parse transcript. Unfortunately it's messy.\n\nKey events:\n\n- At start, announcer calls copycat? Wait? The game has special roles beyond : copycat? In typical names: \"Copycat\" defined as Doppelganger? In the transcript, \"Copycat\" appears used by Announcer: \"Copycat, wake up and look at one of the center cards. You are now that role.\" This suggests a custom variant or something. But likely there's a Copycat (aka the \"Copycat\" role that will become whatever center card resolved). Perhaps similar to Gond, not in typical roles?\n\nBetter to map them: copycat appears: that's a variants not part of default list. But it's likely a copycat that will look at center card and then become that role.\n\nLater the \"Troublemaker\" is present; they swapped heads. So the center maybe had roles: but unknown.\n\nThe role distribution: there are four players, plus 3 center cards = total 7 cards. As in initial rule, number of candidate roles = players+3 = 7. So 7 distinct roles (plus maybe one duplicate if optional? Actually roles can repeat limited). But the original list: each role unique except possibly duplicates for certain like at most one of each.\n\nThus, 7 unique roles distributed among 4 players + 3 center.\n\nFrom transcript, we have mention of \"copycat\" and \"troublemaker\". Need to figure which roles remain unobserved.\n\nTry to glean actions: copycat wakes, looks at a center card. They become whatever that card was. So that copycat likely became a role used to identify in subsequent actions. Next, werewolves wake up: \"Werewolves, wake up and look for other Werewolves.\" We don't know who are the werewolves initially.\n\nAt [5], Robber wakes, takes a card exchange. They get new card.\n\n[6] Troublemaker wakes, exchanges between two others: [7] Justin: \"Yay, Troublemaker.\"\nThen [9] Paul: \"Who wants it?\" answer. [10] Justin says to Mitchell and James. [11] Paul \"Yep.\" So it appears that TroubleMaker swapped two other players? They didn't specify which ones but by context: The troublemaker #2? This process might allow the troublemaker to deduce. The troublemaker swapped suspect? It's cryptic. Possibly they swapped Paul's card with Justin's card? But unclear.\n\nAfter the troublemaker, more fire.\n\nSo with this transcript, it's difficult.\n\nMaybe easier: With 4 players and 3 center cards, one could be designated a werewolf. Let's inspect conversation for clues: [51] \"Justin: Yeah, let's kill Paul.\" Many times \"kill Paul.\" So maybe the players decide to vote for Paul (maybe suspect). So maybe you would choose Paul or product.\n\nBut the question: \"Based on the public discussion, vote for the player you believe is a Werewolf as their end role.\" So we need to output a chosen vote.\n\nThus we must guess one player's likely final role.\n\nIf we assume no role switches: persons might vote Paul due to repeated calls to kill Paul. Does conversation reveal suspicion of Paul being werewolf? Several lines: [51] Justin: Yeah, let's kill Paul. [55] Paul: Actually you need to kill me. This calls out Paul as suspect. So players think Paul is the werewolf? That indicates it's likely that Paul is the werewolf.\n\nAlso [58] Justin: Yeah. [59] James: Cool. [60] Mitchell: Are you ready for a vote? The rest of conversation is messy but they appear to talk about 2 suspects. Or maybe multiple.\n\nAlternatively, maybe it's ambiguous.\n\nGiven uncertainty, better approach: Provide justification that Paul is the likely werewolf.\n\nLet's analyze actions: In night actions, the troublemaker swapped someone. The copycat looked at center card. The robber replaced with a new card after swapping. After all that, players did not know each other's roles; some random speculation.\n\nBecause the conversation seems chaotic, but many references to Paul being targeted. So my conclusion: Paul is most likely werewolf.\n\nThus suggestion: vote for Paul.\n\nLet's craft justification: Quick summary of reasoning: Poll not certain but given repeated mention of targeting Paul, likely Paul is werewolf.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript repeatedly focuses on targeting Paul—multiple players explicitly suggest eliminating him and even mention “kill Paul.” Other players’ comments are informal and less focused on identifying anyone else. In the absence of clear revelations from other roles, the most likely suspect is Paul, who appears to be the target of accusations throughout the discussion.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The transcript repeatedly focuses on targeting Paul—multiple players explicitly suggest eliminating him and even mention “kill Paul.” Other players’ comments are informal and less focused on identifying anyone else. In the absence of clear revelations from other roles, the most likely suspect is Paul, who appears to be the target of accusations throughout the discussion.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript repeatedly focuses on targeting Paul—multiple players explicitly suggest eliminating him and even mention “kill Paul.” Other players’ comments are informal and less focused on identifying anyone else. In the absence of clear revelations from other roles, the most likely suspect is Paul, who appears to be the target of accusations throughout the discussion.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcript repeatedly focuses on targeting Paul—multiple players explicitly suggest eliminating him and even mention “kill Paul.” Other players’ comments are informal and less focused on identifying anyone else. In the absence of clear revelations from other roles, the most likely suspect is Paul, who appears to be the target of accusations throughout the discussion."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2683,
+    "output_token_count": 1054,
+    "generation_time_sec": 317.9430043697357,
+    "used_chat_template": true,
+    "input_char_count": 10624,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

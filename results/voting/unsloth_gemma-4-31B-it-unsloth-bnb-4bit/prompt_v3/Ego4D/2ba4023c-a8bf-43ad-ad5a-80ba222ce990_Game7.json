@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "2ba4023c-a8bf-43ad-ad5a-80ba222ce990",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/2ba4023c-a8bf-43ad-ad5a-80ba222ce990_Game7.txt",
+  "player_names": [
+    "Tyler",
+    "Margaret",
+    "Erin",
+    "Clint"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Tyler\n    *   Margaret\n    *   Erin\n    *   Clint\n\n    *   Clint claims to be the Troublemaker and says he swapped Margaret and Erin.\n    *   Tyler claims to be the Insomniac, but then says he was moved by the Robber and is now the Robber.\n    *   Margaret claims she was the Robber.\n    *   Erin claims she was the Drunk and swapped her card with the center.\n\n    *   Robber (6) -> Troublemaker (7) -> Drunk (8) -> Insomniac (9).\n    *   Clint (Troublemaker) claims he swapped Margaret and Erin.\n    *   Tyler (Insomniac/Robber) claims he was moved by the Robber.\n    *   Erin (Drunk) claims she swapped with the center.\n\n    *   Clint: Claims Troublemaker. Swapped Margaret and Erin.\n    *   Tyler: Claims Insomniac, then Robber.\n    *   Margaret: Claims Robber.\n    *   Erin: Claims Drunk.\n\n    *   If Clint is the Troublemaker and swapped Margaret and Erin:\n        *   If Margaret was the Werewolf, Erin is now the Werewolf.\n        *   If Erin was the Werewolf, Margaret is now the Werewolf.\n    *   If Erin was the Drunk and swapped with the center:\n        *   She swapped *after* the Troublemaker.\n        *   If she was the Werewolf and swapped with the center, the Werewolf is now in the center.\n        *   If she was the Drunk and swapped with the center, she might have become the Werewolf (if the Werewolf card was in the center).\n    *   Tyler's claim: He says he was the Insomniac and the Robber moved him. This is confusing. The Robber swaps their own card with another player. If Tyler was the Insomniac and the Robber swapped with him, Tyler becomes the Robber and the other person becomes the Insomniac.\n\n    *   Clint is very active in directing the narrative (\"I swapped the girls\", \"Erin is the werewolf\").\n    *   Margaret is trying to figure out the logic but seems confused.\n    *   Erin is relatively quiet and admits to being the Drunk.\n    *   Tyler is vague.\n\n    *   Clint claims Troublemaker.\n    *   Tyler claims Robber (via Insomniac).\n    *   Erin claims Drunk.\n    *   Margaret claims Robber.\n    *   Wait, both Tyler and Margaret claim Robber?\n        *   Tyler: \"I was the Insomniac, and Insomniac got moved by the Robber. So I'm the Robber.\" (This is logically flawed. If the Robber swaps with the Insomniac, the Insomniac becomes the Robber and the Robber becomes the Insomniac).\n        *   Margaret: \"So I was the Robber.\"\n    *   If Margaret was the Robber and swapped with Tyler (Insomniac), then Tyler is now the Robber and Margaret is now the Insomniac.\n    *   Then Clint (Troublemaker) swaps Margaret (now Insomniac) and Erin (Drunk).\n    *   Then Erin (Drunk) swaps with the center.\n\n    *   If Erin was the Werewolf:\n        *   Clint (Troublemaker) swaps Erin (Werewolf) and Margaret (Insomniac).\n        *   Now Margaret is the Werewolf and Erin is the Insomniac.\n        *   Then Erin (now Insomniac, but thinking she's Drunk?) swaps with the center.\n        *   Wait, the Drunk is a starting role. If Erin started as Drunk, she swaps with the center *after* the Troublemaker.\n        *   If Erin started as Werewolf, she doesn't wake up as Drunk.\n\n    *   Let's re-evaluate Erin's claim: \"I was actually the Drunk and I switched my card with that one.\"\n    *   If Erin was the Drunk, she swapped with the center.\n    *   If Clint was the Troublemaker and swapped Margaret and Erin:\n        *   Margaret's card -> Erin.\n        *   Erin's card (Drunk) -> Margaret.\n        *   Then Erin (now holding Margaret's card) swaps with the center.\n        *   Wait, the Drunk wakes up based on their *starting* role. So Erin (starting Drunk) swaps her *current* card (which was Margaret's) with the center.\n\n    *   Clint is pushing the \"Erin is the werewolf\" narrative very hard.\n    *   Margaret eventually agrees that Erin is the werewolf.\n    *   Tyler also says \"I think she's one too.\"\n    *   Erin's claim of being the Drunk is a common bluff or a way to explain why she doesn't have information.\n    *   However, looking at the transcript, Clint's claims are very specific. If he's lying about being the Troublemaker, he's a strong candidate for Werewolf.\n    *   But the prompt asks for the player most likely to be the Werewolf.\n    *   In these games, the person being accused by the most \"logical\" sounding (even if fake) narrative is often the target.\n    *   Clint says: \"Erin is the werewolf.\"\n    *   Margaret says: \"I think Erin is the Werewolf.\"\n    *   Tyler says: \"I think she's one too.\"\n\n    *   Clint: Claims Troublemaker.\n    *   Tyler: Claims Robber/Insomniac.\n    *   Margaret: Claims Robber/Insomniac.\n    *   Erin: Claims Drunk.\n    *   If Clint is the Werewolf, he's inventing the Troublemaker swap to frame Erin or Margaret.\n    *   If Erin is the Werewolf, she's claiming to be the Drunk to hide it.\n    *   If Margaret is the Werewolf, she's caught in the middle of the claims.\n\n    *   Clint's narrative: He swapped Margaret and Erin. He's very confident.\n    *   Erin's narrative: She was the Drunk and swapped with the center.\n    *   If Erin was the Werewolf and Clint swapped her with Margaret, Margaret became the Werewolf. Then Erin (now Margaret's role) swapped with the center.\n    *   If Erin was the Werewolf and Clint is lying, Erin is still the Werewolf.\n    *   If Clint is the Werewolf, he's lying about everything.\n\n    *   Looking at the dialogue, Erin is the one most consistently pointed to by the others toward the end.\n    *   Clint: \"Erin is the werewolf.\"\n    *   Margaret: \"I think Erin is the Werewolf.\"\n    *   Tyler: \"I think she's one too.\"\n    *   Erin's defense is weak (\"I never lied\").\n\n    *   Wait, let's look at the roles again. If Erin was the Drunk, she swaps with the center. If she swapped the Werewolf card into her hand, she's now the Werewolf.\n    *   Clint's logic: \"Which means Erin is the werewolf.\"\n    *   The group seems to have converged on Erin.\n\n    *   Clint's claim to be Troublemaker is a strong play.\n    *   Tyler and Margaret's confusion about the Robber/Insomniac roles suggests they aren't coordinating.\n    *   Erin's claim to be the Drunk is simple.\n    *   If we assume the most vocal accuser (Clint) is telling the truth about the swap, then Erin is the most likely target.\n\n    *   Clint claims he swapped Margaret and Erin.\n    *   Erin claims she was the Drunk and swapped with the center.\n    *   If Erin was the Werewolf, and Clint swapped her with Margaret, Margaret became the Werewolf.\n    *   But if Erin was the Drunk and swapped with the center, she could have picked up the Werewolf card.\n    *   The consensus among the players (Clint, Margaret, Tyler) is that Erin is the Werewolf.\n\n    *   Clint: \"Erin is the werewolf.\"\n    *   Margaret: \"I think Erin is the Werewolf.\"\n    *   Tyler: \"I think she's one too.\"\n    *   Erin: \"What? I never lied.\"\n    *   The most likely candidate based on the discussion is Erin.",
+  "parsed_output": {
+    "justification": "Clint claimed to be the Troublemaker and stated he swapped Margaret and Erin. Erin claimed to be the Drunk and swapped her card with the center, which Clint and Margaret argued could have resulted in her becoming the Werewolf. By the end of the discussion, Clint, Margaret, and Tyler all expressed their belief that Erin was the Werewolf.",
+    "chosen_vote": "Erin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Clint claimed to be the Troublemaker and stated he swapped Margaret and Erin. Erin claimed to be the Drunk and swapped her card with the center, which Clint and Margaret argued could have resulted in her becoming the Werewolf. By the end of the discussion, Clint, Margaret, and Tyler all expressed their belief that Erin was the Werewolf.\",\n  \"chosen_vote\": \"Erin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Clint claimed to be the Troublemaker and stated he swapped Margaret and Erin. Erin claimed to be the Drunk and swapped her card with the center, which Clint and Margaret argued could have resulted in her becoming the Werewolf. By the end of the discussion, Clint, Margaret, and Tyler all expressed their belief that Erin was the Werewolf.\",\n  \"chosen_vote\": \"Erin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Erin",
+    "justification": "Clint claimed to be the Troublemaker and stated he swapped Margaret and Erin. Erin claimed to be the Drunk and swapped her card with the center, which Clint and Margaret argued could have resulted in her becoming the Werewolf. By the end of the discussion, Clint, Margaret, and Tyler all expressed their belief that Erin was the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4269,
+    "output_token_count": 2001,
+    "generation_time_sec": 202.20482277870178,
+    "used_chat_template": true,
+    "input_char_count": 14456,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

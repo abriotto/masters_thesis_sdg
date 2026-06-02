@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide among five players: Justin, Carly, Paul, Mitchell, Mike. The transcript is messy, with many riddles about who is werewolf. Need sense: roles probably scrambled. They talk about being troublemaker. Problem: \"Troublemaker\" still hasn't swapped, maybe changed. We only know some statements: at line 43: Carly says \"I switched two cards.\" At 34-38: claims about werewolf etc. But who actually ended up as werewolf? Hard without directly seeing swaps.\n\nWe need approximate: The conversation includes mentions: at 86: Carly says \"Mitchell is the werewolf.\" So some more confirmed. later at 93: \"Mike: You switched these two?\" etc. Probably indicates that Mitchell might be werewolf; but then later at line 88: \"Mitchell: That's so sick.\" Seems like fall.\n\nThe overall confusion: I'd guess the winner is to vote \"Carly\" as werewolf? Maybe but evidence suggests maybe Carly insult stating she is not werewolf - at 86, Carly says Mitchell is the werewolf. But then why would Carly vote for Paul. Yet by many lines seems Adam.\n\nLet's parse: At 40: Paul says \"I'm going to let you in a secret that I claim troublemaker...\"\n\nLine 41: Carly says \"I'll tell you-\" maybe conflict. Several lines about being troublemaker: troublemaker will not be a werewolf.\n\nGiven that players mention troublemaker: Indeed troublemaker is a separate role but won't be werewolf. So various players shift. Possibly the only werewolf? unspecified. I think it's safe to pick one, but choose an educated guess: Perhaps \"Paul\" is werewolf.\n\nBetter reasoning: The people referencing troublemaker often appear comedic. There's mention \"Mitchell\" being werewolf at line 86. Also at 93: \"Mike: You switched these two?\" maybe indicating he swapped his own card maybe made him not werewolf. Later at 97: \"Justin: ...\".\n\nBut lines near 97: Mitchell: \"I think.\" Then around 97-100, unclear. At 99: \"Mike: They're not...\" ends. At 99 maybe no below. But the key list: All five names. Which one is likely to be werewolf.\n\nObservations: The main theme: talk of trivia about ruling. At 45: \"Justin: Let's listen to Carly. She said she switched two cards.\" So any did have suspicion about suspecting about who the werewolf is, but no clear evidence.\n\nThe question: \"vote for the player you believe is a Werewolf as their end role.\" Without explicit information, I'd choose the one that has least clue (others are presumably normal). The one that was called 'troublemaker' by many others could mean they did swap but maybe not. Actually troublemaker is cat that will eventually be swapped. Person who misled maybe had the role that is not werewolf.\n\nGiven the transcript, Paul had disbelief interactions, but appears as troublemaker. People say 'Paul is a werewolf?'\n\nAt line 134: \"Announcer: Only 30 seconds left.\" At 137: \"Mitchell: Just...\" etc. There's no concluding result.\n\nThus I will pick \"Carly\" as likely suspect?\n\nBut there's statement: at 86: \"Carly: Mitchell is the werewolf.\" That indicates she says Mitchell is werewolf. So maybe Mitchell is actual werewolf. But then earlier line 99: Mike says there's two werewolves? Not sure. At 91: Mike says \"They're not on the same team.\" Might refer to werewolf? Hard.\n\nFinally I'll decide: The best might be \"Mitchell\" as answer. They repeatedly reference him as suspect. So vote for Mitchell.",
+  "parsed_output": {
+    "justification": "The transcript is fragmented but several players repeatedly accuse \"Mitchell\" of being the werewolf, and no one else convincingly asserts otherwise.  Given the lack of any explicit counter‑claim, the best guess is that Mitchell holds the final werewolf card.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript is fragmented but several players repeatedly accuse \\\"Mitchell\\\" of being the werewolf, and no one else convincingly asserts otherwise.  Given the lack of any explicit counter‑claim, the best guess is that Mitchell holds the final werewolf card.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is fragmented but several players repeatedly accuse \\\"Mitchell\\\" of being the werewolf, and no one else convincingly asserts otherwise.  Given the lack of any explicit counter‑claim, the best guess is that Mitchell holds the final werewolf card.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript is fragmented but several players repeatedly accuse \"Mitchell\" of being the werewolf, and no one else convincingly asserts otherwise.  Given the lack of any explicit counter‑claim, the best guess is that Mitchell holds the final werewolf card."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3959,
+    "output_token_count": 848,
+    "generation_time_sec": 259.6992814540863,
+    "used_chat_template": true,
+    "input_char_count": 15145,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine which player is a werewolf. We have four players: Justin, Alvin, James, Mitchell. The transcript seems chaotic. Let's parse likely roles. Starting roles unknown. The night actions included: Werewolves wake up; Seer wake up; Robber; Drunk; etc. It mentions Justin says \"I was robber and I swapped with Alvin\". That means Justin's starting role was Robber, and at some point he swapped with someone else? Wait: \"Benjamin\"? Actually, Justin says: \"I was the robber\" meaning currently after swap? Also \"Justin: I was the robber and I swapped with Alvin.\" That indicates when deserting his starting role maybe? The conversation seems like they are trying to deduce roles.\n\nHumble assumption: At least one werewolf might exist or none. They discuss that \"Alvin says I am the seer\" etc.\n\nWe need to figure probable roles.\n\nFrom transcript: \n- After Robber comes: \"Justin: I was the robber\" – but also at start of night, after Robber action, they had 4 players, roles: ... Not enough info.\n\nWe can guess roles: Justin might be robber (commonly at night, Robber swaps). He says \"I was the robber\" indicating starting role? He might be starting as robber. But him swapping with Alvin could have changed his role. But all roles appear: Justin changed to something else? But \"Robber\" could become something else: If Justin swapped with Alvin, he'd start as a robber, then after swap, he ends up with Alvin's card: i.e., he is maybe not robber in final role. But because he's controlling his own final role, his final could be something else. But we don't know.\n\nIf Justin is not a Werewolf, then the werewolves might be two? Possibly all four are suspicious.\n\nBut the chat: \"James: I was the hunter.\" He says he was hunter, so he might have started as hunter and didn't change, so his final role is hunter. Hunters are village. So that leaves no werewolves? Maybe there are werewolves present.\n\nLet's view statements: \"Alvin: I know he was the hunter because I was the seer and I saw that he was the hunter.\" That suggests Alvin claims seeing James as hunter? That indicates that presumably he (Alvin) saw someone (James? Or from some ability?), but probably not relevant.\n\nAlso \"Alvin: I think Justin is the werewolf? Actually: 49 says \"Alvin: I still think it's Justin because I think if...\" Hard to parse.\n\nWe suspect one werewolf. The main conversation: \"And now**... 94\" \"Alvin: I think we should vote Justin.\" That suggests because Justin's earlier steps indicated a potential arewolf. There might be evidence that Justin is the werewolf.\n\nSo I suspect the werewolf is probably Justin. But let's parse more systematically:\n\nPotential roles: There's minion, two werewolves maybe. As per standard rules, can be multiple werewolves. But they'd likely know each other. But sometimes two werewolves: If they notice each other's existence, they'd both use the night steps: Among group, \"If there are two werewolves they check each other.\n\nThe roles revolve: Did they both announce \"I was the hunter\" etc. But we don't know for sure.\n\nGiven confusion, it's plausible that Justin is suspect. In many discussions, if loses (or is identified as werewolf), they will be voted. So choose Justin.\n\nBut check transcript for other lines: Some say \"He was not the werewolf.\" Let’s see: line 94: \"Alvin: I Think we should vote Justin.\" Good indication.\n\nThe next lines: \"they\" says likely Justin being suspect. So answer Justin.\n\nImplement as JSON.\n\nWe have to produce a justification 3-5 sentences concisely. Let's produce.",
+  "parsed_output": {
+    "justification": "The discussion repeatedly points toward Justin as a suspect. Several players accuse him of being a werewolf—specifically, Alvin urges voting for Justin, and others suggest he is the likely culprit. Additionally, Justin claimed one of the roles as a robber; if he swapped during the night, his ending role could indeed be werewolf. The lackof clear confirmation for any other suspect, combined with repeated accusations aimed at Justin, makes him the most reasonable choice.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"The discussion repeatedly points toward Justin as a suspect. Several players accuse him of being a werewolf—specifically, Alvin urges voting for Justin, and others suggest he is the likely culprit. Additionally, Justin claimed one of the roles as a robber; if he swapped during the night, his ending role could indeed be werewolf. The lackof clear confirmation for any other suspect, combined with repeated accusations aimed at Justin, makes him the most reasonable choice.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"The discussion repeatedly points toward Justin as a suspect. Several players accuse him of being a werewolf—specifically, Alvin urges voting for Justin, and others suggest he is the likely culprit. Additionally, Justin claimed one of the roles as a robber; if he swapped during the night, his ending role could indeed be werewolf. The lackof clear confirmation for any other suspect, combined with repeated accusations aimed at Justin, makes him the most reasonable choice.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The discussion repeatedly points toward Justin as a suspect. Several players accuse him of being a werewolf—specifically, Alvin urges voting for Justin, and others suggest he is the likely culprit. Additionally, Justin claimed one of the roles as a robber; if he swapped during the night, his ending role could indeed be werewolf. The lackof clear confirmation for any other suspect, combined with repeated accusations aimed at Justin, makes him the most reasonable choice."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3595,
+    "output_token_count": 911,
+    "generation_time_sec": 278.19124245643616,
+    "used_chat_template": true,
+    "input_char_count": 14412,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

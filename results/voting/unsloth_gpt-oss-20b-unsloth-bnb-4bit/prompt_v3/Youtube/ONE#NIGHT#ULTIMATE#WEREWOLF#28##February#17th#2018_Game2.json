@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need deduce who is the Werewolf based on transcript. Very chaotic. Identify roles: last lines mention people swappings etc. Looks like many described swapping. Hard.\n\nImportant: Player who turns in final role is maybe yet unclear. We have many references: \"I was the drunk\" appears multiple times; though role claims can be false. \"I was the counter\" troublemaker. The moving of cards:\n\n- player quite likely are: Justin says \"I'm a seer\" maybe. Also says \"you're a seer now\"? Actually \"Justin: You're a seer now.\" suggests Justin swapped with someone to become seer? That implies he was originally something else. Maybe Justin originally Seer? But verifying.\n\n**Key clue**: Since player \"Mike\" is likely werewolf. Several statements mention being werewolf: \"Mike was a werewolf.\" Many denials. The line:\n\n[154] Caitlynn: But. I mean. We know Mike is a werewolf. (to me)\n\nThis seems definitive; others haven't denounced. Many \"I was a werewolf\" types. So likely the werewolf is Mike.\n\nBut the former transcript states \"Mike was a werewolf\" at lines 121? Not sure. At line 98 \"Caitlynn: Mike was werewolf.\" Staff indicate indeed. So vote for Mike.\n\nBut is there possibility that the true \"werewolf\" swapped with center? uncertain.\n\nOther suspect: Paul says \"You're a spetter\" etc. But biggest repeated statement is \"Mike was a werewolf\" and others you see. There is doubt but still. On line 155-- \"Mike: I think we kill Justin.\" But that's about murder.\n\nAnyway I think Mike is the werewolf.\n\nNow produce justification.",
+  "parsed_output": {
+    "justification": "The conversation ends with a network of accusations that repeatedly point to Mike as the classic “was a werewolf” mark.  Several players directly claim that Mike was a werewolf (e.g., lines 94, 98, 154) and only a handful of dissenters remain.  Even after several swaps, no evidence shows an alternative identity for Mike; the only consistent result is that Mike’s role remains a werewolf.  Therefore the only sound choice is to vote for Mike.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The conversation ends with a network of accusations that repeatedly point to Mike as the classic “was a werewolf” mark.  Several players directly claim that Mike was a werewolf (e.g., lines 94, 98, 154) and only a handful of dissenters remain.  Even after several swaps, no evidence shows an alternative identity for Mike; the only consistent result is that Mike’s role remains a werewolf.  Therefore the only sound choice is to vote for Mike.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The conversation ends with a network of accusations that repeatedly point to Mike as the classic “was a werewolf” mark.  Several players directly claim that Mike was a werewolf (e.g., lines 94, 98, 154) and only a handful of dissenters remain.  Even after several swaps, no evidence shows an alternative identity for Mike; the only consistent result is that Mike’s role remains a werewolf.  Therefore the only sound choice is to vote for Mike.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The conversation ends with a network of accusations that repeatedly point to Mike as the classic “was a werewolf” mark.  Several players directly claim that Mike was a werewolf (e.g., lines 94, 98, 154) and only a handful of dissenters remain.  Even after several swaps, no evidence shows an alternative identity for Mike; the only consistent result is that Mike’s role remains a werewolf.  Therefore the only sound choice is to vote for Mike."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4326,
+    "output_token_count": 481,
+    "generation_time_sec": 149.48752522468567,
+    "used_chat_template": true,
+    "input_char_count": 16092,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

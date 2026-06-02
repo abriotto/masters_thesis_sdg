@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "The task: We are observers of a One Night Ultimate Werewolf game. Need to choose which player is likely a Werewolf from transcript. Need justified reasoning.\n\nWe have transcripts, no revealing of roles except statements. The players: Justin, Eric, Paul, Mitchell, Mike. We need find who likely was a werewolf. Assumption: maybe one player is a Werewolf.\n\nFrom the transcript, people talk about being robber, etc. We see several lines: e.g., \"Mike: I think you're on two rights now.\" It's chaotic conversation; likely not all the actions were performed.\n\nGoal: Identify suspect werewolf. The transcript is muddled; players reference being robber, victim, etc.\n\nI suspect Mike mention \"Bob? There's a I'm a werewolf\" Actually let's read lines about suspect werewolf.\n\nAt line 35: \"Mike: He's the werewolf. Snap.\" That suggests Mike might have identified someone as werewolf, maybe himself? Wait: line 35: \"Mike: He's the werewolf. Snap.\" Could be Mike telling others that someone is the werewolf (someone presumably who did something). But we don't see who he refers to.\n\nLine 37: \"Mike: Well, I was the werewolf and if he switched us,\" So Mike claims he was the werewolf? He says \"Well, I was the werewolf\". So apparently Mike acknowledges being werewolf. So likely Mike is the werewolf. But we need to examine earlier context: In line 33: \"Mike: Can you confirm that we switched?\" Then line 40, 41: talk. Might be confusion.\n\nBut more direct: line 39: \"Mike: I know I'm going out on the limb. I was the werewolf -\". So yes. Also line 38: \"Mike: I know I'm going out on the limb. I was the werewolf -\".\n\nThus, from transcript, Mike says \"I was the werewolf\" across several lines 37-39.\n\nAlso the other statements: \"I was the werewolf and if he switched us\"... indicates Mike being werewolf.\n\nHence I will choose Mike.\n\nNow crafting justification: We are externally observer only reading transcript. We find that multiple lines indicate Mike claims being werewolf. Others mention other roles: Justin says \"I was the Insomniac\", Paul says \"This time I was a troublemaker,\" etc. So we deduce Mike is likely werewolf.\n\nLet's produce justification regarding their claim, possible evidence that they were the werewolf.\n\nThus output.",
+  "parsed_output": {
+    "justification": "In several exchanged lines the player named Mike directly claims to have been the werewolf—e.g., \"Mike: I was the werewolf\" and later \"I was the werewolf and if he switched us\".  The other participants openly identify themselves as the Insomniac, Troublemaker, or Villager, and no other player asserts having been the Werewolf.  Given these explicit declarations and the lack of evidence that any other role would have survived as werewolf, Mike is the most likely werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"In several exchanged lines the player named Mike directly claims to have been the werewolf—e.g., \\\"Mike: I was the werewolf\\\" and later \\\"I was the werewolf and if he switched us\\\".  The other participants openly identify themselves as the Insomniac, Troublemaker, or Villager, and no other player asserts having been the Werewolf.  Given these explicit declarations and the lack of evidence that any other role would have survived as werewolf, Mike is the most likely werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"In several exchanged lines the player named Mike directly claims to have been the werewolf—e.g., \\\"Mike: I was the werewolf\\\" and later \\\"I was the werewolf and if he switched us\\\".  The other participants openly identify themselves as the Insomniac, Troublemaker, or Villager, and no other player asserts having been the Werewolf.  Given these explicit declarations and the lack of evidence that any other role would have survived as werewolf, Mike is the most likely werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "In several exchanged lines the player named Mike directly claims to have been the werewolf—e.g., \"Mike: I was the werewolf\" and later \"I was the werewolf and if he switched us\".  The other participants openly identify themselves as the Insomniac, Troublemaker, or Villager, and no other player asserts having been the Werewolf.  Given these explicit declarations and the lack of evidence that any other role would have survived as werewolf, Mike is the most likely werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3292,
+    "output_token_count": 643,
+    "generation_time_sec": 195.30635118484497,
+    "used_chat_template": true,
+    "input_char_count": 12776,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

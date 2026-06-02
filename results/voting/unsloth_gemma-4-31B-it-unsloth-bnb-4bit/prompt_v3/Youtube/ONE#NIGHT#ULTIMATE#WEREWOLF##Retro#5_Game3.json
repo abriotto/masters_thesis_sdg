@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be the Troublemaker. Says he didn't switch anyone.\n    *   Paul: Claims he started as a Werewolf. Claims Mitchell is the Insomniac who became a Werewolf (though he later contradicts himself or clarifies).\n    *   Mitchell: Initially claims to be the Seer and saw two werewolves. Later changes his story to say he saw one werewolf (Paul) and lied about the second one.\n\n    *   Justin: Troublemaker (claims he didn't switch anyone).\n    *   Paul: Werewolf (admits he started as one).\n    *   Mitchell: Seer (claims he saw Paul as a werewolf).\n\n    *   If Justin is the Troublemaker and didn't switch anyone, then Paul's starting role remains his ending role.\n    *   Paul admits he started as a Werewolf.\n    *   Mitchell claims he is the Seer and saw Paul as a Werewolf.\n    *   If Paul is the Werewolf and Justin didn't switch anyone, Paul is the Werewolf.\n\n    *   Paul admits he started as a Werewolf (Line 67, 94, 98).\n    *   Mitchell claims to be the Seer and saw Paul as a Werewolf (Line 101).\n    *   Justin claims to be the Troublemaker and didn't switch anyone (Line 93, 95, 97, 106).\n    *   If Paul admits to being a Werewolf and Justin didn't swap anyone, Paul is the most likely candidate for the Werewolf.\n\n    *   Could Paul be the Tanner? He's admitting to being a Werewolf, which would get him voted out.\n    *   Could Mitchell be the Werewolf lying about being the Seer?\n    *   Could Justin be the Werewolf lying about being the Troublemaker?\n    *   However, Paul's admission is very direct: \"I was a werewolf. A hundred percent.\" (Line 67). Even if he's bluffing, the evidence points strongly to him.\n\n    *   Paul admits he started as a Werewolf.\n    *   Justin (Troublemaker) says he didn't switch anyone.\n    *   Mitchell (Seer) identifies Paul as a Werewolf.\n    *   Therefore, Paul is the Werewolf.",
+  "parsed_output": {
+    "justification": "Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin claims to be the Troublemaker and states he did not switch any players' cards, meaning Paul's role would not have changed. Mitchell claims to be the Seer and identifies Paul as a Werewolf, which aligns with Paul's own admission.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin claims to be the Troublemaker and states he did not switch any players' cards, meaning Paul's role would not have changed. Mitchell claims to be the Seer and identifies Paul as a Werewolf, which aligns with Paul's own admission.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin claims to be the Troublemaker and states he did not switch any players' cards, meaning Paul's role would not have changed. Mitchell claims to be the Seer and identifies Paul as a Werewolf, which aligns with Paul's own admission.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin claims to be the Troublemaker and states he did not switch any players' cards, meaning Paul's role would not have changed. Mitchell claims to be the Seer and identifies Paul as a Werewolf, which aligns with Paul's own admission."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3712,
+    "output_token_count": 621,
+    "generation_time_sec": 66.00308036804199,
+    "used_chat_template": true,
+    "input_char_count": 12964,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

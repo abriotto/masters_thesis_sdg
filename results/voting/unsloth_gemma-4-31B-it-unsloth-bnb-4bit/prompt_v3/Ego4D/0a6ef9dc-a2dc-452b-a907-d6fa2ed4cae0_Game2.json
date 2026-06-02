@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0a6ef9dc-a2dc-452b-a907-d6fa2ed4cae0_Game2.txt",
+  "player_names": [
+    "Erin",
+    "Sebastian",
+    "Jack",
+    "Brent",
+    "Hailey"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Erin: Announcer (not a player).\n    *   Sebastian: Claims Robber, swapped with Hailey.\n    *   Jack: Claims Troublemaker, swapped Brent and himself.\n    *   Brent: Claims Villager.\n    *   Hailey: Claims Villager.\n\n    *   Sebastian: \"I switched your card because I was a robber.\" (to Hailey)\n    *   Jack: \"I was a troublemaker... I swapped our cards [Brent and Jack].\"\n    *   Brent: \"I was a villager.\"\n    *   Hailey: \"I was a villager too.\"\n\n    *   Robber: Swaps their card with another player's card, then looks at the new card.\n    *   Troublemaker: Swaps the cards of two *other* players without looking at them.\n\n    *   Jack claims he was the Troublemaker and swapped *his own* card with Brent's.\n    *   *Crucial Rule Check:* The Troublemaker swaps the cards of *two other players*. They cannot swap their own card.\n    *   Therefore, Jack's claim is a lie based on the game rules.\n\n    *   Sebastian claims he was the Robber and swapped with Hailey.\n    *   Hailey claims she was a Villager.\n    *   If Sebastian was the Robber and swapped with Hailey (Villager), Sebastian becomes a Villager and Hailey becomes the Robber. This is consistent with the rules.\n\n    *   Brent claims he was a Villager.\n    *   Jack claims he swapped Brent's card with his own.\n    *   If Jack were actually the Troublemaker, he couldn't have swapped himself.\n    *   If Jack is lying about being the Troublemaker, he is likely the Werewolf or the Minion (or the Tanner, but the goal is to find the Werewolf).\n\n    *   Jack's claim about the Troublemaker's ability is fundamentally incorrect (\"I swapped our cards\").\n    *   Brent points this out: \"I don't think that's how troublemaker works... I thought they were supposed to swap other people's cards\" (Lines 81, 87).\n    *   Jack tries to double down or deflect: \"Troublemaker just swaps randomly, right?\" (Line 82).\n    *   Since Jack is lying about his role's ability to cover his actions, he is the most suspicious player.\n\n    *   Sebastian and Hailey's interaction (Robber swap) is logically consistent.\n    *   Brent's claim of being a Villager is simple and doesn't contradict anything.\n    *   Jack's claim is a direct violation of the Troublemaker's rules.\n\n    *   Jack is the most likely Werewolf because he lied about the Troublemaker's ability to swap his own card, which is prohibited by the rules.\n\n    *   Justification: Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. However, the Troublemaker's ability is to swap the cards of two *other* players, not their own. This blatant lie about the game rules strongly suggests that Jack is the Werewolf attempting to deceive the group.\n    *   Chosen Vote: Jack.",
+  "parsed_output": {
+    "justification": "Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. According to the game rules, the Troublemaker swaps the cards of two other players and cannot swap their own card. This fundamental lie about the role's ability indicates that Jack is bluffing to hide his true identity as a Werewolf.",
+    "chosen_vote": "Jack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. According to the game rules, the Troublemaker swaps the cards of two other players and cannot swap their own card. This fundamental lie about the role's ability indicates that Jack is bluffing to hide his true identity as a Werewolf.\",\n  \"chosen_vote\": \"Jack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. According to the game rules, the Troublemaker swaps the cards of two other players and cannot swap their own card. This fundamental lie about the role's ability indicates that Jack is bluffing to hide his true identity as a Werewolf.\",\n  \"chosen_vote\": \"Jack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jack",
+    "justification": "Jack claimed to be the Troublemaker and stated that he swapped his own card with Brent's. According to the game rules, the Troublemaker swaps the cards of two other players and cannot swap their own card. This fundamental lie about the role's ability indicates that Jack is bluffing to hide his true identity as a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5135,
+    "output_token_count": 816,
+    "generation_time_sec": 89.10916376113892,
+    "used_chat_template": true,
+    "input_char_count": 16955,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

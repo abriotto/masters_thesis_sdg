@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "64076f60-f3fc-4ee6-93e1-3489d8ec7b12",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/64076f60-f3fc-4ee6-93e1-3489d8ec7b12_Game3.txt",
+  "player_names": [
+    "Erin",
+    "Sebastian",
+    "Jack",
+    "Brent",
+    "Hailey"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Erin, Sebastian, Jack, Brent, Hailey.\n    *   Roles involved (based on discussion): Robber, Troublemaker, Werewolf.\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   Hailey claims she was the Robber.\n    *   Hailey says she swapped with Erin (initially) but then corrects/changes the story later.\n    *   Erin claims she was the Troublemaker.\n    *   Erin says she swapped Jack and Hailey.\n    *   Jack claims he was the Werewolf (starting role).\n    *   Jack says he is no longer the Werewolf because Erin swapped him.\n\n    *   Hailey says: \"I switched mine and Jack's card, and Jack was the Werewolf to begin with.\" (Line 140)\n    *   Hailey says: \"Erin switched yours [Brent's] and mine [Hailey's].\" (Line 145)\n    *   Hailey says: \"I swapped us [Hailey and Jack] but I lied and said that I swapped cards with you [Erin], and then you therefore swapped it with Brent.\" (Line 167)\n    *   Wait, let's re-read Line 167 carefully: \"I swapped us [Hailey and Jack] but I lied and said that I swapped cards with you [Erin], and then you therefore swapped it with Brent.\"\n    *   Let's trace the cards based on the post-game reveal:\n        1.  Starting Roles:\n            *   Jack: Werewolf\n            *   Hailey: Robber\n            *   Erin: Troublemaker\n            *   Brent: ?\n            *   Sebastian: ?\n        2.  Robber Action (Hailey): Hailey (Robber) swaps with Jack (Werewolf).\n            *   Hailey is now Werewolf.\n            *   Jack is now Robber.\n        3.  Troublemaker Action (Erin): Erin (Troublemaker) swaps Hailey and Brent.\n            *   Hailey (Werewolf) swaps with Brent.\n            *   Brent is now Werewolf.\n            *   Hailey is now whatever Brent was.\n        4.  Final Roles:\n            *   Brent: Werewolf.\n            *   Jack: Robber.\n            *   Erin: Troublemaker.\n            *   Hailey: (Brent's starting role).\n\n    *   Jack: \"I started Werewolf.\" (Line 163)\n    *   Hailey: \"I swapped us [Hailey and Jack]... and then you [Erin] therefore swapped it with Brent.\" (Line 167)\n    *   Brent: \"I win, I guess.\" (Line 149) - This implies Brent ended as the Werewolf.\n    *   Sebastian: \"So, nobody died.\" (Line 189) - This means the Werewolf survived.\n\n    *   Starting: Jack = Werewolf.\n    *   Robber (Hailey) swaps with Jack.\n    *   Current: Hailey = Werewolf, Jack = Robber.\n    *   Troublemaker (Erin) swaps Hailey and Brent.\n    *   Current: Brent = Werewolf, Hailey = (Brent's starting role).\n    *   Final: Brent is the Werewolf.\n\n    *   The task is to vote for the player who is a Werewolf as their *end role*.\n    *   Based on the post-game analysis, Brent ended as the Werewolf.\n\n    *   Jack started as the Werewolf.\n    *   Hailey (Robber) swapped with Jack, making Hailey the Werewolf.\n    *   Erin (Troublemaker) swapped Hailey and Brent, making Brent the Werewolf.\n    *   Therefore, Brent is the final Werewolf.",
+  "parsed_output": {
+    "justification": "According to the post-game reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, becoming the Werewolf herself. Subsequently, Erin, acting as the Troublemaker, swapped the cards of Hailey and Brent, which transferred the Werewolf role to Brent. Therefore, Brent ended the game as the Werewolf.",
+    "chosen_vote": "Brent"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"According to the post-game reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, becoming the Werewolf herself. Subsequently, Erin, acting as the Troublemaker, swapped the cards of Hailey and Brent, which transferred the Werewolf role to Brent. Therefore, Brent ended the game as the Werewolf.\",\n  \"chosen_vote\": \"Brent\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"According to the post-game reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, becoming the Werewolf herself. Subsequently, Erin, acting as the Troublemaker, swapped the cards of Hailey and Brent, which transferred the Werewolf role to Brent. Therefore, Brent ended the game as the Werewolf.\",\n  \"chosen_vote\": \"Brent\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brent",
+    "justification": "According to the post-game reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, becoming the Werewolf herself. Subsequently, Erin, acting as the Troublemaker, swapped the cards of Hailey and Brent, which transferred the Werewolf role to Brent. Therefore, Brent ended the game as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6318,
+    "output_token_count": 993,
+    "generation_time_sec": 109.34785175323486,
+    "used_chat_template": true,
+    "input_char_count": 19886,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

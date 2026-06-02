@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Tanner (initially), then claims Insomniac (later, though confusingly).\n    *   Laura: Claims Troublemaker. Says she swapped two players (Justin and Paul).\n    *   Paul: Claims he woke up as himself (no info). Later, Justin claims Paul is the Tanner.\n    *   James: Claims Tanner (initially), then claims \"lonely nobody\" (Villager).\n    *   Mitchell: Claims Seer. Says he saw two cards in the middle, one of which was a Werewolf. Later says he saw Robber.\n\n    *   Laura (Troublemaker) says she swapped Justin and Paul.\n    *   If Laura is the Troublemaker:\n        *   Justin and Paul swapped cards.\n        *   Justin claimed Tanner. If he was the Tanner *after* the swap, Paul was the Tanner *before* the swap.\n        *   Paul says he woke up as himself (no info). If he was the Tanner, he wouldn't have a night action. If he was the Insomniac, he would have woken up.\n        *   Justin claims he is the Insomniac (at [97]). If he is the Insomniac *after* the swap, Paul was the Insomniac *before* the swap.\n        *   Wait, let's re-read: Justin says \"I was the tanner\" [31]. Then later \"I'm an Insomniac\" [97]. This is contradictory unless he's bluffing or confused.\n\n    *   Mitchell (Seer) says he saw two cards in the middle. One was a Werewolf [78]. Later he says he saw Robber [143].\n    *   If Mitchell is the Seer, and one Werewolf is in the center, there is only one Werewolf left in the game.\n\n    *   James claims Tanner [107], then says he's a \"lonely nobody\" [132].\n    *   Justin points at James [173].\n    *   Mitchell points at James [175].\n    *   Paul says James is *not* a werewolf [176].\n\n    *   Justin: Claims Tanner, then Insomniac. Very inconsistent.\n    *   Laura: Claims Troublemaker. Seems consistent.\n    *   Paul: Claims no info.\n    *   James: Claims Tanner, then Villager. Inconsistent.\n    *   Mitchell: Claims Seer.\n\n    *   If Laura is Troublemaker and swapped Justin and Paul:\n        *   Justin (starting role X) -> Paul (ending role X)\n        *   Paul (starting role Y) -> Justin (ending role Y)\n    *   Justin says he was Tanner [31]. If he ended as Tanner, Paul started as Tanner.\n    *   Justin says he is Insomniac [97]. If he ended as Insomniac, Paul started as Insomniac.\n    *   Wait, Justin is claiming both Tanner and Insomniac. He's likely lying or bluffing.\n\n    *   James claimed Tanner [107] and then changed his story to being a \"lonely nobody\" [132].\n    *   Werewolves often bluff as Tanner to avoid being voted out or to confuse the village.\n    *   However, James's behavior is very suspicious. He claims Tanner, then denies it.\n    *   Mitchell (Seer) is pushing for James.\n    *   Justin is pushing for James.\n\n    *   If Mitchell is the Seer and saw a Werewolf in the center, there's only one Werewolf.\n    *   If James is the Werewolf, he would want to divert attention.\n    *   If James is the Tanner, he wants to be voted out.\n    *   James's flip-flopping (Tanner -> Villager) is classic Werewolf behavior trying to gauge the room.\n\n    *   Justin: Claims Tanner, then Insomniac. (Very suspicious/confused).\n    *   James: Claims Tanner, then Villager. (Suspicious).\n    *   Mitchell: Claims Seer. (Seems to be leading the charge).\n    *   Laura: Claims Troublemaker. (Seems consistent).\n    *   Paul: Claims no info. (Passive).\n\n    *   Justin's claims are all over the place. He says \"I was the tanner\" [31], then \"I'm an Insomniac\" [97], then \"I was the tanner\" [113].\n    *   James says \"I was the tanner\" [107], then \"I am just the lonely nobody\" [132].\n    *   If James is the Werewolf, he's bluffing.\n    *   If Justin is the Werewolf, he's bluffing.\n    *   But Mitchell (Seer) and Justin are both targeting James.\n\n    *   If Mitchell is the Seer and saw a Werewolf in the center, and he's not the Werewolf, then either James, Justin, Paul, or Laura is the Werewolf.\n    *   James's inconsistency is a strong signal. He claimed Tanner, then retracted it when he realized it might not work or when he wanted to seem like a Villager.\n\n    *   Justin: \"I was the tanner\" [31] -> \"I'm an Insomniac\" [97] -> \"I was the tanner\" [113].\n    *   James: \"I was the tanner\" [107] -> \"I am just the lonely nobody\" [132].\n    *   Both are acting suspiciously. However, James's shift from Tanner to \"nobody\" is a common Werewolf tactic to avoid the \"Tanner\" label if they think the village is actually going to vote them out (since the Tanner *wants* to be voted out, but the Werewolf *doesn't*). Wait, if James is the Werewolf, he *wouldn't* claim Tanner if he thought he was about to be voted out. If he claims Tanner, he's inviting votes. If he then says \"I'm a nobody,\" he's trying to stop the votes. This is a strong indicator of a Werewolf.\n\n    *   Justin is claiming to be the Tanner to avoid being voted out? No, the Tanner *wants* to be voted out. If Justin claims Tanner, he's asking for votes. If he's a Werewolf, claiming Tanner is a bad move unless he's trying to confuse the group.\n    *   James also claimed Tanner, then switched.\n\n    *   Mitchell (Seer) says he saw a Werewolf in the center.\n    *   If Mitchell is telling the truth, there is only one Werewolf.\n    *   James's behavior is the most erratic regarding his role (Tanner -> Villager).\n\n    *   Justin: \"I was the tanner\" [31].\n    *   James: \"I was the tanner\" [107].\n    *   If one of them is the actual Tanner, the other is likely bluffing.\n    *   If James is the Werewolf, he might have claimed Tanner to see if people would believe him, then switched to Villager when he felt the heat.\n\n    *   Justin's claims are chaotic, but he's consistently pushing for James.\n    *   Mitchell is consistently pushing for James.\n    *   James is the one who flipped his story the most significantly (Tanner to Villager).\n\n    *   Justin: Tanner/Insomniac (Confused/Bluffing)\n    *   Laura: Troublemaker (Consistent)\n    *   Paul: No info (Consistent)\n    *   James: Tanner/Villager (Suspicious)\n    *   Mitchell: Seer (Consistent)\n\n    *   James's flip-flop from Tanner to \"lonely nobody\" is a key tell.\n    *   Mitchell's Seer claim (if true) narrows the Werewolf count.\n    *   Justin's chaos is distracting, but James's shift is more indicative of a Werewolf trying to survive.\n\n    *   Wait, if James is the Tanner, he *wants* to be voted out. He claimed Tanner [107]. Why would he then say he's a \"lonely nobody\" [132]? A Tanner would keep claiming Tanner to ensure they are voted out.\n    *   Therefore, James is likely NOT the Tanner.\n    *   If he's not the Tanner and he's lying about being a \"nobody,\" he's the Werewolf.\n\n    *   Justin claimed Tanner [31], then Insomniac [97], then Tanner [113]. He's all over the place. But he's not the one being targeted as much as James.\n    *   James is the most logical choice for the Werewolf based on the shift from Tanner (inviting votes) to Villager (avoiding votes).\n\n    *   Justification: James claimed to be the Tanner, which would normally attract votes, but then quickly changed his story to being a \"lonely nobody\" (Villager) when the group began to suspect him. This shift from wanting to be voted out to wanting to survive is characteristic of a Werewolf bluffing. Additionally, Mitchell (claiming Seer) and Justin are both directing suspicion toward James.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James initially claimed to be the Tanner, a role that seeks elimination, but later shifted his story to being a 'lonely nobody' (Villager) once he became a target. This reversal—moving from a role that invites votes to one that avoids them—is a strong indicator of a Werewolf attempting to survive. Furthermore, Mitchell (claiming Seer) and Justin both focused their suspicions on James during the final moments of the discussion.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James initially claimed to be the Tanner, a role that seeks elimination, but later shifted his story to being a 'lonely nobody' (Villager) once he became a target. This reversal—moving from a role that invites votes to one that avoids them—is a strong indicator of a Werewolf attempting to survive. Furthermore, Mitchell (claiming Seer) and Justin both focused their suspicions on James during the final moments of the discussion.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James initially claimed to be the Tanner, a role that seeks elimination, but later shifted his story to being a 'lonely nobody' (Villager) once he became a target. This reversal—moving from a role that invites votes to one that avoids them—is a strong indicator of a Werewolf attempting to survive. Furthermore, Mitchell (claiming Seer) and Justin both focused their suspicions on James during the final moments of the discussion.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James initially claimed to be the Tanner, a role that seeks elimination, but later shifted his story to being a 'lonely nobody' (Villager) once he became a target. This reversal—moving from a role that invites votes to one that avoids them—is a strong indicator of a Werewolf attempting to survive. Furthermore, Mitchell (claiming Seer) and Justin both focused their suspicions on James during the final moments of the discussion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4732,
+    "output_token_count": 2216,
+    "generation_time_sec": 229.49546265602112,
+    "used_chat_template": true,
+    "input_char_count": 15508,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

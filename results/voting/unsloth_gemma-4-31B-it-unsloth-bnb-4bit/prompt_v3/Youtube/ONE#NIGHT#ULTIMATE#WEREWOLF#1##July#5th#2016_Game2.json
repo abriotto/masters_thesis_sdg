@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Alban",
+    "James",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims he was Drunk, swapped with a card in the center, and is now a Revealer.\n    *   Mitchell: Claims he was Seer (initially), then says he was Robber and stole from Justin. Claims he saw a Drunk.\n    *   James: Claims he looked in the center (as Seer?) and saw a Revealer.\n    *   Mike: Claims he is the Revealer.\n    *   Julie: Claims she is the Insomniac.\n    *   Alban: Claims he was the Insomniac.\n\n    *   *Justin:* Drunk -> Revealer (via center swap).\n    *   *Mitchell:* Robber (stole from Justin).\n    *   *James:* Seer (looked in center, saw Revealer).\n    *   *Mike:* Claims Revealer.\n    *   *Julie:* Insomniac.\n    *   *Alban:* Insomniac.\n\n    *   *Insomniac Conflict:* Both Julie and Alban claim to be the Insomniac. Only one Insomniac exists.\n    *   *Revealer Conflict:* Justin claims he became the Revealer (via Drunk swap). Mike claims he is the Revealer. James claims he saw the Revealer in the center.\n    *   *Seer/Robber Conflict:* Mitchell first says he was Seer, then says he was Robber.\n\n    *   If James is the Seer and saw the Revealer in the center, then the Revealer card was in the center.\n    *   If Justin was the Drunk and swapped with the center card, and that card was the Revealer, then Justin is now the Revealer.\n    *   This makes Mike's claim to be the Revealer a lie.\n    *   If Mike is lying about being the Revealer, he is likely a Werewolf or the Tanner.\n    *   Alban and Julie both claim Insomniac. One is lying.\n    *   Mitchell's story is inconsistent (Seer then Robber), but he claims he stole from Justin and saw a Drunk. If Justin was the Drunk, this fits.\n\n    *   James (Seer) saw Revealer in center.\n    *   Justin (Drunk) swapped with center (Revealer).\n    *   Mitchell (Robber) stole from Justin (Drunk). Wait, if Mitchell stole from Justin *after* Justin swapped, Mitchell would have stolen the Revealer card. But Mitchell says he saw a Drunk.\n    *   *Night Action Order:*\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer (James)\n        6. Robber (Mitchell)\n        7. Troublemaker\n        8. Drunk (Justin)\n        9. Insomniac (Julie/Alban)\n\n    *   *Wait!* If the order is Seer -> Robber -> Drunk -> Insomniac:\n        *   James (Seer) looks at center.\n        *   Mitchell (Robber) steals from Justin.\n        *   Justin (Drunk) swaps with center.\n        *   Insomniac wakes up.\n\n    *   If Justin was the Drunk, he swaps *after* the Robber. So Mitchell couldn't have stolen the \"Drunk\" card from Justin if Justin was already the Drunk? No, the Robber steals the *starting* role. If Justin started as Drunk, Mitchell stole the Drunk card. Then Justin (now the Robber's victim) swaps his current card (which was Drunk) with the center.\n    *   Wait, the Drunk swaps their *current* card. If Mitchell (Robber) stole Justin's card, Justin now has the Robber's old card. Then Justin (Drunk) swaps that card with the center.\n    *   This is getting complex. Let's look at the claims again.\n\n    *   James says he saw the Revealer in the center.\n    *   Justin says he swapped with the center and is now the Revealer.\n    *   Mike says he is the Revealer.\n    *   If James and Justin are telling the truth, Mike is lying.\n    *   If Mike is lying, he's a prime suspect for Werewolf.\n\n    *   Alban and Julie both claim Insomniac.\n    *   If Julie is the Insomniac, Alban is lying.\n    *   If Alban is the Insomniac, Julie is lying.\n    *   However, the group consensus heavily leans toward Mike.\n\n    *   Justin, James, Mitchell, Julie, and Alban all eventually suggest voting for Mike.\n    *   Mike's claim to be the Revealer is contradicted by James (who saw it in the center) and Justin (who claims to have swapped into it).\n\n    *   If Mike is the Werewolf, he would lie about his role to avoid being caught. Claiming to be the Revealer (a village role) is a standard bluff.\n    *   If Mike is the Tanner, he wants to be voted out.\n    *   The evidence (contradictions) points strongly to Mike.\n\n    *   James: Seer (saw Revealer in center).\n    *   Justin: Drunk (swapped with center, became Revealer).\n    *   Mitchell: Robber (stole from Justin, saw Drunk).\n    *   Mike: Werewolf (bluffing as Revealer).\n    *   Julie/Alban: One is Insomniac, one is something else (Villager/Tanner/etc.).\n\n    *   Wait, if Mitchell (Robber) stole from Justin (Drunk), Mitchell becomes the Drunk and Justin gets the Robber's card. Then Justin (Drunk) swaps his card (the Robber's card) with the center.\n    *   Actually, the Drunk's ability is \"Drunk: The Drunk is a member of Team Village. During the Night phase, the Drunk swaps their card with one card from the center, without looking at the new card.\"\n    *   The Robber's ability is \"Robber: The Robber is a member of Team Village. During the Night phase, the Robber swaps their card with another player's card, then looks at their new card.\"\n    *   If Justin was the Drunk and Mitchell was the Robber:\n        1. Mitchell (Robber) swaps with Justin. Mitchell is now Drunk. Justin is now Robber.\n        2. Justin (Drunk - *Wait*, the role is based on the *starting* role). The rules say: \"night actions are performed according to starting roles\".\n        3. So, Justin (starting Drunk) swaps his current card (which is now the Robber card) with the center.\n        4. Mitchell (starting Robber) now has the Drunk card.\n    *   This matches Mitchell's claim (\"I saw a Drunk\") and Justin's claim (\"I swapped with the center\").\n\n    *   James (Seer) saw Revealer in center.\n    *   Justin (Drunk) swapped his card (Robber) with the center (Revealer).\n    *   Justin is now the Revealer.\n    *   Mike claims to be the Revealer.\n    *   Therefore, Mike is lying.\n\n    *   Mike is the most likely Werewolf because his claim to be the Revealer is contradicted by the combined claims of James (Seer) and Justin (Drunk).\n\n    *   Justification: James claims to have seen the Revealer card in the center, and Justin claims to have swapped his card with the center to become the Revealer. This directly contradicts Mike's claim that he is the Revealer. Since multiple players' stories align against Mike's, he is the most likely Werewolf.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "James claims to have seen the Revealer card in the center, and Justin claims to have swapped his card with the center to become the Revealer. This directly contradicts Mike's claim that he is the Revealer. Since the combined claims of James and Justin align and isolate Mike as a liar, Mike is the most likely Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claims to have seen the Revealer card in the center, and Justin claims to have swapped his card with the center to become the Revealer. This directly contradicts Mike's claim that he is the Revealer. Since the combined claims of James and Justin align and isolate Mike as a liar, Mike is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claims to have seen the Revealer card in the center, and Justin claims to have swapped his card with the center to become the Revealer. This directly contradicts Mike's claim that he is the Revealer. Since the combined claims of James and Justin align and isolate Mike as a liar, Mike is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "James claims to have seen the Revealer card in the center, and Justin claims to have swapped his card with the center to become the Revealer. This directly contradicts Mike's claim that he is the Revealer. Since the combined claims of James and Justin align and isolate Mike as a liar, Mike is the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4432,
+    "output_token_count": 1817,
+    "generation_time_sec": 187.1498293876648,
+    "used_chat_template": true,
+    "input_char_count": 15107,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

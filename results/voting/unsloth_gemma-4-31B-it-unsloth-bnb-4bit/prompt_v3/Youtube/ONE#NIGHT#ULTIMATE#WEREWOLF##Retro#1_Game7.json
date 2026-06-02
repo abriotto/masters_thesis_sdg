@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be Seer, says James is a Werewolf.\n    *   Alvin: Claims to be Robber, says Mitchell was the Drunk.\n    *   James: Admits he started as a Werewolf (\"My first play was to look at this card, werewolf\").\n    *   Mitchell: Claims to be Robber (initially), then says he was the Drunk (or Alvin says he was).\n\n    *   Justin (Seer) -> James (Werewolf).\n    *   Alvin (Robber) -> Swapped with Mitchell? (Alvin says \"I was the robber... Mitchell was the drunk\").\n    *   James (Werewolf) -> Admits starting role was Werewolf.\n    *   Mitchell (Drunk/Robber?) -> Confused claims.\n\n    *   James explicitly admits: \"My first play was to look at this card, werewolf\" [44] and \"I really put myself up in a poor position here by admitting I'm the werewolf\" [87].\n    *   Justin claims he saw James as a Werewolf [36, 48, 63].\n    *   Even if James was swapped by the Robber or Troublemaker, the question is who is the *end* role Werewolf.\n    *   James admits he started as a Werewolf. Did anyone swap him?\n        *   Alvin claims to be the Robber and says he swapped with Mitchell (or Mitchell was the Drunk).\n        *   If Alvin (Robber) swapped with Mitchell, James remains a Werewolf.\n        *   If the Troublemaker swapped James, we don't know who the Troublemaker is.\n        *   If the Drunk swapped James, we don't know.\n    *   However, James's admission is the strongest piece of evidence. He basically confesses to being a Werewolf.\n\n    *   Justin: Claims Seer.\n    *   Alvin: Claims Robber.\n    *   Mitchell: Claims Robber/Drunk.\n    *   James: Admits Werewolf.\n\n    *   James admits to being a Werewolf.\n    *   Justin corroborates this by claiming to be the Seer and seeing James as a Werewolf.\n    *   While players can bluff, James's admission is unusually direct (\"I really put myself up in a poor position here by admitting I'm the werewolf\").\n\n    *   Justification: James explicitly admitted to starting the game as a Werewolf and acknowledged that he put himself in a poor position by doing so. Justin, claiming to be the Seer, corroborated this by stating he saw James's card as a Werewolf. There is no strong evidence that James's card was swapped by the Robber or Troublemaker.\n    *   Chosen Vote: James.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to starting the game as a Werewolf, stating, 'My first play was to look at this card, werewolf' and later acknowledging he put himself in a poor position by admitting it. Justin corroborated this by claiming to be the Seer and stating he saw James's card as a Werewolf. There is no credible evidence in the transcript that James's role was swapped by the Robber or Troublemaker.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to starting the game as a Werewolf, stating, 'My first play was to look at this card, werewolf' and later acknowledging he put himself in a poor position by admitting it. Justin corroborated this by claiming to be the Seer and stating he saw James's card as a Werewolf. There is no credible evidence in the transcript that James's role was swapped by the Robber or Troublemaker.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to starting the game as a Werewolf, stating, 'My first play was to look at this card, werewolf' and later acknowledging he put himself in a poor position by admitting it. Justin corroborated this by claiming to be the Seer and stating he saw James's card as a Werewolf. There is no credible evidence in the transcript that James's role was swapped by the Robber or Troublemaker.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to starting the game as a Werewolf, stating, 'My first play was to look at this card, werewolf' and later acknowledging he put himself in a poor position by admitting it. Justin corroborated this by claiming to be the Seer and stating he saw James's card as a Werewolf. There is no credible evidence in the transcript that James's role was swapped by the Robber or Troublemaker."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3379,
+    "output_token_count": 729,
+    "generation_time_sec": 76.25657081604004,
+    "used_chat_template": true,
+    "input_char_count": 12154,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

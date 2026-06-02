@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game7.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot\n    *   Ashley\n    *   James\n    *   Chris\n    *   Sukeshi\n    *   Sian\n\n    *   Sukeshi: Claims to be the Seer [27]. Claims Sian is a Minion and Chris is a Werewolf [29]. Later claims she was actually a Werewolf [48] (\"Yes, actually I was a fucking werewolf, so whoever switched with me is a werewolf\").\n    *   Chris: Claims to be the Troublemaker [54]. Claims he swapped Ashley and Sian [56].\n    *   James: Claims to be the Doppelganger [60, 73]. Claims he robbed Elliot to become the Robber [65, 76]. Then claims he is now the Seer [82].\n    *   Sian: Claims she was the Seer [88] and Chris was a Minion [88].\n    *   Ashley: Claims she is not the Minion anymore [132].\n    *   Elliot: Doesn't make a strong claim but is mentioned as the Robber by James.\n\n    *   Sukeshi says: \"I was the seer\" -> \"Sian is a minion, which means you [Chris] are a werewolf\" -> \"Actually I was a fucking werewolf, so whoever switched with me is a werewolf.\"\n    *   Chris says: \"I was the troublemaker\" -> \"I swapped Ashley and Sian.\"\n    *   James says: \"I was the doppelganger\" -> \"I robbed Elliot to make me the robber\" -> \"I'm the seer now.\"\n    *   Sian says: \"I was the seer, and you [Chris] were a minion.\"\n\n    *   If Chris is the Troublemaker and swapped Ashley and Sian:\n        *   Sian (starting role) -> Ashley (ending role)\n        *   Ashley (starting role) -> Sian (ending role)\n    *   If James is the Doppelganger and robbed Elliot:\n        *   James (starting role: Doppelganger) -> Robbed Elliot (starting role: Robber) -> James becomes Robber.\n    *   Wait, James says \"I'm the seer now\" [82]. This is confusing. If he robbed Elliot, he becomes whatever Elliot was. If Elliot was the Robber, James becomes the Robber. If James became the Seer, Elliot must have been the Seer.\n    *   Sukeshi claims she was the Seer [27], then says she was a Werewolf [48].\n    *   Sian claims she was the Seer [88].\n\n    *   Sukeshi's claim: \"I was a fucking werewolf, so whoever switched with me is a werewolf.\"\n    *   Who could have switched with Sukeshi?\n        *   Robber (James/Elliot)\n        *   Troublemaker (Chris)\n        *   Drunk (Unknown)\n    *   Chris (Troublemaker) says he swapped Ashley and Sian.\n    *   James (Robber/Doppelganger) says he robbed Elliot.\n    *   If Sukeshi was a Werewolf and was swapped, who swapped her?\n    *   Wait, Sukeshi says \"whoever switched with me is a werewolf.\" If she was a Werewolf and the Robber robbed her, the Robber is now the Werewolf. If the Troublemaker swapped her with someone, that person is now the Werewolf.\n\n    *   Sian claims Chris was a Minion [88].\n    *   Sukeshi claims Chris is a Werewolf [29].\n    *   James says he's the Seer now [82].\n    *   Ashley says she's not the Minion anymore [132]. This implies she *was* the Minion.\n    *   If Ashley was the Minion and Chris swapped her with Sian, Sian is now the Minion.\n    *   If Sian is the Minion, she knows who the Werewolves are. Sian says Chris was a Minion [88]. This is contradictory.\n\n    *   Sukeshi's behavior is very erratic. She claims to be the Seer, then says she's a Werewolf.\n    *   Chris claims to be the Troublemaker.\n    *   James claims to be the Doppelganger/Robber/Seer.\n    *   Sian claims to be the Seer.\n    *   Ashley claims she was the Minion.\n\n    *   Let's look at the voting phase. They tried to coordinate a \"circle vote\" (everyone votes to the left) so that no one dies [134-181].\n    *   However, the transcript ends with: \"Sian: You fucker. James: So it's fine. Ashley: No. No, she dies. Chris: She gets two.\" [182-185].\n    *   This implies Sian received two votes.\n\n    *   Sukeshi claimed she was a Werewolf [48].\n    *   Sian claimed Chris was a Minion [88].\n    *   Ashley claimed she was the Minion [132].\n    *   If Ashley was the Minion and Chris (Troublemaker) swapped her with Sian, Sian is now the Minion.\n    *   If Sian is the Minion, she is on Team Werewolf.\n    *   Sukeshi's claim about being a Werewolf is very suspicious. Usually, players don't admit to being Werewolves unless they are bluffing or confused. But she says \"whoever switched with me is a werewolf.\"\n\n    *   Sukeshi: \"I was the seer\" -> \"Sian is a minion, which means you [Chris] are a werewolf\" -> \"Actually I was a fucking werewolf\".\n    *   If Sukeshi was a Werewolf and was swapped by the Robber (James), James is now the Werewolf.\n    *   If Sukeshi was a Werewolf and was swapped by the Troublemaker (Chris), the person she was swapped with is now the Werewolf.\n    *   Chris says he swapped Ashley and Sian.\n    *   If Ashley was the Minion and Sian was the Werewolf, and Chris swapped them, Ashley is now the Werewolf and Sian is now the Minion.\n    *   Sian claims Chris was a Minion.\n\n    *   Sukeshi's claim to be a Werewolf is the most direct admission of alignment, even if she's claiming she was swapped.\n    *   Sian is accused by Sukeshi of being a Minion.\n    *   Chris is accused by Sukeshi of being a Werewolf.\n    *   Ashley admits to being the Minion (though she says \"not anymore\").\n\n    *   Wait, let's re-read: \"Sukeshi: Yes, actually I was a fucking werewolf, so whoever switched with me is a werewolf.\" [48].\n    *   If Sukeshi was a Werewolf and the Robber (James) robbed her, James is now the Werewolf.\n    *   If Sukeshi was a Werewolf and the Troublemaker (Chris) swapped her with someone, that person is now the Werewolf.\n    *   But Chris said he swapped Ashley and Sian.\n    *   If Sukeshi is lying about being a Werewolf to confuse people, she might be the Werewolf.\n    *   If Sian is the Minion (as Sukeshi claimed), Sian is Team Werewolf.\n\n    *   Sukeshi's claims are all over the place.\n    *   Sian's claim that Chris was a Minion is a specific accusation.\n    *   Ashley's admission of being the Minion is very telling. If Ashley was the Minion and was swapped with Sian, Sian is now the Minion.\n    *   If Sian is the Minion, she is Team Werewolf.\n\n    *   Sukeshi: \"Sian is a minion, which means you [Chris] are a werewolf.\" [29].\n    *   Sian: \"I was the seer, and you [Chris] were a minion.\" [88].\n    *   Both are pointing at Chris.\n    *   Sukeshi's admission \"I was a fucking werewolf\" is very strange. If she was a Werewolf and was swapped, she is no longer a Werewolf. If she wasn't swapped, she is still a Werewolf.\n\n    *   Sukeshi claims she was a Werewolf.\n    *   Sian is accused of being a Minion.\n    *   Chris is accused of being a Werewolf/Minion.\n    *   Ashley admits to being the Minion.\n    *   If Ashley was the Minion and Chris swapped her with Sian, Sian is now the Minion.\n    *   If Sian is the Minion, she is Team Werewolf.\n    *   If Sukeshi was a Werewolf and wasn't swapped, she is still a Werewolf.\n\n    *   Sukeshi's claim \"I was a fucking werewolf\" is the most explicit statement of being a Werewolf in the transcript. Even if she says \"whoever switched with me is a werewolf,\" she's admitting her starting role was Werewolf. If no one swapped her, she's still the Werewolf. If the Robber swapped her, the Robber is now the Werewolf. If the Troublemaker swapped her, the other person is now the Werewolf.\n    *   However, Chris (Troublemaker) says he swapped Ashley and Sian. He didn't mention Sukeshi.\n    *   James (Robber) says he robbed Elliot. He didn't mention Sukeshi.\n    *   Therefore, if Sukeshi was a Werewolf, she likely remained a Werewolf.\n\n    *   Sukeshi: Claims Seer -> Claims Sian is Minion/Chris is Werewolf -> Claims she was Werewolf.\n    *   Sian: Claims Seer -> Claims Chris is Minion.\n    *   Ashley: Claims she was Minion.\n    *   Chris: Claims Troublemaker.\n    *   James: Claims Doppelganger/Robber/Seer.\n    *   Elliot: Quiet.\n\n    *   If Sukeshi is the Werewolf, her erratic claims are a cover.\n    *   If Sian is the Minion (via Ashley's swap), she is Team Werewolf.\n    *   If Chris is the Werewolf (as Sukeshi and Sian suggest), he is Team Werewolf.\n\n    *   Sukeshi's admission is the strongest piece of evidence, regardless of whether she's bluffing or telling the truth about being swapped. If she wasn't swapped (and the claims of Chris and James suggest she wasn't), she is the Werewolf.\n\n    *   Sukeshi claims she was a Werewolf [48].\n    *   Chris and James's claims about swaps (Chris swapping Ashley/Sian, James robbing Elliot) do not involve Sukeshi.\n    *   This means if Sukeshi was a Werewolf, she stayed a Werewolf.\n    *   Her shifting claims (Seer -> Werewolf) suggest deception.\n\n    *   Sian is accused of being a Minion by Sukeshi.\n    *   Ashley admits to being the Minion.\n    *   If Chris swapped Ashley and Sian, Sian is now the Minion.\n    *   But the task is to vote for \"a Werewolf\". Minions are Team Werewolf.\n    *   Sukeshi's admission is more direct.\n\n    *   Sukeshi's claim \"I was a fucking werewolf\" is the most direct evidence of being a Werewolf.\n    *   Since the reported swaps (Chris: Ashley/Sian, James: Elliot) didn't involve her, she remains the Werewolf.\n    *   Her inconsistent claims (first Seer, then Werewolf) are typical of a Werewolf trying to confuse the group.",
+  "parsed_output": {
+    "justification": "Sukeshi explicitly admits, 'actually I was a fucking werewolf,' although she attempts to pivot by suggesting whoever switched with her is now the werewolf. According to the claims of Chris (the Troublemaker) and James (the Robber), no swaps involving Sukeshi occurred (Chris swapped Ashley and Sian, and James robbed Elliot). Therefore, if Sukeshi started as a Werewolf, she remained one, and her erratic claims to be the Seer and then a Werewolf indicate a strategy of deception.",
+    "chosen_vote": "Sukeshi"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sukeshi explicitly admits, 'actually I was a fucking werewolf,' although she attempts to pivot by suggesting whoever switched with her is now the werewolf. According to the claims of Chris (the Troublemaker) and James (the Robber), no swaps involving Sukeshi occurred (Chris swapped Ashley and Sian, and James robbed Elliot). Therefore, if Sukeshi started as a Werewolf, she remained one, and her erratic claims to be the Seer and then a Werewolf indicate a strategy of deception.\",\n  \"chosen_vote\": \"Sukeshi\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sukeshi explicitly admits, 'actually I was a fucking werewolf,' although she attempts to pivot by suggesting whoever switched with her is now the werewolf. According to the claims of Chris (the Troublemaker) and James (the Robber), no swaps involving Sukeshi occurred (Chris swapped Ashley and Sian, and James robbed Elliot). Therefore, if Sukeshi started as a Werewolf, she remained one, and her erratic claims to be the Seer and then a Werewolf indicate a strategy of deception.\",\n  \"chosen_vote\": \"Sukeshi\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sukeshi",
+    "justification": "Sukeshi explicitly admits, 'actually I was a fucking werewolf,' although she attempts to pivot by suggesting whoever switched with her is now the werewolf. According to the claims of Chris (the Troublemaker) and James (the Robber), no swaps involving Sukeshi occurred (Chris swapped Ashley and Sian, and James robbed Elliot). Therefore, if Sukeshi started as a Werewolf, she remained one, and her erratic claims to be the Seer and then a Werewolf indicate a strategy of deception."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5137,
+    "output_token_count": 2818,
+    "generation_time_sec": 294.54050612449646,
+    "used_chat_template": true,
+    "input_char_count": 16142,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

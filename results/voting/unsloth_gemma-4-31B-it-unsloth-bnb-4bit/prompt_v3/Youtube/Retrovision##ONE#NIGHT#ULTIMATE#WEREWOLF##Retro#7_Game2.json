@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Insomniac (claims).\n    *   Paul: Troublemaker (claims), then says he's a Villager and didn't switch anyone.\n    *   Eric: Seer (claims).\n    *   Mitchell: Villager (claims).\n    *   Mike: Werewolf (claims).\n\n    *   Justin: Claims Insomniac. Woke up as Insomniac.\n    *   Paul: Claims Troublemaker. Says he didn't switch Justin. Later says he didn't switch anyone and is actually a Villager.\n    *   Eric: Claims Seer. Says he looked at the center cards and saw one Werewolf and one Villager.\n    *   Mitchell: Claims Villager.\n    *   Mike: Claims Werewolf. Says he was the Werewolf and believes his card was swapped.\n\n    *   Eric (Seer) says he saw one Werewolf and one Villager in the center.\n    *   If Eric is telling the truth, there is only one Werewolf card left in the game (since one is in the center).\n    *   Mike admits he was the Werewolf.\n    *   Paul claims he was the Troublemaker but then says he didn't switch anyone.\n    *   Mitchell claims he was the Villager.\n    *   Justin claims he was the Insomniac.\n\n    *   If Mike was the Werewolf and no one swapped him, Mike is the Werewolf.\n    *   If Paul (Troublemaker) swapped Mike with someone else, that person is now the Werewolf.\n    *   If Mitchell (Robber) swapped Mike, Mitchell is now the Werewolf.\n    *   Wait, Mitchell claims he was the Villager. Eric (Seer) says Mitchell was *not* the Robber (at [80], though he's confusing in his phrasing \"No, He was not the robber. Yet.\" then \"He was the robber\" at [82]). Let's re-read.\n    *   [79] Justin: \"Was he the robber?\"\n    *   [80] Eric: \"No, He was not the robber. Yet.\"\n    *   [82] Eric: \"He was the robber.\"\n    *   [83] Mitchell: \"He was the robber. I was the villager.\" (Wait, Mitchell is talking about himself? Or someone else?)\n    *   [88] Mitchell: \"I was not the robber, I was the villager.\"\n    *   Okay, Mitchell is consistently claiming to be the Villager.\n\n    *   Mike admits he started as the Werewolf.\n    *   Paul claims he didn't switch anyone.\n    *   Mitchell claims he didn't rob anyone.\n    *   If Paul and Mitchell are telling the truth, Mike is still the Werewolf.\n    *   If Paul is lying about being the Troublemaker or about not switching, he might be the Werewolf. But Mike *admitted* to being the Werewolf. In One Night Ultimate Werewolf, the Werewolf usually bluffs to be a villager. Admitting to being the Werewolf is highly unusual unless they believe they were swapped and are now a villager, or they are the Tanner.\n    *   Wait, Mike says: \"I was the werewolf and if he switched us...\" [37]. He's suggesting Paul (Troublemaker) switched him.\n    *   But Paul says: \"I didn't switch anyone. You're still a werewolf.\" [102].\n    *   Eric (Seer) says: \"It's him [Mike].\" [111].\n\n    *   Mike: Admits starting as Werewolf.\n    *   Paul: Claims Troublemaker/Villager.\n    *   Eric: Claims Seer.\n    *   Mitchell: Claims Villager.\n    *   Justin: Claims Insomniac.\n    *   If Eric is the Seer and saw a Werewolf in the center, there's only one Werewolf in play.\n    *   If Mike started as that Werewolf and wasn't swapped, Mike is the Werewolf.\n    *   If Mike is the Tanner, he wants to be voted out. But he's claiming to be the Werewolf.\n    *   The most straightforward conclusion is that Mike is the Werewolf.\n\n    *   Mike: \"I was the werewolf\" [39].\n    *   Paul: \"I didn't switch anyone... You're still a werewolf\" [102].\n    *   Eric: \"It's him\" [111].\n    *   Conclusion: Mike is the Werewolf.",
+  "parsed_output": {
+    "justification": "Mike openly admitted to starting as the Werewolf. While he suggested that Paul (the Troublemaker) might have swapped his card, Paul explicitly stated that he did not switch anyone. Eric, claiming to be the Seer, confirmed that Mike is the target. Since no evidence suggests a successful role swap occurred involving Mike, he remains the most likely Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike openly admitted to starting as the Werewolf. While he suggested that Paul (the Troublemaker) might have swapped his card, Paul explicitly stated that he did not switch anyone. Eric, claiming to be the Seer, confirmed that Mike is the target. Since no evidence suggests a successful role swap occurred involving Mike, he remains the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike openly admitted to starting as the Werewolf. While he suggested that Paul (the Troublemaker) might have swapped his card, Paul explicitly stated that he did not switch anyone. Eric, claiming to be the Seer, confirmed that Mike is the target. Since no evidence suggests a successful role swap occurred involving Mike, he remains the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike openly admitted to starting as the Werewolf. While he suggested that Paul (the Troublemaker) might have swapped his card, Paul explicitly stated that he did not switch anyone. Eric, claiming to be the Seer, confirmed that Mike is the target. Since no evidence suggests a successful role swap occurred involving Mike, he remains the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3593,
+    "output_token_count": 1123,
+    "generation_time_sec": 115.4649031162262,
+    "used_chat_template": true,
+    "input_char_count": 12475,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

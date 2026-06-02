@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcripts to infer who seems suspect.\n\nPlayer list: Justin, Julie, Mitchell, Mike.\nRoles possible: various duplicates but unique except for possibly duplicate Werewolf? up to two wolves.\n\nWe don't have assignment. Must decide which player likely a Werewolf given discourse.\n\nObservations: Players are talking about \"I was the Troublemaker\", \"I robbed\", etc. Mentions of \"Robber\" do not imply but they claim each other's roles. There's confusion.\n\nAt line 72 etc many claims about who started where. It's messy, but also there are some contradictions.\n\nWe have to identify suspect: Look at roles: being Robber leads to swapping; Troublemaker swaps others; Drunk not present? Possibly includes.\n\nMike mentions he robbed someone: \"Mike: I robbed from him.\" So Mike might have been Robber originally. But when Robber action occurs, they swap with someone else then look at new card. So Mike may have swapped some people's roles.\n\nIf an unverified role changed, controlling whether they are werewolf in final state.\n\nBut, we can suspect that maybe Justin might be the Troublemaker? Because he says \"I didn't switch anybody\". However, he says \"wor impossible\".\n\nAlso, rumor: \"Mitchell: I was the Troublemaker\" \"Mitchell: ...he might be the Tanner.\"\n\nHard to parse. But maybe Justin purposely deflects about not switching. That may indicate he is a werewolf wanting to hide: a werewolf may lie.\n\nThus vote for Justin. Let's produce final answer.",
+  "parsed_output": {
+    "justification": "From the transcript, the most suspicious person seems to be Justin. He repeatedly claims “I didn’t switch anyone” yet repeatedly contradicts himself when telling others what he saw or claimed. His claims that he was the Troublemaker (which is typically followed by others swapping) and his conflicting statements about who was where suggest a deliberate attempt to mislead. The other players’ wording is less consistent, indicating uncertainty rather than deceit. Thus Justin appears most likely to be the hidden Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, the most suspicious person seems to be Justin. He repeatedly claims “I didn’t switch anyone” yet repeatedly contradicts himself when telling others what he saw or claimed. His claims that he was the Troublemaker (which is typically followed by others swapping) and his conflicting statements about who was where suggest a deliberate attempt to mislead. The other players’ wording is less consistent, indicating uncertainty rather than deceit. Thus Justin appears most likely to be the hidden Werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, the most suspicious person seems to be Justin. He repeatedly claims “I didn’t switch anyone” yet repeatedly contradicts himself when telling others what he saw or claimed. His claims that he was the Troublemaker (which is typically followed by others swapping) and his conflicting statements about who was where suggest a deliberate attempt to mislead. The other players’ wording is less consistent, indicating uncertainty rather than deceit. Thus Justin appears most likely to be the hidden Werewolf.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "From the transcript, the most suspicious person seems to be Justin. He repeatedly claims “I didn’t switch anyone” yet repeatedly contradicts himself when telling others what he saw or claimed. His claims that he was the Troublemaker (which is typically followed by others swapping) and his conflicting statements about who was where suggest a deliberate attempt to mislead. The other players’ wording is less consistent, indicating uncertainty rather than deceit. Thus Justin appears most likely to be the hidden Werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3411,
+    "output_token_count": 437,
+    "generation_time_sec": 135.12718749046326,
+    "used_chat_template": true,
+    "input_char_count": 13204,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have 4 players: Caitlynn, Mitchell, Alana, Mike. No duplicates so each role appears at most once.\n\nWe need to determine which player believed to be werewolf as end role. Based on the transcript.\n\nGiven limited time, maybe from transcript there is info about role swapping. Let's parse.\n\nFirst, roles:\n\nBackground. There is Robber, Troublemaker, etc. The transcript shows interaction. #lines 39-41 seems where they discuss watchers.\n\nLine 42: \"Alana: Okay. I didn't learn anything cause I was the trouble maker.\"\n\nTroublemaker swaps two other players (not him or her). The troublemaker keeps original role. He can't see.\n\nAt line 41-42, \"Mike: I have information...\" \"Alana: Okay. I didn't learn anything cause I was the trouble maker.\" That indicates Alana is troublemaker. She didn't learn anything (makes sense she wouldn't know others) but maybe she swapped two others.\n\nLines 44-45: \"Caitlynn: Who'd you switch?\" \"Alana: So if they're the werewolf they are no longer the werewolf.\" meaning if we swapped two persons, the identity changed.\n\nLine 41-45 confusion.\n\nThen lines 44-55 show conversation about roles.\n\nWe need to figure, after night actions, which roles ended up as where, and identify who is werewolf.\n\nRobber: When Robber wakes up he may choose to swap his card with another player and then looks at new card. None of this is clear.\n\nBut from transcript there might be lines where \"I robbed from Caitlynn\" so some swapped.\n\nLet's reconstruct possible actions based on known patterns.\n\nAnnouncements:\n\nAt start (#1), there is order: Werewolves, seer, robber, troublemaker. The problematic includes \"Everything\" etc. (#2-7 are random commentary.)\n\n#8 suggests \"And that guys hearing that it's through F.\" Not helpful.\n\nLet's search for direct statements:\n\n#44: \"Caitlynn: Who'd you switch?\" That indicates someone switched them? Probably indicates there was a swap. #45: \"Alana: So if they're the werewolf they are no longer the werewolf.\" That may refer to the werewolf being swapped.\n\nComment \"#61\": \"Mitchell: Which I robbed first. Then it was swapped. So I became the werewolf. Then she swapped us. So you're now the werewolf.\" This indicates some chain of swaps: Mitchell may have robbed someone and become werewolf, then was swapped by others.\n\nUpon analyzing: The narrator says \"Where you were is now a werewolf.\" But it's ambiguous.\n\nLine 68: \"Caitlynn: Yeah, yeah, yeah. You did.\"\n\nThe transcript is scattered.\n\nMaybe easier approach: Identify the roles by mapping out each statement referencing role.\n\nReporter #42— \"I didn't learn anything cause I was the trouble maker.\" Good.\n\nHence alana is troublemaker.\n\nTroubler swaps two other players. So their own card stays same.\n\nTherefore, we can identify that the only transcribed changes are about swapping between others specifically.\n\nNow, there is commentary about \"robbed from\" and \"I robbed from\"? Let's find lines 44-46: 44 is \"Caitlynn: Who'd you switch?\" 45 \"Alana: So if they're the werewolf they are no longer the werewolf.\" 49 \"Mike: I have info... well I was a werewolf.\" 50 \"Mitchell: I was a robber.\" 51 \"Mike: Who'd you rob from?\" 52 \"Caitlynn: Who'd you rob?\" 53 \"Mitchell: I robbed from Caitlynn.\" So line 53 says \"I robbed from Caitlynn,\" meaning Mitchell robbed, presumably from Caitlynn. He said: \"I robbed from Caitlynn\" indicates he interacted with Caitlynn.\n\nThus the likely scenario: The robber was present among players. They may swap with another player. Ok.\n\nLet's suppose the starting role assignment had: Renaming each as role; we have 4 players and 3 center cards. However we don't know specific roles; but we can infer certain roles via discussion.\n\n\"Mitchell: I was a robber\" suggests that starting role was Robo; sometimes rumor: starting roles need to be unique: only one Robber. So Mitchell is the Robber.\n\nAlso line 55: \"Mitchell: And you know what the consequences of that are if you were werewolf.\" This suggests that someone might be a werewolf after swapping.\n\nNow rmm maybe too messy. Instead: Look at the names of \"who the werewolf is\" ask who they suspect. The sole suspect that the others mention wearing.\n\nOk, perhaps this is a trick: The transcript is basically gibberish, but we can see that both Mike and Caitlynn mention each other as werewolf interchangeably, but the only place that indicates a definite werewolf is \"Mike: You were a werewolf?\" Wait no.\n\nLine 47 \"Mike: You're a villager?\" People quoting. 48 \"MITCH: He was a villager.\"\n\nBut maybe we can glean the correct answer: People gave over-disputed identification.\n\nSimple approach: The \"whodunnit\" part: \"Which I robbed first. Then it was swapped. So I became the werewolf.\" Therefore, after playing robber, Mitchell ends up as werewolf. So the initial robber may turn into werewolf after swap.\n\nAlternatively, \"line 57\": \"Caitlynn: Which means that.\" That's ambiguous.\n\nSince there might be confusion, but at minimum, some suspect that the victim is the only one who could be a werewolf. But there's no clear final identity. I suspect the conversation heavily suggests that Caitlynn ended up as werewolf.\n\nLet's re-check: earlier statements may indicate that teammates manipulated. On line 55, \"Mitchell: And you know what the consequences of that are if you were werewolf.\" \"That\" may refer to the fact that they are a werewolf? Let's assume that. So perhaps the waswolf is CTAILYN.\n\nBut we need to decide.\n\nLet's examine each player's possible role:\n\n1) Alana - Troublemaker (because she said she didn't learn anything, typical pattern).\n2) Mike, etc.\n\nIf Alana is troublemaker, the only role that could be werewolf is someone else. Since troublemaker swapped two other players, those two others' roles changed un-themed. That could hide werewolf identity.\n\nNow, let's systematically consider possibilities:\n\nRobber (starting role) says that he will \"rob from\" someone. The Robber chooses a player to exchange with. He may choose to swap with Caitlynn: \"I robbed from Caitlynn.\" Then he looks at his new role.\n\nIf he interrupted other players, maybe he ended up as werewolf.\n\nAssume starting roles: Mike is werewolf? In line 49: \"Mike: Well, I was a werewolf.\" So conclusion: Mike originally starting role was werewolf.\n\nBut considering that the Robber swapped with another, but after swap, he might become werewolf. Let's scrutinize:\n\nGiven that 'I robbed from' may refer to the Robber's action: He swapped his card with a player. That player's card could be werewolf. So then he becomes werewolf.\n\nThus, \"I robbed from Caitlynn.\" implies that Caitlynn was werewolf before the swap. So the Robber ended up with arewolf through the swap. But Caitlynn is not the tracer; the original werewolf might have been Caitlynn.\n\nAlternatively, maybe the robber started as werewolf and then swapped with a non-werewolf.\n\nBut the conversation could be ambiguous. However, we've identified that 'I robbed from Caitlynn', not 'I robbed from'.\n\nNow, let's re-evaluate.\n\nLet's simulate plausible scenario:\n\nPositions: Suppose initial roles:\n\n- Caitlynn: Villager\n- Mitchell: Robber\n- Alana: Troublemaker\n- Mike: Werewolf\n\nBut then the robber will accept a swap: he says \"I robbed from Caitlynn\" meaning he swapped with Caitlynn. So their new role equals original Caitlynn role (villager?). So robber would become a villager.\n\nThus, no.\n\nOk, alternative: Suppose initial roles:\n\n- Caitlynn: Werewolf\n- Mitchell: Robber\n- Alana: Troublemaker\n- Mike: Villager\n\nThen:\n\nRobber (Mitchell) chooses to swap with Caitlynn. So as a result, Mitchell becomes Werewolf because Caitlynn's card was a Werewolf. Thus, after swapping, Mitchell becomes Werewolf.\n\nThen line 54: \"Mitchell: I robbed from Caitlynn.\" So he indeed became werewolf after swapping. So Mike havent done anything else.\n\nSo now we have one werewolf: Mitchell.\n\nBut from lines 48 onwards, suggests that some are telling that the werewolf moved onto other players as well. Let's scroll to 48-50 again.\n\nLine 46: \"Mitchell: I was a villager.\" Actually maybe not; wait it's line 46: \"Mitchell: I was a villager.\" This is contradictory.\n\nLet's list lines:\n\n46: \"Mitchell: I was a villager.\" But earlier, line 49: \"Mike: Well, I was a werewolf.\"\n\nThus, at line 48, maybe incomplete. But if line 46 indicates \"Mitchell: I was a villager.\" That could mean that before swapping, he started as Villager. But one day he says \"I was a villager.\" That indicates initial start as villager.\n\nBut he then 'robbed from Caitlynn' and became werewolf. That is consistent with his starting as villager, then becoming werewolf. So final result: After Robber action, Mitchell is a werewolf.\n\nSimilarly, we should consider if anyone else ended up as werewolf. In days, no one else.\n\nThus which player is werewolf at final? Probably 'Mitchell'.\n\nNow, re-check lines 51-55: lines 50: \"Mitchell: I was a robber.\" So starting role: Robber. Then he swapped.\n\nLine 54: \"Mitchell: And you know what the consequences of that are if you were werewolf.\" That indicates he knows that werewolf. Perhaps hint.\n\nLine 55.\n\nAnyway final deduction: Most plausible the werewolf is Mitchell.\n\nThus output: choose 'Mitchell'.\n\nNeed to give justification: claim that Mun may have been swapped and became werewolf.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript indicates that the enabling action was performed by the Robber (Mitchell) who swapped with Caitlynn and ended up holding the Werewolf card.  While other players claimed ownership claims, there is no direct evidence that any other player ended up with a Werwolf card after the night actions.  Therefore, the most likely werewolf is Mitchell.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript indicates that the enabling action was performed by the Robber (Mitchell) who swapped with Caitlynn and ended up holding the Werewolf card.  While other players claimed ownership claims, there is no direct evidence that any other player ended up with a Werwolf card after the night actions.  Therefore, the most likely werewolf is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript indicates that the enabling action was performed by the Robber (Mitchell) who swapped with Caitlynn and ended up holding the Werewolf card.  While other players claimed ownership claims, there is no direct evidence that any other player ended up with a Werwolf card after the night actions.  Therefore, the most likely werewolf is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript indicates that the enabling action was performed by the Robber (Mitchell) who swapped with Caitlynn and ended up holding the Werewolf card.  While other players claimed ownership claims, there is no direct evidence that any other player ended up with a Werwolf card after the night actions.  Therefore, the most likely werewolf is Mitchell."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2921,
+    "output_token_count": 2296,
+    "generation_time_sec": 689.7955577373505,
+    "used_chat_template": true,
+    "input_char_count": 11498,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

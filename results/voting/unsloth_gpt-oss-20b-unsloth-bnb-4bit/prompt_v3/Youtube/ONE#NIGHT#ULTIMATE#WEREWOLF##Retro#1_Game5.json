@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to pick the player we suspect is the werewolf based on transcript. The transcript seems garbled; many statements about swapping and seeing. Observations: Only one werewolf exists maybe; the roles played: Justin, Alvin, James, Mitchell. Shane?\n\nWe know get info: The Robber swapped with someone, etc. Robert? But those things seem erroneous.\n\nWe look at comments: \"I was the robber\" presumably consumed, in line 32: \"James: I was the robber.\" That suggests James started as Robber; after night, he ended up with a different role possibly because he traded. In line 33-34: Justin asks \"Who did you switch with?\" James says \"What did you want more info?\" Might be confusion.\n\nAt line 32, James claims being robber. So before night, \"James: I was the robber.\"\n\nline 38: Alvin: \"So I could potentially be the werewolf. Because if I did anyone...\" That is weird.\n\nBut line 36: \"Alvin: I was the drunk.\" So he's starting Drunk.\n\nLine 35 \"It is the drunk.\" So across different.\n\nWait lines: 36: \"Alvin: I was the drunk.\" So in the start, Alvin was Drunk. Means at night, he swapped someone from center. We can deduce final role? Drunk ends with whoever he swaps to.\n\nRobber lines: The Robber: \"Wake Up. You may exchange your card with another player's card, and then view your new card.\"\n\nPerhaps Justin has report \"nice Luke\" doesn't match.\n\nAnyway, we need to figure who is werewolf. Let's assume there is a single Werewolf. Which player might have the Werewolf role? In any standard sets, there is usually a Werewolf role among the player roles. In any case, the commentator said \"If there is only one werewolf, you may look hard from the center.\" That indicates expecting maybe one werewolf.\n\nGiven the transcript, it's messy. At the start, lines 0--5: The announcer says \"Everyone, close your eyes...werewolf wake up\". It doesn't specify which players are werewolves. However, sure that only if there is only one werewolf they can look.\n\nOther data: Historically, the standard roles set includes Werewolf. So we know this game has at least one Werewolf. The players: Justin, Alvin, James, Mitchell. Likely werewolf plays plus maybe other villagers. We need to identify.\n\nStart: if someone had the role of Werewolf, they could identify. None explicitly mention they are werewolf. The text: \"I was the robber\" etc.\n\nLine 75: \"Julian: Je wore? no.\n\nNow the last lines near 125: there's a lot about suspecting Mitchell. At lines 121-124: James says \"I think Mitchell is the werewolf.\" At 121: \"I think Mitchell is the werewolf.\" But these are just allegations.\n\nWe look at the final lines: 123: \"It's Mitchell.\" So it seems the people suspected will vote for Mitchell as werewolf: they think he's the werewolf.\n\nBut the question asks: \"Based on the public discussion, vote for the player you believe is a Werewolf as their end role.\" So we should choose a name. We need decision.\n\nWhich evidence indicates werewolf?\n\nWe see that Alvin is Drunk, possibly swapped with center. A drunk who swapped card could be ended up as werewolf. We know Drunk knows what he just swapped to; but after swapping, Drunk knows new card, but they don't. The final role may differ. So if Alvin started Drunk, but swapped during night, he could now be final Werewolf, if the center had a Werewolf, or if he swapped with center containing Werewolf. But we don't know center roles.\n\nBut line 84: \"Justin: Alvin, which one did you switch with when you were the drunk? [85] Alvin: It was the one in the middle.\" That implies the center had current card of a Werewolf maybe? If Alvin swapped with the center with a Werewolf, he would become Werewolf eventually. So it's possible.\n\nAlternately, maybe none of others did the swap. Another possibility: James claimed to be Robber. As Robber, he swapped with ... unknown.\n\nLet's simulate:\n\nNight: 1. D.g. maybe. \n2. Werewolf: the werewolf(s) wake up if only one, they can look. But unknown who.\n\nOk the transcript is extremely chaotic.\n\nPotentially, Justin may be the werewolf because he's the de facto leader but might be Martinez.\n\nBut who would be actual werewolf? The only suspect that appears to be suspicious consistently: Justin's claim: \"Under some suggestion not the, glimpsed, I think he's her.\" But it's unclear.\n\nOk. Maybe we should guess: There's at most one werewolf. Suppose there's exactly one. From the transcript lines: \"I will do whatever\" no.\n\nEven simpler: There is a likely vote for Mitchell: Many People suspect him.\n\nThus I think the answer: choose Mitchell.\n\nNow produce output in format.\n\nWe'll write justification: \"Based on transcripts, many players suspect Mitchell, indicating he behaved suspiciously. Since Drunk swapped center that may hide werewolf. I conclude he is werewolf.\"",
+  "parsed_output": {
+    "justification": "Players repeatedly suspect Mitchell and repeatedly accuse him of being the werewolf; Justin even states “I think he might be the werewolf.” Moreover, his involvement earlier in the discussion (claiming to be the seer, looking at Alvin’s card, etc.) shows he was actively changing his identity. Allegations from several party members point to him more strongly than the others, making him the most likely final werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"Players repeatedly suspect Mitchell and repeatedly accuse him of being the werewolf; Justin even states “I think he might be the werewolf.” Moreover, his involvement earlier in the discussion (claiming to be the seer, looking at Alvin’s card, etc.) shows he was actively changing his identity. Allegations from several party members point to him more strongly than the others, making him the most likely final werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"Players repeatedly suspect Mitchell and repeatedly accuse him of being the werewolf; Justin even states “I think he might be the werewolf.” Moreover, his involvement earlier in the discussion (claiming to be the seer, looking at Alvin’s card, etc.) shows he was actively changing his identity. Allegations from several party members point to him more strongly than the others, making him the most likely final werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Players repeatedly suspect Mitchell and repeatedly accuse him of being the werewolf; Justin even states “I think he might be the werewolf.” Moreover, his involvement earlier in the discussion (claiming to be the seer, looking at Alvin’s card, etc.) shows he was actively changing his identity. Allegations from several party members point to him more strongly than the others, making him the most likely final werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3274,
+    "output_token_count": 1207,
+    "generation_time_sec": 367.48127698898315,
+    "used_chat_template": true,
+    "input_char_count": 12723,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

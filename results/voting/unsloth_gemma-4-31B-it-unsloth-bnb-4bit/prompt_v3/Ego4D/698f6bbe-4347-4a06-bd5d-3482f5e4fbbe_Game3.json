@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "698f6bbe-4347-4a06-bd5d-3482f5e4fbbe",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/698f6bbe-4347-4a06-bd5d-3482f5e4fbbe_Game3.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot\n    *   Ashley\n    *   James\n    *   Chris\n    *   Sukeshi\n    *   Sian\n\n    *   Sian: Claims to be a \"boring old villager\" [25].\n    *   Ashley: Claims to be the Troublemaker (\"I switched you two\") [33].\n    *   James: Claims to be the Drunk [42, 96, 106].\n    *   Chris: Claims to be the Robber (\"I was the robber and I swapped with Elliot\") [51].\n    *   Elliot: Claims to be the Hunter [52, 56].\n    *   Sukeshi: Claims to be the Seer [61].\n\n    *   Sukeshi (Seer) says she looked at the center two cards and saw the Werewolf card [61, 73].\n    *   Wait, Sukeshi says: \"I looked at these two cards in the middle, this was the werewolf. We should kill it. James.\" [61].\n    *   Wait, if the Werewolf card is in the center, the Village wins if no one dies or if a Werewolf dies. But Sukeshi says \"this was the werewolf\" and then points to James.\n    *   Let's re-read [61]: \"I looked at these two cards in the middle, this was the werewolf. We should kill it. James.\" This is slightly contradictory. If the card is in the middle, James isn't the werewolf.\n    *   Let's re-read [73]: \"I looked at these two they were both Werewolves, so there were the only Werewolves on the board. The only reason there's a werewolf on the board is because the Drunk had a night.\"\n    *   Wait, if Sukeshi saw *two* Werewolves in the center, and there are only two Werewolves total (usually), then there are no Werewolves left in the players' hands.\n    *   However, she says \"The only reason there's a werewolf on the board is because the Drunk had a night.\"\n    *   The Drunk swaps their card with one from the center without looking.\n    *   So, if there were two Werewolves in the center, and the Drunk (James) swapped with one of them, James is now the Werewolf.\n    *   Sukeshi's logic:\n        1.  Seer looks at center: Sees two Werewolf cards.\n        2.  Drunk (James) swaps with one center card.\n        3.  Therefore, James is now the Werewolf.\n\n    *   Chris (Robber) swapped with Elliot.\n    *   Ashley (Troublemaker) swapped two people (doesn't specify who, but James says \"Switch those two\" [66]).\n    *   Elliot (Hunter) says he was the Hunter.\n    *   James (Drunk) admits to being the Drunk.\n\n    *   Sukeshi claims to be the Seer and identifies James as the Werewolf due to the Drunk's swap.\n    *   James doesn't strongly deny it, eventually accepting the logic (\"Yeah, I know. I mean, yeah. That sounds right guys.\" [83]).\n    *   The group agrees to vote for James.\n\n    *   Sukeshi (Seer) -> James (Werewolf via Drunk swap).\n    *   James (Drunk) -> Swapped with center (Werewolf).\n    *   Chris (Robber) -> Swapped with Elliot.\n    *   Ashley (Troublemaker) -> Swapped two others.\n    *   Elliot (Hunter).\n    *   Sian (Villager).\n\n    *   If Sukeshi is the Seer and saw two Werewolves in the center, and James is the Drunk, James must be the Werewolf.\n    *   Is there any reason to doubt Sukeshi? She's the one driving the accusation.\n    *   James's reaction is passive/accepting.\n    *   The group consensus is James.\n\n    *   Sukeshi's claim: Seer saw 2 Werewolves in center.\n    *   James's role: Drunk.\n    *   Drunk action: Swaps with center.\n    *   Conclusion: James is now the Werewolf.\n    *   Vote: James.",
+  "parsed_output": {
+    "justification": "Sukeshi claimed to be the Seer and stated she saw two Werewolf cards in the center. Since James admitted to being the Drunk, who swaps their card with one from the center, Sukeshi concluded that James must have swapped into the Werewolf role. James eventually accepted this logic, and the rest of the group agreed to vote for him.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sukeshi claimed to be the Seer and stated she saw two Werewolf cards in the center. Since James admitted to being the Drunk, who swaps their card with one from the center, Sukeshi concluded that James must have swapped into the Werewolf role. James eventually accepted this logic, and the rest of the group agreed to vote for him.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sukeshi claimed to be the Seer and stated she saw two Werewolf cards in the center. Since James admitted to being the Drunk, who swaps their card with one from the center, Sukeshi concluded that James must have swapped into the Werewolf role. James eventually accepted this logic, and the rest of the group agreed to vote for him.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "Sukeshi claimed to be the Seer and stated she saw two Werewolf cards in the center. Since James admitted to being the Drunk, who swaps their card with one from the center, Sukeshi concluded that James must have swapped into the Werewolf role. James eventually accepted this logic, and the rest of the group agreed to vote for him."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3854,
+    "output_token_count": 1078,
+    "generation_time_sec": 112.92537879943848,
+    "used_chat_template": true,
+    "input_char_count": 12404,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

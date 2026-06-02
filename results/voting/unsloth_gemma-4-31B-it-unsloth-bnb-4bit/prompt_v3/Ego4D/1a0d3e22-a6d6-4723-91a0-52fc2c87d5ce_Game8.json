@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game8.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Roles involved (based on discussion):\n        *   Jacob: Claims he started as a Villager.\n        *   Sean: Claims he was the Troublemaker.\n        *   Zack: Claims he was the Robber.\n        *   Hunter: Not explicitly claiming a starting role, but reacting to the others.\n\n    *   Sean (Troublemaker) claims he switched cards.\n    *   Zack (Robber) claims he stole a card.\n    *   Jacob (Villager) claims he started as a Villager.\n    *   Hunter: Reacts to the swaps.\n\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   Zack claims he was the Robber. The Robber swaps their card with another player and looks at the new card.\n    *   Sean claims he was the Troublemaker. The Troublemaker swaps the cards of two other players without looking at them.\n\n    *   If Sean (Troublemaker) swapped cards *after* Zack (Robber) acted, the Robber's knowledge of their new card might be outdated.\n    *   Zack says: \"I was there robber, I [inaudible] and then I switched-\" (Line 65).\n    *   Sean says: \"I was trouble maker... I switched your guys' cards.\" (Lines 54, 61).\n    *   Hunter says: \"So I'm troublemaker\" (Line 62) - wait, Hunter is confused. He probably means \"So I'm the one whose card was swapped?\" or \"So I'm the Troublemaker's target?\".\n    *   Hunter says: \"I hate to tell you chief, but you're now the werewolf\" to Zack (Line 71).\n\n    *   Jacob: Started as Villager.\n    *   Zack: Started as Robber.\n    *   Sean: Started as Troublemaker.\n    *   Hunter: ?\n\n    *   If Sean (Troublemaker) swapped Zack and Hunter's cards, and Zack (Robber) had already stolen a card from someone (maybe Jacob?), the final roles would shift.\n    *   Wait, let's look at the dialogue again.\n    *   Zack: \"I'm trouble maker now. I stole from you.\" (Line 55). This is a contradiction. Robbers steal, Troublemakers swap. Zack is confusing the roles.\n    *   Sean: \"I was trouble maker... I switched your guys' cards.\" (Line 54, 61).\n    *   Zack: \"Robber.\" (Line 70).\n    *   Hunter: \"I hate to tell you chief, but you're now the werewolf\" (Line 71).\n\n    *   If Sean is the Troublemaker and he swapped Zack and Hunter, and Zack was the Robber...\n    *   Let's assume the roles were:\n        *   Sean: Troublemaker\n        *   Zack: Robber\n        *   Jacob: Villager\n        *   Hunter: Werewolf\n    *   Night sequence:\n        1. Robber (Zack) steals from Jacob (Villager). Zack is now Villager, Jacob is now Robber.\n        2. Troublemaker (Sean) swaps Zack (Villager) and Hunter (Werewolf). Zack is now Werewolf, Hunter is now Villager.\n    *   Result: Zack is the Werewolf.\n\n    *   Hunter says to Zack: \"I hate to tell you chief, but you're now the werewolf.\" (Line 71).\n    *   Zack accepts this: \"Ooh, unfortunate.\" (Line 72).\n    *   Sean says: \"Yeah, this is pretty clear cut.\" (Line 79).\n\n    *   Zack admits to being the Robber.\n    *   Sean admits to being the Troublemaker.\n    *   Jacob admits to being the Villager.\n    *   Hunter is the remaining player.\n    *   If Sean (Troublemaker) swapped Zack and Hunter, and Hunter was the Werewolf, then Zack became the Werewolf.\n    *   The group seems to have reached a consensus that Zack is the Werewolf.\n\n    *   Is there any reason to suspect Sean or Jacob?\n    *   Jacob claims Villager.\n    *   Sean claims Troublemaker.\n    *   Zack claims Robber.\n    *   If Zack is the Werewolf, the Village wins.\n    *   If Sean is the Werewolf, he's bluffing as Troublemaker.\n    *   If Jacob is the Werewolf, he's bluffing as Villager.\n    *   However, the logic provided by the players (Sean as Troublemaker swapping Zack and Hunter) points directly to Zack.\n\n    *   Zack claims Robber.\n    *   Sean claims Troublemaker.\n    *   Sean says he swapped cards.\n    *   Hunter concludes Zack is now the Werewolf.\n    *   Zack agrees.\n    *   The most likely Werewolf (end role) is Zack.",
+  "parsed_output": {
+    "justification": "Sean claims to be the Troublemaker and states he swapped the cards of other players. Zack claims he was the Robber. Based on the discussion, the players conclude that Sean's swap resulted in Zack becoming the Werewolf, a conclusion that Zack himself acknowledges as 'unfortunate'.",
+    "chosen_vote": "Zack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sean claims to be the Troublemaker and states he swapped the cards of other players. Zack claims he was the Robber. Based on the discussion, the players conclude that Sean's swap resulted in Zack becoming the Werewolf, a conclusion that Zack himself acknowledges as 'unfortunate'.\",\n  \"chosen_vote\": \"Zack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sean claims to be the Troublemaker and states he swapped the cards of other players. Zack claims he was the Robber. Based on the discussion, the players conclude that Sean's swap resulted in Zack becoming the Werewolf, a conclusion that Zack himself acknowledges as 'unfortunate'.\",\n  \"chosen_vote\": \"Zack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Zack",
+    "justification": "Sean claims to be the Troublemaker and states he swapped the cards of other players. Zack claims he was the Robber. Based on the discussion, the players conclude that Sean's swap resulted in Zack becoming the Werewolf, a conclusion that Zack himself acknowledges as 'unfortunate'."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2811,
+    "output_token_count": 1281,
+    "generation_time_sec": 127.75533866882324,
+    "used_chat_template": true,
+    "input_char_count": 9659,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

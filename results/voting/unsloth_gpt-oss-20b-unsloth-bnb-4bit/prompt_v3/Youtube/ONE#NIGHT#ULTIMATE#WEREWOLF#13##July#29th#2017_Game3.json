@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#13##July#29th#2017_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to pick a suspect as werewolf based on transcript. The game: 4 players, 4 roles chosen from 8 roles. We cannot see map of roles. But from conversation, many claim and contradictions.\n\nLet's attempt to parse biggest clues: The game includes possible roles including Drunk, Troublemaker, Might: In Chat, they said \"Troublemaker\" swap happened, \"Drink\" of secret etc.\n\nLet's analyze roles. We know Chris?\n\nHowever transcript seems noise: they mention \"What was switched?\" and \"I troublemaked\" etc. The suspicion: players swapped roles: Drunk swapped with center, then troublemaker swapped others, robber swapped with someone, etc.\n\nWill try to deduce final roles through logic: Justin says \"I'm the odd man out.\" Might be trying to deflect others. He says \"I was the drunk\" but others say he wasn't drunk. Then says \"I was the odd man out.\" They say the drunk is used to swap with side.\n\nDuring the night, the Drunk exchanges his card with one from center (but doesn't see). So we don't know his new role. The troublemaker's action: they swap two other players' cards. So the results: Many unknowns.\n\nThen the other winner maybe: Justin might have finished as a Werewolf? Not clear. Perhaps all players eventually ended up as villagers? But scenario: Justin may claim to be the werewolf but nothing else. The transcript may indicate Justin was a concern for suspicion: \"I am the odd man out.\" Might be liar.\n\nBetter to decide based on the tokens. The main hint: Justin claims to be the werewolf. Others call him maybe a liar. The persons complaining John's suggestions—makes sense that people think Justin is werewolf.\n\nAlso: The previous line: \"Because I was the drunk and there's nothing I can do.\" People refer that Justin was drunk originally? Actually the transcripts show repeated confusion: \"No, I was the drunk.\" vs \"I was the drunk,\" which suggests uncertaination.\n\nIn the context: There are key roles: Drunk learns his final role from center. Since his handshake appears unspecific: There's no evidence that Drunk had any are final.\n\nSo if I were a winner, I'd suspect that Justin might not be a suspect. But the question: \"Based on the public discussion, vote for the player you believe is a Werewolf\". So we need to choose a single suspect: Among the four, perhaps the best suspect is Mike. But let's examine.\n\nMike says \"I was one of these two.\" He says \"I was one of those two\" - meaning he saw that the player that matches? He says \"I was one of these two\" about something.\n\nHe gives comment: \"I was one of those two\" suggests maybe he switched with a certain role. He earlier \"I was one of these two.\" Could refer to roles where two werewolves. Hard to tell.\n\nMaybe we can glean some suspicion: Justin claims to be the waswolf but he is probably lying; he claims to be weird, but no evidence. Mike may actually be the druid.\n\nPeople mention \"John had no-- i suspect being a bug? Not.\n\nOkay, we need to produce output: \"chosen_vote\": name of suspect.\n\nGiven no strong evidence beyond speculation, but the phrase \"I am a werewolf\" from Justin (line 18) is a direct claim. Whether he's lying? Possibly.\n\nBut suspect is Justin. So I will pick \"Justin\".\n\nWe should justify: Many indications of confusion about his statement; his claim that he's a werewolf is suspicious and other evidence shows he's not.\n\nThus answer: Justin.",
+  "parsed_output": {
+    "justification": "Several lines of Justin’s comments are inconsistent with the rules, especially his proclamation that he is a werewolf and subsequent contradictory statements, indicating deception.  Other players’ remarks imply that he was possibly a Drunk or a Trouble maker, not a Werewolf, and none claim a reliable identity for him.  Since there’s no evidence to confirm his true alignment and his stance aligns with the behavior expected from a liar or a non‑werewolf, he becomes a reasonable bleeding suspect.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Several lines of Justin’s comments are inconsistent with the rules, especially his proclamation that he is a werewolf and subsequent contradictory statements, indicating deception.  Other players’ remarks imply that he was possibly a Drunk or a Trouble maker, not a Werewolf, and none claim a reliable identity for him.  Since there’s no evidence to confirm his true alignment and his stance aligns with the behavior expected from a liar or a non‑werewolf, he becomes a reasonable bleeding suspect.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Several lines of Justin’s comments are inconsistent with the rules, especially his proclamation that he is a werewolf and subsequent contradictory statements, indicating deception.  Other players’ remarks imply that he was possibly a Drunk or a Trouble maker, not a Werewolf, and none claim a reliable identity for him.  Since there’s no evidence to confirm his true alignment and his stance aligns with the behavior expected from a liar or a non‑werewolf, he becomes a reasonable bleeding suspect.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Several lines of Justin’s comments are inconsistent with the rules, especially his proclamation that he is a werewolf and subsequent contradictory statements, indicating deception.  Other players’ remarks imply that he was possibly a Drunk or a Trouble maker, not a Werewolf, and none claim a reliable identity for him.  Since there’s no evidence to confirm his true alignment and his stance aligns with the behavior expected from a liar or a non‑werewolf, he becomes a reasonable bleeding suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3580,
+    "output_token_count": 867,
+    "generation_time_sec": 264.9187054634094,
+    "used_chat_template": true,
+    "input_char_count": 13957,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}
