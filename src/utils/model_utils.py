@@ -645,19 +645,23 @@ def call_local_model(
     input_char_count = len(input_text)
     pad_token_id = handler.pad_token_id()
 
+    do_sample = temperature is not None and temperature > 0
+
+    effective_temperature = float(temperature) if do_sample else None
+    effective_top_p = float(top_p) if do_sample else None
+    effective_top_k = int(top_k) if do_sample else None
+
     generation_kwargs = {
         "max_new_tokens": max_new_tokens,
         "use_cache": True,
         "repetition_penalty": repetition_penalty,
+        "do_sample": do_sample,
     }
 
-    if temperature is not None and temperature > 0:
-        generation_kwargs["do_sample"] = True
-        generation_kwargs["temperature"] = temperature
-        generation_kwargs["top_p"] = top_p
-        generation_kwargs["top_k"] = top_k
-    else:
-        generation_kwargs["do_sample"] = False
+    if do_sample:
+        generation_kwargs["temperature"] = effective_temperature
+        generation_kwargs["top_p"] = effective_top_p
+        generation_kwargs["top_k"] = effective_top_k
 
     if no_repeat_ngram_size > 0:
         generation_kwargs["no_repeat_ngram_size"] = no_repeat_ngram_size
@@ -702,10 +706,10 @@ def call_local_model(
             "gemma_enable_thinking": (
                 bool(gemma_enable_thinking) if family == "gemma4" else None
             ),
-            "do_sample": generation_kwargs.get("do_sample", False),
-            "temperature": temperature,
-            "top_p": top_p if generation_kwargs.get("do_sample") else None,
-            "top_k": top_k if generation_kwargs.get("do_sample") else None,
+            "do_sample": do_sample,
+            "temperature": effective_temperature,
+            "top_p": effective_top_p,
+            "top_k": effective_top_k,
             "repetition_penalty": repetition_penalty,
             "no_repeat_ngram_size": no_repeat_ngram_size,
             "torch_dtype": str(getattr(model, "dtype", "unknown")),
