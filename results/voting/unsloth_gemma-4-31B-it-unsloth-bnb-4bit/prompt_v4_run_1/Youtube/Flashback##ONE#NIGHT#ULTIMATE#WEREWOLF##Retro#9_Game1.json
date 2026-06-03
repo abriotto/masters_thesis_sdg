@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul: Claims Villager.\n    *   Laura: Claims Villager.\n    *   Mitchell: Claims Insomniac.\n    *   James: Claims Robber. Says he stole from Paul (who was a Villager).\n    *   Justin: Claims Seer. Says he saw James as the Robber.\n\n    *   James (Robber) stole from Paul (Villager).\n    *   Justin (Seer) saw James (Robber).\n    *   Mitchell (Insomniac) woke up as Insomniac.\n    *   Paul (Villager) and Laura (Villager) have no special info.\n\n    *   If James is the Robber and stole from Paul (Villager), James is now a Villager.\n    *   If Justin is the Seer and saw James as the Robber, Justin is a Villager.\n    *   If Mitchell is the Insomniac and woke up as Insomniac, Mitchell is a Villager.\n    *   If Paul was a Villager and James stole his card, Paul is now the Robber (Wait, no. Robber steals the card. James takes Paul's card. Paul gets James's card).\n    *   Wait, let's re-read the Robber rule: \"The Robber swaps their card with another player's card, then looks at their new card.\"\n    *   So if James (Robber) stole from Paul (Villager), James is now a Villager and Paul is now the Robber.\n    *   Wait, James says \"I was [the Robber]... and I stole [from Paul]... and I was disappointed... witness protection.\" This implies James looked at Paul's card and saw \"Villager\".\n    *   Justin (Seer) says \"I saw you as the robber.\" This means Justin looked at James's card *before* the Robber acted? No, Seer wakes up *before* Robber.\n    *   Night Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer (Justin)\n        6. Robber (James)\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac (Mitchell)\n\n    *   If Justin (Seer) saw James as the Robber, that happened at step 5.\n    *   Then James (Robber) stole from Paul at step 6.\n    *   Then Mitchell (Insomniac) woke up at step 9.\n\n    *   If these claims are true:\n        *   Justin: Seer (Village)\n        *   James: Robber -> Villager (Village)\n        *   Paul: Villager -> Robber (Village)\n        *   Mitchell: Insomniac (Village)\n        *   Laura: Villager (Village)\n    *   Wait, if everyone is Village, where is the Werewolf?\n    *   The roles selected are players + 3 = 8 roles.\n    *   Roles mentioned: Seer, Robber, Insomniac, Villager (x2).\n    *   Possible roles remaining in the pool/unclaimed: Werewolf, Minion, Tanner, Troublemaker, etc.\n\n    *   Paul and James are suspicious of Mitchell.\n    *   Paul thinks Mitchell claimed Insomniac too quickly, suggesting he might be a Werewolf who saw the Insomniac card in the center.\n    *   Justin defends Mitchell.\n    *   James is leaning towards voting Mitchell.\n\n    *   If Mitchell is the Werewolf, he's lying about being the Insomniac.\n    *   If James is the Werewolf, he's lying about being the Robber. But Justin (Seer) confirmed him. If Justin is also a Werewolf (or Minion), they could be colluding.\n    *   If Justin is the Werewolf, he's lying about being the Seer.\n    *   If Laura is the Werewolf, she's just staying quiet.\n    *   If Paul is the Werewolf, he's lying about being the Villager.\n\n    *   Justin (Seer) confirms James (Robber).\n    *   James (Robber) confirms Paul (Villager).\n    *   This creates a chain of trust: Justin -> James -> Paul.\n    *   Mitchell claims Insomniac.\n    *   Laura claims Villager.\n\n    *   If the chain (Justin, James, Paul) is telling the truth, the only suspects are Mitchell and Laura.\n    *   Paul and James are specifically targeting Mitchell.\n    *   Is there any reason to believe Mitchell is the Werewolf? Paul's logic is that he claimed Insomniac too fast.\n    *   Is there any reason to believe Laura is the Werewolf? She's very quiet.\n    *   Is there any reason to believe the chain is lying? If Justin and James are Werewolves/Minions, they could be protecting each other. But Justin's claim as Seer is a strong play.\n\n    *   If Mitchell is the Werewolf, he'd want to claim a role that doesn't provide information to others. Insomniac is a good choice because it's a self-confirming role that doesn't help anyone else.\n    *   However, if Mitchell is actually the Insomniac, he's just a Villager.\n    *   What about the center cards? If the Werewolf is in the center, \"No Werewolf\" is the answer.\n    *   But usually, in these games, there's a Werewolf.\n    *   Let's look at the claims again.\n        *   Justin: Seer\n        *   James: Robber\n        *   Paul: Villager\n        *   Mitchell: Insomniac\n        *   Laura: Villager\n    *   If these are all true, there are 5 Village roles.\n    *   Total roles = 8.\n    *   Remaining roles = 3.\n    *   If the 3 remaining roles are (Werewolf, Minion, Tanner) or (Werewolf, Troublemaker, Drunk), etc., then no one is a Werewolf.\n\n    *   Wait, Paul says \"I think he might have seen the insomniac [in the center].\"\n    *   If Mitchell is a Werewolf and saw the Insomniac card in the center, he could claim to be the Insomniac.\n    *   But the Werewolf doesn't see the center cards unless they are the *only* Werewolf.\n    *   Rule: \"Werewolves, wake up and look for other Werewolves. If there is only one Werewolf, you may look at a card from the center.\"\n    *   So if Mitchell is the sole Werewolf, he could have seen the Insomniac card in the center and claimed it.\n\n    *   Justin, James, and Paul have a consistent story.\n    *   Mitchell is the target of suspicion.\n    *   Laura is a passive claim.\n    *   If I have to pick one, Mitchell is the most likely candidate based on the discussion, as Paul and James are actively pushing for him.\n\n    *   Could Justin and James be the Werewolves?\n    *   Justin (Seer) confirms James (Robber).\n    *   If Justin is a Werewolf and James is a Minion, they could coordinate this.\n    *   But James's claim that he stole from Paul (Villager) is also supported by Paul's own claim.\n    *   If Paul is also in on it, the whole group is lying. But Paul is the one attacking Mitchell.\n    *   If Paul is a Villager, and James stole from him, James knows Paul is a Villager.\n    *   If Justin is the Seer and saw James as the Robber, Justin is likely telling the truth.\n\n    *   The most suspicious player is Mitchell, as pointed out by Paul and James.\n    *   The logic is that he claimed Insomniac too quickly, which could be a cover for a Werewolf who saw the Insomniac card in the center.\n    *   While it's possible no one is a Werewolf, the prompt asks to choose the player to vote out to make Team Village win.\n    *   Given the dynamics, Mitchell is the primary suspect.\n\n    *   Justin: Seer\n    *   James: Robber\n    *   Paul: Villager\n    *   Mitchell: Insomniac\n    *   Laura: Villager\n    *   If these are all true, no one is a Werewolf.\n    *   But in these scenarios, usually, one person is lying.\n    *   If Mitchell is lying, he's the Werewolf.\n    *   If Laura is lying, she's the Werewolf.\n    *   If Justin/James/Paul are lying, they are the Werewolves.\n    *   The most evidence (even if it's just \"he claimed too fast\") is against Mitchell.\n\n    *   Wait, let's re-read: \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    *   Is there any evidence that the Werewolf is in the center?\n    *   The roles claimed are: Seer, Robber, Insomniac, Villager, Villager.\n    *   That's 5 roles.\n    *   The total roles are 8.\n    *   The remaining 3 roles are in the center.\n    *   If the Werewolf is one of those 3, then \"No Werewolf\" is correct.\n    *   However, usually, the game is designed so that someone is the Werewolf.\n    *   Let's look at the players' behavior. Mitchell is acting a bit oddly (\"I'm not going to convince you... If I was a Werewolf, I'd get defensive\"). This is a classic \"trying not to look defensive\" defense.\n\n    *   Justin (Seer) -> James (Robber) -> Paul (Villager).\n    *   This chain is very strong.\n    *   Mitchell (Insomniac) is isolated.\n    *   Laura (Villager) is isolated.\n    *   Between Mitchell and Laura, Mitchell has drawn more suspicion.\n\n    *   Justin: Seer\n    *   James: Robber\n    *   Paul: Villager\n    *   Mitchell: Insomniac\n    *   Laura: Villager\n    *   If these are all true, the Werewolf must be in the center.\n    *   But if Mitchell is the Werewolf, he's lying about being the Insomniac.\n    *   If Laura is the Werewolf, she's lying about being the Villager.\n    *   If the Werewolf is in the center, then no one is lying.\n    *   In \"One Night Ultimate Werewolf\", it's common for the Werewolf to claim a role.\n    *   The most likely scenario for a \"win\" is to vote for the person the other players are suspicious of, unless there's a clear contradiction.\n    *   There's no clear contradiction here, just a lack of evidence for Mitchell's claim.\n\n    *   Justification: Justin (Seer) confirms James (Robber), and James confirms Paul (Villager), creating a reliable chain of Village-aligned players. Mitchell's claim to be the Insomniac is viewed with suspicion by Paul and James, who argue he claimed the role too quickly, potentially as a cover for being a Werewolf who saw the Insomniac card in the center. Laura's claim is passive, making Mitchell the most probable target for elimination.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Justin (Seer) confirms James (Robber), and James confirms Paul (Villager), creating a strong chain of trust among these three players. Mitchell's claim to be the Insomniac is viewed with suspicion by Paul and James, who argue he claimed the role too quickly, which could be a tactic for a Werewolf who saw the Insomniac card in the center. Since Laura's claim is passive and the others are aligned, Mitchell is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin (Seer) confirms James (Robber), and James confirms Paul (Villager), creating a strong chain of trust among these three players. Mitchell's claim to be the Insomniac is viewed with suspicion by Paul and James, who argue he claimed the role too quickly, which could be a tactic for a Werewolf who saw the Insomniac card in the center. Since Laura's claim is passive and the others are aligned, Mitchell is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin (Seer) confirms James (Robber), and James confirms Paul (Villager), creating a strong chain of trust among these three players. Mitchell's claim to be the Insomniac is viewed with suspicion by Paul and James, who argue he claimed the role too quickly, which could be a tactic for a Werewolf who saw the Insomniac card in the center. Since Laura's claim is passive and the others are aligned, Mitchell is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Justin (Seer) confirms James (Robber), and James confirms Paul (Villager), creating a strong chain of trust among these three players. Mitchell's claim to be the Insomniac is viewed with suspicion by Paul and James, who argue he claimed the role too quickly, which could be a tactic for a Werewolf who saw the Insomniac card in the center. Since Laura's claim is passive and the others are aligned, Mitchell is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4069,
+    "output_token_count": 2736,
+    "generation_time_sec": 619.3763387203217,
+    "used_chat_template": true,
+    "input_char_count": 14332,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
