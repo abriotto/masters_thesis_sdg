@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019_Game1.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   James\n    *   Paul\n    *   Mitchell\n\n    *   Doppelganger (Copycat)\n    *   Werewolf\n    *   Minion\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   Insomniac\n    *   Mason\n    *   Drunk\n    *   Hunter\n    *   Tanner\n    *   Villager\n\n    *   Justin: Claims to be Doppelganger (Copycat). Says he saw a \"bad card\" (Tanner or Werewolf) in the center. Later claims he started as Tanner (Wait, he says \"Tanner\" in [181] and [185], but previously said he was Copycat).\n    *   James: Claims to be Seer. Says he looked at Paul and saw Tanner [82].\n    *   Paul: Claims to be Robber [93], then says he robbed James and James is Seer [93]. Later says he's NOT the Robber, but the Seer [160, 165].\n    *   Mitchell: Claims to be Troublemaker [53]. Says he swapped Paul and James [172].\n\n    *   James (Seer) -> Paul (Tanner)\n    *   Paul (Robber) -> James (Seer) [Paul claims he robbed James and James is Seer]\n    *   Mitchell (Troublemaker) -> Swapped Paul and James [172]\n\n    *   James: Started as Seer. Looked at Paul (Tanner).\n    *   Paul: Started as Robber. Robbed James (Seer). Now Paul is Seer, James is Robber.\n    *   Mitchell: Started as Troublemaker. Swapped Paul (Seer) and James (Robber). Now Paul is Robber, James is Seer.\n    *   Justin: Started as Doppelganger. Saw a card in the center.\n\n    *Wait, let's re-evaluate the claims.*\n\n    *   James: \"I looked at him [Paul] and he was a tanner\" [82].\n    *   Paul: \"I robbed from James, and I can confirm he is the seer\" [93].\n    *   Mitchell: \"I swapped you two [Paul and James]\" [172].\n\n    If James was Seer and Paul was Tanner:\n    1.  James (Seer) sees Paul (Tanner).\n    2.  Paul (Robber) robs James (Seer). Paul becomes Seer, James becomes Robber.\n    3.  Mitchell (Troublemaker) swaps Paul (Seer) and James (Robber). Paul becomes Robber, James becomes Seer.\n\n    Result: James is Seer, Paul is Robber.\n\n    *Wait, Paul's claim in [160-165]:* \"I'm not the robber... the robber is in the center... because I'm the seer.\"\n    If Paul is the Seer, then the previous sequence is wrong.\n\n    Let's look at Justin. Justin's claims are very inconsistent.\n    [52] \"Robber\"\n    [59] \"Because I was the copycat and I saw something bad in the middle.\"\n    [111] \"No, I was the copycat. And I saw a bad card in the middle.\"\n    [141] \"I was a copycat, I saw a tanner or a werewolf in the center.\"\n    [181] \"Tanner.\" (When asked who he started as)\n    [185] \"No as a tanner.\"\n\n    Justin is claiming to be the Doppelganger who copied a card in the center. If he copied a Werewolf, he is a Werewolf. If he copied a Tanner, he is a Tanner.\n\n    Let's look at the voting.\n    [195] Mitchell: \"I'm voting left.\"\n    [197] James: \"We can kill left.\"\n    [198] Paul: \"Okay, we're voting left?\"\n    [199] Justin: \"Don't kill Mitchell.\"\n\n    Who is \"left\"? In these games, \"left\" usually refers to the person sitting to the left of the speaker or a specific seat. Looking at the transcript, it's not clear who \"left\" is. However, Justin says \"Don't kill Mitchell\" immediately after the others say \"vote left\". This implies Mitchell is \"left\".\n\n    Wait, let's re-read:\n    [195] Mitchell: \"I'm voting left.\"\n    [196] Justin: \"Yeah.\"\n    [197] James: \"We can kill left.\"\n    [198] Paul: \"Okay, we're voting left? If I'm tanner, it doesn't matter. So vote left.\"\n    [199] Justin: \"Don't kill Mitchell.\"\n\n    If Mitchell is voting left, and James and Paul are also voting left, and Justin says \"Don't kill Mitchell\", then \"left\" must be someone other than Mitchell.\n\n    Who is left of Mitchell?\n    Player list: Justin, James, Paul, Mitchell.\n    If they are in a circle: Justin -> James -> Paul -> Mitchell -> Justin.\n    Left of Mitchell would be Justin.\n\n    Let's check Justin's behavior. He's been lying and contradicting himself.\n    - Claimed Robber [52].\n    - Claimed Copycat [59].\n    - Claimed Tanner [181].\n    - Claimed he saw a \"bad card\" (Tanner or Werewolf) in the center [141].\n\n    If Justin is the Werewolf:\n    He would want to divert suspicion. He's jumping between roles (Robber, Copycat, Tanner).\n\n    Let's look at the other players:\n    - James: Consistent claim of Seer.\n    - Paul: Claimed Robber, then Seer, then admitted he might be Tanner.\n    - Mitchell: Consistent claim of Troublemaker.\n\n    If James is Seer and Paul is Tanner:\n    James sees Paul as Tanner.\n    If Paul is Tanner, he wants to be voted out.\n    If Mitchell is Troublemaker and swapped Paul and James, and Paul was Tanner and James was Seer, then Paul is still Tanner (or Robber if Paul was Robber).\n\n    Wait, let's re-examine the \"left\" vote.\n    [195] Mitchell: \"I'm voting left.\"\n    [196] Justin: \"Yeah.\"\n    [197] James: \"We can kill left.\"\n    [198] Paul: \"Okay, we're voting left? If I'm tanner, it doesn't matter. So vote left.\"\n    [199] Justin: \"Don't kill Mitchell.\"\n\n    If they are voting \"left\", and Justin says \"Don't kill Mitchell\", it's highly likely they are voting for Justin.\n\n    Is Justin the Werewolf?\n    He claimed to be the Copycat and saw a \"bad card\" in the center. If he copied a Werewolf, he is now a Werewolf. His contradictions (Robber, Copycat, Tanner) are classic Werewolf bluffing.\n\n    Let's double-check the roles.\n    If Justin is Werewolf (via Copycat), James is Seer, Paul is Tanner, and Mitchell is Troublemaker.\n    - James (Seer) looks at Paul (Tanner). Correct.\n    - Mitchell (Troublemaker) swaps Paul and James.\n    - Paul (Tanner) is now in James's spot, James (Seer) is now in Paul's spot.\n    - Paul claims he's the Robber/Seer to confuse things, but eventually admits he might be the Tanner.\n\n    This fits perfectly. Justin is the only one whose story is completely incoherent.\n\n    Wait, let's re-read [181] and [185].\n    [180] Mitchell: \"Who did you start as?\"\n    [181] Justin: \"Tanner.\"\n    [183] Paul: \"You started as a tanner? Like as a copycat?\"\n    [185] Justin: \"No as a tanner.\"\n\n    Justin is claiming he started as the Tanner. But earlier he said he was the Copycat. This is a blatant contradiction.\n\n    If Justin is the Tanner, he wants to be voted out.\n    If Justin is the Werewolf, he wants to avoid being voted out.\n    In [199], Justin says \"Don't kill Mitchell,\" but he doesn't explicitly say \"Don't kill me.\" However, he's the one they are voting for (\"left\").\n\n    Wait, if Justin is the Tanner, he would *want* them to vote for him.\n    If Justin is the Werewolf, he would *not* want them to vote for him.\n    But in this game, the players are often chaotic.\n\n    Let's look at the roles again.\n    If Justin is the Werewolf, who is the Tanner?\n    James says Paul was the Tanner [82].\n    Paul says \"If I'm tanner, it doesn't matter. So vote left\" [198].\n\n    If Paul is the Tanner and Justin is the Werewolf:\n    - James (Seer) saw Paul (Tanner).\n    - Mitchell (Troublemaker) swapped Paul and James.\n    - Justin (Copycat) copied a Werewolf from the center.\n\n    This is a very plausible scenario. Justin's inconsistencies are the strongest indicator of a Werewolf bluff.\n\n    Final check on the \"left\" vote:\n    Mitchell, James, and Paul are all voting \"left\".\n    Justin is the only one who doesn't explicitly agree to vote \"left\" (he says \"Yeah\" in [196] but then \"Don't kill Mitchell\" in [199]).\n    If the order is Justin, James, Paul, Mitchell, then \"left\" of Mitchell is Justin.\n\n    Therefore, the vote is for Justin.\n\n    Justification:\n    Justin's claims are highly inconsistent; he claims to be the Robber, then the Copycat, and then the Tanner. He claims to have seen a \"bad card\" (Tanner or Werewolf) in the center, which would make him a Werewolf if he copied that role. James (Seer) identified Paul as the Tanner, and Mitchell (Troublemaker) swapped Paul and James, leaving Justin as the most likely Werewolf.\n\n    Wait, let me re-read [181] and [185] one more time.\n    [180] Mitchell: \"Who did you start as?\"\n    [181] Justin: \"Tanner.\"\n    [185] Justin: \"No as a tanner.\"\n    This is so weird. He's basically saying \"I started as the Tanner.\" But he previously said he was the Copycat. If he started as the Tanner, he can't be the Copycat. If he's the Tanner, he wants to be voted out. If he's the Werewolf, he's lying about being the Tanner to confuse people or is just bad at lying.\n\n    However, in One Night Ultimate Werewolf, the most inconsistent player is usually the Werewolf or the Tanner. Given James's claim that Paul is the Tanner, Justin is the prime suspect for the Werewolf.\n\n    One more look at the transcript:\n    [45] Justin: \"Yeah. Kill James. He's a werewolf.\"\n    [51] Justin: \"Yeah, I was just joking. I knew you weren't a werewolf.\"\n    This is very suspicious behavior.\n\n    Conclusion: Justin is the Werewolf.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly inconsistent throughout the discussion; he claims to be the Robber, then the Copycat, and finally the Tanner. He mentions seeing a 'bad card' (Tanner or Werewolf) in the center, which would make him a Werewolf if he copied that role. James (Seer) identified Paul as the Tanner, and Mitchell (Troublemaker) swapped Paul and James, leaving Justin as the most likely Werewolf bluffing to divert suspicion.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly inconsistent throughout the discussion; he claims to be the Robber, then the Copycat, and finally the Tanner. He mentions seeing a 'bad card' (Tanner or Werewolf) in the center, which would make him a Werewolf if he copied that role. James (Seer) identified Paul as the Tanner, and Mitchell (Troublemaker) swapped Paul and James, leaving Justin as the most likely Werewolf bluffing to divert suspicion.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly inconsistent throughout the discussion; he claims to be the Robber, then the Copycat, and finally the Tanner. He mentions seeing a 'bad card' (Tanner or Werewolf) in the center, which would make him a Werewolf if he copied that role. James (Seer) identified Paul as the Tanner, and Mitchell (Troublemaker) swapped Paul and James, leaving Justin as the most likely Werewolf bluffing to divert suspicion.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly inconsistent throughout the discussion; he claims to be the Robber, then the Copycat, and finally the Tanner. He mentions seeing a 'bad card' (Tanner or Werewolf) in the center, which would make him a Werewolf if he copied that role. James (Seer) identified Paul as the Tanner, and Mitchell (Troublemaker) swapped Paul and James, leaving Justin as the most likely Werewolf bluffing to divert suspicion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4715,
+    "output_token_count": 2777,
+    "generation_time_sec": 288.7203092575073,
+    "used_chat_template": true,
+    "input_char_count": 15113,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

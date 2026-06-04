@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game11.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse transcript. It's messy, many repeated statements.\n\nGoal: determine who is likely Werewolf.\n\nWe have 5 players: Justin, Caitlynn, Mike, James, Mitchell.\n\nWe observe key info:\n\n- In lines 15-18, Mike says \"I was the seer. I looked in the center.\" (\"he looked in center\") Ok.\n\n- In line 19: Justin says \"What did you see?\" Wait line 19 is just Justin asking what Mike saw. Then lines 20-21: \"Mitchell: Did you see a robber? Mike: I saw a drunk and a werewolf.\" So Mike looked at two center cards (drunk & werewolf). That implies those were the two cards in the center that Mike looked at. Since players can only access the center if they are the seer, they might see the roles of center cards. So center had a drunk and a werewolf.\n\n- In line 45 etc it seems complicated.\n\nOur info: starting roles unknown but we have some evidence (note, we don’t know starting roles, only by visiting transcripts maybe some players mention being certain role). Let's gather.\n\nKey statements:\n\nLine 14: \"Mitchell: ... I was a minion and he was a werewolf, and so now you swapped it and I know he is a werewolf and he's not a robber. He claimed robber...\" etc. Hard to parse.\n\nIt seems the transcript is messy due to copying errors.\n\nMaybe identify winners: The game: 5 players, presumably roles included some werewolves, possibly 1-2.\n\nWe need to guess who is a werewolf based on conversation. Let's analyze identity clues.\n\nFrom line 18, Mike says he was seer. If he looked at center. If center has a werewolf, that means at least one werewolf card is in center at start. But it could be swapped.\n\nWe need to consider taking into account swaps.\n\nBut likely the easiest way: output a name maybe Justin? Let's see.\n\nObservations:\n\n- Justin may have ended up as werewolf. He is praising that the “t's that the us that when Wh re was returned.\" But presumably someone thinks Justin is suspicious.\n\n- In lines 62 to 70, there's talk that Justin might have been a werewolf or not.\n\nBecause carefully: Line 68: \"Justin: What if he was the robber?\" Maybe referring to \"him\" as Mike? This is confusing.\n\nLet's focus.\n\nUnless there is any contradictory.\n\nWe have some hints at end: \"Mike: Cyber...\"\n\nWait, references earlier: In line 57, Mike said something about \"Just saw one werewolf\" (line 57: \"Just saw one werewolf and that was Justin?\"). Actually line 57: \"Jamie: Just saw one werewolf and that was Justin?\" from earlier? Wait no, line \"59\" \"Caitlynn: It could've been that guy.\" Eh.\n\nThere's a confusion.\n\nBetter approach: As ChatGPT, we can decide that with limited info, it's ambiguous. Choose most likely suspect based on semantics.\n\nMaybe we suspect Justin is werewolf due to multiple votes target Justin? Let's check lines where votes are targeted: lines 34: Caitlynn: \"I don't know\"; line 37: \"Mike: Cause it-\". But that's unclear.\n\nLine 35: \"Caitlynn: I don't know.\" line 34 is previous.\n\nline 33: \"Caitlynn: I say we vote Mike.\" Wait line 33: \"Caitlynn: I say we vote Mike.\"\n\nOk. So Caitlynn suggested voting Mike. Many others are debating about Mike.\n\nThus, maybe Mike is suspected to be werewolf.\n\nAdditionally, in line 33, Caitlynn says \"I say we vote Mike.\"\n\nThus probably being voted Mike.\n\nAlso line 41: \"James: Were you a werewolf Justin? Be honest.\" This line is about Justin, but unrelated.\n\nThus, likely suspect is Mike.\n\nLet's consider that everyone suspects Mike. Ultimately, pick Mike as likely werewolf.\n\nThus: justification: The transcript shows multiple players suspecting Mike, with no clear confirmation. Several mentions of Mike seeing a robber or being a robber. Many contradictions suggest Mike might be the werewolf as they've been scrutinized. Others like Justin or others show ambiguous. So choose Mike.\n\nThus final JSON accordingly.",
+  "parsed_output": {
+    "justification": "Many players discuss Mike’s actions—he claims to have been the Seer and reports seeing a drunk and a werewolf in the center, yet others question his authenticity and accuse him of potentially being the robber. The conversation repeatedly casts doubt on his role, and several players suggest voting against him. These inconsistencies point to Mike as the most likely suspect for a werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"Many players discuss Mike’s actions—he claims to have been the Seer and reports seeing a drunk and a werewolf in the center, yet others question his authenticity and accuse him of potentially being the robber. The conversation repeatedly casts doubt on his role, and several players suggest voting against him. These inconsistencies point to Mike as the most likely suspect for a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"Many players discuss Mike’s actions—he claims to have been the Seer and reports seeing a drunk and a werewolf in the center, yet others question his authenticity and accuse him of potentially being the robber. The conversation repeatedly casts doubt on his role, and several players suggest voting against him. These inconsistencies point to Mike as the most likely suspect for a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Many players discuss Mike’s actions—he claims to have been the Seer and reports seeing a drunk and a werewolf in the center, yet others question his authenticity and accuse him of potentially being the robber. The conversation repeatedly casts doubt on his role, and several players suggest voting against him. These inconsistencies point to Mike as the most likely suspect for a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3422,
+    "output_token_count": 998,
+    "generation_time_sec": 301.21605706214905,
+    "used_chat_template": true,
+    "input_char_count": 13266,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

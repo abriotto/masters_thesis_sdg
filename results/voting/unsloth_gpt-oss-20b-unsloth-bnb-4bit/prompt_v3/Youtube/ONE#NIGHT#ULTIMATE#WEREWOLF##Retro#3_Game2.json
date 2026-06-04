@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a transcript of a game with four players: Justin, Mike, James, Mitchell. They seem to be playing a comedic version of the game, but heavily scrambled conversation. The transcript seems garbled—it contains many pronouncements about stealing, being a villager etc.\n\nNo explicit roles or actions besides the start: It's a bit confusing. The transcript is unspecific. We need to determine which of the four might be the werewolf. However, given the conversation there's mention of being \"tomb\", \"steal\". But we don't know real roles.\n\nThe transcript context: The game is ONW (One Night Ultimate Werewolf). But the transcript appears unscripted, maybe incomplete. There's talk about \"If there's only one? Two right?\" Possibly references to secrecy about number of werewolves.\n\nIt also shows Robber's onset: In the transcript, after proving \"The Announcer: Robber, wake up ...\" we see that after, participants talk. There's mention of \"robber\" and presumably the robber will exchange his card with someone's and then look at new card.\n\nBut the transcript shows that nobody fouled about seeing each other's roles or swapping. The 3rd person mentions \"Justin: I'm cheering after valiantly.\" But anyway.\n\nWe suspect that the role of Justin might be Robber or something else.\n\nBut the question: Based on the public discussion, vote for the player you believe is a Werewolf as their end role.\n\nWe don't know standard suspects: The suspect is \"Mike\"? I see in the transcript, there is repeated claims that Mike might be a werewolf: Justin says \"I think Mike might be a werewolf,\" then at line 57: Justin says \"I think Mike might be a werewolf.\" Then James says \"Mike's a werewolf.\" Then sometimes Stephen.\n\nThus, likely the werewolf is Mike.\n\nSo the chosen_vote = \"Mike\".\n\nBut we should back up with justification: need to mention evidence such as rumors that Mike denies being a werewolf but others assert that he could be; maybe no direct actions that contradict.\n\nAlso: The Robber might have made a swap. But we don't know exactly.\n\nWe might refer to the simple pattern: The participants swapped some roles but then there is confusion: The Me's random noise might indicate someone is a werewolf or not.\n\nThus the deciding factor: Many commentaries revolve that Justin says \"I think Mike might be a werewolf.\" So my justification: Most people think Mike is werewolf.\n\nSo answer: chosen_vote: \"Mike\".\n\nLet's produce a JSON accordingly.",
+  "parsed_output": {
+    "justification": "The conversation repeatedly focuses on doubt about Mike’s identity, with multiple statements asserting that Mike is likely a werewolf and several denials from both Mike and others. No evidence indicates that any other player was involved in suspicious actions or targeted by an identified swap or misclassification. Given the lack of further evidence against Mike and the prominence of accusations against him, voting for Mike maximizes the chance of eliminating a werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The conversation repeatedly focuses on doubt about Mike’s identity, with multiple statements asserting that Mike is likely a werewolf and several denials from both Mike and others. No evidence indicates that any other player was involved in suspicious actions or targeted by an identified swap or misclassification. Given the lack of further evidence against Mike and the prominence of accusations against him, voting for Mike maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The conversation repeatedly focuses on doubt about Mike’s identity, with multiple statements asserting that Mike is likely a werewolf and several denials from both Mike and others. No evidence indicates that any other player was involved in suspicious actions or targeted by an identified swap or misclassification. Given the lack of further evidence against Mike and the prominence of accusations against him, voting for Mike maximizes the chance of eliminating a werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The conversation repeatedly focuses on doubt about Mike’s identity, with multiple statements asserting that Mike is likely a werewolf and several denials from both Mike and others. No evidence indicates that any other player was involved in suspicious actions or targeted by an identified swap or misclassification. Given the lack of further evidence against Mike and the prominence of accusations against him, voting for Mike maximizes the chance of eliminating a werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2997,
+    "output_token_count": 623,
+    "generation_time_sec": 188.29981112480164,
+    "used_chat_template": true,
+    "input_char_count": 11568,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game11",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game11.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Mitchell claims:\n        *   Started as Minion.\n        *   Saw Justin as a Werewolf.\n        *   Claims James (Troublemaker?) swapped his card.\n        *   Claims he is now an Insomniac (or woke up as one).\n    *   James claims:\n        *   He was \"this\" (likely Troublemaker) and swapped two people.\n        *   He says \"whatever you two were is backwards\" (referring to Mitchell and someone else, likely Justin).\n    *   Mike claims:\n        *   Seer.\n        *   Looked in the center and saw a Drunk and a Werewolf.\n    *   Caitlynn claims:\n        *   Insomniac.\n        *   Woke up as a Minion.\n    *   Justin claims:\n        *   Robber (implied/testing waters).\n        *   Admits voting for him is the most logical choice based on Mitchell's claim.\n\n    *   James says he swapped two people. He says \"whatever you two were is backwards\" to Mitchell and someone else.\n    *   Mitchell says he was a Minion and saw Justin as a Werewolf.\n    *   If James is the Troublemaker and swapped Mitchell and Justin:\n        *   Mitchell (Minion) $\\rightarrow$ Justin.\n        *   Justin (Werewolf) $\\rightarrow$ Mitchell.\n        *   Now Mitchell is the Werewolf and Justin is the Minion.\n    *   Wait, Mitchell says: \"I was a minion and he was a werewolf, and so now you swapped it... and I'm an insomniac.\"\n    *   This is confusing. If James swapped Mitchell and Justin, Mitchell would be the Werewolf and Justin would be the Minion. But Mitchell claims he is now an Insomniac.\n    *   If Mitchell is the Insomniac, he woke up and saw his card. If he woke up as an Insomniac, he wasn't swapped into that role by the Troublemaker (Troublemaker swaps two *other* players).\n    *   Let's re-read Mitchell's claim: \"I was a minion and he was a werewolf, and so now you swapped it... And I'm an insomniac.\"\n    *   If Mitchell started as Minion and is now Insomniac, he must have been swapped by the Robber or the Drunk. But the Robber swaps *their own* card. The Drunk swaps *their own* card.\n    *   Wait, if Mitchell is the Insomniac, he knows his *final* role. If he says he *was* a Minion, he's claiming he knows his *starting* role. But Insomniacs only know their *final* role.\n    *   If Mitchell started as Minion, he would know who the Werewolf is. If he was then swapped to Insomniac, he would know he is now an Insomniac.\n    *   But who swapped him? The Troublemaker swaps two *other* players. If James is the Troublemaker and swapped Mitchell and Justin, Mitchell becomes whatever Justin was.\n    *   If Justin was a Werewolf and Mitchell was a Minion, and James swapped them:\n        *   Mitchell is now the Werewolf.\n        *   Justin is now the Minion.\n    *   Mitchell's claim \"I'm an insomniac\" contradicts this. If he's the Insomniac, he didn't start as a Minion unless he was the Robber or Drunk, but those roles don't work that way.\n\n    *   Caitlynn claims she was an Insomniac and woke up as a Minion.\n    *   If Caitlynn is the Insomniac, she knows her final role. If she woke up as a Minion, then she is currently the Minion.\n    *   If Caitlynn is the Minion, who swapped her? The Troublemaker (James) could have swapped her with someone.\n    *   If James swapped Caitlynn and Mitchell:\n        *   Caitlynn (Insomniac) $\\rightarrow$ Mitchell.\n        *   Mitchell (Minion) $\\rightarrow$ Caitlynn.\n        *   Now Caitlynn is the Minion and Mitchell is the Insomniac.\n    *   This matches Caitlynn's claim (\"I was an Insomniac... woke up as a minion\") and Mitchell's claim (\"I'm an insomniac\").\n    *   Now, let's look at Mitchell's other claim: \"I was a minion and he [Justin] was a werewolf\".\n    *   If Mitchell was the Minion, he knows the Werewolf. He says Justin is the Werewolf.\n    *   If James (Troublemaker) swapped Mitchell and Caitlynn, Mitchell is now the Insomniac and Caitlynn is now the Minion.\n    *   Justin's role remains unchanged (Werewolf).\n\n    *   Mike (Seer) saw a Drunk and a Werewolf in the center.\n    *   If there is a Werewolf in the center, and Justin is a Werewolf, there are two Werewolves in the game.\n    *   If there are two Werewolves, and one is in the center, only one is in play.\n    *   If Justin is that Werewolf, the Village wins by voting him out.\n\n    *   Mitchell: Claims he was Minion, saw Justin as Werewolf, is now Insomniac.\n    *   Caitlynn: Claims she was Insomniac, is now Minion.\n    *   James: Claims he swapped two people (likely Mitchell and Caitlynn).\n    *   Mike: Claims Seer, saw Werewolf in center.\n    *   Justin: Doesn't really claim a role, but doesn't deny being the Werewolf strongly, even says \"voting for me is the most logical one.\"\n\n    *   If Mitchell is lying and is actually the Werewolf, he would want to frame Justin.\n    *   If Caitlynn is the Minion, she might be helping the Werewolf. But she claims she *was* the Insomniac.\n    *   If Mitchell and Caitlynn's stories align (they were swapped), it's more likely they are telling the truth about the swap.\n    *   If Mitchell was the Minion, he knows who the Werewolf is. He points to Justin.\n\n    *   Mitchell's story: Minion $\\rightarrow$ Insomniac (via James's swap).\n    *   Caitlynn's story: Insomniac $\\rightarrow$ Minion (via James's swap).\n    *   James's story: Troublemaker (swapped Mitchell and Caitlynn).\n    *   This is a consistent narrative.\n    *   In this narrative, Mitchell (as Minion) saw Justin as the Werewolf.\n    *   Therefore, Justin is the Werewolf.\n\n    *   Could Mitchell be the Werewolf and be lying?\n    *   If Mitchell is the Werewolf, he's trying to get Justin voted out.\n    *   But he's claiming to be the Insomniac now. If he's the Werewolf, he's not the Insomniac.\n    *   If he's the Werewolf, he's lying about everything.\n    *   However, Caitlynn's claim supports the swap. If Caitlynn is also lying, they are both in on it (Minion and Werewolf).\n    *   But if Caitlynn is the Minion and Mitchell is the Werewolf, why would Mitchell claim to be the Insomniac and point to Justin? It would be safer for the Werewolf to stay quiet or point to someone else.\n    *   Actually, if Mitchell is the Werewolf and Caitlynn is the Minion, they could be coordinating to frame Justin.\n    *   But the most straightforward interpretation of the transcript is that Mitchell was the Minion and identified Justin as the Werewolf.\n\n    *   Justin: \"voting for me is the most logical one.\" This is a very strange thing for a Werewolf to say, unless he's trying to seem like a helpful villager or has given up. Or maybe he's the Tanner?\n    *   If Justin is the Tanner, he wants to be voted out. This would explain why he's not fighting the accusation.\n    *   But the task is to vote for the player you believe is a Werewolf.\n    *   If Mitchell is the Minion and saw Justin as the Werewolf, Justin is the Werewolf.\n    *   If Justin is the Tanner, then Mitchell is lying.\n    *   Let's look at the roles again. Minion knows the Werewolves. If Mitchell was the Minion, he knows for sure.\n\n    *   Mitchell: \"I was a minion and he was a werewolf... and I'm an insomniac.\"\n    *   Caitlynn: \"I was an Insomniac... woke up as a minion.\"\n    *   James: \"I was this [Troublemaker]... whatever you two were is backwards.\"\n    *   This means James swapped Mitchell and Caitlynn.\n    *   Mitchell (Minion) $\\rightarrow$ Caitlynn.\n    *   Caitlynn (Insomniac) $\\rightarrow$ Mitchell.\n    *   This perfectly explains why Mitchell knows he was a Minion (he saw the Werewolf) and is now an Insomniac (he woke up and saw his card).\n    *   And it explains why Caitlynn knows she was an Insomniac and is now a Minion.\n    *   The only piece left is who the Werewolf is. Mitchell says it's Justin.\n\n    *   Justin is the most likely candidate for Werewolf based on the corroborated stories of Mitchell, Caitlynn, and James.\n\n    *   Wait, James said \"whatever you two were is backwards\" to Mitchell and *someone*.\n    *   Mitchell says \"I was a minion and he [Justin] was a werewolf, and so now you swapped it\".\n    *   If James swapped Mitchell and Justin:\n        *   Mitchell (Minion) $\\rightarrow$ Justin.\n        *   Justin (Werewolf) $\\rightarrow$ Mitchell.\n        *   Now Mitchell is the Werewolf and Justin is the Minion.\n    *   But Mitchell then says \"And I'm an insomniac.\"\n    *   If Mitchell is the Insomniac, he couldn't have been swapped by the Troublemaker into that role unless the other person was the Insomniac.\n    *   If James swapped Mitchell and Caitlynn (as I thought before), then Mitchell is the Insomniac and Caitlynn is the Minion.\n    *   Let's re-read:\n        *   James: \"What were you two... Because I was this, so whatever you two were is backwards.\" (He's looking at Mitchell and someone else).\n        *   Mitchell: \"I was a minion and he [Justin] was a werewolf, and so now you swapped it... And I'm an insomniac.\"\n        *   This is contradictory. If James swapped Mitchell and Justin, Mitchell is now the Werewolf. If James swapped Mitchell and Caitlynn, Mitchell is now the Insomniac.\n        *   Caitlynn says: \"I was an Insomniac... woke up as a minion.\"\n        *   This confirms the swap was between Mitchell and Caitlynn.\n        *   So:\n            *   Mitchell: Minion $\\rightarrow$ Insomniac.\n            *   Caitlynn: Insomniac $\\rightarrow$ Minion.\n            *   James: Troublemaker.\n            *   Justin: Werewolf.\n            *   Mike: Seer.\n    *   This fits all the claims. Mitchell (as Minion) saw Justin as the Werewolf.\n\n    *   Justification: Mitchell claimed to be the Minion and identified Justin as the Werewolf. This is corroborated by Caitlynn and James, who describe a swap between Mitchell (Minion) and Caitlynn (Insomniac), leaving Justin's role as the Werewolf unchanged. Justin himself does not deny the accusation and admits it is the most logical choice.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Minion and identified Justin as the Werewolf. This is corroborated by Caitlynn and James, who describe a swap between Mitchell (starting as Minion) and Caitlynn (starting as Insomniac), which explains why Mitchell now identifies as the Insomniac and Caitlynn as the Minion. Since the Troublemaker (James) swapped Mitchell and Caitlynn, Justin's role as the Werewolf remained unchanged.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Minion and identified Justin as the Werewolf. This is corroborated by Caitlynn and James, who describe a swap between Mitchell (starting as Minion) and Caitlynn (starting as Insomniac), which explains why Mitchell now identifies as the Insomniac and Caitlynn as the Minion. Since the Troublemaker (James) swapped Mitchell and Caitlynn, Justin's role as the Werewolf remained unchanged.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Minion and identified Justin as the Werewolf. This is corroborated by Caitlynn and James, who describe a swap between Mitchell (starting as Minion) and Caitlynn (starting as Insomniac), which explains why Mitchell now identifies as the Insomniac and Caitlynn as the Minion. Since the Troublemaker (James) swapped Mitchell and Caitlynn, Justin's role as the Werewolf remained unchanged.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Mitchell claimed to be the Minion and identified Justin as the Werewolf. This is corroborated by Caitlynn and James, who describe a swap between Mitchell (starting as Minion) and Caitlynn (starting as Insomniac), which explains why Mitchell now identifies as the Insomniac and Caitlynn as the Minion. Since the Troublemaker (James) swapped Mitchell and Caitlynn, Justin's role as the Werewolf remained unchanged."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3700,
+    "output_token_count": 2863,
+    "generation_time_sec": 288.34718775749207,
+    "used_chat_template": true,
+    "input_char_count": 12965,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

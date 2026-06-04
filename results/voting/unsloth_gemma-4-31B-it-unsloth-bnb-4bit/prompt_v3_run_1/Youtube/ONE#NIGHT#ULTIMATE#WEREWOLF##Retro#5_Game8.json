@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Justin: Claims Seer.\n        *   Mitchell: Claims Robber.\n        *   Paul: Claims Insomniac.\n\n    *   Justin (Seer): Claims he looked in the center and saw two \"normal cards\" (not werewolves).\n    *   Mitchell (Robber): Claims he robbed Paul and saw an Insomniac card.\n    *   Paul (Insomniac): Claims he started as the Insomniac.\n\n    *   If Paul started as Insomniac and Mitchell (Robber) stole from Paul, Mitchell is now the Insomniac and Paul is now the Robber.\n    *   If Justin is the Seer and saw no werewolves in the center, then at least one werewolf must be among the players.\n    *   Wait, Justin says \"I did not see two werewolves, I saw two normal cards.\" This implies he looked at the center. If there are 3 center cards and he saw 2 normal ones, the 3rd center card could be a werewolf.\n    *   Wait, the rules say: \"Seer... may either look at one other player's card or look at two cards in the center.\"\n    *   If Justin looked at two center cards and they were both \"normal,\" the third center card could be a werewolf, or the werewolf could be a player.\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   Mitchell says he robbed Paul and saw an Insomniac.\n    *   Paul says he started as Insomniac.\n    *   This is consistent. If Paul = Insomniac and Mitchell = Robber, then after the swap: Mitchell = Insomniac, Paul = Robber.\n    *   If this is true, who is the werewolf?\n    *   If Justin is the Seer, and Paul/Mitchell are Robber/Insomniac, then Justin must be the werewolf (bluffing as Seer).\n    *   Alternatively, if Justin is the Seer and Paul/Mitchell are telling the truth about their roles, then the werewolf must be in the center (since there are only 3 players). But if the werewolf is in the center, the village wins if no one dies.\n    *   Wait, let's re-examine Justin's claim: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\" This is a weird way to put it. If he saw two normal cards, he doesn't know if the third center card is a werewolf.\n\n    *   Justin is pushing for everyone to \"vote left\" (which usually means a specific direction or a specific person in these setups, but here it seems he's trying to coordinate a vote that doesn't kill anyone or targets someone specific).\n    *   Actually, looking at the transcript:\n        *   [81] Justin: \"I think Mitchell is the tanner. I think we got to all vote to the left. We can't kill anybody.\"\n        *   [92] Justin: \"Are you okay with voting left?\"\n        *   [97] Paul: \"I'm voting to the left.\"\n        *   [98] Justin: \"I'm voting left.\"\n        *   [99] Paul: \"Okay, I'm voting to the left.\"\n    *   Wait, \"voting left\" in a 3-person game usually refers to the person sitting to their left.\n    *   If Justin, Paul, and Mitchell are in a circle:\n        *   Justin's left is Paul.\n        *   Paul's left is Mitchell.\n        *   Mitchell's left is Justin.\n    *   If they all \"vote left\", they each get one vote.\n    *   Rule: \"If all players receive exactly one vote, no one dies.\"\n    *   Justin is actively trying to ensure no one dies. This is a classic Werewolf strategy (to make all werewolves survive).\n\n    *   If Justin is the Werewolf, he wants no one to die. He claims Seer to sound helpful but then suggests a voting pattern where no one dies.\n    *   If Mitchell is the Werewolf, he'd want to divert attention. He claims Robber and says he stole Insomniac from Paul.\n    *   If Paul is the Werewolf, he'd want to divert attention. He claims Insomniac.\n\n    *   Justin's behavior is the most suspicious. He claims to be the Seer, but instead of identifying a werewolf, he spends the end of the game trying to convince the others to vote in a way that results in no one dying (\"vote to the left\").\n    *   If Justin were a genuine Seer and believed there was a werewolf among the players, he would be trying to find them, not prevent anyone from dying.\n    *   If Justin were a genuine Seer and believed the werewolf was in the center, he would still be cautious, but the \"vote left\" strategy is very specific to avoiding a kill.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber.\n    *   Paul: Claims Insomniac.\n    *   If Mitchell robbed Paul (Insomniac), then Mitchell is now Insomniac and Paul is now Robber.\n    *   If Justin is the Werewolf, he's bluffing as Seer.\n    *   If Mitchell is the Werewolf, he's bluffing as Robber.\n    *   If Paul is the Werewolf, he's bluffing as Insomniac.\n    *   Justin's push for a \"no-kill\" vote is the strongest tell.\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   Mitchell says he robbed Paul and saw Insomniac.\n    *   Justin tries to convince everyone to \"vote left\" so that \"no one gets killed.\"\n    *   In a 3-player game, if everyone votes left, everyone gets 1 vote, and no one dies.\n    *   The Werewolf's goal is to make all Werewolves survive. Justin's strategy directly achieves this.\n\n    *   Could Justin be the Tanner? The Tanner wants to die. Justin is trying to *avoid* anyone dying. So Justin is likely not the Tanner.\n    *   Could Mitchell be the Tanner? Justin suggests Mitchell is the Tanner. If Mitchell were the Tanner, he would want to be voted out. Mitchell says \"I think there's werewolf in our midst,\" which is a typical village-aligned or werewolf statement, not necessarily a Tanner statement.\n    *   If Justin is the Werewolf, he's manipulating the vote to ensure survival.\n\n    *   Justin's claim to be Seer is not backed by any evidence.\n    *   His insistence on a voting pattern that results in no one dying is highly characteristic of a Werewolf.\n    *   The other two players' claims (Robber and Insomniac) are consistent with each other.\n\n    *   Justin: \"I think we got to all vote to the left. We can't kill anybody.\"\n    *   This is the smoking gun. A village-aligned player (Seer) would want to kill a werewolf. A werewolf wants to avoid being killed.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber.\n    *   Paul: Claims Insomniac.\n    *   Mitchell robbed Paul.\n    *   Justin pushes for a \"no-kill\" vote.\n    *   Conclusion: Justin is the Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer, but his behavior is highly suspicious. While the other two players (Mitchell and Paul) provide consistent claims regarding the Robber and Insomniac roles, Justin spends the end of the discussion actively coordinating a voting pattern ('vote to the left') specifically designed to ensure that no one dies. Since the Werewolf's goal is to survive the voting phase, Justin's attempt to manipulate the group into a tie where no one is eliminated is a strong indicator that he is the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer, but his behavior is highly suspicious. While the other two players (Mitchell and Paul) provide consistent claims regarding the Robber and Insomniac roles, Justin spends the end of the discussion actively coordinating a voting pattern ('vote to the left') specifically designed to ensure that no one dies. Since the Werewolf's goal is to survive the voting phase, Justin's attempt to manipulate the group into a tie where no one is eliminated is a strong indicator that he is the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer, but his behavior is highly suspicious. While the other two players (Mitchell and Paul) provide consistent claims regarding the Robber and Insomniac roles, Justin spends the end of the discussion actively coordinating a voting pattern ('vote to the left') specifically designed to ensure that no one dies. Since the Werewolf's goal is to survive the voting phase, Justin's attempt to manipulate the group into a tie where no one is eliminated is a strong indicator that he is the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin claims to be the Seer, but his behavior is highly suspicious. While the other two players (Mitchell and Paul) provide consistent claims regarding the Robber and Insomniac roles, Justin spends the end of the discussion actively coordinating a voting pattern ('vote to the left') specifically designed to ensure that no one dies. Since the Werewolf's goal is to survive the voting phase, Justin's attempt to manipulate the group into a tie where no one is eliminated is a strong indicator that he is the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3309,
+    "output_token_count": 1824,
+    "generation_time_sec": 185.45170426368713,
+    "used_chat_template": true,
+    "input_char_count": 11656,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

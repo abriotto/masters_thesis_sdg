@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game9.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot\n    *   Ashley\n    *   James\n    *   Chris\n    *   Sukeshi\n    *   Sian\n\n    *   Sukeshi: Claims to be a Villager (Line 21, 62, 67).\n    *   Chris: Claims to be a Villager (Line 22, 75, 145).\n    *   James: Claims to be the Robber (Line 34, 44). Claims he robbed Sukeshi and found her to be a Villager (Line 37, 65).\n    *   Sian: Claims to be the Seer (Line 50, 158). Claims she saw \"these two\" (likely referring to James and Sukeshi or others, but it's vague) and thinks it could be James or Sukeshi (Line 52, 60).\n    *   Ashley: Claims to be the Hunter (Line 25 - Elliot says Ashley has the Hunter, Line 88 - Ashley confirms she's the Hunter).\n    *   Elliot: Claims to be a Villager (Line 59, 71, 94).\n\n    *   James (Robber) robbed Sukeshi (Villager). This means James knows Sukeshi was a Villager.\n    *   Sian (Seer) claims she saw something and suspects James or Sukeshi.\n    *   Ashley (Hunter) is being discussed as a potential target to trigger the Hunter's ability to take someone else down.\n    *   Elliot and Chris are accusing each other.\n\n    *   Sukeshi: Claims Villager. James (Robber) confirms this.\n    *   James: Claims Robber. Sian (Seer) suspects him.\n    *   Sian: Claims Seer.\n    *   Ashley: Claims Hunter.\n    *   Chris: Claims Villager.\n    *   Elliot: Claims Villager.\n\n    *   If James is the Robber and Sukeshi is the Villager, they are likely aligned with the Village.\n    *   If Sian is the Seer, she might be seeing Werewolves. She suspects James or Sukeshi. But if James is the Robber and Sukeshi is the Villager, Sian might be lying or mistaken (or the Robber/Troublemaker swapped things).\n    *   Wait, Sian says \"these two\" (Line 50) and then \"James or Sukeshi\" (Line 52). If James is the Robber and Sukeshi is the Villager, Sian's claim as Seer is suspicious unless she saw them as Werewolves *before* the Robber acted (but Seer wakes up *before* Robber).\n    *   Actually, the Night action order is: Doppelganger -> Werewolves -> Minion -> Masons -> Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n    *   Seer wakes up *before* the Robber. So if Sian (Seer) saw James and Sukeshi, she saw their *starting* roles. If James then robbed Sukeshi, he would know her starting role.\n    *   If Sian saw James and Sukeshi as Werewolves, then James claiming to be the Robber is a lie.\n    *   If James is the Robber and Sukeshi is the Villager, Sian's claim to be the Seer is likely a bluff (Werewolf/Minion).\n\n    *   Sian claims to be the Seer and points at James/Sukeshi.\n    *   James claims to be the Robber and confirms Sukeshi is a Villager.\n    *   If James is telling the truth, Sian is lying.\n    *   If Sian is telling the truth, James is lying.\n    *   Elliot and Chris are both claiming Villager and accusing each other.\n    *   Ashley claims Hunter.\n\n    *   Sian's claim as Seer is very aggressive toward James and Sukeshi.\n    *   James's claim as Robber is specific (robbed Sukeshi, she was a Villager).\n    *   In One Night Ultimate Werewolf, the Robber is a strong role for verification.\n    *   Sian's \"hunch\" (Line 120) when asked for evidence for her suspicions is a weak point for a Seer. A Seer usually has specific information.\n    *   Elliot and Chris are fighting, but Sian's behavior is more indicative of a Werewolf trying to frame others or a Tanner trying to get voted out. However, the prompt asks for a Werewolf.\n\n    *   Sian claims Seer, but when pressed for evidence, she says \"hunch\" (Line 120). This is highly suspicious for a Seer.\n    *   James's claim as Robber is more detailed.\n    *   If Sian is the Werewolf, she's trying to cast doubt on James and Sukeshi.\n\n    *   Sian: Claims Seer, suspects James/Sukeshi, then says \"hunch\".\n    *   James: Claims Robber, confirms Sukeshi.\n    *   Sukeshi: Claims Villager.\n    *   Ashley: Claims Hunter.\n    *   Chris: Claims Villager.\n    *   Elliot: Claims Villager.\n\n    Sian's inconsistency (claiming Seer but then saying her suspicion is a \"hunch\") makes her the most likely Werewolf.\n\n    *   Sian claims to be the Seer (Line 50, 158).\n    *   She points to James and Sukeshi (Line 50, 60).\n    *   When asked what she's basing this on (Line 116, 119), she says \"Hunch\" (Line 120).\n    *   A real Seer would have seen the cards. Saying it's a \"hunch\" strongly suggests she is bluffing her role.\n\n    *   Could James be the Werewolf? He claims Robber. If he's the Werewolf, he's lying about robbing Sukeshi.\n    *   Could Ashley be the Werewolf? She claims Hunter.\n    *   Could Elliot or Chris be the Werewolf? They are just arguing.\n    *   Sian's behavior is the most classically \"bluffing\" behavior in these games.\n\n    *   Sian claimed to be the Seer and accused James and Sukeshi.\n    *   However, when asked for her reasoning, she admitted it was a \"hunch,\" which contradicts the nature of the Seer role (which provides direct information).\n    *   This inconsistency suggests Sian is bluffing her role to divert suspicion, a common strategy for Werewolves.",
+  "parsed_output": {
+    "justification": "Sian claims to be the Seer and casts suspicion on James and Sukeshi. However, when asked for the basis of her deduction, she admits it is a 'hunch' (Line 120), which is inconsistent with the Seer's ability to gain direct knowledge of players' roles. This suggests Sian is bluffing her role to divert suspicion, a common tactic for Werewolves.",
+    "chosen_vote": "Sian"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sian claims to be the Seer and casts suspicion on James and Sukeshi. However, when asked for the basis of her deduction, she admits it is a 'hunch' (Line 120), which is inconsistent with the Seer's ability to gain direct knowledge of players' roles. This suggests Sian is bluffing her role to divert suspicion, a common tactic for Werewolves.\",\n  \"chosen_vote\": \"Sian\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sian claims to be the Seer and casts suspicion on James and Sukeshi. However, when asked for the basis of her deduction, she admits it is a 'hunch' (Line 120), which is inconsistent with the Seer's ability to gain direct knowledge of players' roles. This suggests Sian is bluffing her role to divert suspicion, a common tactic for Werewolves.\",\n  \"chosen_vote\": \"Sian\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sian",
+    "justification": "Sian claims to be the Seer and casts suspicion on James and Sukeshi. However, when asked for the basis of her deduction, she admits it is a 'hunch' (Line 120), which is inconsistent with the Seer's ability to gain direct knowledge of players' roles. This suggests Sian is bluffing her role to divert suspicion, a common tactic for Werewolves."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4940,
+    "output_token_count": 1626,
+    "generation_time_sec": 170.62103295326233,
+    "used_chat_template": true,
+    "input_char_count": 14981,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

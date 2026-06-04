@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Switched Paul and Mitchell.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Villager/Robber/Insomniac.\n    *   James: Claims Villager (but previously admitted to being a werewolf, then retracted).\n    *   Mitchell: Claims Seer. Saw Robber and Insomniac in the center.\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   If Robber and Insomniac are in the center, then the remaining roles are: Werewolf, Minion, Troublemaker, Villager, etc.\n    *   Wait, let's check the roles: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   Justin (Troublemaker) says he switched Paul and Mitchell.\n    *   James admitted to being a werewolf (at [114] \"Yeah\" to \"So you were the werewolf\"), then retracted (at [125] \"I was a villager\").\n    *   Paul claims he was one of (Villager, Robber, Insomniac). But Mitchell saw Robber and Insomniac in the center. So Paul must be a Villager (if Mitchell is telling the truth).\n    *   If Paul was a Villager and Justin switched Paul and Mitchell, then Mitchell (the Seer) became a Villager and Paul became the Seer.\n\n    *   Mitchell: Claims Seer. Saw Robber and Insomniac in center.\n    *   Justin: Claims Troublemaker. Switched Paul and Mitchell.\n    *   James: Admitted to being a werewolf, then claimed Villager.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Villager/Robber/Insomniac.\n\n    *   If Mitchell is the Seer and saw Robber and Insomniac in the center, then the Robber and Insomniac are not in play.\n    *   If Justin is the Troublemaker and switched Paul and Mitchell:\n        *   Mitchell (Seer) -> Paul.\n        *   Paul (Villager/Werewolf/etc.) -> Mitchell.\n    *   James's behavior is highly suspicious. He admitted to being a werewolf (\"Yeah\" at [114]) and then tried to backtrack.\n    *   Let's re-examine the transcript carefully.\n    *   [111] Justin: \"And Paul. Fuck! So you were the werewolf.\" (Wait, Justin is talking to Paul here? Or James?)\n    *   [113] Justin: \"So you were the werewolf.\"\n    *   [114] James: \"Yeah.\"\n    *   [115] Justin: \"All right. I switched you two.\" (Justin is talking to James and Paul).\n    *   [117] Justin: \"No. You and Paul.\" (Wait, Justin is correcting himself).\n    *   [119] Justin: \"I didn't switch James. I didn't touch James.\"\n    *   [151] Paul: \"So he told us he was the werewolf right at the beginning...\" (Referring to James).\n\n    *   James admitted to being a werewolf. Even if he claims he was \"testing\" people, in One Night Ultimate Werewolf, admitting to being a werewolf is a huge red flag.\n    *   If Justin (Troublemaker) switched Paul and Mitchell, James's role remained unchanged.\n    *   If James started as a werewolf and wasn't switched, he is still a werewolf.\n\n    *   Justin: Troublemaker (claims).\n    *   Mitchell: Seer (claims).\n    *   Paul: Villager (claims).\n    *   Laura: Villager (claims).\n    *   James: Werewolf (admitted, then denied).\n\n    *   If Mitchell saw Robber and Insomniac in the center, then Paul's claim of being Robber/Insomniac is a lie. Paul claimed he was \"Villager, robber, insomniac\". If Robber and Insomniac are in the center, Paul must be a Villager.\n    *   If Justin switched Paul and Mitchell, then Mitchell's role (Seer) went to Paul, and Paul's role (Villager) went to Mitchell.\n    *   James remains as whatever he was. He admitted to being a werewolf.\n\n    *   James is the most likely candidate for the werewolf because he explicitly admitted it during the discussion, and there is no evidence he was swapped by the Troublemaker (Justin explicitly stated he did not touch James).\n\n    *   Justin: Troublemaker.\n    *   Mitchell: Seer.\n    *   Paul: Villager.\n    *   Laura: Villager.\n    *   James: Werewolf.\n    *   Center: Robber, Insomniac, (one more).\n    *   This fits all the claims and the transcript.\n\n    *   Wait, let's re-read [111]-[114].\n    *   [111] Justin: \"And Paul. Fuck! So you were the werewolf.\"\n    *   [113] Justin: \"So you were the werewolf.\"\n    *   [114] James: \"Yeah.\"\n    *   Justin seems to be addressing James in [113] and [114].\n    *   Then Justin says [119] \"I didn't switch James. I didn't touch James.\"\n    *   This means James's role didn't change. If he was a werewolf, he's still a werewolf.\n\n    *   James admitted to being a werewolf.\n    *   Justin (Troublemaker) did not switch James.\n    *   Therefore, James is the most likely werewolf.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being the werewolf during the discussion (transcript [114]), although he later attempted to retract this by claiming he was a villager testing the other players. Justin, claiming to be the Troublemaker, stated that he switched Paul and Mitchell but specifically noted that he did not touch James (transcript [119]). Since James's role was not swapped and he admitted to being the werewolf, he is the most likely candidate.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being the werewolf during the discussion (transcript [114]), although he later attempted to retract this by claiming he was a villager testing the other players. Justin, claiming to be the Troublemaker, stated that he switched Paul and Mitchell but specifically noted that he did not touch James (transcript [119]). Since James's role was not swapped and he admitted to being the werewolf, he is the most likely candidate.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being the werewolf during the discussion (transcript [114]), although he later attempted to retract this by claiming he was a villager testing the other players. Justin, claiming to be the Troublemaker, stated that he switched Paul and Mitchell but specifically noted that he did not touch James (transcript [119]). Since James's role was not swapped and he admitted to being the werewolf, he is the most likely candidate.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being the werewolf during the discussion (transcript [114]), although he later attempted to retract this by claiming he was a villager testing the other players. Justin, claiming to be the Troublemaker, stated that he switched Paul and Mitchell but specifically noted that he did not touch James (transcript [119]). Since James's role was not swapped and he admitted to being the werewolf, he is the most likely candidate."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4368,
+    "output_token_count": 1446,
+    "generation_time_sec": 150.3546919822693,
+    "used_chat_template": true,
+    "input_char_count": 14871,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#531#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#531#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ryan: Claims Drunk.\n    *   Katie: Initially claims Robber (stole a card, not a drunk card). Later claims Tanner.\n    *   Brett: Initially claims Drunk (sleepwalked/exchanged from center). Later claims Robber (took Brett's drunk - wait, he says he took *his* drunk? No, he says \"I was the robber, and I took his drunk\"). Then admits he was the Werewolf at the beginning.\n    *   DeAndre: Initially claims Drunk (exchanged from center). Later claims Troublemaker (swapped Brett and Ryan).\n\n    *   Ryan: Drunk.\n    *   Katie: Robber -> Tanner.\n    *   Brett: Drunk -> Robber -> Werewolf.\n    *   DeAndre: Drunk -> Troublemaker.\n\n    *   *Wait, let's re-examine the claims:*\n        *   Katie: \"I might have taken something that didn't belong to me\" (Robber). Later: \"I was not the robber... I [was] a tanner.\"\n        *   Brett: \"I might have sleepwalked, and exchange something from the center\" (Drunk). Later: \"I was the robber, and I took his drunk.\" Then: \"Yes, I was the werewolf.\"\n        *   DeAndre: \"I also exchanged a card from the center\" (Drunk). Later: \"I was actually the troublemaker... I switched your card to somebody else's card.\"\n        *   Ryan: \"I'm a drunk.\"\n\n    *   *Analyzing the \"Werewolf\" admission:*\n        Brett explicitly says, \"Yes, I was the werewolf\" (Line 92).\n        However, he also says he was the Robber (Line 59) and the Drunk (Line 20).\n        If Brett was the Werewolf at the start, and DeAndre was the Troublemaker who swapped Brett and Ryan, then Ryan would be the Werewolf at the end.\n\n    *   *Analyzing the \"Tanner\" claim:*\n        Katie claims she is the Tanner (Line 106). If she is the Tanner, she wants to be voted out.\n\n    *   *Analyzing the \"Troublemaker\" claim:*\n        DeAndre claims he is the Troublemaker and swapped Brett and Ryan (Line 75-77, 101).\n\n    *   *Scenario 1: DeAndre is the Troublemaker, Brett was the Werewolf.*\n        If DeAndre (Troublemaker) swapped Brett (Werewolf) and Ryan (Drunk), then Ryan is now the Werewolf and Brett is now the Drunk.\n        In this case, voting for Ryan wins the game for the Village.\n\n    *   *Scenario 2: Brett is lying about everything.*\n        Brett claims to be Drunk, then Robber, then Werewolf. This is highly inconsistent. He might be the Werewolf trying to confuse the group or the Tanner trying to get voted out. But he admits to being the Werewolf, which is unusual for a Werewolf unless they are trying to frame someone else (like Ryan).\n\n    *   *Scenario 3: Katie is the Tanner.*\n        She claims she is the Tanner. If she is, the Village should avoid voting for her.\n\n    *   *Scenario 4: Ryan is the Werewolf.*\n        Ryan has stayed consistent in claiming Drunk. If DeAndre's Troublemaker claim is true and Brett's Werewolf claim is true, Ryan is the end-game Werewolf.\n\n    *   Brett's admission: \"Yes, I was the werewolf\" (Line 92).\n    *   DeAndre's claim: \"I was actually the troublemaker... I switched your card [Brett] to somebody else's card [Ryan]\" (Line 75-77, 101).\n    *   If these are true, Ryan is the Werewolf.\n    *   Brett's logic: \"we got to vote for Ryan. If we want to win, we got to vote for Ryan\" (Line 112). This supports the theory that Brett (starting Werewolf) was swapped with Ryan (starting Drunk) by DeAndre (Troublemaker).\n\n    *   Wait, if Brett was the Werewolf and was swapped with Ryan, Brett is now the Drunk and Ryan is now the Werewolf.\n    *   If Katie is the Tanner, she's irrelevant to the Werewolf hunt.\n    *   If DeAndre is the Troublemaker, he's Village.\n\n    *   Is Brett lying about being the Werewolf to get Ryan voted out?\n    *   Is DeAndre lying about being the Troublemaker to get Ryan voted out?\n    *   Is Ryan actually the Werewolf and just claiming Drunk?\n\n    Let's look at the claims again.\n    Ryan: Drunk.\n    Katie: Robber -> Tanner.\n    Brett: Drunk -> Robber -> Werewolf.\n    DeAndre: Drunk -> Troublemaker.\n\n    If Brett was the Werewolf and DeAndre swapped him with Ryan, Ryan is the Werewolf.\n    If Brett is the Werewolf and wasn't swapped, Brett is the Werewolf.\n    If Ryan was the Werewolf and wasn't swapped, Ryan is the Werewolf.\n\n    Brett's admission \"Yes, I was the werewolf\" is a huge tell. Usually, players don't admit to being the werewolf unless they've been swapped or are the Tanner. But he's pushing the vote toward Ryan.\n\n    If Brett was the Werewolf and DeAndre (Troublemaker) swapped Brett and Ryan, then Ryan is the Werewolf.\n    If Brett is the Werewolf and is lying about the swap, Brett is the Werewolf.\n    However, the prompt asks for the player I believe is the Werewolf as their *end role*.\n\n    If we believe Brett and DeAndre:\n    Starting: Brett (Werewolf), Ryan (Drunk), DeAndre (Troublemaker), Katie (Tanner).\n    Action: DeAndre swaps Brett and Ryan.\n    Ending: Ryan (Werewolf), Brett (Drunk), DeAndre (Troublemaker), Katie (Tanner).\n\n    This makes Ryan the Werewolf.\n\n    Let's double-check Katie. She claimed Robber, then Tanner. If she's the Tanner, she's not the Werewolf.\n\n    What if Brett is the Werewolf and is lying about the swap to frame Ryan?\n    If Brett is the Werewolf and DeAndre is NOT the Troublemaker, then Brett is still the Werewolf.\n    But DeAndre's claim to be the Troublemaker is quite specific.\n\n    Let's look at the \"Drunk\" claims.\n    Ryan, Brett, and DeAndre all claimed Drunk at some point.\n    Only one Drunk can exist.\n    If DeAndre is the Troublemaker and Brett was the Werewolf, and Ryan was the Drunk...\n    Then Ryan (Drunk) was swapped with Brett (Werewolf).\n    Ryan is now the Werewolf.\n    Brett is now the Drunk.\n    DeAndre is the Troublemaker.\n    Katie is the Tanner.\n\n    This fits all the claims (except the initial bluffs).\n\n    Wait, Brett said: \"I was the robber, and I took his drunk\" (Line 59). This contradicts his later admission of being the Werewolf.\n    Brett's claims:\n    1. Drunk (Line 20)\n    2. Robber (Line 59)\n    3. Werewolf (Line 92)\n\n    This is very chaotic. However, the most consistent narrative that leads to a win for the village (as Brett suggests) is that Ryan is the Werewolf due to a swap.\n\n    Let's re-evaluate:\n    If Brett is the Werewolf and is trying to divert suspicion, he might claim he was swapped.\n    But if he's the Werewolf, why admit it at all? \"Yes, I was the werewolf.\"\n    If he's the Tanner, he wants to be voted out. But he's trying to get Ryan voted out.\n    If he's the Werewolf, he wants to avoid being voted out. Admitting he *was* the werewolf but *is no longer* the werewolf (because of a swap) is a clever way to divert the vote to Ryan.\n\n    Wait, if Brett was the Werewolf and was swapped with Ryan, then Ryan is the Werewolf.\n    If Brett is the Werewolf and was NOT swapped, Brett is the Werewolf.\n\n    Who is more likely to be the Werewolf?\n    Ryan has been very quiet and just claimed Drunk.\n    Brett has been all over the place.\n    DeAndre has claimed Troublemaker.\n\n    If DeAndre is the Troublemaker and swapped Brett and Ryan, Ryan is the Werewolf.\n    If DeAndre is lying and is actually the Werewolf, he might be trying to frame Ryan.\n    But Brett also supports the idea that Ryan is the Werewolf.\n\n    Let's look at the roles again.\n    Players: Ryan, Katie, Brett, DeAndre.\n    Roles: 4 players + 3 = 7 roles.\n    Possible roles: Werewolf, Minion, Tanner, Troublemaker, Robber, Drunk, etc.\n\n    If Brett was the Werewolf and DeAndre was the Troublemaker, and they swapped Brett and Ryan, then Ryan is the Werewolf.\n    If Brett is the Werewolf and is lying about the swap, Brett is the Werewolf.\n    If DeAndre is the Werewolf and is lying about the swap, DeAndre is the Werewolf.\n\n    However, Brett's admission \"Yes, I was the werewolf\" combined with DeAndre's \"I switched your card to somebody else's card\" strongly points to Ryan being the end-role Werewolf.\n\n    Let's check for other possibilities.\n    Could Katie be the Werewolf? She claimed Robber, then Tanner. If she's the Werewolf, she's bluffing.\n    But the evidence provided by Brett and DeAndre specifically targets Ryan.\n\n    Final check on the swap:\n    DeAndre (Troublemaker) swaps Brett (Werewolf) and Ryan (Drunk).\n    End roles:\n    Ryan: Werewolf\n    Brett: Drunk\n    DeAndre: Troublemaker\n    Katie: Tanner\n\n    This scenario is internally consistent with the claims made in the latter half of the transcript.\n\n    Wait, one more thing. Brett said: \"I was the robber, and I took his drunk\" (Line 59).\n    If Brett was the Robber, he would have swapped his card with someone else's.\n    But then he said he was the Werewolf.\n    If he was the Werewolf, he couldn't be the Robber.\n    He's clearly lying or confused.\n    But the most likely target for the vote, based on the discussion, is Ryan.\n\n    Let's re-read:\n    Brett: \"I think it may be in our interest to vote for Ryan if it's your story the truth.\" (Line 90)\n    DeAndre: \"I'm not saying [what I was in the beginning].\" (Line 110)\n    Brett: \"we got to vote for Ryan. If we want to win, we got to vote for Ryan.\" (Line 112)\n\n    The logic seems to be:\n    Brett (Starting Werewolf) <--- Swapped by DeAndre (Troublemaker) ---> Ryan (Starting Drunk).\n    Therefore, Ryan is now the Werewolf.\n\n    Is there any reason to suspect DeAndre?\n    He claimed Drunk, then Troublemaker.\n    Is there any reason to suspect Katie?\n    She claimed Robber, then Tanner.\n\n    If Ryan is the Werewolf, the Village wins.\n    If Brett is the Werewolf, the Village wins.\n    If DeAndre is the Werewolf, the Village wins.\n    If Katie is the Werewolf, the Village wins.\n\n    The most supported conclusion from the transcript is that Ryan is the end-role Werewolf.",
+  "parsed_output": {
+    "justification": "Brett admitted to being the Werewolf at the start of the game, and DeAndre claimed to be the Troublemaker who swapped Brett's card with Ryan's. If these claims are true, Ryan became the Werewolf by the end of the Night phase. Brett and DeAndre both explicitly suggest that voting for Ryan is the way for the Village to win, indicating that Ryan is the current Werewolf.",
+    "chosen_vote": "Ryan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Brett admitted to being the Werewolf at the start of the game, and DeAndre claimed to be the Troublemaker who swapped Brett's card with Ryan's. If these claims are true, Ryan became the Werewolf by the end of the Night phase. Brett and DeAndre both explicitly suggest that voting for Ryan is the way for the Village to win, indicating that Ryan is the current Werewolf.\",\n  \"chosen_vote\": \"Ryan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Brett admitted to being the Werewolf at the start of the game, and DeAndre claimed to be the Troublemaker who swapped Brett's card with Ryan's. If these claims are true, Ryan became the Werewolf by the end of the Night phase. Brett and DeAndre both explicitly suggest that voting for Ryan is the way for the Village to win, indicating that Ryan is the current Werewolf.\",\n  \"chosen_vote\": \"Ryan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Ryan",
+    "justification": "Brett admitted to being the Werewolf at the start of the game, and DeAndre claimed to be the Troublemaker who swapped Brett's card with Ryan's. If these claims are true, Ryan became the Werewolf by the end of the Night phase. Brett and DeAndre both explicitly suggest that voting for Ryan is the way for the Village to win, indicating that Ryan is the current Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3748,
+    "output_token_count": 2795,
+    "generation_time_sec": 283.9138960838318,
+    "used_chat_template": true,
+    "input_char_count": 12990,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

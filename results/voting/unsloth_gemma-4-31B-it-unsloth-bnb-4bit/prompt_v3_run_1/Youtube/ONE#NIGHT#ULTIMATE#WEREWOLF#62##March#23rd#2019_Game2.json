@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#62##March#23rd#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   James\n    *   Paul\n    *   Mitchell\n\n    *   Justin: Claims to be Troublemaker (at [7]), then claims to be Robber (at [28]), then says he robbed James (at [32]).\n    *   James: Claims to be Troublemaker (at [45], [48], [68]) and says he swapped Justin and Mitchell.\n    *   Mitchell: Claims to be Seer (at [25], [31], [33], [52]) and says he saw a Werewolf in the center.\n    *   Paul: Doesn't claim a role, but says \"Actually you need to kill me\" (at [56]).\n\n    *   Justin:\n        *   [7] \"Yay, Troublemaker.\" (Wait, the announcer says \"Troublemaker, wake up\" and Justin says \"Yay, Troublemaker.\" This implies Justin is the Troublemaker).\n        *   [10] Justin says \"Mitchell and James\" when the announcer asks the Troublemaker to exchange cards.\n        *   [28] \"Cool, Robber.\" (Wait, now he's claiming Robber?)\n        *   [32] \"I robbed from you [James]...\"\n        *   [65] \"I saw James' Troublemaker.\" (Wait, what?)\n    *   James:\n        *   [45] \"No, I troublemade you two.\"\n        *   [48] \"You [Justin] and Mitchell.\"\n        *   [50] \"So let's just kill Paul.\"\n    *   Mitchell:\n        *   [25] \"I looked at two in the middle... I know what that is.\"\n        *   [31] \"I saw a Werewolf which is-\"\n        *   [33] \"I'm saying there was a Robber here. There was a Werewolf here-\"\n    *   Paul:\n        *   [56] \"Actually you need to kill me.\" (This is a classic Tanner tell).\n\n    *   Justin claimed Troublemaker at the start of the night (during the action).\n    *   Then Justin claimed Robber.\n    *   James claimed Troublemaker.\n    *   If Justin was the Troublemaker, he swapped Mitchell and James.\n    *   If James was the Troublemaker, he swapped Justin and Mitchell.\n    *   Wait, look at the transcript again.\n    *   [6] Announcer: \"Troublemaker, wake up.\"\n    *   [7] Justin: \"Yay, Troublemaker.\"\n    *   [10] Justin: \"Mitchell and James.\"\n    *   This means Justin *is* the Troublemaker (or believes he is).\n    *   Then at [28], Justin says \"Cool, Robber.\" This is contradictory.\n    *   Then James says *he* is the Troublemaker at [45].\n    *   If Justin is the Troublemaker, James is lying.\n    *   If James is the Troublemaker, Justin is lying.\n    *   Wait, look at [56]: Paul says \"Actually you need to kill me.\" This is very suspicious. In One Night Ultimate Werewolf, the Tanner *wants* to be killed.\n\n    *   Justin: Claims Troublemaker, then Robber. (Very confused or lying).\n    *   James: Claims Troublemaker.\n    *   Mitchell: Claims Seer.\n    *   Paul: Says \"you need to kill me.\"\n\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Paul is the Werewolf, he might be bluffing as the Tanner to confuse people, but usually, Werewolves try to avoid being voted out.\n    *   Let's look at the roles again.\n    *   Justin's behavior is erratic. He claims Troublemaker, then Robber.\n    *   James claims Troublemaker.\n    *   If Justin was the Troublemaker and swapped James and Mitchell, and then James claims he was the Troublemaker and swapped Justin and Mitchell, someone is lying.\n    *   However, the prompt asks for the Werewolf.\n    *   Paul's statement \"Actually you need to kill me\" is a huge red flag for the Tanner.\n    *   If Paul is the Tanner, who is the Werewolf?\n    *   Let's re-examine the claims.\n    *   Mitchell (Seer) saw a Werewolf in the center.\n    *   If there's a Werewolf in the center, and there's only one Werewolf in the game (common in 4-player games), then there might be no Werewolf among the players.\n    *   Wait, the rules say \"The number of candidate roles is always equal to the number of players plus 3.\" So 4 players + 3 = 7 roles.\n    *   If Mitchell saw a Werewolf in the center, and there's only one Werewolf card in the deck, then no one is a Werewolf.\n    *   But the goal is to vote for the player you believe is a Werewolf.\n    *   Let's look at Paul again. If Paul isn't the Tanner, he could be the Werewolf trying to act like the Tanner to get people to doubt him? No, that doesn't make sense. If he's the Werewolf, he wants to survive.\n    *   Wait, if Paul is the Werewolf, saying \"you need to kill me\" is a very bold bluff.\n    *   Let's look at the others.\n    *   Justin and James are both claiming Troublemaker. Only one can be.\n    *   Justin claimed it first (during the night action).\n    *   James claimed it later.\n    *   If Justin is the Troublemaker, James is lying.\n    *   If James is the Troublemaker, Justin is lying.\n    *   If James is lying about being the Troublemaker, he could be the Werewolf.\n    *   But Paul's \"you need to kill me\" is so characteristic of a Tanner.\n    *   If Paul is the Tanner, and Mitchell saw a Werewolf in the center, then maybe there are no Werewolves among the players?\n    *   Wait, the rules say \"Team Village wins: If at least one Werewolf dies... If no player is a Werewolf and no one dies.\"\n    *   If Paul is the Tanner and he is voted out, the Tanner wins.\n    *   If Paul is the Werewolf and he is voted out, the Village wins.\n    *   Let's re-read the transcript carefully.\n    *   [7] Justin: \"Yay, Troublemaker.\"\n    *   [10] Justin: \"Mitchell and James.\"\n    *   This happened *during* the night phase. The announcer called the Troublemaker, and Justin responded. This is a very strong indicator that Justin is the Troublemaker.\n    *   Then James claims to be the Troublemaker at [45]. This makes James a liar.\n    *   Why would James lie about being the Troublemaker? To divert suspicion from himself.\n    *   Why would Paul say \"you need to kill me\"? He's likely the Tanner.\n    *   So we have:\n        *   Justin: Troublemaker (confirmed by night action)\n        *   James: Liar (claiming Troublemaker) -> Potential Werewolf\n        *   Mitchell: Seer (claims to see Werewolf in center)\n        *   Paul: Tanner (claims \"you need to kill me\")\n    *   If Mitchell is telling the truth about the Werewolf being in the center, then James might be the Minion? (Minions are on Team Werewolf).\n    *   Wait, the prompt asks for the \"Werewolf\". Minions are part of Team Werewolf.\n    *   Let's check the roles again. \"Team Werewolf includes Werewolf and Minion.\"\n    *   If James is lying and Paul is the Tanner, James is the most likely candidate for Team Werewolf.\n\n    *   Justin: Troublemaker (acted as such during the night).\n    *   James: Claimed Troublemaker, but Justin already acted as one. James is lying.\n    *   Mitchell: Claimed Seer, saw a Werewolf in the center.\n    *   Paul: Claimed \"you need to kill me,\" which is typical Tanner behavior.\n    *   Conclusion: James is the most likely Werewolf/Minion.\n\n    *   Wait, Justin's behavior is very weird.\n    *   [7] \"Yay, Troublemaker.\"\n    *   [28] \"Cool, Robber.\"\n    *   [32] \"I robbed from you [James]...\"\n    *   [65] \"I saw James' Troublemaker.\"\n    *   Is Justin the Doppelganger?\n    *   If Justin was the Doppelganger and copied the Troublemaker, he would be the Troublemaker.\n    *   If Justin was the Robber, he couldn't have acted as the Troublemaker.\n    *   The announcer called the Troublemaker, and Justin spoke. This means Justin *was* the Troublemaker at that moment.\n    *   If Justin then claims to be the Robber, he's either lying or he's the Doppelganger who changed roles? No, Doppelganger happens first.\n    *   Wait, if Justin is the Troublemaker, he swapped James and Mitchell.\n    *   If James is the Werewolf, he's lying about being the Troublemaker to avoid being caught.\n    *   Paul is almost certainly the Tanner.\n    *   Between James and Paul, James is the more likely Werewolf because Paul is explicitly asking to be killed (Tanner).\n\n    *   Justin: Troublemaker (confirmed by night action).\n    *   James: Lying about being Troublemaker.\n    *   Mitchell: Seer.\n    *   Paul: Tanner.\n    *   Therefore, James is the Werewolf.\n\n    *   Wait, let me re-read [65]: \"I saw James' Troublemaker.\" This is very confusing.\n    *   And [32]: \"I robbed from you [James]...\"\n    *   Justin is claiming multiple roles. This is common for players who are confused or lying.\n    *   But the most solid piece of evidence is the night action. The announcer called the Troublemaker, and Justin responded.\n    *   James' claim to be the Troublemaker is therefore a lie.\n    *   Paul's claim to be killed is a Tanner tell.\n    *   James is the most suspicious.\n\n    *   Wait, let me look at the transcript again.\n    *   [7] Justin: \"Yay, Troublemaker.\"\n    *   [10] Justin: \"Mitchell and James.\"\n    *   [45] James: \"No, I troublemade you two.\"\n    *   [48] James: \"You [Justin] and Mitchell.\"\n    *   If Justin is the Troublemaker, James is lying.\n    *   If James is the Troublemaker, Justin is lying.\n    *   But Justin spoke *when the announcer called the Troublemaker*. In a real game, you only speak when your role is called.\n    *   So Justin is the Troublemaker.\n    *   James is lying.\n    *   Paul is the Tanner.\n    *   James is the Werewolf.",
+  "parsed_output": {
+    "justification": "Justin is confirmed as the Troublemaker because he responded and performed the action when the Announcer specifically called for the Troublemaker during the Night phase. James later claimed to be the Troublemaker, which is a direct contradiction and indicates he is lying to divert suspicion. Paul's statement 'Actually you need to kill me' is a strong indicator that he is the Tanner, leaving James as the most likely Werewolf.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin is confirmed as the Troublemaker because he responded and performed the action when the Announcer specifically called for the Troublemaker during the Night phase. James later claimed to be the Troublemaker, which is a direct contradiction and indicates he is lying to divert suspicion. Paul's statement 'Actually you need to kill me' is a strong indicator that he is the Tanner, leaving James as the most likely Werewolf.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin is confirmed as the Troublemaker because he responded and performed the action when the Announcer specifically called for the Troublemaker during the Night phase. James later claimed to be the Troublemaker, which is a direct contradiction and indicates he is lying to divert suspicion. Paul's statement 'Actually you need to kill me' is a strong indicator that he is the Tanner, leaving James as the most likely Werewolf.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "Justin is confirmed as the Troublemaker because he responded and performed the action when the Announcer specifically called for the Troublemaker during the Night phase. James later claimed to be the Troublemaker, which is a direct contradiction and indicates he is lying to divert suspicion. Paul's statement 'Actually you need to kill me' is a strong indicator that he is the Tanner, leaving James as the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2892,
+    "output_token_count": 2695,
+    "generation_time_sec": 267.154011964798,
+    "used_chat_template": true,
+    "input_char_count": 10323,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

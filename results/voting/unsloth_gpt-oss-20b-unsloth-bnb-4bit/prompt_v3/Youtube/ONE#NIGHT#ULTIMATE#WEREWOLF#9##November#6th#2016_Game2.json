@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need determine who is werewolf final role based on discussion. Hard, incoherent transcript. 4 players: Caitlynn, Mitchell, Alana, Mike. Roles unknown. Let's inspect statements for clues about swaps. In transcript they talk about \"two people switching cards.\" Mitch says \"two people switching cards\" likely refers to Robust: the Robber, Troublemaker each swap. They say \"I was the troublemaker\" (Mike). So someone is the troublemaker. So Mike is TroubleMaker. Since troublemaker swaps two other players' cards; per rules, they don't look at cards.\n\nAlso statements: \"Did you rob for me?\" blah.\n\nBut we need determine which player could be Werewolf.\n\nWe may analyze possible roles: Suppose starting roles each random; but etreat.\n\nThere's discussion about centre cards containing werewolf maybe. Statement 30 \"but here's that I was the troublemaker\". He says, \"I did not?\".\n\nOkay.\n\nWe have to decide a target to vote for: choose a name that seems suspect.\n\nGiven observe: They think \"you (Mike?) ... Yes I'm a hundred percent the werewolf\" etc. Some conversation: Mike claims: \"You're a hundred percent the werewolf.\" which might refer to someone else? For example, after \"Mike: You're a hundred percent the werewolf.\" earlier maybe describing something.\n\nLet's scrutinize lines.\n\nLine 42: \"Mike: You're a hundred percent the werewolf.\" That suggests Mike speaks accusing someone else: who? preceding context: At line 37, Alana says \"I'm freaking out.\" line 38 Mike says \"I did switch you.\" 39 (Alana: \"You switched us.\") 40 Caitlynn: \"Well then, we kill me.\" 41 Caitlynn: \"'cause.\" 42 Mike: \"You're a hundred percent the werewolf.\" So Mike presumably accuses someone, maybe Caitlynn? Actually maybe it's Caitlynn speaking to Mike? Hard.\n\nCould be that Mike is suspect: He says \"you're a hundred percent the werewolf.\" Means that the party thinks Mike is the werewolf? Wait.\n\nLet's note roles assignment via actions:\n\nStarting roles: any.\n\nBut the troublemaker (Mike) swaps two other players' cards. So whoever's card ended up in the center etc.\n\nSuppose the center had 3 werewolves are knights? Let's think: possible scenario: The player with werewolf started with werewolf and ended as own final position maybe changed due to swap. The troublemaker can swap their cards and potentially land a werewolf somewhere else.\n\nThus, which player might have swapped had werewolf? According to lines: \"But it's being changed\".\n\nI think simpler: Since the troublemaker hasn't looked at cards, they secretly swapped two others. That can place werewolf somewhere else. We need choose someone.\n\nGiven confusion, I'd predict that the werewolf is Mitchel? Or maybe Alana? Let's examine earlier lines: \"I can confirm that there were two people switching cards.\" (line 15). So before that, people have each swapped? \"You could switch\". Not heavy.\n\nBut statement at line 18: Mitchell: yes. So Mike is troublemaker. After that, lines about \"Did you rob for me?\" indicates Mike may be robbing someone else. But conundrum.\n\nAlternatively: Suppose the troublemaker swapped Alana and Mike's cards. Then if werewolf was originally somewhere else, they might end in center.\n\nIf the two swaps are both troublemaker's actions: but troublemaker only swaps two others, not themselves. So if Mike is troublemaker, he swapped two other players: say Alana and Mitchell? But conversation later suggests they swapped with Caitlynn maybe.\n\nWe cannot deduce definitively due to incoherence.\n\nSimpler: pick a plausible werewolf: maybe Mike. He says \"Yes the being. etc.\" Most suspicious lines.\n\nOk choose Mike. Provide justification.",
+  "parsed_output": {
+    "justification": "The transcript suggests that Mike was the troublemaker who swapped two cards. During the discussion he repeatedly mentions swapping and seems to recoup blame, which implies he may be a werewolf trying to deflect attention. Additionally, no other player is consistently presented as having performed a swap or having been identified as scope of the center card information, making Mike the most likely suspect. The ambiguity of other players’ statements leaves Mike as the most reasonable choice to vote against.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript suggests that Mike was the troublemaker who swapped two cards. During the discussion he repeatedly mentions swapping and seems to recoup blame, which implies he may be a werewolf trying to deflect attention. Additionally, no other player is consistently presented as having performed a swap or having been identified as scope of the center card information, making Mike the most likely suspect. The ambiguity of other players’ statements leaves Mike as the most reasonable choice to vote against.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript suggests that Mike was the troublemaker who swapped two cards. During the discussion he repeatedly mentions swapping and seems to recoup blame, which implies he may be a werewolf trying to deflect attention. Additionally, no other player is consistently presented as having performed a swap or having been identified as scope of the center card information, making Mike the most likely suspect. The ambiguity of other players’ statements leaves Mike as the most reasonable choice to vote against.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript suggests that Mike was the troublemaker who swapped two cards. During the discussion he repeatedly mentions swapping and seems to recoup blame, which implies he may be a werewolf trying to deflect attention. Additionally, no other player is consistently presented as having performed a swap or having been identified as scope of the center card information, making Mike the most likely suspect. The ambiguity of other players’ statements leaves Mike as the most reasonable choice to vote against."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3216,
+    "output_token_count": 917,
+    "generation_time_sec": 277.3752279281616,
+    "used_chat_template": true,
+    "input_char_count": 12551,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

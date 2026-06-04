@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer. Says he saw two cards in the center (one of which he later claims was a Werewolf).\n    *   Mike: Doesn't claim a role initially, but seems to be observing.\n    *   Paul: Initially claims Insomniac (line 17), then quickly changes to Troublemaker (line 19). Claims he swapped Mitchell and Mike (line 56, 69).\n    *   Mitchell: Claims he swapped someone (line 58, 86), but is vague about who. He seems to be bluffing or confused.\n\n    *   Justin (Seer): Claims he saw two cards in the center. Later says one was a Werewolf (line 77).\n    *   Paul (Troublemaker): Claims he swapped Mitchell and Mike.\n    *   Mitchell: Claims he swapped people, but doesn't specify who clearly, and contradicts Paul's claim of being the Troublemaker.\n\n    *   If Justin is the Seer and saw a Werewolf in the center, there is only one Werewolf left among the players (since there are usually 2 Werewolves in a 4-player game if the role pool is 3, but the rules say \"up to two Masons\" and \"at most one of each other listed role\", and \"the number of candidate roles is always equal to the number of players plus 3\").\n    *   Wait, the rules say: \"number of candidate roles is always equal to the number of players plus 3\". For 4 players, there are 7 candidate roles.\n    *   If Justin is the Seer and saw a Werewolf in the center, and there's only one Werewolf card in the game, then the remaining Werewolf (if any) is among the players.\n    *   Paul and Mitchell are both claiming to be the Troublemaker (or at least claiming to have swapped people). Only one Troublemaker can exist.\n    *   Paul's behavior: Claims Insomniac, then Troublemaker. This is highly suspicious.\n    *   Mitchell's behavior: Claims he swapped people, but is very confused (\"Wait, did I swap before or after?\" line 86).\n    *   Paul says \"I feel think we won because they don't know that we're both Werewolves\" (line 74). This is a huge slip or a joke. However, in these games, players often joke or \"meta-game\". But if he's actually a Werewolf, he's admitting it.\n    *   Wait, look at line 74 again: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\" This is a very strange thing for a village player to say. Even as a joke, it's a massive red flag.\n    *   Mitchell responds \"Yeah\" (line 75).\n\n    *   Justin: Consistent claim (Seer).\n    *   Mike: Quiet, doesn't claim a role.\n    *   Paul: Inconsistent claims (Insomniac -> Troublemaker). Admits to being a Werewolf (possibly joking, but highly suspicious).\n    *   Mitchell: Confused claim about swapping.\n\n    *   If Paul and Mitchell are both Werewolves, they are trying to confuse the others.\n    *   If Paul is the Werewolf, he's bluffing as the Troublemaker.\n    *   If Mitchell is the Werewolf, he's bluffing as the Troublemaker.\n    *   Since Paul's claims were inconsistent (Insomniac then Troublemaker) and he explicitly mentioned \"we're both Werewolves\", he is the most likely candidate.\n    *   However, Mitchell is also acting very suspiciously and claiming to have swapped people without knowing who.\n\n    *   Justin (Seer) says he saw a Werewolf in the center. If there are 2 Werewolves in the game, one is in the center and one is a player.\n    *   If Paul and Mitchell are both claiming to be the Troublemaker, one is lying.\n    *   Paul's slip (line 74) is the most damning piece of evidence, even if it was meant as a joke.\n    *   Mitchell's confusion (line 86) also makes him look like a Werewolf who doesn't know how to bluff the Troublemaker role.\n\n    *   Paul: Claimed Insomniac, then Troublemaker. Said \"we're both Werewolves\".\n    *   Mitchell: Claimed to swap people, but was confused.\n    *   Justin: Claimed Seer.\n    *   Mike: No claim.\n\n    *   Between Paul and Mitchell, Paul's inconsistency and the \"we're both Werewolves\" comment make him a stronger target. But Mitchell's confusion is also a classic Werewolf tell.\n    *   Let's re-read line 74: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\"\n    *   And line 75: Mitchell: \"Yeah.\"\n    *   This looks like a coordinated (though poorly hidden) effort or a very weird joke.\n    *   If I have to pick one, Paul's shift from Insomniac to Troublemaker is a clear lie.\n\n    *   Justin: Seer (likely)\n    *   Mike: ?\n    *   Paul: Werewolf (bluffing Troublemaker/Insomniac)\n    *   Mitchell: Werewolf (bluffing Troublemaker)\n    *   Wait, if Justin saw a Werewolf in the center, there's only one Werewolf left. So only one of Paul or Mitchell can be the Werewolf.\n    *   If Paul is the Werewolf, Mitchell might be the Minion (who also wins with the Werewolves).\n    *   The prompt asks for \"the player you believe is a Werewolf\".\n    *   Paul's behavior is more erratic.\n\n    *   Paul claimed Insomniac, then changed to Troublemaker.\n    *   Paul claimed \"we're both Werewolves\".\n    *   Mitchell also claimed to be the Troublemaker but was confused.\n    *   Justin's Seer claim is consistent.\n    *   Given the options, Paul is the most suspicious due to the role change and the explicit (even if joking) admission.\n\n    *   Wait, looking at the transcript again.\n    *   Line 74: Paul: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\"\n    *   Line 75: Mitchell: \"Yeah.\"\n    *   This is almost certainly a joke or a very bold bluff, but in the context of the game, it's the strongest indicator of alignment.\n    *   Also, Paul's role swap (Insomniac -> Troublemaker) is a huge red flag.\n\n    *   Justification: Paul is highly suspicious because he inconsistently claimed to be both the Insomniac and the Troublemaker. Furthermore, he explicitly stated that he and Mitchell were Werewolves, which, even if intended as a joke, strongly suggests his alignment. Mitchell also acted suspiciously, but Paul's contradictions are more evident.\n    *   Chosen vote: Paul.",
+  "parsed_output": {
+    "justification": "Paul is the most suspicious player because he provided inconsistent claims about his role, first claiming to be the Insomniac and then immediately changing his claim to the Troublemaker. Additionally, Paul explicitly stated, 'they don't know that we're both Werewolves,' which is a strong indicator of his alignment, even if intended as a joke. While Mitchell also behaved suspiciously, Paul's contradictions and admission make him the primary suspect.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul is the most suspicious player because he provided inconsistent claims about his role, first claiming to be the Insomniac and then immediately changing his claim to the Troublemaker. Additionally, Paul explicitly stated, 'they don't know that we're both Werewolves,' which is a strong indicator of his alignment, even if intended as a joke. While Mitchell also behaved suspiciously, Paul's contradictions and admission make him the primary suspect.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul is the most suspicious player because he provided inconsistent claims about his role, first claiming to be the Insomniac and then immediately changing his claim to the Troublemaker. Additionally, Paul explicitly stated, 'they don't know that we're both Werewolves,' which is a strong indicator of his alignment, even if intended as a joke. While Mitchell also behaved suspiciously, Paul's contradictions and admission make him the primary suspect.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul is the most suspicious player because he provided inconsistent claims about his role, first claiming to be the Insomniac and then immediately changing his claim to the Troublemaker. Additionally, Paul explicitly stated, 'they don't know that we're both Werewolves,' which is a strong indicator of his alignment, even if intended as a joke. While Mitchell also behaved suspiciously, Paul's contradictions and admission make him the primary suspect."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3338,
+    "output_token_count": 1715,
+    "generation_time_sec": 175.02619099617004,
+    "used_chat_template": true,
+    "input_char_count": 11949,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

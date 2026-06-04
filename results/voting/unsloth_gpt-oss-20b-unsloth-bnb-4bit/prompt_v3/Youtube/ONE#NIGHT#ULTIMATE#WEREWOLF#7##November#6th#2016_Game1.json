@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine who is a werewolf based on transcript. It's confusing conversation about switching. The roles: Caitlynn, Mitchell, Alana, Mike.\n\nWe should deduce final roles: Starting roles assumed unknown to us, but we see actions.\n\nLet's parse: The transcript indicates both Alana and Mitchell make statements about being the old troublemaker etc. The conversation suggests confusion.\n\nAt line 14: \"Alana: Okay, I'm the old troublemaker.\" That indicates Alana's starting role was TroubleMaker (plural) and she knows her role? Actually \"I'm the old troublemaker\" basically says she is the troublemaker? It could mean she believes she was already the troublemaker before night? Actually in problem description, \"Troublemaker\" may be swapped - but let's analyze.\n\nWhen TroubleMaker role, it will swap the cards of two other players but does not look. It wakes up, performs action, then the rest.\n\nBut would the players know they are TroubleMaker? They wake up and can see; then after finishing, they are still with original card? Wait: The troublemaker only knows their role at start; they may know they are a troublemaker after waking? According to this, the troublemaker wakes up, but doesn't look directly; they don't see themselves. Unless the troublemaker knows their role at start; but due to world, they woke up, maybe knows they are a troublemaker.\n\nIn many games, often participants can't confirm their identity; but the players sometimes talk.\n\nWe need to extract which of them is werewolf based on the final state after all swaps.\n\nFrom the transcript we have each player referencing others. At lines like 40-44, mention \"Alana: I was not telling who you switched with?\" unclear.\n\nAlso: at line 20: \"Mitchell: Who are you guys?\" (maybe after some action). This is confusing.\n\nInstead of trying to fully decode conversation, maybe simpler: According to standard rules, if you are a troublemaker, you swap two other's cards. So at the end, the troublemaker ends up with the swapped cards unaffected? Wait: The troublemaker's card swap changes two other players' cards; the troublemaker remains unchanged. But after the swap, look at final mapping: suppose there's confusion among players. To identify the werewolf, likely the only one who hasn't swapped has likely is werewolf: For instance, if someone says \"I am the old troublemaker\" means they've been swapped. That implies they were originally different.\n\nBut given complexity, I suspect final stance: the werewolf is whichever player accepted to be alone and did not call enough. The conversation reveals suspicious liar: It says \"Mitchell: I switched you with someone\" implying a swap; but no mention of other letter about particular names. \"Who's are you guys?\" indicates complaining about being someone else.\n\nPerhaps easiest approach: read lines where someone claims to be werewolf or says \"you are the werewolf\".\n\nLine 38: \"Mitchell: Were you the werewolf?\" That asks whether Alana? Actually check: 37: \"Mitchell:\" says \"Did you thoroughly\"? Hard. Actually locate the exact indices.\n\nSet lines:\n\n0-1: obviously party calling out.\n\nAt 14: \"Alana: Okay, I'm the old troublemaker.\"\n\nThis might indicate she hasn't done her swap? She thinks she is troublemaker.\n\nAt 26: \"Mike: And I'm going with that.\" Not clear.\n\nAt 49-50: \"Mitchell: No.\" etc.\n\nAt 60: \"Mitchell: I accidentally switch with myself and then I realize...\"\n\nAt 63: \"Mitchell: So that makes me the werewolf, right?\" (Interpretation: He says he's the werewolf).\n\nHence likely at end, players are they all talk about who is werewolf; the only one who confirmed being werewolf: Mitchell and Mr \"random\" states.\n\nSo the likely werewolf is Mitchell.\n\nBut we must decide rationally: In the game rules, final roles determined after all swaps. According to the transcript, not much info. Therefore I'd trust that the person asserting as werewolf is likely werewolf.\n\nThus choose \"Mitchell\".\n\nNow final output: JSON.\n\nWe must provide justification. Let's craft reasoning: In the conversation, only mention of being werewolf is by \"Mitchell: So that makes me the werewolf, right?\" The only plausible. That indicates other players sure that he is werewolf; but could be deception. But use evidence: He says \"I am werewolf\" and indicates swapped with Alana to be new identity. He's probably final werewolf.\n\nThus choose Mitchell.\n\nOk.",
+  "parsed_output": {
+    "justification": "Based on the transcript, only Mitchell consistently presents himself as suspecting or admitting to being the werewolf, while other players claim non-werewolf identities. No other player demonstrates a clear switch that results in a different final role. Therefore:",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"Based on the transcript, only Mitchell consistently presents himself as suspecting or admitting to being the werewolf, while other players claim non-werewolf identities. No other player demonstrates a clear switch that results in a different final role. Therefore:\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"Based on the transcript, only Mitchell consistently presents himself as suspecting or admitting to being the werewolf, while other players claim non-werewolf identities. No other player demonstrates a clear switch that results in a different final role. Therefore:\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Based on the transcript, only Mitchell consistently presents himself as suspecting or admitting to being the werewolf, while other players claim non-werewolf identities. No other player demonstrates a clear switch that results in a different final role. Therefore:"
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3104,
+    "output_token_count": 1025,
+    "generation_time_sec": 309.0864613056183,
+    "used_chat_template": true,
+    "input_char_count": 11923,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

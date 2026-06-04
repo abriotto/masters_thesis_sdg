@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Alana: Claims she was the Robber, but is no longer the Robber (T14).\n    *   Mitchell: Claims he was the Troublemaker (T16).\n    *   Alana: Claims she is the \"old Troublemaker\" (T17) - wait, she says \"I am the old troublemaker\" right after Mitchell says he was. This is confusing. Let's re-read.\n    *   T16: Mitchell: \"I was the old troublemaker.\"\n    *   T17: Alana: \"Yeah, I am the old troublemaker.\" (This is likely a slip of the tongue or a mistake in the transcript, or she's agreeing she was the one swapped).\n    *   T18: Mitchell: \"You stole from me?\"\n    *   T19: Alana: \"I may or may not have.\" (Confirming she robbed Mitchell).\n    *   T35: Mitchell: \"I switched you with someone.\" (Troublemaker action).\n    *   T39: Caitlynn: \"I was [the werewolf], yeah.\" (Caitlynn claims she started as the Werewolf).\n    *   T60: Mitchell: \"I'll just reveal I switched with you Alana.\" (Mitchell claims he swapped Alana and Caitlynn).\n    *   T62: Mitchell: \"So that makes me the werewolf, right?\" (Wait, if he swapped Alana and Caitlynn, and Caitlynn was the werewolf, then Alana is now the werewolf).\n    *   T72: Alana: \"So that makes me the werewolf right?\" (Alana agrees).\n    *   T90: Alana: \"Well no, because I switched with him originally.\" (Referring to robbing Mitchell).\n    *   T92: Mitchell: \"Oh yeah that's right. So then she would be a werewolf.\" (Wait, this is getting convoluted).\n\n    *   *Starting Roles (claimed):*\n        *   Caitlynn: Werewolf\n        *   Mitchell: Troublemaker\n        *   Alana: Robber\n        *   Mike: (Claims Villager/Safe)\n\n    *   *Night Actions (claimed):*\n        1.  Alana (Robber) robbed Mitchell (Troublemaker).\n            *   Alana becomes Troublemaker.\n            *   Mitchell becomes Robber.\n        2.  Mitchell (now Robber, but acting as Troublemaker? No, Troublemaker acts based on *starting* role).\n            *   Mitchell (Starting Troublemaker) swaps Alana and Caitlynn.\n            *   Alana (who was Troublemaker) is swapped with Caitlynn (who was Werewolf).\n            *   Alana becomes Werewolf.\n            *   Caitlynn becomes Troublemaker.\n\n    *   *Final Roles (based on claims):*\n        *   Alana: Werewolf\n        *   Caitlynn: Troublemaker\n        *   Mitchell: Robber\n        *   Mike: Villager\n\n    *   Caitlynn admits she was the werewolf (T39, T42).\n    *   Mitchell admits he was the troublemaker (T16).\n    *   Alana admits she was the robber (T14).\n    *   Mitchell says he swapped Alana and Caitlynn (T60).\n    *   If Alana was the Robber and robbed Mitchell (Troublemaker), Alana became the Troublemaker.\n    *   Then Mitchell (starting Troublemaker) swapped Alana (now Troublemaker) and Caitlynn (Werewolf).\n    *   Result: Alana is now the Werewolf.\n\n    *   Is anyone lying?\n    *   Caitlynn is very open about being the werewolf.\n    *   Alana is very open about being the werewolf at the end.\n    *   Mitchell is explaining the logic.\n    *   Mike is mostly observing.\n    *   Could Alana be the Tanner? She says \"murder death me\" (T65), which is a classic Tanner tell. However, the logic provided by the players points to her being the Werewolf.\n    *   Wait, let's re-examine T62: Mitchell says \"So that makes me the werewolf, right?\" This is weird. If he swapped Alana and Caitlynn, he isn't the werewolf. He might be confused or bluffing.\n    *   T72: Alana says \"So that makes me the werewolf right?\"\n    *   T93: Alana says \"logically it's me.\"\n\n    *   If Alana is the Werewolf, the Village wins by voting her.\n    *   If Alana is the Tanner, the Tanner wins by voting her.\n    *   If Alana is a Villager and someone else is the Werewolf, the Werewolves win.\n\n    *   Caitlynn: Started Werewolf. Swapped by Troublemaker (Mitchell) with Alana.\n    *   Alana: Started Robber. Robbed Mitchell (Troublemaker). Became Troublemaker. Then swapped by Mitchell (Troublemaker) with Caitlynn (Werewolf). Became Werewolf.\n    *   Mitchell: Started Troublemaker. Robbed by Alana. Became Robber.\n    *   Mike: Villager.\n\n    *   Final roles: Alana (Werewolf), Caitlynn (Troublemaker), Mitchell (Robber), Mike (Villager).\n\n    *   Alana is the most likely candidate for the Werewolf based on the claims and the sequence of events described. Even if she's trying to act like a Tanner (\"murder death me\"), the logic of the swaps leads to her.\n\n    *   Caitlynn: \"I was [the werewolf]\" (T39).\n    *   Mitchell: \"I switched [Caitlynn] with [Alana]\" (T60).\n    *   Alana: \"So that makes me the werewolf right?\" (T72).\n    *   Conclusion: Alana is the Werewolf.",
+  "parsed_output": {
+    "justification": "Caitlynn admitted to starting as the Werewolf. Mitchell claimed to be the Troublemaker and stated that he swapped Caitlynn with Alana. Alana claimed to be the Robber and that she robbed Mitchell, meaning she took the Troublemaker role before being swapped by Mitchell into the Werewolf role. Consequently, Alana is the player who ended the night as the Werewolf.",
+    "chosen_vote": "Alana"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn admitted to starting as the Werewolf. Mitchell claimed to be the Troublemaker and stated that he swapped Caitlynn with Alana. Alana claimed to be the Robber and that she robbed Mitchell, meaning she took the Troublemaker role before being swapped by Mitchell into the Werewolf role. Consequently, Alana is the player who ended the night as the Werewolf.\",\n  \"chosen_vote\": \"Alana\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn admitted to starting as the Werewolf. Mitchell claimed to be the Troublemaker and stated that he swapped Caitlynn with Alana. Alana claimed to be the Robber and that she robbed Mitchell, meaning she took the Troublemaker role before being swapped by Mitchell into the Werewolf role. Consequently, Alana is the player who ended the night as the Werewolf.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alana",
+    "justification": "Caitlynn admitted to starting as the Werewolf. Mitchell claimed to be the Troublemaker and stated that he swapped Caitlynn with Alana. Alana claimed to be the Robber and that she robbed Mitchell, meaning she took the Troublemaker role before being swapped by Mitchell into the Werewolf role. Consequently, Alana is the player who ended the night as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3336,
+    "output_token_count": 1490,
+    "generation_time_sec": 150.80447149276733,
+    "used_chat_template": true,
+    "input_char_count": 11622,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

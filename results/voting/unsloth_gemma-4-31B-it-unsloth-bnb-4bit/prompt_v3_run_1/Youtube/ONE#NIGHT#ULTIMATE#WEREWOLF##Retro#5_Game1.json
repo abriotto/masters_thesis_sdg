@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   Night Action Order: Doppelganger -> Werewolves -> Minion -> Masons -> Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n\n    *   Mitchell: Claims to be the Seer and saw two werewolves (or is a werewolf and saw a seer). This is a very strange claim. If he's the Seer, he can only look at *one* other player's card or *two* center cards. He cannot see \"two werewolves\" unless he looked at the center and saw two werewolf cards, or he's lying.\n    *   Justin: Claims to be the Troublemaker and says he switched Paul and Mitchell.\n    *   Paul: Claims he wasn't a werewolf at the start. Says he has a \"pretty good idea\" of what his card is now.\n\n    *   Mitchell's claim: \"I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer one or the other.\"\n        *   If Mitchell is the Seer: He could have looked at the center and seen two werewolf cards.\n        *   If Mitchell is a Werewolf: He could have seen the Seer (though Werewolves don't \"see\" the Seer, they see other Werewolves). Wait, the rules say \"Werewolves may identify their teammates.\" They don't identify the Seer.\n    *   Justin's claim: \"I might be [the Troublemaker]... I switched you [Paul and Mitchell].\"\n    *   Paul's claim: \"I wasn't a werewolf [at the start].\"\n\n    *   If Justin is the Troublemaker and switched Paul and Mitchell:\n        *   If Paul was a Werewolf and Mitchell was a Villager, now Mitchell is the Werewolf and Paul is the Villager.\n        *   If Mitchell was a Werewolf and Paul was a Villager, now Paul is the Werewolf and Mitchell is the Villager.\n    *   Mitchell's behavior: He is trying very hard to convince the others not to vote for anyone (\"vote to the left\", \"no one dies\"). This is typical behavior for a Werewolf or a Minion trying to survive.\n    *   Wait, Mitchell's claim \"I saw two werewolves\" is highly suspicious. If he looked at the center and saw two werewolves, then no one in the game is a werewolf (since there are only 3 players and 3 center cards, and the total number of roles is players + 3 = 6). If there are 2 werewolves in the center, there's only 1 werewolf card left in the total pool. If he saw 2 werewolves in the center, then at most 1 person is a werewolf.\n    *   Actually, if Mitchell is the Seer and saw two werewolves in the center, then there is only one werewolf card left among the players.\n    *   But Mitchell's phrasing \"I saw two werewolves\" is ambiguous. Did he see them in the center or among the players? He can't see two players' cards.\n\n    *   Justin claims he switched Paul and Mitchell.\n    *   Mitchell says \"Don't vote for Paul.\"\n    *   If Justin actually switched them, and Mitchell is trying to protect Paul, it suggests that *before* the switch, Paul was the \"safe\" one and Mitchell was the \"dangerous\" one, or vice versa.\n    *   Wait, if Justin switched them, and Mitchell is now the Werewolf, he would want to protect himself. But he's protecting Paul. If Mitchell is the Werewolf (after the switch), he wants to avoid being voted out. If he's the Werewolf, he knows Paul is now a Villager.\n    *   If Paul was the Werewolf and Justin switched them, Mitchell is now the Werewolf. Mitchell would want to divert attention from himself.\n    *   Let's look at Mitchell's claim again: \"I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer\". This is a very clumsy lie. Werewolves don't \"see\" the Seer.\n\n    *   Mitchell's claim is logically inconsistent with the rules (Werewolves don't see Seers).\n    *   Mitchell is pushing for a \"no one dies\" outcome (\"vote to the left\"), which is the ideal outcome for a Werewolf.\n    *   Justin's claim of being the Troublemaker and switching Paul and Mitchell puts the focus on them.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out.\n\n    *   Could Mitchell be the Tanner? The Tanner wants to be voted out. Mitchell is doing the opposite.\n    *   Could Paul be the Werewolf? Paul is relatively quiet and doesn't make wild claims.\n    *   Could Justin be the Werewolf? He's claiming to be the Troublemaker to manipulate the game.\n\n    *   Mitchell's opening statement is a huge red flag. \"I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer\".\n    *   If he's the Seer, he saw two werewolves in the center.\n    *   If he's a Werewolf, he's lying about seeing a Seer.\n    *   His insistence that no one be voted out is very suspicious.\n\n    *   If Justin is the Troublemaker and switched Paul and Mitchell:\n        *   If Paul was Werewolf -> Mitchell is now Werewolf.\n        *   If Mitchell was Werewolf -> Paul is now Werewolf.\n    *   Mitchell says \"Don't vote for Paul.\"\n    *   If Mitchell is the Werewolf (after the switch), he wants to protect himself. Why protect Paul? Maybe to look like a good guy? Or maybe he's the Minion?\n    *   Wait, if Mitchell is the Werewolf, and he knows Justin switched him and Paul, he knows Paul is now a Villager. Protecting Paul doesn't help him unless it makes him look trustworthy.\n\n    *   Mitchell's claim is the most suspicious part of the transcript.\n    *   His attempt to coordinate a \"no one dies\" vote is a classic Werewolf strategy.\n    *   Justin's claim of switching them makes Mitchell's defense of Paul even more curious, but Mitchell's own words are the strongest evidence.\n\n    *   Wait, if Mitchell is the Seer and saw two werewolves in the center, then there is only one werewolf card left. If Justin switched Paul and Mitchell, and Paul was that werewolf, then Mitchell is now the werewolf.\n    *   But Mitchell's claim \"I'm a werewolf and I just saw a seer\" is impossible by the rules.\n\n    *   Mitchell's claim is nonsensical.\n    *   Mitchell's push for no one to die is suspicious.\n    *   Therefore, Mitchell is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell's opening claim is logically inconsistent with the game rules; he claims he might be a werewolf who 'saw a seer,' but werewolves only identify other werewolves. Furthermore, Mitchell strongly advocates for a voting strategy where no one dies ('vote to the left'), which is the ideal outcome for a Werewolf. While Justin claims to have switched Paul and Mitchell as the Troublemaker, Mitchell's erratic claims and attempt to avoid any elimination make him the most suspicious player.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell's opening claim is logically inconsistent with the game rules; he claims he might be a werewolf who 'saw a seer,' but werewolves only identify other werewolves. Furthermore, Mitchell strongly advocates for a voting strategy where no one dies ('vote to the left'), which is the ideal outcome for a Werewolf. While Justin claims to have switched Paul and Mitchell as the Troublemaker, Mitchell's erratic claims and attempt to avoid any elimination make him the most suspicious player.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell's opening claim is logically inconsistent with the game rules; he claims he might be a werewolf who 'saw a seer,' but werewolves only identify other werewolves. Furthermore, Mitchell strongly advocates for a voting strategy where no one dies ('vote to the left'), which is the ideal outcome for a Werewolf. While Justin claims to have switched Paul and Mitchell as the Troublemaker, Mitchell's erratic claims and attempt to avoid any elimination make him the most suspicious player.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell's opening claim is logically inconsistent with the game rules; he claims he might be a werewolf who 'saw a seer,' but werewolves only identify other werewolves. Furthermore, Mitchell strongly advocates for a voting strategy where no one dies ('vote to the left'), which is the ideal outcome for a Werewolf. While Justin claims to have switched Paul and Mitchell as the Troublemaker, Mitchell's erratic claims and attempt to avoid any elimination make him the most suspicious player."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3013,
+    "output_token_count": 1691,
+    "generation_time_sec": 168.40433192253113,
+    "used_chat_template": true,
+    "input_char_count": 11077,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

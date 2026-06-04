@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   James\n    *   Tyler\n\n    *   Doppelganger (Copycat)\n    *   Werewolf\n    *   Minion\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   Insomniac\n    *   Mason\n    *   Drunk\n    *   Hunter\n    *   Tanner\n    *   Villager\n\n    *   Mitchell claims Seer. He says he looked at a single card (Justin's).\n    *   Tyler claims Robber. He says he robbed Mitchell (taking the Seer card).\n    *   James claims Troublemaker. He says he switched Tyler and Mitchell.\n    *   Justin claims he was a Copycat (Doppelganger) who copied a card from the center.\n    *   Paul claims Minion.\n\n    *   Mitchell (Seer) -> Tyler (Robber) -> James (Troublemaker).\n    *   If Mitchell was Seer, Tyler robbed him and became Seer.\n    *   If James then switched Tyler and Mitchell, Mitchell is now the Seer again (or whatever Tyler was), and Tyler is now whatever Mitchell was (Seer).\n    *   Wait, let's re-read:\n        *   Mitchell: \"I looked at a single card.\" (Claiming Seer)\n        *   Tyler: \"I robbed Mitchell.\" (Claiming Robber)\n        *   James: \"I switched these two [Tyler and Mitchell].\" (Claiming Troublemaker)\n        *   If this sequence happened:\n            1. Mitchell starts as Seer.\n            2. Tyler (Robber) takes Mitchell's Seer card. Tyler is now Seer. Mitchell is now Robber.\n            3. James (Troublemaker) swaps Tyler and Mitchell. Tyler is now Robber. Mitchell is now Seer.\n            4. Result: Mitchell is Seer, Tyler is Robber.\n\n    *   Justin claims he is a Copycat who copied a card from the center.\n    *   Mitchell claims he saw Justin was a Copycat.\n    *   Paul claims he is the Minion. He says Tyler was a werewolf and Mitchell is now a werewolf (because James switched them).\n\n    *   Paul's claim: \"I was the minion... Tyler was one of the werewolves, and you [Mitchell] are now a werewolf [because James switched you].\"\n    *   If Paul is the Minion, he knows who the Werewolves are.\n    *   If Paul is the Minion and says Tyler was a Werewolf, and James (Troublemaker) swapped Tyler and Mitchell, then Mitchell is now the Werewolf.\n    *   However, Paul is very aggressively pushing for Mitchell to be voted out (\"We kill Mitchell\").\n    *   Wait, if Paul is the Minion, he wants the Werewolves to survive. If Mitchell is now the Werewolf, Paul would *not* want Mitchell to be voted out.\n    *   Let's re-examine Paul's logic: \"Tyler was one of the werewolves, and you [Mitchell] are now a werewolf... we kill Mitchell.\"\n    *   This is contradictory. If Paul is the Minion and Mitchell is the Werewolf, Paul should protect Mitchell.\n    *   Unless Paul is lying about being the Minion to frame Mitchell.\n\n    *   Justin: Claims Copycat (center card).\n    *   Mitchell: Claims Seer.\n    *   Tyler: Claims Robber.\n    *   James: Claims Troublemaker.\n    *   Paul: Claims Minion.\n\n    *   If Mitchell, Tyler, and James are telling the truth about their roles (Seer, Robber, Troublemaker), they are all Village-aligned.\n    *   If Justin is Copycat (center card), he could be anything.\n    *   If Paul is Minion, he is Team Werewolf.\n    *   If Paul is the Minion, who is the Werewolf?\n    *   Paul says Tyler was the Werewolf. If James swapped Tyler and Mitchell, Mitchell is now the Werewolf.\n    *   But Paul is pushing to kill Mitchell. This means Paul is either:\n        a) Not the Minion.\n        b) The Minion, but lying about who the Werewolf is to get a Village member killed (though the goal is to save the Werewolf).\n        c) The Tanner, trying to get himself voted out (but he's pushing for Mitchell).\n        d) The Werewolf himself.\n\n    *   Paul's behavior is very erratic. He claims to be the Minion, then immediately says \"we kill Mitchell\" (who he just claimed is the Werewolf).\n    *   If Paul is the Werewolf, he would want to divert suspicion. Claiming to be the Minion is a common bluff.\n    *   Let's look at the claims again.\n        *   Mitchell (Seer)\n        *   Tyler (Robber)\n        *   James (Troublemaker)\n        *   Justin (Copycat)\n        *   Paul (Minion/Werewolf)\n\n    *   If Mitchell, Tyler, and James are honest, they form a consistent chain of events.\n    *   Justin's claim as Copycat is supported by Mitchell.\n    *   Paul is the only one whose story is internally inconsistent (claiming to be Minion but wanting to kill the person he identifies as the Werewolf).\n\n    *   If Paul is the Werewolf, he's bluffing as the Minion.\n    *   If Paul is the Minion, he's bluffing about Mitchell being the Werewolf to confuse the group.\n    *   Either way, Paul is the most suspicious player.\n\n    *   Paul claims to be the Minion.\n    *   Paul claims Mitchell is the Werewolf (via the swap).\n    *   Paul insists on voting for Mitchell.\n    *   If Paul were actually the Minion, he would want to save the Werewolf (Mitchell).\n    *   Therefore, Paul is likely the Werewolf bluffing as the Minion.\n\n    *   Justin: Copycat (center) - Likely Village or neutral.\n    *   Mitchell: Seer - Likely Village.\n    *   Tyler: Robber - Likely Village.\n    *   James: Troublemaker - Likely Village.\n    *   Paul: Claims Minion, but acts against the Minion's interest. Likely Werewolf.\n\n    *   Wait, Paul says: \"Tyler was one of the werewolves, and you [Mitchell] are now a werewolf... we kill Mitchell.\"\n    *   If Paul is the Werewolf, he's trying to frame Mitchell.\n    *   If Paul is the Minion, he's trying to frame Mitchell.\n    *   If Paul is the Tanner, he's just causing chaos.\n    *   But based on the roles claimed, Paul is the most likely candidate for Werewolf because everyone else's roles (Seer, Robber, Troublemaker, Copycat) are either claimed or verified by others in a consistent way.\n\n    *   Mitchell (Seer) -> Tyler (Robber) -> James (Troublemaker).\n    *   Mitchell says he saw Justin was Copycat.\n    *   Tyler says he robbed Mitchell (Seer).\n    *   James says he swapped Tyler and Mitchell.\n    *   This means Mitchell is Seer, Tyler is Robber.\n    *   Justin is Copycat.\n    *   Paul is the only one left. He claims Minion, but his logic for voting Mitchell is flawed if he's actually the Minion.\n\n    *   Paul is the most suspicious. He claims a role (Minion) and then immediately uses that role's \"knowledge\" to target another player (Mitchell), while simultaneously forgetting that the Minion's goal is to *save* the Werewolf. This inconsistency strongly suggests he is the Werewolf bluffing.",
+  "parsed_output": {
+    "justification": "Paul claims to be the Minion and asserts that Mitchell is the Werewolf due to a card swap performed by James (the Troublemaker). However, Paul then aggressively pushes the group to vote out Mitchell. Since the Minion's goal is to ensure the Werewolf survives, Paul's behavior is contradictory to his claimed role, suggesting he is actually the Werewolf bluffing as the Minion to frame Mitchell.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claims to be the Minion and asserts that Mitchell is the Werewolf due to a card swap performed by James (the Troublemaker). However, Paul then aggressively pushes the group to vote out Mitchell. Since the Minion's goal is to ensure the Werewolf survives, Paul's behavior is contradictory to his claimed role, suggesting he is actually the Werewolf bluffing as the Minion to frame Mitchell.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claims to be the Minion and asserts that Mitchell is the Werewolf due to a card swap performed by James (the Troublemaker). However, Paul then aggressively pushes the group to vote out Mitchell. Since the Minion's goal is to ensure the Werewolf survives, Paul's behavior is contradictory to his claimed role, suggesting he is actually the Werewolf bluffing as the Minion to frame Mitchell.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul claims to be the Minion and asserts that Mitchell is the Werewolf due to a card swap performed by James (the Troublemaker). However, Paul then aggressively pushes the group to vote out Mitchell. Since the Minion's goal is to ensure the Werewolf survives, Paul's behavior is contradictory to his claimed role, suggesting he is actually the Werewolf bluffing as the Minion to frame Mitchell."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3988,
+    "output_token_count": 1858,
+    "generation_time_sec": 190.6979432106018,
+    "used_chat_template": true,
+    "input_char_count": 13724,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

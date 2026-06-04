@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#10##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#10##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Matt: Claims Seer (saw Mike as Robber).\n    *   Mitchell: Claims Troublemaker (switched Mike and Alana).\n    *   Alana: Claims Insomniac.\n    *   Mike: Claims Robber (robbed Alana).\n\n    *   Matt (Seer) -> Mike (Robber).\n    *   Mike (Robber) -> Robbed Alana.\n    *   Mitchell (Troublemaker) -> Switched Mike and Alana.\n    *   Alana (Insomniac) -> Confirmed her role.\n\n    *   If Matt is Seer, he saw Mike as Robber.\n    *   If Mike is Robber, he robbed Alana.\n    *   If Mitchell is Troublemaker, he swapped Mike and Alana.\n    *   If Alana is Insomniac, she checked her card at the end of the night.\n\n    *Wait, let's check the timeline:*\n    1. Seer (Matt) looks at Mike (Robber).\n    2. Robber (Mike) swaps with Alana (Insomniac).\n    3. Troublemaker (Mitchell) swaps Mike and Alana.\n    4. Insomniac (Alana) looks at her card.\n\n    *Tracing the cards:*\n    - Start: Matt(S), Mike(R), Alana(I), Mitchell(T).\n    - Seer (Matt) sees Mike as Robber. (Correct)\n    - Robber (Mike) swaps with Alana. Mike is now Insomniac, Alana is now Robber.\n    - Troublemaker (Mitchell) swaps Mike and Alana. Mike is now Robber, Alana is now Insomniac.\n    - Insomniac (Alana) looks at her card. She sees Insomniac. (Correct)\n\n    *Result:* All claims are consistent with each other. If these roles are true, there are no werewolves among them.\n\n    *   If everyone is telling the truth, there are no werewolves among the players.\n    *   However, someone must be lying if there is a werewolf.\n    *   Mitchell is the one being targeted. Why?\n    *   Matt, Mike, and Alana's stories interlock perfectly. Mitchell's claim as Troublemaker is the only one that doesn't *necessarily* have to be true for the others to be true (though it fits).\n    *   Wait, if Mitchell is a Werewolf, he would claim a role that doesn't conflict with the others to avoid suspicion. Claiming Troublemaker allows him to \"explain\" why things might be confusing.\n    *   Looking at the transcript: Mitchell is very eager to be voted out (\"Just kill me\", \"Take me out of my misery\"). This is classic Tanner behavior.\n    *   But the prompt asks for the *Werewolf*.\n    *   If Mitchell is the Tanner, then who is the Werewolf?\n    *   If Mitchell is the Werewolf, he might be pretending to be the Tanner to confuse them, or he's just given up.\n    *   Let's re-examine the claims.\n    *   Matt: Seer.\n    *   Mike: Robber.\n    *   Alana: Insomniac.\n    *   Mitchell: Troublemaker.\n    *   If these four roles are present, there are no werewolves among the players (since there are only 4 players and these are all village roles).\n    *   But the game rules say there are \"players plus 3\" candidate roles. With 4 players, there are 7 candidate roles.\n    *   If the roles were Seer, Robber, Insomniac, Troublemaker, then the remaining 3 cards in the center would be the others.\n    *   Is it possible Mitchell is the Werewolf? If he is the Werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out. But he's *asking* to be voted out. This is very suspicious for a Werewolf.\n    *   Wait, if Mitchell is the Tanner, he wins if he's voted out.\n    *   If Mitchell is the Werewolf, he loses if he's voted out.\n    *   Why would a Werewolf ask to be killed? They wouldn't.\n    *   Why would a Tanner ask to be killed? They would.\n    *   So Mitchell is likely the Tanner.\n    *   If Mitchell is the Tanner, who is the Werewolf?\n    *   Let's look at the other players.\n    *   Matt, Mike, and Alana all confirmed each other.\n    *   If one of them is the Werewolf, they are lying.\n    *   If Matt is the Werewolf, he's lying about being the Seer.\n    *   If Mike is the Werewolf, he's lying about being the Robber.\n    *   If Alana is the Werewolf, she's lying about being the Insomniac.\n    *   But they all support each other's stories. This suggests a pact or that they are actually those roles.\n    *   Wait, if Mitchell is the only one not \"confirmed\" by another player's action (Matt saw Mike, Mike robbed Alana, Alana is Insomniac), then Mitchell is the odd one out.\n    *   The group decides to vote for Mitchell.\n    *   The prompt asks me to vote for the player I believe is a Werewolf.\n    *   If Mitchell is the Tanner, and the others are Village, then there might be no Werewolf among the players (all Werewolf cards in the center).\n    *   However, usually in these logic puzzles, one of the players is the target.\n    *   Let's re-read: \"If we kill a villager... we don't [win]\". \"If he's actually a werewolf... then he wins [if he survives]\".\n    *   The players conclude that Mitchell is the most likely candidate because he's the only one whose story isn't corroborated by someone else's role ability.\n    *   Matt (Seer) confirms Mike (Robber).\n    *   Mike (Robber) confirms Alana (Insomniac/Robbed).\n    *   Alana (Insomniac) confirms her own role.\n    *   Mitchell (Troublemaker) claims to have swapped Mike and Alana, but no one can verify this.\n    *   Therefore, Mitchell is the most suspicious. Even if he's acting like a Tanner, in the absence of other evidence, he's the only one who could be the Werewolf.\n\n    *   Matt: Seer (Village)\n    *   Mike: Robber (Village)\n    *   Alana: Insomniac (Village)\n    *   Mitchell: Troublemaker (Village) OR Werewolf OR Tanner.\n    *   Since the other three have a cohesive story, Mitchell is the only one who can be the Werewolf.\n\n    *   Wait, if Mitchell is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf, he wants to survive.\n    *   Mitchell is actively asking to be voted out. This is highly indicative of the Tanner.\n    *   But if Mitchell is the Tanner, who is the Werewolf?\n    *   Could Matt, Mike, or Alana be the Werewolf?\n    *   If Matt is the Werewolf, he's lying about being the Seer. He's framing Mike as the Robber. Mike, not knowing he's being framed, might actually be the Robber or might be lying too.\n    *   This is getting complex. Let's look at the most likely scenario for a game like this.\n    *   The most \"suspicious\" player is the one whose claim is unverified. That's Mitchell.\n    *   The players in the game have already decided to vote for Mitchell.\n    *   The prompt asks me to vote for the player I believe is a Werewolf.\n    *   Given the evidence (or lack thereof), Mitchell is the only one who doesn't have a corroborating witness.\n\n    *   Matt claims Seer, saw Mike as Robber.\n    *   Mike claims Robber, robbed Alana.\n    *   Alana claims Insomniac.\n    *   Mitchell claims Troublemaker, swapped Mike and Alana.\n    *   If Mitchell is the Werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is the Tanner, he's lying about being the Troublemaker.\n    *   If Mitchell is a Villager, he's telling the truth.\n    *   In any case, Mitchell is the only one whose role is not verified by another player's claim.\n    *   The players are voting for Mitchell.\n\n    *   Is there any other possibility?\n    *   What if Mike is the Werewolf? He claims Robber. Matt (Seer) says he saw Mike as Robber. If Matt is the Werewolf, he's lying to protect Mike (Minion) or just to create a fake narrative. But Matt and Mike are different people.\n    *   If Matt is the Werewolf and Mike is the Minion, they could be working together.\n    *   But the simplest explanation is that Mitchell is the Werewolf (or Tanner) and the others are Village.\n    *   Between Werewolf and Tanner, the behavior \"please kill me\" is strongly Tanner.\n    *   However, if I must choose a Werewolf, and the other three are consistent, Mitchell is the only candidate left.\n\n    *   Justification: Matt, Mike, and Alana have claims that corroborate each other (Seer saw Robber, Robber robbed Insomniac). Mitchell's claim as Troublemaker is the only one that is not verified by any other player's action or observation. Although his eagerness to be voted out suggests he might be the Tanner, he is the only plausible candidate for the Werewolf among the group.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Matt, Mike, and Alana have claims that corroborate each other: Matt (Seer) identified Mike as the Robber, and Mike (Robber) confirmed he robbed Alana, who claimed to be the Insomniac. Mitchell's claim as the Troublemaker is the only one that is not verified by any other player's observation or action. While his eagerness to be voted out is characteristic of the Tanner, he is the only player whose story is not corroborated, making him the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Matt, Mike, and Alana have claims that corroborate each other: Matt (Seer) identified Mike as the Robber, and Mike (Robber) confirmed he robbed Alana, who claimed to be the Insomniac. Mitchell's claim as the Troublemaker is the only one that is not verified by any other player's observation or action. While his eagerness to be voted out is characteristic of the Tanner, he is the only player whose story is not corroborated, making him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Matt, Mike, and Alana have claims that corroborate each other: Matt (Seer) identified Mike as the Robber, and Mike (Robber) confirmed he robbed Alana, who claimed to be the Insomniac. Mitchell's claim as the Troublemaker is the only one that is not verified by any other player's observation or action. While his eagerness to be voted out is characteristic of the Tanner, he is the only player whose story is not corroborated, making him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Matt, Mike, and Alana have claims that corroborate each other: Matt (Seer) identified Mike as the Robber, and Mike (Robber) confirmed he robbed Alana, who claimed to be the Insomniac. Mitchell's claim as the Troublemaker is the only one that is not verified by any other player's observation or action. While his eagerness to be voted out is characteristic of the Tanner, he is the only player whose story is not corroborated, making him the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3308,
+    "output_token_count": 2363,
+    "generation_time_sec": 237.16280674934387,
+    "used_chat_template": true,
+    "input_char_count": 11327,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

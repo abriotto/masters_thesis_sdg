@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#1##July#5th#2016_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Julie",
+    "Alban",
+    "James",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to figure out from transcript which player is likely a Werewolf. The transcript is chaotic, many disjointed statements. There's limited clarity. The roles: Justin, Julie, Alban, James, Mitchell, Mike. We must choose one as likely werewolf, based on story stuff. Observing that many accuse Mike; but that might be a bluff or not. There is mention \"I am the Reveal\" etc. Players mention \"I swapped with the [center]\" etc. Also mention that Justin is the Drunk, etc. The challenge: we need to determine most probable Werewolf given the context.\n\nLet's examine the roles.\n\nKey info from transcript:\n\n- Justin: says \"I was the Drunk. I switched with someone in the center.\" He indicates him as a Drunk (starting role). Drunk can swap with center but doesn't know his new role. So his final role could be whatever was in center. So as per rule, if Justin was Drunk at start, he will swap with center card but not look. So his final role is unknown. He claims he was Drunk; maybe he's betraying his role and uses it to mislead. But we can't guarantee he's a werewolf.\n\n- Mitchell: says \"I was the Seer.\" Then discusses that he looked at the center etc. If Mitchell was Seer, he could look at someone's card or two center cards. Based on evidence, he might not look at center (he doesn't know?).\n\nThere's confusion, many people are discussing \"Revealer\" who can turn other card face up (revealed). When \"Revealer\" wakes up. But only two roles mention revelation: \"Revealer\" isn't standard; not listed so probably glitch. In the transcripts, the \"Revealer\" appears as an additional role. But is it possible they added? Possibly it's part of a variant.\n\nNo mention of any known direct evidence that someone is werewolf.\n\nBut we can analyze suspect patterns.\n\n- Mike appears to be accused by many that he might be werewolf: \"They suspect Mike\" dozens of ratings about Mike. Many are skeptical.\n\nWe can consider typical behavior: if someone tries to blame Mike and claim he's werewolf, that might indicate Mike may indeed be werewolf or just bluff. But which seems more plausible?\n\nCheck each conversation line about Mike.\n\nFrom transcript lines:\n\n- 51 On lines ~49-51: \"Justin: We have to kill Mike\" -> obviously accusing him.\n- 62: \"Mike: I'm still saying I'm the Revealer\"\n- 52 \"Mike: A little bit.\"\n\nThis suggests the group is busy accusing Mike. But do we have any evidence?\n\nThere are these lines where someone says \"I was the Denied.\n\nAnother notable: \"There was mention of Releaver as 'someone else'.\n\nCheck line 73 and 78: \"Mike train\".\n\nWait, let me see.\n\nAlso we have some conversation about whether someone was the \"Revealer.\" Example lines:\n\n59: \"It's true... you...\"\n\nBut weird.\n\nOk we might glean from major hints:\n\n- \"Justin says: 'I swapped with this one'.\" He didn't name target personally. He refers to \"this one in the center.\" This indicates he swapped with center card. So he started as Drunk, swapped with center, then looked at new card? But He might keep his original starting role as Drunk or be changed to new role. After swap, his final role also unknown.\n\n- The characters speak about \"We have to kill Mike.\" So many participants suspect. But need to evaluate evidence.\n\nWhich counterpart lines mention actions that provide clues about who is werewolves? Example: when a role Gains ability to look at card: Seer's start. There are lines: \"Justin: I had to ask him and that made me immediately trust in him as a person.\" It's confusing.\n\nAnother considered clue: The \"Revealer\" is used to reveal cards. For the time, the main action is everyone may detect whom they suspect. People agreement.\n\nThe game is being played in a variant with a \"Revealer\" role. That basically allows them to reveal a particular card on the table.\n\nIn the transcript, at the start, the system initially calls \"Revealer\" to wake up but is omitted in starting config. Could be that the 'Revealer' is not a standard but a custom addition.\n\nBut basically, the docking of \"Revealer\" might be key: Being aware of a card's type and ability.\n\nThus, we need to decide which one is likely werewolf: This should be based on the majority evidence and also knowledge that after \"revelation\", the players can see certain roles.\n\nThis is extremely ambiguous.\n\nLet's read through again carefully:\n\nLine numbers approximate:\n\n- [1] Traditional announcement. Then [2]-[3] conversation: Justin says \"I saw someone say, don't-\" etc. Justin complaining about chat.\n\n- [7] \"What did you see?\" followed by:\n\n- [11] Justin says \"I was the Drunk...\"\n\n- [14] Mitchell: \"I was the Seer.\" \n- [16]-[18] Conflicting conversation.\n\n- Lines [23] \"Alban: He's just a Drunk...\" unclear.\n\n- [28] Justin: \"So I am now a Revealer.\" He says that he became a Revealer. So we might note that? If he was Drunk, then his card changed to whatever is in the center. So he might now be \"Reveal\" role.\n\nTherefore Justin's final role might be \"Revealer\". But the \"Revealer\" only exists if there's weird; but if he swapped with center, maybe he ended up with Revealer.\n\n- Then [29] \"Mike: Unless James is lying.\" Not helpful.\n\n- Going ahead: Several lines revolve around accusations of Mike being the Werewolf. There's for example [32]-[34] \"Julie: Well, I got Insomniac again .\"\n\n- At line [44]-[46] \"Mitchell: I stole from you.\" Here I'm not entirely certain about what \"steal\" means.\n\n- At line [75]: \"Justin: No,\"\n\n- More lines show suspicion of Mike: \"If I had to it would be Mike.\" \"If he is the Werewolf, we might want him.\" Many lines: [124]-[130], etc.\n\nNow the question: Which Person is most likely werewolf?\n\nThe worst option might be Mikel, because maybe he was realized to have 'Revealer' ability? But maybe Justin being 'Drunk' and swapped with center might lead to him becoming a Werewolf. Let's test that theory: If Justin is Drunk and swapped with center, he ends up with whatever center card is. Suppose center has a Werewolf. Then Justin's final role would be Werewolf, making him werewolf. But we do not know what center contains.\n\nBut line [31] \"Justin: ... Mike's a Werewolf.\" But that might just be accusing.\n\nAlright. Let's evaluate also the other roles: others could also be werewolves.\n\n- Alicia.\n\nBut maybe it's simplest to pick Mike as one suspect. Use majority of people accusing him. He is frequent target.\n\nHowever, we need justification referencing transcribed statements.\n\nOk. Write a short explanation summarizing that many participants suspect Mike; the only possible scenario where Mike could be a werewolf is if his role is disguised as a Denier but he gets blame but not evidence.\n\nAlso consider that Mike says \"I still I would not be ready to go to vote right now but if I had to it would be Mike.\" That's a contradictory.\n\nHe may represent a tinker.\n\nLittle evidence for any other suspect.\n\nThus, answer: I suspect Mike is the werewolf.\n\nWe'll write justification that close to likely.\n\nWait we need to mention \"Jeff: This is text.\n\nLet's craft: \"After reading transcript, multiple players accuse Mike, multiple donors, no one else patterns; Since some think he might be the 'Revealer', but ultimately might be werewolf.\n\nTherefore vote Mike.\"\n\nAlright.",
+  "parsed_output": {
+    "justification": "The transcript shows a pattern of suspicion cast repeatedly toward Mike, with many participants labeling him as the likely werewolf.  While Justin's role changes (from Drunk to a possible Revealer) muddy the waters, the only role with a clear path to becoming an exploitable signal is Mike’s, because he frequently defends himself as a Revealer yet remains accused.  His repeated “maybe I’m the Werewolf” statements suggest he may indeed hold a werewolf card.  Given the lack of concrete evidence for other players, Mike remains the most plausible suspect.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows a pattern of suspicion cast repeatedly toward Mike, with many participants labeling him as the likely werewolf.  While Justin's role changes (from Drunk to a possible Revealer) muddy the waters, the only role with a clear path to becoming an exploitable signal is Mike’s, because he frequently defends himself as a Revealer yet remains accused.  His repeated “maybe I’m the Werewolf” statements suggest he may indeed hold a werewolf card.  Given the lack of concrete evidence for other players, Mike remains the most plausible suspect.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows a pattern of suspicion cast repeatedly toward Mike, with many participants labeling him as the likely werewolf.  While Justin's role changes (from Drunk to a possible Revealer) muddy the waters, the only role with a clear path to becoming an exploitable signal is Mike’s, because he frequently defends himself as a Revealer yet remains accused.  His repeated “maybe I’m the Werewolf” statements suggest he may indeed hold a werewolf card.  Given the lack of concrete evidence for other players, Mike remains the most plausible suspect.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript shows a pattern of suspicion cast repeatedly toward Mike, with many participants labeling him as the likely werewolf.  While Justin's role changes (from Drunk to a possible Revealer) muddy the waters, the only role with a clear path to becoming an exploitable signal is Mike’s, because he frequently defends himself as a Revealer yet remains accused.  His repeated “maybe I’m the Werewolf” statements suggest he may indeed hold a werewolf card.  Given the lack of concrete evidence for other players, Mike remains the most plausible suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3988,
+    "output_token_count": 1804,
+    "generation_time_sec": 547.5207748413086,
+    "used_chat_template": true,
+    "input_char_count": 15408,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

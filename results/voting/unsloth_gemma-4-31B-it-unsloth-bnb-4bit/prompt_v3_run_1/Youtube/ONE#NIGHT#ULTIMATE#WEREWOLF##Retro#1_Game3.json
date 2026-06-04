@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles involved (potential): Werewolf, Seer, Robber, Troublemaker, Villager, etc.\n\n    *   Alvin claims to be the Seer.\n    *   Alvin claims he looked at Justin's card and it was a Werewolf.\n    *   Justin claims to be a Villager.\n    *   James claims to be a Villager.\n    *   Mitchell claims to be a Villager (or at least doesn't claim a specific role, but agrees with Alvin).\n    *   James initially suggests there is no werewolf, then changes his mind to trust Alvin.\n    *   Mitchell eventually decides to trust Alvin.\n\n    *   Alvin (Seer) -> Justin (Werewolf).\n    *   If Alvin is telling the truth, Justin is the Werewolf.\n    *   If Alvin is lying, he could be the Werewolf (bluffing as Seer) or the Minion.\n    *   If Justin is the Werewolf, he would naturally deny it and claim to be a Villager.\n    *   If Justin is the Tanner, he would want to be voted out, but he's claiming to be a Villager.\n    *   Wait, did any swaps happen?\n        *   Robber: Justin mentions \"Robber\" during the night phase (though the transcript is a bit messy, it looks like he might be reacting to the announcer or trying to bluff). Actually, looking at the transcript:\n            [4] Announcer: Robber. Wake up.\n            [5] Justin: Robber.\n            [6] Announcer: You may exchange your card with another player's card.\n            [7] James: Robert.\n            [8] Justin: Robert.\n            [10] Justin: Wake up, Robert.\n            This part of the transcript is very confusing. It looks like the players are talking *during* the night phase or the transcript is capturing their reactions. However, the rules say players should have their eyes closed. If Justin is shouting \"Robber\" during the night, he's either the Robber or just being noisy.\n        *   Troublemaker: The announcer calls the Troublemaker. No one explicitly claims it during the day.\n\n    *   Alvin's claim is direct: \"I'm the seer and I looked at it [Justin's card] and he's a werewolf.\"\n    *   Justin's defense: \"I am a villager.\"\n    *   James and Mitchell both decide to trust Alvin.\n    *   If Alvin is the Werewolf, he's making a very aggressive play by claiming Seer and targeting Justin.\n    *   If Justin is the Werewolf, he's simply denying it.\n    *   In One Night Ultimate Werewolf, the Seer's information is usually the strongest lead unless a swap (Robber/Troublemaker) occurred.\n    *   Did a swap occur?\n        *   Justin's weird behavior during the Robber's turn ([5], [8], [10]) suggests he might have been the Robber. If Justin was the Robber and stole a card, he would know his new role. But he claims to be a Villager.\n        *   If Justin was the Robber and stole the Werewolf card, he is now the Werewolf.\n        *   If Alvin is the Seer and saw Justin as a Werewolf, and no Troublemaker swap happened to Justin, then Justin is the Werewolf.\n\n    *   Alvin: Claims Seer, identifies Justin as Werewolf.\n    *   Justin: Claims Villager.\n    *   James: Claims Villager.\n    *   Mitchell: Claims Villager.\n    *   The most likely candidate for Werewolf, based on the provided claims, is Justin. Even if Alvin is bluffing, the prompt asks me to vote based on the discussion. The consensus among the players (Alvin, James, Mitchell) is that Justin is the Werewolf.\n\n    *   Alvin claims Seer and identifies Justin as the Werewolf.\n    *   Justin denies it, claiming to be a Villager.\n    *   James and Mitchell both decide to trust Alvin's claim.\n    *   There is no evidence of a Troublemaker swap affecting Justin's role after the Seer's action (Seer wakes up at 5, Troublemaker at 7). Wait, the Seer wakes up *before* the Robber and Troublemaker.\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n    *   If Alvin (Seer) looked at Justin at step 5, and then the Robber (step 6) or Troublemaker (step 7) swapped Justin's card, Alvin's information would be outdated.\n    *   However, no one claimed to be the Robber or Troublemaker and swapped Justin's card.\n    *   Therefore, the most plausible conclusion from the public discussion is that Justin is the Werewolf.\n\n    *   Justification: Alvin claimed to be the Seer and stated he saw that Justin was a Werewolf. Justin denied this, claiming to be a Villager, but James and Mitchell both decided to trust Alvin's claim. With no other players claiming roles that would have swapped Justin's card after the Seer's action, Justin is the most likely Werewolf.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Alvin claimed to be the Seer and explicitly stated that he looked at Justin's card and saw it was a Werewolf. While Justin denied this and claimed to be a Villager, both James and Mitchell eventually decided to trust Alvin's claim. Since no other players claimed to be the Robber or Troublemaker and indicated they had swapped Justin's card after the Seer's action, the most likely candidate for the Werewolf is Justin.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alvin claimed to be the Seer and explicitly stated that he looked at Justin's card and saw it was a Werewolf. While Justin denied this and claimed to be a Villager, both James and Mitchell eventually decided to trust Alvin's claim. Since no other players claimed to be the Robber or Troublemaker and indicated they had swapped Justin's card after the Seer's action, the most likely candidate for the Werewolf is Justin.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alvin claimed to be the Seer and explicitly stated that he looked at Justin's card and saw it was a Werewolf. While Justin denied this and claimed to be a Villager, both James and Mitchell eventually decided to trust Alvin's claim. Since no other players claimed to be the Robber or Troublemaker and indicated they had swapped Justin's card after the Seer's action, the most likely candidate for the Werewolf is Justin.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alvin claimed to be the Seer and explicitly stated that he looked at Justin's card and saw it was a Werewolf. While Justin denied this and claimed to be a Villager, both James and Mitchell eventually decided to trust Alvin's claim. Since no other players claimed to be the Robber or Troublemaker and indicated they had swapped Justin's card after the Seer's action, the most likely candidate for the Werewolf is Justin."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3212,
+    "output_token_count": 1362,
+    "generation_time_sec": 135.7255985736847,
+    "used_chat_template": true,
+    "input_char_count": 11528,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

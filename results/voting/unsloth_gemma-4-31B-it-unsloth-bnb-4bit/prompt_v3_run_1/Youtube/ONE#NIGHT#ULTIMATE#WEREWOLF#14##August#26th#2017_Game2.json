@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin, Mitchell, Caitlynn, Mike.\n    *   Roles mentioned/claimed: Werewolf, Troublemaker, Revealer (not a standard role in the provided rules, but used in the transcript), Insomniac, Tanner, Seer.\n    *   *Wait*, the rules provided list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   The transcript mentions \"Revealer\". Looking at the transcript, the Announcer calls \"Revealer\" at [22]. This is a custom role not in the provided rules list, but the Announcer says \"You may turn any other player's card face up\" [24].\n\n    *   [3] Werewolves wake up.\n    *   [7] Werewolves may look at one center card.\n    *   [10] Troublemaker wakes up.\n    *   [12] Troublemaker exchanges cards of other players.\n    *   [16] Insomniac wakes up.\n    *   [18] Insomniac looks at their card.\n    *   [22] Revealer wakes up.\n    *   [24] Revealer turns another player's card face up.\n\n    *   Mitchell: Claims to have \"loads of information\" [35].\n    *   Justin: Claims to be a Werewolf [50, 125, 127].\n    *   Mike: Claims to be the Troublemaker [49, 120]. He says he switched Justin and Mitchell [75], then later says he didn't switch anybody [138].\n    *   Caitlynn: Doesn't make a strong claim, mostly questioning others.\n\n    *   Mitchell claims to have \"loads of information\" [35].\n    *   Justin and Caitlynn suspect Mitchell is the Revealer [44, 59, 60, 64, 70].\n    *   If Mitchell is the Revealer, he saw someone's card.\n    *   Mike claims he is the Troublemaker and switched Justin and Mitchell [75].\n    *   Mitchell says Mike is lying [77].\n    *   Justin claims he is a Werewolf [50, 125, 127].\n\n    *   If Justin is the Werewolf (starting role), and Mike (Troublemaker) switched Justin and Mitchell, then Mitchell becomes the Werewolf and Justin becomes whatever Mitchell was.\n    *   However, Justin keeps claiming he is the Werewolf. This could be a bluff (Tanner) or he could be the Werewolf and wasn't switched.\n    *   Mike's behavior is erratic: first claiming he switched Justin and Mitchell [75], then saying he didn't switch anyone [138]. This suggests Mike is lying.\n    *   If Mike is lying about being the Troublemaker, he might be the Werewolf.\n    *   Mitchell's \"loads of information\" is consistent with the Revealer role (seeing a card).\n    *   Justin's insistence on being the Werewolf is highly suspicious. In One Night Ultimate Werewolf, players rarely admit to being the Werewolf unless they are the Tanner or trying to confuse the group.\n\n    *   Justin: Claims to be Werewolf. (Could be Tanner or Werewolf).\n    *   Mike: Claims Troublemaker, then contradicts himself. (Could be Werewolf).\n    *   Mitchell: Claims lots of info. (Likely Revealer).\n    *   Caitlynn: Quiet.\n\n    *   If Justin is the Werewolf, he wants to avoid being voted out. Admitting it is counter-intuitive unless he's the Tanner.\n    *   If Mike is the Werewolf, he'd bluff as a role like Troublemaker to create confusion about who is who. His contradiction ([75] vs [138]) is a strong indicator of deception.\n    *   Let's look at the \"Revealer\" role. The Announcer says the Revealer turns a card face up. If Mitchell is the Revealer, he knows exactly who one person is.\n    *   Justin's claim \"I'm a werewolf\" [125, 127] is very bold. If he's the Tanner, he wins if he's voted out. If he's the Werewolf, he's essentially forfeiting.\n\n    *   Mike's contradiction: \"I switched you and Mitchell\" [75] -> \"I didn't switch anybody\" [138].\n    *   This is a classic tell of a liar in these games.\n    *   Justin's claim to be a werewolf is likely a Tanner play or a very strange bluff.\n    *   Mitchell seems to be acting as a source of truth/information.\n\n    *   Werewolf: Mike (bluffing as Troublemaker, contradicting himself).\n    *   Tanner: Justin (claiming to be Werewolf to get voted out).\n    *   Revealer: Mitchell (has information).\n    *   Caitlynn: Villager/Other.\n\n    *   Wait, if Justin is the Tanner, and Mike is the Werewolf, voting Justin would make the Tanner win. Voting Mike would make the Village win.\n    *   The task is to vote for the player I believe is a Werewolf.\n    *   Mike's lies about the Troublemaker role make him the most likely Werewolf. Justin's behavior is more consistent with a Tanner.\n\n    *   Justin: Claims Werewolf.\n    *   Mike: Claims Troublemaker, then denies switching.\n    *   Mitchell: Claims info.\n    *   Caitlynn: No claim.\n    *   If Mike is the Werewolf, he's lying about being the Troublemaker.\n    *   If Justin is the Werewolf, he's admitting it (unlikely).\n    *   If Mitchell is the Werewolf, he's pretending to have info.\n    *   Mike's contradiction is the most concrete evidence of deception.\n\n    *   Justin: \"I'm a werewolf\" [125, 127].\n    *   Mike: \"I switched you and Mitchell\" [75] ... \"I didn't switch anybody\" [138].\n    *   Mitchell: \"I have loads of information\" [35].\n    *   The contradiction in Mike's story is a strong signal. Justin's admission is likely a Tanner strategy.\n\n    *   Justin: Tanner (trying to get voted out).\n    *   Mike: Werewolf (lying about Troublemaker).\n    *   Mitchell: Revealer (has info).\n    *   Caitlynn: Villager.\n\n    *   Wait, let's re-read the transcript.\n    *   [75] Mike: \"I switched you and Mitchell.\"\n    *   [138] Mike: \"I didn't switch anybody.\"\n    *   This is a direct contradiction.\n    *   Justin's claim to be a werewolf is very suspicious, but in the context of the game, the Tanner often claims to be the Werewolf to bait votes.\n    *   Therefore, Mike is the most probable Werewolf.\n\n    *   Justification: Mike claimed to be the Troublemaker and stated he switched Justin and Mitchell, but later contradicted himself by saying he didn't switch anyone. Justin's repeated claims of being a Werewolf are characteristic of a Tanner attempting to be voted out. Mitchell's claim of having \"loads of information\" is consistent with the Revealer role. Thus, Mike's deceptive behavior makes him the most likely Werewolf.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "Mike claimed to be the Troublemaker and explicitly stated he switched Justin and Mitchell, but later contradicted himself by saying he didn't switch anybody. Justin's repeated and overt claims of being a Werewolf are highly characteristic of a Tanner attempting to attract votes to win the game. Mitchell's claim of having 'loads of information' is consistent with the Revealer role. Mike's blatant contradiction regarding his actions as the Troublemaker makes him the most likely Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claimed to be the Troublemaker and explicitly stated he switched Justin and Mitchell, but later contradicted himself by saying he didn't switch anybody. Justin's repeated and overt claims of being a Werewolf are highly characteristic of a Tanner attempting to attract votes to win the game. Mitchell's claim of having 'loads of information' is consistent with the Revealer role. Mike's blatant contradiction regarding his actions as the Troublemaker makes him the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claimed to be the Troublemaker and explicitly stated he switched Justin and Mitchell, but later contradicted himself by saying he didn't switch anybody. Justin's repeated and overt claims of being a Werewolf are highly characteristic of a Tanner attempting to attract votes to win the game. Mitchell's claim of having 'loads of information' is consistent with the Revealer role. Mike's blatant contradiction regarding his actions as the Troublemaker makes him the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike claimed to be the Troublemaker and explicitly stated he switched Justin and Mitchell, but later contradicted himself by saying he didn't switch anybody. Justin's repeated and overt claims of being a Werewolf are highly characteristic of a Tanner attempting to attract votes to win the game. Mitchell's claim of having 'loads of information' is consistent with the Revealer role. Mike's blatant contradiction regarding his actions as the Troublemaker makes him the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4204,
+    "output_token_count": 1844,
+    "generation_time_sec": 191.36080360412598,
+    "used_chat_template": true,
+    "input_char_count": 14092,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

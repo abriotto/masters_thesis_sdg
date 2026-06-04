@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#83##October#15th#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#83##October#15th#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Meghan",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript: it's messy. It's likely that the transcript might mix up. We need to determine who is the werewolf. The transcript contains many back-and-forth conversation, but we need to parse the motivations. The game had roles: Justin, Meghan, Caitlynn, Mike. They mention \"copycat\", \"dream wolf\", \"apprentice seer\", etc.\n\nBut we don't know their actual roles from transcript: was the role \"copycat\" (i.e., copycat looks at a center card). The first line: \"Announcer: Copycat, wake up and look at one of the central cards.\" So maybe there is a copycat role present. Actually, the first line indicates Copycat action. That could support that someone is copycat.\n\nThe transcript seems quite chaotic; it's possibly a mis-scraped like extraneous noise. It's tough to parse. However, we just need to decide who to vote for as the werewolf (most likely). The only possible role is \"Werewolf\"? There's no mention of names being assigned roles. We need to look at statements that hint at suspect roles: maybe \"Mike: I was a regular werewolf.\" That's a statement: \"Mike: I was a regular werewolf.\" That likely states true? But people could lie; so we cannot trust it. I'd suspect that Mike might actually be werewolf.\n\nHowever, it's not stable: perhaps some participants are saying something purposely.\n\nWe need to evaluate likely suspect: Perhaps \"Caitlynn\" says \"I'm a tanner now\"?? Eh.\n\nWe need to parse who declares 'I was a regular werewolf': Mike, line 91: \"Mike: I was a regular werewolf.\" If that statement is known to all, maybe Mike is telling truth? It's ambiguous.\n\nAlso line 49: \"Meghan: I saw Mike's roll in the middle.\" Might indicate that Mike's role is in the center. Wait \"roll\" maybe \"role\"? So he says \"I saw Mike's role in the middle.\" That suggests that Mike's role card is in the center? Wait the second person is not sure.\n\nGiven confusion, using minimal analysis: Choose Mike as victim.\n\nThus the output: chosen_vote = Mike. Provide justification: summarizing that Mike claimed werewolf, etc.\n\nCheck: we only guess; but likely best choice: Mike. Provide justification concisely.",
+  "parsed_output": {
+    "justification": "The transcript includes several direct admissions related to role identity. Mike explicitly states, \"I was a regular werewolf,\" indicating he identifies himself as such, and other responses are disproportionately focused on him. Given the lack of convincing counter evidence and the centrality of his claim, he is the most plausible Werewolf despite potential deceit. As we know nothing concrete about any other player's alignment, voting on Mike maximizes the chance of eliminating a Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript includes several direct admissions related to role identity. Mike explicitly states, \\\"I was a regular werewolf,\\\" indicating he identifies himself as such, and other responses are disproportionately focused on him. Given the lack of convincing counter evidence and the centrality of his claim, he is the most plausible Werewolf despite potential deceit. As we know nothing concrete about any other player's alignment, voting on Mike maximizes the chance of eliminating a Werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript includes several direct admissions related to role identity. Mike explicitly states, \\\"I was a regular werewolf,\\\" indicating he identifies himself as such, and other responses are disproportionately focused on him. Given the lack of convincing counter evidence and the centrality of his claim, he is the most plausible Werewolf despite potential deceit. As we know nothing concrete about any other player's alignment, voting on Mike maximizes the chance of eliminating a Werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript includes several direct admissions related to role identity. Mike explicitly states, \"I was a regular werewolf,\" indicating he identifies himself as such, and other responses are disproportionately focused on him. Given the lack of convincing counter evidence and the centrality of his claim, he is the most plausible Werewolf despite potential deceit. As we know nothing concrete about any other player's alignment, voting on Mike maximizes the chance of eliminating a Werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3475,
+    "output_token_count": 601,
+    "generation_time_sec": 183.29072642326355,
+    "used_chat_template": true,
+    "input_char_count": 13569,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

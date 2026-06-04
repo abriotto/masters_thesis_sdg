@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#34##March#24th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Carly",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Carly\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Carly claims Troublemaker. She says she switched two cards (Paul and Mitchell).\n    *   Paul claims Troublemaker initially, then later claims he was the Hunter. He also claims he started as the Minion (at [89]).\n    *   Mike claims Seer (looked at two center cards). He says he saw a Werewolf and a Tanner in the center ([105], [109], [111]).\n    *   Justin claims Hunter (at [82], [125]).\n    *   Mitchell is relatively quiet but suggests he and Paul might be on the same team or have shared interests ([139]).\n\n    *   Mike (Seer) says he saw a Werewolf and a Tanner in the center.\n    *   If a Werewolf is in the center, the only way for a Werewolf to be in play is if there were two Werewolves starting, or if the Doppelganger became one.\n    *   Wait, if Mike saw a Werewolf and a Tanner in the center, and there are 5 players, the roles distributed are:\n        *   Center: Werewolf, Tanner, [Unknown]\n        *   Players: [Remaining roles]\n    *   If one Werewolf is in the center, and there's only one Werewolf card in the game (usually), then there are no Werewolves among the players *unless* there were two Werewolves to begin with.\n    *   However, Mike says \"One of them is a werewolf, one's a fucking tanner\" referring to Paul and Mitchell ([109]). This contradicts his earlier statement about seeing them in the center. Let's re-read.\n    *   [60] Mike: \"I looked at the two center.\"\n    *   [69] Mike: \"There was not a split in what I looked at.\" (Meaning they were on the same team or both not on a team).\n    *   [103] Mike: \"One of them is the tanner.\"\n    *   [105] Mike: \"One was the werewolf. One of them was the tanner.\"\n    *   Wait, [105] says \"One was the werewolf. One of them was the tanner.\" This is ambiguous. Does he mean in the center or Paul/Mitchell?\n    *   Looking at [111]: \"So one of them is a werewolf one's a tanner, a 100%.\" He is talking about Paul and Mitchell.\n    *   But if he saw a Werewolf and a Tanner in the center ([60]-[71]), then Paul and Mitchell *cannot* be the Werewolf and Tanner.\n    *   Let's re-evaluate Mike's claims.\n        *   Claim 1: Looked at center. No split (all good or all bad).\n        *   Claim 2: Paul and Mitchell are Werewolf and Tanner.\n    *   These are contradictory. If he saw a Werewolf and Tanner in the center, they aren't in the game. If Paul and Mitchell are Werewolf/Tanner, he didn't see them in the center.\n\n    *   Carly claims Troublemaker. She says she switched Paul and Mitchell.\n    *   Paul claims Troublemaker (lying), then Minion, then Hunter.\n    *   If Carly is the Troublemaker and she switched Paul and Mitchell:\n        *   If Paul started as Minion (as he claimed at [89]) and Mitchell started as something else, they swapped.\n        *   If Paul was the Minion and was swapped with Mitchell, Mitchell is now the Minion.\n        *   Wait, Paul says \"I started as minion so-\" ([89]). If Carly swapped Paul and Mitchell, Mitchell is now the Minion.\n        *   Minions are on the Werewolf team.\n\n    *   Paul's claims are all over the place: Troublemaker -> Minion -> Hunter. This is highly suspicious.\n    *   Mitchell is acting suspiciously, trying to get people to shut up.\n    *   Carly is very confident and consistent about being the Troublemaker and swapping Paul and Mitchell.\n    *   Mike's claims are contradictory, but he's pointing at Paul and Mitchell.\n\n    *   If Carly is the Troublemaker and swapped Paul and Mitchell, and Paul started as the Minion, then Mitchell is now the Minion.\n    *   If Paul started as the Werewolf and was swapped with Mitchell, Mitchell is now the Werewolf.\n    *   Paul's admission \"I started as minion\" ([89]) is a huge tell. If he was the Minion and got swapped with Mitchell, Mitchell is now the Minion (Team Werewolf).\n    *   However, Paul also claimed to be the Hunter.\n    *   Let's look at the \"Werewolf\" goal. The goal is to find the Werewolf. Minions are also Team Werewolf.\n    *   If Paul was the Minion and was swapped with Mitchell, Mitchell is now the Minion.\n    *   If Paul was the Werewolf and was swapped with Mitchell, Mitchell is now the Werewolf.\n    *   Carly says \"Mitchell is the werewolf\" ([73], [86], [113]).\n\n    *   Paul: Claims Troublemaker (Lie), Minion (Admission?), Hunter (Lie?).\n    *   Mitchell: Quiet, suspicious, linked to Paul.\n    *   Carly: Consistent Troublemaker claim.\n    *   Mike: Contradictory Seer claim.\n    *   Justin: Claims Hunter.\n\n    *   If Carly is the Troublemaker and swapped Paul and Mitchell, and Paul admits he was the Minion, then Mitchell is now the Minion.\n    *   If Paul was the Werewolf and was swapped, Mitchell is now the Werewolf.\n    *   Carly explicitly identifies Mitchell as the Werewolf.\n    *   Mike also points toward Paul and Mitchell.\n    *   Paul's erratic claiming suggests he's either the Tanner or a Werewolf/Minion trying to confuse the group.\n\n    *   Carly's claim: Troublemaker, swapped Paul and Mitchell.\n    *   Paul's claim: Started as Minion.\n    *   Result: Mitchell is now the Minion (Team Werewolf).\n    *   Carly's conclusion: Mitchell is the Werewolf.\n    *   Given the options, Mitchell is the most likely candidate for Team Werewolf.\n\n    *   Wait, if Paul started as Minion and was swapped with Mitchell, Mitchell is now the Minion.\n    *   Is the Minion considered a \"Werewolf\" for the purpose of the vote?\n    *   The rules say: \"Team Werewolf includes Werewolf and Minion.\" and \"Team Village wins if at least one Werewolf dies.\"\n    *   Usually, in these games, voting out the Minion does *not* count as voting out a Werewolf unless the Minion is also a Werewolf (which they aren't).\n    *   Wait, the prompt asks to vote for the player you believe is a \"Werewolf as their end role.\"\n    *   If Paul was the Werewolf and was swapped with Mitchell, Mitchell is now the Werewolf.\n    *   If Paul was the Minion and was swapped with Mitchell, Mitchell is now the Minion.\n    *   Carly says \"Mitchell is the werewolf.\"\n    *   Paul's admission \"I started as minion\" might be a bluff or a slip. If he was the Werewolf and was swapped, Mitchell is the Werewolf.\n\n    *   Paul's behavior is very \"Tanner-like\" (claiming everything, wanting attention, being erratic).\n    *   If Paul is the Tanner and Carly swapped him with Mitchell, Mitchell is now the Tanner.\n    *   But Carly says Mitchell is the Werewolf.\n    *   Let's look at Mike's claim again. Mike says Paul and Mitchell are Werewolf and Tanner.\n    *   If Mike is the Seer and saw a Werewolf and Tanner in the center, then no one is a Werewolf. But he then says Paul and Mitchell are Werewolf and Tanner. This is a contradiction.\n    *   If Mike is lying and is the Werewolf, he would want to divert suspicion.\n    *   However, Carly's Troublemaker claim is the strongest piece of evidence. If she swapped Paul and Mitchell, and one of them was a Werewolf, the other is now the Werewolf.\n    *   Carly specifically names Mitchell as the Werewolf.\n\n    *   Carly (Troublemaker) swapped Paul and Mitchell.\n    *   Paul admits to being the Minion (or is bluffing).\n    *   Carly identifies Mitchell as the Werewolf.\n    *   Paul's erratic behavior suggests he's either the Tanner or the Minion/Werewolf who was swapped.\n    *   If Paul was the Werewolf and was swapped, Mitchell is now the Werewolf.\n    *   If Paul was the Minion and was swapped, Mitchell is now the Minion.\n    *   Since Carly is the most consistent and provides a clear target, Mitchell is the best bet.\n\n    *   Wait, Paul says \"I started as minion so-\" ([89]). If he was the Minion and was swapped with Mitchell, Mitchell is now the Minion.\n    *   But Carly says \"Mitchell is the werewolf\" ([86]).\n    *   If Paul was the Werewolf and was swapped, Mitchell is now the Werewolf.\n    *   If Paul was the Minion and was swapped, Mitchell is now the Minion.\n    *   In either case, Mitchell is on Team Werewolf.\n    *   Let's check if Paul could be the Werewolf. If Carly swapped Paul and Mitchell, and Paul started as the Werewolf, Mitchell is now the Werewolf. If Paul started as something else and Mitchell started as the Werewolf, then Paul is now the Werewolf.\n    *   Carly says: \"I know what you [Paul] thought you were. And I know what Mitchell is now.\" ([76]). This implies she knows Mitchell's current role.\n    *   Carly's claim that Mitchell is the werewolf is the most direct accusation in the game.",
+  "parsed_output": {
+    "justification": "Carly claims to be the Troublemaker and states she swapped the cards of Paul and Mitchell. Paul's behavior is erratic, claiming to be the Troublemaker, then the Minion, and then the Hunter, which suggests he is either the Tanner or a member of Team Werewolf attempting to confuse the group. Carly explicitly identifies Mitchell as the Werewolf after the swap, and Mike's contradictory claims also point toward Paul and Mitchell as the primary suspects.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Carly claims to be the Troublemaker and states she swapped the cards of Paul and Mitchell. Paul's behavior is erratic, claiming to be the Troublemaker, then the Minion, and then the Hunter, which suggests he is either the Tanner or a member of Team Werewolf attempting to confuse the group. Carly explicitly identifies Mitchell as the Werewolf after the swap, and Mike's contradictory claims also point toward Paul and Mitchell as the primary suspects.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Carly claims to be the Troublemaker and states she swapped the cards of Paul and Mitchell. Paul's behavior is erratic, claiming to be the Troublemaker, then the Minion, and then the Hunter, which suggests he is either the Tanner or a member of Team Werewolf attempting to confuse the group. Carly explicitly identifies Mitchell as the Werewolf after the swap, and Mike's contradictory claims also point toward Paul and Mitchell as the primary suspects.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Carly claims to be the Troublemaker and states she swapped the cards of Paul and Mitchell. Paul's behavior is erratic, claiming to be the Troublemaker, then the Minion, and then the Hunter, which suggests he is either the Tanner or a member of Team Werewolf attempting to confuse the group. Carly explicitly identifies Mitchell as the Werewolf after the swap, and Mike's contradictory claims also point toward Paul and Mitchell as the primary suspects."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4438,
+    "output_token_count": 2403,
+    "generation_time_sec": 246.00392985343933,
+    "used_chat_template": true,
+    "input_char_count": 14844,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

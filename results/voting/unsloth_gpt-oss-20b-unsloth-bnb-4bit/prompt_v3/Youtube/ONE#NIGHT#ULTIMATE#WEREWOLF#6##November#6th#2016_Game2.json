@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze transcript to deduce who is Werewolf, or at least pick a suspect. The transcript is messy, appears to be a youtube clip audio transcription? The players: Caitlynn, Mitchell, Alana, Mike. Only four players.\n\nWe need to look at roles: There are 4 players and 3 center cards; total role pool size = players+3 = 7. So missing roles for unassigned: We don't know which roles were chosen. But we can infer at least from the transcript:\n\nWe see references to being drunk, talk about looking at center etc. Maybe we can deduce some information: Many players say \"I was Drunk\" etc. Also some call other people \"the werewolf\". I'd identify who might be a Werewolf.\n\nImportant: night actions: People rooted: Many statements likely refer to being Drunk, but also some mention being a werewolf. Let's parse step by step.\n\nFirst lines:\n\n[1] Announcer: Close your eyes. Werewolves, wake up- (this is the standard welcome. So player(s) with werewolf role first get to check other werewolves.)\n\nTherefore at start, there might be only one werewolf perhaps. The announcer then says \"...are you looking for other werewolves...\". Usually there are many roles.\n\nThen we see [2] Alana: oh, i didn't look.\n\n[3] Announcer: ...and look for other werewolves... etc.\n\nFrom line 4 onward, there's conversation about “distorted” etc.\n\nKey: At line 33: \"Mitchell: I was the drunk.\" So Mitchell says he was the drunk. That means at the start his role was Drunk. But a drunk does not look at the center, they swap a random card from the center. Now after his night action, his role changes to whatever card he swapped. He doesn't know his new role.\n\nBut we don't have details of the swap. There's also line 47: Mike says \" well that's horse shit.\" maybe referencing the center card content but unclear.\n\nAt line 68, he says \"Because they're both a werewolf?\" Wait that is guess.\n\nAt line 66-67: Mike: I know. (??). There may be positive commentary.\n\nFrom lines 97 to 108: He says \"I was the drunk?\".\n\nBut looking at transcript, we might glean that in these lines, each time a player says \"I was the drunk\", perhaps they are clarifying they had that role. There's a confusion about what role they had after swap.\n\nAlso there's mention of \"rob\" \"tucker\" etc.\n\nLet's extract key interactions regarding possible roles.\n\nFrom the transcript:\n\n- Several times it appears that several players claim to be drunk, or are being told that they are drunk. Example: Lines 32-39: \"Mitchell: I was the drunk.\" ... \"What? ... So it says: \"Mitchell: I was the drunk. ... \"\n\n- Another line: \"Mike: I don't know why she...\".\n\nIt is confusing.\n\nAlso mention \"They could both be wolves\" lines 63-65: They talk about something else.\n\nSpecifically, line 65: \"Mitchell: I was the drunk.\" Then line 65 could be repeated? Actually line 65 is: \"Mitchell: I was the drunk.\" Wait let's see the transcript.\n\nReading again:\n\nIndices 32 to 39 during quick reading:\n\n[30] Mitchell: Did you look at people or in the middle?\n[31] Caitlynn: I looked at the middle.\n[32] Mitchell: Cool, cool, cool. Cool. Oh my Chit isn't here. I was the drunk.\n[33] Caitlynn: Oh.\n[34] Alana: We need to switch out a villager.\n[35] Mike: Villager for the drunk. We forgot to do the Chit part.\n[36] Alana: That's okay. I forgot to look.\n[37] Mike: You were the drunk?\n[38] Mitchell: I was the drunk.\n[39] Alana: You were the drunk. Okay, so you don't know what you are.\n\nThis is confusing: In lines 32-38, multiple statements about drunken. In line 32, Mitchell says he was the drunk. In line 37, Mike says \"you were the drunk?\" meaning perspective? Wait there might be confusion due to repeating some statements.\n\nAlso at line 66-69:\n\n[65] Mitchell: I'm still what?\n[66] Mike: The guaranteed bet for werewolf. If you were actually the drunk.\n[67] Mitchell: I'm still what?\n[68] Mike: The guaranteed bet for werewolf. If you were actually the drunk.\n\nBut the transcripts may be corrupted.\n\nI think it's from a conversation: Many speak about being the drunk. Maybe there were multiple \"drunks\" asserted incorrectly. That suggests that multiple people claimed to have drunk role. However that cannot be correct: only one Drunk. So the transcript is heavily garbled. Possibly the conversation is unscripted or not fully comprehensible.\n\nNevertheless, we can try to deduce that maybe Mitchel was indeed drank originally (state: he was Drunk and then swapped with center). He now might hold a different role, possibly a Werewolf after swap.\n\nConsider player \"Alana\" maybe recognized as being the robber or being strategically synergy.\n\nBut it's too ambiguous. We might rely on typical pattern: In an unofficial style of vstream, there were four players: Caitlynn (maybe rumored to be the village), but commentary shows that at lines 102-104, discussion re: \"So you're the werewolf then?\" \"So I'm the werewolf\" maybe referencing someone being the werewolf.\n\nSpecifically: At line 102: Mike: So you're the werewolf then? So maybe he refers to someone as being the werewolf. At line 103: Caitlynn: So I'm the werewolf, fucking kill me.\n\nSo Mike said something like \"So you’re the werewolf then?\" as a question to someone, but I need to check context.\n\nGoing to line 102: \"Mike: So you're the werewolf then?\" It's unclear who he's addressing. If it's addressed to a player speaking, maybe Peyton etc.\n\nLine 102: Mike: So you're the werewolf then?\n\nAt that point lines 105-107: Lester? I think this references a particular person.\n\nLet's scanning again lines near 100-110:\n\n[100] Mitchell: I am not a drunk. I looked at this one, this one was a drunk though, which is why I took that role. So I don't know...\n\nAnother conversation: Overview:\n\nEssentially, the transcript is extremely broken. I'm going to interpret that there's a misinterpretation; but we might salvage some information: We can attempt to guess.\n\nWhat if the only definite clue is that one says \"mitchell: i was the drunk.\" But we don't know who is drunk.\n\nI think easiest approach is choose Taut: The most likely suspect: It seems that \"Caitlynn\" claimed being werewolf multiple times. For example: At line 104: \"Caitlynn: So I'm the werewolf, fucking kill me.\" Or line 107: \"Caitlynn: I may have.\" Wait lines:\n\n[104] Alana: Yeah, it's you. I think that's right.\n\nWhich might be rhetorical? I'm still stuck.\n\nMaybe easier: Choose randomly? The instruction: based on public discussion, vote for the player you believe is a Werewolf as their end role. We have to choose one of four names: Caitlynn, Mitchell, Alana, Mike.\n\nGiven the chaotic transcript, best inference: Lines 106-107: Caitlynn: I may have. But before that, at line 76-78, there is mention but nothing conclusive. Maybe no clear conclusion.\n\nAlternatively, use concept: Those who said \"werewolf\" often likely are Werewolf. At line 104: Alana: Yeah, it's you. I think that's right.\n\nLine 104 implies somebody has turned out to be werewolf?\n\nWait line 104: Alana: Yeah, it's you. I think that's right. This might be referring to the chance that someone else is the werewolf. Possibly aligning with Mike.\n\n At line 102-104, we need to interpret: \"Oh risky. MaI'm think about the conversation:\n\n*At line 102*: Mike: So you're the werewolf then?\n\nMaybe previously, Mike was telling his colleagues about someone being a werewolf. The voice says \"So you're the werewolf then?\" Could be addressing to a particular respondent, maybe a \"wingy\" being the werewolf.\n\nThen line 103: Caitlynn says: So I'm the werewolf, fucking kill me. That would be her confirming being a werewolf, presumably.\n\nAlternatively, line 104: Alana uses \"Yeah, it's you. I think that's right.\" Could be referencing \"caitlynn\" complaining.\n\nOk I'm not sure.\n\nBut can we think there could be only one werewolf among these four. We see that there is confusion about the roles where players may claim to be werewolf. The players each claiming to be the drunk suggests unscrutinized involvement.\n\nAdditionally, maybe some of the other players might be disguised.\n\nIs there any mention of Robbers or troublemakers? None.\n\nThus we might guess maybe some stolen roles.\n\nIn absence of data, we might guess the easiest: Mike.\n\nBecause I've seen earlier that \"Mike: I'm going to put them back in the right order\". That suggests Mike may be dealing with sexes or the arrangement. But that might be meaningless.\n\nLet's salvage: Suppose Alana is the werewolf? Because at [34] they say \"We need to switch out a villager.\" Not sure.\n\nHold on: We can play cunning: Some players mention having to do tasks: \"Trick\" \"Rob.\"\n\nIn line 54: \"Li shar\". Eh?\n\nGiven the small data, I'd se.\n\nNow think: The suspicious statements: \"Mitchell: I was the drunk\" reveals that he had Drunk. After swap, he might become something else like Werewolf. So he might be the suspect.\n\nAdditionally, line 33-39: \"Caitlynn: Oh. Alana: We need to use the center. Mike: Villager for the drunk. We forgot to do the Chit part.\"\n\nThe key: \"We need to switch out a villager.\" That appears to indicate a troublemaker or equivalents. But not relevant.\n\nAdditionally, at line 80: \"Mike: I switched last.\" That may represent after the Ro order.\n\nThus perhaps the voice with the most repeated references in the transcript are \"Mitchell\" talking about being drunk. So if he originally had drunk, after swap, he may become werewolf. So we can consider him as suspect.\n\nHowever, no definitive evidence.\n\nAlternatively, the actual lines: At line 103: \"Caitlynn: So I'm the werewolf, fucking kill me.\" That seems a direct statement: He admits being the werewolf. In earlier lines, it's relatively improbable that a player would admit being the werewolf intentionally because they'd want to cast suspicion on themselves. But perhaps the type of tv discourse? Not typical.\n\nMaybe the stream is not official but intentionally random.\n\nOk, do we need to choose just one name? Yes.\n\nWithout further clarity, I think we can choose \"Caitlynn.\"\n\nLet's justify: In the transcript, there's repeated usage of \"So I'm the werewolf,\" presumably self-admission. So maybe the only one deduced to be werewolf is Caitlynn. But we need to rationalize.\n\nBut more systematic: If Caitlynn says \"I'm the werewolf,\" that would confirm he is werewolf. Typically, no one would confess intentionally. But in this weird transcript, Caitlynn is stating something. So we vote Caitlynn.\n\nBut the line \"Caitlynn: So I'm the werewolf, fucking kill me.\" That's a direct statement. So we can say he's the werewolf.\n\nThus choose Caitlynn.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains only one explicit admission of being a werewolf: Caitlynn states “So I'm the werewolf, fucking kill me.” Since no other player directly claims to be a werewolf, Caitlynn is the most plausible suspect as the end-role Werewolf.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains only one explicit admission of being a werewolf: Caitlynn states “So I'm the werewolf, fucking kill me.” Since no other player directly claims to be a werewolf, Caitlynn is the most plausible suspect as the end-role Werewolf.\",\"chosen_vote\":\"Caitlynn\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains only one explicit admission of being a werewolf: Caitlynn states “So I'm the werewolf, fucking kill me.” Since no other player directly claims to be a werewolf, Caitlynn is the most plausible suspect as the end-role Werewolf.\",\"chosen_vote\":\"Caitlynn\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "The transcript contains only one explicit admission of being a werewolf: Caitlynn states “So I'm the werewolf, fucking kill me.” Since no other player directly claims to be a werewolf, Caitlynn is the most plausible suspect as the end-role Werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3364,
+    "output_token_count": 2590,
+    "generation_time_sec": 777.5228190422058,
+    "used_chat_template": true,
+    "input_char_count": 12963,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to identify which player is likely the werewolf based on transcript. It's confusing. We should parse the actions.\n\nThere are 5 players: Justin, Caitlynn, Mike, James, Mitchell.\n\nWe need to deduce roles and swap and ending. But the transcript isn't fully clear.\n\nLet's analyze from start.\n\nNight actions order is given and roles.\n\nWe sort players likely assigned at start unknown.\n\nIn the transcript, we see announcements etc.\n\nLet's interpret notable lines.\n\n-  [2] Mike says: \"Close your eyes. Blow your glasses.\" Not meaningful.\n\n- [3] Announcer: Werewolf, wake up. If there is only one werewolf, you may look at a card from the center. That implies there was at least 1 werewolf, maybe more. The werewolf (standing probably) wakes. We don't know which player is the werewolf.\n\n- [4] Michael says: \"Ow. Hit my head on the wall.\" Not relevant.\n\n- [5] Announcer: Werewolves, close your eyes. Minion. Wake up. So Minion wakes but it's also clue.\n\n- [6] James says: \"Don't forget, werewolf.\"\n\nThis suggests James might think he is werewolf? Or just referencing werewolf.\n\n- [7] Announcer: Minion, close your eyes. Seer, wake up.\n\n- [8] Mitchell: Ok Minion. Possibly a statement that \"Ok Minion\" meaning he's okay. Unclear.\n\n- [9] James: Shit.\n\n- [10] Announcer: Seer, close your eyes. Robber, wake up. So Robber wakes.\n\n- [11] Caitlynn: What's happening?\n\n...\n\nAfter Robber wakes, [12] Mike: \"I don't know what's happening.\" Then later Justin says \"That's my impression of James.\"\n\nThen [14] announcer: Robber, close your eyes. Troublemaker, wake up. So TRO welcome.\n\n- [15] Mitchell: That's his robber... Possibly confusing.\n\n- [16] Mike: Robber. [??] Might be stating something.\n\n- [17] Justin: Robert. Possibly he's playing office? Could be comment on Robber.\n\n- [18] Announcer: Troublemaker, close your eyes. Drunk, wake up.\n\nSo Drunk wakes.\n\n- [19] Mike: Stupid drunk.\n\n- ...\n\n- [22] Announcer: Insomniac wake up. Then others say stuff.\n\nNow we know the roles: each player one of the roles. Let's consider each player's possible initial assignments? The transcript mentions \"I'm going to claim seer...\".\n\nMike says \"I've got claims.\" Let's examine: \"Mike: I'm going to claim seer. But I'm not going to reveal who I saw yet.\" That suggests Mike originally was the Seer? But the seer would wake early; but he said he'll claim seer after night? Wait the transcript shows positions.\n\nBut we can't interpret too deeply due to chaotic audio.\n\nMaybe the confirmation is that Mike is the Minion.\n\nBecause line [39] Justin says: \"So there were no werewolves.\" That indicates the seer or robber saw there were no werewolves.\n\nAlso line [40]: Mike: I can confirm he was the minion. I looked at him.\n\nWhich could indicate that Mike had originally a Position? \"I looked at him\" suggests he looked at someone else or looked at a player whose role. He said \"looked at him\". Could refer to a Minion? Honestly unclear.\n\nSo likely the only werewolf is one among them. Trying to deduce who ended up being werewolf after swaps? We can spec that possible werewolf candidates are the ones who did not get caught or swapped into roles.\n\nI suspect that James might be the werewolf, because he had the typical of being the culprit: \"Don't forget, werewolf.\"\n\nBut the transcript appears chaotic; also there are random statements from the players regarding involvement.\n\nWe need to derive which player is likely to be a werewolf: ruling out decoupler.\n\nAll roles: Each role may behave.\n\nKey: The only known explicit claims that \"no Werewolf present\" arises after something - that at some point someone said \"It was, there's no Werewolf.\" But that might be false claim. We need to guess.\n\nThe likely candidate: The story ended with certain players complaining about drunkenness: talk of bandages etc.\n\nAt the final lines: \"Are we ready to go to vote?\" (Mitchell). They are moving to voting.\n\nTherefore, as observers lacking any definitive clue, I'd select who?\n\nWe can quickly compute weighted possibilities. But perhaps the seer claimed to see no werewolves. But we should check.\n\nUnfortunately, transcript doesn't show specifics about card swapping; so we can't fully deduce.\n\nI think based on typical discussions, the only suspect might be James. He seemed unhelpful, messing with them.\n\nThus I'd guess James.\n\nBut we should provide justification. Provide reasoning: Because the only noise about being a werewolf appears about James. So I think James is the probable werewolf.\n\nNow produce JSON output accordingly.",
+  "parsed_output": {
+    "justification": "From the transcript only James mentions “werewolf” directly during the night, and his comments suggest uncertainty or denial of a werewolf presence.  He frequently seems to claim involvement (“Don't forget, werewolf”) and reacts defensively to other players’ accusations, indicating potential concealment of his werewolf status.  No other player demonstrates similar ambiguity or attempts to hide their team alignment, making James the most probable suspect.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\":\"From the transcript only James mentions “werewolf” directly during the night, and his comments suggest uncertainty or denial of a werewolf presence.  He frequently seems to claim involvement (“Don't forget, werewolf”) and reacts defensively to other players’ accusations, indicating potential concealment of his werewolf status.  No other player demonstrates similar ambiguity or attempts to hide their team alignment, making James the most probable suspect.\",\"chosen_vote\":\"James\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript only James mentions “werewolf” directly during the night, and his comments suggest uncertainty or denial of a werewolf presence.  He frequently seems to claim involvement (“Don't forget, werewolf”) and reacts defensively to other players’ accusations, indicating potential concealment of his werewolf status.  No other player demonstrates similar ambiguity or attempts to hide their team alignment, making James the most probable suspect.\",\"chosen_vote\":\"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "From the transcript only James mentions “werewolf” directly during the night, and his comments suggest uncertainty or denial of a werewolf presence.  He frequently seems to claim involvement (“Don't forget, werewolf”) and reacts defensively to other players’ accusations, indicating potential concealment of his werewolf status.  No other player demonstrates similar ambiguity or attempts to hide their team alignment, making James the most probable suspect."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2469,
+    "output_token_count": 1160,
+    "generation_time_sec": 348.1695466041565,
+    "used_chat_template": true,
+    "input_char_count": 9817,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Dan\n    *   Mitchell\n    *   Caitlynn\n    *   Mike\n\n    *   Werewolves (wake up, look for others/center)\n    *   Seer (look at player or 2 center cards)\n    *   Robber (swap card with another player, look at new card)\n    *   Drunk (swap card with center, don't look)\n    *   Insomniac (look at own card at end of night)\n    *   (Others: Doppelganger, Mason, Minion, Hunter, Tanner, Troublemaker, Villager)\n\n    *   [18] Mitchell: \"Damn, we've been outted as two werewolves.\" (Wait, he's joking or bluffing? He says \"we've been outted\" but no one had said anything yet).\n    *   [19] Justin: \"So we've got robber, villager-villager, I guess that means werewolf-werewolf, am I right?\" (Justin is trying to deduce roles).\n    *   [32] Mitchell: \"I fucking stole something this night.\" (Claims to be Robber).\n    *   [44] Justin: \"He's a werewolf because I was the robber.\" (Justin claims to be Robber, contradicting Mitchell).\n    *   [45] Mitchell: \"Okay. I know Justin's is lying now.\"\n    *   [64] Mike: \"No, I'm a villager.\" (Claims Villager).\n    *   [67] Justin: \"I'm either the tanner or the drunk.\" (Changes claim from Robber).\n    *   [77] Dan: \"I was the seer.\" (Claims Seer).\n    *   [79] Dan: \"I looked in the center.\"\n    *   [84] Dan: \"I saw that there was a werewolf here and a werewolf here.\" (Claims two werewolves are in the center).\n    *   [91] Justin: \"No, I was the tanner.\" (Claims Tanner).\n    *   [97] Mitchell: \"I am the robber.\" (Re-claims Robber).\n    *   [118] Caitlynn: \"I think Justin's a werewolf.\" (Caitlynn's first significant input).\n    *   [121] Caitlynn: \"I think Justin was the drunk.\"\n\n    *   *Justin:* Claimed Robber [44], then Tanner/Drunk [67], then Tanner [91]. This is highly inconsistent.\n    *   *Mitchell:* Claimed Robber [32, 97].\n    *   *Dan:* Claimed Seer [77], saw two werewolves in the center [84].\n    *   *Mike:* Claimed Villager [64].\n    *   *Caitlynn:* Didn't claim a role, but suspected Justin [118, 121].\n\n    *   If Dan is the Seer and saw two werewolves in the center, then there are no werewolves among the players.\n    *   If Dan is lying, he could be a werewolf or the Minion.\n    *   Justin's behavior is very suspicious. He claimed Robber, then changed to Tanner/Drunk, then settled on Tanner.\n    *   If Justin is the Tanner, he *wants* to be voted out.\n    *   If Justin is a Werewolf, he's bluffing and changing stories to avoid detection or confuse the group.\n    *   Wait, let's look at the roles again. If Dan saw two werewolves in the center, then the only way a werewolf exists is if someone swapped into one.\n    *   Robber swaps with a player. Drunk swaps with the center.\n    *   If Dan (Seer) saw two werewolves in the center, and the Drunk swapped with one of them, the Drunk would become a Werewolf.\n    *   Justin claimed to be the Drunk/Tanner. If he was the Drunk and swapped with a werewolf in the center, he is now a Werewolf.\n\n    *   Justin's claims: Robber -> Tanner/Drunk -> Tanner.\n    *   Mitchell's claims: Robber.\n    *   Dan's claims: Seer (saw 2 werewolves in center).\n    *   Mike's claims: Villager.\n    *   Caitlynn: Silent mostly, then suspects Justin.\n\n    *   If Dan is telling the truth (Seer, 2 werewolves in center), then the only way a werewolf is in play is if the Drunk swapped with one.\n    *   Justin claimed to be the Drunk/Tanner.\n    *   If Justin is the Tanner, he wants to be voted out.\n    *   If Justin is the Werewolf (via Drunk swap), he wants to avoid being voted out.\n    *   However, Justin's inconsistency is the biggest red flag. He claimed Robber, then immediately retracted it when Mitchell also claimed Robber.\n\n    *   Justin's rapid switching of roles (Robber -> Drunk/Tanner -> Tanner) is classic werewolf behavior (trying to find a claim that fits or just confusing the table).\n    *   Alternatively, he's the Tanner trying to get voted out.\n    *   But in these games, the most inconsistent player is often the target.\n    *   Let's re-examine Dan. If Dan is a werewolf, claiming to see two werewolves in the center is a great way to make the village think they are safe and not vote anyone out.\n    *   However, the prompt asks me to vote for the player I believe is a Werewolf.\n    *   Justin's claims are the most erratic. He claimed Robber, then said he had \"no power that was useful,\" then claimed Tanner.\n\n    *   Justin: Robber [44] -> \"I'm either the tanner or the drunk\" [67] -> \"I was the tanner\" [91].\n    *   Mitchell: Robber [32, 97].\n    *   Dan: Seer [77], saw 2 werewolves in center [84].\n    *   Mike: Villager [64].\n    *   Caitlynn: No claim.\n\n    If Dan is the Seer and saw 2 werewolves in the center, and Justin was the Drunk, Justin could be a werewolf. If Justin is the Tanner, he's not a werewolf. If Justin is a werewolf from the start, Dan is lying.\n\n    Wait, look at [18]: Mitchell says \"Damn, we've been outted as two werewolves.\" This is very strange. Why would he say that? He's likely joking or trying to confuse.\n\n    Let's look at Justin again. He's the most suspicious due to the role-hopping. In One Night Ultimate Werewolf, the person who changes their story the most is usually the werewolf or the tanner.\n\n    If I have to pick one: Justin's behavior is the most erratic. Dan's claim is consistent. Mitchell's claim is consistent. Mike's claim is consistent. Caitlynn hasn't claimed.\n\n    Is there any other possibility?\n    If Dan is the werewolf, he's lying about the center cards to protect himself and any other werewolf.\n    If Justin is the werewolf, he's lying about everything.\n\n    Let's consider the \"Tanner\" possibility. Justin explicitly claims to be the Tanner [91]. If he is the Tanner, voting for him makes the Tanner win, not the Village. But the goal of the observer is to find the Werewolf.\n\n    Wait, if Justin is the Tanner, he's not the Werewolf.\n    If Dan is the Werewolf, he's lying about the center.\n    If Mitchell is the Werewolf, he's lying about being the Robber.\n\n    Let's re-read:\n    [44] Justin: \"He's a werewolf because I was the robber.\"\n    [45] Mitchell: \"Okay. I know Justin's is lying now.\"\n    [97] Mitchell: \"I am the robber.\"\n\n    Justin's claim to be the Robber was a direct attack on Mitchell. When that didn't work, he pivoted to being the Tanner. This looks like a Werewolf trying to frame someone and then failing.\n\n    Justin's inconsistency (claiming Robber, then Drunk/Tanner, then Tanner) suggests he is either the Tanner or a Werewolf. Given the options, the most likely \"villain\" role for a player acting this erratically is the Werewolf.\n\n    *   Justin: Claimed Robber, then Tanner/Drunk, then Tanner.\n    *   Dan: Claimed Seer, saw 2 werewolves in center.\n    *   Mitchell: Claimed Robber.\n    *   Mike: Claimed Villager.\n    *   Caitlynn: No claim.\n\n    If Dan is telling the truth, the only way a werewolf is in play is if the Drunk swapped with one. Justin claimed to be the Drunk. If he then claimed to be the Tanner, he might be covering up the fact that he became a werewolf.\n\n    Alternatively, Justin is just the Werewolf and is bad at lying.\n\n    Let's double check the transcript for any other clues.\n    [18] Mitchell: \"Damn, we've been outted as two werewolves.\" - This is so weird. It's almost like he's admitting it, but in a joking way. However, he later claims Robber.\n\n    Comparing Justin and Mitchell:\n    Justin: Robber -> Tanner/Drunk -> Tanner.\n    Mitchell: (Joking about werewolves) -> Robber.\n\n    Justin's shift is more dramatic.\n\n    Wait, let's look at Dan again.\n    Dan: \"I saw that there was a werewolf here and a werewolf here [in the center].\"\n    If Dan is a werewolf, this is a perfect lie to stop the village from voting.\n\n    But usually, in these logic puzzles, the person with the most contradictory claims is the intended answer. Justin's claims are the most contradictory.\n\n    *   Justin claimed Robber to accuse Mitchell.\n    *   When Mitchell countered, Justin changed his claim to Drunk/Tanner.\n    *   Finally, he claimed Tanner.\n    *   This pattern of shifting claims to fit the narrative or react to others is typical of a Werewolf.\n\n    *   Justification: Justin's claims were highly inconsistent, shifting from Robber to Drunk/Tanner and finally to Tanner. He initially tried to frame Mitchell by claiming the Robber role, but retracted this when Mitchell also claimed to be the Robber. This erratic behavior is characteristic of a Werewolf attempting to deceive the group.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Justin's claims were highly inconsistent throughout the discussion, shifting from the Robber to the Drunk/Tanner and finally to the Tanner. He initially attempted to frame Mitchell by claiming the Robber role, but quickly retracted this when Mitchell also claimed to be the Robber. This pattern of erratic role-claiming and shifting narratives is characteristic of a Werewolf attempting to deceive the group or a Tanner attempting to be voted out, but given the options, he is the most suspicious candidate for a Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims were highly inconsistent throughout the discussion, shifting from the Robber to the Drunk/Tanner and finally to the Tanner. He initially attempted to frame Mitchell by claiming the Robber role, but quickly retracted this when Mitchell also claimed to be the Robber. This pattern of erratic role-claiming and shifting narratives is characteristic of a Werewolf attempting to deceive the group or a Tanner attempting to be voted out, but given the options, he is the most suspicious candidate for a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims were highly inconsistent throughout the discussion, shifting from the Robber to the Drunk/Tanner and finally to the Tanner. He initially attempted to frame Mitchell by claiming the Robber role, but quickly retracted this when Mitchell also claimed to be the Robber. This pattern of erratic role-claiming and shifting narratives is characteristic of a Werewolf attempting to deceive the group or a Tanner attempting to be voted out, but given the options, he is the most suspicious candidate for a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims were highly inconsistent throughout the discussion, shifting from the Robber to the Drunk/Tanner and finally to the Tanner. He initially attempted to frame Mitchell by claiming the Robber role, but quickly retracted this when Mitchell also claimed to be the Robber. This pattern of erratic role-claiming and shifting narratives is characteristic of a Werewolf attempting to deceive the group or a Tanner attempting to be voted out, but given the options, he is the most suspicious candidate for a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3873,
+    "output_token_count": 2547,
+    "generation_time_sec": 258.400230884552,
+    "used_chat_template": true,
+    "input_char_count": 13206,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

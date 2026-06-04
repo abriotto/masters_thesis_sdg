@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be the Robber. Says James was a villager at the start.\n    *   Alvin: Initially claims to be the Seer. Says James was a villager. Later changes claim to be the Robber and says that's how he knew James was a villager.\n    *   James: Claims to be a Villager.\n    *   Mitchell: Claims to be the Drunk.\n\n    *   Justin claims Robber.\n    *   Alvin claims Seer, then changes to Robber.\n    *   Mitchell claims Drunk.\n    *   James claims Villager.\n\n    *   If Justin is the Robber, he stole James's card. If James was a Villager, Justin is now a Villager.\n    *   If Alvin is the Seer, he looked at James's card and saw a Villager.\n    *   If Alvin is the Robber, he stole James's card.\n    *   Wait, only one Robber exists. Both Justin and Alvin claim to be the Robber.\n    *   Mitchell claims to be the Drunk. The Drunk swaps their card with one from the center. If Mitchell was the Drunk, he could have become a Werewolf (if a Werewolf card was in the center).\n\n    *   Justin: Claims Robber.\n    *   Alvin: Claims Seer $\\rightarrow$ Robber. This is highly suspicious. Changing roles mid-discussion usually indicates a bluff or confusion.\n    *   Mitchell: Claims Drunk. This is a weak claim because Drunk doesn't provide information, but it's a common role.\n    *   James: Claims Villager.\n\n    *   Justin says James was a villager.\n    *   Alvin says James was a villager.\n    *   If James is actually a Werewolf, both Justin and Alvin are lying/bluffing.\n    *   If James is a Villager, Justin and Alvin are providing consistent info (though they both claim the same role eventually).\n\n    *   Alvin's switch from Seer to Robber is a huge red flag.\n    *   Justin's claim to be the Robber was consistent from the start.\n    *   Mitchell's claim to be the Drunk is possible, but he's the primary target for James and Alvin.\n    *   However, look at the logic: If Alvin is the Robber, he stole James's card. If Justin is the Robber, he stole James's card. They can't both be the Robber.\n    *   If Alvin is a Werewolf, he might have claimed Seer to align with Justin's \"James is a villager\" statement, then switched to Robber to try and steal the \"truth-teller\" status or confuse the group.\n\n    *   James is pushing hard for Mitchell.\n    *   Alvin agrees to vote for Mitchell.\n    *   Justin is now voting for Alvin because Alvin changed his story.\n\n    *   Alvin's inconsistency (Seer $\\rightarrow$ Robber) is the most glaring piece of evidence.\n    *   Mitchell's claim (Drunk) is plausible.\n    *   Justin's claim (Robber) is consistent.\n    *   James's claim (Villager) is consistent.\n    *   If Alvin is the Werewolf, he's trying to blend in by mimicking the information Justin provided.\n\n    *   Justin: Robber (Consistent)\n    *   Alvin: Seer $\\rightarrow$ Robber (Inconsistent)\n    *   Mitchell: Drunk (Consistent)\n    *   James: Villager (Consistent)\n\n    Alvin's flip-flopping on his role is a classic sign of a Werewolf trying to adapt their lie to the information being revealed by others. While Mitchell is the target of the group, Alvin's behavior is more logically suspicious from an external observer's perspective. However, the prompt asks for the player I believe is a Werewolf.\n\n    Let's re-evaluate Mitchell. Mitchell says he was the Drunk. If he was the Drunk, he swapped with the center. He could be a Werewolf now. But he hasn't lied about his role; he's just not providing helpful info.\n\n    Alvin lied about being the Seer, then claimed to be the Robber. Since only one Robber exists and Justin claimed it first and stayed with it, Alvin is almost certainly lying.\n\n    *   Justin: Robber.\n    *   Alvin: Werewolf (claiming Seer, then Robber).\n    *   James: Villager.\n    *   Mitchell: Drunk.\n\n    Wait, if Alvin is the Werewolf, why would he claim to be the Robber *after* claiming to be the Seer? He probably realized that claiming Seer was too risky or didn't fit the narrative as well as claiming Robber (since Justin already claimed it, maybe he thought he could confuse the vote).\n\n    Actually, looking at the transcript again:\n    [26] Alvin: I was a seer.\n    [30] Alvin: I looked at James's card.\n    [32] Alvin: You were a villager.\n    ...\n    [89] Alvin: I was actually a robber.\n    [91] Alvin: That's how I knew you were a villager.\n\n    This is a blatant contradiction. He cannot be both the Seer and the Robber. This makes him the most likely Werewolf.\n\n    *   Justification: Alvin claimed to be the Seer and provided information about James being a villager. Later, he contradicted himself by claiming he was actually the Robber to explain how he knew James's role. Since there is only one Robber and Justin also claimed that role consistently, Alvin's inconsistency strongly suggests he is bluffing as a Werewolf.\n    *   Chosen vote: Alvin.",
+  "parsed_output": {
+    "justification": "Alvin is the most suspicious player due to a blatant contradiction in his claims. He initially claimed to be the Seer and stated he saw that James was a villager, but later changed his claim to be the Robber to explain the same piece of information. Since only one Robber can exist and Justin consistently claimed that role from the start, Alvin's flip-flopping is a strong indicator of a Werewolf bluffing to blend in.",
+    "chosen_vote": "Alvin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alvin is the most suspicious player due to a blatant contradiction in his claims. He initially claimed to be the Seer and stated he saw that James was a villager, but later changed his claim to be the Robber to explain the same piece of information. Since only one Robber can exist and Justin consistently claimed that role from the start, Alvin's flip-flopping is a strong indicator of a Werewolf bluffing to blend in.\",\n  \"chosen_vote\": \"Alvin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alvin is the most suspicious player due to a blatant contradiction in his claims. He initially claimed to be the Seer and stated he saw that James was a villager, but later changed his claim to be the Robber to explain the same piece of information. Since only one Robber can exist and Justin consistently claimed that role from the start, Alvin's flip-flopping is a strong indicator of a Werewolf bluffing to blend in.\",\n  \"chosen_vote\": \"Alvin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alvin",
+    "justification": "Alvin is the most suspicious player due to a blatant contradiction in his claims. He initially claimed to be the Seer and stated he saw that James was a villager, but later changed his claim to be the Robber to explain the same piece of information. Since only one Robber can exist and Justin consistently claimed that role from the start, Alvin's flip-flopping is a strong indicator of a Werewolf bluffing to blend in."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3703,
+    "output_token_count": 1411,
+    "generation_time_sec": 145.43445944786072,
+    "used_chat_template": true,
+    "input_char_count": 13017,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

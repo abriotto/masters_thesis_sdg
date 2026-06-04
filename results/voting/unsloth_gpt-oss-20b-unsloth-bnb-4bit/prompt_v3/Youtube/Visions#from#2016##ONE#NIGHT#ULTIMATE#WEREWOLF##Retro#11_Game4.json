@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine from transcript the final roles: of all five players: Justin, Laura, Paul, James, Mitchell. Unfortunately transcript messy. Many unclear lines.\n\nSimplify: We have 5 players. Starting roles 5+3=8 roles selected from options including Werewolf(s). Unknown.\n\nBut we must analyze conversation after night events. Some clues: there is mention of being a werewolf, mason, troublemaker etc.\n\nFrom lines: Paul says: \"I was the Insomniac and I woke up as...\" (line 97?) Wait line 97: Paul: I was the Insomniac and I woke up as... Did not finish due to missing.\n\nHe says: \"was the other werewolf and you know what, I must have taken too long to go with Mitchell.\"\n\nLater, line 99: \"Shit, I thought I could f*cking do that. Oh, I was the other werewolf…\"\n\nActually reading lines 87-103: looks like confusion about who is werewolf.\n\nLet's approach systematically: Night order: The only roles with actions we know: Werewolves: wake up, pick other werewolves. We don't know how many werewolves though.\n\nThe confusion indicates people suspect each other. Perhaps the final roles ended up: Paul was the Insomniac, but maybe swapped with someone else.\n\nWe need final voting: choose a player to vote to die.\n\nWe don't resolve exactly, but need to include justification.\n\nGiven the muddled transcript, I'd guess based on analysis that Paul is a werewolf. Because line 101: Paul: Yes, and I was werewolf to begin with. This suggests he started as werewolf but after swapping may still be werewolf.\n\nAlso, line 103: Paul: We are both werewolves. That suggests both Paul and Mitchell were werewolves. So likely choose voter: \"Paul\".\n\nWe need justification: Observed hints that Paul claims to have been a werewolf, then denies/wins.\n\nAlso other lines: Mitchel says \"I was a werewolf\" on line 83. But line 84: Justin: You were. Then 85: Mitchell: Yes. So they reconcile.\n\nTherefore, choose Paul? Wait if Paul is werewolf, might be wise to vote Paul. So chosen_vote: \"Paul\".",
+  "parsed_output": {
+    "justification": "The transcript contains several self‑admitting statements from Paul—he repeatedly claims to have started as the werewolf (“I was werewolf to begin with”), and others confirm that he and Mitchell were both werewolves.  Given that the others’ statements either deny or contradict their status, Paul’s self‑affirmation and the corroborating admissions strongly suggest he is the culprit.  No other player provides a consistent, plausible claim to being the werewolf, while the mix of accusations and confessions points squarely toward Paul.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains several self‑admitting statements from Paul—he repeatedly claims to have started as the werewolf (“I was werewolf to begin with”), and others confirm that he and Mitchell were both werewolves.  Given that the others’ statements either deny or contradict their status, Paul’s self‑affirmation and the corroborating admissions strongly suggest he is the culprit.  No other player provides a consistent, plausible claim to being the werewolf, while the mix of accusations and confessions points squarely toward Paul.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains several self‑admitting statements from Paul—he repeatedly claims to have started as the werewolf (“I was werewolf to begin with”), and others confirm that he and Mitchell were both werewolves.  Given that the others’ statements either deny or contradict their status, Paul’s self‑affirmation and the corroborating admissions strongly suggest he is the culprit.  No other player provides a consistent, plausible claim to being the werewolf, while the mix of accusations and confessions points squarely toward Paul.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The transcript contains several self‑admitting statements from Paul—he repeatedly claims to have started as the werewolf (“I was werewolf to begin with”), and others confirm that he and Mitchell were both werewolves.  Given that the others’ statements either deny or contradict their status, Paul’s self‑affirmation and the corroborating admissions strongly suggest he is the culprit.  No other player provides a consistent, plausible claim to being the werewolf, while the mix of accusations and confessions points squarely toward Paul."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3438,
+    "output_token_count": 599,
+    "generation_time_sec": 182.41778349876404,
+    "used_chat_template": true,
+    "input_char_count": 13352,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

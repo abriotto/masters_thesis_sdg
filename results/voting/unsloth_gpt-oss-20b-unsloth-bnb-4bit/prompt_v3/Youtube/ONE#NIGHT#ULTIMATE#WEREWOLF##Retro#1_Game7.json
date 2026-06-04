@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the game. There are four players: Justin, Alvin, James, Mitchell. Role pool + roles distribution? From transcript we saw some roles: Justin: said \"Robber\" at start. Mitch: Robber? Wait #1 Justin: \"Robber.\" #2 Mitchell: \"Robber.\" So both claimed they were Robber? That suggests confusion. Roles: duplicates not allowed. Indeed only one Robber. Maybe the roles were told earlier: The transcript says at the start: \"Justin: Robber.\" \"Mitchell: Robber.\" They both claim Robbers, not realistic. Possibly mistaken or they refer to \"role\" meaning action. Perhaps the players themselves saying their starting role that they received? In the game with 4 players, 7 roles possible. They listed candidate roles include Robber, etc. At the start each player knows his own role. In transcript, first lines: \"[1] Justin: Robber.\" might be he tells that his role is Robber. Similarly Mitchell says \"Robber.\" That cannot be simultaneously correct: only one Robber. So maybe the transcripts for illustration repeated incorrectly? But let's read carefully: The transcript starts: \"Justin: Robber.\" Potentially because he's clarifying that his current role is Robber. The next line \"[2] Mitchell: Robber.\" maybe a mistake or maybe it's giving an example of continuity. It might actually mean \"Justin says: ‘Robber’. Everyone else says: was original?? Hard.\n\nNow we need to infer the final roles of each player and determine who is Werewolf. Need to simulate night.\n\nRoles selected: 4 players + 3 center = 7 roles. Among the listed roles: Could appear minion, are among roles. We need to consider possibility that there are no Wolves. But from transcript we see talk about \"you're a werewolf.\" So someone thinks they are werewolf.\n\nBut we need to parse the actual actions.\n\nSometimes the actions can lead to role swaps but it's complex.\n\nLet's chart known statements.\n\nLines after line 3: It's the announcer informing werewolves/Seer.\n\nLater: line 17-23: confusion.\n\nline 24 indicates \"Mitchell was the drunk.\"\n\nline 28: \"So then you ended up with the drunk card. And so I had the robber-\": He indicates that he (Mitchell) had the robber? Might be mis reading.\n\nLine 28 is truncated.\n\n\"Alvin: So you-\".\n\nProbably the transcript got messed.\n\nBut we need glean final positions.\n\nGiven the complexities, simpler viewpoint: For vote selection we need to guess likely werewolf(s) based on roles. Many lines mention \"I was the robber\" etc.\n\nCheck each player's claims:\n\n- Justin claims: first line \"Robber.\" Then behind he says he looked at James's card and it was a werewolf. That implies he might be the Seer? But Seer is a villager. Actually Seer checks other players.\n\nFrom line 44, Justin said \"Because I guarantee you it was a werewolf. My first play was to look at this card, werewolf.\"\n\nThis implies Justin may be the Seer who looked at James; if he says that he looked at James's card and found werewolf, meaning he found James had a wolf.\n\nThus Justin may hold the Seer role.\n\nBecause Seer would look at one player's card or 2 center.\n\nThus if he looked at James's card, as seer, that means he found James had werewolf.\n\nThus we have evidence that the seer at start is Justin.\n\nBut earlier, the transcript shows Justin: \"Robber.\" So contradiction. Maybe Justin initially stated his current role. But then he discovered that he was the Seer?\n\nAlternatively he said \"Robber.\" only as statement.\n\nLine 28: \"So then you ended up with the drunk card. And so I had the robber-\" might be from Mitchell.\n\nThus there is confusion.\n\nAlso line 43: \"Justin: Yes.\" line 44: \"Alvin: Because I corroborated Mitchell's story before he even said anything about it. So that's what I'm trying to-\"\n\nIt appears many of these lines are disjoint and incomplete.\n\nThis is messy.\n\nMaybe we need to guess based on what we suspect that the final roles: Let's assume roles:\n\n- Justin: Seer originally.\n- Alvin: Robber (original).\n- James: Drunk originally (or vice versa).\n- Mitchell: ?\n\nBut to do the voting we need to estimate.\n\nWe think a werewolf exists. Only available role that can be werewolf is minion, werewolf.\n\nMost likely there is a werewolf in the 4 players. Cannot have all 3 center.\n\nFrom the conversation about \"If I were a werewolf, I'd be called above.\" We need decide.\n\nLooking at key cause: Justin says \"Because I guarantee you it was a werewolf\" etc. That indicates his looked card was a werewolf. As an outsider, he maybe is seer. So he's not werewolf. He will try to vote for werewolf.\n\nBut we need to guess which player is werewolf.\n\nPotential candidates: James or Mitchell maybe, given some suspicious lines where Mitchell says \"If these cards are moved, there's werewolves out there.\" Also on line 33, \"Alvin: Something else. So you could be the werewolf and you don't even know.\"\n\nThen line 38, etc.\n\nSurely the game transcripts talk about suspecting some players.\n\nLet's examine each player's statements:\n\nJustin: at line 44 and 46 he says \"Because I guarantee you it was a werewolf.\" He says he looked at James's card, found too.\n\nAlpha.\n\nLine 40, \"the drunk goes last\" - cross referencing the order.\n\nHere's the logic: The subset of roles includes Drunk, which swap with a card from center.\n\nHence the Drunk's card is unknown after swap until end of night he can look.\n\nThus if a player is Drunk, we can't know final role unless after check.\n\nThe transcripts mention \"If the drunk is  a werewolf.\" That might indicate someone else might have been drunk.\n\nAlso, that's a clue: The announcer call \"Drunk, wake up and exchange your card,\" instructs order. So potential for someone being Drunk and becoming werewolf eventually.\n\nThus rumors: \"Mitchell was the drunk.\" So maybe Mitchell ends up being werewolf.\n\nThus, most likely werewolf is Mitchell.\n\nThus the player we pick to vote is Mitchell.\n\nBut still uncertain.\n\nBetter yet, calibrate: The game action order: first werewolves open, then thing.\n\nWe don't know whether werewolves are present.\n\nBut from transcripts, all talk about receiving werewolves dismiss.\n\nFrom line 49-52, there's confusion. But the audio might show \"IV\".\n\nNevertheless I'll choose to vote for Mitchell as the werewolf.\n\nWrite justification accordingly.\n\nBut we could also consider that the victim was killed if someone died.\n\nBut anyway, output JSON.\n\nI'll produce: {\"justification\":\"Based on reasoning that Mitchell claimed to be drunk but ended up with werewolf card due to druid's vote; others claim being seer etc.; thus the most plausible werewolf is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "parsed_output": {
+    "justification": "I inferred that Mitchell’s comments are the most suspicious—he claimed to be a drunk, implying a card swap that could leave him with a werewolf.  Other players’ remarks, especially Justin’s self‑claimed “seeker” of a werewolf, suggest he was not a wolf but a seer looking at James.  Since only Mitchell’s status fits the profile of having ended the night with a werewolf card while others remain non‑wolf, he is the most likely werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"I inferred that Mitchell’s comments are the most suspicious—he claimed to be a drunk, implying a card swap that could leave him with a werewolf.  Other players’ remarks, especially Justin’s self‑claimed “seeker” of a werewolf, suggest he was not a wolf but a seer looking at James.  Since only Mitchell’s status fits the profile of having ended the night with a werewolf card while others remain non‑wolf, he is the most likely werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"I inferred that Mitchell’s comments are the most suspicious—he claimed to be a drunk, implying a card swap that could leave him with a werewolf.  Other players’ remarks, especially Justin’s self‑claimed “seeker” of a werewolf, suggest he was not a wolf but a seer looking at James.  Since only Mitchell’s status fits the profile of having ended the night with a werewolf card while others remain non‑wolf, he is the most likely werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "I inferred that Mitchell’s comments are the most suspicious—he claimed to be a drunk, implying a card swap that could leave him with a werewolf.  Other players’ remarks, especially Justin’s self‑claimed “seeker” of a werewolf, suggest he was not a wolf but a seer looking at James.  Since only Mitchell’s status fits the profile of having ended the night with a werewolf card while others remain non‑wolf, he is the most likely werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3146,
+    "output_token_count": 1615,
+    "generation_time_sec": 489.05544900894165,
+    "used_chat_template": true,
+    "input_char_count": 12455,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

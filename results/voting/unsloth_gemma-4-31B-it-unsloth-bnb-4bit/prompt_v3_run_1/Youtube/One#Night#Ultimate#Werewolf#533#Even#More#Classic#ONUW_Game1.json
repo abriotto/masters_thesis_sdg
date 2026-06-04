@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ryan\n    *   Katie\n    *   Brett\n    *   DeAndre\n\n    *   Werewolves (wake up, look for others/center)\n    *   Minion (wake up, see werewolves)\n    *   Robber (swap card, look at new card)\n    *   Troublemaker (swap two other players' cards)\n    *   Drunk (swap card with center, no look)\n    *   Insomniac (look at current card)\n\n    *   DeAndre claims he was Drunk ([13]).\n    *   Katie asks Ryan what he did as Troublemaker ([17]).\n    *   Ryan says he swapped Katie and Brett's cards ([24]).\n    *   Katie claims she was the Robber ([23], [33], [38]).\n    *   Katie says she stole \"his troublemaker\" (referring to Ryan? Or Brett? [38]). Wait, she says \"I was the robber, and I stole his troublemaker\" ([38]). This implies she stole the Troublemaker role from someone.\n    *   Brett claims he was the Tanner ([63], [71]).\n    *   DeAndre admits \"Wolfing\" ([55]) after previously claiming Drunk ([13]).\n\n    *   *Scenario A (Taking claims at face value):*\n        *   Ryan: Troublemaker (swapped Katie and Brett).\n        *   Katie: Robber (stole Troublemaker from Ryan? No, that's not how Robber works. Robber steals a card from a player. If Katie was Robber and stole Ryan's Troublemaker, Ryan is now the Robber).\n        *   Brett: Tanner.\n        *   DeAndre: Werewolf/Minion (claims \"Wolfing\").\n\n    *   *Let's re-examine the swaps:*\n        1.  Robber (Katie) steals from Ryan (Troublemaker).\n            *   Katie becomes Troublemaker.\n            *   Ryan becomes Robber.\n        2.  Troublemaker (now Katie) swaps Brett and Ryan.\n            *   Brett gets Ryan's card (Robber).\n            *   Ryan gets Brett's card (Tanner).\n        3.  Drunk (DeAndre) swaps with center.\n            *   DeAndre gets a card from the center.\n\n    *   *Wait, let's look at the transcript again:*\n        *   Ryan says: \"I swapped yours [Katie] and Brett's cards\" ([24]).\n        *   Katie says: \"I was the robber, and I stole his troublemaker\" ([38]).\n        *   If Katie was the Robber and stole Ryan's Troublemaker, then Katie is the Troublemaker.\n        *   If Katie (as Troublemaker) swapped Brett and Ryan, then Brett and Ryan swapped roles.\n        *   Brett says: \"I was the tanner\" ([63]).\n        *   If Brett was Tanner and Ryan was Robber (after Katie stole Troublemaker), and Katie swapped them, then Ryan is now Tanner and Brett is now Robber.\n\n    *   *Wait, the claims are messy:*\n        *   Ryan claims he is the Troublemaker ([24]).\n        *   Katie claims she was the Robber and stole the Troublemaker ([38]).\n        *   If Katie stole the Troublemaker role, *she* is the Troublemaker, not Ryan.\n        *   But Ryan says *he* swapped Katie and Brett.\n        *   If Ryan is the Troublemaker, he didn't get robbed.\n        *   If Katie is the Robber, she stole someone's card.\n\n    *   *Let's look at DeAndre:*\n        *   DeAndre first claims Drunk ([13]).\n        *   Then DeAndre says \"Wolfing\" ([55]).\n        *   This is a huge red flag. Admitting to being a werewolf (or minion) usually means they are either the werewolf or the Tanner trying to get voted out.\n\n    *   *Is DeAndre the Tanner?*\n        *   Brett claims *he* was the Tanner ([63]).\n        *   If Brett was the Tanner, DeAndre is likely the Werewolf.\n\n    *   *Analyzing the \"Wolfing\" comment:*\n        *   DeAndre: \"Wolfing\" ([55]).\n        *   Brett: \"I think we caught you\" ([79]).\n        *   DeAndre: \"I didn't say who I was\" ([80]).\n\n    *   *Evaluating the roles based on the final discussion:*\n        *   Ryan, Katie, and Brett seem to have formed an alliance to vote for DeAndre.\n        *   DeAndre's shift from \"Drunk\" to \"Wolfing\" makes him the primary suspect.\n        *   Even if the swaps are confusing, the most direct evidence is DeAndre's own admission (or bluff) of \"Wolfing\".\n\n    *   *Could DeAndre be the Tanner?*\n        *   Tanners want to be voted out.\n        *   Werewolves want to avoid being voted out.\n        *   DeAndre saying \"Wolfing\" could be a Tanner strategy.\n        *   However, Brett explicitly claimed to be the Tanner ([63]). If Brett is the Tanner, DeAndre cannot be.\n\n    *   *Let's check the roles again:*\n        *   Ryan: Troublemaker?\n        *   Katie: Robber?\n        *   Brett: Tanner?\n        *   DeAndre: Werewolf?\n\n    *   If Ryan was Troublemaker and swapped Katie and Brett:\n        *   Katie (Robber) <-> Brett (Tanner).\n        *   Now Katie is Tanner, Brett is Robber.\n        *   DeAndre is Werewolf.\n\n    *   If Katie was Robber and stole Ryan's Troublemaker:\n        *   Katie is Troublemaker, Ryan is Robber.\n        *   Then Katie (Troublemaker) swapped Brett and Ryan.\n        *   Brett (Tanner) <-> Ryan (Robber).\n        *   Now Brett is Robber, Ryan is Tanner.\n        *   DeAndre is Werewolf.\n\n    *   In both scenarios, DeAndre is the odd one out and the one admitting to \"wolfing\".\n\n    *   DeAndre claimed to be Drunk, then later said \"Wolfing\".\n    *   Brett claimed to be the Tanner.\n    *   Ryan and Katie's claims about Robber/Troublemaker are slightly contradictory but they both align against DeAndre.\n    *   The most likely Werewolf is DeAndre.\n\n    *   Justification: DeAndre initially claimed to be the Drunk but later admitted to \"Wolfing,\" which strongly suggests he is a Werewolf or Minion. While Brett claimed to be the Tanner, DeAndre's inconsistent claims and eventual admission make him the most suspicious player. The other players (Ryan and Katie) have provided roles (Troublemaker and Robber) that, despite some confusion over the swaps, align them with the Village.\n    *   Chosen vote: DeAndre.",
+  "parsed_output": {
+    "justification": "DeAndre initially claimed to be the Drunk but later explicitly stated he was 'Wolfing,' which is a strong indicator of being a Werewolf or Minion. Although Brett claimed to be the Tanner, DeAndre's inconsistent claims and admission make him the primary suspect. Ryan and Katie's discussion regarding the Robber and Troublemaker roles, while slightly confusing, suggests they are aligned with the Village and targeting DeAndre.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"DeAndre initially claimed to be the Drunk but later explicitly stated he was 'Wolfing,' which is a strong indicator of being a Werewolf or Minion. Although Brett claimed to be the Tanner, DeAndre's inconsistent claims and admission make him the primary suspect. Ryan and Katie's discussion regarding the Robber and Troublemaker roles, while slightly confusing, suggests they are aligned with the Village and targeting DeAndre.\",\n  \"chosen_vote\": \"DeAndre\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"DeAndre initially claimed to be the Drunk but later explicitly stated he was 'Wolfing,' which is a strong indicator of being a Werewolf or Minion. Although Brett claimed to be the Tanner, DeAndre's inconsistent claims and admission make him the primary suspect. Ryan and Katie's discussion regarding the Robber and Troublemaker roles, while slightly confusing, suggests they are aligned with the Village and targeting DeAndre.\",\n  \"chosen_vote\": \"DeAndre\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "DeAndre initially claimed to be the Drunk but later explicitly stated he was 'Wolfing,' which is a strong indicator of being a Werewolf or Minion. Although Brett claimed to be the Tanner, DeAndre's inconsistent claims and admission make him the primary suspect. Ryan and Katie's discussion regarding the Robber and Troublemaker roles, while slightly confusing, suggests they are aligned with the Village and targeting DeAndre."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3466,
+    "output_token_count": 1701,
+    "generation_time_sec": 172.99706959724426,
+    "used_chat_template": true,
+    "input_char_count": 12381,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

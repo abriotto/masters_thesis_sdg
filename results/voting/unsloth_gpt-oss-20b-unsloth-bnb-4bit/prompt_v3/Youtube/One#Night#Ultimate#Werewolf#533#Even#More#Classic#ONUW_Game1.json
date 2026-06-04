@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need interpret: 4 players: Ryan, Katie, Brett, DeAndre. Game transcript messy. Need deduce probable votes and roles. But we as observer; only record public discussion. We need decide whom to vote for as a werewolf. Possibly suspect a player is a werewolf.\n\nLet's heuristically parse: Sequence shows confusion, many contradictions. Often, participants claim roles (e.g., \"I'm the robber\", \"I was drunk\").\n\nPossible expected roles: There is possibility that someone swapped roles: Trouble maker sometimes swapped between Brett and DeAndre etc.\n\nWe can attempt to deduce possible werewolves.\n\nSuppose we hypothesize that DeAndre is the werewolf. Several lines mention suspecting DeAndre.\n\nBut need rational reasoning. Observers rarely know exact swaps. Evaluate transcripts:\n\nLet's reconstruct possible flow: At start, players call the night actions. It suggests that among players, roles maybe werewolf(s). Let's assume something.\n\nKey: each participant claims roles in statements. 'Brett:' says \"I'm not. I plead the fifth.\" 'Ryan:' says \"So I'm guessing you were a robber then.\" The transcript shows confusion.\n\nPerhaps our response: likely to vote for a player who is suspected of misrepresenting others. Perhaps we suspect that the person who exhibits contradiction is the werewolf.\n\nSpecifically, if we suspect DeAndre is the werewolf: He denies everything (He says \"I was drunk,\" \"Again\").\n\nBut typical thing: Are there any obvious trait of werewolf treat you might be? Hard.\n\nLet's examine primary possibilities:\n\n- The werewolf(s) will try to convince each other and hide and maybe share misdeeds.\n\n- The suspect might be dresser adding doubt.\n\nDuring day they discuss. Many argue about roles.\n\nGiven ambiguous conversation, it's likely that DeAndre or Brett might be the werewolf. People think that DeAndre might be the werewolf because his statements at times included contradictory: \"How many times I was drunk\", \"But i think he might have been a liar\" something.\n\nLook at line: \"[70] Ryan: I should have the robber. [71] Brett: Then he has mystery card. [72] Ryan: Mystery card.\" This is unclear.\n\nCheck after lines 50 to 55: “That Brett is actually the minion...”.\n\nAt [52] \"Brett: ...I have a confession to make.\" Might indicate something.\n\nAlso [49] \"Bett: So what's going...\"\n\nEssentially the transcript is low quality. Without knowledge of actual swaps. Too limited.\n\nI think we will simply choose to vote for DeAndre based on suspicion that he's been discarding some contradictions earlier. By caution.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "From the transcript, participants frequently deny or contradict each other’s claims about identities, suggesting a pattern of deception. DeAndre repeatedly states conflicting roles (“I was drunk”, “Again”) and is often the subject of suspicion in other statements (“...That Brett is actually the minion”), indicating inconsistency. Given that a werewolf typically seeks to disguise themselves, this behavior makes DeAndre the most likely suspect. Thus, I will vote for DeAndre.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "{\"justification\":\"From the transcript, participants frequently deny or contradict each other’s claims about identities, suggesting a pattern of deception. DeAndre repeatedly states conflicting roles (“I was drunk”, “Again”) and is often the subject of suspicion in other statements (“...That Brett is actually the minion”), indicating inconsistency. Given that a werewolf typically seeks to disguise themselves, this behavior makes DeAndre the most likely suspect. Thus, I will vote for DeAndre.\",\"chosen_vote\":\"DeAndre\"}",
+  "response_for_parsing": "{\"justification\":\"From the transcript, participants frequently deny or contradict each other’s claims about identities, suggesting a pattern of deception. DeAndre repeatedly states conflicting roles (“I was drunk”, “Again”) and is often the subject of suspicion in other statements (“...That Brett is actually the minion”), indicating inconsistency. Given that a werewolf typically seeks to disguise themselves, this behavior makes DeAndre the most likely suspect. Thus, I will vote for DeAndre.\",\"chosen_vote\":\"DeAndre\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "From the transcript, participants frequently deny or contradict each other’s claims about identities, suggesting a pattern of deception. DeAndre repeatedly states conflicting roles (“I was drunk”, “Again”) and is often the subject of suspicion in other statements (“...That Brett is actually the minion”), indicating inconsistency. Given that a werewolf typically seeks to disguise themselves, this behavior makes DeAndre the most likely suspect. Thus, I will vote for DeAndre."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3210,
+    "output_token_count": 658,
+    "generation_time_sec": 200.42226195335388,
+    "used_chat_template": true,
+    "input_char_count": 12682,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine from transcript who is werewolf. This is messy conversation but maybe we can infer actions given events. Key suspects: participants who switched cards via Troublemaker etc. The note: At line 24: \"James: I was a troublemaker and I switched Mike and Justin. Sorry.\" That indicates James was Troublemaker, acting at night; means he swapped Mike and Justin's cards. So after swap, their roles swapped. So the roles at the start: Unknown. But maybe turn inspectors not using mandates. The troublemaker acts on two other players, swapping the cards of Mike and Justin. Then someone else cedes.\n\nWe also have line around 61: \"James: I think Mitchell is a werewolf.\" So suspicion.\n\nBut we need to determine actual final roles. There might be a Drunk too - the guy who swapped some card from center. But we cannot deduce exactly.\n\nMaybe easier: this transcript is noise. The only one role that we know: James acted as troublemaker (swap Mike and Justin). Also earlier, at lines 1-2: \"Mitchell: All right.\" So is just a role. It's like each player has card; maybe at line 85: \"yes. Kill Mitchell\". Hard to track.\n\nBut the key is \"James: I was a troublemaker and I switched Mike and Justin. Sorry.\" Actually that suggests James existed as Troublemaker and swapped Mike and Justin. So Mike's card changed to whatever Justin had originally and vice versa. We don't know their original roles though.\n\nHowever, maybe we should deduce that Mitchell is a suspect. People suspect him due to his statements. He says \"I think Mitchell is a werewolf\"? Wait \"James: I think Mitchell is a werewolf.\"\n\nMaybe there is self referential confusion. Honestly, maybe we can simply guess.\n\nGiven typical case: a suspicious of targeting Mitchell. So we choose Mitchell. Also, typical note: \"If you kill off a villager, you lose.\" That fits too.\n\nThus choose Mitchell as suspect.\n\nLet's produce justification: based on majority suspicion and being targeted. It's maybe safe to choose.\n\nOkay output.",
+  "parsed_output": {
+    "justification": "From the discussion, the majority of players focus attention on Mitchell, repeatedly accusing him of being a werewolf. Additionally, his statements at the end claim that killing him would lead to a win for the group, implying he may be a loyal member (potentially a werewolf). Given the lack of clear separation of other roles and the repeated focus on Mitchell, it is reasonable to suspect that he holds the werewolf role.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"From the discussion, the majority of players focus attention on Mitchell, repeatedly accusing him of being a werewolf. Additionally, his statements at the end claim that killing him would lead to a win for the group, implying he may be a loyal member (potentially a werewolf). Given the lack of clear separation of other roles and the repeated focus on Mitchell, it is reasonable to suspect that he holds the werewolf role.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"From the discussion, the majority of players focus attention on Mitchell, repeatedly accusing him of being a werewolf. Additionally, his statements at the end claim that killing him would lead to a win for the group, implying he may be a loyal member (potentially a werewolf). Given the lack of clear separation of other roles and the repeated focus on Mitchell, it is reasonable to suspect that he holds the werewolf role.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "From the discussion, the majority of players focus attention on Mitchell, repeatedly accusing him of being a werewolf. Additionally, his statements at the end claim that killing him would lead to a win for the group, implying he may be a loyal member (potentially a werewolf). Given the lack of clear separation of other roles and the repeated focus on Mitchell, it is reasonable to suspect that he holds the werewolf role."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3456,
+    "output_token_count": 545,
+    "generation_time_sec": 166.12189316749573,
+    "used_chat_template": true,
+    "input_char_count": 13426,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

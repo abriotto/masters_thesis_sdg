@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Dan: Claims Seer (at [80]), then says he's a Villager (at [117]), then says he's not the Seer (at [168]).\n    *   Ed: Claims Villager (at [101]).\n    *   Katie: Claims Villager (at [32], [54], [94], [149], [209]).\n    *   Brett: Claims Villager (at [44], [46], [51], [87], [92], [112], [119], [153], [158]).\n    *   Audrey: Claims Villager (at [33], [45], [49], [93], [109], [135], [138], [148], [210]).\n    *   Dylan: Claims Troublemaker (at [98], [146], [173], [179]).\n\n    *   Dan claims he is the Seer and saw Brett's card as a Werewolf ([80]).\n    *   Dylan claims he is the Troublemaker and swapped Dan and Ed's cards ([98], [125], [179], [201]).\n    *   If Dylan is the Troublemaker and swapped Dan and Ed, then Ed becomes the Seer and Dan becomes whatever Ed was (Villager).\n    *   Ed then claims he is now the Seer and Dan is a Villager ([191], [199]).\n    *   Brett strongly denies being a Werewolf and claims to be a Villager throughout the game.\n    *   Katie and Audrey both claim to be Villagers.\n\n    *   If Dan was the Seer and saw Brett as a Werewolf, and Dylan (Troublemaker) swapped Dan and Ed, then Brett is still a Werewolf.\n    *   If Dan was lying about being the Seer to frame Brett, then Dan might be the Werewolf.\n    *   If Dylan is lying about being the Troublemaker, the swap didn't happen.\n    *   If Brett is the Werewolf, he would naturally claim to be a Villager.\n    *   If Katie or Audrey are Werewolves, they would also claim to be Villagers.\n\n    *   Dan's claim: \"I'm the Seer and I looked at your card and you're a Werewolf\" (referring to Brett).\n    *   Dylan's claim: \"I was making some trouble last night... I switched them [Ed and Dan].\"\n    *   Ed's claim: \"Okay, he switched us so now I'm the Seer.\"\n    *   Brett's defense: \"I'm 100% a Villager.\"\n\n    *   In One Night Ultimate Werewolf, the Seer's information is usually the strongest lead unless a swap occurred.\n    *   Dan's claim specifically targets Brett.\n    *   Dylan's claim about the swap (Dan <-> Ed) doesn't change the fact that Dan *saw* Brett's card. The swap happens *after* the Seer's action (Seer is 5th, Troublemaker is 7th).\n    *   Therefore, if Dan was the Seer, he saw Brett's card *before* any swap happened. The swap between Dan and Ed doesn't invalidate the information Dan gathered about Brett.\n    *   Brett's reaction is very defensive (\"Why is everyone turning on me?\", \"I'm just a stupid Villager\").\n    *   Katie and Audrey are also claiming Villager, but there's no direct evidence against them other than \"vibes\" (Audrey's initial guess).\n\n    *   Dan (Seer) -> saw Brett (Werewolf).\n    *   Dylan (Troublemaker) -> swapped Dan (Seer) and Ed (Villager).\n    *   End roles: Ed (Seer), Dan (Villager), Brett (Werewolf).\n    *   This scenario is consistent with all claims.\n\n    *   Dan is the Werewolf and lied about being the Seer to frame Brett.\n    *   Dylan is the Werewolf and lied about being the Troublemaker to confuse the group.\n    *   Brett is the Werewolf and is lying about being a Villager.\n\n    *   Dan's claim was very direct.\n    *   Dylan's claim about the swap actually *supports* Dan's information (by explaining why Dan might later say he's not the Seer anymore).\n    *   Brett's insistence on being a Villager is standard for a Werewolf.\n    *   The most logical conclusion based on the provided claims is that Brett is the Werewolf.\n\n    *   Dan claimed Seer and identified Brett as a Werewolf.\n    *   Dylan claimed Troublemaker and swapped Dan and Ed.\n    *   Even if the swap occurred, the Seer's information about Brett remains valid because the Seer acts before the Troublemaker.\n    *   Brett's consistent denial is typical for a Werewolf.\n    *   Therefore, Brett is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Dan claimed to be the Seer and identified Brett as a Werewolf. Although Dylan claimed to be the Troublemaker and swapped Dan and Ed's cards, the Seer acts before the Troublemaker in the night action order, meaning Dan's information about Brett's card remains valid regardless of the swap. Brett's strong denials and defensive behavior are consistent with a Werewolf attempting to divert suspicion.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dan claimed to be the Seer and identified Brett as a Werewolf. Although Dylan claimed to be the Troublemaker and swapped Dan and Ed's cards, the Seer acts before the Troublemaker in the night action order, meaning Dan's information about Brett's card remains valid regardless of the swap. Brett's strong denials and defensive behavior are consistent with a Werewolf attempting to divert suspicion.\",\n  \"chosen_vote\": \"Brett\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dan claimed to be the Seer and identified Brett as a Werewolf. Although Dylan claimed to be the Troublemaker and swapped Dan and Ed's cards, the Seer acts before the Troublemaker in the night action order, meaning Dan's information about Brett's card remains valid regardless of the swap. Brett's strong denials and defensive behavior are consistent with a Werewolf attempting to divert suspicion.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "Dan claimed to be the Seer and identified Brett as a Werewolf. Although Dylan claimed to be the Troublemaker and swapped Dan and Ed's cards, the Seer acts before the Troublemaker in the night action order, meaning Dan's information about Brett's card remains valid regardless of the swap. Brett's strong denials and defensive behavior are consistent with a Werewolf attempting to divert suspicion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5988,
+    "output_token_count": 1292,
+    "generation_time_sec": 138.68921971321106,
+    "used_chat_template": true,
+    "input_char_count": 18871,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

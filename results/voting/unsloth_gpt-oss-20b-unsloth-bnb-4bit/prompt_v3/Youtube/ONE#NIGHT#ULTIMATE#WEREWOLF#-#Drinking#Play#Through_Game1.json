@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through_Game1.txt",
+  "player_names": [
+    "Sarah",
+    "Jordan1",
+    "Haak",
+    "Robin",
+    "Jordan2",
+    "Meryl"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need identify which player believes being werewolf and vote accordingly. Based on transcript, multiple accusations but we need guess likely werewolf.\n\nBut we lack clarity. Examine statements: Many between Jordan1, Jordan2, etc. We have to analyze suspicion patterns.\n\nLet's scan for identifiers.\n\nFrom transcript, there are bits where people say \"I was the seer\" etc, but unclear.\n\nWe need to figure probable werewolf based on discourse.\n\nWhat we know: roles are 6 players: Sarah, Jordan1, Haak, Robin, Jordan2, Meryl. Several roles present: troublemaker, drunk, etc. In this transcript, it seems confusion about who is which.\n\nSome key statements:\n\n- Haak says: \"I was the troublemaker.\" (line 36)\n\n- Jordan2 says: \"I'm the werewolf.\" (line 25)\n\n- Meryl mentions: \"I'm the seer.\" (line 57 referencing line 56 maybe). Or \"The seer\".\n\nWait: Someone says \"I was the seer.\" Actually line 43: \"Jordan2: Even before he says... I'm going to corroborate his story\". not helpful. But there is line that states \"Meryl: I'm the seer and I saw ... something.\"\n\nLine 56: \"Meryl: OK, both werewolves, I was the seer and I saw ... something.\" Maybe tagline.\n\nAnother: Jordan2 claims: \"I'm the werewolf.\"\n\nHaak fails to match the troublemaker correct.\n\nThis is tricky.\n\nWe might guess that the werewolf is one of those claiming to be werewolf: Jordan2.\n\nAlso many accuse others. The final few lines: 151: \"Jordan1: Robin, you're the hunter.\" 152: \"Jordan2: Vote for Sarah! Vote for Sarah!\" 153: \"Jordan1: If he's the [inaudible 00:05:43]\"\n\nHard to decipher.\n\nWe need aim to decide best candidate at end: who likely is werewolf.\n\nMaybe the tension: Haak says was troublemaker, causing confusion: someone could have swapped from troublemaker to werewolf? But troublemaker not blood.\n\nCould that be a werewolf? Possibly, but troublemaker is a role maybe two placements; only one troublemaker exists. If Haak was troublemaker, then last time that could be werewolf.\n\nBut we need to analyze victory conditions: a player who says they're werewolf likely is true? But self-claims could indicate deception. The ability of troublemaker is to swap two cards. He could have been tricking.\n\nLook at events: Under line 45-47, Haak etc talk about diagonal. Not sure.\n\nTrick: The instructions mention that after night, some roles still unknown.\n\nOk maybe easier: Based on allegations, among players, is there suspicion of being werewolf?\n\nLine 90: \"Jordan1: I was the hunter.\" maybe?\n\nLine 93: \"Jordan2: All right who is the drunk?\"\n\nSeems miscommunication.\n\nThe tanner is unclear.\n\nThe final lines: 151: \"Jordan1: Robin, you're the hunter.\" So Jordan1 says that.\n\nSo near voting (end) the people debate.\n\nIt appears that \"Jordan2\" tries to claim the werewolf. I'd lean that they are?\n\nNevertheless, we need produce justification and choose one name.\n\nSearch again line 25: \"Jordan2: I'm the werewolf.\" That is a strong statement. But it's contested.\n\nCheck if any other claim: None else. There is also \"Jordan1: you're always the werewolf\" (line 24). Some friction.\n\nThus, likely werewolf is Jordan2 due to conviction.\n\nThus final answer: chosen_vote \"Jordan2\".\n\nNow produce justification line explaining that.\n\nLet's craft reasoning: The tone suggests no other credible evidence. Jordan2 claims being werewolf and others suspect but security may rely on that. Provide justification: In the transcript, Jordan2 claims they are werewolf, and there is no clear evidence of others claim or actions that rationally contradict that. Also are accusation consistent? Probably not.\n\nAlternatively, maybe \"Haak\" is troublemaker. He might have functioned, but not likely.\n\nOkay produce final.",
+  "parsed_output": {
+    "justification": "The transcript contains a single explicit claim that a player is the werewolf—Jordan2 says, \"I'm the werewolf\" (line 25). This claim is repeated throughout the discussion, and none of the other players provide a convincing counter‑argument or evidence that contradicts it. Given the lack of clear evidence that any other player could have swapped into a werewolf role, the most plausible conclusion is that the werewolf is Jordan2.",
+    "chosen_vote": "Jordan2"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains a single explicit claim that a player is the werewolf—Jordan2 says, \\\"I'm the werewolf\\\" (line 25). This claim is repeated throughout the discussion, and none of the other players provide a convincing counter‑argument or evidence that contradicts it. Given the lack of clear evidence that any other player could have swapped into a werewolf role, the most plausible conclusion is that the werewolf is Jordan2.\",\"chosen_vote\":\"Jordan2\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains a single explicit claim that a player is the werewolf—Jordan2 says, \\\"I'm the werewolf\\\" (line 25). This claim is repeated throughout the discussion, and none of the other players provide a convincing counter‑argument or evidence that contradicts it. Given the lack of clear evidence that any other player could have swapped into a werewolf role, the most plausible conclusion is that the werewolf is Jordan2.\",\"chosen_vote\":\"Jordan2\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jordan2",
+    "justification": "The transcript contains a single explicit claim that a player is the werewolf—Jordan2 says, \"I'm the werewolf\" (line 25). This claim is repeated throughout the discussion, and none of the other players provide a convincing counter‑argument or evidence that contradicts it. Given the lack of clear evidence that any other player could have swapped into a werewolf role, the most plausible conclusion is that the werewolf is Jordan2."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4233,
+    "output_token_count": 974,
+    "generation_time_sec": 298.4634048938751,
+    "used_chat_template": true,
+    "input_char_count": 15500,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

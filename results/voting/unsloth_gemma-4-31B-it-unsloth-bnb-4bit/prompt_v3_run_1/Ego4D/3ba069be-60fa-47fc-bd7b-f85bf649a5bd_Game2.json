@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game2.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin: Claims Troublemaker. Swapped Kaelan and Jessica.\n    *   Kaelan: Claims Robber (initially says \"You're the Robber\" to Kevin, then \"I'm the Minion\" [9], then \"I'm the Minion now\" [25], then \"I robbed that, and I got to look at my card as the Robber, so I know I'm the Minion\" [39]).\n    *   Jessica: Claims Minion [11, 24, 42].\n    *   Daniel: Claims Villager [47].\n\n    *   Kevin (Troublemaker) swapped Kaelan and Jessica.\n    *   Kaelan claims he was the Robber, robbed Jessica, saw she was the Minion, and thus he became the Minion.\n    *   Wait, let's re-read Kaelan's claim: \"I robbed that, and I got to look at my card as the Robber, so I know I'm the Minion\" [39]. This is confusing. If Kaelan was the Robber and robbed Jessica (who was the Minion), Kaelan becomes the Minion and Jessica becomes the Robber.\n    *   Then Kevin (Troublemaker) swapped Kaelan and Jessica.\n    *   If Kaelan was the Minion (after robbing) and Jessica was the Robber, and Kevin swapped them, then Jessica becomes the Minion and Kaelan becomes the Robber.\n    *   Jessica claims she was the Minion [11, 24, 42].\n    *   Kaelan claims he is the Minion now [25, 39].\n\n    *   Kaelan's logic is contradictory. He says \"I robbed that... so I know I'm the Minion\" [39]. If he robbed the Minion, he *is* the Minion. But then he says he's the Minion *now* [25], even after Kevin (Troublemaker) swapped him and Jessica.\n    *   If Kevin swapped Kaelan and Jessica, and Kaelan was the Minion, Kaelan would no longer be the Minion.\n    *   Jessica claims she was the Minion and didn't see any Werewolves [42]. (Minions learn who the Werewolves are).\n    *   Daniel claims he is a Villager [47].\n    *   Kevin claims he is the Troublemaker [3].\n\n    *   If Kevin is the Troublemaker, Kaelan is the Robber, Jessica is the Minion, and Daniel is the Villager:\n        *   Robber (Kaelan) swaps with Jessica (Minion). Kaelan = Minion, Jessica = Robber.\n        *   Troublemaker (Kevin) swaps Kaelan (Minion) and Jessica (Robber). Kaelan = Robber, Jessica = Minion.\n        *   End roles: Kevin (Troublemaker), Kaelan (Robber), Jessica (Minion), Daniel (Villager).\n        *   In this scenario, no one is a Werewolf.\n    *   However, someone might be lying.\n    *   Kaelan's claims are very inconsistent. He says \"I'm the Minion\" [9], then \"I'm the Minion now\" [25], then \"I robbed that... so I know I'm the Minion\" [39].\n    *   If Kaelan is the Werewolf, he would want to divert suspicion. Claiming to be the Minion (who is on the Werewolf team) is a strange bluff unless he's trying to confuse the group.\n    *   Wait, if Kaelan is the Werewolf, he might be lying about being the Robber/Minion.\n    *   Let's look at the claims again.\n        *   Kevin: Troublemaker.\n        *   Kaelan: Robber -> Minion (via robbery) -> Robber (via Troublemaker swap).\n        *   Jessica: Minion -> Robber (via robbery) -> Minion (via Troublemaker swap).\n        *   Daniel: Villager.\n    *   If these roles are true, there is no Werewolf among the players (the Werewolf card must be in the center).\n    *   But the prompt asks me to vote for the player I believe is a Werewolf.\n    *   Is anyone acting suspiciously?\n    *   Kaelan's statements are the most erratic. He claims to be the Minion multiple times, but his explanation of how he became the Minion (robbing Jessica) and then being swapped by Kevin should mean he is *not* the Minion at the end. Yet he says \"I'm the Minion now\" [25].\n    *   If Kaelan is the Werewolf, he's lying about everything.\n    *   If Jessica is the Werewolf, she's lying about being the Minion.\n    *   If Daniel is the Werewolf, he's lying about being the Villager.\n    *   If Kevin is the Werewolf, he's lying about being the Troublemaker.\n\n    *   Kaelan: \"I'm the Minion\" [9], \"I'm the Minion now\" [25], \"I robbed that... so I know I'm the Minion\" [39].\n    *   If Kaelan was the Robber and robbed Jessica (Minion), he becomes the Minion. Then Kevin (Troublemaker) swaps Kaelan and Jessica. Kaelan becomes the Robber and Jessica becomes the Minion.\n    *   Kaelan's claim \"I'm the Minion now\" [25] contradicts the sequence of events he himself describes.\n    *   This inconsistency makes Kaelan the most suspicious.\n\n    *   Kevin: Troublemaker (consistent)\n    *   Daniel: Villager (consistent)\n    *   Jessica: Minion (consistent)\n    *   Kaelan: Robber/Minion (inconsistent)\n\n    *   If Kaelan is the Werewolf, he's trying to blend in by claiming a role (Robber/Minion) that explains why he might have information or why his role changed.\n    *   The fact that he keeps insisting he is the Minion despite the Troublemaker swap suggests he's either confused or lying.\n\n    *   Wait, if Kaelan is the Minion, he's on the Werewolf team. The goal is to vote out a Werewolf.\n    *   If Kaelan is the Minion, he's not the Werewolf.\n    *   But the prompt asks for the \"Werewolf\". In One Night Ultimate Werewolf, the Minion is on the Werewolf team, but the win condition is \"at least one Werewolf dies\".\n    *   If Kaelan is lying and is actually the Werewolf, he's the target.\n\n    *   Kaelan's claims:\n        1. \"You're the Robber\" (to Kevin) [7] - This is weird.\n        2. \"I'm the Minion\" [9]\n        3. \"I'm the Minion now\" [25]\n        4. \"I robbed that... so I know I'm the Minion\" [39]\n    *   Kaelan is completely contradicting himself and the game state. He's the most likely candidate for the Werewolf.\n\n    *   Kevin: Troublemaker.\n    *   Kaelan: Claims Robber/Minion.\n    *   Jessica: Claims Minion.\n    *   Daniel: Claims Villager.\n    *   If Kaelan is the Werewolf, he's bluffing.\n    *   If Jessica is the Werewolf, she's bluffing.\n    *   If Daniel is the Werewolf, he's bluffing.\n    *   If Kevin is the Werewolf, he's bluffing.\n    *   Kaelan's narrative is the most broken. He claims to be the Robber, then the Minion, then the Robber again, then the Minion again.\n\n    *   Kaelan's claims are contradictory and confusing. He claims to be the Minion multiple times, but his own explanation of the Robber and Troublemaker actions would mean he is not the Minion at the end. This inconsistency suggests he is bluffing and is likely the Werewolf.",
+  "parsed_output": {
+    "justification": "Kaelan's claims are highly inconsistent and contradictory. He claims to be the Minion multiple times, but his own explanation of the game's events—that he was the Robber who robbed Jessica (the Minion) and was then swapped by Kevin (the Troublemaker)—would mean he ended the night as the Robber, not the Minion. This confusion and inconsistency suggest he is bluffing to hide his true identity as the Werewolf.",
+    "chosen_vote": "Kaelan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kaelan's claims are highly inconsistent and contradictory. He claims to be the Minion multiple times, but his own explanation of the game's events—that he was the Robber who robbed Jessica (the Minion) and was then swapped by Kevin (the Troublemaker)—would mean he ended the night as the Robber, not the Minion. This confusion and inconsistency suggest he is bluffing to hide his true identity as the Werewolf.\",\n  \"chosen_vote\": \"Kaelan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kaelan's claims are highly inconsistent and contradictory. He claims to be the Minion multiple times, but his own explanation of the game's events—that he was the Robber who robbed Jessica (the Minion) and was then swapped by Kevin (the Troublemaker)—would mean he ended the night as the Robber, not the Minion. This confusion and inconsistency suggest he is bluffing to hide his true identity as the Werewolf.\",\n  \"chosen_vote\": \"Kaelan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Kaelan",
+    "justification": "Kaelan's claims are highly inconsistent and contradictory. He claims to be the Minion multiple times, but his own explanation of the game's events—that he was the Robber who robbed Jessica (the Minion) and was then swapped by Kevin (the Troublemaker)—would mean he ended the night as the Robber, not the Minion. This confusion and inconsistency suggest he is bluffing to hide his true identity as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2408,
+    "output_token_count": 2010,
+    "generation_time_sec": 195.1157066822052,
+    "used_chat_template": true,
+    "input_char_count": 8738,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

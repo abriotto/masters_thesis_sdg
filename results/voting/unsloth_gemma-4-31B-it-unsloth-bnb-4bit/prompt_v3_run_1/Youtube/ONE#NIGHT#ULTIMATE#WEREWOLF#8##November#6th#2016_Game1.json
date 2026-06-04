@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Matt, Caitlynn, Mitchell, Alana, Mike.\n    *   Roles mentioned/claimed:\n        *   Alana: Insomniac (claims she stayed Insomniac).\n        *   Mike: Claims to be Troublemaker (switched Mitchell with someone, then switched them back).\n        *   Mitchell: Claims Tanner, then Seer, then Werewolf.\n        *   Matt: Claims Robber (robbed Mitchell).\n        *   Caitlynn: No specific role claim, but active in discussion.\n\n    *   Alana: \"I was an insomniac, and I stayed an insomniac.\" (Line 12)\n    *   Mike: \"I did not switch her.\" (Line 13) - This supports Alana's claim if Mike is the Troublemaker.\n    *   Mitchell: \"I actually was the tanner.\" (Line 38) -> \"I really was the seer though.\" (Line 86) -> \"I really wasn't the tanner. I was the werewolf.\" (Line 123) -> \"I'm the werewolf.\" (Line 151).\n    *   Matt: \"I robbed Mitchell.\" (Line 63).\n    *   Mike: \"I switched Mitchell with somebody... I switched them back.\" (Lines 59, 82).\n\n    *   If Matt robbed Mitchell, he took Mitchell's card.\n    *   If Mike (Troublemaker) switched Mitchell with someone and then switched them back, the cards ended up where they started (mostly).\n    *   Mitchell's claims are chaotic: Tanner -> Seer -> Werewolf.\n    *   In One Night Ultimate Werewolf, players often bluff. However, Mitchell's final claim is \"I'm the werewolf\" (Line 151).\n    *   Wait, let's look at the context of Mitchell's \"Werewolf\" claim. He says, \"I'm the werewolf\" while trying to convince people *not* to vote for him or to vote in a way that results in a draw (\"Vote left\"). This is highly unusual for a real Werewolf, but common for someone joking or trying to confuse the group.\n    *   However, let's re-examine the \"Tanner\" claim. Mitchell first claimed Tanner (Line 38). Then he claimed Seer (Line 86). Then he claimed Werewolf (Line 123).\n    *   If Mitchell is the Werewolf, he wants to survive. Claiming to be the Werewolf (Line 123, 151) is counter-intuitive unless he's trying to trick people into thinking he's the Tanner (who wants to be voted out) or just messing around.\n    *   Wait, look at Line 151: \"I don't want anyone to die this round. I'm the werewolf.\" This is a very strange statement. If he is the Werewolf, he wants to survive. If he's the Tanner, he wants to die.\n    *   Let's look at Matt's claim: \"I robbed Mitchell.\" (Line 63). If Matt robbed Mitchell and Mitchell was the Werewolf, Matt would now be the Werewolf.\n    *   Let's look at Mike's claim: Troublemaker. He says he switched Mitchell and then switched them back.\n\n    *   Mitchell's behavior is the most suspicious/erratic. He claims Tanner, then Seer, then Werewolf.\n    *   In these games, the person claiming to be the Werewolf at the end is often either the Werewolf being honest (rare), the Tanner trying to get voted out (common), or just trolling.\n    *   But look at the prompt: \"vote for the player you believe is a Werewolf as their end role.\"\n    *   Mitchell explicitly says \"I'm the werewolf\" twice (Line 123, 151). While it could be a bluff, in the absence of other strong evidence, a direct confession is the strongest lead.\n    *   Let's check if anyone else could be the Werewolf.\n        *   Alana: Insomniac (consistent).\n        *   Mike: Troublemaker (consistent).\n        *   Matt: Robber (consistent).\n        *   Caitlynn: No claim.\n        *   Mitchell: Tanner/Seer/Werewolf.\n\n    *   If Mitchell is the Werewolf:\n        *   Matt (Robber) robbed Mitchell -> Matt is now Werewolf.\n        *   Mike (Troublemaker) switched Mitchell and someone else, then switched them back.\n        *   If Mike switched Mitchell (Werewolf) with X, then switched them back, Mitchell is still the Werewolf.\n        *   Wait, if Matt robbed Mitchell *before* the Troublemaker acted, Matt took the Werewolf card. Then the Troublemaker swapped cards.\n        *   Night Order: 1. Doppelganger, 2. Werewolves, 3. Minion, 4. Masons, 5. Seer, 6. Robber, 7. Troublemaker, 8. Drunk, 9. Insomniac.\n        *   Robber (Matt) acts at step 6. Troublemaker (Mike) acts at step 7.\n        *   If Matt robbed Mitchell (Werewolf), Matt becomes the Werewolf. Then Mike (Troublemaker) swaps Mitchell (now whatever Matt was) with someone else.\n        *   This gets complicated. But the most straightforward interpretation of the transcript is that Mitchell is claiming to be the Werewolf.\n\n    *   Mitchell's claims:\n        1.  \"I actually was the tanner.\" (Line 38)\n        2.  \"I really was the seer though.\" (Line 86)\n        3.  \"I really wasn't the tanner. I was the werewolf.\" (Line 123)\n        4.  \"I'm the werewolf.\" (Line 151)\n    *   The other players (Mike, Alana, Caitlynn) seem to believe he is the Tanner (Lines 113, 124, 125).\n    *   If Mitchell is the Tanner, he wants to be voted out. If he is the Werewolf, he wants to survive.\n    *   Mitchell's insistence that he is the Werewolf (Line 151) while simultaneously asking people *not* to vote for him (\"Just don't vote for me, that's for sure\" - Line 161) is consistent with a Werewolf trying to survive, albeit in a very confusing way. Or a Tanner trying to reverse-psychology the group.\n    *   However, usually, in these logic puzzles based on transcripts, the most explicit claim (even if it seems like a joke) is the intended answer unless there's a clear contradiction.\n\n    *   Alana: Insomniac.\n    *   Mike: Troublemaker.\n    *   Matt: Robber.\n    *   Caitlynn: ?\n    *   Mitchell: Werewolf (by his own admission).\n\n    *   Wait, if Matt robbed Mitchell, and Mitchell was the Werewolf, Matt is now the Werewolf.\n    *   But Mike (Troublemaker) then swapped Mitchell with someone and then swapped them back.\n    *   Let's trace:\n        1.  Mitchell = Werewolf.\n        2.  Matt (Robber) robs Mitchell. Matt = Werewolf, Mitchell = Robber.\n        3.  Mike (Troublemaker) swaps Mitchell (Robber) with X, then swaps them back. Mitchell is still Robber.\n        4.  End result: Matt is the Werewolf.\n    *   *However*, the players in the transcript aren't following this logic strictly. Mitchell is the one claiming to be the Werewolf. In these scenarios, the \"confession\" is usually the key.\n\n    *   Mitchell's claims are all over the place. He claims Tanner, then Seer, then Werewolf.\n    *   The other players are convinced he's the Tanner.\n    *   If he's the Tanner, he wants to be voted out.\n    *   If he's the Werewolf, he wants to survive.\n    *   He says \"I'm the werewolf\" but \"don't vote for me\". This is consistent with being a Werewolf.\n    *   Let's look at the other players again. Is there any reason to suspect Matt, Mike, Alana, or Caitlynn?\n    *   Alana and Mike's stories are mutually supportive.\n    *   Matt's story (Robber) is simple.\n    *   Caitlynn hasn't claimed anything.\n    *   Mitchell is the only one creating chaos.\n\n    *   Mitchell's final claim is that he is the Werewolf. Despite the confusing nature of the conversation, he explicitly states \"I'm the werewolf\" twice.\n\n    *   Wait, let me re-read Line 151: \"I don't want anyone to die this round. I'm the werewolf.\"\n    *   If he's the Werewolf, he wins if no Werewolves die. If he can convince everyone to vote in a way that results in a draw or no one dying, he wins. This is a perfect Werewolf strategy.\n\n    *   Justification: Mitchell makes multiple conflicting claims, eventually stating twice that he is the Werewolf. While he initially claimed to be the Tanner and the Seer, his final admission and his attempt to prevent any single person from being voted out (to ensure his own survival) are consistent with the goals of a Werewolf.\n\n    *   Wait, let me double-check the \"vote left\" thing. \"Vote left\" usually refers to a physical position in a circle of players. The transcript doesn't specify who is to the left. But the key is that Mitchell is the one claiming to be the Werewolf.\n\n    *   Is there any chance Matt is the Werewolf? Matt said he robbed Mitchell. If Mitchell was the Werewolf, Matt became the Werewolf. But the prompt asks for the player who is the Werewolf as their *end role*. If Matt robbed the Werewolf, Matt is the end-role Werewolf.\n    *   However, Mitchell's confession is much more direct. In these games, usually, the person claiming the role is the one. Let's stick with Mitchell.\n\n    *   Wait, let's re-read: \"I really wasn't the tanner. I was the werewolf.\" (Line 123). This is a direct statement of his role.\n\n    *   Final check on Mitchell:\n        - Claim 1: Tanner (Line 38)\n        - Claim 2: Seer (Line 86)\n        - Claim 3: Werewolf (Line 123, 151)\n    *   This pattern of changing claims is typical for a Werewolf trying to find a safe lie or a Tanner trying to get voted out. But the final claim is Werewolf.\n\n    *   Let's consider the \"Tanner\" possibility. If he's the Tanner, he wants to be voted out. He's telling people \"don't vote for me\" (Line 161). That's the opposite of what a Tanner wants. Therefore, he's more likely to be the Werewolf.\n\n    *   Conclusion: Mitchell is the most likely candidate.",
+  "parsed_output": {
+    "justification": "Mitchell makes several contradictory claims throughout the discussion, first claiming to be the Tanner, then the Seer, and finally admitting twice that he is the Werewolf (Lines 123 and 151). His behavior—specifically his attempt to convince the group not to vote for him and to create a draw so that no one dies—is consistent with the win condition of a Werewolf. The other players' claims (Alana as Insomniac, Mike as Troublemaker, and Matt as Robber) are consistent and mutually supportive.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell makes several contradictory claims throughout the discussion, first claiming to be the Tanner, then the Seer, and finally admitting twice that he is the Werewolf (Lines 123 and 151). His behavior—specifically his attempt to convince the group not to vote for him and to create a draw so that no one dies—is consistent with the win condition of a Werewolf. The other players' claims (Alana as Insomniac, Mike as Troublemaker, and Matt as Robber) are consistent and mutually supportive.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell makes several contradictory claims throughout the discussion, first claiming to be the Tanner, then the Seer, and finally admitting twice that he is the Werewolf (Lines 123 and 151). His behavior—specifically his attempt to convince the group not to vote for him and to create a draw so that no one dies—is consistent with the win condition of a Werewolf. The other players' claims (Alana as Insomniac, Mike as Troublemaker, and Matt as Robber) are consistent and mutually supportive.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell makes several contradictory claims throughout the discussion, first claiming to be the Tanner, then the Seer, and finally admitting twice that he is the Werewolf (Lines 123 and 151). His behavior—specifically his attempt to convince the group not to vote for him and to create a draw so that no one dies—is consistent with the win condition of a Werewolf. The other players' claims (Alana as Insomniac, Mike as Troublemaker, and Matt as Robber) are consistent and mutually supportive."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4522,
+    "output_token_count": 2674,
+    "generation_time_sec": 275.60147190093994,
+    "used_chat_template": true,
+    "input_char_count": 14532,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

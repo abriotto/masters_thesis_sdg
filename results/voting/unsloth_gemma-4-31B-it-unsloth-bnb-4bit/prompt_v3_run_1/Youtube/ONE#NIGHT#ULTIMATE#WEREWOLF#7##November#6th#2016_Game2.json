@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Mike claims to be the Seer (initially).\n    *   Mitchell claims to be the Robber and says he robbed Mike.\n    *   Mitchell claims he is now the Seer (since he robbed Mike).\n    *   Mike confirms Mitchell robbed him.\n    *   Mike claims he saw a Drunk in the center.\n    *   Mike claims he saw a Werewolf in the center.\n    *   Caitlynn claims she is a \"cute fluffy wolf\" (joking/bluffing) but then plays ambiguously.\n    *   Mitchell and Mike are trying to decide between Caitlynn and Alana.\n    *   Mitchell suspects Caitlynn is the Werewolf and Alana is the Tanner.\n\n    *   Mike (Starting Seer) -> Robbed by Mitchell.\n    *   Mitchell (Starting Robber) -> Robbed Mike, now Seer.\n    *   If Mitchell is the Robber and Mike was the Seer, Mitchell is now the Seer.\n    *   Mike says he saw a Drunk and a Werewolf in the center. (Wait, Seers look at *one* other player OR *two* center cards. If he saw a Drunk and a Werewolf, he looked at the center).\n    *   Caitlynn and Alana are the remaining players.\n    *   If there's one Werewolf in the center (as Mike claims), and one Werewolf in the game, then only one player is a Werewolf.\n    *   If Mike saw a Werewolf in the center, and there are usually 2 Werewolves in a standard setup (though the rules say \"up to two\"), but the candidate roles are players + 3 (4+3=7).\n    *   Let's check the roles: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   If Mike saw a Werewolf in the center, and there's only one Werewolf card left in the game, then only one person can be the Werewolf.\n    *   Mitchell thinks Caitlynn is the Werewolf and Alana is the Tanner.\n\n    *   Caitlynn: Claims to be a wolf jokingly (\"I'm a cute fluffy wolf\"), then stays quiet/ambiguous.\n    *   Alana: Claims she doesn't know how to play, stays passive.\n    *   Mitchell and Mike seem to trust each other's roles (Robber/Seer swap).\n    *   Mitchell concludes Caitlynn is the Werewolf.\n\n    *   If Mike was the Seer and Mitchell robbed him, Mitchell is now the Seer.\n    *   Mike's information (Drunk and Werewolf in center) was gathered *before* he was robbed.\n    *   If a Werewolf is in the center, and there are 2 Werewolves total in the candidate pool (standard), then only one Werewolf is among the players.\n    *   If Mike saw a Werewolf in the center, then only one player is a Werewolf.\n    *   Between Caitlynn and Alana, Mitchell suspects Caitlynn.\n\n    *   Caitlynn's behavior: She makes a joke about being a wolf, which is a common bluff for a Werewolf or a Tanner.\n    *   Alana's behavior: Very passive, claiming not to know the game.\n    *   Mitchell's reasoning: Caitlynn \"came out and took a role\" (though she was joking).\n    *   The discussion ends with Mitchell and Mike leaning towards Caitlynn.\n\n    *   Mike (Seer) -> Mitchell (Robber)\n    *   Center: Drunk, Werewolf, [Unknown]\n    *   Players: Mike (now Robber's old role? No, Robber takes the card. Mike is now whatever the Robber was), Mitchell (now Seer), Caitlynn, Alana.\n    *   Wait, if Mitchell was the Robber and robbed Mike (the Seer), Mitchell is now the Seer. Mike is now the Robber.\n    *   If Mike saw a Werewolf in the center, then only one Werewolf is in play.\n    *   If Caitlynn is the Werewolf, Alana must be the Tanner (or a Villager).\n    *   If Alana is the Werewolf, Caitlynn must be the Tanner (or a Villager).\n    *   Mitchell's final thought: \"I think Caitlynn is the werewolf, Alana's the tanner.\"\n\n    *   Caitlynn's joke \"I'm a cute fluffy wolf\" is a strong tell in these games, either as a bold bluff or a slip.\n    *   Mitchell and Mike's coordination suggests they are aligned (Village).\n    *   The most likely target based on the transcript is Caitlynn.",
+  "parsed_output": {
+    "justification": "Mike and Mitchell established a consistent narrative where Mitchell (Robber) robbed Mike (Seer), making Mitchell the current Seer. Mike reported seeing a Werewolf and a Drunk in the center, implying only one Werewolf is active among the players. Between the remaining players, Caitlynn's playful claim of being a 'cute fluffy wolf' and her ambiguous behavior led Mitchell and Mike to conclude she is the Werewolf and Alana is the Tanner.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike and Mitchell established a consistent narrative where Mitchell (Robber) robbed Mike (Seer), making Mitchell the current Seer. Mike reported seeing a Werewolf and a Drunk in the center, implying only one Werewolf is active among the players. Between the remaining players, Caitlynn's playful claim of being a 'cute fluffy wolf' and her ambiguous behavior led Mitchell and Mike to conclude she is the Werewolf and Alana is the Tanner.\",\n  \"chosen_vote\": \"Caitlynn\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike and Mitchell established a consistent narrative where Mitchell (Robber) robbed Mike (Seer), making Mitchell the current Seer. Mike reported seeing a Werewolf and a Drunk in the center, implying only one Werewolf is active among the players. Between the remaining players, Caitlynn's playful claim of being a 'cute fluffy wolf' and her ambiguous behavior led Mitchell and Mike to conclude she is the Werewolf and Alana is the Tanner.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Mike and Mitchell established a consistent narrative where Mitchell (Robber) robbed Mike (Seer), making Mitchell the current Seer. Mike reported seeing a Werewolf and a Drunk in the center, implying only one Werewolf is active among the players. Between the remaining players, Caitlynn's playful claim of being a 'cute fluffy wolf' and her ambiguous behavior led Mitchell and Mike to conclude she is the Werewolf and Alana is the Tanner."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4157,
+    "output_token_count": 1225,
+    "generation_time_sec": 126.98113560676575,
+    "used_chat_template": true,
+    "input_char_count": 13617,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

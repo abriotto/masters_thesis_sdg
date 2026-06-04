@@ -1,0 +1,69 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine voting target for werewolf. There's three players: Justin, Paul, Mitchell. There's no indication of roles except comments about being werewolf. There might be deals; but there's weird transcript where \"Mitchell\" claims \"I saw two werewolves\". There's confusion. Since we have just 3 players, either 1, 2, or 3 werewolves possible. Options: If 1 werewolf, two would be villagers. Discuss. But this transcript is chaotic, maybe indicates miscommunication. Also no signals of roles changed.\n\nWe should decide which player presumably a werewolf. Let's analyze statements:\n\n- Justin says: \"You might be a troublemaker.\" He suspects Paul might be troublemaker.\n- Paul's comments are vague, not telling about appearances.\n- Mitchell says: \"I saw two werewolves or I'm a werewolf and I just saw a seer one or the other.\" Commander says: \"I was not the werewolf.\" There's contradictions.\n\nWe need to guess single werewolf probably Mitchell? But maybe we need evidence that Mitchell sees two werewolves (which would be unrealistic given only 3 players). Might be commentary artifact; maybe 3 roles include 1 werewolf. In a normal scenario you need at least 1 werewolf; typically if there are 2 wolves then there would be center cards. But given only 3 players and 3 center cards exist: 6 total roles, exact composition unknown. But we can guess.\n\nMight believe that Justin is a werewolf? He asks \"you're a troublemaker?\" Then says \"If I was a troublemaker.\" But didn't say help. He also claims \"you would be the werewolf because I switched you two.\" That implies something about swapping.\n\nBut maybe the simplest: I'd choose Paul as suspect, because his contributions are minimal, and he seems silent.\n\nLet's read: Player 1: Justin says \"I might have...\" about his identity. Player 2: Paul: \"Something...\" ambiguous. Player 3: Mitchell: says many lines.\n\nMitchell earliest line: \"I hate this happened the first time. I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer one or the other.\"\n\nThat implies something about seeing two werewolves but overall unclear. But tries to hint.\n\nBut maybe the conversation shows that Mitchell claims \"I saw two werewolves,\" meaning there were 2 werewolves in the game: maybe there are two wolves. So which players could be werewolves? Maybe only Paul and Mitchell? But then 3rd is Justin. However if there are two werewolves, how would they be discovered? Not clear.\n\nLet's examine specific lines: Justin says \"You're a troublemaker? Is that what you're saying?\" addressing Paul. If Paul were troublemaker, he'd have swapped. But no direct tie.\n\nMitchell says \"He shouldn't verify my story,\" etc.\n\nThis is too messy. We'll assume simplest: If one werewolf, likely it's Paul. Because he offered limited dialogue, maybe hiding.\n\nHowever missed evidence: Lots of claims revolve around Paul: M has rhetorical statements like \"If they were both werewolves, we would just vote.\" That hints that he finds that if he is not werewolf, then... Not sure.\n\nOk I think suspect that Justin is werewolf? Because he looked like seer? Justin says he \"helped\"? Wait: \"I might have...\" etc. Actually, no indicated that Justin had any eliminating.\n\nAlso, at the start, \"Justin: I hope chat just likes looking at our crotches.\" That seems unrelated. Maybe it's a comedic commentary oriented.\n\nIt is unimaginable without deeper context. Maybe from previous discussion it's to fix the noise.\n\nGiven no concrete evidence, I'd pick Paul.\n\nThus output accordingly.",
+  "parsed_output": {
+    "justification": "The dialogue lacks clear identifiers, but Paul’s minimal engagement and vague responses suggest he could have been deceiving or hiding his true alignment. No specific claims point directly to him being a werewolf, yet his silence amid ongoing accusations makes him a plausible suspect. The rest of the discussion focuses on Mitchell, who claims knowledge of werewolves, but that could reflect confusion or bluffing.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "{\"justification\":\"The dialogue lacks clear identifiers, but Paul’s minimal engagement and vague responses suggest he could have been deceiving or hiding his true alignment. No specific claims point directly to him being a werewolf, yet his silence amid ongoing accusations makes him a plausible suspect. The rest of the discussion focuses on Mitchell, who claims knowledge of werewolves, but that could reflect confusion or bluffing.\",\"chosen_vote\":\"Paul\"}",
+  "response_for_parsing": "{\"justification\":\"The dialogue lacks clear identifiers, but Paul’s minimal engagement and vague responses suggest he could have been deceiving or hiding his true alignment. No specific claims point directly to him being a werewolf, yet his silence amid ongoing accusations makes him a plausible suspect. The rest of the discussion focuses on Mitchell, who claims knowledge of werewolves, but that could reflect confusion or bluffing.\",\"chosen_vote\":\"Paul\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "The dialogue lacks clear identifiers, but Paul’s minimal engagement and vague responses suggest he could have been deceiving or hiding his true alignment. No specific claims point directly to him being a werewolf, yet his silence amid ongoing accusations makes him a plausible suspect. The rest of the discussion focuses on Mitchell, who claims knowledge of werewolves, but that could reflect confusion or bluffing."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2815,
+    "output_token_count": 867,
+    "generation_time_sec": 261.77346563339233,
+    "used_chat_template": true,
+    "input_char_count": 11378,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

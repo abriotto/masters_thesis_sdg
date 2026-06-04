@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer (looked at 2 center cards, both Villagers). Later suggests he might be the Robber or that Mitchell stole from him.\n    *   Dan: Very quiet, doesn't claim a role.\n    *   Mitchell: Initially claims he was a \"special character\" and someone is lying about their role. Later claims he was the Robber and stole from Dan.\n    *   Caitlynn: Claims Justin is the Werewolf. Says \"I looked at that\" (implying she might be the Seer or something similar).\n    *   Mike: Claims he switched two people (Troublemaker). Claims Justin is the Werewolf.\n\n    *   Justin: Seer (claims center cards were Villagers).\n    *   Mike: Troublemaker (claims he switched two people).\n    *   Mitchell: Robber (claims he stole from Dan).\n    *   Caitlynn: Claims she \"looked at\" Justin and he's the Werewolf (implies Seer).\n    *   Dan: No claim.\n\n    *   If Justin is the Seer, he saw two Villagers in the center.\n    *   If Caitlynn is the Seer, she saw Justin as a Werewolf.\n    *   If Mike is the Troublemaker, he swapped two people.\n    *   If Mitchell is the Robber, he swapped with Dan.\n\n    *   Justin claims Seer.\n    *   Caitlynn claims she \"looked at\" Justin and he's the Werewolf.\n    *   Only one Seer is possible. Either Justin or Caitlynn is lying.\n    *   Mike (Troublemaker) says Justin is the Werewolf.\n    *   Caitlynn says Justin is the Werewolf.\n    *   Mitchell (Robber) says he stole from Dan.\n\n    *   If Justin is the Werewolf, he'd lie about being the Seer.\n    *   If Caitlynn is the Seer, her information (Justin = Werewolf) is reliable unless she's the Werewolf/Minion bluffing.\n    *   If Mike is the Troublemaker, he swapped two people. He says \"I switched these two\" (referring to Justin and someone else, though it's a bit vague).\n    *   Wait, Mike says \"I switched these two\" (referring to Justin and someone else) and then says \"Justin is the werewolf.\" If Mike is the Troublemaker, he doesn't *know* who the werewolf is unless he's the Minion or a Werewolf himself.\n    *   Actually, Mike says \"I'm not going to tell who I switched yet\" [26], then later \"I switched these two\" [65].\n    *   Caitlynn says \"Justin is the werewolf\" [66, 69, 74, 118].\n\n    *   Justin is being accused by both Mike and Caitlynn.\n    *   Justin's claim to be the Seer is contradicted by Caitlynn's claim to have \"looked at\" him.\n    *   Mitchell's claim to be the Robber and steal from Dan doesn't directly implicate Justin, but it doesn't clear him either.\n    *   Dan is silent.\n\n    *   If Caitlynn is the Seer, Justin is the Werewolf.\n    *   If Justin is the Seer, Caitlynn is lying.\n    *   If Mike is the Troublemaker, he doesn't have information on who the Werewolf is. His accusation of Justin is based on something else or a bluff.\n    *   Wait, Mike says \"I think it's you two as werewolves\" [99] referring to Justin and Mitchell.\n    *   Caitlynn is very insistent that Justin is the Werewolf.\n\n    *   Justin claims Seer.\n    *   Caitlynn claims she looked at Justin and he's the Werewolf.\n    *   Mike claims Troublemaker and accuses Justin.\n    *   Mitchell claims Robber and stole from Dan.\n    *   The most consistent narrative for the Village is that Justin is the Werewolf and Caitlynn is the Seer.\n\n    *   Justin: \"I was the seer. I looked at two cards in the center, and they were both villagers.\" [38]\n    *   Caitlynn: \"I looked at that. Justin's the werewolf.\" [118]\n    *   If Caitlynn is the Seer, Justin is lying. If Justin is the Seer, Caitlynn is lying.\n    *   Usually, the person making the more specific accusation (Caitlynn) is either the Seer or the Werewolf.\n    *   Mike's support for Caitlynn's claim (\"Justin is the werewolf\") adds weight to it.\n\n    *   Justin's defense is weak. He tries to shift blame to Dan [104] and then suggests Mitchell stole from him [100].\n    *   Caitlynn's claim is direct.\n    *   Mike's claim to be Troublemaker is plausible.\n    *   Mitchell's claim to be Robber is plausible.\n\n    *   Justin is the most likely candidate for Werewolf based on the accusations from Caitlynn and Mike.\n\n    *   Justin claims Seer.\n    *   Caitlynn claims she looked at Justin and he is the Werewolf.\n    *   Mike claims to be the Troublemaker and also identifies Justin as the Werewolf.\n    *   Since only one person can be the Seer, and Caitlynn's claim is more direct, Justin is likely bluffing.\n    *   Therefore, Justin is the most probable Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and says he saw two Villagers in the center. However, Caitlynn explicitly claims she looked at Justin and found him to be the Werewolf, and Mike (claiming to be the Troublemaker) also identifies Justin as the Werewolf. Since only one player can be the Seer, and Justin's defense is inconsistent (later suggesting he might be the Robber or that Mitchell stole from him), it is highly probable that Justin is bluffing and is the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and says he saw two Villagers in the center. However, Caitlynn explicitly claims she looked at Justin and found him to be the Werewolf, and Mike (claiming to be the Troublemaker) also identifies Justin as the Werewolf. Since only one player can be the Seer, and Justin's defense is inconsistent (later suggesting he might be the Robber or that Mitchell stole from him), it is highly probable that Justin is bluffing and is the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and says he saw two Villagers in the center. However, Caitlynn explicitly claims she looked at Justin and found him to be the Werewolf, and Mike (claiming to be the Troublemaker) also identifies Justin as the Werewolf. Since only one player can be the Seer, and Justin's defense is inconsistent (later suggesting he might be the Robber or that Mitchell stole from him), it is highly probable that Justin is bluffing and is the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin claims to be the Seer and says he saw two Villagers in the center. However, Caitlynn explicitly claims she looked at Justin and found him to be the Werewolf, and Mike (claiming to be the Troublemaker) also identifies Justin as the Werewolf. Since only one player can be the Seer, and Justin's defense is inconsistent (later suggesting he might be the Robber or that Mitchell stole from him), it is highly probable that Justin is bluffing and is the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3659,
+    "output_token_count": 1402,
+    "generation_time_sec": 142.0104944705963,
+    "used_chat_template": true,
+    "input_char_count": 12528,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

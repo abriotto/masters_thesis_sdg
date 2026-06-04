@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to decide who is likely to be a Werewolf. From transcript unclear; but we have five names: Justin, Dan, Mitchell, Caitlynn, Mike. We need to pick one as suspect. Let's read commentary carefully.\n\nAny evidence of swaps. There's mention: \"Mike\" says \"I did / I switched these two\". Identify who Tommy? \"Mike: I didn't believe he could sabotage\".\n\nNot structured easily. Maybe Mike is werewolf? Many accusations: \"Caitlynn: Mike's a werewolf.\" also \"Dan: Mike's the werewolf.\" Many do. Also \"Justin: He was waiting to see what my story.\" Hard.\n\nMaybe we look at likely final roles: At start there were 5 players, 5 starting roles chosen plus 3 center. We don't know exact starting distribution.\n\nBut for suspicion, the role with many accusations: Mike. So perhaps his name stands out.\n\nAlso multiple statements defend Mike or accuse him.\n\nIf we think game included like he might be werewolf, also maybe the original later states that Mike is a and might have turned into a werewolf due to friend.\n\nBut this is tough.\n\nLet's scan more: line 32-34: \"Mike: Wait, just one? Oh, I guess you only looked at one. So, were you a seer? ... Fri.\n\nAnother: lines around 48-49: \"Who did you switch?\" \"Mike: I switched these two.\"\n\nLines around 60: \"Mike: And probably still a villager.\"\n\nThat might indicate Mike turned to werewolf via swapping? Actually \"I switched these two\" might be him playing robber, exchanging card.\n\nIf Mike is a Robber, then after exchange his new role may be werewolf if he swapped into the role of werewolf. So he could become werewolf today.\n\nThus, I lean that Mike is the werewolf.\n\nThus output: justification: mention support, but keep concise.\n\nWe'll provide JSON:\n\n- Justification: The majority of accusations point to Mike, rumours of him as a victim. He claims to \"switch\" two (likely controlling card), potentially making him werewolf. So choose.",
+  "parsed_output": {
+    "justification": "Several players, notably Dan and Caitlynn, repeatedly accuse Mike of being a werewolf, and the transcript indicates Mike performed a swap that could move him into a werewolf role. You cannot verify his stance, but the pattern of accusations and his mention of “switched these two” suggests he might now hold the werewolf card. Since there are no clear evidences of other roles, Mike is the most probable werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"Several players, notably Dan and Caitlynn, repeatedly accuse Mike of being a werewolf, and the transcript indicates Mike performed a swap that could move him into a werewolf role. You cannot verify his stance, but the pattern of accusations and his mention of “switched these two” suggests he might now hold the werewolf card. Since there are no clear evidences of other roles, Mike is the most probable werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"Several players, notably Dan and Caitlynn, repeatedly accuse Mike of being a werewolf, and the transcript indicates Mike performed a swap that could move him into a werewolf role. You cannot verify his stance, but the pattern of accusations and his mention of “switched these two” suggests he might now hold the werewolf card. Since there are no clear evidences of other roles, Mike is the most probable werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Several players, notably Dan and Caitlynn, repeatedly accuse Mike of being a werewolf, and the transcript indicates Mike performed a swap that could move him into a werewolf role. You cannot verify his stance, but the pattern of accusations and his mention of “switched these two” suggests he might now hold the werewolf card. Since there are no clear evidences of other roles, Mike is the most probable werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3115,
+    "output_token_count": 548,
+    "generation_time_sec": 166.8989942073822,
+    "used_chat_template": true,
+    "input_char_count": 12193,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

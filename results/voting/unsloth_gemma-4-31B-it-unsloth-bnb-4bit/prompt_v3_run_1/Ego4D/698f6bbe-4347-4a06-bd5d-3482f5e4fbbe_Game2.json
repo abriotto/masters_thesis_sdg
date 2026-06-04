@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "698f6bbe-4347-4a06-bd5d-3482f5e4fbbe",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/698f6bbe-4347-4a06-bd5d-3482f5e4fbbe_Game2.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot: Claims Villager.\n    *   Ashley: Claims Troublemaker.\n    *   James: Claims Robber (swapped with Sian, who claimed Hunter).\n    *   Chris: Claims Seer (saw James as Robber).\n    *   Sukeshi: Quiet, admits \"I might be a werewolf\" or \"I'm definitely a werewolf\" (likely bluffing/trolling as Tanner or just being confusing).\n    *   Sian: Claims Hunter.\n\n    *   Chris (Seer) says he saw James as Robber.\n    *   James (Robber) says he swapped with Sian (Hunter).\n    *   Sian (Hunter) confirms she was the Hunter.\n    *   Ashley (Troublemaker) claims she swapped Elliot and Sukeshi.\n    *   Sukeshi is acting very suspicious/quiet, claiming she might be the werewolf or Tanner.\n\n    *   If Ashley is the Troublemaker and swapped Elliot and Sukeshi:\n        *   Elliot (Villager) $\\rightarrow$ Sukeshi.\n        *   Sukeshi (?) $\\rightarrow$ Elliot.\n    *   If James is the Robber and swapped with Sian (Hunter):\n        *   James (Robber) $\\rightarrow$ Hunter.\n        *   Sian (Hunter) $\\rightarrow$ Robber.\n    *   If Chris is the Seer:\n        *   He saw James as Robber (which matches James's claim).\n\n    *   Sukeshi is the primary target of suspicion. She's been acting \"suspiciously\" quiet and making paradoxical claims (\"I'm definitely a werewolf\").\n    *   In One Night Ultimate Werewolf, this behavior is classic for a Tanner (trying to get voted out) or a Werewolf trying to confuse the group.\n    *   However, Ashley claims she swapped Elliot and Sukeshi. If Sukeshi was the Werewolf and Ashley swapped her with Elliot, then Elliot is now the Werewolf.\n    *   Wait, let's re-read Ashley's claim: \"I switched him [Elliot] and you [Sukeshi]\" (Line 255).\n    *   If Ashley is the Troublemaker and swapped Elliot and Sukeshi, and Sukeshi was the Werewolf, then Elliot is now the Werewolf.\n    *   But if Sukeshi was the Tanner and Ashley swapped her with Elliot, then Elliot is now the Tanner.\n    *   If Sukeshi was a Villager and Ashley swapped her with Elliot, nothing changes alignment-wise.\n\n    *   Sukeshi: \"I might be a werewolf\" (Line 80), \"Yeah I'm definitely a werewolf\" (Line 108). This is very strong Tanner behavior.\n    *   Elliot: Claims Villager.\n    *   James: Claims Robber/Hunter.\n    *   Chris: Claims Seer.\n    *   Ashley: Claims Troublemaker.\n    *   Sian: Claims Hunter.\n\n    *   If Sukeshi is the Werewolf, she's playing very poorly by admitting it.\n    *   If Sukeshi is the Tanner, she's playing perfectly.\n    *   If Ashley is the Troublemaker and swapped Sukeshi and Elliot, and Sukeshi was the Werewolf, then Elliot is the Werewolf.\n    *   However, the prompt asks for the player who is a Werewolf as their *end role*.\n    *   Let's look at the claims again. Chris (Seer) saw James (Robber). James (Robber) swapped with Sian (Hunter). Ashley (Troublemaker) swapped Elliot and Sukeshi.\n    *   If we believe the claims:\n        *   Chris: Seer\n        *   James: Hunter (end role)\n        *   Sian: Robber (end role)\n        *   Ashley: Troublemaker\n        *   Elliot: ?\n        *   Sukeshi: ?\n    *   One of them must be the Werewolf. If Sukeshi was the Werewolf and Ashley swapped her with Elliot, Elliot is the Werewolf. If Sukeshi was the Werewolf and Ashley didn't swap her, Sukeshi is the Werewolf.\n    *   But wait, if Sukeshi is the Tanner, she wants to be voted out. If she's the Werewolf, she doesn't. Her behavior (\"I'm definitely a werewolf\") is highly indicative of the Tanner.\n    *   Let's re-evaluate Sukeshi. If she's the Tanner, who is the Werewolf?\n    *   Maybe Ashley is lying? If Ashley is the Werewolf, she'd claim a role like Troublemaker to create confusion about who is who.\n    *   Maybe Chris is lying? If Chris is the Werewolf, he'd claim Seer.\n    *   Looking at the transcript, the group is leaning towards Sukeshi. Elliot also says \"I'm voting Sue. She's a werewolf. I have a feeling\" (Line 206).\n\n    *   Sukeshi's behavior is almost too obvious for a Werewolf. In these games, players claiming they are the werewolf are usually the Tanner.\n    *   However, if we have to pick one, and the discussion heavily centers on Sukeshi, she is the most likely candidate for the \"Werewolf\" role if we assume she's not the Tanner.\n    *   But let's look at the \"end role\" logic. If Ashley swapped Elliot and Sukeshi, and Sukeshi was the Werewolf, Elliot is the Werewolf.\n    *   Wait, Ashley says \"I switched him [Elliot] and you [Sukeshi]\" (Line 255).\n    *   If Sukeshi was the Werewolf, Elliot is now the Werewolf.\n    *   If Sukeshi was the Tanner, Elliot is now the Tanner.\n    *   If Sukeshi was a Villager, Elliot is now a Villager.\n    *   If Elliot was the Werewolf, Sukeshi is now the Werewolf.\n    *   Given the options, Sukeshi is the one acting most like a Werewolf (or Tanner). Most players in the transcript are targeting her.\n\n    *   Sukeshi: \"I might be a werewolf\" (Line 80), \"Yeah I'm definitely a werewolf\" (Line 108).\n    *   Sian: \"I think that Sukeshi is a werewolf. She's quiet\" (Line 126).\n    *   Ashley: \"She's the werewolf\" (Line 155).\n    *   Elliot: \"I'm voting Sue. She's a werewolf\" (Line 206).\n    *   James: \"Sukeshi's either the werewolf, or the tanner\" (Line 158).\n\n    *   If Sukeshi is the Tanner, the Village loses if they vote her out.\n    *   If Sukeshi is the Werewolf, the Village wins.\n    *   The prompt asks me to vote for the player I believe is a Werewolf.\n    *   Despite the Tanner possibility, Sukeshi is the only one who has essentially \"confessed\" (even if it's a bluff). Without more concrete evidence (like a Seer actually seeing a Werewolf), the most suspicious player is Sukeshi.\n\n    *   Wait, let's check the Troublemaker swap again. Ashley says she swapped Elliot and Sukeshi.\n    *   If Sukeshi was the Werewolf, Elliot is now the Werewolf.\n    *   If Elliot was the Werewolf, Sukeshi is now the Werewolf.\n    *   If Sukeshi is acting like a Werewolf *after* the swap, it means she is currently the Werewolf (meaning Elliot was the starting Werewolf).\n    *   If Sukeshi is acting like a Werewolf *because she thinks she is* (starting role), but she was swapped, then Elliot is the end-role Werewolf.\n    *   However, in One Night Ultimate Werewolf, the Troublemaker swap is often a bluff. If we take the claims at face value, Sukeshi's behavior is the most telling.\n\n    *   Sukeshi's repeated claims of being a werewolf, combined with the accusations from Ashley, Sian, and Elliot, make her the most likely candidate for the vote, regardless of whether she's the Tanner or the Werewolf. Since I must choose one player, Sukeshi is the most logical choice based on the public discussion.\n\n    *   Justification: Sukeshi repeatedly claimed to be the werewolf during the discussion, although this could be a bluff by the Tanner. Other players, including Ashley and Elliot, explicitly accused her of being the werewolf. Despite the potential for role swaps by the Robber or Troublemaker, Sukeshi's own admissions and the group's consensus make her the most likely target.\n\n    *   Wait, let me double-check the Troublemaker claim. Ashley says \"I switched him [Elliot] and you [Sukeshi]\" (Line 255). If Ashley is telling the truth and Sukeshi is the Werewolf, then Sukeshi must have been the Werewolf *after* the swap, meaning Elliot was the starting Werewolf. Or, if Sukeshi was the starting Werewolf, Elliot is now the Werewolf.\n    *   But usually, in these transcripts, the most \"obvious\" suspect is the intended answer unless there's a clear logic puzzle. The logic puzzle here is slightly contradictory (Sukeshi's behavior vs. the Troublemaker swap), but Sukeshi is the one the players are actually voting for.\n\n    *   Let's re-read: \"Sukeshi: Yeah I'm definitely a werewolf\" (Line 108).\n    *   This is such a strong statement that it's either a very bad Werewolf or a Tanner. But as an observer, based on the discussion, she is the primary suspect.\n\n    *   Wait, let's look at James. James claimed Robber, swapped with Sian (Hunter). Chris (Seer) confirmed James was Robber. This seems consistent.\n    *   Ashley claimed Troublemaker, swapped Elliot and Sukeshi.\n    *   If we believe Ashley, and Sukeshi is the Werewolf, then Elliot was the starting Werewolf.\n    *   If we believe Ashley, and Elliot is the Werewolf, then Sukeshi was the starting Werewolf.\n    *   But Sukeshi is the one acting like the Werewolf. If she *knows* she is the Werewolf (starting role), she might not know she was swapped. If she *doesn't* know she was swapped, she thinks she's the Werewolf, but Elliot actually is.\n    *   However, the most straightforward interpretation of the discussion is that the players suspect Sukeshi.\n\n    *   Let's consider if Ashley is the Werewolf. She's the one directing the vote toward Sukeshi and claiming the Troublemaker role to confuse the situation.\n    *   But without more info, Sukeshi's \"confessions\" are the strongest evidence.\n\n    *   Final check on Sukeshi:\n        Line 80: \"I might be a werewolf.\"\n        Line 108: \"Yeah I'm definitely a werewolf.\"\n        Line 156: \"No, I am not-\" (contradicting herself).\n        Line 213: \"That's why I'm staying the fuck quiet.\"\n    *   This is classic Tanner behavior, but in the absence of other evidence, she's the one the group is voting for.\n\n    *   Wait, let's look at Elliot. He's very quiet. Ashley says she swapped him and Sukeshi. If Sukeshi is the Tanner, and Ashley swapped her with Elliot, then Elliot is the Tanner. If Sukeshi is the Werewolf, and Ashley swapped her with Elliot, then Elliot is the Werewolf.\n    *   But the prompt asks for the player I believe is a Werewolf. Given the transcript, Sukeshi is the most likely candidate for the vote.\n\n    *   Let's try to see if anyone else is more likely.\n    *   Chris (Seer) $\\rightarrow$ James (Robber).\n    *   James (Robber) $\\rightarrow$ Sian (Hunter).\n    *   Ashley (Troublemaker) $\\rightarrow$ Elliot/Sukeshi.\n    *   If all these are true, the only roles left are Werewolf and Villager/Tanner.\n    *   Roles: Seer, Robber, Hunter, Troublemaker, Werewolf, Villager/Tanner.\n    *   If Chris=Seer, James=Hunter, Sian=Robber, Ashley=Troublemaker, then Elliot and Sukeshi must be the Werewolf and the Villager/Tanner.\n    *   Since Sukeshi is the one claiming to be the werewolf, she is the most probable choice.",
+  "parsed_output": {
+    "justification": "Sukeshi repeatedly claimed to be the werewolf during the discussion, stating 'I might be a werewolf' and 'I'm definitely a werewolf,' although this behavior is also characteristic of the Tanner. Other players, including Ashley, Sian, and Elliot, focused their suspicions on her, with Ashley claiming to have swapped Sukeshi's card with Elliot's. Despite the potential for role swaps, Sukeshi's own admissions and the group's consensus make her the most likely candidate for the werewolf role.",
+    "chosen_vote": "Sukeshi"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sukeshi repeatedly claimed to be the werewolf during the discussion, stating 'I might be a werewolf' and 'I'm definitely a werewolf,' although this behavior is also characteristic of the Tanner. Other players, including Ashley, Sian, and Elliot, focused their suspicions on her, with Ashley claiming to have swapped Sukeshi's card with Elliot's. Despite the potential for role swaps, Sukeshi's own admissions and the group's consensus make her the most likely candidate for the werewolf role.\",\n  \"chosen_vote\": \"Sukeshi\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sukeshi repeatedly claimed to be the werewolf during the discussion, stating 'I might be a werewolf' and 'I'm definitely a werewolf,' although this behavior is also characteristic of the Tanner. Other players, including Ashley, Sian, and Elliot, focused their suspicions on her, with Ashley claiming to have swapped Sukeshi's card with Elliot's. Despite the potential for role swaps, Sukeshi's own admissions and the group's consensus make her the most likely candidate for the werewolf role.\",\n  \"chosen_vote\": \"Sukeshi\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sukeshi",
+    "justification": "Sukeshi repeatedly claimed to be the werewolf during the discussion, stating 'I might be a werewolf' and 'I'm definitely a werewolf,' although this behavior is also characteristic of the Tanner. Other players, including Ashley, Sian, and Elliot, focused their suspicions on her, with Ashley claiming to have swapped Sukeshi's card with Elliot's. Despite the potential for role swaps, Sukeshi's own admissions and the group's consensus make her the most likely candidate for the werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6488,
+    "output_token_count": 3018,
+    "generation_time_sec": 320.07511925697327,
+    "used_chat_template": true,
+    "input_char_count": 19083,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

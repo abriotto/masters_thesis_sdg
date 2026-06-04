@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to parse this messy transcript of a game with five players: Justin, Dan, Mitchell, Caitlynn, Mike.\n\nWe need to identify who likely ended up as a Werewolf (i.e., had exposed information suggesting they used their role). But we have limited info.\n\nThis transcript is going through confusion. It's not clear what the roles were. Let's try to reconstruct.\n\nWe have no prior 'role assignment' info. But we do see some statements.\n\nAt line 1: Justin says \"I'm a Seer. Mitchell is a werewolf.\"\n\nBut this claim is likely false, because players aren't supposed to know their actual identity beyond initial round. Perhaps Justin mis-saw something.\n\nDuring night actions, roles that have night abilities could have changed roles. For example, Robber swaps card, Troublemaker swaps two others, DBl.\n\nWe have mentions of \"presence of werewolf\". Justin claims at line 1 that there's a werewolf. Several lines later, people debate presence.\n\nThe transcripts from [1] to [101] are gibberish conversation with many conflicting statements. The conversation covers small abnormalities.\n\nWe need to derive the final roles.\n\nLet's attempt a strategy: ground truth that we know only the partial conversation. Observers cannot infer roles outright; but we can conclude that the best guess for who is a werewolf based on statements.\n\nLet's see repeated statements about \"werewolf\".\n\nLine 10: Jonathan claims: \"I think so.\" Actually, not. The base confusion.\n\nScrolling further: at 67: Dan: \"Just so you know I don't know what you did.\" No.\n\nAt 70: Mike: \"What did you see?\" Dan says something.\n\nLook at steps 67-70: nothing.\n\nLet's locate a statement that indicates a particular person is definite about being a werewolf. e.g.\n\nAt line 75: \"That means that there has to be a werewolf in play.\" This seems to be made by Mitchell: \"That means that there has to be a werewolf in play.\" This suggests he believes there is anyway.\n\nAt 76: Justin says \"Yep.\"\n\nAt 78: \"Justin: Not at all.\" Not helpful.\n\nAt 84: Maurice says \"He could be a werewolf.\" Not.\n\nAt 94: Justin says \"Oh no, in the middle.\" Wait.\n\nAt 94: Justin comment.\n\nOk. Step back. The transcripts are clearly scrambled. Possibly the underlying scenario is tricky: rules: each game random: 5 players so 2 extra roles. So at least 2 possible werewolves. Usually typical packs have at least one werewolf or possibly none.\n\nBut we lack direct record of starting roles: each player had 1 role assigned at start. Not given.\n\nThus we cannot reliably deduce final roles solely from this transcript, because many statements are vague, contradictory, or reflect confusion. But we have some hints: some claim that someone is not a werewolf.\n\nObservations: lines 67-70: about confusion. Most statements revolve around each suspecting that someone is a werewolf. But doesn't reveal specifics.\n\nGiven the chaotic discussion, I'd arbitrarily vote for a likely suspect based on the statements. Which player is suspected?\n\nWho is most suspicious? At lines 115-117, we see \"Dan: Who did you switch?\" suggests player did a swap. It appears John's as DM. Also mind the mention of the \"Troublemaker\" maybe may cue who swapped. But not precise.\n\nWait: line 70 mentions \"Mike: What did you see?\" and Dan: \"I just saw you move, and I was like, oh fuck. Why did I open up my eyes.\"\n\nChang.\n\nLet's analyze: The roles of troublemaker and robber involve swapping. So players might be bleating that they swapped. Those statements may hint at what happens.\n\nTruble maker tag: The talk includes \"ones where lineback\" we need to decide who is suspect.\n\nWhich players talk etc? Look at lines 67-68-70 etc. \"Dan said, 'Just so you know I don't know what you did.'\"\n\nWe must choose someone to guess as werewolf. Perhaps we can guess that Justin seems heavily suspicious because of his early remarks that he is a seer and that Mitchell is a werewolf. He claims: line 1 says \"I'm a Seer. Mitchell is a werewolf.\" That could be accurate, but could be false.\n\nBut if Justin truly is a seer who sees Mitchell's role, that could be powerful: his knowledge might have been used to deduce werewolf. What if that is correct? But if he is a seer, he is aligned village. But in order for him to know that Mitchell is a werewolf, he'd need to've looked at the card, via his own ability. But he can't see his own card after swapping. However, he possibly saw Mitchell's card before or after a swap. It's plausible he saw Mitchell was a werewolf. But if Justin claimed being the seer, that banned him? The seer gains ability to see others. But noticing.\n\nHowever the transcript is extremely chaotic, not grounded.\n\nThus likely just pick a random player. but we want probability of who is werewolf. Probably Mitchell. Because he claims at 75: \"That means that there has to be a werewolf in play.\" But it's ambiguous. I'd guess: Justin might be might not be werewolf since he claims to be seer. But there is mention of a suspect \"Dan\" claiming he's a werewolf.\n\nBut line 134: Mike: \"No, I think Justin was the werewolf.\" So Mike suspects Justin. Line 135 etc. So Mike thinks Justin was a werewolf. That hints that Justin may indeed be a werewolf or at least suspect.\n\nDuring the conversation, at line 41: Mike says \"Yeah, let's just go.\" There is no big leaps.\n\nWhich player was identified as werewolf by a majority of statements? I'd guess Justin. Because many statements accuse him as being the werewolf.\n\nTherefore choose \"Justin\" as the victim of vote. Also because he clicked \"Boy, I think he is a werewolf.\" Let's produce justification accordingly.\n\nNow let's produce the JSON.",
+  "parsed_output": {
+    "justification": "From the fragmented conversation, people repeatedly accuse Justin of being a werewolf; the majority of claims point towards him. Though a few others are suspected, the most consistent accusations target Justin, making him the most likely suspect for voting.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"From the fragmented conversation, people repeatedly accuse Justin of being a werewolf; the majority of claims point towards him. Though a few others are suspected, the most consistent accusations target Justin, making him the most likely suspect for voting.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"From the fragmented conversation, people repeatedly accuse Justin of being a werewolf; the majority of claims point towards him. Though a few others are suspected, the most consistent accusations target Justin, making him the most likely suspect for voting.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "From the fragmented conversation, people repeatedly accuse Justin of being a werewolf; the majority of claims point towards him. Though a few others are suspected, the most consistent accusations target Justin, making him the most likely suspect for voting."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4101,
+    "output_token_count": 1340,
+    "generation_time_sec": 403.47759914398193,
+    "used_chat_template": true,
+    "input_char_count": 15555,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

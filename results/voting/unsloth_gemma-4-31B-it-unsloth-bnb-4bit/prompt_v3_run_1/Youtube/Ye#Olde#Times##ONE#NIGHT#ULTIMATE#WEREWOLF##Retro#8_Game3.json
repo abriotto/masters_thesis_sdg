@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Ye#Olde#Times##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#8_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Eric\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Mike: Claims to be the Insomniac (\"Still the insomniac\" [7], \"Still lose\" [9] - though [9] is weird, maybe he meant \"still lose\" as in \"still lose the card\"? No, he says \"Still the insomniac\" at [7]). Wait, at [11] he says \"Justin's the insomniac.\" This is confusing. Let's re-read.\n    *   Eric: Claims to be the Troublemaker [22]. He says he switched Justin and Mitchell [56].\n    *   Paul: Admits to being the Werewolf [51], but says he was switched [53, 55]. He says he was switched with Justin [55].\n    *   Mitchell: Claims to be the Hunter [61].\n    *   Justin: Claims he woke up as a Hunter [62].\n\n    *   Mike: [7] \"Still the insomniac.\" [11] \"Justin's the insomniac.\" [15] \"I did something to your card.\" (Wait, Insomniacs can't do anything to other people's cards).\n    *   Eric: [22] \"I am so the troublemaker, and I so switched his card.\" [56] \"I switched Mitchell and Justin.\"\n    *   Paul: [51] \"I was the werewolf and you switched us.\" [55] \"Me and Justin.\"\n    *   Mitchell: [61] \"I was a hunter.\"\n    *   Justin: [62] \"I'm a hunter when I woke up.\"\n\n    *   If Eric is the Troublemaker and switched Mitchell and Justin:\n        *   Mitchell (starting Hunter) -> Justin (ending Hunter)\n        *   Justin (starting ?) -> Mitchell (ending ?)\n    *   Paul claims he was the Werewolf and was switched with Justin. But Eric says he switched Mitchell and Justin.\n    *   If Paul was the Werewolf and was *not* switched, he is still the Werewolf.\n    *   If Paul was the Werewolf and *was* switched (by Robber or Troublemaker), he might not be the Werewolf anymore.\n    *   Wait, Paul says \"I was the werewolf and you switched us\" [51]. He's talking to Eric.\n    *   Eric says \"I did not switch you and Justin. I switched Mitchell and Justin\" [56].\n    *   If Eric is telling the truth about being the Troublemaker and switching Mitchell and Justin, then Paul was not switched by the Troublemaker.\n    *   Could Paul have been switched by the Robber? The Robber swaps their card with another player.\n    *   If Paul was the Werewolf and the Robber swapped with him, Paul is now the Robber and the other person is the Werewolf.\n    *   But Paul says \"I was the werewolf and you switched us\" to Eric (the Troublemaker). This suggests Paul *thinks* the Troublemaker switched him.\n\n    *   Paul admits to being the Werewolf [51].\n    *   He claims he was switched [53, 55].\n    *   Eric (Troublemaker) denies switching Paul, claiming he switched Mitchell and Justin [56].\n    *   If Eric is the Troublemaker and didn't switch Paul, Paul's claim of being switched is either a lie or he was switched by the Robber.\n    *   If Paul was the Werewolf and wasn't switched, he's still the Werewolf.\n    *   If Paul was the Werewolf and was switched by the Robber, the Robber is now the Werewolf.\n    *   If Paul is the Tanner, he's lying about being the Werewolf to get voted out.\n\n    *   Mike's behavior is very strange. [7] \"Still the insomniac.\" [11] \"Justin's the insomniac.\" [15] \"I did something to your card.\"\n    *   Insomniacs only look at their own card. They don't \"do something\" to others' cards.\n    *   Mike might be bluffing or confused.\n    *   However, Paul's admission is the most direct piece of evidence.\n\n    *   Paul: \"I was the werewolf and you switched us.\"\n    *   Eric: \"I did not switch you and Justin. I switched Mitchell and Justin.\"\n    *   If Eric is the Troublemaker, Paul is likely the Werewolf (or the Tanner).\n    *   The group discusses whether Paul is the Tanner [78, 90, 96, 98, 111, 121].\n    *   But Paul's admission is a strong signal. In One Night Ultimate Werewolf, players often admit to being the werewolf if they think they've been switched or if they are the Tanner.\n\n    *   If Paul was the Werewolf and Eric (Troublemaker) switched Mitchell and Justin, Paul remains the Werewolf.\n    *   If Paul was the Werewolf and the Robber switched with him, the Robber is now the Werewolf.\n    *   If Paul is the Tanner, he's lying.\n    *   Given the transcript, Paul is the most suspicious because he admitted to being the Werewolf, and the only person who could have switched him (the Troublemaker) denied doing so.\n\n    *   Justin: Claims to be Hunter (confirmed by Mitchell).\n    *   Eric: Claims to be Troublemaker.\n    *   Mitchell: Claims to be Hunter.\n    *   Mike: Claims to be Insomniac (but says weird things).\n    *   Paul: Admits to being Werewolf.\n\n    *   If Paul is the Werewolf, the Village wins by voting him.\n    *   If Paul is the Tanner, the Tanner wins.\n    *   The players decide that the risk of Paul being the Werewolf outweighs the risk of him being the Tanner.\n\n    *   Paul admitted to being the Werewolf.\n    *   Eric (claiming Troublemaker) stated he did not switch Paul.\n    *   Therefore, Paul is likely still the Werewolf (unless he's the Tanner).\n    *   The consensus among the players is to vote for Paul.",
+  "parsed_output": {
+    "justification": "Paul explicitly admitted to being the Werewolf during the discussion. Although he claimed he was switched, Eric (who claimed to be the Troublemaker) denied switching Paul, stating instead that he switched Mitchell and Justin. While there is a possibility that Paul is the Tanner attempting to get voted out, his admission makes him the most likely candidate for the Werewolf role.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admitted to being the Werewolf during the discussion. Although he claimed he was switched, Eric (who claimed to be the Troublemaker) denied switching Paul, stating instead that he switched Mitchell and Justin. While there is a possibility that Paul is the Tanner attempting to get voted out, his admission makes him the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admitted to being the Werewolf during the discussion. Although he claimed he was switched, Eric (who claimed to be the Troublemaker) denied switching Paul, stating instead that he switched Mitchell and Justin. While there is a possibility that Paul is the Tanner attempting to get voted out, his admission makes him the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admitted to being the Werewolf during the discussion. Although he claimed he was switched, Eric (who claimed to be the Troublemaker) denied switching Paul, stating instead that he switched Mitchell and Justin. While there is a possibility that Paul is the Tanner attempting to get voted out, his admission makes him the most likely candidate for the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3959,
+    "output_token_count": 1517,
+    "generation_time_sec": 157.04684567451477,
+    "used_chat_template": true,
+    "input_char_count": 13163,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#-#Drinking#Play#Through_Game2.txt",
+  "player_names": [
+    "Sarah",
+    "Jordan1",
+    "Haak",
+    "Robin",
+    "Jordan2",
+    "Meryl"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We have a messy transcript total; unclear actions. We need deduce which player might be Werewolf.\n\nFirst, available roles are 6 players. There are 9 roles in pool maybe, but unknown.\n\nFrom transcript: Many claims about roles: \"I'm the seer,\" \"I was the seer,\" etc. Someone says \"I was the robber,\" etc.\n\nWe know starting roles random. But key pointers: mention of minion, werewolf etc.\n\nLine 14: [14] Sarah: \"Because I'm the minion and I want to pass out.\" So Sarah claims to be Minion (but may lie). That suggests someone believes Sarah might be Minion.\n\nLine 15: [15] Jordan2: \"I was the seer.\" So Jordan2 claims Seer.\n\nLine 20: [20] Jordan2: \"I looked at you, and I saw the villager.\" That implies Jordan2 (as Seer) looked at another player (maybe Robin?) and saw that they are a Villager.\n\nLine 23: [23] \"Haak: Cause Sarah's clearly the tanner again.\" Suggests Haak suspects Sarah might be Tanner. So someone thinks Sarah is Tanner perhaps because of statements.\n\nLines 24-29 reveals a debate: \"Sarah: I was the robber,\" \"Jordan1: Bullshit. I was the robber,\" etc. So confusion about robbers etc.\n\nLater, line 51 onwards seems chaotic.\n\nLine 67: [67] Meryl: \"I definitely saw a troublemaker and a werewolf in the middle.\" Might refer to center? She saw troublemaker, werewolf? Hard to parse.\n\nGoal: We need to find likely werewolf based on info.\n\nWe need to consider that everyone might lie. There's minion claim by Sarah, possibly false. Seer claim by Jordan2 might be true but could lie.\n\nKey: is there any statement that impossible? For example, if someone claims \"I was the robbes\" and his role is disallowed: If someone swapped, but no mention. But easier: suspect minion: If Sarah is Minion, Align with Werewolves. Could be. But still unsure.\n\nBut look at line 62: \"Meryl: Oh, I want to determine who's telling the truth first.\" So Meryl asking to clarify but might be personality.\n\nLine 107: \"Meryl: I don't buy either of you.\" indicates skepticism.\n\nWe might suspect someone who is confused: The comments about being the seer and seeing villager ... did Jordan2 actually look at Robin? Did they actually see that person is a Villager? If they correctly identified a Villager, perhaps they are indeed Seer. That would mean Jordan2 is Seer, which is village team, not werewolf. So cannot be werewolf.\n\nWe saw line: \"Johny: I looked at you, and I saw the villager.\" When the Seer looked at someone's card, they'd see a role. Seer could look at a villager. That suggests the target was a Villager. Robertson may be a Villager. But it's an observation.\n\nAlso, many conflicting statements about whether someone is werewolf: e.g., \"I was the robbed\"? But being robber might be part of doubt.\n\nWe ignore spamming lines. Probably the suspect is \"Haak\" because line 118: \"Jordan2: Vote for Haak. Vote for Haak. He's the hunter. Vote for Haak. He’ll make the truth.\" which suggests Jordan2 thinks Haak is Hunter.\n\nHunter would be on village. Not werewolf.\n\nBut also \"Kyle: I'm the troublemaker at the serious.\" Not sure. Hardly.\n\nMaybe the only definite role mentioned as werewolf: \"Jordan1: You are a werewolf.\" So Jordan1 suspects being werewolf. But that might be misidentifying.\n\nOne think: In line 101, Jordan2: \"Haak, are you the drunk?\" Possibly correct? But his?\n\nPerhaps the worst scenario: the suspect is not known. We only know their role list: All 6 can be any roles except some restricted ones. Only one of each non-villager. Could be minion occupying and making them align with werewolves. If Sarah claims minion, maybe she is minion; then minion is werewolf team.\n\nConsequently likely culprit: Sarah. She says \"I am the minion.\" The minion is a werewolf (alert). So if Sarah is Minion, she's part of werewolf team. She could commit deceit to not be caught. But she also says \"Because I'm the minion and I want to pass out.\" Meanwhile others suspect her as Tanner (line 23). Since minion not Tanner. The conversation has her def. So likely Sarah is werewolf.\n\nTherefore choose Sarah. We need justification small sentences.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Sarah repeatedly claimed to be the Minion—a role that belongs to the Werewolf team—yet this claim comes across as deceptive. Her statements clash with those from other players (e.g., “Cause Sarah’s clearly the tanner,” and other contradictory assertions). No other player behaves consistently with a non‑werewolf pattern. Therefore, Sarah is the most plausible werewolf candidate.",
+    "chosen_vote": "Sarah"
+  },
+  "raw_response": "{\"justification\":\"Sarah repeatedly claimed to be the Minion—a role that belongs to the Werewolf team—yet this claim comes across as deceptive. Her statements clash with those from other players (e.g., “Cause Sarah’s clearly the tanner,” and other contradictory assertions). No other player behaves consistently with a non‑werewolf pattern. Therefore, Sarah is the most plausible werewolf candidate.\",\"chosen_vote\":\"Sarah\"}",
+  "response_for_parsing": "{\"justification\":\"Sarah repeatedly claimed to be the Minion—a role that belongs to the Werewolf team—yet this claim comes across as deceptive. Her statements clash with those from other players (e.g., “Cause Sarah’s clearly the tanner,” and other contradictory assertions). No other player behaves consistently with a non‑werewolf pattern. Therefore, Sarah is the most plausible werewolf candidate.\",\"chosen_vote\":\"Sarah\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sarah",
+    "justification": "Sarah repeatedly claimed to be the Minion—a role that belongs to the Werewolf team—yet this claim comes across as deceptive. Her statements clash with those from other players (e.g., “Cause Sarah’s clearly the tanner,” and other contradictory assertions). No other player behaves consistently with a non‑werewolf pattern. Therefore, Sarah is the most plausible werewolf candidate."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3497,
+    "output_token_count": 1098,
+    "generation_time_sec": 334.6529469490051,
+    "used_chat_template": true,
+    "input_char_count": 13181,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}
