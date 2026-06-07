@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016_Game1.txt",
+  "player_names": [
+    "Mitchell",
+    "Chris",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Mitchell, Chris, Caitlynn, Mike.\n    *   Roles mentioned/claimed:\n        *   Caitlynn: Claims she \"did things\" in the night and \"switched Chris\" (Troublemaker claim).\n        *   Chris: Claims he was the Seer (initially), then claims he was the \"lone werewolf\" (later).\n        *   Mike: Claims he was the Seer (initially), then claims he saw a werewolf in the center, then claims he was the werewolf (but then says he wasn't?). Wait, let's re-read.\n        *   Mitchell: Claims he was \"boring\" (Villager/Drunk/Insomniac).\n\n    *   [27] Chris: \"I was the seer.\"\n    *   [51] Mike: \"No, I was a seer.\"\n    *   [54] Mike: \"I looked at two in the center.\"\n    *   [56] Mike: \"I saw a werewolf and a good card...\"\n    *   [58] Chris: \"I saw a werewolf and the drunk in the middle.\"\n    *   [64] Mike: \"...I believe you're still the drunk.\" (Wait, Mike is calling Chris the drunk now).\n    *   [34] Caitlynn: \"I did switch.\"\n    *   [36] Caitlynn: \"I switched Chris.\"\n    *   [43] Caitlynn: \"I switched Chris.\"\n    *   [72] Caitlynn: \"I did not switch Mitchell.\"\n    *   [73] Mike: \"So it was me and Chris.\" (Implies Caitlynn switched Mike and Chris).\n    *   [75] Mike: \"I was the werewolf.\" (Wait, Mike suddenly claims he was the werewolf?)\n    *   [78] Mike: \"So now he's [Chris] the werewolf.\"\n    *   [80] Chris: \"Because I 100% percent was the werewolf. The lone werewolf.\" (Chris admits he was the werewolf).\n    *   [95] Chris: \"So I was the werewolf and I saw the seer in the center.\" (Wait, Chris is contradicting himself. He claimed Seer at [27], then Werewolf at [80]).\n    *   [98] Mitchell: \"I believe he [Chris] was the werewolf because he said he saw a drunk and I was the drunk. And then, so now you're the werewolf.\" (Wait, Mitchell is confused).\n\n    *   Caitlynn claims Troublemaker. She says she switched Chris and Mike.\n    *   Chris claims Seer [27], then claims Werewolf [80].\n    *   Mike claims Seer [51], then claims Werewolf [75], then says Chris is the werewolf [78].\n    *   Mitchell claims he was \"boring\" (likely Villager or Drunk).\n\n    *   If Chris was the Werewolf and Caitlynn (Troublemaker) switched Chris and Mike, then Mike is now the Werewolf.\n    *   Chris admits: \"I 100% percent was the werewolf\" [80].\n    *   If Chris was the Werewolf and was switched with Mike, Mike is the current Werewolf.\n    *   Wait, let's look at [80] again: \"Because I 100% percent was the werewolf. The lone werewolf.\"\n    *   Then [84] Mike: \"Now he found out he was the werewolf.\" (Referring to Chris).\n    *   Then [86] Mike: \"Now, no. He's now freaking out because he thinks he's the werewolf because they got switched.\"\n    *   This is very confusing. Let's re-examine the sequence.\n\n    *   Caitlynn (Troublemaker) switched Chris and Mike.\n    *   Chris says he was the Werewolf [80].\n    *   If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf.\n    *   Mike says \"I was the werewolf\" [75] but then says \"So now he's [Chris] the werewolf\" [78]. This is contradictory.\n    *   Let's look at [80] again: Chris says \"I 100% percent was the werewolf.\"\n    *   If Chris was the Werewolf and was switched with Mike, Mike is the Werewolf.\n    *   If Mike was the Werewolf and was switched with Chris, Chris is the Werewolf.\n\n    *   [101] Caitlynn: \"I'll kill Mike.\"\n    *   [102] Chris: \"Yeah, let's kill Mike.\"\n    *   [103] Mitchell: \"That's the spirit.\"\n\n    *   Caitlynn (Troublemaker) switched Chris and Mike.\n    *   Chris admits he was the Werewolf [80].\n    *   Therefore, Mike is now the Werewolf.\n    *   The group decides to vote for Mike.\n\n    *   Could Chris be the Tanner? He claimed Seer, then Werewolf. That's a weird path for a Tanner, but possible.\n    *   Could Mike be the Tanner? He claimed Seer, then Werewolf.\n    *   However, based on the logic that Chris was the Werewolf and was switched with Mike, Mike is the target.\n\n    *   Caitlynn: Troublemaker (switched Chris and Mike).\n    *   Chris: Starting Werewolf.\n    *   Mike: Starting Seer (or something else).\n    *   After switch: Mike is Werewolf, Chris is Seer (or whatever Mike was).\n    *   Result: Vote Mike.\n\n    *   Wait, Chris says \"I 100% percent was the werewolf\" [80].\n    *   If Chris was the werewolf and was switched with Mike, Mike is now the werewolf.\n    *   The players agree to vote Mike.\n\n    *   Chris: \"I was the seer\" [27] -> \"I 100% percent was the werewolf\" [80].\n    *   Mike: \"I was a seer\" [51] -> \"I was the werewolf\" [75] -> \"So now he's the werewolf\" [78].\n    *   This is a chaotic conversation. Let's look at the final consensus.\n    *   Caitlynn, Chris, and Mitchell all agree to vote Mike.\n    *   If Chris was the werewolf and was switched with Mike, Mike is the werewolf.\n    *   If Mike was the werewolf and was switched with Chris, Chris is the werewolf.\n    *   But Chris explicitly says \"I 100% percent was the werewolf\" [80].\n    *   If Chris was the starting werewolf and was switched by the Troublemaker (Caitlynn) with Mike, then Mike is the final werewolf.\n\n    *   Caitlynn (Troublemaker) switched Chris and Mike.\n    *   Chris admits he was the starting Werewolf.\n    *   Therefore, Mike is the current Werewolf.\n    *   The players decide to vote Mike.",
+  "parsed_output": {
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swapped Chris and Mike, the Werewolf card moved from Chris to Mike. Therefore, Mike is the current Werewolf and the correct target for Team Village.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swapped Chris and Mike, the Werewolf card moved from Chris to Mike. Therefore, Mike is the current Werewolf and the correct target for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swapped Chris and Mike, the Werewolf card moved from Chris to Mike. Therefore, Mike is the current Werewolf and the correct target for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swapped Chris and Mike, the Werewolf card moved from Chris to Mike. Therefore, Mike is the current Werewolf and the correct target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3694,
+    "output_token_count": 1710,
+    "generation_time_sec": 184.30578136444092,
+    "used_chat_template": true,
+    "input_char_count": 13047,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

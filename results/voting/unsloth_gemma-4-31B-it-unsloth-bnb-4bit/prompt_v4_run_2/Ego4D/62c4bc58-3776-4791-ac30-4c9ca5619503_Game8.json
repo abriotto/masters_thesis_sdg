@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game8.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin\n    *   Kaelan\n    *   Jessica\n    *   Daniel\n\n    *   Daniel: Claims Drunk (Line 4).\n    *   Kaelan: Claims Drunk (Line 5), then says \"I was the Dobber\" (Doppelganger) and swapped (Line 7). Wait, Kaelan says \"I was the Dobber, I swapped before you swapped yours.\" This is confusing. If Kaelan was the Doppelganger, they copy another player's role.\n    *   Jessica: Claims Minion (Line 14).\n    *   Kevin: Claims Seer (Line 17). He confirms Jessica was the Minion (Line 15, 20).\n\n    *   Kevin (Seer) says Jessica is the Minion.\n    *   Jessica admits she is the Minion.\n    *   If Jessica is the Minion, she knows who the Werewolf is.\n    *   Jessica says \"No\" when asked if she sees any Werewolves (Line 23) and later says \"I think it's in the middle\" (Line 35).\n    *   If the Minion (Jessica) says there are no Werewolves among the players, then the Werewolf card(s) must be in the center.\n\n    *   Daniel claims Drunk.\n    *   Kaelan claims Drunk/Doppelganger.\n    *   Kevin claims Seer.\n    *   Jessica claims Minion.\n\n    *   If Jessica is the Minion and says the Werewolf is in the center, then Team Village wins if no one is voted out or if they vote out a Werewolf.\n    *   If Jessica is lying (e.g., she's the Werewolf), she would want to divert suspicion.\n    *   If Kevin is the Werewolf and Jessica is the Minion, they are teaming up.\n    *   However, Jessica explicitly says \"I think it's in the middle\" (Line 35). If she is the Minion, she knows for a fact if a Werewolf is in play. If she says it's in the middle, and she's telling the truth, then there is no Werewolf among the players.\n\n    *   If Jessica is the Minion, she knows who the Werewolves are.\n    *   If she says \"No\" (Line 23) and \"I think it's in the middle\" (Line 35), she is claiming there are no Werewolves among the players.\n    *   If there are no Werewolves among the players, the correct move for Team Village is \"No Werewolf\".\n\n    *   Could Jessica be the Werewolf pretending to be the Minion?\n    *   Could Kevin be the Werewolf pretending to be the Seer?\n    *   If Jessica is the Werewolf, she would lie about the Werewolf being in the middle.\n    *   But if Jessica is the Minion, she is on Team Werewolf. Her goal is to protect the Werewolf. If there is no Werewolf among the players, she wins if the Village doesn't vote out a Werewolf (which is impossible if there isn't one). Wait, if no Werewolf is present, Team Village wins if no one dies.\n    *   Wait, let's re-read the win conditions: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   If Jessica is the Minion and says the Werewolf is in the center, she is essentially telling the Village how to win (by not voting anyone). This is counter-intuitive for a Minion *unless* she's trying to bluff or is actually a different role.\n    *   However, in these games, players often claim roles. If we take the claims at face value:\n        *   Kevin: Seer\n        *   Jessica: Minion\n        *   Daniel: Drunk\n        *   Kaelan: Doppelganger/Drunk\n    *   If Jessica is the Minion and says no Werewolf is present, then \"No Werewolf\" is the logical choice.\n\n    *   Kevin (Seer) confirms Jessica (Minion).\n    *   Jessica (Minion) says no Werewolf is present.\n    *   If this is true, the Werewolf is in the center.\n    *   If Jessica is lying and is actually the Werewolf, she'd want to avoid being voted out.\n    *   If Kevin is the Werewolf and Jessica is the Minion, they are working together.\n    *   But the most direct piece of information is the Minion's claim that the Werewolf is in the center.\n\n    *   Kaelan: \"I was the Dobber, I swapped before you swapped yours.\" (Line 7). This is slightly confusing. Doppelgangers don't \"swap\" cards; they copy another player's card. Robbers and Troublemakers swap. Drunks swap with the center.\n    *   Daniel: \"I was the Drunk.\" (Line 4).\n    *   If Daniel was the Drunk, he swapped his card with one from the center.\n    *   If Kaelan was the Doppelganger, he copied someone.\n    *   This doesn't change the core claim: Jessica (Minion) says no Werewolf is present.\n\n    *   If Jessica is the Minion, she knows if a Werewolf is present.\n    *   She says \"No\" (Line 23) and \"I think it's in the middle\" (Line 35).\n    *   If we trust the Minion's knowledge of the Werewolf's presence, then there is no Werewolf among the players.\n\n    *   Could Jessica be the Tanner? The Tanner wants to be voted out. Claiming Minion and then saying the Werewolf is in the middle might be a way to get people to suspect her or just a random claim. But usually, Tanners are more aggressive about getting voted.\n    *   Could Jessica be the Werewolf? If she's the Werewolf, she'd definitely lie and say the Werewolf is in the middle.\n    *   However, Kevin (claiming Seer) confirmed her as the Minion. If Kevin is the Seer, he looked at her card. If he saw \"Minion\", then Jessica is indeed the Minion.\n    *   If Jessica is the Minion, she knows if there's a Werewolf. If she says there isn't one, then there isn't one.\n\n    *   Kevin: Seer (Village)\n    *   Jessica: Minion (Werewolf Team)\n    *   Daniel: Drunk (Village)\n    *   Kaelan: Doppelganger (Village/Werewolf/Tanner depending on who they copied)\n    *   If Jessica is the Minion and says no Werewolf is present, then the Werewolf cards are in the center.\n\n    *   If the Werewolf is in the center, Team Village wins if no one is voted out.\n    *   The prompt asks to choose the player to vote out to make Team Village win, or \"No Werewolf\" if confident no Werewolf is present.\n    *   Given the claims, \"No Werewolf\" is the most supported conclusion.\n\n    *   Kevin (Seer) -> Jessica (Minion)\n    *   Jessica (Minion) -> No Werewolf among players.\n    *   Therefore, Werewolf is in the center.\n    *   Result: No Werewolf.",
+  "parsed_output": {
+    "justification": "Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica admits to being the Minion and explicitly states that she does not see any Werewolves among the players, suggesting the Werewolf card is in the center. Since the Minion has perfect information regarding the presence of Werewolves, her claim that the Werewolf is in the middle indicates that no player currently holds the Werewolf role.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica admits to being the Minion and explicitly states that she does not see any Werewolves among the players, suggesting the Werewolf card is in the center. Since the Minion has perfect information regarding the presence of Werewolves, her claim that the Werewolf is in the middle indicates that no player currently holds the Werewolf role.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica admits to being the Minion and explicitly states that she does not see any Werewolves among the players, suggesting the Werewolf card is in the center. Since the Minion has perfect information regarding the presence of Werewolves, her claim that the Werewolf is in the middle indicates that no player currently holds the Werewolf role.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica admits to being the Minion and explicitly states that she does not see any Werewolves among the players, suggesting the Werewolf card is in the center. Since the Minion has perfect information regarding the presence of Werewolves, her claim that the Werewolf is in the middle indicates that no player currently holds the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2571,
+    "output_token_count": 1771,
+    "generation_time_sec": 181.5356047153473,
+    "used_chat_template": true,
+    "input_char_count": 9293,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

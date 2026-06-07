@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game10.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles involved (from transcript): Seer, Robber, Werewolf, Drunk, Tanner.\n\n    *   Alvin: Claims he was the Seer. (Line 313)\n    *   James: Claims he was the Robber. (Line 315, 332, 340, 342)\n    *   Mitchell: Claims he was the Robber. (Line 339, 349)\n    *   Justin: Doesn't claim a specific role initially, but later admits (possibly as a bluff or surrender) to being a Werewolf. (Line 399)\n\n    *   Alvin (Seer) says he thinks Justin is the Werewolf (confidence 8/10). (Line 305, 307)\n    *   James (Robber) says he can confirm Alvin's story (that Alvin was the Seer). (Line 317)\n    *   Mitchell (Robber) says he robbed Alvin and can verify Alvin was the Seer. (Line 355, 358)\n    *   Wait, both James and Mitchell claim to be the Robber. Only one Robber exists.\n    *   If James is the Robber and robbed Alvin, James becomes the Seer.\n    *   If Mitchell is the Robber and robbed Alvin, Mitchell becomes the Seer.\n    *   Alvin says he was the Seer. If he was robbed, he is no longer the Seer.\n\n    *   Alvin claims he was the Seer.\n    *   James claims he was the Robber and confirms Alvin was the Seer. (This is contradictory: if James robbed Alvin, James is now the Seer, and Alvin is now the Robber).\n    *   Mitchell claims he was the Robber and confirms Alvin was the Seer. (Same contradiction).\n    *   Wait, let's re-read:\n        *   Alvin: \"I was the seer.\" (Line 313)\n        *   James: \"I was the robber... I can confirm Alvin's story.\" (Line 315, 317)\n        *   Mitchell: \"I was the robber... I robbed you [Alvin]... He's exactly what he claims he was [Seer].\" (Line 349, 355, 358)\n\n    *   If Alvin was the Seer and was robbed by James, James is now the Seer.\n    *   If Alvin was the Seer and was robbed by Mitchell, Mitchell is now the Seer.\n    *   If Alvin was the Seer and was *not* robbed, he remains the Seer.\n    *   If James and Mitchell both claim to be the Robber, at least one is lying.\n\n    *   Alvin is consistently pointing at Justin.\n    *   Mitchell is pointing at Justin.\n    *   James is suspicious of Mitchell.\n    *   Justin eventually says, \"I'll admit I'm the werewolf\" (Line 399), although this could be a bluff or a reaction to the pressure.\n\n    *   Alvin (Seer) -> Justin (Werewolf).\n    *   James (Robber) -> Confirms Alvin.\n    *   Mitchell (Robber) -> Confirms Alvin.\n    *   Since only one Robber exists, either James or Mitchell is lying.\n    *   If James is the Robber and robbed Alvin, James is the Seer.\n    *   If Mitchell is the Robber and robbed Alvin, Mitchell is the Seer.\n    *   If Alvin is the Seer and wasn't robbed, he knows who the werewolf is.\n    *   Alvin says Justin is the werewolf.\n\n    *   If Alvin is the Seer and saw Justin as a werewolf, Justin is the target.\n    *   If James or Mitchell is the Robber and robbed the Seer (Alvin), they now know Alvin was the Seer.\n    *   Both James and Mitchell are trying to align themselves with Alvin's information to avoid suspicion, but they are contradicting each other by both claiming to be the Robber.\n    *   However, the most consistent piece of information is Alvin's claim that Justin is the werewolf.\n\n    *   Alvin: Seer (claims Justin is werewolf).\n    *   James: Robber (claims he robbed Alvin).\n    *   Mitchell: Robber (claims he robbed Alvin).\n    *   Justin: Werewolf (admitted it).\n\n    Wait, if James robbed Alvin, James is the Seer. If Mitchell robbed Alvin, Mitchell is the Seer. If Alvin was the Seer and wasn't robbed, he's still the Seer. In all these scenarios, the information points to Justin.\n\n    Is there any reason to think Alvin is the werewolf? He's the one providing the primary accusation. But Justin's admission (even if potentially a bluff) and the fact that both James and Mitchell (despite their conflict) agree that Alvin's role as Seer is valid makes Justin the most likely werewolf.\n\n    *   Alvin: Seer.\n    *   James: Robber (or Werewolf/Tanner).\n    *   Mitchell: Robber (or Werewolf/Tanner).\n    *   Justin: Werewolf.\n\n    If Justin is the werewolf, voting him out wins the game for the village.\n\n    *   Alvin claims Seer, identifies Justin as Werewolf.\n    *   James and Mitchell both claim Robber and both verify Alvin was the Seer.\n    *   While James and Mitchell are contradicting each other on who the Robber is, they both support Alvin's claim.\n    *   Justin eventually admits to being the Werewolf.\n    *   Therefore, Justin is the most probable Werewolf.",
+  "parsed_output": {
+    "justification": "Alvin claims to be the Seer and identifies Justin as the Werewolf. Both James and Mitchell claim to be the Robber and both attempt to verify Alvin's role as the Seer, although they contradict each other on who the actual Robber is. Justin eventually admits to being the Werewolf during the discussion, making him the most likely target for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alvin claims to be the Seer and identifies Justin as the Werewolf. Both James and Mitchell claim to be the Robber and both attempt to verify Alvin's role as the Seer, although they contradict each other on who the actual Robber is. Justin eventually admits to being the Werewolf during the discussion, making him the most likely target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alvin claims to be the Seer and identifies Justin as the Werewolf. Both James and Mitchell claim to be the Robber and both attempt to verify Alvin's role as the Seer, although they contradict each other on who the actual Robber is. Justin eventually admits to being the Werewolf during the discussion, making him the most likely target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alvin claims to be the Seer and identifies Justin as the Werewolf. Both James and Mitchell claim to be the Robber and both attempt to verify Alvin's role as the Seer, although they contradict each other on who the actual Robber is. Justin eventually admits to being the Werewolf during the discussion, making him the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 9244,
+    "output_token_count": 1398,
+    "generation_time_sec": 166.32997918128967,
+    "used_chat_template": true,
+    "input_char_count": 28946,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

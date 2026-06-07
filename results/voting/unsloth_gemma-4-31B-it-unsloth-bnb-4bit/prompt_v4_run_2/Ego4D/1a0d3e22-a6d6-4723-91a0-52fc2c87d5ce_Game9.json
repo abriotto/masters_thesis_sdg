@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game9.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Goal: Eliminate a Werewolf to win (Team Village).\n\n    *   Jacob claims to be the Seer.\n    *   Jacob claims he looked at Zack's card and saw it was a Werewolf.\n    *   Jacob asks if anyone is the Robber or Troublemaker.\n    *   Sean and Hunter claim to be Villagers.\n    *   Zack doesn't strongly defend himself but admits (at [92]) that as far as he's aware, he was the only werewolf (implying he started as one).\n    *   Jacob suspects Sean might be the Robber who stole Zack's Werewolf card.\n    *   Jacob's logic: If Jacob is the Seer and saw Zack as a Werewolf, but Sean is acting suspicious/lying about being a Villager, Sean might have robbed Zack.\n    *   Zack's admission: Zack says \"As far as I'm aware, I was the only one\" when asked if he started as the werewolf. This is a huge tell. If Zack started as the Werewolf, he is either still the Werewolf or was robbed/troubled.\n\n    *   Jacob (Seer) -> Zack (Werewolf).\n    *   Zack admits he started as the Werewolf.\n    *   If Zack started as the Werewolf, he is the target unless a Robber or Troublemaker moved the card.\n    *   Jacob suspects Sean is the Robber. If Sean is the Robber and robbed Zack, Sean is now the Werewolf.\n    *   However, there is no evidence that Sean actually robbed anyone. Sean claims to be a Villager.\n    *   Zack's admission is the strongest piece of evidence. He basically confirms Jacob's claim.\n\n    *   Jacob: Claims Seer.\n    *   Zack: Admits starting as Werewolf.\n    *   Sean: Claims Villager.\n    *   Hunter: Claims Villager.\n\n    *   If Zack started as the Werewolf and no one robbed him, Zack is the Werewolf.\n    *   If Sean robbed Zack, Sean is the Werewolf.\n    *   If the Troublemaker swapped Zack with someone else, that person is the Werewolf.\n    *   Jacob is pushing the vote toward Sean based on \"behavior\" and a theory about the Robber.\n    *   But look at Zack's response at [92]: \"As far as I'm aware, I was the only one.\" This confirms he was a Werewolf.\n    *   Did anyone actually admit to being the Robber or Troublemaker? No.\n    *   Is there any evidence Sean is the Robber? No, just Jacob's intuition.\n    *   Is there any evidence Zack is *not* the Werewolf anymore? No.\n\n    *   Jacob is the one driving the narrative. He claims to be the Seer.\n    *   Zack confirms he started as the Werewolf.\n    *   Unless a swap happened, Zack is the Werewolf.\n    *   Jacob is trying to pivot the vote to Sean, but his reasoning is weak (\"behavior\", \"easier switch\").\n    *   The most direct path to a Village win is voting out the person who admitted to being the Werewolf (Zack), unless we are certain a swap occurred.\n    *   Wait, let's re-read [91-92]:\n        Jacob: \"So Zack, you started as the werewolf... Are you the only werewolf in this game right now?\"\n        Zack: \"As far as I'm aware, I was the only one.\"\n    *   Zack is essentially admitting he is the Werewolf.\n\n    *   Jacob is trying to vote Sean.\n    *   But the evidence points to Zack.\n    *   If I want Team Village to win, I need to hit a Werewolf.\n    *   Zack admitted to being the Werewolf.\n    *   Jacob's theory that Sean robbed Zack is speculative.\n    *   Therefore, Zack is the most likely Werewolf.\n\n    *   Wait, if Jacob is the Seer and saw Zack as a Werewolf, and Zack admits it, why is Jacob voting Sean?\n    *   Jacob says: \"I'm reasonably confident that Sean was the robber, switched with Zack now knows he is the werewolf and is trying to cover that up.\"\n    *   This is a complex theory. If Sean robbed Zack, Sean is the Werewolf. If Sean didn't rob Zack, Zack is the Werewolf.\n    *   Without any confirmation of a Robber or Troublemaker, the simplest explanation is that Zack is the Werewolf.\n    *   However, the prompt asks me to choose the player to vote out to make Team Village win.\n    *   If Zack is the Werewolf, voting Zack wins.\n    *   If Sean is the Robber who took the Werewolf card, voting Sean wins.\n    *   Which is more likely? Zack admitting he was the Werewolf is a very strong signal. Jacob's suspicion of Sean is based on \"flavor of weird\" and \"behavior\".\n    *   In One Night Ultimate Werewolf, usually, the person who admits to being the werewolf (or is identified by a believable Seer) is the target unless a swap is confirmed.\n\n    *   Jacob: Claims Seer, identifies Zack.\n    *   Zack: Confirms he started as Werewolf.\n    *   Sean: Claims Villager.\n    *   Hunter: Claims Villager.\n    *   Conclusion: Zack is the most probable Werewolf. Jacob's attempt to pivot to Sean is based on a hunch about the Robber, but there's no evidence the Robber role was even played or that Sean is the Robber.\n\n    *   Wait, if Zack is the Werewolf and he knows he's the Werewolf, why would he admit it? \"As far as I'm aware, I was the only one.\" This is a very strange thing for a Werewolf to say unless they are trying to be confusing or are the Tanner.\n    *   If Zack is the Tanner, he wants to be voted out.\n    *   If Zack is the Werewolf, he wants to survive. Admitting it is counter-productive.\n    *   But if Jacob is the Seer, he's telling the truth about Zack.\n    *   If Jacob is the Werewolf, he's lying about being the Seer to frame Zack or Sean.\n    *   Let's look at the roles again. If Jacob is the Werewolf and wants to win, he needs to divert attention. Framing Zack (who might be a Villager) and then pivoting to Sean (who might be a Villager) is a classic Werewolf strategy.\n    *   However, Zack's admission \"As far as I'm aware, I was the only one\" is the key. If he's a Villager, why would he say that? He wouldn't. He's either the Werewolf or the Tanner.\n    *   If he's the Werewolf, voting him wins. If he's the Tanner, voting him loses (Tanner wins).\n    *   But the goal is to make Team Village win.\n    *   Between Zack (who admitted to being the werewolf) and Sean (who is just \"weird\"), Zack is the higher probability Werewolf.\n\n    *   Jacob claims Seer -> Zack is Werewolf.\n    *   Zack admits starting as Werewolf.\n    *   Jacob then guesses Sean robbed Zack.\n    *   This is a contradiction in Jacob's own logic. If he's the Seer and saw Zack, and Zack admits it, the most logical vote is Zack.\n    *   The only reason to vote Sean is if you believe the Robber swap happened. But there's no evidence for it.\n    *   Therefore, Zack is the most likely Werewolf.\n\n    *   Wait, let me re-read [91-92] again.\n    *   Jacob: \"So Zack, you started as the werewolf... Are you the only werewolf in this game right now? Or were there two werewolves?\"\n    *   Zack: \"As far as I'm aware, I was the only one.\"\n    *   Zack is confirming he started as the Werewolf.\n    *   If he started as the Werewolf and wasn't swapped, he is the Werewolf.\n    *   If he was swapped by the Robber, the Robber is the Werewolf.\n    *   If he was swapped by the Troublemaker, the other person is the Werewolf.\n    *   Since no one claimed Robber or Troublemaker, the most reliable information is the starting role and the Seer's claim.\n    *   Zack is the most likely candidate.\n\n    *   Justification: Jacob claimed to be the Seer and identified Zack as the Werewolf. Zack subsequently admitted that he started the game as the only Werewolf. While Jacob later speculated that Sean might have robbed Zack, there is no evidence of a Robber or Troublemaker action, making Zack the most probable Werewolf.\n    *   Chosen vote: Zack.",
+  "parsed_output": {
+    "justification": "Jacob claimed to be the Seer and identified Zack as the Werewolf. Zack effectively confirmed this by admitting that, as far as he was aware, he started the game as the only Werewolf. Although Jacob later speculated that Sean might have been the Robber and stolen the Werewolf card, there is no evidence of a Robber or Troublemaker action, making Zack the most likely Werewolf.",
+    "chosen_vote": "Zack"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jacob claimed to be the Seer and identified Zack as the Werewolf. Zack effectively confirmed this by admitting that, as far as he was aware, he started the game as the only Werewolf. Although Jacob later speculated that Sean might have been the Robber and stolen the Werewolf card, there is no evidence of a Robber or Troublemaker action, making Zack the most likely Werewolf.\",\n  \"chosen_vote\": \"Zack\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jacob claimed to be the Seer and identified Zack as the Werewolf. Zack effectively confirmed this by admitting that, as far as he was aware, he started the game as the only Werewolf. Although Jacob later speculated that Sean might have been the Robber and stolen the Werewolf card, there is no evidence of a Robber or Troublemaker action, making Zack the most likely Werewolf.\",\n  \"chosen_vote\": \"Zack\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Zack",
+    "justification": "Jacob claimed to be the Seer and identified Zack as the Werewolf. Zack effectively confirmed this by admitting that, as far as he was aware, he started the game as the only Werewolf. Although Jacob later speculated that Sean might have been the Robber and stolen the Werewolf card, there is no evidence of a Robber or Troublemaker action, making Zack the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4589,
+    "output_token_count": 2126,
+    "generation_time_sec": 226.2445511817932,
+    "used_chat_template": true,
+    "input_char_count": 15696,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

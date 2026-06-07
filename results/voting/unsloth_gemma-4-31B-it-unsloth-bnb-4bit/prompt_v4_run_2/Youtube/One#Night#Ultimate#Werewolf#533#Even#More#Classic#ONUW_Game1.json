@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ryan, Katie, Brett, DeAndre.\n    *   Roles mentioned/claimed:\n        *   DeAndre: Claimed Drunk [13], then later joked \"Wolfing\" [55].\n        *   Ryan: Claimed Troublemaker [24], swapped Katie and Brett.\n        *   Katie: Claimed Robber [23], stole Ryan's Troublemaker [38].\n        *   Brett: Claimed Tanner [63].\n\n    *   Ryan (Troublemaker) swaps Katie and Brett.\n    *   Katie (Robber) steals Ryan's Troublemaker.\n    *   Wait, let's re-read the sequence.\n    *   [17] Katie asks Ryan what he did as Troublemaker.\n    *   [22] Ryan asks Katie if she was the Robber.\n    *   [23] Katie says \"Yes. You're right.\"\n    *   [24] Ryan says \"I swapped yours and Brett's cards.\"\n    *   [38] Katie says \"I was the robber, and I stole his troublemaker.\"\n    *   [63] Brett says \"I was the tanner.\"\n\n    *   *Starting Roles (Hypothetical based on claims):*\n        *   Ryan: Troublemaker\n        *   Katie: Robber\n        *   Brett: Tanner\n        *   DeAndre: Drunk (or Werewolf/Minion)\n\n    *   *Night Actions (Order: Robber -> Troublemaker -> Drunk):*\n        1.  Robber (Katie) steals Ryan's card (Troublemaker).\n            *   Katie is now Troublemaker.\n            *   Ryan is now Robber.\n        2.  Troublemaker (Ryan - *Wait, Ryan was the starting Troublemaker, but Katie stole it. The Troublemaker action is performed by the person who starts as Troublemaker.*)\n            *   Wait, the rules say: \"night actions are performed according to starting roles\".\n            *   Starting Troublemaker: Ryan.\n            *   Ryan swaps Katie and Brett.\n            *   Katie (now Troublemaker) and Brett (Tanner) are swapped.\n            *   Katie is now Tanner.\n            *   Brett is now Troublemaker.\n        3.  Drunk (DeAndre) swaps with center.\n            *   DeAndre is now whatever was in the center.\n\n    *   *Final Roles (Based on these claims):*\n        *   Ryan: Robber (stolen by Katie)\n        *   Katie: Tanner (swapped by Ryan)\n        *   Brett: Troublemaker (swapped by Ryan)\n        *   DeAndre: Whatever the Drunk swapped with.\n\n    *   *Wait, let's re-evaluate the claims.*\n        *   Katie says she was the Robber and stole Ryan's Troublemaker.\n        *   Ryan says he was the Troublemaker and swapped Katie and Brett.\n        *   Brett says he was the Tanner.\n        *   DeAndre says he was the Drunk.\n\n    *   *If these claims are true:*\n        *   Starting: Ryan(T), Katie(R), Brett(Tanner), DeAndre(D).\n        *   Robber (Katie) takes Ryan's (T). Katie=T, Ryan=R.\n        *   Troublemaker (Ryan - *Wait, the rules say \"night actions are performed according to starting roles\"*)\n            *   Actually, the rules say: \"night actions are performed according to starting roles\".\n            *   So Ryan (starting Troublemaker) performs the swap.\n            *   Ryan swaps Katie and Brett.\n            *   Katie (who is currently T) and Brett (Tanner) are swapped.\n            *   Katie becomes Tanner, Brett becomes T.\n        *   Drunk (DeAndre) swaps with center.\n            *   DeAndre becomes whatever was in the center.\n\n    *   *Who is the Werewolf?*\n        *   If the starting roles were Ryan(T), Katie(R), Brett(Tanner), DeAndre(D), then the Werewolf/Minion cards must be in the center.\n        *   However, DeAndre swapped his Drunk card for a center card.\n        *   If a Werewolf card was in the center, DeAndre could now be the Werewolf.\n\n    *   *Analyzing the behavior:*\n        *   DeAndre claimed Drunk, then joked \"Wolfing\".\n        *   Brett is pushing hard to vote for DeAndre.\n        *   Katie is indifferent.\n        *   Ryan is agreeing with Brett.\n\n    *   *Is there a Werewolf?*\n        *   If the claims are true, the only person who could be a Werewolf is DeAndre (via the Drunk swap).\n        *   If the claims are false, anyone could be the Werewolf.\n        *   But based on the logic provided by the players (which the observer should follow if it's consistent), DeAndre is the prime suspect.\n\n    *   *Let's double-check the \"Drunk\" swap:*\n        *   Drunk swaps their card with one from the center.\n        *   If DeAndre was the Drunk, he now has a card from the center.\n        *   If the center had a Werewolf, DeAndre is now the Werewolf.\n\n    *   *Wait, let's look at the claims again.*\n        *   Ryan: Troublemaker.\n        *   Katie: Robber.\n        *   Brett: Tanner.\n        *   DeAndre: Drunk.\n        *   If these four roles were distributed, the remaining 3 cards (center) would be the other roles from the pool.\n        *   The pool had: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n        *   If Ryan=T, Katie=R, Brett=Tanner, DeAndre=D, then the center contains 3 cards from the remaining 8.\n        *   If a Werewolf was in the center, DeAndre (Drunk) could have swapped into it.\n\n    *   *Is there any other possibility?*\n        *   What if DeAndre is lying about being the Drunk?\n        *   If DeAndre is a Werewolf, he would claim a village role (like Drunk) to avoid being voted out.\n        *   Brett's logic: \"If he was a drunk, he's drunk turned werewolf\" [47]. This means Brett believes DeAndre is the most likely candidate for Werewolf, either by starting as one or becoming one via the Drunk swap.\n\n    *   *Conclusion:*\n        *   The players are converging on DeAndre.\n        *   The logic (even if the claims are slightly confused) points to DeAndre as the only possible Werewolf if the others are telling the truth about their roles.\n        *   If they are lying, DeAndre is still the most suspicious because he's the only one not claiming a specific \"safe\" role (he claimed Drunk, but then joked about wolfing).\n\n    *   *Wait, let's re-read the transcript one more time.*\n        *   [13] DeAndre: \"I was drunk.\"\n        *   [55] DeAndre: \"Wolfing.\" (This is a joke/admission).\n        *   [64] Brett: \"So we should vote for DeAndre again.\"\n        *   [77] Brett: \"I guess we should vote for him... because if he was a drunk then it's obviously out.\" (Meaning if he was the Drunk, he might have swapped into a Werewolf).\n\n    *   *Final check on roles:*\n        *   Ryan: Troublemaker (Starting) -> Robber (Final)\n        *   Katie: Robber (Starting) -> Troublemaker (via Robber) -> Tanner (via Troublemaker swap)\n        *   Brett: Tanner (Starting) -> Troublemaker (via Troublemaker swap)\n        *   DeAndre: Drunk (Starting) -> ? (via Drunk swap)\n\n    *   If this is the case, the only person who could be a Werewolf is DeAndre.\n\n    *   *Wait, could Katie be the Werewolf?*\n        *   She claimed Robber. If she was actually a Werewolf, she'd lie.\n        *   But the group seems to believe the Ryan/Katie/Brett interaction.\n        *   If Ryan is the Troublemaker and swapped Katie and Brett, and Katie was the Robber and stole Ryan's card, the logic holds.\n\n    *   *Is it possible there is \"No Werewolf\"?*\n        *   If DeAndre swapped the Drunk card for a Villager card, and the Werewolf cards are still in the center, then \"No Werewolf\" would be the answer.\n        *   However, in these games, usually, the most suspicious player is the target. DeAndre's \"Wolfing\" comment and the others' consensus make him the target.\n\n    *   *Decision:* Vote for DeAndre.\n\n    *   *Justification:*\n        *   Ryan claimed Troublemaker and swapped Katie and Brett.\n        *   Katie claimed Robber and stole Ryan's Troublemaker card.\n        *   Brett claimed Tanner.\n        *   DeAndre claimed Drunk, and since the Drunk swaps their card with one from the center, he is the only player who could have ended the night as a Werewolf if one was in the center.\n        *   DeAndre also jokingly admitted to \"wolfing,\" and the other players have converged on him as the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Ryan claimed to be the Troublemaker and swapped Katie and Brett. Katie claimed to be the Robber and stole Ryan's Troublemaker card. Brett claimed to be the Tanner. DeAndre claimed to be the Drunk, and since the Drunk swaps their card with one from the center, he is the only player who could have ended the night as a Werewolf if a Werewolf card was in the center. Furthermore, DeAndre jokingly admitted to 'wolfing,' and the other players have converged on him as the most likely Werewolf.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Ryan claimed to be the Troublemaker and swapped Katie and Brett. Katie claimed to be the Robber and stole Ryan's Troublemaker card. Brett claimed to be the Tanner. DeAndre claimed to be the Drunk, and since the Drunk swaps their card with one from the center, he is the only player who could have ended the night as a Werewolf if a Werewolf card was in the center. Furthermore, DeAndre jokingly admitted to 'wolfing,' and the other players have converged on him as the most likely Werewolf.\",\n  \"chosen_vote\": \"DeAndre\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Ryan claimed to be the Troublemaker and swapped Katie and Brett. Katie claimed to be the Robber and stole Ryan's Troublemaker card. Brett claimed to be the Tanner. DeAndre claimed to be the Drunk, and since the Drunk swaps their card with one from the center, he is the only player who could have ended the night as a Werewolf if a Werewolf card was in the center. Furthermore, DeAndre jokingly admitted to 'wolfing,' and the other players have converged on him as the most likely Werewolf.\",\n  \"chosen_vote\": \"DeAndre\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "Ryan claimed to be the Troublemaker and swapped Katie and Brett. Katie claimed to be the Robber and stole Ryan's Troublemaker card. Brett claimed to be the Tanner. DeAndre claimed to be the Drunk, and since the Drunk swaps their card with one from the center, he is the only player who could have ended the night as a Werewolf if a Werewolf card was in the center. Furthermore, DeAndre jokingly admitted to 'wolfing,' and the other players have converged on him as the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3573,
+    "output_token_count": 2305,
+    "generation_time_sec": 241.70721316337585,
+    "used_chat_template": true,
+    "input_char_count": 12857,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

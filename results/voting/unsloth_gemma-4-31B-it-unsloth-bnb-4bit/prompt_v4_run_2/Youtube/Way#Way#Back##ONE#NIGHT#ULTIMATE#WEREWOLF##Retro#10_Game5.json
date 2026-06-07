@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul: Claims Insomniac (initially), then says he didn't wake up as Insomniac (meaning he was swapped/robbed). Later claims Robber (after Justin's claim).\n    *   Mitchell: Claims Hunter, then claims Tanner (after being accused of being a werewolf).\n    *   Justin: Claims Robber/Seer (initially), then says he stole from Paul (who was Insomniac).\n    *   Laura: Claims Troublemaker (switched James and Mitchell). Finally admits to being a Werewolf (at the very end of the transcript).\n    *   James: Doesn't make a strong role claim, mostly expresses distrust.\n\n    *   Paul says: \"I was the insomniac, and I will be able to confirm because I did not wake up as the insomniac.\" (Line 56)\n    *   Justin says: \"I am one of these two... I have robber and seer.\" (Line 87, 92)\n    *   Justin says: \"I obviously stole from Paul. He is the insomniac. He woke up as the robber.\" (Line 123)\n    *   Paul says: \"Yep.\" (Line 125)\n    *   Laura says: \"Yes. I'm a werewolf.\" (Line 186)\n\n    *   Wait, the transcript ends with Laura admitting she is a werewolf.\n    *   Let's re-read the end:\n        *   [186] Laura: \"Yes. I'm a werewolf.\"\n        *   [190] Laura: \"I was going to take the tanner.\" (Wait, this is confusing, but the admission is clear).\n\n    *   If Laura is the werewolf, voting her out wins the game for Team Village.\n    *   Is there any reason to doubt her admission? In One Night Ultimate Werewolf, players often admit their roles *after* the voting phase or during the final reveal. The transcript shows the discussion leading up to the vote and then the admission.\n    *   Let's check the flow:\n        *   Justin, Paul, and Mitchell all agree to vote for Laura.\n        *   Laura admits she is a werewolf.\n\n    *   Paul: Claims Insomniac -> Robber.\n    *   Justin: Claims Robber/Seer.\n    *   Mitchell: Claims Hunter -> Tanner.\n    *   Laura: Claims Troublemaker -> Werewolf.\n    *   James: No clear claim.\n\n    *   If Laura is the Werewolf, voting her out is the correct move.\n\n    *   The prompt asks to choose the player to vote out to make Team Village win.\n    *   Laura admitted to being a werewolf.\n    *   Therefore, voting for Laura is the optimal choice.",
+  "parsed_output": {
+    "justification": "Laura explicitly admits to being a werewolf in the final part of the transcript ('Yes. I'm a werewolf'). While she initially claimed to be the Troublemaker, her admission confirms her identity as the target for Team Village. Voting for her ensures a win for Team Village as long as she is indeed a werewolf.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Laura explicitly admits to being a werewolf in the final part of the transcript ('Yes. I'm a werewolf'). While she initially claimed to be the Troublemaker, her admission confirms her identity as the target for Team Village. Voting for her ensures a win for Team Village as long as she is indeed a werewolf.\",\n  \"chosen_vote\": \"Laura\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Laura explicitly admits to being a werewolf in the final part of the transcript ('Yes. I'm a werewolf'). While she initially claimed to be the Troublemaker, her admission confirms her identity as the target for Team Village. Voting for her ensures a win for Team Village as long as she is indeed a werewolf.\",\n  \"chosen_vote\": \"Laura\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Laura explicitly admits to being a werewolf in the final part of the transcript ('Yes. I'm a werewolf'). While she initially claimed to be the Troublemaker, her admission confirms her identity as the target for Team Village. Voting for her ensures a win for Team Village as long as she is indeed a werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5265,
+    "output_token_count": 732,
+    "generation_time_sec": 84.36868047714233,
+    "used_chat_template": true,
+    "input_char_count": 17021,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#361#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#361#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "George",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete\n    *   Katie\n    *   Brett\n    *   George\n    *   Kelsey\n    *   Dylan\n\n    *   Dylan: Claimed Werewolf early on ([64]), then said he hoped he was robbed or troublemade ([92], [306]). This is highly suspicious. Usually, a Werewolf wouldn't claim it unless they are trying to look like a Tanner or Minion.\n    *   Kelsey: Claimed she woke up ([38], [44], [152], [192]). Later claimed she was the Robber and robbed Katie ([284], [287], [301]).\n    *   Brett: Claimed to be the Troublemaker ([99], [128]). Said he swapped Pete and Katie ([255]).\n    *   Pete: Claimed to be the Mason ([143], [199], [221]). Later said he was the Drunk ([161], [259]).\n    *   Katie: Claimed to be the Drunk ([159], [250], [254]). Later said she might be a Mason ([150]).\n    *   George: Claimed he didn't wake up ([160], [178]). This is a claim for Tanner or Villager.\n\n    *   Dylan's claim: \"I was the Werewolf but I'm hoping someone trouble made me or robbed me\" ([90], [92]).\n    *   If Dylan was the Werewolf, he's a Werewolf.\n    *   If Dylan is lying and is the Tanner, he wants to be voted out.\n    *   If Dylan is the Minion, he's on Team Werewolf.\n    *   If Dylan is a Werewolf and is pretending to be the Tanner to confuse people, he's still a Werewolf.\n\n    *   Kelsey claimed Robber and robbed Katie ([284], [287], [301]).\n    *   Brett claimed Troublemaker and swapped Pete and Katie ([255]).\n    *   If Brett is the Troublemaker and swapped Pete and Katie, and Kelsey is the Robber and robbed Katie, the cards moved around quite a bit.\n\n    *   Dylan's claim to be a Werewolf is the most direct piece of evidence. Even if he's bluffing to be the Tanner, the risk for the Village is high if he actually *is* a Werewolf.\n    *   However, let's look at the logic:\n        *   Dylan claims Werewolf.\n        *   If he is Werewolf, voting him out wins the game.\n        *   If he is Tanner, voting him out loses the game (Tanner wins).\n        *   If he is Minion, voting him out doesn't win the game (unless there's another Werewolf).\n    *   Wait, the goal is to eliminate a Werewolf. If Dylan is a Werewolf, he's the target.\n    *   Is there anyone else more likely?\n        *   George claimed he didn't wake up. (Tanner/Villager).\n        *   Kelsey claimed Robber.\n        *   Brett claimed Troublemaker.\n        *   Pete/Katie claimed Mason/Drunk.\n\n    *   Dylan's claim is very unusual. \"I was the Werewolf but I'm hoping someone trouble made me or robbed me.\"\n    *   If he was the Werewolf, he knows he's a Werewolf. If he was robbed or troublemade, he wouldn't *know* he was robbed/troublemade unless he was the Insomniac (who wakes up last).\n    *   Wait, the Insomniac wakes up last. If Dylan was the Werewolf and then got robbed/troublemade, he wouldn't know his card changed unless he was the Insomniac. But he's claiming he *was* the Werewolf.\n    *   This suggests Dylan is either:\n        1.  A Werewolf trying to act like a Tanner.\n        2.  The Tanner trying to get voted out.\n        3.  The Minion trying to protect the Werewolf by drawing fire.\n\n    *   If Dylan is the Tanner, voting him out makes the Tanner win.\n    *   If Dylan is the Werewolf, voting him out makes the Village win.\n    *   If Dylan is the Minion, voting him out doesn't help the Village win (unless there's another Werewolf).\n\n    *   Let's look at the other players.\n    *   Kelsey's claim to be the Robber came very late ([284]).\n    *   Brett's claim to be the Troublemaker was consistent.\n    *   Pete and Katie's claims were confused.\n\n    *   In One Night Ultimate Werewolf, when someone claims Werewolf, they are almost always either the Tanner or a Werewolf trying to confuse the group.\n    *   Given the options, Dylan is the most suspicious. If he is the Werewolf, the Village wins. If he is the Tanner, the Tanner wins.\n    *   Is there any other evidence?\n    *   Dylan says: \"I was the Werewolf but I'm hoping someone trouble made me or robbed me\" ([90], [92]).\n    *   If he was the Werewolf and was robbed, the Robber now has the Werewolf card.\n    *   If he was the Werewolf and was troublemade, someone else now has the Werewolf card.\n    *   If he is the Werewolf and *wasn't* moved, he's still the Werewolf.\n\n    *   Let's re-evaluate Dylan's claim. If he's the Werewolf and wasn't moved, he's the target. If he was moved, the person who now has the card is the target.\n    *   Who could have the card?\n        *   Kelsey (Robber) robbed Katie.\n        *   Brett (Troublemaker) swapped Pete and Katie.\n    *   If Dylan was the Werewolf and was not moved by Brett or Kelsey, he is still the Werewolf.\n    *   Brett said: \"I didn't touch his [Dylan's] card\" ([99]).\n    *   Kelsey said: \"I robbed Katie\" ([287]).\n    *   So if Dylan was the Werewolf, he is still the Werewolf.\n\n    *   Dylan's claim is the most blatant. While it could be a Tanner play, in these games, claiming the role you are trying to hide (or claiming to be the enemy) is a common tactic for both Werewolves and Tanners. However, the prompt asks to choose the player to vote out to make Team Village win. Voting Dylan is the most logical choice because he explicitly claimed the role.\n\n    *   Dylan claimed to be the Werewolf.\n    *   Brett (Troublemaker) stated he did not swap Dylan's card.\n    *   Kelsey (Robber) stated she robbed Katie, not Dylan.\n    *   Therefore, if Dylan's starting role was Werewolf, he remains the Werewolf.\n    *   Even if he is bluffing as the Tanner, he is the most suspicious player.\n\n    *   Wait, let's check if anyone else could be the Werewolf.\n    *   Kelsey claimed Robber. If she's lying and is the Werewolf...\n    *   George claimed he didn't wake up. If he's lying and is the Werewolf...\n    *   But Dylan's claim is the most direct.\n\n    *   Dylan: \"I was the Werewolf\" ([90]).\n    *   Brett: \"I didn't touch his card\" ([99]).\n    *   Kelsey: \"I robbed Katie\" ([287]).\n    *   Conclusion: Dylan is the most likely Werewolf.\n\n    *   Wait, if Dylan is the Tanner, voting him out makes the Tanner win. But the goal is to make Team Village win.\n    *   If Dylan is the Werewolf, voting him out makes Team Village win.\n    *   If Dylan is the Minion, voting him out doesn't make Team Village win.\n    *   If Dylan is the Tanner, voting him out makes the Tanner win.\n    *   Is there any other option?\n    *   Kelsey's claim to be the Robber was very late and seen as a \"bad lie\" by Pete ([291]).\n    *   If Kelsey is the Werewolf and Dylan is the Tanner...\n    *   But Dylan's claim is so explicit. Let's stick with Dylan.\n\n    *   Dylan claimed to be the Werewolf.\n    *   Brett (Troublemaker) and Kelsey (Robber) both indicated they did not move Dylan's card.\n    *   This means if Dylan was the Werewolf, he is still the Werewolf.\n    *   While he could be the Tanner, he is the most probable target for Team Village.",
+  "parsed_output": {
+    "justification": "Dylan explicitly claimed to be the Werewolf during the discussion. Brett (claiming Troublemaker) and Kelsey (claiming Robber) both stated they did not swap or rob Dylan's card, meaning if Dylan started as the Werewolf, he remains the Werewolf. Although Dylan might be bluffing as the Tanner, he is the most direct suspect for the Werewolf role based on the public transcript.",
+    "chosen_vote": "Dylan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan explicitly claimed to be the Werewolf during the discussion. Brett (claiming Troublemaker) and Kelsey (claiming Robber) both stated they did not swap or rob Dylan's card, meaning if Dylan started as the Werewolf, he remains the Werewolf. Although Dylan might be bluffing as the Tanner, he is the most direct suspect for the Werewolf role based on the public transcript.\",\n  \"chosen_vote\": \"Dylan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan explicitly claimed to be the Werewolf during the discussion. Brett (claiming Troublemaker) and Kelsey (claiming Robber) both stated they did not swap or rob Dylan's card, meaning if Dylan started as the Werewolf, he remains the Werewolf. Although Dylan might be bluffing as the Tanner, he is the most direct suspect for the Werewolf role based on the public transcript.\",\n  \"chosen_vote\": \"Dylan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dylan",
+    "justification": "Dylan explicitly claimed to be the Werewolf during the discussion. Brett (claiming Troublemaker) and Kelsey (claiming Robber) both stated they did not swap or rob Dylan's card, meaning if Dylan started as the Werewolf, he remains the Werewolf. Although Dylan might be bluffing as the Tanner, he is the most direct suspect for the Werewolf role based on the public transcript."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6927,
+    "output_token_count": 2112,
+    "generation_time_sec": 239.87781262397766,
+    "used_chat_template": true,
+    "input_char_count": 20728,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

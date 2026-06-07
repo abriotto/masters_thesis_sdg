@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game2.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Goal: Eliminate a Werewolf to make Team Village win.\n\n    *   Jacob claims to be the Troublemaker.\n    *   Jacob claims he swapped Hunter and Sean's cards.\n    *   Sean claims to be the Seer.\n    *   Sean claims he looked at Hunter's card and it was a Werewolf.\n    *   Hunter admits, \"If we are being completely honest, I was the werewolf.\"\n    *   Jacob's logic: If he (Troublemaker) swapped Hunter and Sean, and Hunter was the Werewolf, then Sean is now the Werewolf.\n    *   Sean's counter-logic: He suggests Zack might be the Robber and swapped cards, trying to divert suspicion.\n\n    *   *Scenario A: Jacob is the Troublemaker, Sean is the Seer, Hunter was the Werewolf.*\n        *   Seer (Sean) looks at Hunter -> Werewolf.\n        *   Troublemaker (Jacob) swaps Hunter and Sean.\n        *   Result: Sean is now the Werewolf, Hunter is now the Seer.\n        *   Vote: Sean.\n\n    *   *Scenario B: Hunter is the Werewolf and no swaps happened.*\n        *   If Jacob is lying about being the Troublemaker and Sean is lying about being the Seer.\n        *   Vote: Hunter.\n\n    *   *Scenario C: Sean is the Tanner.*\n        *   Tanner wants to be voted out. Sean's admission (\"I can't defend myself there\") and lack of strong defense could be a Tanner strategy.\n        *   However, Hunter admitted to being the Werewolf.\n\n    *   *Scenario D: Hunter is the Werewolf and is telling the truth.*\n        *   Hunter says: \"If we are being completely honest, I was the werewolf.\"\n        *   If no swaps occurred, Hunter is the Werewolf.\n        *   If Jacob (Troublemaker) swapped Hunter and Sean, Sean is now the Werewolf.\n\n    *   Hunter's admission is very strong: \"I was the werewolf.\"\n    *   Jacob's claim: \"I'm the troublemaker. I switched Hunter and Sean's cards.\"\n    *   If both are telling the truth, Sean is currently the Werewolf.\n    *   Sean's claim: \"I was the seer and I looked at his [Hunter's] card and it was... the werewolf.\"\n    *   This confirms the sequence: Seer (Sean) sees Werewolf (Hunter) -> Troublemaker (Jacob) swaps Sean and Hunter.\n    *   Therefore, Sean is now the Werewolf.\n\n    *   Wait, if Sean was the Seer and saw Hunter was the Werewolf, and then Jacob swapped them, Sean is now the Werewolf and Hunter is now the Seer.\n    *   If Sean is the Werewolf, he would want to divert the vote. He tries to suggest Zack is the Robber.\n    *   If Hunter is the Seer (after the swap), he has no reason to lie about having been the Werewolf unless he's confused or playing a game. But he says \"I was the werewolf,\" which fits the narrative.\n\n    *   Jacob (Troublemaker) -> Swapped Sean and Hunter.\n    *   Sean (Seer) -> Saw Hunter was Werewolf.\n    *   Current state: Sean = Werewolf, Hunter = Seer.\n    *   Vote: Sean.\n\n    *   Could Jacob be the Werewolf lying about being the Troublemaker?\n    *   Could Sean be the Tanner?\n    *   If Hunter is the Werewolf and no swap happened, voting Sean is wrong.\n    *   But Hunter explicitly admitted to being the Werewolf. In One Night Ultimate Werewolf, players often admit their roles to help the village or to confuse. If Hunter admits he *was* the werewolf and Jacob says he swapped him with Sean, the most logical conclusion for the Village is that Sean is now the Werewolf.\n\n    *   Sean: \"I was the seer and I looked at his card and it was... the werewolf.\"\n    *   Jacob: \"I'm the troublemaker. I switched Hunter and Sean's cards.\"\n    *   Hunter: \"I was the werewolf.\"\n    *   If these three statements are true:\n        1.  Starting roles: Sean (Seer), Hunter (Werewolf), Jacob (Troublemaker).\n        2.  Night action: Seer (Sean) checks Hunter (Werewolf).\n        3.  Night action: Troublemaker (Jacob) swaps Sean and Hunter.\n        4.  Final roles: Sean (Werewolf), Hunter (Seer), Jacob (Troublemaker).\n    *   To win, Team Village must vote out the final Werewolf: Sean.\n\n    *   Is there any reason to vote Hunter? Only if Jacob is lying about the swap.\n    *   Is there any reason to vote Zack? Only if Sean's \"33% chance\" theory is true (Robber swap). But there's no evidence Zack is the Robber.\n    *   Is there any reason to vote \"No Werewolf\"? No, Hunter admitted to being one.\n\n    *   The most consistent narrative is that Sean is the current Werewolf due to the Troublemaker's swap.\n    *   Hunter's admission and Jacob's claim align.\n    *   Sean's attempt to shift blame to Zack is typical Werewolf behavior.\n\n    *   Justification: Hunter admitted to being the Werewolf, and Jacob claimed to be the Troublemaker who swapped Hunter and Sean's cards. Sean also claimed to be the Seer who saw that Hunter was the Werewolf. If these claims are true, Sean is now the Werewolf.\n    *   Chosen vote: Sean.",
+  "parsed_output": {
+    "justification": "Hunter admitted to being the Werewolf, and Jacob claimed to be the Troublemaker who swapped Hunter and Sean's cards. Sean further supported this by claiming he was the Seer and saw that Hunter was the Werewolf. If these claims are true, the swap resulted in Sean becoming the Werewolf, making him the correct target for elimination.",
+    "chosen_vote": "Sean"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Hunter admitted to being the Werewolf, and Jacob claimed to be the Troublemaker who swapped Hunter and Sean's cards. Sean further supported this by claiming he was the Seer and saw that Hunter was the Werewolf. If these claims are true, the swap resulted in Sean becoming the Werewolf, making him the correct target for elimination.\",\n  \"chosen_vote\": \"Sean\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Hunter admitted to being the Werewolf, and Jacob claimed to be the Troublemaker who swapped Hunter and Sean's cards. Sean further supported this by claiming he was the Seer and saw that Hunter was the Werewolf. If these claims are true, the swap resulted in Sean becoming the Werewolf, making him the correct target for elimination.\",\n  \"chosen_vote\": \"Sean\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sean",
+    "justification": "Hunter admitted to being the Werewolf, and Jacob claimed to be the Troublemaker who swapped Hunter and Sean's cards. Sean further supported this by claiming he was the Seer and saw that Hunter was the Werewolf. If these claims are true, the swap resulted in Sean becoming the Werewolf, making him the correct target for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3170,
+    "output_token_count": 1377,
+    "generation_time_sec": 142.69816708564758,
+    "used_chat_template": true,
+    "input_char_count": 11341,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

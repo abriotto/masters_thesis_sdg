@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be Seer, says James had a Werewolf card.\n    *   Alvin: Claims to be Robber.\n    *   James: Admits to having a Werewolf card (at the start of the night).\n    *   Mitchell: Claims to be Drunk (or was swapped with the Robber).\n\n    *   Justin (Seer) -> Looked at James -> Saw Werewolf.\n    *   Alvin (Robber) -> Swapped with someone.\n    *   Mitchell (Drunk) -> Swapped with center.\n    *   James (Werewolf) -> Started as Werewolf.\n\n    *   James explicitly admits: \"My first play was to look at this card, werewolf\" [44] and \"I really put myself up in a poor position here by admitting I'm the werewolf\" [87].\n    *   Justin claims he saw James as a Werewolf [36, 48, 63].\n    *   Alvin and Mitchell are discussing Robber/Drunk roles, but James's admission is the most critical piece of evidence.\n\n    *   If James started as a Werewolf, did he stay a Werewolf?\n    *   Robber (Alvin) swaps cards.\n    *   Troublemaker (not claimed, but possible) swaps cards.\n    *   Drunk (Mitchell) swaps with center.\n    *   James says \"My first play was to look at this card, werewolf\" [44]. This implies he knew he was a werewolf at the start.\n    *   Justin (Seer) looked at James and saw a werewolf. Seer acts *before* Robber and Troublemaker.\n    *   If Alvin (Robber) swapped with James, James would no longer be the werewolf.\n    *   However, James admits he is the werewolf (or was) and doesn't deny currently being one, though he mentions \"if these cards are moved\" [46].\n    *   Wait, James says: \"I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf\" [87]. This is a very strong admission.\n\n    *   Justin: Seer (Village)\n    *   Alvin: Robber (Village)\n    *   Mitchell: Drunk (Village)\n    *   James: Werewolf (Werewolf)\n\n    *   If James is the Werewolf, voting him out wins the game for Team Village.\n    *   Even if James was swapped, the admission is so blatant that he's the primary target.\n    *   Is there any reason to suspect others?\n        *   Justin could be lying, but James's own admission confirms Justin's claim.\n        *   Alvin and Mitchell's roles (Robber/Drunk) are less certain, but they aren't claiming to be werewolves.\n\n    *   James admitted to being the werewolf.\n    *   Justin (claiming Seer) confirmed James was a werewolf.\n    *   The other players (Alvin, Mitchell) agree to vote for James.\n\n    *   James: \"I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf\" [87].\n    *   This is a direct confession.\n\n    *   Justification: James explicitly admitted to being the werewolf during the discussion. Justin, claiming to be the Seer, also identified James as a werewolf. There is no evidence that James's card was swapped away from him by the Robber or Troublemaker in a way that would make another player the werewolf.\n    *   Chosen Vote: James.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being the werewolf during the discussion, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf.' Justin, who claimed to be the Seer, corroborated this by stating he saw James's card and it was a werewolf. Given this direct confession and supporting evidence, James is the most likely werewolf.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being the werewolf during the discussion, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf.' Justin, who claimed to be the Seer, corroborated this by stating he saw James's card and it was a werewolf. Given this direct confession and supporting evidence, James is the most likely werewolf.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being the werewolf during the discussion, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf.' Justin, who claimed to be the Seer, corroborated this by stating he saw James's card and it was a werewolf. Given this direct confession and supporting evidence, James is the most likely werewolf.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being the werewolf during the discussion, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf and knowing that I'm the werewolf.' Justin, who claimed to be the Seer, corroborated this by stating he saw James's card and it was a werewolf. Given this direct confession and supporting evidence, James is the most likely werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3486,
+    "output_token_count": 913,
+    "generation_time_sec": 98.65245342254639,
+    "used_chat_template": true,
+    "input_char_count": 12630,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

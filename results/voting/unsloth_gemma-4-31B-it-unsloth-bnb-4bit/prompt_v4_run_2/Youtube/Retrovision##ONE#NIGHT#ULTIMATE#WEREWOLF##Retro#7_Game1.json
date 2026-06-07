@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer. Says he looked at the center and saw Troublemaker and Villager. Claims there are two Werewolves.\n    *   Eric: Claims Robber. Says he stole from someone and can confirm someone was telling the truth (likely Justin).\n    *   Paul: Claims Troublemaker. Says he switched cards between two people (not Mike). Later says he switched Eric.\n    *   Mitchell: Claims to have some information. Doesn't explicitly state a role but asks about Insomniac.\n    *   Mike: Claims to be a Villager. Says he has very little information.\n\n    *   Justin (Seer) -> Center (Troublemaker, Villager).\n    *   Eric (Robber) -> Stole from someone.\n    *   Paul (Troublemaker) -> Swapped two people (one was Eric).\n    *   Wait, Justin says he saw the Troublemaker in the center. If Justin is the Seer and saw the Troublemaker in the center, then Paul cannot be the Troublemaker.\n    *   If Paul is lying about being the Troublemaker, he is likely a Werewolf or the Tanner.\n    *   If Paul is the Troublemaker, Justin is lying about seeing the Troublemaker in the center.\n\n    *   Justin claims Seer, saw Troublemaker in center.\n    *   Paul claims Troublemaker, swapped Eric.\n    *   If Justin is telling the truth, Paul is lying.\n    *   If Paul is telling the truth, Justin is lying.\n    *   Eric claims Robber and supports Justin (\"He was telling the truth\").\n    *   If Eric is the Robber and supports Justin, and Justin is the Seer, then Paul is lying.\n    *   If Paul is the Troublemaker and swapped Eric, Eric's role might have changed.\n    *   Let's check the order: Seer (5), Robber (6), Troublemaker (7).\n    *   If Justin (Seer) looked at the center, he saw the cards *before* the Robber and Troublemaker acted.\n    *   If the Troublemaker card was in the center at the start, Paul cannot be the Troublemaker.\n    *   If Paul is the Troublemaker, he must have started as the Troublemaker. The Troublemaker card would not be in the center.\n    *   Therefore, Justin's claim (Troublemaker in center) and Paul's claim (I am Troublemaker) are contradictory.\n\n    *   Justin (Seer) + Eric (Robber) vs Paul (Troublemaker).\n    *   Eric supports Justin.\n    *   Paul claims he swapped Eric.\n    *   If Paul is the Werewolf, he's lying about being the Troublemaker to create confusion.\n    *   If Justin is the Werewolf, he's lying about the center cards to frame Paul.\n    *   If Eric is the Werewolf/Minion, he's supporting Justin to protect himself or frame Paul.\n\n    *   Justin: Seer (claims center: Troublemaker, Villager).\n    *   Eric: Robber (claims he stole from someone).\n    *   Paul: Troublemaker (claims he swapped Eric).\n    *   Mike: Villager.\n    *   Mitchell: ?\n\n    *   If Justin is Seer and saw Troublemaker in center, Paul is lying.\n    *   If Paul is Troublemaker, Justin is lying.\n    *   Eric supports Justin.\n    *   If Paul is the Werewolf, he'd want to avoid being voted out. Claiming Troublemaker is a common bluff.\n    *   If Justin is the Werewolf, he'd want to frame someone.\n    *   Wait, Paul says he swapped Eric. If Paul is the Troublemaker, he swapped Eric's card with someone else's.\n    *   If Eric was the Robber, and Paul swapped him, Eric might not know he was swapped (Troublemaker swaps without looking).\n    *   But Eric claims he is the Robber. If he was swapped *after* he robbed, he knows he was the Robber, but his *final* role is different.\n    *   However, the contradiction between Justin (Troublemaker in center) and Paul (I am Troublemaker) is the key.\n\n    *   Justin says: \"I looked in the center, and I saw the Troublemaker [and a Villager].\"\n    *   Paul says: \"I was a Troublemaker. I did switch cards.\"\n    *   One of them is lying.\n    *   Eric supports Justin.\n    *   If Eric is the Robber, he knows who he robbed. He says he can confirm someone was telling the truth (Justin).\n    *   If Eric is the Robber and Justin is the Seer, Paul is the liar.\n    *   If Paul is the liar, he is likely the Werewolf.\n\n    *   Justin: Seer\n    *   Eric: Robber\n    *   Paul: Werewolf (bluffing as Troublemaker)\n    *   Mike: Villager\n    *   Mitchell: Villager/Insomniac/Minion?\n    *   Center: Troublemaker, Villager, Werewolf? (Justin said he saw Troublemaker and Villager).\n    *   Wait, if there's only one Werewolf and it's Paul, then the center is Troublemaker, Villager, and the other Werewolf card. This fits Justin's claim.\n\n    *   Justin: Werewolf (bluffing as Seer)\n    *   Eric: Minion (supporting Justin)\n    *   Paul: Troublemaker\n    *   Mike: Villager\n    *   Mitchell: Villager\n    *   Center: Seer, Robber, Villager? (Justin lied about seeing Troublemaker).\n\n    *   In many games, the person claiming a role that is contradicted by a \"Seer\" (especially when supported by another player) is the target.\n    *   Paul's claim to be the Troublemaker is directly contradicted by Justin's claim that the Troublemaker card was in the center.\n    *   Eric's support for Justin adds weight to Justin's claim.\n    *   Paul's late admission that he swapped Eric feels like a desperate attempt to explain why Eric might be acting weird or to create complexity.\n\n    *   Justin: Seer\n    *   Eric: Robber\n    *   Paul: Werewolf\n    *   Mike: Villager\n    *   Mitchell: Villager/Insomniac\n    *   Center: Troublemaker, Villager, Werewolf.\n    *   This is a consistent scenario.\n\n    *   Justin: Werewolf\n    *   Eric: Minion\n    *   Paul: Troublemaker\n    *   Mike: Villager\n    *   Mitchell: Villager\n    *   Center: Seer, Robber, Villager.\n    *   This is also possible, but usually, the \"Seer + Robber\" alliance is stronger than a single \"Troublemaker\" claim.\n\n    *   Justin claims Seer and saw Troublemaker in center.\n    *   Paul claims Troublemaker.\n    *   Eric claims Robber and supports Justin.\n    *   The contradiction points to either Justin or Paul.\n    *   Given Eric's support for Justin, Paul is the most suspicious.\n\n    *   Justin: \"I looked in the center, and I saw the Troublemaker... and a Villager.\"\n    *   Paul: \"I was a Troublemaker. I did switch cards... I switched Eric.\"\n    *   If Paul is the Troublemaker, Justin is lying. If Justin is the Seer, Paul is lying.\n    *   Eric supports Justin.\n    *   Therefore, Paul is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and states he saw the Troublemaker card in the center. Paul claims to be the Troublemaker, which directly contradicts Justin's information. Eric, claiming to be the Robber, supports Justin's truthfulness. Since Justin and Eric's claims align and contradict Paul's, Paul is the most likely candidate to be the Werewolf bluffing as the Troublemaker.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and states he saw the Troublemaker card in the center. Paul claims to be the Troublemaker, which directly contradicts Justin's information. Eric, claiming to be the Robber, supports Justin's truthfulness. Since Justin and Eric's claims align and contradict Paul's, Paul is the most likely candidate to be the Werewolf bluffing as the Troublemaker.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and states he saw the Troublemaker card in the center. Paul claims to be the Troublemaker, which directly contradicts Justin's information. Eric, claiming to be the Robber, supports Justin's truthfulness. Since Justin and Eric's claims align and contradict Paul's, Paul is the most likely candidate to be the Werewolf bluffing as the Troublemaker.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Justin claims to be the Seer and states he saw the Troublemaker card in the center. Paul claims to be the Troublemaker, which directly contradicts Justin's information. Eric, claiming to be the Robber, supports Justin's truthfulness. Since Justin and Eric's claims align and contradict Paul's, Paul is the most likely candidate to be the Werewolf bluffing as the Troublemaker."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3785,
+    "output_token_count": 1859,
+    "generation_time_sec": 197.1185531616211,
+    "used_chat_template": true,
+    "input_char_count": 13300,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

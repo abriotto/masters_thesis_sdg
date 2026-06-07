@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#3#Insomniac",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#3#Insomniac_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Audrey: Claims Robber, took Dylan's card. Claims Dylan was Seer. (So Audrey is now Seer, Dylan is now Robber).\n    *   Dylan: Confirms he saw Audrey was a Robber (Wait, if Audrey took Dylan's card, Dylan is now the Robber. If Dylan was the Seer, he looked at Audrey's card *before* the Robber woke up? No, the Seer wakes up *before* the Robber. So Dylan (Seer) looked at Audrey (Robber), then Audrey (Robber) swapped with Dylan (Seer). Now Audrey is Seer, Dylan is Robber).\n    *   Dan: Claims Troublemaker. Says he switched two cards.\n    *   Ed: Claims Insomniac. Says he woke up as a Mason.\n    *   Katie: Claims Mason. Says she was alone (only one Mason).\n    *   Brett: Claims Drunk. Says he switched with a card from the center.\n\n    *   Dan (Troublemaker) says he switched two cards.\n    *   Ed (Insomniac) says he woke up as a Mason.\n    *   Katie (Mason) says she was alone.\n    *   If Dan switched Katie and Ed, then Ed (Insomniac) would wake up as a Mason (Katie's card), and Katie (Mason) would become the Insomniac.\n    *   This aligns: Ed says he woke up as Mason, Katie says she was Mason but now is Insomniac (implied by her and Dan's conversation).\n\n    *   Audrey (Robber) took Dylan's (Seer) card.\n    *   Dylan (Seer) saw Audrey was Robber.\n    *   This aligns.\n\n    *   Brett claims Drunk.\n    *   He says he switched with the middle.\n    *   He is the only one without a corroborating story or a role that fits into the \"web\" of swaps.\n\n    *   Roles claimed:\n        *   Audrey: Robber -> Seer\n        *   Dylan: Seer -> Robber\n        *   Dan: Troublemaker\n        *   Ed: Insomniac -> Mason\n        *   Katie: Mason -> Insomniac\n        *   Brett: Drunk\n    *   Total roles claimed: Robber, Seer, Troublemaker, Insomniac, Mason, Drunk.\n    *   Wait, that's 6 roles. The game has 6 players.\n    *   If all these claims are true, there are no Werewolves among the players.\n    *   However, someone could be lying.\n\n    *   If Brett is the Werewolf, he would claim a role like Drunk to explain why he doesn't have information or why his role changed.\n    *   If Dan, Ed, Katie, Audrey, and Dylan are telling the truth, Brett must be the Werewolf (or the Tanner).\n    *   If Brett is the Drunk, then all Werewolves are in the center.\n\n    *   Audrey, Dylan, Dan, Ed, and Katie's stories are tightly interwoven.\n    *   Audrey/Dylan (Robber/Seer swap).\n    *   Dan/Ed/Katie (Troublemaker swap between Insomniac/Mason).\n    *   This creates a strong block of 5 players whose roles support each other.\n    *   Brett is the outlier.\n\n    *   If Brett is the Werewolf, voting him out wins for the Village.\n    *   If Brett is the Drunk and no one else is a Werewolf, voting him out loses for the Village (unless he's the Tanner).\n    *   If Brett is the Tanner, voting him out wins for the Tanner.\n    *   If Brett is the Mason (as he claimed at one point), voting him out loses for the Village.\n\n    *   Wait, Brett claimed Drunk first ([47]), then later suggested he might be Mason ([93], [104], [176]). This is inconsistent.\n    *   If he were the Mason, Katie wouldn't have been the only Mason ([56]).\n    *   If he were the Drunk, he's just a villager.\n    *   If he's the Werewolf, he's lying about being the Drunk/Mason.\n\n    *   The group is convinced Brett is the Werewolf because he's the only one left.\n    *   The logic is: 5 players have roles that fit together perfectly. The 6th player (Brett) is the only one who could be the Werewolf.\n\n    *   Is it possible Dan/Ed/Katie/Audrey/Dylan are the Werewolves?\n    *   It's unlikely for 5 people to coordinate a perfect lie about swaps (Robber/Seer and Troublemaker/Insomniac/Mason) in real-time.\n    *   Therefore, the most likely scenario is that Brett is the Werewolf.\n\n    *   Player to vote out: Brett.\n    *   Justification: Five players (Audrey, Dylan, Dan, Ed, and Katie) have provided interlocking claims about their roles and swaps (Robber/Seer and Troublemaker/Insomniac/Mason) that are logically consistent. Brett is the only player whose claim (Drunk) is not corroborated and who has been inconsistent, claiming to be both the Drunk and the Mason. This makes him the most likely candidate for the Werewolf.",
+  "parsed_output": {
+    "justification": "Five players (Audrey, Dylan, Dan, Ed, and Katie) have provided interlocking claims about their roles and swaps that are logically consistent: Audrey and Dylan swapped Robber and Seer roles, and Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason). Brett is the only player whose claim is not corroborated by others and who has been inconsistent, claiming to be the Drunk and later suggesting he might be the Mason. Given the consistency of the other five players' stories, Brett is the most likely candidate to be the Werewolf.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Five players (Audrey, Dylan, Dan, Ed, and Katie) have provided interlocking claims about their roles and swaps that are logically consistent: Audrey and Dylan swapped Robber and Seer roles, and Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason). Brett is the only player whose claim is not corroborated by others and who has been inconsistent, claiming to be the Drunk and later suggesting he might be the Mason. Given the consistency of the other five players' stories, Brett is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Brett\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Five players (Audrey, Dylan, Dan, Ed, and Katie) have provided interlocking claims about their roles and swaps that are logically consistent: Audrey and Dylan swapped Robber and Seer roles, and Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason). Brett is the only player whose claim is not corroborated by others and who has been inconsistent, claiming to be the Drunk and later suggesting he might be the Mason. Given the consistency of the other five players' stories, Brett is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "Five players (Audrey, Dylan, Dan, Ed, and Katie) have provided interlocking claims about their roles and swaps that are logically consistent: Audrey and Dylan swapped Robber and Seer roles, and Dan (Troublemaker) swapped the roles of Ed (Insomniac) and Katie (Mason). Brett is the only player whose claim is not corroborated by others and who has been inconsistent, claiming to be the Drunk and later suggesting he might be the Mason. Given the consistency of the other five players' stories, Brett is the most likely candidate to be the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5399,
+    "output_token_count": 1379,
+    "generation_time_sec": 297.9608747959137,
+    "used_chat_template": true,
+    "input_char_count": 17288,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

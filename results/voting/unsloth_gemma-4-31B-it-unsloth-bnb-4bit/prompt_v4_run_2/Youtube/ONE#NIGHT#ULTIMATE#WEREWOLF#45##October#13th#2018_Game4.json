@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#45##October#13th#2018",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#45##October#13th#2018_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Werewolf (1-2)\n    *   Minion (0-1)\n    *   Seer (0-1)\n    *   Robber (0-1)\n    *   Troublemaker (0-1)\n    *   Insomniac (0-1)\n    *   Mason (0-2)\n    *   Drunk (0-1)\n    *   Hunter (0-1)\n    *   Doppelganger (0-1)\n    *   Tanner (0-1)\n    *   Villager (0-X)\n\n    *   [4] Announcer calls: Werewolves, Apprentice Seer (Wait, the transcript says \"Apprentice Seer\", but the rules list \"Seer\". I'll assume it's the Seer), Robber, Troublemaker.\n    *   [8] Justin claims he got switched.\n    *   [26] Paul claims he switched Mike and Mitchell (Troublemaker claim).\n    *   [29] Mitchell claims he robbed from Mike (Robber claim).\n    *   [34] Mike claims he is the Hunter.\n    *   [35] Paul claims Justin is the Tanner.\n    *   [39] Paul admits he is the Tanner (\"I'm lying about who a trouble made. I'm the tanner\").\n    *   [50] Mitchell claims he can confirm one villager.\n    *   [75] Justin claims he saw an Apprentice Seer in the center (Wait, he says \"I saw Robert a troublemaker\" then corrects to \"I saw an apprentice seer\" in [79]).\n    *   [111-122] Chaos ensues. Justin starts making wild claims about who is what.\n\n    *   Paul: Claims Tanner. (If he is the Tanner, he wants to be voted out).\n    *   Mitchell: Claims Robber. He says he robbed Mike.\n    *   Mike: Claims Hunter.\n    *   Justin: Claims he saw the Seer in the center.\n\n    *   If Paul is the Tanner, he's not the Werewolf.\n    *   If Mitchell is the Robber and robbed Mike (the Hunter), Mitchell is now the Hunter and Mike is the Robber.\n    *   If Justin saw the Seer in the center, the Seer is not in play.\n    *   Who is the Werewolf?\n        *   If Paul = Tanner, Mitchell = Robber/Hunter, Mike = Hunter/Robber, then Justin must be the Werewolf (or the center cards contain the Werewolf).\n        *   Wait, let's check the roles again. 4 players + 3 center cards = 7 roles.\n        *   Roles mentioned/claimed: Tanner (Paul), Robber (Mitchell), Hunter (Mike), Seer (Center - Justin's claim).\n        *   That's 4 roles. The other 3 roles (center or players) could be Werewolf, Villager, etc.\n\n    *   Paul is very open about being the Tanner.\n    *   Mitchell and Mike are arguing about who is the Hunter.\n    *   Justin is acting suspicious and making contradictory claims.\n    *   If Paul is the Tanner, voting for him makes the Tanner win, not the Village.\n    *   If Justin is the Werewolf, voting for him makes the Village win.\n\n    *   Justin claims he saw the Seer in the center.\n    *   Justin claims he was switched.\n    *   Justin claims Paul is the Hunter/Robber/Werewolf in a confusing sequence [111-122].\n    *   Justin's behavior is typical of a Werewolf trying to confuse the group.\n\n    *   If Paul is the Tanner, he's not the Werewolf.\n    *   If Mitchell is the Robber and Mike is the Hunter, they are both Village.\n    *   If Justin is the only one left, he's the most likely Werewolf.\n\n    *   Wait, let's re-read the transcript carefully.\n    *   [39] Paul: \"I'm the tanner.\"\n    *   [72] Paul: \"Yes, I'm the Tanner still.\"\n    *   [130] Paul: \"Okay, well I'm tanner so fucking sure.\"\n    *   If Paul is the Tanner, he *wants* to be voted out.\n    *   If Justin is the Werewolf, the Village wins by voting him out.\n    *   Is there any evidence Justin is *not* the Werewolf? He claims he saw the Seer in the center. If he's the Seer, he's Village. But he doesn't claim to be the Seer; he says he *saw* the Seer in the center. This implies he might be the Seer (who looked at the center) or just lying.\n    *   Wait, the announcer called \"Apprentice Seer\" [4]. The rules say \"Seer\". I'll assume they are the same.\n    *   If Justin is the Seer and saw the Seer in the center... wait, that's impossible. The Seer looks at *one other player's card* or *two cards in the center*. If Justin is the Seer and saw the Seer card in the center, that's a contradiction unless there are two Seers (which the rules forbid).\n    *   Actually, Justin says \"I saw an apprentice seer\" in the center [79]. If he is the Seer, he can't see the Seer card in the center. If he is the Robber or Troublemaker, he wouldn't see the center. If he is the Doppelganger, he might have seen it.\n    *   Most likely: Justin is lying about seeing the Seer in the center to appear as if he has information.\n\n    *   Paul: Tanner (claims)\n    *   Mitchell: Robber (claims)\n    *   Mike: Hunter (claims)\n    *   Justin: ? (likely Werewolf)\n\n    *   If we vote Paul, the Tanner wins.\n    *   If we vote Justin, the Village wins (if he's the Werewolf).\n    *   If we vote Mitchell or Mike, we might be voting out a Village member.\n\n    *   Justin's claims are inconsistent and confusing.\n    *   Paul's claim to be the Tanner is consistent.\n    *   Mitchell and Mike's claims to be Robber/Hunter are consistent with each other.\n    *   Therefore, Justin is the most probable Werewolf.\n\n    *   Wait, let's double-check the \"Apprentice Seer\" thing. The announcer says \"Apprentice seer, wake up. You may look at one of the center cards.\" This is a variation of the Seer role.\n    *   If Justin is the Apprentice Seer, he looked at the center and saw... himself? No, that's not possible. He said he saw an Apprentice Seer in the center. If he is the Apprentice Seer, he cannot see the Apprentice Seer card in the center.\n    *   Conclusion: Justin is lying.\n\n    *   Justin is the most likely Werewolf.\n    *   Paul is the Tanner.\n    *   Mitchell and Mike are Village.\n\n    *   Justification: Paul openly claims to be the Tanner, and Mitchell and Mike's claims as Robber and Hunter are consistent. Justin's claim to have seen the Apprentice Seer in the center is logically impossible if he were the Apprentice Seer himself, and his overall behavior is deceptive. Therefore, Justin is the most likely candidate for the Werewolf.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Paul consistently claims to be the Tanner, and Mitchell and Mike's claims as Robber and Hunter are mutually consistent. Justin's claim to have seen the Apprentice Seer in the center is logically impossible if he were the Apprentice Seer himself, and his erratic claims throughout the discussion suggest he is attempting to deceive the group. Therefore, Justin is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul consistently claims to be the Tanner, and Mitchell and Mike's claims as Robber and Hunter are mutually consistent. Justin's claim to have seen the Apprentice Seer in the center is logically impossible if he were the Apprentice Seer himself, and his erratic claims throughout the discussion suggest he is attempting to deceive the group. Therefore, Justin is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul consistently claims to be the Tanner, and Mitchell and Mike's claims as Robber and Hunter are mutually consistent. Justin's claim to have seen the Apprentice Seer in the center is logically impossible if he were the Apprentice Seer himself, and his erratic claims throughout the discussion suggest he is attempting to deceive the group. Therefore, Justin is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Paul consistently claims to be the Tanner, and Mitchell and Mike's claims as Robber and Hunter are mutually consistent. Justin's claim to have seen the Apprentice Seer in the center is logically impossible if he were the Apprentice Seer himself, and his erratic claims throughout the discussion suggest he is attempting to deceive the group. Therefore, Justin is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4188,
+    "output_token_count": 1829,
+    "generation_time_sec": 198.6938557624817,
+    "used_chat_template": true,
+    "input_char_count": 14087,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

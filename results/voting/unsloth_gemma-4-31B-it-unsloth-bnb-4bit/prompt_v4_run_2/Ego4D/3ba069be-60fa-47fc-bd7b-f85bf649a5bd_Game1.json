@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game1.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Kevin, Kaelan, Jessica, Daniel.\n    *   Roles mentioned/claimed:\n        *   Kevin: Claims Troublemaker (initially), then says he was Robber (later).\n        *   Kaelan: Claims Troublemaker (initially), then says he's the Robber now (after Kevin's claim).\n        *   Jessica: Claims Minion.\n        *   Daniel: Claims Drunk.\n\n    *   Kevin: \"I'm the Troublemaker.\" (Line 2)\n    *   Kaelan: \"I'm the Troublemaker. I started with the Troublemaker.\" (Line 4)\n    *   Daniel: \"Were you the Robber?\" (Line 5)\n    *   Kevin: \"Yeah.\" (Line 6)\n    *   Kaelan: \"So, I guess I'm the Robber now.\" (Line 7)\n    *   Kaelan: \"I troubled these two. So you're the Troublemaker, Jess.\" (Line 9) - *Wait, Kaelan is confusing himself. He says he's the Robber, then says he \"troubled these two\".*\n    *   Jessica: \"I was the Minion.\" (Line 11)\n    *   Daniel: \"I was the Drunk.\" (Line 12)\n\n    *   Kevin claims he was the Robber and swapped with Kaelan (who was the Troublemaker). (Lines 49-50)\n    *   Kaelan claims he was the Troublemaker and swapped two people. (Line 52)\n    *   Jessica claims she was the Minion and saw no Werewolf. (Lines 11, 27, 56)\n    *   Daniel claims he was the Drunk. (Line 12)\n\n    *   If Jessica was the Minion and saw no Werewolf, the Werewolf must be in the center or Daniel is the Werewolf (since the Minion knows who the Werewolves are).\n    *   Wait, if Jessica is the Minion, she knows who the Werewolves are. She says \"No\" when asked if she saw a Werewolf (Line 27).\n    *   If the Minion sees no Werewolf, then no Werewolf was assigned to any player. All Werewolf cards are in the center.\n    *   However, the transcript ends with a reveal (though the reveal itself isn't explicitly stated in the transcript, the reactions suggest someone was the Werewolf).\n    *   Looking at the end:\n        *   Kevin: \"I'm not the Werewolf. Town wins.\" (Line 82)\n        *   Kevin: \"I fucking knew it... I knew I couldn't trust you.\" (Line 83)\n        *   Daniel: \"You could have just come out and said you was werewolf.\" (Line 84)\n        *   Jessica: \"I didn't think that...\" (Line 85)\n    *   Wait, Line 84: Daniel says to Jessica, \"You could have just come out and said you was werewolf.\"\n    *   This implies Jessica was the Werewolf.\n\n    *   Jessica claimed to be the Minion (Line 11).\n    *   She claimed she didn't see a Werewolf (Line 27).\n    *   If she was actually the Werewolf, she would lie about being the Minion and lie about not seeing a Werewolf to convince the group that the Werewolf is in the center.\n    *   The reaction at the end (Lines 82-85) strongly suggests Jessica was the Werewolf. Kevin says \"Town wins\" and then attacks someone (likely Jessica or Daniel, but Daniel's comment \"You could have just come out and said you was werewolf\" is directed at Jessica).\n\n    *   Kevin: Robber (swapped with Kaelan).\n    *   Kaelan: Troublemaker (swapped others).\n    *   Daniel: Drunk.\n    *   Jessica: Claimed Minion, but likely Werewolf.\n\n    *   If Jessica is the Werewolf, voting her out makes Team Village win.\n    *   If no one is the Werewolf, \"No Werewolf\" is the answer.\n    *   But the dialogue at the end (\"You could have just come out and said you was werewolf\") strongly points to Jessica.\n\n    *   Jessica claimed to be the Minion and said she saw no Werewolf.\n    *   If she were the Minion and saw no Werewolf, the Werewolf would be in the center.\n    *   However, the post-game dialogue indicates she was actually the Werewolf and was lying to mislead the group into thinking the Werewolf was in the center.\n    *   Therefore, voting for Jessica is the correct move for Team Village.\n\n    *   Wait, let me re-read the end carefully.\n    *   Line 82: Kevin: \"I'm not the Werewolf. Town wins.\"\n    *   Line 83: Kevin: \"I fucking knew it... I knew I couldn't trust you.\"\n    *   Line 84: Daniel: \"You could have just come out and said you was werewolf.\"\n    *   Line 85: Jessica: \"I didn't think that...\"\n    *   It's clear Jessica is the one being addressed as the Werewolf.\n\n    *   Justification: Jessica claimed to be the Minion and stated she saw no Werewolf, which would lead the group to believe the Werewolf was in the center. However, the end of the transcript reveals that she was actually the Werewolf and was lying to avoid being voted out. Voting for Jessica ensures a win for Team Village.\n    *   Chosen vote: Jessica.",
+  "parsed_output": {
+    "justification": "Jessica claimed to be the Minion and stated she saw no Werewolf, which was an attempt to convince the group that the Werewolf card was in the center. However, the concluding dialogue reveals that Jessica was actually the Werewolf, as Daniel explicitly tells her, 'You could have just come out and said you was werewolf.' Therefore, voting for Jessica is the only way for Team Village to win.",
+    "chosen_vote": "Jessica"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jessica claimed to be the Minion and stated she saw no Werewolf, which was an attempt to convince the group that the Werewolf card was in the center. However, the concluding dialogue reveals that Jessica was actually the Werewolf, as Daniel explicitly tells her, 'You could have just come out and said you was werewolf.' Therefore, voting for Jessica is the only way for Team Village to win.\",\n  \"chosen_vote\": \"Jessica\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jessica claimed to be the Minion and stated she saw no Werewolf, which was an attempt to convince the group that the Werewolf card was in the center. However, the concluding dialogue reveals that Jessica was actually the Werewolf, as Daniel explicitly tells her, 'You could have just come out and said you was werewolf.' Therefore, voting for Jessica is the only way for Team Village to win.\",\n  \"chosen_vote\": \"Jessica\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jessica",
+    "justification": "Jessica claimed to be the Minion and stated she saw no Werewolf, which was an attempt to convince the group that the Werewolf card was in the center. However, the concluding dialogue reveals that Jessica was actually the Werewolf, as Daniel explicitly tells her, 'You could have just come out and said you was werewolf.' Therefore, voting for Jessica is the only way for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3573,
+    "output_token_count": 1388,
+    "generation_time_sec": 148.82387375831604,
+    "used_chat_template": true,
+    "input_char_count": 12201,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

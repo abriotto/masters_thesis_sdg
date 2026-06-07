@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Seer (looked at two center cards).\n    *   Mike: Claims Troublemaker (switched Justin and James).\n    *   James: Claims Tanner (started as Tanner).\n    *   Mitchell: Claims Tanner (started as Tanner).\n\n    *   Justin (Seer) -> Looked at center.\n    *   Mike (Troublemaker) -> Switched Justin and James.\n    *   James (Tanner) -> Started as Tanner.\n    *   Mitchell (Tanner) -> Started as Tanner.\n\n    *Wait*, only one Tanner can be in the game. Either James or Mitchell is lying.\n\n    *   James says Mitchell is the Werewolf.\n    *   Mitchell says he is the Tanner.\n    *   Mike says he switched Justin and James.\n    *   Justin claims Seer.\n\n    *   If Mike is the Troublemaker and switched Justin (Seer) and James (Tanner), then:\n        *   Justin is now the Tanner.\n        *   James is now the Seer.\n    *   If James started as the Tanner and was switched with Justin (Seer), James is now the Seer.\n    *   If Mitchell is the Werewolf, he would claim to be the Tanner to avoid being voted out (though usually, the Tanner *wants* to be voted out). Wait, the Tanner *wants* to be voted out. If Mitchell is the Tanner, he wants the vote. If Mitchell is the Werewolf, he wants to avoid the vote.\n    *   Mitchell is claiming Tanner. If he is the Tanner, he wins if he's voted out. If he's the Werewolf, he's lying to confuse people.\n    *   James is also claiming Tanner. If James is the Tanner, he wins if he's voted out. But James is pushing the vote toward Mitchell. This is contradictory for a Tanner. A Tanner wants to be voted out, not push the vote onto someone else.\n    *   Wait, James says: \"If you trouble made me and Justin, why would I try to kill myself? I would lose for the villagers. I'd be a seer right now.\"\n    *   Let's re-read: James says he *started* as the Tanner. If Mike (Troublemaker) switched James (Tanner) and Justin (Seer), then James is now the Seer and Justin is now the Tanner.\n    *   If James is now the Seer, he is Team Village and wants to find the Werewolf.\n    *   If Mitchell is claiming Tanner but James is pushing the vote toward Mitchell, and James believes he is now the Seer (because he was the Tanner and got switched), then James is acting as a Village member.\n    *   If Mitchell is the Werewolf, he might claim Tanner to trick people into thinking he *wants* to be voted out, or he's just lying. But usually, if someone claims Tanner, the Village avoids voting for them. However, in this chaotic discussion, James is convinced Mitchell is the Werewolf.\n\n    *   Justin: Seer (claims center cards).\n    *   Mike: Troublemaker (claims switched Justin and James).\n    *   James: Started Tanner, now Seer (due to Mike's switch).\n    *   Mitchell: Claims Tanner.\n\n    If James is now the Seer and Mike is the Troublemaker, and Justin is now the Tanner, then Mitchell must be the Werewolf (since there are 4 players and we have Seer, Troublemaker, Tanner, and Werewolf).\n\n    Let's check the roles:\n    - Justin: Seer (start) -> Tanner (end)\n    - Mike: Troublemaker (start) -> Troublemaker (end)\n    - James: Tanner (start) -> Seer (end)\n    - Mitchell: Werewolf (start) -> Werewolf (end)\n\n    In this scenario:\n    - Mike (Troublemaker) switches Justin (Seer) and James (Tanner).\n    - James (now Seer) wants to vote out the Werewolf (Mitchell).\n    - Mitchell (Werewolf) claims Tanner to confuse the group.\n    - Justin (now Tanner) is just along for the ride.\n\n    Does this fit the transcript?\n    - Justin claims Seer. (He started as Seer).\n    - Mike claims Troublemaker and says he switched Justin and James.\n    - James claims he started as Tanner.\n    - Mitchell claims he started as Tanner.\n    - James argues that since he was switched, he is no longer the Tanner and therefore wants to find the Werewolf.\n    - James points at Mitchell.\n\n    If Mitchell were the real Tanner, he would be happy to be voted out. If James were the real Tanner (and not switched), he would want to be voted out. But James is actively trying to get Mitchell voted out.\n\n    If Mitchell is the Werewolf, he's lying about being the Tanner.\n    If James is the Werewolf, he's lying about being the Tanner and lying about Mitchell. But Mike's claim to have switched Justin and James supports James's story (that he changed roles).\n\n    Wait, let's look at Mike's role again. Mike says he switched Justin and James. If Mike is the Werewolf/Minion, he could be lying about being the Troublemaker. But if we trust Mike's claim, the logic points to Mitchell.\n\n    Let's re-evaluate Mitchell's claim: \"I started as a Tanner... I woke up as the Tanner, and this sucks, and I fucking lost this game.\"\n    Wait, if you are the Tanner, you *want* to be voted out. Mitchell saying \"this sucks\" and \"I fucking lost this game\" is weird for a Tanner. A Tanner would be excited if people were voting for them.\n\n    James's logic: \"If you trouble made me and Justin... I'd be a seer right now.\" This means James believes he is now the Seer and wants to eliminate the Werewolf.\n\n    Conclusion: Mitchell is the most likely Werewolf. He claims Tanner but doesn't seem to actually want to be voted out in the way a Tanner would, and James (who claims to have been switched from Tanner to Seer) is strongly accusing him.\n\n    - Justin: Seer (start)\n    - Mike: Troublemaker (start)\n    - James: Tanner (start)\n    - Mitchell: Werewolf (start)\n    - Mike switches Justin and James.\n    - Final roles: Justin (Tanner), Mike (Troublemaker), James (Seer), Mitchell (Werewolf).\n    - James (Seer) identifies Mitchell as the Werewolf.\n    - Mitchell (Werewolf) bluffs as Tanner.\n\n    This is a consistent narrative.\n\n    Wait, one more check. Could Mike be the Werewolf?\n    If Mike is the Werewolf, he's lying about being the Troublemaker.\n    If Mike is the Werewolf, then who is the Troublemaker? Maybe Justin? But Justin claimed Seer.\n    If Mike is the Werewolf, he's trying to frame Mitchell.\n    But James is also framing Mitchell. If James and Mike are both lying, they could be Werewolf/Minion.\n    However, the most straightforward interpretation of the claims is that Mitchell is the Werewolf.\n\n    Let's look at the claims again:\n    Justin: Seer\n    Mike: Troublemaker (switched Justin/James)\n    James: Tanner (start)\n    Mitchell: Tanner (start)\n\n    Since only one Tanner exists, one of them (James or Mitchell) is lying.\n    James's behavior (trying to get Mitchell voted out) is consistent with someone who is no longer the Tanner.\n    Mitchell's behavior (claiming Tanner but saying \"this sucks\") is inconsistent with a Tanner's goal.\n\n    Therefore, Mitchell is the most likely Werewolf.\n\n    - Justin: Seer (start)\n    - Mike: Troublemaker (start)\n    - James: Tanner (start)\n    - Mitchell: Werewolf (start)\n    - Mike switches Justin and James.\n    - Final: Justin=Tanner, Mike=Troublemaker, James=Seer, Mitchell=Werewolf.\n    - James (Seer) wants to vote out Mitchell (Werewolf).\n    - Mitchell (Werewolf) claims Tanner to deceive.\n    - Justin (Tanner) is now the Tanner.\n\n    This fits all the statements.\n\n    Wait, Justin said: \"I'm playing as the seer.\" (Line 39).\n    If Mike switched Justin and James, Justin is now the Tanner.\n    Justin might not know he was switched? No, the Troublemaker swaps cards *without* the players knowing.\n    So Justin *thinks* he is the Seer, but he is actually the Tanner.\n    James *thinks* he is the Seer (because he knows he was the Tanner and Mike said he switched him), but he is actually the Seer.\n    Wait, if James was the Tanner and got switched with the Seer, James is now the Seer.\n    This all aligns.\n\n    Final check on Mitchell:\n    Mitchell claims he started as Tanner.\n    If Mitchell is the Werewolf, he's lying.\n    If Mitchell is the Tanner, then James is the Werewolf.\n    But James's story about being switched by Mike is more complex and fits the \"Village\" narrative better.\n\n    Let's double-check the \"Tanner\" behavior.\n    Tanner wins if they die.\n    Mitchell: \"I started as a Tanner... I woke up as the Tanner, and this sucks, and I fucking lost this game.\"\n    This is very strange for a Tanner. A Tanner would say \"Yes, vote for me!\"\n    James: \"Mitchell is the werewolf.\"\n    James is actively pushing the vote.\n\n    The most likely Werewolf is Mitchell.",
+  "parsed_output": {
+    "justification": "James and Mitchell both claim to have started as the Tanner, but only one Tanner can exist. James's claim is supported by Mike, who claims to be the Troublemaker and says he switched James and Justin. If James started as the Tanner and was switched with Justin (the Seer), James is now the Seer and would want to eliminate the Werewolf, which explains why he is aggressively pushing the vote toward Mitchell. Mitchell's claim to be the Tanner is contradicted by his own statement that 'this sucks' and he 'lost this game,' whereas a real Tanner would want to be voted out to win.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James and Mitchell both claim to have started as the Tanner, but only one Tanner can exist. James's claim is supported by Mike, who claims to be the Troublemaker and says he switched James and Justin. If James started as the Tanner and was switched with Justin (the Seer), James is now the Seer and would want to eliminate the Werewolf, which explains why he is aggressively pushing the vote toward Mitchell. Mitchell's claim to be the Tanner is contradicted by his own statement that 'this sucks' and he 'lost this game,' whereas a real Tanner would want to be voted out to win.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James and Mitchell both claim to have started as the Tanner, but only one Tanner can exist. James's claim is supported by Mike, who claims to be the Troublemaker and says he switched James and Justin. If James started as the Tanner and was switched with Justin (the Seer), James is now the Seer and would want to eliminate the Werewolf, which explains why he is aggressively pushing the vote toward Mitchell. Mitchell's claim to be the Tanner is contradicted by his own statement that 'this sucks' and he 'lost this game,' whereas a real Tanner would want to be voted out to win.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "James and Mitchell both claim to have started as the Tanner, but only one Tanner can exist. James's claim is supported by Mike, who claims to be the Troublemaker and says he switched James and Justin. If James started as the Tanner and was switched with Justin (the Seer), James is now the Seer and would want to eliminate the Werewolf, which explains why he is aggressively pushing the vote toward Mitchell. Mitchell's claim to be the Tanner is contradicted by his own statement that 'this sucks' and he 'lost this game,' whereas a real Tanner would want to be voted out to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3171,
+    "output_token_count": 2355,
+    "generation_time_sec": 244.621440410614,
+    "used_chat_template": true,
+    "input_char_count": 11701,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer. Says he saw two cards in the center (one of which he later claims was a Werewolf).\n    *   Mike: Doesn't claim a role initially, but seems to follow Justin's lead.\n    *   Paul: Claims Insomniac (initially), then switches to Troublemaker. Claims he swapped Mitchell and Mike.\n    *   Mitchell: Claims he swapped people (contradicting Paul's Troublemaker claim).\n\n    *   Justin (Seer): Claims he saw two cards in the center. Later says he saw a Werewolf in the center (T77).\n    *   Paul (Troublemaker): Claims he swapped Mitchell and Mike (T56, T69).\n    *   Mitchell: Claims he swapped people (T58, T86), but is confused about who/when.\n    *   Mike: No clear role claim, but is being targeted by Mitchell.\n\n    *   If Justin is the Seer and saw a Werewolf in the center, there is only one Werewolf card left in play (since there are usually 2 Werewolf cards in a standard setup, but the rules say \"up to two\"). Wait, the rules say \"multiple Werewolves\" are possible.\n    *   If Paul is the Troublemaker and swapped Mitchell and Mike, then whoever was the Werewolf is now the other person.\n    *   Mitchell's behavior is erratic. He claims to have swapped people (T58), but Paul already claimed Troublemaker. Only one Troublemaker exists.\n    *   Mitchell's claim to have swapped people is a blatant lie if Paul is the Troublemaker, or Paul is lying.\n    *   Paul and Mitchell both seem to be acting suspiciously. In T74, Paul says, \"Honestly, I feel think we won because they don't know that we're both Werewolves.\" This is a huge slip-up (or a very bold bluff).\n    *   Wait, look at T74 again: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\" This sounds like Paul is admitting to being a Werewolf and implying Mitchell is too.\n    *   However, in T83, Paul says \"I'm voting for Mitchell.\" This is contradictory. If they are both Werewolves, why vote for each other? Unless one is the Tanner or they are trying to confuse the others.\n    *   Let's re-examine T74: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\" This is almost certainly a joke or a slip, but in the context of the game, it's a massive red flag.\n    *   Mitchell's claim to have swapped people (T58, T86) is highly suspicious because he doesn't know who he swapped or when.\n\n    *   Justin claims Seer.\n    *   Paul claims Troublemaker.\n    *   Mitchell claims he swapped people (which is the Troublemaker's ability).\n    *   Since only one Troublemaker exists, either Paul or Mitchell is lying.\n    *   Mitchell's lie is more obvious/clumsy (\"Wait, did I swap before or after?\" T86).\n    *   Paul's comment about \"both Werewolves\" (T74) is bizarre. If he's a Werewolf, he's bluffing as Troublemaker. If he's the Troublemaker, he's joking.\n    *   Justin says he saw a Werewolf in the center (T77). If Justin is telling the truth, there's only one Werewolf in play.\n    *   If there's only one Werewolf, Paul and Mitchell cannot *both* be Werewolves.\n    *   Mitchell is the most inconsistent player. He claims a role (Troublemaker/swapper) that Paul already claimed, and he's confused about his own actions.\n\n    *   Justin: Seer (likely)\n    *   Mike: ?\n    *   Paul: Troublemaker (claims)\n    *   Mitchell: Lying about being Troublemaker.\n\n    If Mitchell is lying about being the Troublemaker, he is likely the Werewolf (or the Tanner).\n    If Paul is the Troublemaker and swapped Mitchell and Mike, and Mitchell is now the Werewolf, voting Mitchell is correct.\n    If Mitchell was the Werewolf and Paul swapped him with Mike, then Mike is now the Werewolf.\n    But Mitchell's behavior (claiming to be the swapper while being confused) is a classic Werewolf bluff.\n\n    Wait, let's look at T74 again. Paul says \"we're both Werewolves.\" If Paul is a Werewolf and Mitchell is a Werewolf, then Justin's claim about the center card is a lie. But if Justin is the Seer, he's likely telling the truth.\n\n    Let's look at the voting:\n    Justin: Voting Mitchell (T88).\n    Paul: Voting Mitchell (T83).\n    Mitchell: Voting Mike (T84).\n    Mike: Likely voting Mitchell (T63).\n\n    Mitchell is the most suspicious due to the conflicting Troublemaker claim and general confusion.\n\n    *   Justin: Seer (saw Werewolf in center).\n    *   Paul: Troublemaker (swapped Mitchell and Mike).\n    *   Mitchell: Claims to be Troublemaker (lying).\n    *   Mike: ?\n    *   If Paul swapped Mitchell and Mike, and Mitchell is the Werewolf, then Mike is now the Werewolf.\n    *   Wait, if Paul (Troublemaker) swapped Mitchell (Werewolf) and Mike (Villager), then Mike is now the Werewolf.\n    *   But Mitchell is the one lying about his role. Werewolves lie; Villagers usually don't (unless they are the Tanner).\n    *   If Mitchell is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out.\n    *   Given the options, Mitchell is the most likely candidate for elimination because his claims are contradictory and he's attempting to bluff a role (Troublemaker) that is already claimed by Paul.\n\n    *   Justin: Seer.\n    *   Paul: Troublemaker.\n    *   Mitchell: Werewolf.\n    *   Mike: Villager.\n    *   Night: Paul (Troublemaker) swaps Mitchell (Werewolf) and Mike (Villager).\n    *   End of Night: Mike is Werewolf, Mitchell is Villager.\n    *   Day: Mitchell bluffs Troublemaker. Paul claims Troublemaker.\n    *   Result: Voting Mitchell kills a Villager.\n\n    *Wait*, if Paul is the Troublemaker and he swapped Mitchell and Mike, and Mitchell was the Werewolf, then Mike is now the Werewolf.\n    But we don't know if Paul actually swapped them. Paul could be the Werewolf bluffing as Troublemaker.\n    If Paul is the Werewolf and Mitchell is a Villager, voting Mitchell is wrong.\n    If Mitchell is the Werewolf and Paul is the Troublemaker, and Paul swapped Mitchell and Mike, then Mike is the Werewolf.\n\n    Let's look at the \"both Werewolves\" comment (T74). If Paul and Mitchell are both Werewolves, then Justin is lying. If Justin is lying, he's the Minion or the other Werewolf.\n\n    This is confusing. Let's simplify.\n    Who is the most likely Werewolf?\n    Mitchell is lying about being the Troublemaker.\n    Paul is claiming to be the Troublemaker.\n    Justin is claiming to be the Seer.\n    In most of these games, the person making the most erratic/false claims is the Werewolf. Mitchell's claim to be the swapper is very weak (\"Wait, did I swap before or after?\").\n\n    Let's re-read T74: \"Honestly, I feel think we won because they don't know that we're both Werewolves.\"\n    This is such a blatant statement. Is it a joke? \"We just have to just say which one of them we should kill.\" (T76).\n    If Paul and Mitchell are both Werewolves, then Team Village loses unless they vote one of them.\n    If Paul is a Werewolf and Mitchell is a Werewolf, voting either one wins the game for the Village.\n\n    Conclusion: Mitchell is the most suspicious due to the failed bluff and the weird interaction with Paul.\n\n    *   Justin: Seer.\n    *   Paul: Troublemaker.\n    *   Mitchell: Werewolf.\n    *   Mike: Villager.\n    *   If Paul swapped Mitchell and Mike, Mike is now the Werewolf.\n    *   But if Paul is the Werewolf and Mitchell is the Tanner, then voting Mitchell wins for the Tanner.\n    *   However, based on the transcript, Mitchell's behavior is the most \"Werewolf-like\" (bad bluffing).\n\n    Let's reconsider T74. If Paul is actually a Werewolf and he's just admitting it (or joking), then Paul is also a target. But Mitchell's bluff is worse.\n\n    Wait, if Paul is the Troublemaker and he swapped Mitchell and Mike, and Mitchell was the Werewolf, then Mike is the Werewolf. But if Paul is the Werewolf and he's bluffing as the Troublemaker, then Paul is the Werewolf.\n\n    Let's look at the most likely scenario:\n    Justin (Seer) saw a Werewolf in the center.\n    One Werewolf remains.\n    Paul claims Troublemaker.\n    Mitchell claims Troublemaker (badly).\n    One of them is lying.\n    The liar is likely the Werewolf.\n    Mitchell is the worse liar.\n\n    Therefore, vote Mitchell.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and states he saw a Werewolf in the center, implying only one Werewolf is in play. Paul claims to be the Troublemaker, while Mitchell also attempts to claim the Troublemaker's ability to swap players but does so inconsistently and confusedly ('Wait, did I swap before or after?'). Paul's bizarre comment about 'both' being Werewolves is likely a joke or a bluff, but Mitchell's failed attempt to claim a role already held by Paul makes him the most suspicious player. Therefore, Mitchell is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and states he saw a Werewolf in the center, implying only one Werewolf is in play. Paul claims to be the Troublemaker, while Mitchell also attempts to claim the Troublemaker's ability to swap players but does so inconsistently and confusedly ('Wait, did I swap before or after?'). Paul's bizarre comment about 'both' being Werewolves is likely a joke or a bluff, but Mitchell's failed attempt to claim a role already held by Paul makes him the most suspicious player. Therefore, Mitchell is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and states he saw a Werewolf in the center, implying only one Werewolf is in play. Paul claims to be the Troublemaker, while Mitchell also attempts to claim the Troublemaker's ability to swap players but does so inconsistently and confusedly ('Wait, did I swap before or after?'). Paul's bizarre comment about 'both' being Werewolves is likely a joke or a bluff, but Mitchell's failed attempt to claim a role already held by Paul makes him the most suspicious player. Therefore, Mitchell is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Justin claims to be the Seer and states he saw a Werewolf in the center, implying only one Werewolf is in play. Paul claims to be the Troublemaker, while Mitchell also attempts to claim the Troublemaker's ability to swap players but does so inconsistently and confusedly ('Wait, did I swap before or after?'). Paul's bizarre comment about 'both' being Werewolves is likely a joke or a bluff, but Mitchell's failed attempt to claim a role already held by Paul makes him the most suspicious player. Therefore, Mitchell is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3445,
+    "output_token_count": 2329,
+    "generation_time_sec": 247.16295552253723,
+    "used_chat_template": true,
+    "input_char_count": 12425,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

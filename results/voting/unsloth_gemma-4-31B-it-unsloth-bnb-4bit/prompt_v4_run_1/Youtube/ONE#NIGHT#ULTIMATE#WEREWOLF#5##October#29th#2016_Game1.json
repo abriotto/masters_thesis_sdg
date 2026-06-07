@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016_Game1.txt",
+  "player_names": [
+    "Mitchell",
+    "Chris",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Mitchell, Chris, Caitlynn, Mike.\n    *   Roles mentioned/claimed:\n        *   Caitlynn: Claims to have \"done things\" (Troublemaker). Claims she switched Chris (and someone else).\n        *   Chris: Claims he was the Seer (initially), then later claims he was the Werewolf (initially).\n        *   Mike: Claims he was the Seer (initially). Claims he saw a Werewolf and a good card in the center. Later claims he was the Werewolf (initially) and that he was switched with Chris.\n        *   Mitchell: Claims he was \"boring\" (Villager/Drunk/Insomniac). Later claims he was the Drunk.\n\n    *   Caitlynn claims she is the Troublemaker and switched Chris with someone.\n    *   Chris claims he was the Werewolf (initially).\n    *   Mike claims he was the Seer (initially), then changes his story to say he was the Werewolf (initially) and was switched with Chris.\n    *   Wait, let's re-read the transcript carefully.\n\n    *   [27] Chris: \"I was the seer.\"\n    *   [51] Mike: \"No, I was a seer.\"\n    *   [54] Mike: \"I looked at two in the center.\"\n    *   [56] Mike: \"I saw a werewolf and a good card...\"\n    *   [58] Chris: \"I saw a werewolf and the drunk in the middle.\"\n    *   [72] Caitlynn: \"I did not switch Mitchell.\"\n    *   [73] Mike: \"So it was me and Chris.\"\n    *   [75] Mike: \"I was the werewolf.\" (Wait, Mike just said he was the Seer at [51]).\n    *   [78] Mike: \"So now he's [Chris] the werewolf.\"\n    *   [80] Chris: \"Because I 100% percent was the werewolf. The lone werewolf.\"\n    *   [95] Chris: \"So I was the werewolf and I saw the seer in the center.\" (Wait, Chris claimed to be the Seer at [27]).\n    *   [98] Mitchell: \"I believe he [Chris] was the werewolf because he said he saw a drunk and I was the drunk. And then, so now you're the werewolf.\" (Wait, Mitchell is confused).\n\n    *   Caitlynn: Troublemaker. Switched Chris and Mike.\n    *   Chris: Claims he was the Werewolf.\n    *   Mike: Claims he was the Seer, then claims he was the Werewolf.\n    *   Mitchell: Claims he was the Drunk.\n\n    Let's look at the claims again:\n    *   Chris: \"I was the seer\" ([27]) -> \"I 100% percent was the werewolf\" ([80]) -> \"I was the werewolf and I saw the seer in the center\" ([95]).\n    *   Mike: \"I was a seer\" ([51]) -> \"I was the werewolf\" ([75]) -> \"I saw a werewolf in the center\" ([94]).\n\n    This is chaotic. Let's try to find the most consistent story.\n    Caitlynn says she switched Chris and Mike.\n    If Chris was the Werewolf and Mike was the Seer:\n    - Chris (Werewolf) -> Mike (now Werewolf)\n    - Mike (Seer) -> Chris (now Seer)\n\n    If Mike was the Werewolf and Chris was the Seer:\n    - Mike (Werewolf) -> Chris (now Werewolf)\n    - Chris (Seer) -> Mike (now Seer)\n\n    Wait, Chris says: \"I 100% percent was the werewolf. The lone werewolf.\" ([80]).\n    If Chris was the Werewolf and Caitlynn switched him with Mike, then Mike is now the Werewolf.\n\n    Let's re-examine Mike's claims:\n    - [51] \"I was a seer.\"\n    - [75] \"I was the werewolf.\"\n    - [94] \"I saw a werewolf in the center.\" (Wait, if he saw a werewolf in the center, he must be the Seer).\n\n    Let's re-examine Chris's claims:\n    - [27] \"I was the seer.\"\n    - [80] \"I 100% percent was the werewolf.\"\n    - [95] \"I was the werewolf and I saw the seer in the center.\" (Wait, Werewolves don't see cards in the center).\n\n    This is a mess of contradictions. Let's look at the final consensus.\n    [101] Caitlynn: \"I'll kill Mike.\"\n    [102] Chris: \"Yeah, let's kill Mike.\"\n    [103] Mitchell: \"That's the spirit.\"\n\n    Why are they killing Mike?\n    If Chris was the Werewolf and Caitlynn switched him with Mike, Mike is now the Werewolf.\n    Chris admits he was the Werewolf ([80]), and Caitlynn confirms she switched Chris and Mike ([43], [72]).\n    Therefore, Mike is the current Werewolf.\n\n    Wait, let's check if anyone is the Tanner.\n    Chris admits to being the Werewolf. Why would a Werewolf admit it?\n    Maybe Chris is the Tanner?\n    If Chris is the Tanner, he wants to be voted out.\n    But Chris is pushing the vote toward Mike.\n    If Chris is the Werewolf and was switched with Mike, Chris is now a Village role (Seer/Villager/etc.) and wants to eliminate the Werewolf (Mike).\n\n    Let's re-evaluate:\n    1.  Caitlynn (Troublemaker) switched Chris and Mike.\n    2.  Chris (Starting Role: Werewolf) is now (Ending Role: whatever Mike was).\n    3.  Mike (Starting Role: whatever Chris was) is now (Ending Role: Werewolf).\n\n    If this is true, Mike is the Werewolf.\n\n    Wait, let's check Mike's claims again.\n    Mike says he was the Seer ([51]), then says he was the Werewolf ([75]), then says he saw a werewolf in the center ([94]).\n    If Mike was the Seer and saw a werewolf in the center, then there is a werewolf among the players (since there are 2 werewolf cards total in a 4-player game? No, the rules say \"up to two Masons\", \"at most one of each other listed role\". So there's only 1 Werewolf card and 1 Minion card).\n    If Mike (Seer) saw a Werewolf in the center, then the other Werewolf card (if it exists) or the only Werewolf card is with a player.\n\n    Let's look at the roles again.\n    Players: 4.\n    Cards: 4 + 3 = 7.\n    Roles: Werewolf, Minion, Seer, Robber, Troublemaker, Insomniac, Drunk, Hunter, Mason, Villager, Tanner, Doppelganger.\n\n    If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf.\n    Chris's admission \"I 100% percent was the werewolf\" is a very strong lead. If he's telling the truth about his starting role, and Caitlynn is telling the truth about the switch, Mike is the target.\n\n    Is there any reason to suspect Caitlynn or Mitchell?\n    Caitlynn claims Troublemaker.\n    Mitchell claims Drunk.\n    Neither of them is being accused.\n\n    Is Chris the Tanner?\n    If Chris is the Tanner, he wants to be voted out. But he's voting for Mike.\n    If Chris is the Werewolf and wasn't switched, he'd want to divert suspicion. But he's admitting it.\n    The most logical conclusion in the context of the game's dialogue is that Chris was the Werewolf, was switched by Caitlynn, and now Mike is the Werewolf.\n\n    Let's double-check the switch:\n    Caitlynn: \"I switched Chris.\" ([36])\n    Mike: \"You switched us two?\" ([42])\n    Caitlynn: \"I switched Chris.\" ([43])\n    Caitlynn: \"I did not switch Mitchell.\" ([72])\n    Therefore, the switch was between Chris and Mike.\n\n    If Chris was the Werewolf (as he claimed at [80]), then Mike is now the Werewolf.\n\n    Wait, let's look at Mike's claims one more time.\n    Mike: \"I was a seer\" ([51]) -> \"I was the werewolf\" ([75]) -> \"I saw a werewolf in the center\" ([94]).\n    Mike is lying or confused. But Chris's admission is more direct.\n\n    Final check:\n    - Chris: Starting Werewolf -> Ending (Seer/Villager/etc.)\n    - Mike: Starting (Seer/Villager/etc.) -> Ending Werewolf\n    - Caitlynn: Troublemaker\n    - Mitchell: Drunk/Villager\n\n    Vote: Mike.",
+  "parsed_output": {
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swaps the roles of two players, if Chris started as the Werewolf and was swapped with Mike, Mike is now the Werewolf. Therefore, voting for Mike is the most logical path for Team Village to win.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swaps the roles of two players, if Chris started as the Werewolf and was swapped with Mike, Mike is now the Werewolf. Therefore, voting for Mike is the most logical path for Team Village to win.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swaps the roles of two players, if Chris started as the Werewolf and was swapped with Mike, Mike is now the Werewolf. Therefore, voting for Mike is the most logical path for Team Village to win.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). Since the Troublemaker swaps the roles of two players, if Chris started as the Werewolf and was swapped with Mike, Mike is now the Werewolf. Therefore, voting for Mike is the most logical path for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3694,
+    "output_token_count": 2210,
+    "generation_time_sec": 460.74448919296265,
+    "used_chat_template": true,
+    "input_char_count": 13047,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

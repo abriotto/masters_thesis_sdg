@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#2#The#Drunk",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#2#The#Drunk_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Ed: Claims to be Seer. Saw Dan was a Mason.\n    *   Dan: Confirms he was a Mason. Says he was the only one (meaning the other Mason is in the center).\n    *   Brett: Claims to be Troublemaker. Claims he swapped Dylan and Dan.\n    *   Dylan: Initially evasive. Later claims he was the Werewolf. Claims he saw a Villager in the center (which is a contradiction for a Werewolf, as Werewolves only look at the center if they are alone, and they don't see \"Villagers\", they just see a card). Later claims he is the Seer now.\n    *   Audrey: Claims to be a Villager.\n    *   Katie: Doesn't claim a specific role, mostly questioning others.\n\n    *   Ed (Seer) saw Dan (Mason).\n    *   Brett (Troublemaker) claims he swapped Dylan and Dan.\n    *   If Brett is telling the truth:\n        *   Dan (starting Mason) is now Dylan's role.\n        *   Dylan (starting role) is now Dan's role (Mason).\n    *   Dylan claims he was the Werewolf.\n    *   If Dylan was the Werewolf and Brett swapped him with Dan, then Dan is now the Werewolf.\n\n    *   Dylan's behavior is highly suspicious. He claims he was the Werewolf, then claims he saw a Villager in the center (which is impossible for a Werewolf unless he's lying/bluffing), then claims he's the Seer now.\n    *   Brett's claims are inconsistent. He says he swapped Dylan and Dan, but then mentions swapping Dylan and Ed at one point (though he corrects it back to Dylan and Dan).\n    *   Dylan's admission \"I was the werewolf\" is very unusual. Usually, Werewolves lie. However, if he knows he was swapped, he might be trying to frame Dan.\n    *   If Dylan was the Werewolf and Brett (Troublemaker) swapped him with Dan, Dan is now the Werewolf.\n    *   Wait, let's re-read:\n        *   Ed (Seer) saw Dan (Mason).\n        *   Brett (Troublemaker) swapped Dylan and Dan.\n        *   If Dylan was the Werewolf, Dan is now the Werewolf.\n        *   If Dylan is lying about being the Werewolf, then who is?\n\n    *   Dylan says: \"I was the werewolf\" [91].\n    *   Dylan says: \"I looked in the middle, I saw another villager\" [116]. (This is a contradiction. Werewolves only look at the center if they are the *only* werewolf, and they don't see \"a villager\", they just see a card. Also, if he's a werewolf, he wouldn't admit it unless he's the Tanner or trying to frame someone).\n    *   If Dylan is the Tanner, he wants to be voted out.\n    *   If Dylan is the Werewolf and was swapped with Dan, Dan is now the Werewolf.\n    *   If Dylan is the Werewolf and *wasn't* swapped, Dylan is the Werewolf.\n\n    *   Ed (Seer) saw Dan (Mason).\n    *   Brett (Troublemaker) swapped Dylan and Dan.\n    *   If Dylan was the Werewolf, Dan is now the Werewolf.\n    *   If Dylan is lying about being the Werewolf, he might be the Werewolf himself (and Brett is lying about the swap).\n    *   If Brett is the Werewolf and lying about being the Troublemaker, he's trying to divert attention.\n\n    *   Dylan's claims are a mess: \"I was the werewolf\" -> \"I saw a villager in the middle\" -> \"I'm the seer now\".\n    *   If Dylan was the Werewolf and Brett swapped him with Dan, Dan is the Werewolf.\n    *   If Dylan is the Werewolf and Brett is lying, Dylan is the Werewolf.\n    *   If Dylan is the Tanner, he's just lying to get votes.\n    *   Let's look at the \"I saw a villager in the middle\" comment. Only the Seer or a lone Werewolf can look at the center. If Dylan was the Seer, he could see a villager. But Ed claimed to be the Seer. If Ed is the Seer and Dylan is also claiming to be the Seer (now), maybe Dylan was the Robber?\n    *   Robber swaps and looks. If Dylan was the Robber and stole from the Seer (Ed), he would be the Seer. But Brett (Troublemaker) claims he swapped Dylan and Dan.\n\n    *   Ed: Seer (saw Dan=Mason)\n    *   Dan: Mason\n    *   Brett: Troublemaker (swapped Dylan and Dan)\n    *   Dylan: Werewolf (starting role)\n    *   Result: Dan is now the Werewolf.\n\n    *   Dylan's admission \"I was the werewolf\" is the strongest piece of evidence, even if it's weird. If he's telling the truth about his starting role and Brett is telling the truth about the swap, Dan is the target.\n    *   However, Dylan's behavior is so erratic that he could be the Werewolf himself (and Brett is lying) or the Tanner.\n    *   But based on the logic provided by the players (Brett's swap), the target becomes Dan.\n\n    *   Dylan: \"I was the werewolf.\"\n    *   Brett: \"I swapped [Dylan and Dan].\"\n    *   Conclusion: Dan is the Werewolf.\n\n    *   Wait, Dylan also said \"I looked in the middle, I saw another villager.\" This is a Seer action or a lone Werewolf action. If he was a lone Werewolf, he'd see a card. If he was the Seer, he'd see two cards.\n    *   If Dylan was the Seer, and Brett swapped him with Dan, then Dan is now the Seer.\n    *   But Ed claimed to be the Seer.\n    *   This is confusing. Let's look at the most likely scenario for a \"win\".\n    *   Dylan is acting very suspiciously, almost like he's trying to get himself or Dan voted out.\n    *   If Dylan is the Werewolf and wasn't swapped, Dylan is the target.\n    *   If Dylan is the Werewolf and was swapped with Dan, Dan is the target.\n    *   If Dylan is the Tanner, he's just trolling.\n\n    *   Dylan's admission \"I was the werewolf\" is very direct.\n    *   Brett's claim \"I swapped Dylan and Dan\" is also direct.\n    *   If both are true, Dan is the Werewolf.\n    *   If Dylan is lying about being the Werewolf, he might be the Werewolf and Brett is lying about the swap.\n    *   If Dylan is the Werewolf and Brett is telling the truth, Dan is the Werewolf.\n    *   In both cases (unless Dylan is the Tanner), either Dylan or Dan is the Werewolf.\n    *   Given the discussion, the players seem to lean towards Dan or Audrey.\n    *   Wait, Dylan says \"I was the werewolf\" and Brett says \"I swapped Dylan and Dan\". This points directly to Dan.\n\n    *   Dylan: \"I was the werewolf.\"\n    *   Brett: \"I swapped you [Dylan] and Dan.\"\n    *   Therefore, Dan is now the Werewolf.\n    *   Dylan's other claims (\"I saw a villager in the middle\", \"I'm the seer now\") are contradictory and likely bluffs or confusion.\n    *   The most logical deduction from the claims is that Dan is the current Werewolf.\n\n    *   Dylan: \"I was the werewolf.\"\n    *   Brett: \"I swapped [Dylan and Dan].\"\n    *   If these are true, Dan is the Werewolf.\n    *   If Dylan is lying and is actually the Werewolf, and Brett is lying about the swap, Dylan is the Werewolf.\n    *   If Dylan is the Tanner, he's just lying.\n    *   However, the prompt asks me to choose the player to vote out to make Team Village win.\n    *   If I vote Dan, I win if Dylan was the Werewolf and was swapped.\n    *   If I vote Dylan, I win if Dylan is the Werewolf and wasn't swapped.\n    *   Looking at the transcript, Dylan's behavior is extremely erratic (\"I was the werewolf\", \"I saw a villager\", \"I'm the seer now\"). This is classic Tanner or Werewolf behavior.\n    *   But if we trust Brett's Troublemaker claim, the Werewolf role moved to Dan.\n\n    *   Ed (Seer) saw Dan (Mason).\n    *   Brett (Troublemaker) swapped Dylan and Dan.\n    *   Dylan (Starting Werewolf) -> Dan (Ending Werewolf).\n    *   This is the most coherent path to a target.\n\n    *   Dylan: \"I was the werewolf.\"\n    *   Brett: \"I swapped you and Dan.\"\n    *   This makes Dan the Werewolf.\n    *   Dylan's subsequent claims are contradictory, but the initial admission combined with the swap is the strongest lead.",
+  "parsed_output": {
+    "justification": "Dylan admitted to being the Werewolf ('I was the werewolf'), and Brett claimed to be the Troublemaker who swapped Dylan and Dan. If both these claims are true, the Werewolf role was transferred from Dylan to Dan. While Dylan's behavior is erratic and contradictory, the most logical deduction based on the provided claims is that Dan is currently the Werewolf.",
+    "chosen_vote": "Dan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan admitted to being the Werewolf ('I was the werewolf'), and Brett claimed to be the Troublemaker who swapped Dylan and Dan. If both these claims are true, the Werewolf role was transferred from Dylan to Dan. While Dylan's behavior is erratic and contradictory, the most logical deduction based on the provided claims is that Dan is currently the Werewolf.\",\n  \"chosen_vote\": \"Dan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan admitted to being the Werewolf ('I was the werewolf'), and Brett claimed to be the Troublemaker who swapped Dylan and Dan. If both these claims are true, the Werewolf role was transferred from Dylan to Dan. While Dylan's behavior is erratic and contradictory, the most logical deduction based on the provided claims is that Dan is currently the Werewolf.\",\n  \"chosen_vote\": \"Dan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dan",
+    "justification": "Dylan admitted to being the Werewolf ('I was the werewolf'), and Brett claimed to be the Troublemaker who swapped Dylan and Dan. If both these claims are true, the Werewolf role was transferred from Dylan to Dan. While Dylan's behavior is erratic and contradictory, the most logical deduction based on the provided claims is that Dan is currently the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5633,
+    "output_token_count": 2207,
+    "generation_time_sec": 474.75424098968506,
+    "used_chat_template": true,
+    "input_char_count": 18200,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

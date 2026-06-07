@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Switched Paul and Mitchell.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Villager/Robber/Insomniac.\n    *   James: Claims Villager (but previously joked/claimed Werewolf).\n    *   Mitchell: Claims Seer. Saw Robber and Insomniac in the center.\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   This means Robber and Insomniac are *not* among the players (unless someone swapped into them).\n    *   Paul claimed he was Villager, Robber, or Insomniac. Since Robber and Insomniac are in the center, Paul must be a Villager (if he's telling the truth).\n    *   Justin (Troublemaker) claims he switched Paul and Mitchell.\n    *   James claimed he was a Werewolf at one point (though later denied it, saying he was a Villager).\n\n    *   If Mitchell is the Seer and saw Robber and Insomniac in the center, the remaining roles are: Werewolf, Minion, Villager, Troublemaker, etc.\n    *   Wait, let's look at the roles again.\n    *   Players: Justin, Laura, Paul, James, Mitchell (5 players).\n    *   Candidate roles: 5 + 3 = 8 roles.\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   Justin (Troublemaker) switched Paul and Mitchell.\n    *   If Paul was a Werewolf and Mitchell was a Villager, then after the switch, Mitchell is the Werewolf and Paul is the Villager.\n    *   James admitted to being a Werewolf (or joked about it).\n\n    *   James: \"I was this [Werewolf]\" (Line 61). Later: \"I was a villager\" (Line 125).\n    *   Justin: \"I switched you [Paul] and Mitchell\" (Line 117).\n    *   If James is a Werewolf, he's a prime target.\n    *   If Paul was a Werewolf and was switched with Mitchell, Mitchell is now the Werewolf.\n    *   However, James's admission (even if he claims it was a joke) is a strong signal.\n\n    *   Mitchell (Seer) saw Robber and Insomniac in the center.\n    *   Paul claimed he was Villager, Robber, or Insomniac.\n    *   If Robber and Insomniac are in the center, Paul *must* be a Villager (if he's not lying).\n    *   Justin (Troublemaker) switched Paul and Mitchell.\n    *   If Paul was a Villager and Mitchell was a Werewolf, then after the switch, Paul is the Werewolf and Mitchell is the Villager.\n    *   If Paul was a Werewolf and Mitchell was a Villager, then after the switch, Mitchell is the Werewolf and Paul is the Villager.\n    *   Wait, James's behavior is the most suspicious. He explicitly said \"I was this\" when asked if he was a werewolf (Line 61).\n\n    *   James: Claims Villager, but admitted to being Werewolf earlier.\n    *   Mitchell: Claims Seer.\n    *   Justin: Claims Troublemaker.\n    *   Paul: Claims Villager/Robber/Insomniac.\n    *   Laura: Claims Villager.\n\n    If James is the Werewolf, voting him out wins.\n    If Mitchell is the Werewolf (due to the switch), voting him out wins.\n    If Paul is the Werewolf (due to the switch), voting him out wins.\n\n    Let's re-examine James.\n    Line 61: \"I was this\" (referring to the werewolf option).\n    Line 125: \"I was a villager.\"\n    Line 138: \"Because I want to see what other people would fucking say.\"\n\n    Let's re-examine the switch.\n    Justin (Troublemaker) switched Paul and Mitchell.\n    If Paul was the Werewolf, Mitchell is now the Werewolf.\n    If Mitchell was the Werewolf, Paul is now the Werewolf.\n\n    Wait, look at the transcript again.\n    Paul: \"Villager, robber, insomniac are my possibilities.\" (Line 54)\n    Mitchell: \"I saw... the robber and insomniac [in the center].\" (Line 104)\n    This implies Paul is a Villager.\n    If Paul is a Villager and Justin switched Paul and Mitchell, then Mitchell's role (whatever it was) is now Paul's, and Paul's role (Villager) is now Mitchell's.\n    If Mitchell was the Werewolf, Paul is now the Werewolf.\n    If James is the Werewolf, he remains the Werewolf.\n\n    James's admission \"I was this\" (Line 61) is very telling. In these games, players often slip or \"test\" the waters. Even if he claims he was joking, it's a strong indicator.\n\n    Let's check the logic again.\n    If James is the Werewolf, Team Village wins by voting James.\n    If Paul is the Werewolf (switched from Mitchell), Team Village wins by voting Paul.\n    If Mitchell is the Werewolf (switched from Paul), Team Village wins by voting Mitchell.\n\n    Looking at the discussion, the group seems to lean towards James because of his admission. Justin and Paul both suggest killing James (Lines 133, 145, 155).\n\n    Wait, let's look at the \"I was this\" part again.\n    Line 58: \"All right, James. So that leaves you with two werewolves as your option.\"\n    Line 61: \"I was this.\"\n    This is a direct admission of being a Werewolf.\n\n    Is there any reason to believe James is the Tanner? The Tanner wants to be voted out. James's admission could be a Tanner strategy. However, without more info, the most likely Werewolf is the one who admitted it.\n\n    Let's double-check the switch.\n    Justin (Troublemaker) switched Paul and Mitchell.\n    If James is the Werewolf, the switch between Paul and Mitchell doesn't affect the Werewolf's identity (unless one of them was also a Werewolf).\n    If there's only one Werewolf, and James is it, then James is the target.\n\n    Final check on James:\n    - Admitted to being a werewolf (Line 61).\n    - Later denied it, claiming he was a villager (Line 125).\n    - This pattern (admitting then denying) is common for Werewolves trying to confuse the group or Tanners trying to get voted out. But for the Village to win, they need to hit a Werewolf.\n\n    Comparing James and Mitchell:\n    James admitted it. Mitchell claimed Seer and provided specific info (Robber/Insomniac in center). If Mitchell is lying about being the Seer, he could be the Werewolf. But James's admission is more direct.\n\n    Wait, let's look at the switch again.\n    Justin: \"I switched you [Paul] and Mitchell.\"\n    If Paul was a Villager and Mitchell was a Werewolf, then Paul is now the Werewolf.\n    If Paul was a Werewolf and Mitchell was a Villager, then Mitchell is now the Werewolf.\n    But James's admission is the strongest piece of evidence.\n\n    Let's re-read:\n    Line 111: \"Justin: And Paul. Fuck! So you were the werewolf.\"\n    Line 113: \"Justin: So you were the werewolf.\"\n    Wait, Justin is saying Paul was the werewolf. Why?\n    Justin: \"I switched you [Paul] and Mitchell.\"\n    If Justin thinks Paul was the werewolf, then after the switch, Mitchell is the werewolf.\n    But then Justin says \"I think we kill James\" (Line 145).\n\n    This is confusing. Let's simplify.\n    James admitted to being a werewolf.\n    Justin (Troublemaker) switched Paul and Mitchell.\n    If James is the werewolf, he's the best bet.\n\n    One more look at James:\n    Line 61: \"I was this.\" (Referring to the werewolf option).\n    Line 125: \"I was a villager.\"\n    Line 138: \"Because I want to see what other people would fucking say.\"\n    This is classic Werewolf bluffing or Tanner baiting. Given the options, James is the most suspicious.\n\n    Wait, let's look at the \"I was this\" again.\n    Line 58: \"All right, James. So that leaves you with two werewolves as your option.\"\n    Line 61: \"I was this.\"\n    He is literally pointing to the werewolf card/role.\n\n    Conclusion: James is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being a Werewolf during the discussion (Line 61: 'I was this'), although he later attempted to backtrack and claim he was a Villager (Line 125). While Justin (the Troublemaker) swapped Paul and Mitchell, this does not clear James of his initial admission. In One Night Ultimate Werewolf, such direct admissions, even when later denied as jokes, are strong indicators of the Werewolf role.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being a Werewolf during the discussion (Line 61: 'I was this'), although he later attempted to backtrack and claim he was a Villager (Line 125). While Justin (the Troublemaker) swapped Paul and Mitchell, this does not clear James of his initial admission. In One Night Ultimate Werewolf, such direct admissions, even when later denied as jokes, are strong indicators of the Werewolf role.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being a Werewolf during the discussion (Line 61: 'I was this'), although he later attempted to backtrack and claim he was a Villager (Line 125). While Justin (the Troublemaker) swapped Paul and Mitchell, this does not clear James of his initial admission. In One Night Ultimate Werewolf, such direct admissions, even when later denied as jokes, are strong indicators of the Werewolf role.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being a Werewolf during the discussion (Line 61: 'I was this'), although he later attempted to backtrack and claim he was a Villager (Line 125). While Justin (the Troublemaker) swapped Paul and Mitchell, this does not clear James of his initial admission. In One Night Ultimate Werewolf, such direct admissions, even when later denied as jokes, are strong indicators of the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4475,
+    "output_token_count": 2140,
+    "generation_time_sec": 224.79440784454346,
+    "used_chat_template": true,
+    "input_char_count": 15347,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

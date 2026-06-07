@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game10.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles involved (based on claims): Seer, Robber, Werewolf, Tanner, Drunk.\n\n    *   Alvin: Claims he was the Seer. He says he thinks Justin is the Werewolf (confidence 8/10).\n    *   James: Claims he was the Robber. He says he can confirm Alvin's story (that Alvin was the Seer).\n    *   Mitchell: Claims he was the Robber. He says he robbed Alvin and confirms Alvin was the Seer. He thinks Justin is a Werewolf and believes there might be two Werewolves.\n    *   Justin: Doesn't claim a specific role initially, but later asks \"If I'm the werewolf...\" and eventually says \"I'll admit I'm the werewolf\" (though this seems like a sarcastic or strategic admission).\n\n    *   Two players are claiming Robber: James and Mitchell.\n    *   Only one Robber exists in the game.\n    *   Alvin claims Seer.\n    *   Both James and Mitchell claim they can verify Alvin was the Seer.\n    *   If James was the Robber and robbed Alvin, James is now the Seer.\n    *   If Mitchell was the Robber and robbed Alvin, Mitchell is now the Seer.\n    *   If Alvin was the Seer and wasn't robbed, he remains the Seer.\n\n    *   Alvin (Seer) -> Sees Justin as Werewolf.\n    *   James (Robber) -> Robbed Alvin (Seer) -> Now Seer.\n    *   Mitchell (Robber) -> Robbed Alvin (Seer) -> Now Seer.\n\n    Wait, if James and Mitchell both claim Robber, one of them is lying.\n    If James is the Robber and robbed Alvin, he knows Alvin was the Seer.\n    If Mitchell is the Robber and robbed Alvin, he knows Alvin was the Seer.\n\n    However, Alvin says he was the Seer. If he was robbed, he wouldn't necessarily know he was robbed unless he's the Insomniac (which he isn't claiming). But the Robber *does* know who they robbed.\n\n    Let's look at the claims again:\n    Alvin: \"I was the seer.\"\n    James: \"I was the robber... I can confirm Alvin's story.\"\n    Mitchell: \"I was the robber... I robbed [Alvin] and that's why I don't have that much information... He's exactly what he claims he was [Seer].\"\n\n    If Alvin is the Seer and Justin is the Werewolf, then Alvin's information is the key.\n    Alvin is quite confident (8/10) that Justin is the Werewolf.\n    Both James and Mitchell are trying to validate Alvin's role to gain trust, but they are contradicting each other on who the Robber is.\n\n    *   If Justin is the Werewolf, voting for him wins the game for the Village.\n    *   If Mitchell or James is the Werewolf, voting for them wins.\n    *   If no one is the Werewolf, \"No Werewolf\" wins.\n\n    Alvin's claim as Seer is supported by both James and Mitchell (even though they fight over who the Robber is). This suggests Alvin likely *was* the Seer. If Alvin was the Seer and saw Justin as the Werewolf, Justin is the primary target.\n\n    Wait, let's re-read:\n    Alvin: \"I think Justin's the werewolf.\"\n    Mitchell: \"I'm quite confident that you [Justin] would be a werewolf.\"\n    James: \"I'm suspicious with Mitchell because I was the robber.\"\n\n    Justin's reaction: He doesn't really defend himself with a role claim. He mostly asks questions and eventually says \"I'll admit I'm the werewolf\" in a challenging way.\n\n    Is there any chance Justin is the Tanner?\n    Alvin mentions: \"I think you're the tanner and you're trying desperately to get us to kill you\" (referring to Mitchell).\n    Wait, Alvin says Mitchell might be the Tanner.\n    But Alvin also says \"I think Justin's the werewolf.\"\n\n    Let's re-evaluate the Robber conflict:\n    James vs Mitchell.\n    If James is the Robber and Mitchell is the Werewolf, Mitchell would lie about being the Robber to steal the \"verification\" power and divert suspicion.\n    If Mitchell is the Robber and James is the Werewolf, James would lie.\n\n    However, Alvin (the Seer) specifically pointed to Justin. In One Night Ultimate Werewolf, the Seer's information is usually the most reliable unless they were robbed or are lying.\n\n    If Alvin is the Seer and saw Justin as the Werewolf:\n    - Justin is the Werewolf.\n    - James or Mitchell could be the Robber.\n    - The other (James or Mitchell) could be a Villager, Minion, or another Werewolf.\n\n    If Alvin is lying (Werewolf):\n    - He's trying to frame Justin.\n\n    But both James and Mitchell (one of whom must be lying about being the Robber) are confirming Alvin's role. This makes it more likely that Alvin actually was the Seer.\n\n    Let's look at the \"two werewolves\" theory. Mitchell thinks there are two. If Justin is one, who is the other? James or Mitchell?\n    James and Mitchell are fighting over the Robber role. Usually, the person lying about a role is the Werewolf.\n\n    Wait, let's look at the transcript again.\n    Alvin: \"I think Justin's the werewolf.\"\n    James: \"I'm suspicious with Mitchell because I was the robber.\"\n    Mitchell: \"I was the robber.\"\n\n    If Alvin is the Seer and saw Justin as the Werewolf, then Justin is a Werewolf.\n    If James is the Robber and robbed Alvin, James knows Alvin was the Seer.\n    If Mitchell is lying about being the Robber, Mitchell could be the second Werewolf or the Minion.\n\n    But the goal is to eliminate *a* Werewolf. If Justin is a Werewolf, voting for him is a win.\n\n    Is there any reason to doubt Alvin?\n    Alvin's confidence is 8/10. He's the only one claiming Seer.\n    Justin doesn't provide a counter-claim.\n\n    Let's check for the Tanner.\n    Alvin suggests Mitchell might be the Tanner.\n    Justin suggests Mitchell might be the Tanner.\n    But Alvin's primary accusation is against Justin.\n\n    If Justin is the Werewolf, the Village wins by voting him out.\n    If Justin is the Tanner, the Village loses (Tanner wins).\n    If Justin is a Villager and Mitchell is the Werewolf, the Village loses if they vote Justin.\n\n    However, based on the available information:\n    1. Alvin claims Seer and identifies Justin as Werewolf.\n    2. James and Mitchell both try to verify Alvin's role (though they clash on who the Robber is).\n    3. Justin doesn't offer a strong defense or a role claim.\n\n    This points strongly to Justin being the Werewolf.\n\n    Wait, let me re-read the very end.\n    Alvin: \"I think both of you are tanner-\" (referring to Justin and Mitchell).\n    This is right at the end of the transcript.\n\n    Let's look at the claims one more time.\n    Alvin: Seer -> Justin = Werewolf.\n    James: Robber -> Robbed Alvin.\n    Mitchell: Robber -> Robbed Alvin.\n\n    If James is the Robber, he knows Alvin was the Seer.\n    If Mitchell is the Robber, he knows Alvin was the Seer.\n    Since both claim to know Alvin was the Seer, it's highly probable Alvin was the Seer.\n    If Alvin was the Seer and saw Justin as the Werewolf, Justin is the most likely target.\n\n    Could Justin be the Tanner?\n    Tanners want to be voted out. Justin isn't exactly begging for votes; he's questioning the others.\n    Could Mitchell be the Werewolf?\n    He's lying about being the Robber (if James is the Robber).\n    Could James be the Werewolf?\n    He's lying about being the Robber (if Mitchell is the Robber).\n\n    But the Seer's information (Alvin) is the most direct evidence. Alvin says Justin is the Werewolf.\n\n    Final check:\n    Alvin: Seer.\n    Justin: Werewolf.\n    James/Mitchell: One is Robber, one is something else (Villager/Minion/Werewolf).\n    This fits all the claims.\n\n    Wait, let me double-check the transcript for any other clues.\n    Justin: \"I'll admit I'm the werewolf, but I want to know which one of you's going to lose along with me.\"\n    This is a very strange admission. It sounds like he's trying to provoke them or is just playing around.\n\n    If I have to pick one person to vote out to make Team Village win, Justin is the strongest candidate because the Seer (Alvin) identified him.\n\n    One more thing: \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    James says: \"There's no werewolves. It's a happy village.\" (at [298]).\n    But this was before any roles were claimed. It was just a guess.\n\n    Conclusion: Justin is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Alvin claimed to be the Seer and identified Justin as the Werewolf. Both James and Mitchell, despite conflicting claims about who the Robber was, attempted to verify Alvin's role as the Seer, which increases the likelihood that Alvin's information is accurate. Justin did not provide a counter-claim to his role and eventually sarcastically admitted to being the Werewolf. Therefore, Justin is the most probable target for Team Village to eliminate.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alvin claimed to be the Seer and identified Justin as the Werewolf. Both James and Mitchell, despite conflicting claims about who the Robber was, attempted to verify Alvin's role as the Seer, which increases the likelihood that Alvin's information is accurate. Justin did not provide a counter-claim to his role and eventually sarcastically admitted to being the Werewolf. Therefore, Justin is the most probable target for Team Village to eliminate.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alvin claimed to be the Seer and identified Justin as the Werewolf. Both James and Mitchell, despite conflicting claims about who the Robber was, attempted to verify Alvin's role as the Seer, which increases the likelihood that Alvin's information is accurate. Justin did not provide a counter-claim to his role and eventually sarcastically admitted to being the Werewolf. Therefore, Justin is the most probable target for Team Village to eliminate.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alvin claimed to be the Seer and identified Justin as the Werewolf. Both James and Mitchell, despite conflicting claims about who the Robber was, attempted to verify Alvin's role as the Seer, which increases the likelihood that Alvin's information is accurate. Justin did not provide a counter-claim to his role and eventually sarcastically admitted to being the Werewolf. Therefore, Justin is the most probable target for Team Village to eliminate."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 9244,
+    "output_token_count": 2266,
+    "generation_time_sec": 517.9878315925598,
+    "used_chat_template": true,
+    "input_char_count": 28946,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

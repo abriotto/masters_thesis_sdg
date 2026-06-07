@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#63##March#23rd#2019",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#63##March#23rd#2019_Game1.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   James\n    *   Paul\n    *   Mitchell\n\n    *   Paul: Claims Copycat who copied Troublemaker (T[26]). Later says he switched Justin and someone else (T[114], T[153]).\n    *   Mitchell: Claims Robber who robbed James (T[52], T[58], T[81]). Claims he robbed a Seer (T[60], T[81]).\n    *   Justin: Claims Robber (T[45], T[53]), then claims he robbed Mitchell and saw a Werewolf (T[65]), then claims he was a Werewolf (T[73], T[117]), then claims he saw two Werewolves in the center (T[86]).\n    *   James: Doesn't make a strong role claim, but seems to be reacting to others.\n\n    *   Paul (Copycat/Troublemaker): If Paul is the Copycat and copied the Troublemaker, he can swap two other players. He says he swapped Justin and someone else.\n    *   Mitchell (Robber): If Mitchell is the Robber and robbed James, he knows James's starting role. He claims James was the Seer.\n    *   Justin (Chaotic): Justin's claims are contradictory. He claims Robber, then Werewolf, then seeing Werewolves in the center. This is highly suspicious behavior, typical of a Werewolf trying to confuse the group or a Tanner trying to get voted out.\n\n    *   If Paul is the Troublemaker (or Copycat-Troublemaker), he swapped Justin and someone else.\n    *   If Mitchell is the Robber and robbed James (Seer), Mitchell knows James was the Seer.\n    *   Justin claims he was a Werewolf (T[73], T[117]). If he was a Werewolf and Paul swapped him, he might now be something else. But if he *is* currently a Werewolf, he's trying to confuse the situation.\n    *   Wait, Justin says \"I saw two Werewolves in the center\" (T[86]). If there are two Werewolves in the center, then no one is a Werewolf (since there are only 2 Werewolf cards total in a standard setup, but the rules say \"up to two\"). If two Werewolves are in the center, Team Village wins if no one dies.\n\n    *   Justin's claims:\n        1.  Robber (T[45])\n        2.  Robbed Mitchell and saw a Werewolf (T[65])\n        3.  Was a Werewolf (T[73])\n        4.  Saw two Werewolves in the center (T[86])\n    *   This is a massive amount of contradiction. He is either the Tanner or a Werewolf.\n    *   Mitchell's claims:\n        1.  Robber (T[52])\n        2.  Robbed James (T[58])\n        3.  James was the Seer (T[60])\n    *   Paul's claims:\n        1.  Copycat who copied Troublemaker (T[26])\n        2.  Swapped Justin and someone else (T[114])\n\n    *   If Paul is the Troublemaker and swapped Justin and X, and Mitchell is the Robber who robbed James (Seer), then:\n        *   James (Starting: Seer) -> Now: ?\n        *   Mitchell (Starting: Robber) -> Now: Seer (since he robbed James)\n        *   Justin (Starting: ?) -> Now: ?\n        *   Paul (Starting: Copycat) -> Now: Troublemaker\n    *   If Justin was a Werewolf and got swapped by Paul, he might not be a Werewolf anymore.\n    *   However, Justin's behavior is the most erratic. In One Night Ultimate Werewolf, the person making the most contradictory claims is usually the Werewolf or the Tanner.\n\n    *   Justin claims he was a Werewolf (T[73], T[117]).\n    *   Justin claims he saw two Werewolves in the center (T[86]).\n    *   If Justin is the Tanner, he wants to be voted out.\n    *   If Justin is the Werewolf, he's bluffing.\n    *   If there are two Werewolves in the center, then no one is a Werewolf.\n\n    *   Let's look at the roles again.\n    *   Paul: Copycat/Troublemaker.\n    *   Mitchell: Robber.\n    *   James: Seer (according to Mitchell).\n    *   Justin: ?\n    *   If these roles are correct, Justin must be the Werewolf (or the remaining role).\n    *   If Justin is the Werewolf, voting him out wins the game for the Village.\n    *   If Justin is the Tanner, voting him out loses the game for the Village (Tanner wins).\n    *   But if Justin is the Werewolf, he's doing a poor job of hiding it by claiming he *was* a Werewolf.\n\n    *   Justin's claims are so wildly inconsistent that he is the primary suspect. He claims to be the Robber, then a Werewolf, then says he saw two Werewolves in the center. This is classic \"noise\" created by a Werewolf or a Tanner.\n    *   Given the options, Justin is the most likely candidate for elimination to achieve a Village win, assuming he is the Werewolf. If he is the Tanner, the Village loses, but based on the transcript, he's the only one acting like a Werewolf/Tanner.\n\n    *   Wait, if Justin says \"I saw two Werewolves in the center\" (T[86]), and he's telling the truth, then \"No Werewolf\" is the correct answer.\n    *   But why would he claim to be a Werewolf (T[73]) and then say he saw two Werewolves in the center?\n    *   If he's the Seer, he could see two cards in the center. But Mitchell claims he robbed the Seer (James).\n    *   If Justin is the Werewolf, he's lying about the center cards to convince people to vote \"No Werewolf\" so the Werewolves survive.\n\n    *   Justin: Claims Robber -> Claims Werewolf -> Claims saw 2 Werewolves in center.\n    *   Mitchell: Claims Robber -> Robbed James (Seer).\n    *   Paul: Claims Copycat/Troublemaker -> Swapped Justin.\n    *   James: No claim, but Mitchell says he was the Seer.\n    *   If Mitchell is the Robber and James was the Seer, then Justin is the only one left to be the Werewolf.\n    *   Justin's attempt to say \"two Werewolves in the center\" is a common Werewolf tactic to avoid being voted out.\n\n    *   Justin is the most suspicious player due to his contradictory claims.\n    *   He claims to be the Robber, then a Werewolf, then claims there are two Werewolves in the center.\n    *   This pattern of deception is characteristic of a Werewolf trying to confuse the other players or a Tanner.\n    *   Given the other players' more consistent (though potentially false) claims, Justin is the most logical target for the Village.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly contradictory: he first claims to be the Robber, then admits to being a Werewolf, and finally claims he saw two Werewolves in the center. This erratic behavior is typical of a Werewolf attempting to confuse the group or a Tanner attempting to be voted out. Given that Mitchell claims to be the Robber who robbed James (the Seer) and Paul claims to be the Troublemaker, Justin is the most likely candidate to be the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly contradictory: he first claims to be the Robber, then admits to being a Werewolf, and finally claims he saw two Werewolves in the center. This erratic behavior is typical of a Werewolf attempting to confuse the group or a Tanner attempting to be voted out. Given that Mitchell claims to be the Robber who robbed James (the Seer) and Paul claims to be the Troublemaker, Justin is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly contradictory: he first claims to be the Robber, then admits to being a Werewolf, and finally claims he saw two Werewolves in the center. This erratic behavior is typical of a Werewolf attempting to confuse the group or a Tanner attempting to be voted out. Given that Mitchell claims to be the Robber who robbed James (the Seer) and Paul claims to be the Troublemaker, Justin is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly contradictory: he first claims to be the Robber, then admits to being a Werewolf, and finally claims he saw two Werewolves in the center. This erratic behavior is typical of a Werewolf attempting to confuse the group or a Tanner attempting to be voted out. Given that Mitchell claims to be the Robber who robbed James (the Seer) and Paul claims to be the Troublemaker, Justin is the most likely candidate to be the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4457,
+    "output_token_count": 1759,
+    "generation_time_sec": 184.97449040412903,
+    "used_chat_template": true,
+    "input_char_count": 15035,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

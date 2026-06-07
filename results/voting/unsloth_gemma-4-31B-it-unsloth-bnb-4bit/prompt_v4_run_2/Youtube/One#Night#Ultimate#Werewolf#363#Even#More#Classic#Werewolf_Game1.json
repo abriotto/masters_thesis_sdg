@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#363#Even#More#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#363#Even#More#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "George",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Pete\n    *   Katie\n    *   Brett\n    *   George\n    *   Kelsey\n    *   Dylan\n\n    *   Werewolf: Team Werewolf\n    *   Minion: Team Werewolf\n    *   Villager, Seer, Robber, Troublemaker, Insomniac, Drunk, Hunter, Mason: Team Village\n    *   Tanner: Independent (wants to be voted out)\n\n    *   Doppelganger -> Werewolves -> Minion -> Masons -> Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n\n    *   Brett claims to be Troublemaker initially, says he switched George and Kelsey [64].\n    *   Then Brett changes his story, says he switched Dylan and George [96].\n    *   Then Brett claims he was actually a Mason and lied about being Troublemaker [132, 151].\n    *   George claims he was Robber [100], robbed Pete [114], and saw Pete had a Mason card [128].\n    *   Pete claims he was a Werewolf [124, 130, 160].\n    *   Katie claims she was the Troublemaker [165] but chose not to switch any cards [209].\n    *   Dylan claims he was the Drunk [98, 189, 284].\n    *   Kelsey claims she was the Drunk [190, 220].\n    *   Dylan claims there are two Werewolves in the center [277].\n\n    *   *Brett:* Claims Mason (with Pete). Initially claimed Troublemaker.\n    *   *George:* Claims Robber. Robbed Pete. Claims Pete was a Mason.\n    *   *Pete:* Claims he was a Werewolf.\n    *   *Katie:* Claims Troublemaker (did nothing).\n    *   *Dylan:* Claims Drunk.\n    *   *Kelsey:* Claims Drunk.\n\n    *   *The Drunk Conflict:* Both Dylan and Kelsey claim to be the Drunk. Only one Drunk exists.\n    *   *The Troublemaker Conflict:* Brett initially claimed Troublemaker, then Katie claimed Troublemaker.\n    *   *The Mason Conflict:* Brett claims he and Pete are Masons. George claims he robbed Pete and Pete was a Mason. Pete claims he was a Werewolf.\n\n    *   If Pete was a Werewolf, and George robbed him, George is now a Werewolf and Pete is a Robber.\n    *   If Pete was a Mason, and George robbed him, George is now a Mason and Pete is a Robber.\n    *   If Brett and Pete were Masons, they would know it. Brett says they were. Pete says he was a Werewolf.\n    *   If Katie was the Troublemaker and did nothing, no cards were swapped by her.\n    *   If Dylan or Kelsey is the Drunk, one of them is lying.\n    *   Dylan's claim that \"two Werewolves are in the center\" is highly suspicious. Only a Seer (looking at center) or a Werewolf/Minion (knowing the roles) or a Doppelganger (if they copied a role) could potentially know this. A Drunk definitely wouldn't know.\n\n    *   Dylan claims to be Drunk but knows the center cards (Werewolves). This is a huge red flag. Drunks don't see the center cards; they just swap with one.\n    *   Kelsey also claims to be Drunk.\n    *   If Dylan is a Werewolf/Minion, he's lying about being the Drunk to hide his identity and trying to convince the village that no Werewolves are in play to avoid being voted out.\n    *   Pete's claim of being a Werewolf is strange. If he *was* a Werewolf and got robbed by George, he'd know he was a Werewolf. If he's lying, he might be the Tanner.\n    *   Katie's claim of being a Troublemaker who did nothing is possible but suspicious.\n\n    *   Dylan's claim about the center cards is the most logically inconsistent statement. He claims to be the Drunk, but the Drunk doesn't see the center cards. Only the Seer (if they looked at the center) or the Werewolves/Minion (who might know if they are the only ones) could have that info. However, the announcer said \"If there is only one Werewolf, you may look at a card from the center.\" If Dylan was a lone Werewolf, he could see one card. But he claims *two* are in the center.\n    *   Wait, if Dylan is a Werewolf and there are no other Werewolves, he sees one card in the center. If he sees another Werewolf card there, he knows there are two Werewolf cards in the center (the one he saw and the one that wasn't dealt). But he's a player, so he'd be the third Werewolf card. This doesn't add up.\n    *   Actually, if Dylan is a Werewolf and sees a Werewolf card in the center, he knows there's at least one other Werewolf card in the center (since there are 3 center cards total).\n    *   Regardless, a Drunk cannot know the center cards. Dylan's claim to be Drunk while knowing the center cards is a lie.\n\n    *   Dylan: Claims Drunk, but knows center cards. (Likely Werewolf/Minion)\n    *   Kelsey: Claims Drunk. (Could be the real Drunk or the Tanner)\n    *   Katie: Claims Troublemaker (did nothing). (Could be Werewolf/Minion)\n    *   Pete: Claims he was Werewolf. (Could be Tanner)\n    *   Brett/George: Claiming Mason/Robber.\n\n    *   Dylan's lie is the most blatant. He claims to be the Drunk but provides information that a Drunk cannot have. This strongly suggests he is on Team Werewolf.\n\n    *   Dylan claims to be the Drunk [98, 189, 284].\n    *   Dylan claims two Werewolves are in the center [277].\n    *   The Drunk role swaps a card with the center without looking at the new card [Rule: Drunk].\n    *   Therefore, Dylan cannot be the Drunk and know the center cards.\n    *   This makes Dylan a prime suspect for being a Werewolf or Minion.\n\n    *   Could Dylan be the Seer? The Seer can look at two cards in the center. But he claimed to be the Drunk.\n    *   Could Dylan be the Werewolf? If he's the only Werewolf, he can look at one card in the center. If he saw a Werewolf card, he'd know there are two in the center (the one he saw and the one remaining in the pool).\n    *   Either way, he's lying about his role.\n\n    *   Kelsey also claims to be the Drunk.\n    *   Katie claims to be the Troublemaker.\n    *   Pete claims he was a Werewolf.\n    *   Dylan's contradiction is the most concrete evidence of deception.\n\n    *   Dylan is the most likely Werewolf because he claimed to be the Drunk while simultaneously claiming knowledge of the center cards, which is impossible for a Drunk. This contradiction indicates he is bluffing to protect himself or his teammates.\n\n    *   Wait, let me re-read the transcript.\n    *   Dylan: \"I was a Drunk.\" [98]\n    *   Dylan: \"There's uh two Werewolves in the center, there are these two right here. So, no Werewolves are in play.\" [277]\n    *   This is a direct contradiction. A Drunk does not see the center cards.\n\n    *   Is there any other possibility?\n    *   Could he be the Seer? Seers can look at two center cards. But he said he was the Drunk.\n    *   Could he be the Werewolf? If he's the only Werewolf, he can look at one center card. If he saw a Werewolf card, he'd know there are two in the center.\n    *   In any case, he's lying about being the Drunk.\n\n    *   Let's check Kelsey. She also claims to be the Drunk [190, 220].\n    *   If Dylan is lying, Kelsey might be the real Drunk.\n\n    *   Let's check Katie. She claims Troublemaker [165, 209].\n    *   Let's check Pete. He claims he was a Werewolf [124, 130, 160]. This is very odd. Why would a Werewolf admit it? Maybe he's the Tanner? Or maybe he's just confused?\n\n    *   Dylan's lie is the most strategic. He's trying to convince the group that no Werewolves are in play (\"no Werewolves are in play\") so that no one is voted out, which is the win condition for Team Werewolf.\n\n    *   Conclusion: Dylan is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Dylan claims to be the Drunk (lines 98, 189, 284), but later asserts that there are two Werewolves in the center and therefore no Werewolves are in play (line 277). According to the rules, the Drunk swaps their card with one from the center without looking at it, meaning they cannot have knowledge of the center cards. This contradiction indicates that Dylan is lying about his role to deceive the village into believing no Werewolves are present, which is a typical strategy for Team Werewolf to avoid elimination.",
+    "chosen_vote": "Dylan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan claims to be the Drunk (lines 98, 189, 284), but later asserts that there are two Werewolves in the center and therefore no Werewolves are in play (line 277). According to the rules, the Drunk swaps their card with one from the center without looking at it, meaning they cannot have knowledge of the center cards. This contradiction indicates that Dylan is lying about his role to deceive the village into believing no Werewolves are present, which is a typical strategy for Team Werewolf to avoid elimination.\",\n  \"chosen_vote\": \"Dylan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan claims to be the Drunk (lines 98, 189, 284), but later asserts that there are two Werewolves in the center and therefore no Werewolves are in play (line 277). According to the rules, the Drunk swaps their card with one from the center without looking at it, meaning they cannot have knowledge of the center cards. This contradiction indicates that Dylan is lying about his role to deceive the village into believing no Werewolves are present, which is a typical strategy for Team Werewolf to avoid elimination.\",\n  \"chosen_vote\": \"Dylan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dylan",
+    "justification": "Dylan claims to be the Drunk (lines 98, 189, 284), but later asserts that there are two Werewolves in the center and therefore no Werewolves are in play (line 277). According to the rules, the Drunk swaps their card with one from the center without looking at it, meaning they cannot have knowledge of the center cards. This contradiction indicates that Dylan is lying about his role to deceive the village into believing no Werewolves are present, which is a typical strategy for Team Werewolf to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 7390,
+    "output_token_count": 2196,
+    "generation_time_sec": 251.62696719169617,
+    "used_chat_template": true,
+    "input_char_count": 21550,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

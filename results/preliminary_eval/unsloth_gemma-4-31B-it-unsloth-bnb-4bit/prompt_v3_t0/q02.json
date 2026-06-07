@@ -1,0 +1,54 @@
+{
+  "question_id": "q02",
+  "dimension": "role_swapping",
+  "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": "*   Player A: Insomniac (starting role).\n    *   Player B: Troublemaker (starting role).\n    *   Player C: Unknown role.\n    *   Action: Player B (Troublemaker) swaps Player A's card with Player C's card.\n    *   Question: Does Player A know their card was swapped before the Day phase begins?\n\n    *   Insomniac: \"At the end of the Night phase, the Insomniac looks at their current card.\"\n    *   Troublemaker: \"During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\"\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   Player B (Troublemaker) acts at step 7.\n    *   Player A (Insomniac) acts at step 9.\n    *   Player A looks at their *current* card at the end of the Night phase.\n    *   If Player A's card was swapped by the Troublemaker, Player A will see the new card (Player C's original card) when they wake up as the Insomniac.\n    *   Player A knows their starting role (Insomniac).\n    *   If the card they see at the end of the Night phase is different from their starting role, they know their card was swapped.\n    *   Wait, the question asks \"does Player A know their card was swapped?\".\n    *   If Player A sees a card that is *not* the Insomniac card, they know they were swapped.\n    *   What if Player C was also an Insomniac? (The rules say \"at most one of each other listed role\" except Villagers, Werewolves, and Masons. Insomniac is listed as \"at most one\"). So Player C cannot be an Insomniac.\n    *   Therefore, if Player A's card is swapped with Player C's, Player A will see a card that is not the Insomniac card.\n    *   Since Player A knows they started as the Insomniac, seeing a different card means they were swapped.\n\n    *   Wait, let me re-read the Insomniac rule: \"At the end of the Night phase, the Insomniac looks at their current card.\"\n    *   Does the Insomniac *know* they were swapped?\n    *   If they see a card that is not the Insomniac card, they know they are no longer the Insomniac.\n    *   Since they started as the Insomniac, they know a swap occurred.\n\n    *   Justification: The Insomniac looks at their current card at the end of the Night phase, which occurs after the Troublemaker's action. Since there is only one Insomniac card, seeing a different card informs Player A that a swap occurred.\n    *   Answer: Yes.",
+  "parsed_output": {
+    "justification": "The Insomniac looks at their current card at the end of the Night phase, which occurs after the Troublemaker's action. Since there is only one Insomniac card, Player A will see a different card and know a swap occurred.",
+    "answer": "Yes"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"The Insomniac looks at their current card at the end of the Night phase, which occurs after the Troublemaker's action. Since there is only one Insomniac card, Player A will see a different card and know a swap occurred.\",\n  \"answer\": \"Yes\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"The Insomniac looks at their current card at the end of the Night phase, which occurs after the Troublemaker's action. Since there is only one Insomniac card, Player A will see a different card and know a swap occurred.\",\n  \"answer\": \"Yes\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The Insomniac looks at their current card at the end of the Night phase, which occurs after the Troublemaker's action. Since there is only one Insomniac card, Player A will see a different card and know a swap occurred.",
+    "answer": "Yes"
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1628,
+    "output_token_count": 758,
+    "generation_time_sec": 160.71337819099426,
+    "used_chat_template": true,
+    "input_char_count": 6837,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Caitlynn, Mike, James, Mitchell.\n    *   Roles involved (based on transcript):\n        *   Justin: Claims Minion.\n        *   Mike: Claims Seer.\n        *   Mitchell: Claims Robber.\n        *   James: (Role not explicitly claimed, but Mitchell stole from him).\n        *   Caitlynn: (Role not explicitly claimed).\n\n    *   Justin claims Minion [39].\n    *   Mike claims Seer [33] and confirms Justin was the Minion [40].\n    *   Mitchell claims Robber [44] and says he stole from James [44].\n    *   Justin claims that as Minion, he woke up to no werewolves [39].\n    *   If Justin is the Minion and saw no werewolves, it means the Werewolf cards are in the center (or the Minion is lying).\n    *   Wait, if Justin is the Minion and there are no werewolves, the Minion is still on Team Werewolf.\n    *   Wait, let's re-read: \"as the minion, I woke up to no werewolves\" [39].\n    *   If the Minion wakes up and sees no werewolves, it means all Werewolf cards are in the center.\n    *   If all Werewolf cards are in the center, Team Village wins if no one is voted out (or if the Tanner is not voted out).\n    *   However, the players are discussing voting out Caitlynn [52, 58].\n\n    *   Justin (Minion) -> Team Werewolf.\n    *   Mike (Seer) -> Team Village.\n    *   Mitchell (Robber) -> Team Village.\n    *   James (Stolen from) -> ?\n    *   Caitlynn (?) -> ?\n\n    *   Justin says: \"as the minion, I woke up to no werewolves\" [39].\n    *   Mike says: \"I can confirm he was the minion. I looked at him\" [40].\n    *   Mitchell says: \"I stole from you [James]\" [44].\n    *   If Justin is the Minion and saw no werewolves, then there are no werewolves among the players.\n    *   If there are no werewolves, Team Village wins if no one is voted out.\n    *   But wait, the Minion is on Team Werewolf. The Minion wants the Werewolves to survive. If there are no werewolves, the Minion cannot \"win\" in the traditional sense (since the win condition is \"no Werewolves die\"), but the Minion's goal is to prevent the Village from winning.\n    *   Wait, if there are no werewolves, Team Village wins if no one dies.\n    *   If Justin is the Minion and is telling the truth about seeing no werewolves, then there are no werewolves in the game.\n    *   If there are no werewolves, the best move for Team Village is \"No Werewolf\".\n\n    *   Is Justin lying? He claims to be the Minion. If he's a Werewolf, he'd lie about being the Minion to avoid being caught.\n    *   Is Mike lying? He claims to be the Seer and confirms Justin is the Minion. If Mike is a Werewolf, he might be protecting Justin.\n    *   Is Mitchell lying? He claims to be the Robber and stole from James.\n    *   Let's look at the logic:\n        *   Justin: \"I was the minion... I woke up to no werewolves.\"\n        *   Mike: \"I can confirm he was the minion.\"\n        *   If Justin is the Minion and saw no werewolves, then there are no werewolves.\n        *   If there are no werewolves, the correct vote is \"No Werewolf\".\n\n    *   Wait, Justin says \"there is a 66% chance... that it's me [Caitlynn]\" [51, 52]. This is confusing. Why would he say that if he believes there are no werewolves?\n    *   Let's re-read: \"So there were no werewolves... And I was the minion... So there is a 66% chance... [Caitlynn] That it's me.\"\n    *   This is contradictory. If there are no werewolves, why is there a chance Caitlynn is one?\n    *   Maybe he means: \"If I am the minion and saw no werewolves, then the werewolves are in the center. But wait, maybe the Robber or Troublemaker moved a werewolf card?\"\n    *   Let's check the roles: Robber swaps their card with another. Troublemaker swaps two others.\n    *   If the Minion woke up and saw no werewolves, it means at the *start* of the night, there were no werewolves among the players.\n    *   If there were no werewolves at the start, no amount of swapping (Robber, Troublemaker, Drunk) can create a werewolf where there wasn't one, because they only swap existing cards.\n    *   Therefore, if Justin is telling the truth about being the Minion and seeing no werewolves, there are definitely no werewolves in the game.\n\n    *   Justin claims Minion.\n    *   Mike claims Seer and confirms Justin.\n    *   Mitchell claims Robber.\n    *   If Justin and Mike are both lying (e.g., they are both Werewolves), then they are trying to trick the group into thinking there are no werewolves or targeting someone else.\n    *   But if Justin is the Minion and Mike is the Seer, then there are no werewolves.\n    *   If there are no werewolves, the only way Team Village loses is if they vote someone out (unless that person is the Tanner).\n    *   Wait, the rules say: \"Team Village wins: If no player is a Werewolf and no one dies.\"\n    *   If Justin is the Minion and saw no werewolves, then no player is a Werewolf.\n    *   Therefore, the correct action is \"No Werewolf\".\n\n    *   Justin: \"I woke up to no werewolves.\"\n    *   Mike: \"I can confirm he was the minion.\"\n    *   If these two are telling the truth, there are no werewolves.\n    *   If they are lying, they are likely the Werewolf/Minion team.\n    *   But if they are the Werewolf/Minion team, Justin (as Werewolf) wouldn't claim to be the Minion and say there are no werewolves, because that would lead the village to vote \"No Werewolf\" and the Werewolves would win.\n    *   Wait, if the Werewolves win when \"no Werewolves die\", then the Werewolves *want* the village to vote \"No Werewolf\" or vote out a non-werewolf.\n    *   So, if Justin and Mike are Werewolves, they are successfully deceiving the village into thinking there are no werewolves.\n    *   However, as an external observer, I must decide based on the information provided.\n    *   The most direct interpretation of the claims (Justin=Minion, Mike=Seer) is that there are no werewolves.\n    *   If Justin is the Minion and saw no werewolves, then no one is a werewolf.\n    *   If no one is a werewolf, the answer is \"No Werewolf\".\n\n    *   Justin: \"I was the minion... I woke up to no werewolves.\"\n    *   Mike: \"I can confirm he was the minion.\"\n    *   Mitchell: \"I stole from you [James].\"\n    *   If Justin is the Minion and saw no werewolves, then no one is a werewolf.\n    *   If no one is a werewolf, Team Village wins by voting \"No Werewolf\".\n    *   The players in the transcript are leaning towards voting Caitlynn, but they are basing this on \"66% odds\" which doesn't make logical sense if there are no werewolves.\n    *   Actually, Justin's \"66% chance\" comment is very weird. \"So there were no werewolves... And I was the minion... So there is a 66% chance... [Caitlynn] That it's me.\"\n    *   Wait, maybe he's saying: \"If I'm the minion and saw no werewolves, then the werewolves are in the center. But maybe the Robber stole a werewolf card?\" No, that's not how it works.\n    *   Let's re-read the \"66% chance\" part.\n    *   Justin: \"So there were no werewolves... And I was the minion... So there is a 66% chance... [Caitlynn] That it's me.\"\n    *   This is almost certainly a bluff or a mistake in his logic. If he's the Minion and saw no werewolves, there are no werewolves.\n    *   If he's lying and is actually a Werewolf, he's trying to frame Caitlynn.\n    *   But based on the claims:\n        *   Justin: Minion (saw no werewolves)\n        *   Mike: Seer (confirmed Justin)\n        *   Mitchell: Robber\n    *   If we trust these claims, there are no werewolves.\n\n    *   If Justin is the Minion and saw no werewolves, then no one is a werewolf.\n    *   If no one is a werewolf, the only way for Team Village to win is to vote \"No Werewolf\".\n    *   The players' discussion about Caitlynn seems to be based on a misunderstanding or a bluff.\n    *   Given the claims, \"No Werewolf\" is the most logical conclusion.\n\n    *   Wait, let me double-check the Minion's ability: \"During the Night phase, the Minion learns who the Werewolves are.\"\n    *   If the Minion wakes up and there are no werewolves, the announcer would simply not call any werewolves or the Minion would see that no one else is a werewolf.\n    *   If Justin is the Minion and saw no werewolves, then there are no werewolves among the players.\n    *   Therefore, \"No Werewolf\" is the correct choice.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Minion and states that he woke up to find no werewolves. Mike, claiming to be the Seer, confirms that Justin was indeed the Minion. If these claims are true, it means all Werewolf cards are in the center, and no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Minion and states that he woke up to find no werewolves. Mike, claiming to be the Seer, confirms that Justin was indeed the Minion. If these claims are true, it means all Werewolf cards are in the center, and no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Minion and states that he woke up to find no werewolves. Mike, claiming to be the Seer, confirms that Justin was indeed the Minion. If these claims are true, it means all Werewolf cards are in the center, and no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Justin claims to be the Minion and states that he woke up to find no werewolves. Mike, claiming to be the Seer, confirms that Justin was indeed the Minion. If these claims are true, it means all Werewolf cards are in the center, and no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2723,
+    "output_token_count": 2420,
+    "generation_time_sec": 244.31810975074768,
+    "used_chat_template": true,
+    "input_char_count": 9992,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

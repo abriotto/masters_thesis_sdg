@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Mitchell: Claims Copycat (Doppelganger). Later claims he was a lone werewolf who saw Copycat in the center (Wait, that's contradictory. Let's re-read).\n    *   Paul: Claims Robber (initially), then claims Seer. Says he looked at Mitchell and saw Werewolf.\n    *   Justin: Claims Troublemaker. Says he swapped Mitchell and Mike.\n    *   Mike: Claims Tanner (at the end).\n\n    *   [16] Mitchell: \"Copycat.\"\n    *   [22] Paul: \"I robbed from him, he is the copycat.\" (Paul claims Robber).\n    *   [44] Justin: \"I was troublemaker.\"\n    *   [68] Mitchell: \"I saw a seer in the middle.\" (Wait, he claimed Copycat earlier).\n    *   [69] Paul: \"I'm the seer and I looked at your role... He was a werewolf again.\" (Paul changes claim from Robber to Seer).\n    *   [76] Mitchell: \"Incorrect. Luckily I ain't what I started as... I'm on the good team.\"\n    *   [100] Justin: \"I think Mike robbed from you and I switched you two... Mike is still a werewolf.\" (Justin claims he swapped Mitchell and Mike).\n    *   [109] Mitchell: \"I was lone werewolf and I saw copycat here.\" (Wait, Mitchell is now claiming he *started* as a werewolf).\n    *   [118] Mitchell: \"lone werewolf looks in the center. I saw a copycat.\"\n    *   [131] Justin: \"I actually switched Mitchell and Mike, so we kill Mitchell.\" (Wait, Justin just changed his mind? He said kill Mike in [100], now he says kill Mitchell in [131]).\n    *   [133] Justin: \"Because you're no longer a werewolf, you're a robber again.\" (This is confusing).\n    *   [135] Mike: \"I was the tanner from the beginning.\"\n\n    *   Mitchell: Copycat -> Lone Werewolf (who saw Copycat in center).\n    *   Paul: Robber -> Seer (who saw Mitchell as Werewolf).\n    *   Justin: Troublemaker (who swapped Mitchell and Mike).\n    *   Mike: Tanner.\n\n    *   If Mitchell started as Werewolf and Justin (Troublemaker) swapped Mitchell and Mike, then Mike is now the Werewolf.\n    *   If Paul is the Seer and saw Mitchell as a Werewolf, that was Mitchell's *starting* role.\n    *   If Mitchell is the Werewolf and Justin swapped him with Mike, Mike is the Werewolf.\n    *   Wait, let's look at Mitchell's claim again: \"I was lone werewolf and I saw copycat here [in the center].\" If Mitchell was the Werewolf, he is Team Werewolf.\n    *   Justin claims he swapped Mitchell and Mike. If Mitchell was the Werewolf and Mike was something else, Mike is now the Werewolf.\n    *   However, Mike claims to be the Tanner. Tanners want to be voted out.\n    *   Paul says he saw Mitchell as a Werewolf.\n\n    *   Mitchell's claims are all over the place: Copycat, then seeing Seer in middle, then being a lone Werewolf.\n    *   Paul's claims: Robber, then Seer.\n    *   Justin's claims: Troublemaker.\n    *   Mike's claims: Tanner.\n\n    *   If Mitchell was the Werewolf and Justin swapped him with Mike, Mike is the Werewolf.\n    *   If Paul is the Seer and saw Mitchell as a Werewolf, and Justin swapped Mitchell and Mike, Mike is the Werewolf.\n    *   If Mike is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf and wasn't swapped, Mitchell is the Werewolf.\n\n    *   [131] Justin: \"I actually switched Mitchell and Mike, so we kill Mitchell.\" (Wait, if he switched them, and Mitchell was the wolf, Mike is now the wolf. Why would he say kill Mitchell?)\n    *   [133] Justin: \"Because you're no longer a werewolf, you're a robber again.\" (This is completely incoherent).\n\n    *   Paul (Seer) saw Mitchell (Werewolf).\n    *   Justin (Troublemaker) swapped Mitchell and Mike.\n    *   Therefore, Mike is now the Werewolf.\n    *   Mike claims to be the Tanner (which is a common bluff for a Werewolf or an actual Tanner).\n    *   Mitchell claims he was the Werewolf (which is a very strange thing for a Werewolf to do, unless he's the Tanner or just playing chaotically).\n\n    *   If Mitchell is the Werewolf and was swapped with Mike, Mike is the Werewolf.\n    *   If Mitchell is the Werewolf and was NOT swapped, Mitchell is the Werewolf.\n    *   If Paul is the Seer and saw Mitchell as a Werewolf, Mitchell started as a Werewolf.\n    *   If Justin is the Troublemaker and swapped Mitchell and Mike, Mike is now the Werewolf.\n    *   If Mike is the Werewolf, voting Mike wins for the Village.\n    *   If Mitchell is the Werewolf (no swap), voting Mitchell wins for the Village.\n\n    *   Paul: \"I'll vote for Mike.\"\n    *   Justin: \"I'll kill Mike.\"\n    *   Mitchell: \"I'm on board [to vote Mike].\"\n\n    *   Mitchell's claims are highly inconsistent (Copycat, then Lone Wolf).\n    *   Paul's claim (Seer) is more consistent after the initial slip.\n    *   Justin's claim (Troublemaker) is consistent.\n    *   If Paul saw Mitchell as a Werewolf and Justin swapped Mitchell and Mike, Mike is the target.\n    *   Mike's claim of being the Tanner is a classic \"please vote for me\" or a bluff.\n\n    *   If Mitchell was the Werewolf and Justin swapped him with Mike, Mike is the Werewolf.\n    *   If Mitchell was the Werewolf and Justin *didn't* swap him, Mitchell is the Werewolf.\n    *   But Justin explicitly says he swapped them.\n    *   Wait, Justin says in [131]: \"I actually switched Mitchell and Mike, so we kill Mitchell.\" This is a contradiction. If he switched the Werewolf (Mitchell) with Mike, Mike is now the Werewolf.\n    *   Let's re-read [131]-[133]:\n        [131] Justin: \"...I actually switched Mitchell and Mike, so we kill Mitchell.\"\n        [133] Justin: \"Because you're no longer a werewolf, you're a robber again.\"\n        This is very confusing. If Mitchell is \"no longer a werewolf,\" then he was the werewolf and was swapped. If he was swapped with Mike, Mike is now the werewolf. So why say \"kill Mitchell\"?\n\n    *   Let's look at the logic again:\n        1. Paul (Seer) sees Mitchell = Werewolf.\n        2. Justin (Troublemaker) swaps Mitchell and Mike.\n        3. Result: Mike = Werewolf, Mitchell = (whatever Mike was).\n        4. Target: Mike.\n\n    *   Why would Justin say \"kill Mitchell\" in [131]? Maybe he's confused or lying. But then in [137] he says \"Yeah, we'll kill Mike. I'll kill Mike.\"\n\n    *   Paul, Justin, and Mitchell all seem to agree on Mike at the end.\n    *   Paul's Seer claim is the strongest piece of evidence.\n    *   If Paul is the Seer and saw Mitchell as a Werewolf, and Justin is the Troublemaker and swapped Mitchell and Mike, Mike is the Werewolf.\n\n    *   Could Mitchell be the Werewolf? He claimed he was a lone werewolf. If he's telling the truth about that, he's the Werewolf. But if he was swapped, he's not.\n    *   Could Paul be the Werewolf? He's claiming Seer.\n    *   Could Justin be the Werewolf? He's claiming Troublemaker.\n    *   Could Mike be the Werewolf? He's claiming Tanner.\n\n    *   If Mitchell is the Werewolf and was swapped with Mike, Mike is the Werewolf.\n    *   If Mitchell is the Werewolf and was NOT swapped, Mitchell is the Werewolf.\n    *   If Paul is the Seer and saw Mitchell as a Werewolf, Mitchell started as a Werewolf.\n    *   If Justin is the Troublemaker and swapped Mitchell and Mike, Mike is now the Werewolf.\n    *   The most likely target based on the combined claims (Paul=Seer, Justin=Troublemaker) is Mike.\n\n    *   Wait, Mitchell's claim \"I was lone werewolf\" is very weird. If he's the werewolf, why admit it? Maybe he's the Tanner? If Mitchell is the Tanner, he wants to be voted out.\n    *   But Paul (Seer) saw Mitchell as a Werewolf. If Paul is telling the truth, Mitchell started as a Werewolf.\n    *   If Mitchell started as a Werewolf and was swapped with Mike, Mike is now the Werewolf.\n\n    *   Paul: Seer (saw Mitchell as Werewolf)\n    *   Justin: Troublemaker (swapped Mitchell and Mike)\n    *   Mitchell: Started as Werewolf (confirmed by Paul and himself)\n    *   Mike: Now the Werewolf (due to swap)\n    *   Conclusion: Vote Mike.",
+  "parsed_output": {
+    "justification": "Paul claims to be the Seer and states he saw Mitchell as a Werewolf. Justin claims to be the Troublemaker and states he swapped Mitchell and Mike. If these claims are true, Mitchell started as the Werewolf but was swapped with Mike, making Mike the current Werewolf. Mike's claim to be the Tanner is a common bluff for a Werewolf or an actual Tanner, but based on the combined information from Paul and Justin, Mike is the most likely target for Team Village.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claims to be the Seer and states he saw Mitchell as a Werewolf. Justin claims to be the Troublemaker and states he swapped Mitchell and Mike. If these claims are true, Mitchell started as the Werewolf but was swapped with Mike, making Mike the current Werewolf. Mike's claim to be the Tanner is a common bluff for a Werewolf or an actual Tanner, but based on the combined information from Paul and Justin, Mike is the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claims to be the Seer and states he saw Mitchell as a Werewolf. Justin claims to be the Troublemaker and states he swapped Mitchell and Mike. If these claims are true, Mitchell started as the Werewolf but was swapped with Mike, making Mike the current Werewolf. Mike's claim to be the Tanner is a common bluff for a Werewolf or an actual Tanner, but based on the combined information from Paul and Justin, Mike is the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Paul claims to be the Seer and states he saw Mitchell as a Werewolf. Justin claims to be the Troublemaker and states he swapped Mitchell and Mike. If these claims are true, Mitchell started as the Werewolf but was swapped with Mike, making Mike the current Werewolf. Mike's claim to be the Tanner is a common bluff for a Werewolf or an actual Tanner, but based on the combined information from Paul and Justin, Mike is the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4405,
+    "output_token_count": 2325,
+    "generation_time_sec": 247.5145754814148,
+    "used_chat_template": true,
+    "input_char_count": 14988,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
