@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#492#More#Classic#Werewolf",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#492#More#Classic#Werewolf_Game1.txt",
+  "player_names": [
+    "Pete",
+    "Katie",
+    "Brett",
+    "Dustin"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Pete, Katie, Brett, Dustin.\n    *   Roles involved (claimed/mentioned):\n        *   Pete: Claims to be Werewolf [24], then claims to be Seer [94], then says Brett and Dustin are wolves [89, 183].\n        *   Katie: Claims to be Drunk [27, 29, 32, 51, 105].\n        *   Brett: Claims to be Robber [80], says he robbed Dustin's Seer card [84, 86].\n        *   Dustin: Claims to be Seer [44], says he saw two Werewolves in the center [46].\n\n    *   Dustin (Seer) says he saw two Werewolves in the center [46].\n    *   If Dustin is telling the truth, there are no Werewolves among the players.\n    *   Katie (Drunk) says she swapped her card with one from the center [49, 51, 105].\n    *   If Dustin saw two Werewolves in the center and Katie (Drunk) swapped with one of them, Katie is now a Werewolf.\n    *   Brett (Robber) says he robbed Dustin (Seer) [84, 86].\n    *   If Brett is telling the truth, Brett is now the Seer and Dustin is the Robber.\n    *   Pete claims to be the Werewolf [24] (likely a joke or bluff), then claims to be the Seer [94] (contradicting Dustin and Brett).\n\n    *   *Scenario A: Dustin is the Seer and tells the truth.*\n        *   Center cards: Werewolf, Werewolf, [Other].\n        *   Katie (Drunk) swaps with one center card. If she swaps with a Werewolf, she becomes a Werewolf.\n        *   Brett (Robber) swaps with Dustin (Seer). Brett is now Seer, Dustin is Robber.\n        *   Result: Katie is the Werewolf.\n\n    *   *Scenario B: Dustin is lying (Tanner or Werewolf).*\n        *   If Dustin is the Tanner, he wants to be voted out.\n        *   If Dustin is a Werewolf, he's trying to divert suspicion.\n\n    *   *Scenario C: Pete is the Werewolf.*\n        *   Pete explicitly said \"this time I'm the werewolf\" [24]. While this sounds like a joke, in these games, sometimes players admit it to confuse others or because they are the Tanner. However, he later claims to be the Seer [94].\n\n    *   *Scenario D: Brett and Dustin are Werewolves.*\n        *   Pete thinks they are wolves [89, 183].\n\n    *   Dustin's claim: \"I was a seer and I looked at these two cards... Both werewolves.\" [44, 46].\n    *   Katie's claim: \"I was drunk and I took this card.\" [105].\n    *   If Dustin is honest, and Katie swapped with one of those two center cards, Katie is the Werewolf.\n    *   Wait, if there are two Werewolves in the center, and the game has 4 players, the total roles are 7.\n    *   Roles: Werewolf, Werewolf, Seer, Robber, Drunk, [3 others].\n    *   If two Werewolves are in the center, and Katie (Drunk) swaps with one, Katie becomes a Werewolf.\n    *   If Katie is the Werewolf, Team Village wins by voting her out.\n\n    *   Pete's behavior is erratic. He claims to be the werewolf, then the seer, then accuses others.\n    *   Brett and Dustin seem to be coordinating.\n    *   Katie's claim of being the Drunk is consistent.\n    *   If Dustin is the Seer and saw two wolves in the center, and Katie swapped with one, Katie is the only possible werewolf.\n    *   However, if Dustin is lying about the center cards to protect himself or a teammate, he could be the werewolf.\n    *   But look at the prompt: \"Team Village wins only if they eliminate a Werewolf.\"\n    *   If Dustin's claim is true (2 wolves in center), and Katie swapped with one, Katie is the werewolf.\n    *   If Dustin's claim is false, he might be the werewolf.\n    *   Let's re-read: Pete says \"this time I'm the werewolf\" [24]. This is a very strong (though potentially joking) admission. But then he says he's the Seer [94].\n\n    *   Dustin: \"I was a seer and I looked at these two cards... Both werewolves.\"\n    *   Katie: \"I was drunk and I took this card.\"\n    *   If Dustin is telling the truth, Katie is now a Werewolf.\n    *   If Dustin is lying, he is likely the Werewolf or the Tanner.\n    *   Brett claims to be the Robber and robbed Dustin's Seer card. This supports Dustin's claim that he *was* the Seer.\n    *   If Brett is the Robber and Dustin was the Seer, then Dustin's information about the center cards is likely reliable.\n    *   Therefore, Katie (the Drunk) swapped with a Werewolf from the center.\n\n    *   Wait, if Dustin saw *two* werewolves in the center, and Katie swapped with *one* of them, then one werewolf remains in the center and one is now held by Katie.\n    *   This means Katie is the only werewolf among the players.\n\n    *   Pete: \"I'm the werewolf\" [24].\n    *   Pete: \"I think they're both wolves\" [89].\n    *   Pete: \"I found the wolf\" [124].\n    *   Pete's claims are contradictory. He's either the Tanner or just trolling.\n\n    *   Dustin (Seer) -> saw 2 Wolves in center.\n    *   Katie (Drunk) -> swapped with 1 center card.\n    *   Brett (Robber) -> swapped with Dustin (Seer).\n    *   Current roles:\n        *   Dustin: Robber\n        *   Brett: Seer\n        *   Katie: Werewolf (swapped with center)\n        *   Pete: ? (Tanner/Villager/etc.)\n    *   Conclusion: Katie is the Werewolf.\n\n    *   Is it possible Dustin is the Werewolf and lying? If Dustin is the Werewolf, he wouldn't say there are two werewolves in the center because that would make the Village think there are no werewolves among the players (unless someone swapped).\n    *   Actually, by saying there are two werewolves in the center, he's effectively saying \"I am not a werewolf, and neither is Brett or Pete.\" But then he points out that Katie swapped with the center. This is a clever way to frame Katie.\n    *   However, based on the provided transcript, the most logical deduction following the claims is that Katie became the werewolf via the Drunk's swap.\n\n    *   Dustin claims Seer, saw 2 wolves in center.\n    *   Katie claims Drunk, swapped with center.\n    *   Brett claims Robber, robbed Dustin.\n    *   If these are true, Katie is the werewolf.\n    *   Pete's claims are inconsistent.\n    *   The most likely target for Team Village is Katie.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   [24] Pete: \"All right, this time I'm the werewolf.\"\n    *   [44] Dustin: \"I was a seer and I looked at these two cards.\"\n    *   [46] Dustin: \"Both werewolves.\"\n    *   [105] Katie: \"I was drunk and I took this card.\"\n    *   If Dustin is the Seer and saw two werewolves in the center, and Katie is the Drunk and swapped with one, Katie is the werewolf.\n    *   If Pete is the werewolf, then Dustin is lying about the center cards.\n    *   But Brett confirms Dustin was the Seer [86].\n    *   If Brett and Dustin are both lying (Werewolf team), they are doing a very complex bluff.\n    *   Given the information, Katie is the most logically derived werewolf.\n\n    *   Wait, look at [183] Pete: \"Those two are wolves.\" (Referring to Brett and Dustin).\n    *   And [184] Katie: \"I don't think they're wolves, I think you're a tanner.\"\n    *   If Pete is the Tanner, he wants to be voted out.\n    *   If Katie is the Werewolf, she wants to divert the vote to Pete or the others.\n    *   The most consistent narrative is: Dustin (Seer) saw 2 wolves in center -> Katie (Drunk) swapped with one -> Katie is now the Werewolf.\n\n    *   Justification: Dustin claimed to be the Seer and saw two Werewolf cards in the center. Katie claimed to be the Drunk and swapped her card with one from the center. If Dustin's information is correct, Katie swapped into a Werewolf role. Brett's claim as the Robber who robbed Dustin's Seer card further supports Dustin's initial role.\n    *   Chosen vote: Katie.",
+  "parsed_output": {
+    "justification": "Dustin claimed to be the Seer and stated he saw two Werewolf cards in the center. Katie claimed to be the Drunk and admitted to swapping her card with one from the center. If Dustin's information is accurate, Katie swapped her role for one of the Werewolf cards in the center. Brett's claim to be the Robber who robbed Dustin's Seer card provides corroboration for Dustin's starting role, making Katie the most likely Werewolf.",
+    "chosen_vote": "Katie"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dustin claimed to be the Seer and stated he saw two Werewolf cards in the center. Katie claimed to be the Drunk and admitted to swapping her card with one from the center. If Dustin's information is accurate, Katie swapped her role for one of the Werewolf cards in the center. Brett's claim to be the Robber who robbed Dustin's Seer card provides corroboration for Dustin's starting role, making Katie the most likely Werewolf.\",\n  \"chosen_vote\": \"Katie\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dustin claimed to be the Seer and stated he saw two Werewolf cards in the center. Katie claimed to be the Drunk and admitted to swapping her card with one from the center. If Dustin's information is accurate, Katie swapped her role for one of the Werewolf cards in the center. Brett's claim to be the Robber who robbed Dustin's Seer card provides corroboration for Dustin's starting role, making Katie the most likely Werewolf.\",\n  \"chosen_vote\": \"Katie\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Katie",
+    "justification": "Dustin claimed to be the Seer and stated he saw two Werewolf cards in the center. Katie claimed to be the Drunk and admitted to swapping her card with one from the center. If Dustin's information is accurate, Katie swapped her role for one of the Werewolf cards in the center. Brett's claim to be the Robber who robbed Dustin's Seer card provides corroboration for Dustin's starting role, making Katie the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4816,
+    "output_token_count": 2239,
+    "generation_time_sec": 472.6469306945801,
+    "used_chat_template": true,
+    "input_char_count": 15400,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

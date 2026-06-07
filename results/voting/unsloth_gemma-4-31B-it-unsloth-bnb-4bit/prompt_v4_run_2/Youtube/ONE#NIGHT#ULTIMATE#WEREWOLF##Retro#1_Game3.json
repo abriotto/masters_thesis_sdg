@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles involved (based on announcer): Werewolf, Seer, Robber, Troublemaker.\n    *   Night Actions:\n        *   Werewolves wake up.\n        *   Seer wakes up.\n        *   Robber wakes up (Justin is mentioned as Robber in the transcript, but wait, let's look closer).\n        *   Troublemaker wakes up.\n\n    *   [4] Announcer: Robber. Wake up.\n    *   [5] Justin: \"Robber.\" (Wait, Justin is speaking *during* the night phase? This is unusual for a standard game, but the transcript shows it).\n    *   [7] James: \"Robert.\"\n    *   [8] Justin: \"Robert.\"\n    *   [10] Justin: \"Wake up, Robert.\"\n    *   *Correction:* Looking at the transcript, Justin and James are talking *during* the night phase. This is very strange. Usually, players are silent. However, Justin says \"Robber\" and \"Robert\" and \"Wake up, Robert\". It seems Justin is claiming to be the Robber or reacting to the announcer.\n    *   [14] Announcer: Troublemaker. Wake up.\n    *   [15] James: \"I thought I would be able to hear people moving shit a lot more than this.\" (James is talking during the Troublemaker's turn).\n\n    *   Alvin claims to be the Seer [29, 50, 84].\n    *   Alvin claims he looked at Justin's card and it was a Werewolf [29, 50, 84].\n    *   Justin claims to be a Villager [28, 38].\n    *   James claims to be a Villager [30].\n    *   Mitchell doesn't explicitly claim a role but agrees with Alvin [51, 85].\n    *   James initially suggests \"no werewolf\" [24, 52] but eventually agrees to trust Alvin and vote Justin [83].\n    *   Mitchell agrees to trust Alvin and vote Justin [85].\n\n    *   If Alvin is the Seer and didn't get swapped, Justin is the Werewolf.\n    *   If Justin was the Robber (as he seemed to imply during the night phase, though the transcript is messy), he would have swapped his card with someone else.\n    *   Wait, let's re-read the night phase:\n        [4] Announcer: Robber. Wake up.\n        [5] Justin: Robber.\n        [6] Announcer: You may exchange your card with another player's card.\n        [7] James: Robert.\n        [8] Justin: Robert.\n        [10] Justin: Wake up, Robert.\n        This looks like Justin is talking out loud during the night phase, possibly identifying himself as the Robber. If Justin was the Robber, he swapped his card with someone.\n    *   If Justin was the Robber, he swapped his card with someone else and then looked at the new card.\n    *   If Alvin is the Seer, he looked at Justin's card *before* the Robber acted (Seer is action 5, Robber is action 6).\n    *   Wait, the Night Action Order is:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n    *   Seer (5) acts *before* Robber (6).\n    *   If Alvin (Seer) looked at Justin and saw a Werewolf, and then Justin (Robber) swapped his card with someone else, Justin is no longer the Werewolf. The person Justin swapped with is now the Werewolf.\n    *   However, the transcript shows Justin saying \"Robber\" during the night phase. If Justin is the Robber, he swapped his card.\n    *   Let's re-evaluate:\n        *   Alvin (Seer) sees Justin = Werewolf.\n        *   Justin (Robber) swaps his card with X.\n        *   Now X = Werewolf, Justin = whatever X was.\n    *   But did Justin actually act as the Robber? The transcript is very weird. Justin says \"Robber\" and \"Robert\" while the announcer is calling the Robber. This suggests Justin *is* the Robber.\n    *   If Justin is the Robber, he swapped his card. Who did he swap with? The transcript doesn't say.\n    *   Wait, if Justin is the Robber, he knows his *new* card. He claims to be a Villager [28, 38].\n    *   If Alvin is the Seer, he saw Justin as a Werewolf *before* the swap.\n    *   If Justin (Robber) swapped his Werewolf card with someone else, that someone else is now the Werewolf.\n    *   But wait, if Justin was the Werewolf *starting* role, and he was also the Robber? No, you only have one starting role.\n    *   If Justin *started* as the Robber, he swapped his card with someone. If Alvin (Seer) looked at Justin and saw a Werewolf, that means Justin *already* had the Werewolf card? No, the Seer acts *before* the Robber.\n    *   Let's re-read the order: Seer (5), then Robber (6).\n    *   If Alvin (Seer) looked at Justin and saw a Werewolf, Justin was the Werewolf *at that moment*.\n    *   Then Justin (Robber) woke up. But Justin can't be both the Seer's target (Werewolf) and the Robber. He only has one starting role.\n    *   If Justin started as the Robber, he couldn't have been a Werewolf when the Seer looked.\n    *   If Justin started as the Werewolf, he couldn't have been the Robber.\n    *   Therefore, if Alvin is telling the truth about being the Seer and seeing Justin as a Werewolf, Justin *cannot* be the Robber.\n    *   If Justin is not the Robber, then his comments during the night phase (\"Robber\", \"Robert\") were just him talking/joking/bluffing.\n    *   If Justin is not the Robber and Alvin is the Seer, Justin is the Werewolf.\n\n    *   Alvin: Claims Seer, says Justin is Werewolf.\n    *   Justin: Claims Villager.\n    *   James: Claims Villager, initially says \"no werewolf\", then agrees to vote Justin.\n    *   Mitchell: Agrees with Alvin, votes Justin.\n\n    *   Could Alvin be the Werewolf? A Werewolf might claim Seer to frame someone.\n    *   Could Justin be the Tanner? A Tanner wants to be voted out. Justin's defense is weak (\"I'm just a villager\").\n    *   Could James or Mitchell be the Werewolf?\n    *   If Alvin is the Werewolf and is lying about being the Seer, he's framing Justin.\n    *   If Justin is the Werewolf, Alvin is telling the truth.\n\n    *   The most direct evidence is Alvin's claim. In these games, the Seer's information is the strongest lead unless there's a reason to doubt it.\n    *   Justin's behavior during the night phase is erratic, but doesn't provide a clear alternative role that contradicts Alvin's claim (unless he actually was the Robber, but as analyzed, that's unlikely if Alvin is the Seer).\n    *   The consensus among the players (Alvin, James, Mitchell) is to vote for Justin.\n\n    *   Alvin claims Seer and identifies Justin as the Werewolf.\n    *   Justin claims to be a Villager.\n    *   James and Mitchell eventually agree with Alvin.\n    *   There is no strong evidence to contradict Alvin's claim.\n    *   Therefore, Justin is the most likely candidate for the Werewolf.\n\n    *   Wait, let me re-read the night phase one more time.\n    *   [4] Announcer: Robber. Wake up.\n    *   [5] Justin: Robber.\n    *   [6] Announcer: You may exchange your card with another player's card.\n    *   [7] James: Robert.\n    *   [8] Justin: Robert.\n    *   [10] Justin: Wake up, Robert.\n    *   This is so bizarre. It sounds like they are playing the game while talking. If Justin is actually the Robber, he swapped his card. If he swapped his card, he might have taken the Werewolf card or given it away.\n    *   But if Alvin is the Seer and saw Justin as a Werewolf *before* the Robber acted, then Justin was the Werewolf. Then Justin (as Robber) swapped his Werewolf card with someone else.\n    *   Wait, if Justin is the Robber, he *cannot* be the Werewolf. He starts as the Robber.\n    *   If Alvin (Seer) saw Justin as a Werewolf, then Justin *started* as the Werewolf.\n    *   If Justin started as the Werewolf, he *cannot* be the Robber.\n    *   So Justin's comments during the night phase are irrelevant or deceptive.\n    *   Conclusion remains: Justin is the most likely Werewolf.\n\n    *   Justification: Alvin claims to be the Seer and states he saw Justin's card, which was a Werewolf. Justin claims to be a Villager, but there is no evidence to support this over Alvin's claim. James and Mitchell both decide to trust Alvin's information.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Alvin claims to be the Seer and explicitly states that he looked at Justin's card and saw it was a Werewolf. While Justin claims to be a Villager, he provides no evidence to support this, and his behavior during the night phase is erratic and inconsistent. Both James and Mitchell eventually decide to trust Alvin's claim, making Justin the most likely candidate for the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alvin claims to be the Seer and explicitly states that he looked at Justin's card and saw it was a Werewolf. While Justin claims to be a Villager, he provides no evidence to support this, and his behavior during the night phase is erratic and inconsistent. Both James and Mitchell eventually decide to trust Alvin's claim, making Justin the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alvin claims to be the Seer and explicitly states that he looked at Justin's card and saw it was a Werewolf. While Justin claims to be a Villager, he provides no evidence to support this, and his behavior during the night phase is erratic and inconsistent. Both James and Mitchell eventually decide to trust Alvin's claim, making Justin the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alvin claims to be the Seer and explicitly states that he looked at Justin's card and saw it was a Werewolf. While Justin claims to be a Villager, he provides no evidence to support this, and his behavior during the night phase is erratic and inconsistent. Both James and Mitchell eventually decide to trust Alvin's claim, making Justin the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3319,
+    "output_token_count": 2331,
+    "generation_time_sec": 244.9716522693634,
+    "used_chat_template": true,
+    "input_char_count": 12004,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Insomniac (claims).\n    *   Paul: Troublemaker (claims), then later says he's a Villager and didn't switch anyone.\n    *   Eric: Seer (claims).\n    *   Mitchell: Villager (claims).\n    *   Mike: Werewolf (claims).\n\n    *   Justin: Claims Insomniac. Woke up as Insomniac.\n    *   Paul: Claims Troublemaker. Says he didn't switch Justin. Later says he's a Villager and didn't switch anyone.\n    *   Eric: Claims Seer. Says he looked at center cards: one was a Werewolf, one was a Villager.\n    *   Mitchell: Claims Villager.\n    *   Mike: Claims Werewolf.\n\n    *   Mike openly admits to being the Werewolf (\"I was the werewolf\").\n    *   Mike suggests he might have been robbed or switched, but he's the most obvious target.\n    *   Eric (Seer) claims he saw a Werewolf in the center. If there's a Werewolf in the center and Mike is a Werewolf, there are two Werewolves in the game (one in center, one with Mike).\n    *   Wait, Eric says: \"Center card is werewolf and the other one I pulled was villager.\" (Line 99). This means one Werewolf is in the center.\n    *   If Mike is a Werewolf, and one Werewolf is in the center, then Mike is the only Werewolf among the players.\n    *   Paul's claim: Initially says he's Troublemaker, then says he's a Villager and didn't switch anyone. This is contradictory, but doesn't necessarily make him the Werewolf.\n    *   Mitchell claims Villager.\n    *   Justin claims Insomniac.\n\n    *   Mike admitted to being the Werewolf.\n    *   Eric (Seer) confirms one Werewolf is in the center.\n    *   If Mike is the only other Werewolf, voting him out wins the game for the Village.\n    *   Is Mike bluffing? Why would a Werewolf admit to being a Werewolf? Maybe he thinks he was robbed or switched and is no longer the Werewolf?\n    *   Mike says: \"I'm very confident that my card is not mine anymore\" (Line 61).\n    *   If Mike was the Werewolf and was robbed by Mitchell (who claims Villager), then Mitchell would be the Werewolf.\n    *   However, Mitchell claims he was the Villager and didn't steal from anyone.\n    *   Eric (Seer) says Mitchell was not the Robber (Line 80).\n    *   If Mitchell wasn't the Robber and Paul (Troublemaker) didn't switch anyone (as Paul later claimed), then Mike is still the Werewolf.\n\n    *   Mike: Admitted Werewolf.\n    *   Eric: Seer, saw one Werewolf in center.\n    *   Paul: Confused claims (Troublemaker -> Villager), but not strongly linked to Werewolf.\n    *   Mitchell: Claims Villager.\n    *   Justin: Claims Insomniac.\n\n    If Mike is the Werewolf, voting him out wins. If Mike was robbed/switched and someone else is the Werewolf, the situation is more complex. But based on the transcript, Mike is the only one admitting to the role, and the Seer's information (one Werewolf in center) suggests there's only one other Werewolf card possible.\n\n    *   Mike: \"I was the werewolf\" (Line 37, 39).\n    *   Eric: \"Center card is werewolf\" (Line 99).\n    *   If Mike is the Werewolf, he is the target.\n\n    *   Could Mike be the Tanner? The Tanner wants to be voted out. Admitting to being the Werewolf is a great way to get voted out.\n    *   However, in the context of \"make Team Village win,\" if we have a choice between a self-admitted Werewolf and others, the self-admitted one is the primary suspect. If he's the Tanner, the Village loses, but if he's the Werewolf, the Village wins.\n    *   Wait, if Eric is the Seer and saw a Werewolf in the center, and Mike is the Werewolf, then there are two Werewolf cards in the game.\n    *   Let's re-read Eric's Seer claim: \"Center card is werewolf and the other one I pulled was villager.\" (Line 99).\n    *   If there are 5 players, there are 8 cards total (5+3).\n    *   If Eric saw one Werewolf in the center, there are 2 other center cards. One is a Villager. The third center card is unknown.\n    *   If Mike is a Werewolf, then there is at least one Werewolf among the players.\n\n    *   Mike admitted to being the Werewolf.\n    *   Eric (Seer) confirms one Werewolf is in the center.\n    *   Paul's claims are inconsistent, but Mike's admission is direct.\n    *   The most logical vote to ensure a Village win (assuming Mike isn't the Tanner) is Mike.\n\n    *   Mike: \"I was the werewolf\"\n    *   Eric: \"Center card is werewolf\"\n    *   Paul: \"I didn't switch anybody. You're still a werewolf.\" (Line 102)\n    *   Conclusion: Mike is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mike explicitly admitted to being the Werewolf multiple times during the discussion. Eric, claiming to be the Seer, stated that one Werewolf card was in the center, which implies that if Mike is a Werewolf, he is the only one among the players. Although Paul's claims about his role were inconsistent, Mike's direct admission makes him the primary target for Team Village to win.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike explicitly admitted to being the Werewolf multiple times during the discussion. Eric, claiming to be the Seer, stated that one Werewolf card was in the center, which implies that if Mike is a Werewolf, he is the only one among the players. Although Paul's claims about his role were inconsistent, Mike's direct admission makes him the primary target for Team Village to win.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike explicitly admitted to being the Werewolf multiple times during the discussion. Eric, claiming to be the Seer, stated that one Werewolf card was in the center, which implies that if Mike is a Werewolf, he is the only one among the players. Although Paul's claims about his role were inconsistent, Mike's direct admission makes him the primary target for Team Village to win.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike explicitly admitted to being the Werewolf multiple times during the discussion. Eric, claiming to be the Seer, stated that one Werewolf card was in the center, which implies that if Mike is a Werewolf, he is the only one among the players. Although Paul's claims about his role were inconsistent, Mike's direct admission makes him the primary target for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3700,
+    "output_token_count": 1346,
+    "generation_time_sec": 143.10242867469788,
+    "used_chat_template": true,
+    "input_char_count": 12951,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

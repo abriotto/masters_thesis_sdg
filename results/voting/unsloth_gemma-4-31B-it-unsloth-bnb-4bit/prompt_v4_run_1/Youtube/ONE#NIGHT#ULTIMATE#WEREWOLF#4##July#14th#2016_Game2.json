@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Mike claims to be the Seer. He says he looked at two cards in the center and they were \"good\" (not werewolves).\n    *   Justin claims he was the Tanner.\n    *   Mitchell claims he was the Drunk (initially, then says he was kidding).\n    *   Mitchell claims he swapped Justin and Paul (Troublemaker).\n    *   Paul says he's the Werewolf (jokingly/confusedly: \"Now I'm the werewolf, aren't I?\").\n    *   Mitchell later admits he might have lied about switching (Troublemaker claim).\n    *   Justin keeps asking to be voted out (\"Kill me, kill me\").\n\n    *   *Mike (Seer):* Claims he saw two good cards in the center. If true, there's only one werewolf card left (either in play or in the center).\n    *   *Justin (Tanner):* Claims he is the Tanner. If he is the Tanner, he wants to be voted out.\n    *   *Mitchell (Troublemaker/Drunk/Werewolf?):* Claims he was the Drunk (then retracts), then claims he was the Troublemaker and swapped Justin and Paul, then admits he might have lied about the swap.\n    *   *Paul:* Seems to be agreeing with Mike.\n\n    *   If Mike is the Seer and saw two good cards in the center, and there are 4 players and 3 center cards (total 7 cards), and the roles selected were 7 (4 players + 3 center).\n    *   Wait, the rules say \"number of candidate roles is always equal to the number of players plus 3\". So 4 players + 3 = 7 roles.\n    *   If Mike (Seer) saw 2 good cards in the center, there is 1 card left in the center and 3 cards held by other players.\n    *   If the 2 center cards were good, the Werewolf could be among the players or the 3rd center card.\n\n    *   Justin is aggressively pushing to be voted out. This is classic Tanner behavior.\n    *   Mitchell is being inconsistent. He claimed to be the Drunk, then the Troublemaker, then admitted he lied about the swap. This inconsistency often points to a Werewolf trying to create confusion or a Tanner trying to get caught.\n    *   Mike's Seer claim is relatively consistent. Paul supports Mike.\n    *   If Justin is the Tanner, voting him out makes the Tanner win, not the Village.\n    *   If Mitchell is the Werewolf, voting him out makes the Village win.\n\n    *   Mitchell's behavior:\n        *   Claimed Drunk (retracted).\n        *   Claimed Troublemaker (swapped Justin/Paul).\n        *   Admitted he lied about the swap.\n        *   Tried to shift suspicion to Justin and Paul.\n    *   Justin's behavior:\n        *   Claimed Tanner.\n        *   Begged to be voted out.\n    *   Mike's behavior:\n        *   Claimed Seer.\n        *   Saw two good cards in center.\n    *   Paul's behavior:\n        *   Supported Mike.\n\n    *   If Justin is the Tanner, he's not the Werewolf.\n    *   If Mike is the Seer, he's not the Werewolf.\n    *   If Paul is just a Villager/other role, he's not the Werewolf.\n    *   That leaves Mitchell. Mitchell's erratic claims (Drunk -> Troublemaker -> \"maybe I lied\") are highly suspicious.\n\n    *   Could Mitchell be the Tanner? He's not begging to be voted out as much as Justin is.\n    *   Could Mike be the Werewolf? He claimed Seer early. If he's the Werewolf, he's bluffing.\n    *   Could Paul be the Werewolf? He joked about it, but generally supports Mike.\n    *   Could Justin be the Werewolf? He's claiming Tanner to get voted out? No, if a Werewolf is voted out, the Village wins. A Werewolf would *not* want to be voted out. Only the Tanner wants to be voted out.\n\n    *   Justin is almost certainly the Tanner (begging to be voted out).\n    *   Mitchell is the most likely Werewolf due to the contradictory claims and attempts to manipulate the narrative.\n\n    *   Mike (Seer) saw 2 good cards in center.\n    *   If there is one Werewolf in the game, and 2 center cards are good, the Werewolf is either one of the players or the 3rd center card.\n    *   If Mitchell is the Werewolf, the Village wins by voting him out.\n\n    *   Justin: Tanner (likely)\n    *   Mike: Seer (likely)\n    *   Paul: Villager/Other (likely)\n    *   Mitchell: Werewolf (likely)\n\n    *   Wait, let's re-read: \"Mitchell: I switched Justin with Paul.\" \"Paul: Yeah.\" \"Paul: Now I'm the werewolf, aren't I?\"\n    *   If Mitchell actually swapped them, and Paul became the Werewolf, then Paul is the target. But Mitchell then said \"Caught me\" when Mike said he lied about switching.\n    *   If Mitchell lied about switching, then Paul isn't the Werewolf because of a swap.\n    *   If Mitchell is the Werewolf, he'd lie about being the Troublemaker to confuse the other players and protect himself.\n\n    *   Justin is too obvious as the Tanner.\n    *   Mitchell is the most suspicious player.\n\n    *   Justification: Justin is likely the Tanner as he is actively encouraging the group to vote him out. Mike's claim as the Seer is consistent and supported by Paul. Mitchell has made several contradictory claims, first claiming to be the Drunk, then the Troublemaker, and then admitting he may have lied about swapping players, which is typical behavior for a Werewolf attempting to deceive the group.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Justin is likely the Tanner, as he is aggressively begging the group to vote him out, which is the Tanner's win condition. Mike's claim as the Seer is consistent and supported by Paul. Mitchell, however, has been highly inconsistent, claiming to be the Drunk and then the Troublemaker, before admitting he may have lied about swapping players, which is characteristic of a Werewolf attempting to create confusion.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin is likely the Tanner, as he is aggressively begging the group to vote him out, which is the Tanner's win condition. Mike's claim as the Seer is consistent and supported by Paul. Mitchell, however, has been highly inconsistent, claiming to be the Drunk and then the Troublemaker, before admitting he may have lied about swapping players, which is characteristic of a Werewolf attempting to create confusion.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin is likely the Tanner, as he is aggressively begging the group to vote him out, which is the Tanner's win condition. Mike's claim as the Seer is consistent and supported by Paul. Mitchell, however, has been highly inconsistent, claiming to be the Drunk and then the Troublemaker, before admitting he may have lied about swapping players, which is characteristic of a Werewolf attempting to create confusion.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Justin is likely the Tanner, as he is aggressively begging the group to vote him out, which is the Tanner's win condition. Mike's claim as the Seer is consistent and supported by Paul. Mitchell, however, has been highly inconsistent, claiming to be the Drunk and then the Troublemaker, before admitting he may have lied about swapping players, which is characteristic of a Werewolf attempting to create confusion."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4298,
+    "output_token_count": 1481,
+    "generation_time_sec": 313.4985501766205,
+    "used_chat_template": true,
+    "input_char_count": 14709,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James claims to be the Troublemaker and says he swapped Mike and Justin.\n    *   Mike claims to be the Seer and says he looked at two cards in the center. (Wait, Mike says \"I was the seer\" and \"I looked at two at the center\").\n    *   Mitchell claims he started as the Drunk and swapped his card with one from the center. He's trying to convince the group to vote for Caitlynn instead of him.\n    *   Caitlynn doesn't claim a role but says she's fairly certain she can't win (suggesting she might be the Tanner or a Villager).\n\n    *   James (Troublemaker) swapped Mike and Justin.\n    *   Mike (Seer) looked at two center cards.\n    *   Mitchell (Drunk) swapped his card with one center card.\n\n    *   If Mike (Seer) looked at two center cards, he knows what's in the center.\n    *   If Mitchell (Drunk) swapped with the center, he took one of those cards.\n    *   Mike says he looked at two center cards. He doesn't explicitly say *what* he saw, but the conversation implies there were Werewolves in the center (James says \"If you saw two werewolves, odds are he [Mitchell] grabbed one\").\n    *   Wait, let's re-read:\n        *   [37] Mike: \"I looked at two at the center.\"\n        *   [85] James: \"If you saw two werewolves, odds are he grabbed one?\"\n        *   [86] Mike: \"If you, I mean, yes.\"\n    *   This suggests Mike saw Werewolves in the center. If there were two Werewolves in the center, and Mitchell (Drunk) swapped his card with one of them, Mitchell is now a Werewolf.\n\n    *   James (Troublemaker) swapped Mike and Justin.\n    *   If Mike was the Seer and Justin was something else, they swapped.\n    *   Wait, Mike says \"I was the seer\" [35]. If James swapped them, Mike is now whatever Justin was, and Justin is now the Seer.\n    *   However, Mike is the one claiming to have seen the center cards. This means Mike *started* as the Seer.\n    *   If James (Troublemaker) swapped Mike and Justin, then Mike's *final* role is Justin's starting role, and Justin's *final* role is Mike's starting role (Seer).\n    *   But the win condition depends on the *final* card.\n\n    *   Mitchell claims he was the Drunk and swapped with the center.\n    *   If Mike saw Werewolves in the center, and Mitchell swapped with one, Mitchell is now a Werewolf.\n    *   Mitchell is desperately trying to deflect votes toward Caitlynn.\n    *   James and Mike are both leaning toward voting for Mitchell.\n    *   Caitlynn is also voting for Mitchell.\n\n    *   If Mitchell is the Werewolf, voting him out wins for the Village.\n    *   If Mitchell is the Tanner, voting him out wins for the Tanner.\n    *   If Mitchell is a Villager, voting him out loses for the Village (unless there are no werewolves).\n    *   Given the claim that Mike (Seer) saw Werewolves in the center and Mitchell (Drunk) swapped with one, Mitchell is the most likely candidate for the Werewolf.\n\n    *   James: Troublemaker (Village)\n    *   Mike: Seer (Village)\n    *   Justin: ?\n    *   Caitlynn: ?\n    *   Mitchell: Drunk -> Werewolf?\n\n    *   If Mike saw two werewolves in the center, and Mitchell swapped with one, then one werewolf is still in the center and one is now held by Mitchell.\n    *   If Mitchell is the werewolf, voting him out wins the game for the Village.\n\n    *   Could James be lying about being the Troublemaker?\n    *   Could Mike be lying about being the Seer?\n    *   Could Mitchell be lying about being the Drunk?\n    *   In One Night Ultimate Werewolf, the most suspicious behavior often points to the werewolf. Mitchell's erratic defense and the logic provided by James and Mike make him the primary target.\n\n    *   James (Troublemaker) swapped Mike and Justin.\n    *   Mike (Seer) looked at center.\n    *   Mitchell (Drunk) swapped with center.\n    *   If Mike saw werewolves in the center, Mitchell likely picked one up.\n    *   Therefore, Mitchell is the most probable Werewolf.",
+  "parsed_output": {
+    "justification": "Mike claimed to be the Seer and stated he looked at two cards in the center. James suggested that if Mike saw werewolves in the center, Mitchell (who claimed to be the Drunk and swapped his card with one from the center) likely picked up a werewolf card. Mitchell's defensive behavior and attempts to divert votes toward Caitlynn further increase the suspicion that he is the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claimed to be the Seer and stated he looked at two cards in the center. James suggested that if Mike saw werewolves in the center, Mitchell (who claimed to be the Drunk and swapped his card with one from the center) likely picked up a werewolf card. Mitchell's defensive behavior and attempts to divert votes toward Caitlynn further increase the suspicion that he is the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claimed to be the Seer and stated he looked at two cards in the center. James suggested that if Mike saw werewolves in the center, Mitchell (who claimed to be the Drunk and swapped his card with one from the center) likely picked up a werewolf card. Mitchell's defensive behavior and attempts to divert votes toward Caitlynn further increase the suspicion that he is the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mike claimed to be the Seer and stated he looked at two cards in the center. James suggested that if Mike saw werewolves in the center, Mitchell (who claimed to be the Drunk and swapped his card with one from the center) likely picked up a werewolf card. Mitchell's defensive behavior and attempts to divert votes toward Caitlynn further increase the suspicion that he is the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3883,
+    "output_token_count": 1171,
+    "generation_time_sec": 128.93356943130493,
+    "used_chat_template": true,
+    "input_char_count": 13601,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

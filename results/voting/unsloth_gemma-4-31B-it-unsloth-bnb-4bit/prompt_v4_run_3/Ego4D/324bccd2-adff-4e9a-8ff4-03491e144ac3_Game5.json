@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game5.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Zack\n    *   Sean\n    *   Hunter\n    *   Jacob\n\n    *   Werewolf (1 or more)\n    *   Robber\n    *   Troublemaker\n    *   Villager\n    *   Tanner\n    *   (Other roles possible, but these are mentioned)\n\n    *   Jacob: Claims he started as a Werewolf (Line 37). Claims his card was swapped (Line 39).\n    *   Hunter: Claims he was the Troublemaker (Line 107) and swapped two players (Line 61, 108). He says he swapped \"those two\" (likely referring to Sean and Jacob, based on the context of the conversation).\n    *   Zack: Claims he started as a Villager and didn't wake up (Line 91, 146).\n    *   Sean: Initially evasive (Line 74). Later claims he is the Tanner (Line 143), then claims he is a Villager (Line 162).\n\n    *   Jacob (Starting: Werewolf) -> Swapped by Troublemaker (Hunter) -> Now: ?\n    *   Sean (Starting: ?) -> Swapped by Troublemaker (Hunter) -> Now: ?\n    *   Hunter (Starting: Troublemaker) -> Swapped Sean and Jacob.\n    *   Zack (Starting: Villager) -> Not swapped.\n\n    *   If Hunter is the Troublemaker and swapped Jacob (Werewolf) and Sean, then Sean is now the Werewolf and Jacob is now whatever Sean was.\n    *   Jacob admits he started as a Werewolf. If he's telling the truth, and Hunter is telling the truth about being the Troublemaker and swapping Jacob and Sean, then Sean is the current Werewolf.\n    *   Sean's behavior is suspicious: he's evasive, claims to be the Tanner, then claims to be a Villager.\n    *   Zack claims to be a Villager and didn't wake up.\n\n    *   If Jacob is lying about being a Werewolf, he might be the Tanner trying to get voted out.\n    *   If Hunter is lying about being the Troublemaker, he could be the Werewolf.\n    *   If Sean is the Werewolf, he's doing a poor job of hiding it.\n\n    *   Jacob's admission: \"I started as a werewolf.\" (Line 37). This is a very strong piece of information. In One Night Ultimate Werewolf, players rarely admit to being the werewolf unless they are sure they've been swapped or they are the Tanner.\n    *   Hunter's claim: \"I troubled-muk [Sean and Jacob].\" (Line 107, 108).\n    *   If both are true, Sean is the Werewolf.\n    *   Sean's contradictory claims (Tanner, then Villager) add to the suspicion.\n\n    *   If Jacob is the Tanner, he wants to be voted out.\n    *   If Sean is the Werewolf, he wants to avoid being voted out.\n    *   If Hunter is the Werewolf, he's framing Sean.\n    *   If Zack is the Werewolf, he's playing it very quiet.\n\n    *   Jacob (Starting Werewolf) -> Swapped with Sean (by Hunter/Troublemaker) -> Sean is now Werewolf.\n    *   This makes Sean the target.\n\n    *   Jacob: Started Werewolf, swapped by Troublemaker.\n    *   Hunter: Troublemaker, swapped Jacob and Sean.\n    *   Sean: Received the Werewolf card from Jacob.\n    *   Zack: Villager.\n    *   Result: Sean is the Werewolf.\n\n    *   Wait, did the Robber act? The announcer called the Robber (Line 9). If the Robber swapped someone, the Troublemaker's swap still happens after.\n    *   If the Robber swapped Jacob (Werewolf) with someone else, and then the Troublemaker swapped that person with Sean, Sean could still be the Werewolf.\n    *   If the Robber swapped Jacob (Werewolf) with someone, and the Troublemaker swapped two other people, the Werewolf would be whoever the Robber swapped with.\n    *   However, based on the available claims, the most consistent narrative is that Jacob was the Werewolf and was swapped with Sean by Hunter.\n\n    *   Jacob: \"I started as a werewolf.\"\n    *   Hunter: \"I troubled-muk [these two (Sean and Jacob)].\"\n    *   Sean: Evasive, contradictory.\n    *   Zack: Quiet, claims Villager.\n    *   Conclusion: Sean is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Jacob admitted to starting as the Werewolf, and Hunter claimed to be the Troublemaker who swapped Jacob's card with Sean's. If these claims are true, Sean is currently the Werewolf. Sean's behavior was suspicious and contradictory, claiming to be both the Tanner and a Villager, which further suggests he is bluffing to avoid elimination.",
+    "chosen_vote": "Sean"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jacob admitted to starting as the Werewolf, and Hunter claimed to be the Troublemaker who swapped Jacob's card with Sean's. If these claims are true, Sean is currently the Werewolf. Sean's behavior was suspicious and contradictory, claiming to be both the Tanner and a Villager, which further suggests he is bluffing to avoid elimination.\",\n  \"chosen_vote\": \"Sean\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jacob admitted to starting as the Werewolf, and Hunter claimed to be the Troublemaker who swapped Jacob's card with Sean's. If these claims are true, Sean is currently the Werewolf. Sean's behavior was suspicious and contradictory, claiming to be both the Tanner and a Villager, which further suggests he is bluffing to avoid elimination.\",\n  \"chosen_vote\": \"Sean\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sean",
+    "justification": "Jacob admitted to starting as the Werewolf, and Hunter claimed to be the Troublemaker who swapped Jacob's card with Sean's. If these claims are true, Sean is currently the Werewolf. Sean's behavior was suspicious and contradictory, claiming to be both the Tanner and a Villager, which further suggests he is bluffing to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4724,
+    "output_token_count": 1146,
+    "generation_time_sec": 123.82301545143127,
+    "used_chat_template": true,
+    "input_char_count": 15626,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

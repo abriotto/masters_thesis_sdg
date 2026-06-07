@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#10##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#10##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Matt: Claims Seer. Says he saw Mike as the Robber.\n    *   Mitchell: Claims Troublemaker. Says he switched Mike and Alana.\n    *   Alana: Claims Insomniac.\n    *   Mike: Claims Robber. Confirms he robbed someone (likely Matt or Alana).\n\n    *   Matt (Seer) -> Mike (Robber).\n    *   Mike (Robber) -> Robbed someone.\n    *   Mitchell (Troublemaker) -> Switched Mike and Alana.\n    *   Alana (Insomniac) -> Checked her card.\n\n    *   If Matt is Seer and saw Mike as Robber, and Mike admits to being Robber, their stories align.\n    *   If Mitchell is Troublemaker and switched Mike and Alana, then Mike's role (Robber) and Alana's role (Insomniac) were swapped.\n    *   Wait, if Mitchell swapped Mike and Alana, then Mike (starting Robber) became Insomniac, and Alana (starting Insomniac) became Robber.\n    *   However, Mike says \"I did rob\" (meaning he acted as Robber during the night). This means Mike was the *starting* Robber.\n    *   If Mitchell swapped Mike and Alana *after* the Robber acted (which is the case, Troublemaker acts after Robber), then Mike (Robber) became Alana's role, and Alana became the Robber.\n    *   Matt (Seer) acts *before* the Robber and Troublemaker. If Matt saw Mike as Robber, he saw Mike's *starting* role.\n    *   So:\n        *   Matt: Seer (Starting)\n        *   Mike: Robber (Starting)\n        *   Alana: Insomniac (Starting)\n        *   Mitchell: Troublemaker (Starting)\n\n    *   If all these claims are true, then all four players are Team Village.\n    *   If all four players are Team Village, then there are no Werewolves among the players (they are all in the center).\n    *   If no Werewolf is present, Team Village wins if no one is voted out (\"No Werewolf\").\n\n    *   Is anyone lying?\n    *   Mitchell is very eager to be voted out (\"Just kill me\", \"Take me out of my misery\"). This is classic Tanner behavior.\n    *   If Mitchell is the Tanner, he is not a Werewolf.\n    *   If Matt, Mike, and Alana are telling the truth about their roles, they are all Village.\n    *   If Mitchell is the Tanner, he is also not a Werewolf.\n    *   If all players are Village/Tanner, then no Werewolf is present.\n\n    *   Could Mitchell be a Werewolf? He claims Troublemaker. If he's a Werewolf, he's lying.\n    *   Could Matt be a Werewolf? He claims Seer.\n    *   Could Mike be a Werewolf? He claims Robber.\n    *   Could Alana be a Werewolf? She claims Insomniac.\n    *   The players seem to have reached a consensus that Mitchell is the most suspicious or the most likely to be the target.\n    *   However, the prompt asks me to make Team Village win.\n    *   Team Village wins if:\n        1.  They eliminate a Werewolf.\n        2.  No one is a Werewolf and no one dies.\n\n    *   If Mitchell is the Tanner, voting him out makes the Tanner win, and Team Village loses.\n    *   If Mitchell is a Werewolf, voting him out makes Team Village win.\n    *   If Mitchell is a Villager, voting him out makes Team Werewolf win (if a Werewolf is present) or Team Village lose (if no Werewolf is present, because someone died).\n\n    *   Matt (Seer), Mike (Robber), Alana (Insomniac), Mitchell (Troublemaker).\n    *   If these roles are correct, there are no Werewolves among the players.\n    *   If there are no Werewolves, the best move for Team Village is \"No Werewolf\".\n\n    *   Wait, let's re-read the transcript.\n    *   Matt: \"I can 100% confirm that Mike Campbell is a robber. When I looked as the Seer.\"\n    *   Mike: \"I did rob. Okay.\"\n    *   Alana: \"I started as insomniac.\"\n    *   Mitchell: \"I was the troublemaker.\"\n    *   If these four roles are present, the remaining roles (Werewolf, Minion, etc.) must be in the center.\n    *   The roles used are: Seer, Robber, Insomniac, Troublemaker.\n    *   Total players = 4. Total roles = 4 + 3 = 7.\n    *   Roles in play: Seer, Robber, Insomniac, Troublemaker, and 3 others in the center.\n    *   If the 3 center cards are, for example, Werewolf, Werewolf, and Villager, then no one is a Werewolf.\n\n    *   Is there any reason to suspect Mitchell is a Werewolf?\n    *   He's acting very suspiciously (wanting to die), which usually indicates a Tanner.\n    *   If he's the Tanner, he's not a Werewolf.\n    *   If he's a Werewolf, he's bluffing as the Troublemaker and pretending to be the Tanner to confuse people? Unlikely. Usually, Werewolves try to survive.\n    *   If he's a Werewolf, why would he say \"Just kill me\"? That's the opposite of the Werewolf's goal.\n    *   Therefore, Mitchell is most likely the Tanner or a Villager.\n\n    *   If all claims are true, no one is a Werewolf.\n    *   If Mitchell is the Tanner, no one is a Werewolf.\n    *   If no one is a Werewolf, the only way for Team Village to win is to vote \"No Werewolf\".\n\n    *   Wait, let me double-check the roles again.\n    *   Matt: Seer\n    *   Mike: Robber\n    *   Alana: Insomniac\n    *   Mitchell: Troublemaker\n    *   These are all Village roles.\n    *   If these are the roles, then no Werewolf is present.\n\n    *   Is it possible that one of them is lying?\n    *   If Matt is a Werewolf, he's lying about being the Seer.\n    *   If Mike is a Werewolf, he's lying about being the Robber.\n    *   If Alana is a Werewolf, she's lying about being the Insomniac.\n    *   If Mitchell is a Werewolf, he's lying about being the Troublemaker.\n    *   But they all seem to agree and confirm each other's stories.\n    *   Matt confirms Mike. Mike confirms Matt. Mitchell's claim as Troublemaker doesn't contradict them. Alana's claim as Insomniac doesn't contradict them.\n    *   The most likely scenario is that they are all Village/Tanner.\n\n    *   If I vote Mitchell, and he's the Tanner, Tanner wins.\n    *   If I vote Mitchell, and he's a Villager, Werewolves win (if any are in the center? No, if no Werewolf is present, and a Villager dies, Team Village loses).\n    *   Wait, the rules say: \"Team Village wins: If no player is a Werewolf and no one dies.\"\n    *   If I believe no one is a Werewolf, \"No Werewolf\" is the only winning move.\n\n    *   Let's re-evaluate Mitchell. He says \"I am not going to defend it... I'm glad to be killed.\" This is very Tanner-like.\n    *   If Mitchell is the Tanner, then the roles are: Seer, Robber, Insomniac, Tanner.\n    *   Wait, Mitchell claimed Troublemaker. If he's the Tanner, he's lying about being the Troublemaker.\n    *   If the roles are Seer, Robber, Insomniac, and Tanner, then the Troublemaker card is in the center.\n    *   In either case (Mitchell is Troublemaker or Mitchell is Tanner), no one is a Werewolf.\n\n    *   Conclusion: No one is claiming Werewolf, and the claims they *are* making are all Village-aligned (or Tanner). There is no evidence of a Werewolf.\n\n    *   Wait, let me check the transcript one more time.\n    *   Matt: \"I can 100% confirm that Mike Campbell is a robber. When I looked as the Seer.\"\n    *   Mike: \"I did rob. Okay.\"\n    *   Alana: \"I started as insomniac.\"\n    *   Mitchell: \"I was the troublemaker.\"\n    *   If these are the roles, then no one is a Werewolf.\n    *   If Mitchell is the Tanner, he's lying about being the Troublemaker, but he's still not a Werewolf.\n    *   If any of the others are Werewolves, they are lying. But their stories are consistent.\n    *   The most logical conclusion is that no Werewolf is present among the players.\n\n    *   Wait, let me think if there's any other possibility.\n    *   What if Mitchell is a Werewolf and is trying to trick them into voting him out? No, that's the Tanner's goal. Werewolves want to survive.\n    *   What if Mitchell is a Werewolf and is bluffing as the Troublemaker? If he's a Werewolf, he wants to *avoid* being voted out. But he's *asking* to be voted out. This is contradictory for a Werewolf.\n    *   Therefore, Mitchell is almost certainly not a Werewolf.\n    *   If Mitchell is not a Werewolf, and the others are telling the truth, then no one is a Werewolf.\n\n    *   Final check on \"No Werewolf\" condition: \"If no player is a Werewolf and no one dies.\"\n    *   If I choose \"No Werewolf\", and indeed no one is a Werewolf, Team Village wins.\n    *   If I choose Mitchell, and he's the Tanner, Tanner wins.\n    *   If I choose Mitchell, and he's a Villager, Team Village loses (because someone died and no Werewolf was killed).\n    *   If I choose Mitchell, and he's a Werewolf, Team Village wins.\n    *   But there's no evidence he's a Werewolf; there's strong evidence he's the Tanner.\n\n    *   Therefore, \"No Werewolf\" is the most strategic choice for Team Village.",
+  "parsed_output": {
+    "justification": "All players have claimed roles aligned with Team Village or the Tanner: Matt (Seer), Mike (Robber), Alana (Insomniac), and Mitchell (Troublemaker). Their stories are consistent, with Matt confirming Mike's role as Robber. Mitchell's eagerness to be voted out is characteristic of the Tanner, who wins by being eliminated, rather than a Werewolf, who wins by surviving. Since there is no evidence of a Werewolf among the players and the claims are consistent, the most likely scenario is that all Werewolf cards are in the center.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"All players have claimed roles aligned with Team Village or the Tanner: Matt (Seer), Mike (Robber), Alana (Insomniac), and Mitchell (Troublemaker). Their stories are consistent, with Matt confirming Mike's role as Robber. Mitchell's eagerness to be voted out is characteristic of the Tanner, who wins by being eliminated, rather than a Werewolf, who wins by surviving. Since there is no evidence of a Werewolf among the players and the claims are consistent, the most likely scenario is that all Werewolf cards are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"All players have claimed roles aligned with Team Village or the Tanner: Matt (Seer), Mike (Robber), Alana (Insomniac), and Mitchell (Troublemaker). Their stories are consistent, with Matt confirming Mike's role as Robber. Mitchell's eagerness to be voted out is characteristic of the Tanner, who wins by being eliminated, rather than a Werewolf, who wins by surviving. Since there is no evidence of a Werewolf among the players and the claims are consistent, the most likely scenario is that all Werewolf cards are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "All players have claimed roles aligned with Team Village or the Tanner: Matt (Seer), Mike (Robber), Alana (Insomniac), and Mitchell (Troublemaker). Their stories are consistent, with Matt confirming Mike's role as Robber. Mitchell's eagerness to be voted out is characteristic of the Tanner, who wins by being eliminated, rather than a Werewolf, who wins by surviving. Since there is no evidence of a Werewolf among the players and the claims are consistent, the most likely scenario is that all Werewolf cards are in the center."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3415,
+    "output_token_count": 2582,
+    "generation_time_sec": 271.976496219635,
+    "used_chat_template": true,
+    "input_char_count": 11803,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

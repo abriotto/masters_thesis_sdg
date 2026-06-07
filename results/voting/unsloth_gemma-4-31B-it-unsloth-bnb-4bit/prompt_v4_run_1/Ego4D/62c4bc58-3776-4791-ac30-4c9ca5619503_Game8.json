@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game8.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Kevin\n    *   Kaelan\n    *   Jessica\n    *   Daniel\n\n    *   Daniel: Claims Drunk (Line 4).\n    *   Kaelan: Claims Drunk (Line 5), then claims Doppelganger (Line 7) who swapped before Daniel swapped. (Wait, Doppelganger doesn't swap cards with the center, they copy another player's card. Drunk swaps with the center. Kaelan's claim is confusing).\n    *   Jessica: Claims Minion (Line 14).\n    *   Kevin: Claims Seer (Line 17). He confirms Jessica was the Minion (Line 15, 20).\n\n    *   Kevin (Seer) says Jessica is the Minion.\n    *   Jessica (Minion) says she is the Minion and believes the Werewolf is in the center (Line 35).\n    *   Daniel (Drunk) is suspicious of Kevin (Line 24, 26).\n    *   Kaelan (Doppelganger/Drunk?) is suspicious of Kevin (Line 38).\n\n    *   If Jessica is the Minion, she is on Team Werewolf.\n    *   If Kevin is the Seer, he is on Team Village.\n    *   If Jessica is the Minion and says the Werewolf is in the center, then there are no Werewolves among the players.\n    *   If there are no Werewolves among the players, Team Village wins if no one is voted out (or if the Tanner is not voted out).\n    *   Wait, if Jessica is the Minion, she knows who the Werewolves are. If she says \"No\" to \"Do you see any Werewolves?\" (Line 23) and \"I think it's in the middle\" (Line 35), then there are no Werewolves among the players.\n\n    *   If Jessica is the Minion, she wants the Werewolves to survive. If there are no Werewolves among the players, she wins as long as no one is voted out (or if she's not voted out, but the win condition for Team Werewolf is \"no Werewolves die\").\n    *   If Kevin is the Seer and Jessica is the Minion, Kevin is telling the truth.\n    *   If Jessica is the Werewolf and claiming Minion, and Kevin is the Minion claiming Seer, they are teaming up.\n    *   However, Jessica explicitly says the Werewolf is in the middle. If she is the Minion, she knows for a fact if a Werewolf is present. If she says there isn't one, and she's the Minion, then there really isn't one.\n\n    *   Kevin: Seer (Village)\n    *   Jessica: Minion (Werewolf)\n    *   Daniel: Drunk (Village)\n    *   Kaelan: Doppelganger (Village/Werewolf/Tanner?)\n    *   If Jessica is the Minion and says the Werewolf is in the center, then the Werewolf cards are in the center.\n    *   If the Werewolf cards are in the center, Team Village wins if no one is voted out.\n\n    *   Kevin wants to vote \"the middle\" (No Werewolf).\n    *   Daniel and Kaelan seem to be leaning towards Kevin, but they are confused.\n    *   If Jessica is the Minion and says the Werewolf is in the center, the most logical conclusion for Team Village is that there is no Werewolf among the players.\n\n    *   If Jessica is the Minion, she knows if there's a Werewolf. She says there isn't.\n    *   If she's lying about being the Minion, she could be the Werewolf. But she's claiming to be the Minion.\n    *   If Kevin is the Seer and confirms she's the Minion, then she is the Minion.\n    *   If she is the Minion and says the Werewolf is in the center, then there is no Werewolf among the players.\n    *   Therefore, \"No Werewolf\" is the best choice for Team Village to win.\n\n    *   Wait, if Jessica is the Minion, she is Team Werewolf. Team Werewolf wins if no Werewolves die. If there are no Werewolves among the players, Team Werewolf cannot win unless the rules say otherwise.\n    *   Rule: \"Team Village wins: If no player is a Werewolf and no one dies.\"\n    *   Rule: \"Team Werewolf wins: If no Werewolves die.\"\n    *   Wait, if there are no Werewolves among the players, and no one dies, both conditions seem to be met? No, the rules say \"Only one team can win\".\n    *   Let's re-read: \"Team Village wins: If no player is a Werewolf and no one dies.\" \"Team Werewolf wins: If no Werewolves die.\"\n    *   Actually, if there are no Werewolves in play, Team Werewolf cannot win because there are no Werewolves to \"survive\" in the sense of the game's intent, but the rule says \"If no Werewolves die\". This is a bit ambiguous. However, the specific condition \"If no player is a Werewolf and no one dies\" is explicitly listed under Team Village wins.\n\n    *   Jessica claims Minion.\n    *   Kevin claims Seer and confirms Jessica is Minion.\n    *   Jessica says the Werewolf is in the center.\n    *   If this is true, no player is a Werewolf.\n    *   To make Team Village win, we should vote \"No Werewolf\".\n\n    *   Could Jessica be the Werewolf and Kevin be the Minion?\n    *   If Jessica is the Werewolf, she wouldn't claim Minion and say the Werewolf is in the center, because that would lead the village to vote \"No Werewolf\" and win.\n    *   Wait, if Jessica is the Werewolf, and she wants to win, she wants to avoid being voted out. Claiming Minion and saying the Werewolf is in the center is a great way to avoid being voted out.\n    *   But if she is the Werewolf, and the village votes \"No Werewolf\", the Werewolf (Jessica) survives, and Team Werewolf wins.\n    *   So, if Jessica is the Werewolf, she *would* say the Werewolf is in the center.\n    *   However, we have to decide based on the information. Kevin (Seer) confirms Jessica is the Minion. If we trust the Seer, Jessica is the Minion. If Jessica is the Minion, she knows where the Werewolves are. If she says they are in the center, they are in the center.\n\n    *   If Jessica is the Minion, she is Team Werewolf.\n    *   If she says the Werewolf is in the center, then no player is a Werewolf.\n    *   If no player is a Werewolf, Team Village wins if no one is voted out.\n    *   If Jessica is the Werewolf, she is lying about being the Minion.\n    *   If Kevin is the Seer, he wouldn't confirm a Werewolf as a Minion.\n    *   If Kevin is the Minion and Jessica is the Werewolf, they are both lying.\n    *   But based on the claims: Kevin (Seer) -> Jessica (Minion) -> Werewolf in center.\n    *   This chain suggests \"No Werewolf\".\n\n    *   Kaelan's claim: \"I was the Dobber, I swapped before you swapped yours.\" (Doppelganger doesn't swap cards, they copy). This is likely a misunderstanding of the rules or a lie.\n    *   Daniel's claim: Drunk.\n    *   If we have Seer, Minion, Drunk, and Doppelganger, that's 4 roles.\n    *   If the Werewolf is in the center, the roles could be:\n        *   Kevin: Seer\n        *   Jessica: Minion\n        *   Daniel: Drunk\n        *   Kaelan: Doppelganger (copied someone)\n        *   Center: Werewolf, Villager, Tanner (for example).\n    *   In this scenario, no one is a Werewolf.\n\n    *   If Jessica is the Minion, she is Team Werewolf.\n    *   If she says the Werewolf is in the center, she is telling the truth about the Werewolf's location (because the Minion knows).\n    *   If the Werewolf is in the center, Team Village wins if no one is voted out.\n    *   Therefore, \"No Werewolf\" is the correct move.",
+  "parsed_output": {
+    "justification": "Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica, claiming to be the Minion, states that she does not see any Werewolves among the players and believes the Werewolf card is in the center. Since the Minion knows the identity of the Werewolves, her statement implies that no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica, claiming to be the Minion, states that she does not see any Werewolves among the players and believes the Werewolf card is in the center. Since the Minion knows the identity of the Werewolves, her statement implies that no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica, claiming to be the Minion, states that she does not see any Werewolves among the players and believes the Werewolf card is in the center. Since the Minion knows the identity of the Werewolves, her statement implies that no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Kevin claims to be the Seer and confirms that Jessica is the Minion. Jessica, claiming to be the Minion, states that she does not see any Werewolves among the players and believes the Werewolf card is in the center. Since the Minion knows the identity of the Werewolves, her statement implies that no player is currently a Werewolf. According to the rules, Team Village wins if no player is a Werewolf and no one is voted out."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2571,
+    "output_token_count": 2047,
+    "generation_time_sec": 406.9834177494049,
+    "used_chat_template": true,
+    "input_char_count": 9293,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

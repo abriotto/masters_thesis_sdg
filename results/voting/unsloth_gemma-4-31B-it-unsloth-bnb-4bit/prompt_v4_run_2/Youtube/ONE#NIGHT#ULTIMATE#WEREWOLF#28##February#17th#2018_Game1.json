@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Justin: Claims Troublemaker (switched two people).\n    *   Caitlynn: Claims Robber (robbed Mitchell, saw Drunk).\n    *   Paul: Claims Seer (looked at two center cards, saw Minion).\n    *   Alysha: Claims Seer (looked at two center cards, saw Minion and Robber).\n    *   Mitchell: Claims Drunk turned Robber (robbed/robber-ed). Later says \"I'm a werewolf\" (likely trolling or bluffing).\n    *   Mike: Claims Revealer (revealed Mitchell as Tanner).\n\n    *   *Revealer:* This role is not in the standard list provided in the rules. Wait, let me re-read the rules.\n    *   *Rules check:* Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Observation:* \"Revealer\" is NOT in the provided rules. However, the transcript mentions a \"Revealer\" (Announcer calls it, Mike claims it). Since the prompt says \"you have access only to the public discussion transcript and the game rules provided above,\" and the rules *don't* list a Revealer, I must treat the Revealer as an external/non-standard role or a bluff. But the Announcer actually called it: \"[5] Announcer: Revealer, wake up.\" This means the game being played has a role not listed in the provided rules. I should rely on the transcript's internal logic.\n\n    *   Mike (Revealer) says Mitchell is the Tanner.\n    *   Mitchell says he was Drunk turned Robber.\n    *   Caitlynn says she was Robber and robbed Mitchell, seeing Drunk.\n    *   Justin says he was Troublemaker and switched two people.\n    *   Paul says he was Seer and saw Minion in the center.\n    *   Alysha says she was Seer and saw Minion and Robber in the center.\n\n    *   *Conflict 1: Two Seers.* Paul and Alysha both claim Seer. Only one Seer is possible (unless one is a Doppelganger).\n    *   *Conflict 2: Robber/Drunk.* Caitlynn claims Robber, robbed Mitchell, saw Drunk. Mitchell claims he was Drunk turned Robber. This is consistent.\n    *   *Conflict 3: Troublemaker.* Justin claims Troublemaker.\n    *   *Conflict 4: Revealer.* Mike claims Revealer and says Mitchell is Tanner.\n\n    *   If Mike is the Revealer and Mitchell is the Tanner, then Mitchell is not a Werewolf.\n    *   If Paul and Alysha are both claiming Seer, one is likely lying.\n    *   Paul says he saw Minion in the center.\n    *   Alysha says she saw Minion and Robber in the center.\n    *   If the Minion is in the center, and the Robber is in the center, then the Robber role is not held by any player. But Caitlynn claims to be the Robber.\n    *   If Caitlynn is the Robber, Alysha's claim (Robber in center) is a lie.\n    *   If Alysha is lying about the Robber being in the center, she might be a Werewolf.\n    *   Paul says Alysha and Mike are lying.\n    *   Mitchell says \"I'm a werewolf\" at the end, but he previously claimed Drunk/Robber and Mike called him the Tanner. In One Night Ultimate Werewolf, the Tanner *wants* to be voted out, and Werewolves want to *avoid* being voted out. Mitchell saying \"I'm a werewolf\" is a classic reverse-psychology bluff or a joke.\n\n    *   Paul claims Seer.\n    *   Alysha claims Seer.\n    *   Mike claims Revealer.\n    *   Justin claims Troublemaker.\n    *   Caitlynn claims Robber.\n    *   Mitchell claims Drunk/Robber.\n\n    *   If Paul is the real Seer and saw the Minion in the center, then the Minion is not a player.\n    *   If Alysha is lying about seeing the Robber in the center (because Caitlynn is the Robber), Alysha is suspicious.\n    *   Paul explicitly accuses Alysha and Mike of lying.\n    *   Paul says \"Alysha knows that [the minion is in the center] because she's a werewolf and she's the only werewolf.\"\n\n    *   Mike's role \"Revealer\" is not in the rules. This makes Mike highly suspicious.\n    *   Alysha's claim about the Robber being in the center contradicts Caitlynn's claim to be the Robber.\n    *   Paul's claim is consistent with the others (if we assume Caitlynn is the Robber).\n    *   Mitchell is likely the Tanner (as Mike claimed, though Mike is suspicious, the Tanner often acts weird).\n\n    *   If Paul is telling the truth, Alysha is the Werewolf.\n    *   If Alysha is telling the truth, Paul is lying.\n    *   If Mike is the Werewolf, he's inventing a role (Revealer) to confuse people and protect himself by framing Mitchell as the Tanner.\n    *   Wait, the Announcer *actually called* the Revealer. \"[5] Announcer: Revealer, wake up.\" So the role exists in this specific game, even if not in the provided rule list.\n    *   If Mike is the Revealer and he says Mitchell is the Tanner, then Mitchell is the Tanner.\n    *   If Mitchell is the Tanner, he is not the Werewolf.\n    *   Now we are left with Paul, Alysha, Justin, Caitlynn, and Mike.\n    *   Paul and Alysha both claim Seer. One is lying.\n    *   Alysha says she saw the Robber in the center.\n    *   Caitlynn says she is the Robber.\n    *   If Caitlynn is the Robber, Alysha is lying.\n    *   If Alysha is lying, she is the most likely candidate for the Werewolf.\n\n    *   Paul: \"Alysha knows that because she's a werewolf and she's the only werewolf.\"\n    *   Alysha: \"I think Mitchell's a werewolf.\" (Trying to shift blame).\n    *   Mitchell: \"Don't vote for me, I'm a werewolf.\" (Trolling/Tanner behavior).\n\n    *   The most consistent evidence points to Alysha lying about the Robber being in the center.\n    *   Paul's accusation is direct.\n    *   Mike's \"Revealer\" role, while not in the rules, was called by the announcer, making his identification of Mitchell as the Tanner plausible.\n\n    *   Player to vote out: Alysha.\n    *   Justification: Alysha claims to be the Seer and says the Robber card is in the center. However, Caitlynn claims to be the Robber, creating a contradiction. Paul also identifies Alysha as the Werewolf. Since the Minion is likely in the center (as both Paul and Alysha agree), the Werewolf is likely among the players, and Alysha's contradiction makes her the strongest suspect.",
+  "parsed_output": {
+    "justification": "Alysha claims to be the Seer and states that the Robber card is in the center. However, Caitlynn claims to be the Robber, which creates a direct contradiction. Paul also explicitly accuses Alysha of being the Werewolf. Given that both Paul and Alysha agree the Minion is in the center, the most likely scenario is that Alysha is lying about the Robber's location to hide her identity as the Werewolf.",
+    "chosen_vote": "Alysha"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claims to be the Seer and states that the Robber card is in the center. However, Caitlynn claims to be the Robber, which creates a direct contradiction. Paul also explicitly accuses Alysha of being the Werewolf. Given that both Paul and Alysha agree the Minion is in the center, the most likely scenario is that Alysha is lying about the Robber's location to hide her identity as the Werewolf.\",\n  \"chosen_vote\": \"Alysha\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claims to be the Seer and states that the Robber card is in the center. However, Caitlynn claims to be the Robber, which creates a direct contradiction. Paul also explicitly accuses Alysha of being the Werewolf. Given that both Paul and Alysha agree the Minion is in the center, the most likely scenario is that Alysha is lying about the Robber's location to hide her identity as the Werewolf.\",\n  \"chosen_vote\": \"Alysha\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alysha",
+    "justification": "Alysha claims to be the Seer and states that the Robber card is in the center. However, Caitlynn claims to be the Robber, which creates a direct contradiction. Paul also explicitly accuses Alysha of being the Werewolf. Given that both Paul and Alysha agree the Minion is in the center, the most likely scenario is that Alysha is lying about the Robber's location to hide her identity as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4348,
+    "output_token_count": 1786,
+    "generation_time_sec": 194.75345611572266,
+    "used_chat_template": true,
+    "input_char_count": 14958,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

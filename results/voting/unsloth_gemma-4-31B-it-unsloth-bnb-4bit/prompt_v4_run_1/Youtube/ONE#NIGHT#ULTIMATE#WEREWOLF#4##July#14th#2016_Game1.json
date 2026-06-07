@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell, Mike.\n    *   Roles involved (based on claims):\n        *   Mike: Claims Seer, saw two Werewolves in the center.\n        *   Mitchell: Claims Drunk (initially), then says he might be Tanner or Werewolf, then claims he's praying he's Troublemaker.\n        *   Justin: Claims Robber (initially), then claims he was the Drunk, then admits he lied about being Robber and confirming Mitchell as Drunk.\n        *   Paul: Claims Robber, says he robbed Justin and Justin is the Seer.\n\n    *   Mike: Claims Seer, saw 2 Werewolves in center. If true, there is only 1 Werewolf card left in the game (since there are 3 center cards and 2 were werewolves).\n    *   Justin:\n        *   Claim 1: Robber.\n        *   Claim 2: Confirms Mitchell is Drunk.\n        *   Claim 3: Actually, *he* (Justin) was the Drunk.\n        *   Claim 4: Admits he lied about being Robber and confirming Mitchell.\n        *   Claim 5: Says he might be a Werewolf because he was the Drunk (Drunk swaps with center, so if a Werewolf was in the center, he could have become one).\n    *   Mitchell:\n        *   Claim 1: Drunk.\n        *   Claim 2: Might be Tanner or Werewolf.\n        *   Claim 3: Praying he's Troublemaker.\n    *   Paul:\n        *   Claim 1: Robber, robbed Justin.\n        *   Claim 2: Justin is the Seer.\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, there is only 1 Werewolf card among the players.\n    *   If Paul is the Robber and robbed Justin, and Justin is the Seer:\n        *   Paul now has the Seer card.\n        *   Justin now has whatever Paul had.\n    *   If Justin was the Drunk:\n        *   He swapped his card with one from the center.\n        *   If Mike saw 2 Werewolves in the center, and Justin swapped with one of them, Justin is now a Werewolf.\n    *   Wait, let's look at the claims again.\n        *   Justin says: \"I was the drunk.\"\n        *   Paul says: \"I robbed you. You're a hundred percent the seer.\"\n        *   If Paul robbed Justin *after* Justin was the Drunk (Drunk is action 8, Robber is action 6), the order is: Robber (6) -> Troublemaker (7) -> Drunk (8).\n        *   Wait, the order is:\n            1. Doppelganger\n            2. Werewolves\n            3. Minion\n            4. Masons\n            5. Seer\n            6. Robber\n            7. Troublemaker\n            8. Drunk\n            9. Insomniac\n        *   So Robber (Paul) acts *before* Drunk (Justin).\n        *   If Paul robbed Justin, Paul took Justin's starting card. Then Justin (as the Drunk) swapped his *new* card (the one Paul gave him) with the center.\n        *   This is getting complicated. Let's simplify.\n\n    *   Mike's claim (Seer, 2 Werewolves in center) is the strongest piece of information. If we trust Mike, there's only one Werewolf card left.\n    *   Justin's behavior is very suspicious. He changed his story multiple times (Robber -> Drunk -> admitting he lied). He even says, \"I am probably a Werewolf cause I was the drunk.\"\n    *   Mitchell's behavior is also suspicious, but he's acting more like a Tanner (trying to confuse people, saying \"don't vote for me\" but also \"I might be Tanner\").\n    *   Paul claims to be the Robber and says Justin is the Seer. If Paul is the Robber and Justin was the Seer, Paul now has the Seer card. But Mike already claimed to be the Seer.\n    *   If Mike is the Seer, Paul is lying about being the Robber/Justin being the Seer.\n    *   If Paul is lying, Paul could be the Werewolf.\n\n    *   Mike: Seer (claims 2 WW in center).\n    *   Justin: Drunk (claims he swapped with center).\n    *   Paul: Claims Robber, but contradicts Mike's Seer claim.\n    *   Mitchell: Claims Drunk/Tanner/Troublemaker.\n\n    *   If Mike is the Seer and saw 2 WW in center, and Justin was the Drunk and swapped with the center, Justin could have picked up the 3rd WW card (if it was in the center) or one of the 2 WW cards Mike saw.\n    *   Wait, if Mike saw 2 WW in the center, there is only 1 WW card left in the game.\n    *   If Justin (Drunk) swapped with the center, he could have taken one of those 2 WW cards.\n    *   If Justin took a WW card, he is now the Werewolf.\n    *   If Justin didn't take a WW card, the remaining WW card is either with Paul or Mitchell.\n\n    *   Justin's erratic claims: \"I was a Robber\" -> \"Mitchell was the drunk\" -> \"I was the drunk\" -> \"I lied about being Robber\".\n    *   Justin's admission: \"I am probably a Werewolf cause I was the drunk.\"\n    *   Paul's claim: \"I robbed you. You're a hundred percent the seer.\" This contradicts Mike's claim. If Mike is the Seer, Paul is lying.\n    *   Mitchell's claim: \"I was the drunk.\" (Contradicted by Justin).\n\n    *   If Mike is the Seer and saw 2 WW in center, the only way for the Village to lose is if the 3rd WW card is among the players and not voted out.\n    *   Justin admits he might be the Werewolf.\n    *   Paul's claim is highly suspect because it contradicts Mike.\n    *   Mitchell is acting like a Tanner.\n\n    *   Justin's admission \"I am probably a Werewolf cause I was the drunk\" is a huge red flag. Even if he's bluffing, he's the most inconsistent player.\n    *   However, Paul's claim (\"I robbed you. You're a hundred percent the seer\") is a direct contradiction of Mike's claim (\"I saw two werewolves in the center\"). In One Night Ultimate Werewolf, usually, the person making the most contradictory or unfounded claims is the Werewolf.\n    *   Let's re-read: Paul says \"I robbed you [Justin]. You're a hundred percent the seer.\" If Paul is the Robber, he knows Justin's card. If Justin was the Seer, Paul now has the Seer card. But Mike claims to be the Seer. Only one Seer exists. So either Mike is lying or Paul is lying.\n    *   If Mike is the Werewolf, he'd lie about seeing 2 WW in the center to make people think there's only one WW left or none.\n    *   If Paul is the Werewolf, he'd lie about being the Robber to protect himself or frame Justin.\n\n    *   Justin: \"I was the drunk.\"\n    *   If Justin was the Drunk, he swapped his card with the center.\n    *   If Mike saw 2 WW in the center, and Justin swapped with one of them, Justin is now a WW.\n    *   This makes Justin a very strong candidate for the Werewolf.\n\n    *   Justin's behavior is the most chaotic. He's admitted to lying multiple times and even suggested he might be the Werewolf.\n    *   Paul's claim is weird, but Justin's admission is more direct.\n    *   Wait, Paul says \"We vote for Mitchell. That's our best chance\" and then later \"Justin is totally Tanner.\"\n    *   Mitchell says \"I'm going to vote for Paul.\"\n    *   Justin says \"I'll vote for Paul.\"\n    *   Paul says \"Vote for Mitchell.\"\n\n    *   If Mike is the Seer and saw 2 WW in center, and Justin was the Drunk and swapped with the center, Justin is the most likely Werewolf.\n    *   Justin's own words: \"I am probably a Werewolf cause I was the drunk.\"\n    *   Justin's inconsistency: Claimed Robber, then claimed Mitchell was Drunk, then claimed he was Drunk.\n\n    *   Could Justin be the Tanner? He's lying a lot and acting suspiciously, which Tanners do.\n    *   Could Mitchell be the Tanner? He's also acting suspiciously and saying \"don't vote for me.\"\n    *   If Justin is the Tanner, and Paul is the Werewolf, voting Justin would make the Tanner win.\n    *   But based on the logic of the Drunk swapping with a center card (where 2 WW were), Justin is the most logically sound choice for the Werewolf.\n\n    *   Mike (Seer) -> 2 WW in center.\n    *   Justin (Drunk) -> Swapped with center.\n    *   Result: Justin likely took a WW card.\n    *   Justin's behavior: Highly inconsistent, admits he might be WW.\n    *   Conclusion: Vote Justin.\n\n    *   Wait, Paul says \"I robbed you. You're a hundred percent the seer.\"\n    *   If Paul is the Robber and Justin was the Seer, Paul now has the Seer card.\n    *   If Paul has the Seer card, he knows Justin was the Seer.\n    *   But Mike claims to be the Seer.\n    *   If Paul is telling the truth, Mike is lying.\n    *   If Mike is lying, Mike could be the Werewolf.\n    *   However, Justin's admission is much more damning. Let's look at the transcript again.\n    *   Justin: \"I was a Robber.\" (Lied)\n    *   Justin: \"Mitchell was the drunk.\" (Lied)\n    *   Justin: \"I was the drunk.\" (Truth?)\n    *   Justin: \"I am probably a Werewolf cause I was the drunk.\"\n    *   This sequence of lies and then a partial admission is classic Werewolf behavior or Tanner behavior. But the Drunk/Center-WW connection is a strong mechanical lead.\n\n    *   Justin is the most suspicious due to his shifting claims and his admission that he might be a Werewolf after swapping as the Drunk.\n    *   Mike's claim of seeing two Werewolves in the center suggests that if a Drunk swapped with the center, they likely became a Werewolf.\n    *   Therefore, Justin is the most likely target to ensure a Village win.",
+  "parsed_output": {
+    "justification": "Mike claims to be the Seer and saw two Werewolves in the center. Justin admits to being the Drunk, which means he swapped his card with one from the center. If Mike's information is correct, there is a high probability that Justin swapped his card for one of the Werewolf cards in the center. Furthermore, Justin's behavior is highly inconsistent, as he lied about being the Robber and about Mitchell being the Drunk, and he eventually admitted, 'I am probably a Werewolf cause I was the drunk.'",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claims to be the Seer and saw two Werewolves in the center. Justin admits to being the Drunk, which means he swapped his card with one from the center. If Mike's information is correct, there is a high probability that Justin swapped his card for one of the Werewolf cards in the center. Furthermore, Justin's behavior is highly inconsistent, as he lied about being the Robber and about Mitchell being the Drunk, and he eventually admitted, 'I am probably a Werewolf cause I was the drunk.'\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claims to be the Seer and saw two Werewolves in the center. Justin admits to being the Drunk, which means he swapped his card with one from the center. If Mike's information is correct, there is a high probability that Justin swapped his card for one of the Werewolf cards in the center. Furthermore, Justin's behavior is highly inconsistent, as he lied about being the Robber and about Mitchell being the Drunk, and he eventually admitted, 'I am probably a Werewolf cause I was the drunk.'\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Mike claims to be the Seer and saw two Werewolves in the center. Justin admits to being the Drunk, which means he swapped his card with one from the center. If Mike's information is correct, there is a high probability that Justin swapped his card for one of the Werewolf cards in the center. Furthermore, Justin's behavior is highly inconsistent, as he lied about being the Robber and about Mitchell being the Drunk, and he eventually admitted, 'I am probably a Werewolf cause I was the drunk.'"
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4466,
+    "output_token_count": 2601,
+    "generation_time_sec": 548.4555270671844,
+    "used_chat_template": true,
+    "input_char_count": 15011,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

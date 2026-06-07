@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Insomniac (claims).\n    *   Paul: Troublemaker (claims), then later says he's a Villager and didn't switch anyone (claims).\n    *   Eric: Seer (claims).\n    *   Mitchell: Villager (claims).\n    *   Mike: Werewolf (claims).\n\n    *   Justin: Claims Insomniac. Woke up as Insomniac.\n    *   Paul: Claims Troublemaker. Says he didn't switch Justin. Later says he didn't switch anyone and is actually a Villager.\n    *   Eric: Claims Seer. Says he looked at center cards and saw one Werewolf and one Villager.\n    *   Mitchell: Claims Villager.\n    *   Mike: Claims Werewolf. Says he thinks his card was stolen/swapped.\n\n    *   Eric (Seer) says he saw one Werewolf and one Villager in the center.\n    *   If Eric is telling the truth:\n        *   Center cards: Werewolf, Villager, [Unknown].\n        *   Since there are 5 players and 8 total cards (5 players + 3 center), and the roles are selected from the list.\n        *   If one Werewolf is in the center, and there's only one Werewolf in the game (as Eric claims), then no player is currently a Werewolf.\n        *   Wait, Eric says \"I can guarantee there was only one werewolf\" and \"Center card is werewolf and the other one I pulled was villager.\"\n        *   If the only Werewolf is in the center, then no one is a Werewolf.\n\n    *   Mike admits he was the Werewolf (\"I was the werewolf\").\n    *   Mike believes his card was stolen or swapped.\n    *   Paul (claiming Troublemaker) says he didn't switch Mike.\n    *   Mitchell (claiming Villager) says he didn't rob anyone.\n    *   If Mike was the Werewolf and no one robbed him or swapped him, Mike is still the Werewolf.\n    *   If Eric (Seer) saw a Werewolf in the center, then there are at least two Werewolves in the game (one in center, one with Mike). But Eric says \"there was only one werewolf\". This is a contradiction.\n\n    *   Scenario A: Eric is the Werewolf/Minion and is lying about the center cards to convince the village there are no werewolves among the players.\n    *   Scenario B: Mike is the Werewolf and is telling the truth about his starting role.\n    *   Scenario C: Paul is lying about being the Troublemaker/Villager.\n    *   Scenario D: Mitchell is the Robber and lied about being a Villager.\n\n    *   Mike openly admits to being the Werewolf. In One Night Ultimate Werewolf, this is highly unusual unless:\n        a) He's the Tanner (trying to get voted out).\n        b) He's the Werewolf and is trying to confuse people by claiming he was swapped.\n        c) He's a Villager bluffing for some reason (unlikely).\n    *   Eric (Seer) claims he saw a Werewolf in the center. If Eric is the Seer and saw a Werewolf in the center, and Mike says he *was* the Werewolf, then there are two Werewolves. But Eric says there's only one.\n    *   If Eric is lying and is the Werewolf, he'd want to divert votes.\n    *   If Mike is the Tanner, he wants to be voted out.\n    *   If Mike is the Werewolf, he might be trying a \"reverse psychology\" play or genuinely believes he was swapped.\n\n    *   Mike: \"I was the werewolf\" (Admits it).\n    *   Eric: \"Center card is werewolf\" (Claims the werewolf is not in play).\n    *   If Eric is the Seer and saw a Werewolf in the center, and Mike says he was the Werewolf, then either:\n        1.  Mike is lying about being the Werewolf.\n        2.  Eric is lying about the center card.\n        3.  There are two Werewolves.\n\n    *   If Mike is the Werewolf, voting him out wins the game for the Village.\n    *   If Mike is the Tanner, voting him out loses the game for the Village (Tanner wins).\n    *   If Eric is the Werewolf and is lying, voting Mike (who might be a Villager/Tanner) doesn't help.\n\n    *   Mike's admission is very strong. Even if he's the Tanner, the most likely \"Werewolf\" candidate based on the transcript is Mike, as he explicitly claimed the role.\n    *   However, let's look at Eric. Eric claims to be the Seer and says the Werewolf is in the center. If Eric is the Werewolf, he's trying to stop the village from voting.\n    *   But Mike *said* he was the werewolf. Why would a Werewolf admit to being the Werewolf? To claim they were swapped.\n    *   If Mike was the Werewolf and was swapped by the Robber or Troublemaker, he is no longer the Werewolf.\n    *   Paul (Troublemaker) says he didn't switch Mike.\n    *   Mitchell (Villager/Robber?) says he didn't rob anyone.\n    *   If no one swapped Mike, Mike is still the Werewolf.\n\n    *   If Mike is the Werewolf, voting him wins.\n    *   If Mike is the Tanner, voting him loses.\n    *   If Eric is the Werewolf, voting Mike loses.\n    *   Given Mike's explicit admission (\"I was the werewolf\"), he is the primary target. The \"I was swapped\" defense is a common Werewolf tactic to avoid being voted out after an accidental or strategic admission.\n\n    *   Justin: Insomniac (Consistent).\n    *   Paul: Troublemaker -> Villager (Inconsistent, but doesn't necessarily mean Werewolf).\n    *   Eric: Seer (Claims Werewolf is in center).\n    *   Mitchell: Villager (Consistent).\n    *   Mike: Werewolf (Admits it).\n\n    If Eric is the Seer and saw a Werewolf in the center, and Mike says he was the Werewolf, then there are two Werewolves. If there are two Werewolves, and one is in the center, one must be among the players. Mike is the only one who admitted to it.\n\n    Wait, if Eric is the Seer and saw a Werewolf in the center, and he says \"I can guarantee there was only one werewolf\", he is claiming that the *only* werewolf is in the center. If that's true, then Mike is lying about being the werewolf. Why would Mike lie about being the werewolf? To be the Tanner.\n\n    If Mike is the Tanner, voting him out makes the Tanner win.\n    If Mike is the Werewolf, voting him out makes the Village win.\n\n    Let's re-read:\n    Mike: \"I was the werewolf and if he switched us...\"\n    Mike: \"I'm very confident that my card is not mine anymore.\"\n    Paul: \"I didn't switch you.\"\n    Mitchell: \"I didn't steal from anyone.\"\n\n    If Paul and Mitchell are telling the truth, Mike's card was not swapped. Therefore, Mike is still the Werewolf.\n\n    Conclusion: Mike is the most likely Werewolf.\n\n    *   Justification: Mike explicitly admitted to being the Werewolf, although he later claimed his card might have been swapped. However, Paul (the Troublemaker) and Mitchell (the suspected Robber) both denied swapping or robbing Mike. Eric's claim that the Werewolf is in the center contradicts Mike's admission, but since Mike openly claimed the role, he is the most probable target for Team Village.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "Mike explicitly admitted to being the Werewolf, although he later attempted to claim his card was swapped by the Robber or Troublemaker. Both Paul (who claimed to be the Troublemaker) and Mitchell (who was suspected of being the Robber) denied swapping or robbing Mike. While Eric (the Seer) claimed the Werewolf was in the center, this contradicts Mike's own admission, making Mike the most likely Werewolf remaining in play.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike explicitly admitted to being the Werewolf, although he later attempted to claim his card was swapped by the Robber or Troublemaker. Both Paul (who claimed to be the Troublemaker) and Mitchell (who was suspected of being the Robber) denied swapping or robbing Mike. While Eric (the Seer) claimed the Werewolf was in the center, this contradicts Mike's own admission, making Mike the most likely Werewolf remaining in play.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike explicitly admitted to being the Werewolf, although he later attempted to claim his card was swapped by the Robber or Troublemaker. Both Paul (who claimed to be the Troublemaker) and Mitchell (who was suspected of being the Robber) denied swapping or robbing Mike. While Eric (the Seer) claimed the Werewolf was in the center, this contradicts Mike's own admission, making Mike the most likely Werewolf remaining in play.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike explicitly admitted to being the Werewolf, although he later attempted to claim his card was swapped by the Robber or Troublemaker. Both Paul (who claimed to be the Troublemaker) and Mitchell (who was suspected of being the Robber) denied swapping or robbing Mike. While Eric (the Seer) claimed the Werewolf was in the center, this contradicts Mike's own admission, making Mike the most likely Werewolf remaining in play."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3700,
+    "output_token_count": 1870,
+    "generation_time_sec": 200.93226790428162,
+    "used_chat_template": true,
+    "input_char_count": 12951,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

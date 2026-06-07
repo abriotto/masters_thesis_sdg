@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Dan\n    *   Mitchell\n    *   Caitlynn\n    *   Mike\n\n    *   Justin: Claims to be the Seer [109], then claims to be the Robber [111] and says he switched with Dan [111]. Earlier, he claimed he looked at two cards in the center and saw two villagers [25].\n    *   Dan: Claims to be a villager [100], then jokingly claims to be the Seer [110].\n    *   Mitchell: Claims he was the Tanner [71], then says he was *not* the Tanner when he started [88]. He suspects Justin [90, 107].\n    *   Caitlynn: Hasn't made any specific role claims, but Mike suspects her of being a werewolf [72, 74, 116].\n    *   Mike: Claims to be a villager [47, 50].\n\n    *   Justin's claims are contradictory. First, he says he's the Seer and looked at the center [25]. Later, he says he's the Robber and switched with Dan [111].\n    *   If Justin was the Robber and switched with Dan, he would know Dan's original role.\n    *   If Justin was the Seer and looked at the center, he saw two villagers.\n    *   Mitchell claims he was the Tanner [71], but then says he wasn't the Tanner when he started [88]. This is confusing. If he was the Tanner, he wants to be voted out.\n    *   Mike is pushing the vote toward Caitlynn [72, 74, 116].\n    *   Justin's behavior is highly erratic (claiming Seer, then Robber, then switching with Dan). This often indicates a Werewolf trying to confuse the group or a Tanner trying to get voted out.\n\n    *   Justin: Claims Seer (center) -> Robber (switched Dan).\n    *   Dan: Claims Villager.\n    *   Mitchell: Claims Tanner (but then says he wasn't Tanner at start).\n    *   Caitlynn: Silent/No claim.\n    *   Mike: Claims Villager.\n\n    *   If Justin is the Robber and switched with Dan, and Dan was a Villager, Justin is now a Villager.\n    *   If Justin is the Seer and saw two villagers in the center, then there are 3 villagers total (2 center + 1 Justin).\n    *   Wait, if Justin is the Robber and switched with Dan, he can't also be the Seer. He's lying about one of them.\n    *   If Justin is a Werewolf, he's lying about everything to create confusion.\n    *   If Mitchell is the Tanner, he wants to be voted out. He's claiming he was the Tanner [71].\n    *   Mike is accusing Caitlynn. Why? He says \"That means Caitlin's a werewolf\" [72] after Mitchell claims to be the Tanner and Justin supposedly stole from him. This logic is weak.\n\n    *   Justin's contradictions are the most glaring. He claims to be the Seer, then the Robber.\n    *   Mitchell's claim to be the Tanner is a strong signal. If he is the Tanner, voting him out makes the Tanner win, not the Village.\n    *   Caitlynn has been very quiet. In these games, the quietest person is often the Werewolf or the one being framed.\n    *   Let's re-examine Justin. He says he switched with Dan [111]. Dan says \"I was the villager\" [100]. If Justin is the Robber and Dan was a Villager, Justin is now a Villager.\n    *   But Justin also claimed to be the Seer [109]. He can't be both.\n    *   If Justin is a Werewolf, he's bluffing.\n    *   If Justin is the Tanner, he's bluffing to get votes.\n\n    *   Justin: Claims Seer, then Robber. (Highly suspicious/contradictory)\n    *   Mitchell: Claims Tanner. (Dangerous to vote)\n    *   Caitlynn: No claim. (Suspicious)\n    *   Mike: Claims Villager.\n    *   Dan: Claims Villager.\n\n    Looking at the transcript again:\n    Justin: \"I looked at two in the center... Two villagers.\" [25]\n    Justin: \"I am the seer.\" [109]\n    Justin: \"I was the robber, and I switched with you [Dan].\" [111]\n\n    This is a blatant contradiction. He cannot be both the Seer and the Robber. He is either a Werewolf bluffing or the Tanner.\n\n    Wait, Mitchell says: \"I was a Tanner, and I think Justin stole from me\" [71]. Then he says \"I was not the tanner when I started\" [88]. This is a contradiction too. If he wasn't the Tanner when he started, how could he be the Tanner? Maybe he was swapped into the Tanner role by the Troublemaker?\n\n    If Mitchell was swapped into the Tanner role, he is now the Tanner.\n    If Justin is the Werewolf, he's lying about being the Seer/Robber.\n\n    Let's look at Mike's accusation of Caitlynn. Mike says \"That means Caitlin's a werewolf\" [72, 74, 116]. He doesn't provide much evidence.\n\n    Justin's lies are the most obvious. He claimed to be the Seer, then the Robber. In One Night Ultimate Werewolf, players often bluff, but such a direct contradiction usually points to the Werewolf or the Tanner.\n\n    If Justin is the Werewolf: Voting him wins for the Village.\n    If Justin is the Tanner: Voting him wins for the Tanner.\n    If Mitchell is the Tanner: Voting him wins for the Tanner.\n\n    Let's evaluate Justin vs Caitlynn.\n    Justin is actively lying/contradicting.\n    Caitlynn is silent.\n\n    Usually, the person making the most chaotic claims is the one to watch. Justin's claim to be the Seer and then the Robber is a huge red flag.\n\n    Wait, let's re-read:\n    Justin: \"I looked at two in the center. Oh, Mike's lying. Two villagers.\" [25]\n    Then later: \"I am the seer.\" [109]\n    Then: \"I was the robber, and I switched with you [Dan].\" [111]\n\n    If he was the Robber, he couldn't have looked at the center. If he was the Seer, he couldn't have switched with Dan. He is definitely lying.\n\n    Is he the Werewolf or the Tanner?\n    Tanners usually try to get voted out. Justin is acting suspicious, but he's also trying to deflect by accusing others or claiming roles.\n    Werewolves try to blend in or confuse.\n\n    Let's look at Mitchell again. Mitchell says \"I was a Tanner\" [71]. If he is the Tanner, he wants the vote.\n\n    Between Justin and Caitlynn:\n    Justin's contradictions are blatant.\n    Caitlynn has no defense.\n\n    However, in many of these transcripts, the person who is most \"confused\" or \"contradictory\" is the Werewolf. Justin's shift from Seer to Robber is a classic bluff gone wrong.\n\n    Let's double-check the roles.\n    Players: Justin, Dan, Mitchell, Caitlynn, Mike.\n    If Justin is the Werewolf, voting him wins.\n    If Justin is the Tanner, voting him loses.\n    If Caitlynn is the Werewolf, voting her wins.\n\n    Justin's behavior:\n    1. Claims Seer (center) [25]\n    2. Claims Seer [109]\n    3. Claims Robber (switched Dan) [111]\n\n    This is a very poor bluff. Most likely he is the Werewolf.\n\n    Wait, Mitchell's claim: \"I was a Tanner\" [71]. If Mitchell is the Tanner, he's trying to get voted out. If we vote Justin, we avoid the Tanner.\n\n    Is there any evidence for Caitlynn?\n    Mike says \"Caitlin's a werewolf\" [72, 74, 116].\n    Why does Mike think that?\n    [71] Mitchell: \"I was a Tanner, and I think Justin stole from me...\"\n    [72] Mike: \"I can agree with that. That means Caitlin's a werewolf.\"\n    This logic is completely non-sequitur. Mike is just guessing or bluffing.\n\n    Justin is the most suspicious due to the contradictory role claims.\n\n    Final check on Justin:\n    - Claimed Seer (looked at center)\n    - Claimed Robber (switched Dan)\n    - These are mutually exclusive.\n    - He is either the Werewolf or the Tanner.\n    - Given the chaos, he's a strong candidate for the Werewolf.\n\n    Wait, let's look at Mitchell again.\n    Mitchell: \"I was a Tanner\" [71]\n    Mitchell: \"I was not the tanner when I started\" [88]\n    This means he thinks he *became* the Tanner. The only way to become the Tanner is if the Robber or Troublemaker swapped him. But the Tanner is a starting role, not something you \"become\" unless you are the Robber stealing the Tanner card or the Troublemaker swapping someone into it.\n\n    Actually, the most likely scenario for a \"win\" for the village is to vote the person who is clearly lying about their role. Justin's contradictions are the most explicit.\n\n    Let's consider if Justin is the Tanner. He's acting very suspiciously. But usually, the Tanner is more direct about wanting to be voted out. Justin is claiming roles (Seer, Robber) which are Village roles. A Tanner might do this to seem like a confused villager, but it's more common for a Werewolf to bluff these roles.\n\n    Let's re-read the transcript one more time.\n    Justin: \"I looked at two in the center... Two villagers.\" [25]\n    Justin: \"I am the seer.\" [109]\n    Justin: \"I was the robber, and I switched with you [Dan].\" [111]\n    Justin is definitely lying.\n\n    Is there any other possibility?\n    Could Justin be the Doppelganger?\n    Doppelganger copies a role. If he copied the Seer, he'd be the Seer. If he copied the Robber, he'd be the Robber. He still can't be both.\n\n    Conclusion: Justin is the most likely Werewolf due to the contradictory claims.\n\n    Wait, let's look at the players again.\n    Justin, Dan, Mitchell, Caitlynn, Mike.\n    Justin is the one with the most contradictions.\n    Mitchell claimed Tanner.\n    Caitlynn is silent.\n    Mike and Dan claim Villager.\n\n    If I have to pick one, Justin's blatant lies about being the Seer AND the Robber make him the prime suspect.\n\n    One last look:\n    Justin: \"I looked at two in the center... Two villagers.\" [25]\n    Justin: \"I am the seer.\" [109]\n    Justin: \"I was the robber, and I switched with you [Dan].\" [111]\n    He's trying to cover his tracks but failing.\n\n    Wait, let's look at Mitchell's claim again.\n    Mitchell: \"I was a Tanner\" [71]\n    Mitchell: \"I was not the tanner when I started\" [88]\n    If Mitchell is the Tanner, he wants to be voted out.\n    If Justin is the Werewolf, he wants to avoid being voted out.\n    Justin's behavior is more consistent with a Werewolf bluffing poorly than a Tanner trying to get caught (since he's claiming to be a Seer/Robber, which are helpful village roles).\n\n    Therefore, Justin is the best choice.",
+  "parsed_output": {
+    "justification": "Justin makes several contradictory role claims throughout the discussion. He first claims to be the Seer and says he looked at two cards in the center [25, 109], but later claims he was the Robber and switched cards with Dan [111]. Since a player cannot be both the Seer and the Robber, Justin is clearly lying, which is a strong indicator that he is a Werewolf attempting to bluff his way through the game.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin makes several contradictory role claims throughout the discussion. He first claims to be the Seer and says he looked at two cards in the center [25, 109], but later claims he was the Robber and switched cards with Dan [111]. Since a player cannot be both the Seer and the Robber, Justin is clearly lying, which is a strong indicator that he is a Werewolf attempting to bluff his way through the game.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin makes several contradictory role claims throughout the discussion. He first claims to be the Seer and says he looked at two cards in the center [25, 109], but later claims he was the Robber and switched cards with Dan [111]. Since a player cannot be both the Seer and the Robber, Justin is clearly lying, which is a strong indicator that he is a Werewolf attempting to bluff his way through the game.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin makes several contradictory role claims throughout the discussion. He first claims to be the Seer and says he looked at two cards in the center [25, 109], but later claims he was the Robber and switched cards with Dan [111]. Since a player cannot be both the Seer and the Robber, Justin is clearly lying, which is a strong indicator that he is a Werewolf attempting to bluff his way through the game."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3900,
+    "output_token_count": 2878,
+    "generation_time_sec": 601.0453977584839,
+    "used_chat_template": true,
+    "input_char_count": 13598,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

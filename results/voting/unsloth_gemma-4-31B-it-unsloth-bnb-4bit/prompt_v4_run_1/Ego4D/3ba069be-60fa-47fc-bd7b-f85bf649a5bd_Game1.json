@@ -1,0 +1,72 @@
+{
+  "source": "Ego4D",
+  "session_name": "3ba069be-60fa-47fc-bd7b-f85bf649a5bd",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/3ba069be-60fa-47fc-bd7b-f85bf649a5bd_Game1.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Kevin, Kaelan, Jessica, Daniel.\n    *   Roles mentioned/claimed:\n        *   Kevin: Claimed Troublemaker [2], then admitted to being Robber [6], then claimed he swapped with Kaelan [49].\n        *   Kaelan: Claimed Troublemaker [4], then admitted to being Robber [7] (wait, he says \"I guess I'm the Robber now\" [7], but then says \"I'm still the Robber\" [9] - this is confusing). Let's re-read.\n        *   Jessica: Claimed Minion [11].\n        *   Daniel: Claimed Drunk [12].\n\n    *   [2] Kevin: \"I'm the Troublemaker.\"\n    *   [4] Kaelan: \"I'm the Troublemaker. I started with the Troublemaker.\"\n    *   [5] Daniel: \"Were you the Robber?\" (to Kevin)\n    *   [6] Kevin: \"Yeah.\" (Confirming he was the Robber)\n    *   [7] Kaelan: \"So, I guess I'm the Robber now.\" (Wait, if Kevin was Robber and stole Kaelan's card, Kevin is now Troublemaker and Kaelan is now Robber).\n    *   [9] Kaelan: \"Wait, no, I'm still the Robber. I troubled these two. So you're the Troublemaker, Jess.\" (This is contradictory. If he's the Robber, he can't \"trouble\" people. If he's the Troublemaker, he can).\n    *   [11] Jessica: \"I was the Minion.\"\n    *   [12] Daniel: \"I was the Drunk.\"\n    *   [27] Jessica: (When asked if she saw a Werewolf as Minion) \"No.\"\n    *   [49-52] Kevin: \"I was a Robber. So I switched cards with you [Kaelan]. You were the Troublemaker.\" Kaelan: \"Yeah.\" Kaelan: \"I switched you guys [Kevin and Jessica? or Daniel and Jessica?].\"\n    *   [53-56] Kevin: \"And you were the Minion.\" Jessica: \"Right.\" Kevin: \"And you said that you didn't see a Werewolf.\" Jessica: \"Uh-uh.\"\n\n    *   Starting Roles (claimed):\n        *   Kevin: Robber\n        *   Kaelan: Troublemaker\n        *   Jessica: Minion\n        *   Daniel: Drunk\n    *   Night Actions:\n        1.  Robber (Kevin) swaps with Kaelan.\n            *   Kevin becomes Troublemaker.\n            *   Kaelan becomes Robber.\n        2.  Troublemaker (Kaelan - *Wait*, the Troublemaker is the *starting* role. Kaelan started as Troublemaker. He swaps two other players).\n            *   Kaelan (Troublemaker) swaps two players. He says \"I switched you guys\" [52]. Who are \"you guys\"? Likely Jessica and Daniel.\n        3.  Drunk (Daniel) swaps with center.\n            *   Daniel (Drunk) swaps his card with one in the center.\n\n    *   Final Roles (based on claims):\n        *   Kevin: Troublemaker (from Kaelan)\n        *   Kaelan: Robber (from Kevin)\n        *   Jessica: (Swapped by Kaelan) - Was Minion, now whatever Daniel was (Drunk).\n        *   Daniel: (Swapped by Kaelan, then swapped with center) - Was Drunk, became Minion (from Jessica), then swapped with center.\n\n    *   If Jessica (Minion) saw no Werewolf [27], and the only other players are Kevin, Kaelan, and Daniel...\n    *   If the Minion sees no Werewolf, the Werewolf must be in the center.\n    *   However, the transcript ends with a reveal.\n    *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n    *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\" (Directed at Daniel).\n    *   [84] Daniel: \"You could have just come out and said you was werewolf.\" (Wait, Daniel is saying this to someone).\n    *   Looking at [84] again: \"You could have just come out and said you was werewolf.\" This is Daniel speaking. Who is he speaking to? The context suggests he's speaking to the person who just accused him or the person who was the werewolf.\n    *   Wait, [82] Kevin says \"Town wins.\" This implies a Werewolf was caught.\n    *   [83] Kevin is yelling at Daniel.\n    *   [84] Daniel says \"You could have just come out and said you was werewolf.\" This is confusing. Let's re-read the end.\n    *   [75] Daniel: \"I'm shooting the center.\"\n    *   [76] Kaelan: \"I also am shooting the center.\"\n    *   [79] Kevin: \"I guess I'll shoot at Kaelan, whatever.\" (Wait, Kevin votes Kaelan).\n    *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n    *   This is very confusing. Let's look at the dialogue again.\n    *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n    *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\" (To Daniel).\n    *   If Kevin voted Kaelan [79], and Kevin says \"Town wins\" [82], then Kaelan must be the Werewolf.\n    *   But Kevin is yelling at Daniel in [83].\n    *   Let's re-examine the voting:\n        *   Daniel: Center [75]\n        *   Kaelan: Center [76]\n        *   Kevin: Kaelan [79]\n        *   Jessica: (Not explicitly stated, but likely center or Kaelan).\n    *   If Kaelan is voted out and Town wins, Kaelan is the Werewolf.\n    *   Wait, let's look at the roles again.\n    *   If Kaelan started as Troublemaker and Kevin (Robber) stole it, Kaelan became the Robber.\n    *   If Kaelan (Troublemaker) swapped Jessica (Minion) and Daniel (Drunk), then Jessica became Drunk and Daniel became Minion.\n    *   Then Daniel (Minion) swapped with the center (because he was the Drunk).\n    *   So the Minion card went to the center, and Daniel got whatever was in the center.\n    *   If the Werewolf was in the center, Daniel is now the Werewolf.\n    *   If Daniel is the Werewolf, and Kevin voted Kaelan, Town wouldn't win unless Kaelan was also a Werewolf.\n    *   Let's re-read [82-84].\n    *   [82] Kevin: \"I'm not the Werewolf. Town wins.\"\n    *   [83] Kevin: \"I fucking knew it... I knew I couldn't trust you.\" (To Daniel).\n    *   This implies Daniel was the Werewolf.\n    *   But Kevin said [79] \"I guess I'll shoot at Kaelan\".\n    *   Wait, maybe Kevin changed his vote? Or maybe the transcript is slightly out of order?\n    *   Let's look at [77]: \"I mean I have to shoot at Dan. If I want to win, I got to...\"\n    *   Then [79]: \"I guess I'll shoot at Kaelan, whatever.\"\n    *   Then [82]: \"Town wins.\"\n    *   If Town wins and Kevin is yelling at Daniel, Daniel must have been the one voted out.\n    *   Let's check the votes again.\n    *   Daniel: Center\n    *   Kaelan: Center\n    *   Kevin: Kaelan (or Daniel?)\n    *   Jessica: ?\n    *   If Daniel is the Werewolf, the village needs to vote Daniel.\n    *   Let's re-evaluate the roles.\n    *   Starting: Kevin (Robber), Kaelan (Troublemaker), Jessica (Minion), Daniel (Drunk).\n    *   Robber (Kevin) takes Kaelan's card. Kevin=Troublemaker, Kaelan=Robber.\n    *   Troublemaker (Kaelan) swaps Jessica and Daniel. Jessica=Drunk, Daniel=Minion.\n    *   Drunk (Daniel) swaps with center. Daniel=CenterCard, Center=Minion.\n    *   If the center card was a Werewolf, Daniel is now the Werewolf.\n    *   If Daniel is the Werewolf, voting Daniel wins the game for the village.\n\n    *   Kevin says \"I mean I have to shoot at Dan\" [77].\n    *   Then he says \"I guess I'll shoot at Kaelan, whatever\" [79].\n    *   But then he says \"Town wins\" and yells at Daniel [82-83].\n    *   This strongly suggests Daniel was the target and the Werewolf.\n    *   Wait, if Kevin voted Kaelan, and Daniel and Kaelan voted center, and Jessica voted... someone...\n    *   If Daniel is the Werewolf, the only way Town wins is if Daniel is voted out.\n    *   Let's look at the logic:\n        *   Jessica (Minion) saw no Werewolf.\n        *   This means the Werewolf card was in the center.\n        *   Daniel (Drunk) swapped his card with the center.\n        *   Therefore, Daniel now has the Werewolf card.\n        *   To win, the village must vote out Daniel.\n\n    *   Kevin: Robber -> Troublemaker\n    *   Kaelan: Troublemaker -> Robber\n    *   Jessica: Minion -> Drunk (swapped by Kaelan)\n    *   Daniel: Drunk -> Minion (swapped by Kaelan) -> Werewolf (swapped with center)\n    *   This fits perfectly. Jessica (as Minion) saw no Werewolf, meaning the Werewolf was in the center. Daniel (as Drunk) swapped with the center, becoming the Werewolf.\n\n    *   The goal is to make Team Village win.\n    *   The Werewolf is Daniel.\n    *   Vote: Daniel.",
+  "parsed_output": {
+    "justification": "Based on the claims, Kevin was the Robber and Kaelan was the Troublemaker. Kevin swapped cards with Kaelan, making Kevin the Troublemaker and Kaelan the Robber. Kaelan (as Troublemaker) swapped Jessica (Minion) and Daniel (Drunk), making Jessica the Drunk and Daniel the Minion. Finally, Daniel (as Drunk) swapped his card with the center. Since Jessica (the starting Minion) reported seeing no Werewolf, the Werewolf card must have been in the center, which Daniel then swapped into his hand. Therefore, Daniel is the Werewolf.",
+    "chosen_vote": "Daniel"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Based on the claims, Kevin was the Robber and Kaelan was the Troublemaker. Kevin swapped cards with Kaelan, making Kevin the Troublemaker and Kaelan the Robber. Kaelan (as Troublemaker) swapped Jessica (Minion) and Daniel (Drunk), making Jessica the Drunk and Daniel the Minion. Finally, Daniel (as Drunk) swapped his card with the center. Since Jessica (the starting Minion) reported seeing no Werewolf, the Werewolf card must have been in the center, which Daniel then swapped into his hand. Therefore, Daniel is the Werewolf.\",\n  \"chosen_vote\": \"Daniel\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Based on the claims, Kevin was the Robber and Kaelan was the Troublemaker. Kevin swapped cards with Kaelan, making Kevin the Troublemaker and Kaelan the Robber. Kaelan (as Troublemaker) swapped Jessica (Minion) and Daniel (Drunk), making Jessica the Drunk and Daniel the Minion. Finally, Daniel (as Drunk) swapped his card with the center. Since Jessica (the starting Minion) reported seeing no Werewolf, the Werewolf card must have been in the center, which Daniel then swapped into his hand. Therefore, Daniel is the Werewolf.\",\n  \"chosen_vote\": \"Daniel\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Daniel",
+    "justification": "Based on the claims, Kevin was the Robber and Kaelan was the Troublemaker. Kevin swapped cards with Kaelan, making Kevin the Troublemaker and Kaelan the Robber. Kaelan (as Troublemaker) swapped Jessica (Minion) and Daniel (Drunk), making Jessica the Drunk and Daniel the Minion. Finally, Daniel (as Drunk) swapped his card with the center. Since Jessica (the starting Minion) reported seeing no Werewolf, the Werewolf card must have been in the center, which Daniel then swapped into his hand. Therefore, Daniel is the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3573,
+    "output_token_count": 2594,
+    "generation_time_sec": 527.806174993515,
+    "used_chat_template": true,
+    "input_char_count": 12201,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

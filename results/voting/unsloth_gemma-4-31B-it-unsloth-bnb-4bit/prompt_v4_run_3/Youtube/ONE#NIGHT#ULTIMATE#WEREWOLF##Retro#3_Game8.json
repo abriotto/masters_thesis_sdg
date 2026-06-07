@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mike, James, Mitchell.\n    *   Roles involved (claimed/implied):\n        *   Mitchell: Claims Insomniac (woke up as he went to sleep).\n        *   James: Claims Seer (saw something \"off the mat\" - likely meaning he looked at the center cards).\n        *   Justin: Claims Troublemaker (says he didn't switch anyone).\n        *   Mike: Doesn't claim a role, but says \"I vote for myself\" (Tanner behavior?).\n\n    *   Mitchell (Insomniac): Claims he woke up as Insomniac and didn't change.\n    *   James (Seer): Claims he looked at the center and saw two werewolves (or at least one). He says \"two werewolves in the center\" and \"no one was robber or burgled\" (though he can't know about the robber unless he's the robber or saw the robber card in the center). Wait, he says \"I can tell you that's off the mat\" and \"two werewolves in the center\".\n    *   Justin (Troublemaker): Claims he didn't switch anyone.\n    *   Mike: Says \"I vote for myself\". This is a classic Tanner move.\n\n    *   If James (Seer) is telling the truth and saw two werewolves in the center, then there are no werewolves among the players (since there are only 2 werewolves max in a standard game, though the rules say \"up to two Masons\", it doesn't specify the max number of werewolves, but usually it's 2).\n    *   Wait, the rules say \"the number of candidate roles is always equal to the number of players plus 3\". With 4 players, there are 7 candidate roles.\n    *   If James saw two werewolves in the center, then no player is a werewolf.\n    *   If no player is a werewolf, Team Village wins if no one dies.\n    *   Justin (Troublemaker) says he didn't switch anyone.\n    *   Mitchell (Insomniac) says he woke up as Insomniac.\n    *   Mike says \"I vote for myself\".\n\n    *   If James is the Seer and saw two werewolves in the center, then there are no werewolves among the players.\n    *   If there are no werewolves among the players, the best move for Team Village is to ensure no one dies.\n    *   The players discussed voting \"to the left\" so that everyone gets one vote and no one dies.\n    *   However, the prompt asks me to choose the player to vote out to make Team Village win.\n    *   If no werewolf is present, \"No Werewolf\" is the correct choice.\n\n    *   James: \"There's two werewolves in the center. I can confirm there's at least one...\"\n    *   If James is lying, he could be a werewolf.\n    *   If Mike is the Tanner, he wants to be voted out.\n    *   If Justin is the Troublemaker and didn't switch, and Mitchell is the Insomniac, and James is the Seer... then Mike must be the remaining role.\n    *   Roles used: Seer (James), Troublemaker (Justin), Insomniac (Mitchell).\n    *   Remaining roles: 4 players + 3 center = 7 roles.\n    *   Roles mentioned: Seer, Troublemaker, Insomniac, Werewolf (x2). That's 5 roles.\n    *   If James saw 2 werewolves in the center, then the 7 roles were: Seer, Troublemaker, Insomniac, Werewolf, Werewolf, and two others.\n    *   If James is telling the truth, no one is a werewolf.\n\n    *   James claims to be the Seer and says there are two werewolves in the center.\n    *   If this is true, no player is a werewolf.\n    *   If no player is a werewolf, Team Village wins if no one dies.\n    *   The prompt says: \"If you believe that no player holds the werewolf card (and thus all werewolf cards are in the center), you can indicate 'no Werewolf'.\"\n\n    *   Could James be a werewolf lying about the center?\n    *   Could Justin be a werewolf lying about being the Troublemaker?\n    *   Could Mitchell be a werewolf lying about being the Insomniac?\n    *   Could Mike be a werewolf?\n    *   Mike's behavior (\"I vote for myself\") is very typical of a Tanner.\n    *   If James is the Seer and saw two werewolves in the center, then the game is a \"No Werewolf\" scenario.\n\n    *   James: \"There's two werewolves in the center. I can confirm there's at least one...\"\n    *   This is a strong claim. In One Night Ultimate Werewolf, if the Seer sees two werewolves in the center, they know for a fact that no one is a werewolf.\n    *   If we trust James, the answer is \"No Werewolf\".\n\n    *   Is there any reason to doubt James? He's the only one providing specific information about the center.\n    *   Is there any reason to suspect Mike? He's acting like a Tanner.\n    *   Is there any reason to suspect Justin or Mitchell? They claimed roles that are consistent with each other.\n    *   If James is the Seer and saw two werewolves in the center, then no one is a werewolf.\n\n    *   \"If no player is a Werewolf and no one dies... Team Village wins.\"\n    *   \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n\n    *   James claims to be the Seer and states that there are two werewolves in the center.\n    *   If this is true, no player is a werewolf.\n    *   The other players' claims (Justin as Troublemaker, Mitchell as Insomniac) do not contradict this.\n    *   Mike's behavior is consistent with being the Tanner.\n    *   Therefore, the most likely scenario is that no player is a werewolf.",
+  "parsed_output": {
+    "justification": "James claims to be the Seer and explicitly states that there are two werewolves in the center. If this information is true, no player can be a werewolf. The other players' claims (Justin as Troublemaker and Mitchell as Insomniac) are consistent with this, and Mike's behavior of voting for himself is characteristic of the Tanner. Therefore, it is most likely that no werewolf is present among the players.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claims to be the Seer and explicitly states that there are two werewolves in the center. If this information is true, no player can be a werewolf. The other players' claims (Justin as Troublemaker and Mitchell as Insomniac) are consistent with this, and Mike's behavior of voting for himself is characteristic of the Tanner. Therefore, it is most likely that no werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claims to be the Seer and explicitly states that there are two werewolves in the center. If this information is true, no player can be a werewolf. The other players' claims (Justin as Troublemaker and Mitchell as Insomniac) are consistent with this, and Mike's behavior of voting for himself is characteristic of the Tanner. Therefore, it is most likely that no werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "James claims to be the Seer and explicitly states that there are two werewolves in the center. If this information is true, no player can be a werewolf. The other players' claims (Justin as Troublemaker and Mitchell as Insomniac) are consistent with this, and Mike's behavior of voting for himself is characteristic of the Tanner. Therefore, it is most likely that no werewolf is present among the players."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2914,
+    "output_token_count": 1481,
+    "generation_time_sec": 153.83592057228088,
+    "used_chat_template": true,
+    "input_char_count": 10900,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

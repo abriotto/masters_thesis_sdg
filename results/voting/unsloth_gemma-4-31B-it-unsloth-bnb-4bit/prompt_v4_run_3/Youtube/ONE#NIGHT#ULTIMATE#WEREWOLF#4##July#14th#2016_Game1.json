@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell, Mike.\n    *   Roles involved (based on claims): Seer, Robber, Drunk, Troublemaker, Tanner, Werewolf.\n\n    *   Mike: Claims Seer. Says he saw two Werewolves in the center (lines 27, 29, 54).\n    *   Mitchell: Claims Drunk (line 26, 73). Later says he might be Tanner (line 84, 106, 147).\n    *   Justin:\n        *   Initially claims Robber (line 40).\n        *   Confirms Mitchell was Drunk (line 42).\n        *   Later says he was actually the Drunk (line 65, 67, 69, 98, 144).\n        *   Claims Mitchell is the Tanner (line 135).\n    *   Paul:\n        *   Initially vague (line 34).\n        *   Later claims Robber and says he robbed Justin, who he believes is the Seer (line 132).\n\n    *   If Mike is the Seer and saw two Werewolves in the center, then there are no Werewolves among the players (since there are only 2 Werewolf cards total in a standard setup, or at least the ones he saw). Wait, if there are two Werewolves in the center, then no one is a Werewolf.\n    *   If no one is a Werewolf, Team Village wins if no one is voted out or if the Tanner is not voted out.\n    *   However, we must evaluate the reliability of the claims.\n\n    *   Justin's claims are contradictory: Robber -> Drunk.\n    *   Paul's claim: Robber, robbed Justin (Seer).\n    *   Mitchell's claim: Drunk.\n    *   Mike's claim: Seer, saw 2 Werewolves in center.\n\n    *   If Mike is telling the truth (Seer, 2 Werewolves in center), then no one is a Werewolf.\n    *   If Paul is telling the truth (Robber, robbed Justin), then Paul knows Justin's card. He says Justin is the Seer.\n    *   If Paul is the Robber and Justin is the Seer, then Mike cannot be the Seer.\n    *   If Mike is lying about being the Seer, he might be a Werewolf or the Tanner.\n    *   If Justin is the Seer (as Paul claims), then Mike's claim about the center is a lie.\n\n    *   Justin: Robber -> Drunk. (Very suspicious)\n    *   Mitchell: Drunk. (Consistent, but admits he might be Tanner)\n    *   Paul: Robber. (Claims he robbed Justin)\n    *   Mike: Seer. (Claims 2 Werewolves in center)\n\n    *   If Paul is the Robber and robbed Justin, and Justin was the Seer:\n        *   Paul is now the Seer.\n        *   Justin is now the Robber.\n        *   Mike is lying.\n    *   If Mike is the Seer and saw 2 Werewolves in center:\n        *   No one is a Werewolf.\n        *   Paul is lying about being the Robber/Justin being the Seer.\n        *   Justin is lying about being the Robber/Drunk.\n\n    *   Justin's behavior is erratic. He claims Robber, then Drunk, then says he's probably a Werewolf because he was the Drunk (which doesn't make sense, as Drunk is Village).\n    *   Mitchell is acting like a Tanner (\"don't vote for me... I might be Tanner\").\n    *   Paul is pushing for Mitchell to be voted out.\n    *   Mike is confused but seems to be sticking to his Seer claim.\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If no one is a Werewolf, the only way for Team Village to lose is if they vote out a non-Werewolf (unless it's the Tanner, but the Tanner wins if they die).\n    *   Wait, the rules say: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   So if Mike is telling the truth, the best move is \"No Werewolf\".\n\n    *   Is Mike's claim reliable? He's the first to claim a role and it's a very specific claim (2 Werewolves in center).\n    *   Is Paul's claim reliable? He claims he robbed Justin.\n    *   Is Justin's claim reliable? He changed his story multiple times.\n    *   Is Mitchell's claim reliable? He claims Drunk, then hints at Tanner.\n\n    *   If Paul is the Robber and robbed Justin (Seer), then Paul is the Seer.\n    *   If Paul is the Seer, he would know if there are Werewolves.\n    *   But Paul doesn't claim to be the Seer; he says he *robbed* the Seer. (Wait, the Robber *becomes* the role they steal). So Paul would be the Seer.\n    *   If Paul is the Seer, why is he voting for Mitchell?\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If no one is a Werewolf, the only way to win is to vote \"No Werewolf\".\n\n    *   Justin's contradictions:\n        1. \"I was a Robber.\"\n        2. \"I was the drunk.\"\n        3. \"I am probably a Werewolf cause I was the drunk.\" (This is a logical fallacy; Drunk is Village).\n    *   This suggests Justin is lying or very confused.\n    *   Mitchell's behavior:\n        1. \"I was the drunk.\"\n        2. \"Either I'm a werewolf... or I'm a Tanner.\"\n    *   Paul's behavior:\n        1. \"I robbed you [Justin]. You're a hundred percent the seer.\"\n    *   Mike's behavior:\n        1. \"I saw two werewolves in the center.\"\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If Paul is the Robber and robbed Justin (Seer), then Paul is the Seer.\n    *   If Paul is the Seer, he knows the cards. He doesn't mention the center.\n    *   If Justin is the Tanner, he would want to be voted out. He's acting chaotic.\n    *   If Mitchell is the Tanner, he's acting like a Tanner.\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If no one is a Werewolf, the only way for Team Village to win is to vote \"No Werewolf\".\n    *   Let's check if any other scenario makes sense.\n    *   If Mike is a Werewolf lying about the center, then there is a Werewolf.\n    *   If Paul is the Robber and robbed Justin (Seer), then Paul is the Seer. If Paul is the Seer, he knows who the Werewolf is. He's voting for Mitchell.\n    *   If Mitchell is the Werewolf, then voting for him wins.\n    *   But Mitchell's behavior is very Tanner-like.\n\n    *   Mike's claim is the most definitive: \"I saw two werewolves in the center.\"\n    *   In One Night Ultimate Werewolf, if the Seer sees two Werewolves in the center, it's a huge piece of information.\n    *   If we trust Mike, the answer is \"No Werewolf\".\n    *   If we don't trust Mike, we have to guess between Justin, Paul, and Mitchell.\n    *   Justin is lying/confused. Mitchell is acting like a Tanner. Paul is claiming to be the Robber.\n    *   Wait, if Mike is the Seer and saw 2 Werewolves in the center, then the Werewolf cards are not in play.\n    *   Let's re-read: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   If Mike is telling the truth, \"No Werewolf\" is the correct move.\n\n    *   Is there any reason to doubt Mike? He's the only one who hasn't contradicted himself.\n    *   Justin contradicted himself.\n    *   Mitchell is ambiguous.\n    *   Paul's claim depends on Justin being the Seer, but Justin's behavior is not that of a Seer.\n    *   Therefore, Mike's claim is the most reliable.\n\n    *   Mike: Seer -> Saw 2 Werewolves in center.\n    *   Conclusion: No Werewolf among players.\n    *   Action: Vote \"No Werewolf\".",
+  "parsed_output": {
+    "justification": "Mike claimed to be the Seer and stated twice that he saw two Werewolves in the center of the table. If this claim is true, no player is a Werewolf, and Team Village wins by voting 'No Werewolf'. Other players' claims are contradictory: Justin claimed to be the Robber and then the Drunk, and Paul's claim of robbing the Seer (Justin) is inconsistent with Justin's erratic behavior. Given Mike's consistent and specific claim, it is the most reliable piece of information available.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claimed to be the Seer and stated twice that he saw two Werewolves in the center of the table. If this claim is true, no player is a Werewolf, and Team Village wins by voting 'No Werewolf'. Other players' claims are contradictory: Justin claimed to be the Robber and then the Drunk, and Paul's claim of robbing the Seer (Justin) is inconsistent with Justin's erratic behavior. Given Mike's consistent and specific claim, it is the most reliable piece of information available.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claimed to be the Seer and stated twice that he saw two Werewolves in the center of the table. If this claim is true, no player is a Werewolf, and Team Village wins by voting 'No Werewolf'. Other players' claims are contradictory: Justin claimed to be the Robber and then the Drunk, and Paul's claim of robbing the Seer (Justin) is inconsistent with Justin's erratic behavior. Given Mike's consistent and specific claim, it is the most reliable piece of information available.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Mike claimed to be the Seer and stated twice that he saw two Werewolves in the center of the table. If this claim is true, no player is a Werewolf, and Team Village wins by voting 'No Werewolf'. Other players' claims are contradictory: Justin claimed to be the Robber and then the Drunk, and Paul's claim of robbing the Seer (Justin) is inconsistent with Justin's erratic behavior. Given Mike's consistent and specific claim, it is the most reliable piece of information available."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4466,
+    "output_token_count": 2172,
+    "generation_time_sec": 231.29472017288208,
+    "used_chat_template": true,
+    "input_char_count": 15011,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

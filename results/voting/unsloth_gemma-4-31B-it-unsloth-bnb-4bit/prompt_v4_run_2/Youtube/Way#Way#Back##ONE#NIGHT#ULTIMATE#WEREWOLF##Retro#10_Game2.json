@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims to be Tanner [31]. Later claims he's an Insomniac [97] (contradiction).\n    *   Paul: Claims he woke up with no information [30]. Later claims he's not a werewolf [176].\n    *   Mitchell: Claims to be Seer [50]. Says he saw two cards from the middle [52], one of which was a werewolf [78], and later says he saw the Robber [143].\n    *   James: Claims he was \"this guy\" [38] (vague). Later claims he was the Tanner [107]. Then claims he's a \"lonely nobody\" [132].\n    *   Laura: Claims she was the Troublemaker [94] and switched two players (Justin and Paul? Or Justin and James?). She says \"I switched you two\" [94] while talking to Paul and Justin.\n\n    *   Laura (Troublemaker) says she switched two players.\n    *   Justin claims he was Tanner [31].\n    *   James claims he was Tanner [107].\n    *   Mitchell (Seer) says he saw one werewolf in the center [78]. This means there is at most one werewolf among the players.\n    *   If Mitchell is telling the truth about seeing one werewolf in the center, and there are 2 werewolves in the game (standard for 5 players usually, but the rules say \"up to two\"), then there's only one werewolf left among the players.\n    *   Wait, the rules say \"the number of candidate roles is always equal to the number of players plus 3\". For 5 players, that's 8 roles.\n    *   Roles mentioned/claimed: Tanner (Justin/James), Seer (Mitchell), Troublemaker (Laura), Insomniac (Justin/Paul?), Werewolf (?), Robber (?), Villager (?).\n\n    *   Justin: Claims Tanner, then Insomniac. Very inconsistent.\n    *   James: Claims Tanner, then \"lonely nobody\". Also inconsistent.\n    *   Mitchell: Claims Seer.\n    *   Laura: Claims Troublemaker.\n    *   Paul: Claims no info.\n\n    *   Laura says she switched two people. She says \"I switched you two\" [94] to Paul and Justin.\n    *   If Laura is the Troublemaker and she switched Paul and Justin:\n        *   Justin's starting role was X, Paul's was Y.\n        *   Now Justin is Y, Paul is X.\n    *   Justin claims he was Tanner [31]. If he was the starting Tanner and got switched, he is no longer the Tanner.\n    *   James claims he was the Tanner [107].\n    *   If James is the Werewolf, he would lie about being the Tanner to get votes (wait, no, the Tanner wants votes, the Werewolf doesn't). If James is the Werewolf, claiming to be the Tanner is a risky move because it attracts votes. However, if he's trying to frame someone else or create confusion, he might.\n    *   Wait, James says \"I just wanted to get Justin killed as the tanner\" [134]. This is a weird strategy for a werewolf.\n\n    *   Mitchell (Seer) says he saw one werewolf in the center [78].\n    *   If Mitchell is the werewolf, he's lying to make the village think there's only one wolf and to appear helpful.\n    *   If Mitchell is the Seer, there is one werewolf among the players.\n\n    *   Justin: Claims Tanner, then Insomniac.\n    *   James: Claims Tanner, then \"lonely nobody\".\n    *   Paul: Claims no info.\n    *   Laura: Claims Troublemaker.\n    *   Mitchell: Claims Seer.\n\n    *   If Laura is the Troublemaker and switched Paul and Justin:\n        *   Justin (starting Tanner) -> Paul (now Tanner).\n        *   Paul (starting ?) -> Justin (now ?).\n    *   If James is the Werewolf:\n        *   He claims to be the Tanner to confuse people or because he's playing poorly.\n    *   If Mitchell is the Werewolf:\n        *   He's faking the Seer role.\n\n    *   Justin's behavior is very erratic. He claims Tanner, then Insomniac, then says James is the werewolf.\n    *   James's behavior is also erratic. He claims Tanner, then \"lonely nobody\".\n    *   Mitchell is consistent with the Seer claim.\n    *   Laura is consistent with the Troublemaker claim.\n    *   Paul is mostly quiet.\n\n    *   Justin says: \"James is the werewolf\" [97].\n    *   Mitchell says: \"I'm pointing at James\" [175].\n    *   James says: \"Mitchell is a dirty werewolf\" [138].\n\n    *   If Mitchell is the Seer and saw one werewolf in the center, there is one werewolf among the players.\n    *   If Laura is the Troublemaker and switched Paul and Justin, and Justin was the Tanner, then Paul is now the Tanner.\n    *   If Paul is the Tanner, he wants to be voted out. But Paul is not pushing for his own death.\n    *   If James is the Werewolf, he's trying to deflect.\n\n    *   Justin: \"I was the tanner\" [31].\n    *   James: \"I was the tanner\" [107].\n    *   Only one Tanner card exists. One of them is lying, or they were swapped.\n    *   If Laura swapped Justin and Paul, and Justin was the Tanner, then Paul is now the Tanner.\n    *   If James is claiming to be the Tanner, he's likely lying.\n\n    *   James is the most suspicious because he claimed to be the Tanner and then changed his story to \"lonely nobody\".\n    *   Justin is also suspicious, but he's actively accusing James.\n    *   Mitchell is acting as the Seer and also pointing at James.\n\n    *   If James is the Werewolf, Team Village wins by voting him out.\n    *   If Mitchell is the Werewolf, Team Village wins by voting him out.\n    *   If Justin is the Werewolf, Team Village wins by voting him out.\n    *   If Paul is the Werewolf, Team Village wins by voting him out.\n    *   If no one is the Werewolf (both in center), \"No Werewolf\" is the answer.\n\n    *   Mitchell says he saw one werewolf in the center. If he's the Seer, there's one werewolf left.\n    *   James's claims are the most contradictory (\"Tanner\" -> \"lonely nobody\").\n    *   Justin's claims are also contradictory (\"Tanner\" -> \"Insomniac\").\n    *   However, Justin is consistently pushing the vote toward James at the end.\n    *   Mitchell also points at James.\n\n    *   Justin claims he was the Tanner [31].\n    *   Laura (Troublemaker) says she switched Justin and Paul [94].\n    *   If Justin was the Tanner, Paul is now the Tanner.\n    *   James claims he was the Tanner [107]. This is a lie because only one Tanner exists.\n    *   If James is lying about being the Tanner, he's either the Werewolf or the Minion (or just a confused Villager).\n    *   Given the options, James is the strongest candidate for the Werewolf.\n\n    *   Justin: \"I was the tanner\" [31] -> \"I'm an Insomniac\" [97].\n    *   Wait, if Justin was the Tanner and got swapped by the Troublemaker (Laura), he doesn't *know* he's not the Tanner unless he's the Insomniac.\n    *   If Justin is the Insomniac, he wakes up at the end of the night and sees his current card.\n    *   If Justin woke up as the Insomniac, he knows his current role.\n    *   This is getting confusing, but James's claim to be the Tanner [107] when Justin already claimed it [31] and Laura claimed to have swapped Justin is a huge red flag.\n\n    *   James is the most likely Werewolf due to his inconsistent claims and the accusations from Mitchell and Justin.\n\n    *   Justin: Tanner -> Insomniac.\n    *   James: Tanner -> Nobody.\n    *   Mitchell: Seer.\n    *   Laura: Troublemaker.\n    *   Paul: No info.\n    *   If Mitchell is Seer and saw one wolf in center, there's one wolf left.\n    *   If Laura is Troublemaker and swapped Justin/Paul, and Justin was Tanner, Paul is now Tanner.\n    *   James claiming to be Tanner is a lie.\n    *   Therefore, James is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "James is the most suspicious player due to his contradictory claims; he first claimed to be the Tanner [107] and later changed his story to being a 'lonely nobody' [132]. Justin also claimed to be the Tanner early on [31], and since there is only one Tanner card, James's claim was likely a lie to divert suspicion or create confusion. Both Mitchell (claiming to be the Seer) and Justin eventually pointed to James as the Werewolf, making him the most probable target for Team Village.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James is the most suspicious player due to his contradictory claims; he first claimed to be the Tanner [107] and later changed his story to being a 'lonely nobody' [132]. Justin also claimed to be the Tanner early on [31], and since there is only one Tanner card, James's claim was likely a lie to divert suspicion or create confusion. Both Mitchell (claiming to be the Seer) and Justin eventually pointed to James as the Werewolf, making him the most probable target for Team Village.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James is the most suspicious player due to his contradictory claims; he first claimed to be the Tanner [107] and later changed his story to being a 'lonely nobody' [132]. Justin also claimed to be the Tanner early on [31], and since there is only one Tanner card, James's claim was likely a lie to divert suspicion or create confusion. Both Mitchell (claiming to be the Seer) and Justin eventually pointed to James as the Werewolf, making him the most probable target for Team Village.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James is the most suspicious player due to his contradictory claims; he first claimed to be the Tanner [107] and later changed his story to being a 'lonely nobody' [132]. Justin also claimed to be the Tanner early on [31], and since there is only one Tanner card, James's claim was likely a lie to divert suspicion or create confusion. Both Mitchell (claiming to be the Seer) and Justin eventually pointed to James as the Werewolf, making him the most probable target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4839,
+    "output_token_count": 2169,
+    "generation_time_sec": 229.54524946212769,
+    "used_chat_template": true,
+    "input_char_count": 15984,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

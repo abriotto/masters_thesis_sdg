@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mike, James, Mitchell.\n    *   Roles involved (claimed or implied):\n        *   Mitchell: Claims Insomniac (woke up as Insomniac, didn't change).\n        *   James: Claims Seer (looked at center cards, says there are two werewolves in the center).\n        *   Justin: Claims Troublemaker (says he didn't switch anyone).\n        *   Mike: No specific role claim, but mentions voting for himself.\n\n    *   Mitchell (Insomniac): Claims he woke up as Insomniac and didn't change.\n    *   James (Seer): Claims he looked at the center and saw two werewolves.\n    *   Justin (Troublemaker): Claims he chose not to switch anyone.\n    *   Mike: Doesn't claim a role, but suggests voting for himself.\n\n    *   If James is the Seer and saw two werewolves in the center, then there are no werewolves among the players (since there are only 2 werewolves max in a 4-player game usually, but the rules say \"up to two Masons\", and the role pool is players + 3 = 7. If 2 werewolves are in the center, no one is a werewolf).\n    *   If Justin is the Troublemaker and didn't switch anyone, and Mitchell is the Insomniac and didn't change, the roles remain as they started.\n    *   If James is telling the truth about the center cards, then no one is a werewolf.\n    *   If James is lying, he could be a werewolf or the Tanner.\n    *   If Justin is lying about being the Troublemaker, he could be a werewolf.\n    *   If Mitchell is lying about being the Insomniac, he could be a werewolf.\n\n    *   James says: \"There's two werewolves in the center. I can confirm there's at least one.\"\n    *   If James is the Seer and saw two werewolves in the center, then no player is a werewolf.\n    *   If no player is a werewolf, the Village wins if no one is voted out.\n    *   The players discuss voting \"to the left\" so that everyone gets one vote and no one dies.\n\n    *   If James is the Seer and saw 2 werewolves in the center, then \"No Werewolf\" is the correct answer.\n    *   Is there any reason to suspect James? He claims to be the Seer.\n    *   Is there any reason to suspect Justin? He claims to be the Troublemaker.\n    *   Is there any reason to suspect Mitchell? He claims to be the Insomniac.\n    *   Is there any reason to suspect Mike? He doesn't claim a role.\n\n    *   If James is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If James is a werewolf, he's lying to convince the village that no one is a werewolf so they don't vote.\n    *   However, the prompt asks me to choose the player to vote out to make Team Village win, or \"No Werewolf\" if I'm confident.\n    *   Looking at the transcript, James is very confident about the center cards. Justin and Mitchell seem to accept this.\n    *   If James is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If James is a werewolf, he's trying to avoid being voted out.\n    *   Wait, if James is a werewolf, he's the *only* werewolf (since he says 2 are in the center, but if he's lying, maybe only 1 or 0 are in the center).\n    *   But if James is the only werewolf, and he's lying, voting him out would make the Village win.\n    *   However, if James is the Seer and there are indeed 2 werewolves in the center, voting anyone out (especially the Tanner) would make the Village lose (or the Tanner win).\n    *   The players are actively trying to coordinate a \"no one dies\" vote (voting to the left). This suggests they believe James.\n\n    *   James (Seer) -> 2 Werewolves in center.\n    *   Justin (Troublemaker) -> Didn't switch.\n    *   Mitchell (Insomniac) -> Confirmed he is still Insomniac.\n    *   Mike -> No claim.\n    *   If these are true, no one is a werewolf.\n\n    *   If James is a werewolf, he's lying.\n    *   If Justin is a werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is a werewolf, he's lying about being the Insomniac.\n    *   If Mike is a werewolf, he's just staying quiet.\n    *   But based on the provided information, the most consistent story is that James is the Seer and saw two werewolves in the center.\n\n    *   If James is the Seer and saw 2 werewolves in the center, then no player is a werewolf.\n    *   In this case, the correct answer is \"No Werewolf\".\n\n    *   James: \"I can tell you that's off the mat... That's what I saw as a seer... There's two werewolves in the center.\"\n    *   Justin: \"I didn't switch anybody.\"\n    *   Mitchell: \"I was insomniac, and I woke up exactly how I went to sleep.\"\n    *   This set of claims is internally consistent. If they are true, no one is a werewolf.\n\n    *   Could James be the Tanner? The Tanner wants to be voted out. James is arguing that *no one* should be voted out. This is the opposite of what a Tanner would do.\n    *   Could James be a Werewolf? A Werewolf would want to avoid being voted out. Claiming there are no werewolves among the players is a great way to do that.\n    *   However, without more evidence, the most straightforward interpretation of the claims is that James is the Seer.\n\n    *   If James is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If no one is a werewolf, the Village wins if no one dies.\n    *   The prompt asks for the player to vote out to make Team Village win, or \"No Werewolf\".\n    *   If I believe James, \"No Werewolf\" is the answer.\n\n    *   Justin: Troublemaker (didn't switch)\n    *   James: Seer (saw 2 werewolves in center)\n    *   Mitchell: Insomniac (didn't change)\n    *   Mike: ?\n    *   If these are true, the roles are: Justin (Troublemaker), James (Seer), Mitchell (Insomniac), Mike (Villager/Tanner/etc.).\n    *   Werewolves: 2 in center.\n    *   Result: No Werewolf among players.\n\n    *   Wait, if James is a werewolf, he's lying. But if he's the only werewolf, and he's lying, then voting him out wins the game.\n    *   But if he's the Seer, voting anyone out loses the game (unless it's the Tanner, but the Village only wins if they eliminate a werewolf).\n    *   Actually, the rules say: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   So if James is the Seer and there are no werewolves, the only way for the Village to win is for no one to die.\n    *   If James is a werewolf, the only way for the Village to win is to vote him out.\n    *   Given the claims, the most likely scenario is that James is the Seer.\n\n    *   James claims to be the Seer and saw two werewolves in the center.\n    *   Justin claims to be the Troublemaker and didn't switch anyone.\n    *   Mitchell claims to be the Insomniac and didn't change.\n    *   These claims are consistent and suggest that no player is a werewolf.\n    *   Therefore, the most logical conclusion is that no werewolf is present among the players.",
+  "parsed_output": {
+    "justification": "James claims to be the Seer and states that he saw two werewolves in the center of the table. Justin claims to be the Troublemaker and says he did not switch any cards, and Mitchell claims to be the Insomniac and confirms he did not change roles. These claims are internally consistent and suggest that no player currently holds a werewolf card.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claims to be the Seer and states that he saw two werewolves in the center of the table. Justin claims to be the Troublemaker and says he did not switch any cards, and Mitchell claims to be the Insomniac and confirms he did not change roles. These claims are internally consistent and suggest that no player currently holds a werewolf card.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claims to be the Seer and states that he saw two werewolves in the center of the table. Justin claims to be the Troublemaker and says he did not switch any cards, and Mitchell claims to be the Insomniac and confirms he did not change roles. These claims are internally consistent and suggest that no player currently holds a werewolf card.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "James claims to be the Seer and states that he saw two werewolves in the center of the table. Justin claims to be the Troublemaker and says he did not switch any cards, and Mitchell claims to be the Insomniac and confirms he did not change roles. These claims are internally consistent and suggest that no player currently holds a werewolf card."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2914,
+    "output_token_count": 1952,
+    "generation_time_sec": 399.3587067127228,
+    "used_chat_template": true,
+    "input_char_count": 10900,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

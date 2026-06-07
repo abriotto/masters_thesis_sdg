@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mitchell, Paul, Mike.\n    *   Roles mentioned/claimed:\n        *   Mike: Claims Revealer (revealed Mitchell as a Werewolf).\n        *   Paul: Claims Troublemaker (switched Justin and Mike).\n        *   Justin: Claims Seer (looked in the center, saw a Tanner and a Werewolf).\n        *   Mitchell: No specific role claim, but denies being a Werewolf.\n\n    *   *Revealer:* The announcer mentions a \"Revealer\" role in the transcript ([18]). Wait, the provided rules *do not* list a \"Revealer\" role. Let me re-read the rules.\n    *   *Rules check:* Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Observation:* The \"Revealer\" is not in the official rules provided. However, the announcer calls it out in the transcript ([18]). This is a discrepancy. In the context of the game, Mike claims to be the Revealer.\n\n    *   Mike claims he revealed Mitchell as a Werewolf ([56], [101], [157], [159]).\n    *   Paul claims he was the Troublemaker and switched Justin and Mike ([58], [60], [64], [94], [143]).\n    *   Justin claims he was the Seer and saw a Tanner and a Werewolf in the center ([70], [72], [97]).\n    *   Mitchell denies being a Werewolf ([76]).\n\n    *   If Mike is the Revealer and saw Mitchell as a Werewolf, Mitchell is a Werewolf.\n    *   If Paul (Troublemaker) switched Justin and Mike, their roles changed.\n    *   If Justin was the Seer and saw a Werewolf in the center, and Mike saw a Werewolf on Mitchell, then there are two Werewolves in the game (one in the center, one on Mitchell).\n    *   Wait, if there are two Werewolves and one is in the center, only one Werewolf is among the players.\n    *   If Mitchell is the only Werewolf among the players, voting him out wins the game for the Village.\n\n    *   Could Mike be the Werewolf? He's claiming to be the Revealer to frame Mitchell.\n    *   Could Paul be the Werewolf? He's claiming to be the Troublemaker to confuse the roles.\n    *   Could Justin be the Werewolf? He's claiming to be the Seer.\n    *   Could Mitchell be the Tanner? He's not claiming anything, but the Tanner wants to be voted out. However, Mike's claim is very direct.\n\n    *   Mike is very confident that Mitchell is the Werewolf.\n    *   Justin agrees with Mike.\n    *   Paul is skeptical (\"This is falling too closely, easily into place\" [103]) and eventually suggests voting for Mike ([160]).\n    *   Mitchell agrees with Paul ([163]).\n\n    *   The \"Revealer\" role is not in the provided rules, but it is in the transcript. I must treat the transcript as the source of truth for what happened in the game.\n    *   If Mike is telling the truth about being the Revealer and seeing Mitchell as a Werewolf, Mitchell is the target.\n    *   If Mike is lying, he is likely the Werewolf (or Minion/Tanner).\n    *   If Paul is the Troublemaker and switched Justin and Mike, and Justin was the Seer, then Justin's information about the center (Tanner and Werewolf) is likely true.\n    *   If there is one Werewolf in the center and one on Mitchell, then Mitchell is the only Werewolf among the players.\n\n    *   Justin: Seer (saw Werewolf in center).\n    *   Mike: Revealer (saw Mitchell as Werewolf).\n    *   Paul: Troublemaker (switched Justin and Mike).\n    *   Mitchell: Werewolf.\n    *   Center: Werewolf, Tanner, [Other].\n    *   This configuration is consistent with all claims.\n\n    *   If Mike is the Werewolf, he's lying about being the Revealer.\n    *   If Paul is the Werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is the Tanner, he's just staying quiet or hoping people vote for him.\n\n    *   The most direct evidence provided in the discussion is Mike's claim that he revealed Mitchell as a Werewolf.\n    *   Justin's claim as Seer supports the idea that there's another Werewolf in the center, making Mitchell the only active Werewolf.\n    *   Paul's skepticism is based on a \"feeling\" rather than evidence.\n\n    *   The prompt asks to choose the player to vote out to make Team Village win.\n    *   Based on the claims, Mitchell is the most likely Werewolf.\n\n    *   Wait, the announcer says: \"Revealer, wake up. You may turn any other player's card face up. If the card you reveal is not on the villager team, turn it back over, face down.\"\n    *   Mike says: \"I revealed one too\" [26] and \"It was Mitchell. It was a 100% Mitchell\" [56].\n    *   If Mike is the Revealer, he saw Mitchell's card. If it was a Werewolf, it would have been turned back over (since Werewolf is not on the villager team). This matches the Revealer's ability.\n\n    *   Justin (Seer) saw a Werewolf in the center.\n    *   Mike (Revealer) saw Mitchell as a Werewolf.\n    *   This means there are 2 Werewolves in the game (one in center, one on Mitchell).\n    *   This is a valid setup.\n\n    *   Justification: Mike claims to be the Revealer and explicitly identifies Mitchell as a Werewolf. Justin, claiming to be the Seer, saw another Werewolf in the center, which suggests Mitchell is the only Werewolf among the players. While Paul expresses doubt, there is no evidence contradicting Mike's claim.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mike claims to be the Revealer and explicitly identifies Mitchell as a Werewolf. Justin, claiming to be the Seer, states he saw a Werewolf in the center, which implies that Mitchell is the only Werewolf among the active players. Although Paul expresses skepticism and suggests voting for Mike, there is no concrete evidence to contradict Mike's claim, making Mitchell the most likely target for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claims to be the Revealer and explicitly identifies Mitchell as a Werewolf. Justin, claiming to be the Seer, states he saw a Werewolf in the center, which implies that Mitchell is the only Werewolf among the active players. Although Paul expresses skepticism and suggests voting for Mike, there is no concrete evidence to contradict Mike's claim, making Mitchell the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claims to be the Revealer and explicitly identifies Mitchell as a Werewolf. Justin, claiming to be the Seer, states he saw a Werewolf in the center, which implies that Mitchell is the only Werewolf among the active players. Although Paul expresses skepticism and suggests voting for Mike, there is no concrete evidence to contradict Mike's claim, making Mitchell the most likely target for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mike claims to be the Revealer and explicitly identifies Mitchell as a Werewolf. Justin, claiming to be the Seer, states he saw a Werewolf in the center, which implies that Mitchell is the only Werewolf among the active players. Although Paul expresses skepticism and suggests voting for Mike, there is no concrete evidence to contradict Mike's claim, making Mitchell the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4649,
+    "output_token_count": 1504,
+    "generation_time_sec": 162.92557907104492,
+    "used_chat_template": true,
+    "input_char_count": 15453,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

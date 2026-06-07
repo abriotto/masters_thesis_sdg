@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Seer (initially), then claims he was a Werewolf (later).\n    *   James: Claims Insomniac.\n    *   Mitchell: Claims Robber.\n    *   Paul: Claims Troublemaker.\n    *   Laura: Claims Villager.\n\n    *   Justin (Seer) says he looked at James.\n    *   James (Insomniac) says he woke up as Insomniac.\n    *   Mitchell (Robber) says he robbed Justin (initially), then changes it to robbing Laura.\n    *   Paul (Troublemaker) says he switched Justin and Laura.\n\n    *   Justin: \"I was the Seer... I looked at [James].\" (Line 22)\n    *   James: \"I was the Insomniac.\" (Line 23)\n    *   Mitchell: \"I robbed Justin's.\" (Line 47) -> Later: \"I didn't actually take from his... I took from yours [Laura].\" (Line 107)\n    *   Paul: \"I switched you [Justin] and I switched Justin [Wait, he means Justin and Laura].\" (Line 99) \"I switched you and Laura.\" (Line 112)\n    *   Justin: \"I was a Werewolf.\" (Line 115) \"I want everyone to vote for Laura.\" (Line 136)\n\n    *   If Paul is the Troublemaker and switched Justin and Laura:\n        *   If Justin started as a Werewolf and Laura started as a Villager, then after the switch, Laura is the Werewolf and Justin is the Villager.\n        *   Justin claims he was a Werewolf (starting role). If he's telling the truth, and Paul switched him with Laura, Laura is now the Werewolf.\n    *   If Mitchell is the Robber:\n        *   He claims he robbed Laura. If he robbed Laura and she was a Werewolf (after Paul's switch), Mitchell would now be the Werewolf. But Mitchell claims he's the Robber.\n        *   Wait, the Robber swaps cards *then* looks at the new card. If Mitchell robbed Laura and saw a Werewolf card, he would *be* the Werewolf.\n    *   Let's re-examine the timeline:\n        1.  Doppelganger\n        2.  Werewolves\n        3.  Minion\n        4.  Masons\n        5.  Seer (Justin?)\n        6.  Robber (Mitchell?)\n        7.  Troublemaker (Paul?)\n        8.  Drunk\n        9.  Insomniac (James?)\n\n    *   If Justin was the Seer (starting role), he looked at James.\n    *   If Mitchell was the Robber (starting role), he robbed Laura.\n    *   If Paul was the Troublemaker (starting role), he swapped Justin and Laura.\n\n    *   Wait, the order is: Seer -> Robber -> Troublemaker -> Insomniac.\n    *   If Justin was Seer, he looked at James.\n    *   If Mitchell was Robber, he robbed Laura.\n    *   If Paul was Troublemaker, he swapped Justin and Laura.\n    *   If James was Insomniac, he checked his card at the end.\n\n    *   Let's trace the cards:\n        *   Justin: Start=Werewolf? (He claims this later).\n        *   Laura: Start=Villager? (She claims this).\n        *   Paul: Start=Troublemaker.\n        *   Mitchell: Start=Robber.\n        *   James: Start=Insomniac.\n\n        *   Night Actions:\n            1.  Seer (Justin?): Looks at James.\n            2.  Robber (Mitchell): Robs Laura. (Mitchell now has Laura's card, Laura has Robber's card).\n            3.  Troublemaker (Paul): Swaps Justin and Laura. (Justin now has Laura's current card [Robber], Laura now has Justin's card [Werewolf]).\n            4.  Insomniac (James): Checks his card.\n\n        *   Final Roles:\n            *   Justin: Robber (from Laura via Paul).\n            *   Laura: Werewolf (from Justin via Paul).\n            *   Paul: Troublemaker.\n            *   Mitchell: Villager (from Laura via Robber).\n            *   James: Insomniac.\n\n    *   Wait, let's re-read Justin's claim. Justin says: \"I was a Werewolf... I want everyone to vote for Laura.\" (Lines 115, 136).\n    *   If Justin started as a Werewolf and Paul swapped him with Laura, Laura is now the Werewolf.\n\n    *   Justin's behavior is erratic. He first claims Seer, then claims Werewolf.\n    *   Mitchell's behavior is erratic. He first claims he robbed Justin, then says he robbed Laura.\n    *   Paul is consistent about being the Troublemaker and swapping Justin and Laura.\n    *   James is consistent about being the Insomniac.\n    *   Laura is consistent about being a Villager.\n\n    *   If Justin is the Werewolf (starting role) and Paul (Troublemaker) swapped him with Laura, then Laura is the Werewolf.\n    *   If Justin is lying about being the Werewolf to get Laura voted out, he might be the Werewolf himself (and Paul is lying or mistaken).\n    *   However, if we trust Paul (Troublemaker) and Justin's admission (\"I was a Werewolf\"), the most logical target for Team Village is Laura.\n\n    *   Justin: \"I was a Werewolf.\" (Line 115)\n    *   Paul: \"I switched you [Justin] and Laura.\" (Line 112)\n    *   If both are true, Laura is the Werewolf.\n\n    *   Could Justin be the Tanner? He's acting very suspiciously, claiming to be a Werewolf and wanting to be voted out (or wanting Laura to be voted out). Wait, if he wants Laura to be voted out, he's not acting like a Tanner. A Tanner wants *themselves* to be voted out.\n    *   Could Mitchell be the Tanner? Paul suggests this (Line 110). Mitchell's changing story about who he robbed is suspicious.\n    *   If Justin is the Werewolf and Paul is the Troublemaker, and they swapped, Laura is the Werewolf.\n\n    *   Justin claims he was a Werewolf.\n    *   Paul claims he swapped Justin and Laura.\n    *   This makes Laura the current Werewolf.\n    *   Even if Justin is lying about being the Werewolf, if Paul actually swapped them, and Justin *was* the Werewolf, Laura is the target. If Justin is the Werewolf and Paul *didn't* swap them, Justin is the target. But Paul is quite insistent.\n\n    *   Justin: \"I was a Werewolf.\"\n    *   Paul: \"I switched you and Laura.\"\n    *   Conclusion: Laura is the Werewolf.\n\n    *   Wait, let's check the Robber (Mitchell) again.\n    *   Mitchell: \"I robbed [Laura].\" (Line 107)\n    *   If Mitchell robbed Laura, he took her card.\n    *   If Laura was a Villager (starting role), Mitchell is now a Villager.\n    *   Then Paul (Troublemaker) swapped Justin (Werewolf) and Laura (now Robber).\n    *   So Justin is now the Robber and Laura is now the Werewolf.\n    *   This matches the logic.\n\n    *   Is there any other possibility?\n    *   If Justin is the Werewolf and Paul is lying about the swap, Justin is the Werewolf.\n    *   If Justin is lying about being the Werewolf and Paul is telling the truth about the swap, then Justin was something else and Laura is something else.\n    *   But based on the available information and the players' claims, the most direct path to a Werewolf is Laura, assuming Paul's swap and Justin's starting role.\n\n    *   Justin's claim to be the Seer (Line 22) was likely a lie, as he later admitted to being a Werewolf.\n    *   Mitchell's claim to have robbed Justin (Line 47) was corrected to robbing Laura (Line 107).\n    *   Paul's claim to be the Troublemaker and swap Justin and Laura (Line 99, 112) remains consistent.\n    *   If Justin started as a Werewolf and was swapped with Laura, Laura is the Werewolf.\n\n    *   Justin: \"I was a Werewolf.\"\n    *   Paul: \"I switched you and Laura.\"\n    *   Result: Laura is the Werewolf.\n    *   Vote: Laura.",
+  "parsed_output": {
+    "justification": "Justin admits to starting as a Werewolf, and Paul claims to be the Troublemaker who swapped Justin's card with Laura's. If both these claims are true, Laura currently holds the Werewolf card. While Justin's behavior is erratic (initially claiming to be the Seer), the combination of his admission and Paul's swap makes Laura the most likely target for Team Village.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin admits to starting as a Werewolf, and Paul claims to be the Troublemaker who swapped Justin's card with Laura's. If both these claims are true, Laura currently holds the Werewolf card. While Justin's behavior is erratic (initially claiming to be the Seer), the combination of his admission and Paul's swap makes Laura the most likely target for Team Village.\",\n  \"chosen_vote\": \"Laura\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin admits to starting as a Werewolf, and Paul claims to be the Troublemaker who swapped Justin's card with Laura's. If both these claims are true, Laura currently holds the Werewolf card. While Justin's behavior is erratic (initially claiming to be the Seer), the combination of his admission and Paul's swap makes Laura the most likely target for Team Village.\",\n  \"chosen_vote\": \"Laura\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Justin admits to starting as a Werewolf, and Paul claims to be the Troublemaker who swapped Justin's card with Laura's. If both these claims are true, Laura currently holds the Werewolf card. While Justin's behavior is erratic (initially claiming to be the Seer), the combination of his admission and Paul's swap makes Laura the most likely target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4593,
+    "output_token_count": 2119,
+    "generation_time_sec": 222.2703959941864,
+    "used_chat_template": true,
+    "input_char_count": 15259,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

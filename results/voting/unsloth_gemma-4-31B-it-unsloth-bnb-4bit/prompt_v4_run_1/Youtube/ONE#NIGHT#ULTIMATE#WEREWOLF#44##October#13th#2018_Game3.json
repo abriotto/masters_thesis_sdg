@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin: Claims to be the Seer and saw two werewolves in the center (meaning no werewolves are among the players).\n    *   Mitchell: Claims to be the Insomniac (at [37]).\n    *   Paul: Claims to be the Robber, robbed Justin (who he says was a werewolf), but then later claims he was the Tanner from the beginning ([104]).\n    *   Mike: Claims to be the Troublemaker, switched Paul and Mitchell ([98]).\n\n    *   Justin (Seer): Saw 2 werewolves in the center.\n    *   Mitchell (Insomniac): Confirmed he was the Insomniac.\n    *   Paul (Tanner): Admits he was the Tanner.\n    *   Mike (Troublemaker): Switched Paul and Mitchell.\n\n    *   If Justin is telling the truth about seeing two werewolves in the center, then there are no werewolves among the players.\n    *   If there are no werewolves among the players, Team Village wins if no one is voted out or if the Tanner is not voted out (Wait, the rules say: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\")\n    *   Wait, let's re-read the winning conditions: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   If Paul is the Tanner and Justin is the Seer (who saw 2 werewolves in the center), then there are no werewolves among the players.\n    *   To make Team Village win in a \"no werewolf\" scenario, no one should be voted out. However, the task asks me to \"choose the player to vote out to make Team Village win\" OR \"indicate 'no Werewolf'\".\n\n    *   Justin: Seer (claims 2 werewolves in center).\n    *   Mitchell: Insomniac.\n    *   Paul: Tanner.\n    *   Mike: Troublemaker.\n    *   If these roles are correct, there are no werewolves among the players.\n\n    *   Paul claims he was the Tanner ([104]).\n    *   Justin claims he saw two werewolves in the center ([51], [62]).\n    *   If Justin is the Seer and saw two werewolves in the center, then no player is a werewolf.\n    *   If no player is a werewolf, the only way for Team Village to win is if no one dies.\n    *   Wait, the prompt says: \"If you believe that no player holds the werewolf card (and thus all werewolf cards are in the center), you can indicate 'no Werewolf'.\"\n\n    *   Justin: Seer (saw 2 werewolves in center).\n    *   Mitchell: Insomniac.\n    *   Paul: Tanner.\n    *   Mike: Troublemaker.\n    *   This accounts for 4 players.\n    *   Center cards: 2 Werewolves + 1 other card (since there are 4 players + 3 center cards = 7 total cards).\n    *   This is a consistent scenario.\n\n    *   If no one is a werewolf, voting anyone out (especially the Tanner) would result in a loss for Team Village (Tanner wins if they die).\n    *   Therefore, the correct choice is \"No Werewolf\".\n\n    *   Justin claims to be the Seer and saw two werewolves in the center.\n    *   Paul admits to being the Tanner.\n    *   Mitchell claims to be the Insomniac.\n    *   Mike claims to be the Troublemaker.\n    *   If these claims are true, no player is a werewolf, and the village wins if no one is voted out.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and states he saw two werewolves in the center, meaning no player is a werewolf. Paul eventually admits to being the Tanner, and Mitchell and Mike claim roles (Insomniac and Troublemaker) that are consistent with a village-aligned setup. If no player is a werewolf, Team Village wins if no one is voted out.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and states he saw two werewolves in the center, meaning no player is a werewolf. Paul eventually admits to being the Tanner, and Mitchell and Mike claim roles (Insomniac and Troublemaker) that are consistent with a village-aligned setup. If no player is a werewolf, Team Village wins if no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and states he saw two werewolves in the center, meaning no player is a werewolf. Paul eventually admits to being the Tanner, and Mitchell and Mike claim roles (Insomniac and Troublemaker) that are consistent with a village-aligned setup. If no player is a werewolf, Team Village wins if no one is voted out.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Justin claims to be the Seer and states he saw two werewolves in the center, meaning no player is a werewolf. Paul eventually admits to being the Tanner, and Mitchell and Mike claim roles (Insomniac and Troublemaker) that are consistent with a village-aligned setup. If no player is a werewolf, Team Village wins if no one is voted out."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3654,
+    "output_token_count": 951,
+    "generation_time_sec": 200.7388617992401,
+    "used_chat_template": true,
+    "input_char_count": 12664,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

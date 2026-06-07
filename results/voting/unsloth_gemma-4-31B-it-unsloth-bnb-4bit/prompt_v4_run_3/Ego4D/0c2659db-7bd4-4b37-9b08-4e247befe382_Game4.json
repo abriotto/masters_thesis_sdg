@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game4.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot\n    *   Ashley\n    *   James\n    *   Chris\n    *   Sukeshi\n    *   Sian\n\n    *   James: Claims Insomniac (Line 33).\n    *   Elliot: Claims Hunter (Line 68), later claims Robber (Line 196), then admits he swapped with Ashley (Line 264).\n    *   Chris: Claims Seer (Line 87). Says he checked the middle and found Troublemaker and Villager (Line 91).\n    *   Sukeshi: Claims Hunter (Line 130).\n    *   Ashley: Admits she was a Werewolf (Line 136, 140, 143).\n    *   Sian: Claims Villager (Line 266).\n\n    *   Chris (Seer) checked the middle: Troublemaker and Villager.\n    *   If Chris is telling the truth, the Troublemaker and one Villager are in the center.\n    *   This means the Troublemaker did *not* swap anyone.\n    *   Elliot (Robber) claims he swapped with Ashley.\n    *   Ashley admits she was a Werewolf.\n    *   If Elliot (Robber) swapped with Ashley (Werewolf), then:\n        *   Elliot is now the Werewolf.\n        *   Ashley is now the Robber.\n    *   Sukeshi claims to be the Hunter.\n    *   James claims to be the Insomniac.\n\n    *   If Ashley was a Werewolf and Elliot (Robber) swapped with her, Elliot is now the Werewolf.\n    *   If Ashley is telling the truth about being a Werewolf and Elliot is telling the truth about swapping with her, Elliot is the target.\n    *   Sukeshi claims to be the Hunter. If she is the Hunter and is voted out, she can kill someone else (Elliot).\n    *   Wait, let's re-examine the claims.\n    *   Chris (Seer) says he saw Troublemaker and Villager in the center.\n    *   If Chris is the Seer, and the Troublemaker is in the center, no one was swapped by the Troublemaker.\n    *   If Elliot was the Robber and swapped with Ashley (Werewolf), Elliot is now the Werewolf.\n    *   Ashley admits she was a Werewolf. This is a very strong signal. Usually, Werewolves don't admit they are Werewolves unless they've been swapped out of the role or are the Tanner.\n    *   If Ashley was the Werewolf and Elliot swapped her, Ashley is now the Robber (Village) and Elliot is now the Werewolf (Werewolf).\n    *   Sukeshi claims to be the Hunter.\n    *   James claims to be the Insomniac.\n    *   Sian claims to be a Villager.\n\n    *   If Elliot is the Werewolf (via Robber swap with Ashley), voting for Elliot wins the game for the Village.\n    *   If Ashley is still the Werewolf (meaning Elliot lied about swapping or wasn't the Robber), voting for Ashley wins.\n    *   However, Ashley's admission (\"I was a werewolf, yes\") combined with Elliot's admission (\"I swapped with Ashley\") strongly suggests Elliot is the current Werewolf.\n    *   Sukeshi's claim to be the Hunter is a bit confusing because Elliot also claimed to be the Hunter earlier (Line 68), but then changed to Robber (Line 196).\n\n    *   Elliot: Claimed Hunter -> Claimed Robber -> Admitted swapping with Ashley.\n    *   Ashley: Admitted being Werewolf.\n    *   Chris: Claimed Seer (saw Troublemaker/Villager in center).\n    *   Sukeshi: Claimed Hunter.\n    *   James: Claimed Insomniac.\n    *   Sian: Claimed Villager.\n\n    If Chris is the Seer and the Troublemaker is in the center, the only swap that happened was the Robber.\n    If Elliot was the Robber and swapped with Ashley (the Werewolf), Elliot is now the Werewolf.\n\n    *   Could Ashley be the Tanner? Tanners want to be voted out. Admitting to be a Werewolf is a way to get votes. But if she's the Tanner, she's not the Werewolf.\n    *   Could Elliot be lying about swapping? If he's the Werewolf, he might lie about being the Robber to confuse people. But he admitted to swapping with Ashley.\n    *   If Ashley was the Werewolf and Elliot swapped with her, Elliot is the Werewolf.\n\n    *   Ashley: \"I was a werewolf, yes.\" (Line 136)\n    *   Elliot: \"I'll admit it, I was the robber.\" (Line 196)\n    *   Elliot: \"I swapped with Ashley.\" (Line 264)\n    *   If these are true, Elliot is the Werewolf.\n\n    *   Sukeshi claims to be the Hunter.\n    *   James claims to be the Insomniac.\n    *   Chris claims to be the Seer.\n    *   Sian claims to be a Villager.\n    *   These roles are all Village-aligned.\n    *   If Chris is the Seer and saw Troublemaker and Villager in the center, then the roles distributed were: Seer, Robber, Hunter, Insomniac, Werewolf, Villager/Tanner.\n    *   Wait, if there are 6 players, and 3 cards in the center, that's 9 cards total.\n    *   Cards: Seer (Chris), Robber (Elliot), Hunter (Sukeshi), Insomniac (James), Werewolf (Ashley), and one more (Sian).\n    *   Center: Troublemaker, Villager, and one more.\n    *   This fits perfectly.\n\n    *   Ashley (starting Werewolf) -> swapped by Elliot (Robber) -> Ashley is now Robber.\n    *   Elliot (starting Robber) -> swapped with Ashley -> Elliot is now Werewolf.\n    *   Therefore, Elliot is the Werewolf.\n\n    *   Sukeshi claims to be the Hunter.\n    *   Elliot claimed to be the Hunter (Line 68) then changed to Robber (Line 196). This suggests Elliot was lying initially.\n    *   If Sukeshi is the Hunter and Elliot is the Werewolf, voting for Elliot is the correct move.\n\n    *   Ashley admits she was the Werewolf.\n    *   Elliot admits he was the Robber and swapped with Ashley.\n    *   This makes Elliot the current Werewolf.\n    *   Chris's Seer claim supports the idea that no other swaps (Troublemaker) occurred.\n    *   Voting for Elliot should result in a Village win.",
+  "parsed_output": {
+    "justification": "Ashley admitted to being the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Chris's claim as the Seer, stating the Troublemaker was in the center, suggests no other swaps occurred to change this state.",
+    "chosen_vote": "Elliot"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Ashley admitted to being the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Chris's claim as the Seer, stating the Troublemaker was in the center, suggests no other swaps occurred to change this state.\",\n  \"chosen_vote\": \"Elliot\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Ashley admitted to being the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Chris's claim as the Seer, stating the Troublemaker was in the center, suggests no other swaps occurred to change this state.\",\n  \"chosen_vote\": \"Elliot\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Elliot",
+    "justification": "Ashley admitted to being the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Chris's claim as the Seer, stating the Troublemaker was in the center, suggests no other swaps occurred to change this state."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6995,
+    "output_token_count": 1669,
+    "generation_time_sec": 189.58853912353516,
+    "used_chat_template": true,
+    "input_char_count": 20644,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

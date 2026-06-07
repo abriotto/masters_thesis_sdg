@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Alvin\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Robber. Switched with Alvin.\n    *   Alvin: Claims Villager (starting).\n    *   James: Claims Villager (starting), then later claims Seer. Claims he saw a Werewolf and a Troublemaker in the center.\n    *   Mitchell: Claims Villager.\n\n    *   Justin (Robber) switched with Alvin.\n    *   If Justin was Robber and switched with Alvin, Justin now has Alvin's card, and Alvin has Justin's (Robber) card.\n    *   James claims Seer and saw Werewolf and Troublemaker in the center.\n    *   If James is telling the truth (Seer), and there's a Werewolf and Troublemaker in the center, then the remaining cards are:\n        *   Center: Werewolf, Troublemaker, [One more card]\n        *   Players: Justin, Alvin, James, Mitchell.\n        *   Roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n        *   If James is Seer, and Werewolf/Troublemaker are in the center, then the Werewolf is *not* among the players (unless there are two Werewolves).\n        *   Wait, James says \"I know there's a werewolf and a troublemaker in there [the center]\". If there's only one Werewolf card in the game, and it's in the center, then no player is a Werewolf.\n\n    *   James claimed Villager first ([80]), then suddenly claimed Seer ([93]). This is a huge red flag.\n    *   Justin claims Robber and switched with Alvin.\n    *   Mitchell claims Villager.\n    *   Alvin claims Villager.\n\n    *   If James is a Werewolf, he'd lie about being a Seer and claim the Werewolf is in the center to avoid being voted out.\n    *   If James is the Seer, and the Werewolf is in the center, then \"No Werewolf\" is the correct answer.\n    *   However, James's shift from \"I was a villager\" to \"I'm a seer\" is highly suspicious.\n\n    *   Justin (Robber) switched with Alvin.\n    *   If Alvin was a Werewolf, Justin is now the Werewolf.\n    *   If Alvin was a Villager, Justin is now a Villager.\n    *   If Justin was the Robber, he knows what card he took from Alvin. He doesn't explicitly say what he got, but he says \"I switched with Alvin.\"\n\n    *   James: \"I know there's a werewolf and a troublemaker in there [the center].\"\n    *   If James is lying, he's likely the Werewolf.\n    *   If James is telling the truth, there is no Werewolf among the players (assuming only one Werewolf card was used, but the rules say \"multiple Werewolves\" are possible).\n    *   Wait, the rules say \"up to two Masons, and at most one of each other listed role.\" This means there can be multiple Werewolves and multiple Villagers.\n    *   If James saw *one* Werewolf in the center, there could still be another Werewolf among the players.\n\n    *   James's inconsistency: Claimed Villager, then Seer.\n    *   Justin's claim: Robber, switched with Alvin.\n    *   Mitchell's claim: Villager.\n    *   Alvin's claim: Villager.\n\n    *   If James is the Werewolf, he's trying to convince everyone that the Werewolf is in the center.\n    *   If James is the Seer, he's providing honest information.\n    *   But why would a Seer claim to be a Villager first? Usually, they claim Seer immediately or after gathering info. James claimed Villager at [80] and then Seer at [93].\n\n    *   Justin: Robber (switched with Alvin).\n    *   Alvin: Villager (starting).\n    *   James: Seer (claims center has Werewolf and Troublemaker).\n    *   Mitchell: Villager.\n    *   If this is true, the Werewolf is in the center.\n\n    *   James: Werewolf (lying about being Seer and the center cards).\n    *   Justin: Robber (switched with Alvin).\n    *   Alvin: Villager.\n    *   Mitchell: Villager.\n    *   In this case, James is the Werewolf.\n\n    *   James's behavior is the most suspicious due to the role change.\n    *   Justin's claim as Robber is consistent.\n    *   Alvin and Mitchell both claim Villager.\n    *   If James is the Werewolf, voting him out wins the game for the Village.\n    *   If James is the Seer and the Werewolf is in the center, voting \"No Werewolf\" wins.\n    *   However, in these games, a player changing their claim mid-discussion is almost always a sign of a Werewolf bluffing.\n\n    *   James claimed Villager at [80].\n    *   James claimed Seer at [93].\n    *   This is a blatant contradiction. A Seer knows they are a Seer from the start.\n\n    *   If James is the Werewolf, he wants to avoid being voted out. Claiming the Werewolf is in the center is a classic Werewolf strategy.\n    *   If James is the Tanner, he wants to be voted out. But claiming the Werewolf is in the center *discourages* people from voting for him. So he's likely not the Tanner.\n\n    *   Justin (Robber) switched with Alvin.\n    *   If Alvin was the Werewolf, Justin is now the Werewolf.\n    *   But Justin is the one pushing the vote toward James ([106], [128]).\n    *   If Justin were the Werewolf, he would try to protect himself and perhaps frame someone else. Framing James (who is acting suspiciously) is a good move.\n    *   However, James's own contradiction is more damning than Justin's potential role swap.\n\n    *   James is the most likely Werewolf because he changed his claim from Villager to Seer and then claimed the Werewolf was in the center (a common bluff).\n\n    *   Wait, let me re-read: \"If no player is a Werewolf and no one dies... Team Village wins.\"\n    *   If James is telling the truth, \"No Werewolf\" is the answer.\n    *   But James's lie is so obvious (Villager -> Seer) that he cannot be trusted.\n\n    *   Justin: Robber.\n    *   Alvin: Villager.\n    *   James: Werewolf (bluffing as Seer).\n    *   Mitchell: Villager.\n    *   This fits all the evidence.\n\n    *   James claimed to be a villager at [80] and then claimed to be a seer at [93].\n    *   He then claimed that a werewolf was in the center [98], which would suggest no one is a werewolf.\n    *   This inconsistency strongly suggests he is a werewolf attempting to deceive the group.\n    *   Therefore, voting for James is the most logical choice for Team Village.",
+  "parsed_output": {
+    "justification": "James is the most suspicious player because he contradicted his own role claim. He initially claimed to be a villager (at [80]) but later claimed to be the Seer (at [93]), asserting that he saw a werewolf in the center (at [98]). This shift in identity and the attempt to convince the group that the werewolf is not among the players are classic bluffing tactics used by werewolves to avoid elimination.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James is the most suspicious player because he contradicted his own role claim. He initially claimed to be a villager (at [80]) but later claimed to be the Seer (at [93]), asserting that he saw a werewolf in the center (at [98]). This shift in identity and the attempt to convince the group that the werewolf is not among the players are classic bluffing tactics used by werewolves to avoid elimination.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James is the most suspicious player because he contradicted his own role claim. He initially claimed to be a villager (at [80]) but later claimed to be the Seer (at [93]), asserting that he saw a werewolf in the center (at [98]). This shift in identity and the attempt to convince the group that the werewolf is not among the players are classic bluffing tactics used by werewolves to avoid elimination.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James is the most suspicious player because he contradicted his own role claim. He initially claimed to be a villager (at [80]) but later claimed to be the Seer (at [93]), asserting that he saw a werewolf in the center (at [98]). This shift in identity and the attempt to convince the group that the werewolf is not among the players are classic bluffing tactics used by werewolves to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4303,
+    "output_token_count": 1788,
+    "generation_time_sec": 378.36002111434937,
+    "used_chat_template": true,
+    "input_char_count": 14952,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

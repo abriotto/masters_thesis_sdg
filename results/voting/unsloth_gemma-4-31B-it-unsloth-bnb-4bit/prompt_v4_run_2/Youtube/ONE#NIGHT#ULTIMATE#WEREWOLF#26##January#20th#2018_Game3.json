@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#26##January#20th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Meghan",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Meghan\n    *   Paul\n    *   Mitchell\n    *   Mike\n\n    *   Revealer (mentioned in transcript, though not in the standard rules provided, it's in the transcript: \"Revealer, wake up. You may turn any other player's card face up.\")\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   Drunk\n    *   Tanner\n    *   Werewolf\n    *   (Others possible: Villager, Insomniac, Mason, Minion, Doppelganger, Hunter)\n\n    *   Justin: Claims to be the Tanner (at [94], [99], [118]).\n    *   Mitchell: Claims to be the Seer ([27]). Says he saw one werewolf in the center ([65], [93]).\n    *   Mike: Claims to be the Robber ([12]). Says he stole from Meghan ([67]). Says he confirmed she was the Drunk ([70]).\n    *   Paul: Claims to be the Troublemaker ([40], [42]). Says he switched \"diagonal\" (Mike/Meghan or Mitchell/Justin) ([54]). Later says he switched Justin ([110], [112]).\n    *   Meghan: Claims to be the Drunk ([81], [85], [116]).\n\n    *   Mitchell (Seer) saw a werewolf in the center ([65]).\n    *   Meghan (Drunk) swapped her card with a card from the center ([81], [85]).\n    *   Mitchell claims Meghan took the werewolf card from the center ([91], [108], [125]).\n    *   Mike (Robber) stole from Meghan ([67]). He says she was the Drunk ([70]).\n    *   Paul (Troublemaker) claims he swapped Justin and Mitchell ([110], [112], [118]).\n\n    *   *Scenario A: Mitchell is telling the truth.*\n        *   Mitchell (Seer) saw a werewolf in the center.\n        *   Meghan (Drunk) swapped with the center.\n        *   If Meghan swapped with the werewolf card, she is now a werewolf.\n        *   Mike (Robber) stole from Meghan. If he stole *after* she swapped, Mike is now the werewolf and Meghan is the Robber.\n        *   Wait, let's check the night order:\n            1. Doppelganger\n            2. Werewolves\n            3. Minion\n            4. Masons\n            5. Seer (Mitchell)\n            6. Robber (Mike)\n            7. Troublemaker (Paul)\n            8. Drunk (Meghan)\n            9. Insomniac\n\n    *   *Re-evaluating the Night Order:*\n        1. Seer (Mitchell) looks at center. Sees a werewolf.\n        2. Robber (Mike) steals from Meghan.\n        3. Troublemaker (Paul) swaps two players.\n        4. Drunk (Meghan) swaps with center.\n\n    *   *If the order is followed:*\n        *   Mitchell (Seer) sees a werewolf in the center.\n        *   Mike (Robber) steals from Meghan. (Meghan's starting role is now with Mike).\n        *   Paul (Troublemaker) swaps Justin and Mitchell. (Mitchell's starting role is now with Justin).\n        *   Meghan (Drunk) swaps her current card (which was the Robber's starting role, since Mike stole it) with a card from the center.\n\n    *   *Wait, let's re-read the transcript carefully.*\n        *   Mike says: \"I stole from Meghan... I can confirm she was the drunk at one point.\" ([67], [70]).\n        *   Meghan says: \"I took this one [from the center].\" ([85], [103]).\n        *   Mitchell says: \"I saw one [werewolf in the center]... she's a drunk and she took it.\" ([93], [108]).\n\n    *   *If Meghan is the Drunk:*\n        *   She swaps with the center *last* (Step 8).\n        *   If Mitchell (Seer, Step 5) saw a werewolf in the center, and Meghan (Drunk, Step 8) swapped with that specific card, Meghan is now the werewolf.\n        *   Does the Robber (Mike, Step 6) affect this? Mike stole from Meghan *before* she swapped with the center. So Mike took her starting role (Drunk), and Meghan took the Robber's card. Then Meghan (now Robber) swapped with the center.\n        *   Wait, the Drunk's ability is \"Drunk, wake up and exchange your card with a card from the center\". This happens based on the *starting* role.\n        *   If Meghan started as the Drunk, she wakes up at Step 8 and swaps her *current* card with the center.\n        *   If Mitchell saw a werewolf in the center at Step 5, and Meghan swapped with it at Step 8, Meghan is now the werewolf.\n\n    *   *What about Paul (Troublemaker)?*\n        *   Paul says he swapped Justin and Mitchell ([110], [112]).\n        *   If Paul swapped them at Step 7, Mitchell's role (Seer) went to Justin, and Justin's role went to Mitchell.\n        *   This doesn't change the fact that Meghan (Drunk) swapped with the center at Step 8.\n\n    *   *What about Justin (Tanner)?*\n        *   Justin claims he is the Tanner ([94], [99], [118]).\n        *   If Justin was the Tanner and Paul swapped him with Mitchell, Mitchell is now the Tanner and Justin is the Seer.\n        *   This matches Justin's claim: \"I was the Tanner and he switched me. So don't fucking kill Mitchell.\" ([118]).\n\n    *   *Summary of Final Roles (if claims are true):*\n        *   Mitchell: Started Seer -> Swapped by Paul -> Now Tanner.\n        *   Justin: Started Tanner -> Swapped by Paul -> Now Seer.\n        *   Mike: Started Robber -> Stole from Meghan (Drunk) -> Now Drunk.\n        *   Meghan: Started Drunk -> Stolen by Mike (now Robber) -> Swapped with center (Werewolf) -> Now Werewolf.\n        *   Paul: Started Troublemaker -> Now Troublemaker.\n\n    *   *Is there any other possibility?*\n        *   Could Mike be the werewolf? He's trying to push the vote onto Meghan.\n        *   Could Mitchell be lying about the werewolf in the center?\n        *   Could Paul be lying about the swap?\n        *   However, the most consistent narrative provided by the players is that Meghan ended up with the werewolf card from the center.\n\n    *   Mitchell (Seer) saw a werewolf in the center.\n    *   Meghan (Drunk) swapped with the center.\n    *   Therefore, Meghan is the most likely werewolf.\n    *   Justin's claim to be the Tanner and Paul's swap further support Mitchell not being the werewolf.\n    *   Mike's claim to be the Robber and stealing from Meghan supports her being the Drunk.\n\n    *   If Meghan is the werewolf, voting her out wins the game for Team Village.\n\n    *   Justin: Tanner (swapped to Seer)\n    *   Meghan: Drunk (swapped to Robber, then swapped with center Werewolf) -> Werewolf\n    *   Paul: Troublemaker\n    *   Mitchell: Seer (swapped to Tanner)\n    *   Mike: Robber (stole Drunk) -> Drunk\n\n    *Wait, let's re-verify the Robber/Drunk interaction.*\n    *   Robber (Mike) steals from Meghan (Drunk). Mike is now Drunk. Meghan is now Robber.\n    *   Drunk (Meghan - *starting role*) swaps with center.\n    *   Wait, the rules say: \"Drunk: The Drunk is a member of Team Village. During the Night phase, the Drunk swaps their card with one card from the center, without looking at the new card.\"\n    *   The action is performed by the person who *started* as the Drunk.\n    *   So Meghan (starting Drunk) swaps her *current* card (which was the Robber's card, because Mike stole hers) with the center.\n    *   If the center had a werewolf, Meghan now has the werewolf card.\n\n    *Conclusion remains: Meghan is the most likely werewolf.*",
+  "parsed_output": {
+    "justification": "Mitchell (Seer) claimed to see a werewolf in the center. Meghan (Drunk) swapped her card with the center, and Mitchell stated that she took the werewolf card. Although Mike (Robber) stole from Meghan and Paul (Troublemaker) swapped Justin and Mitchell, these actions do not change the fact that the player who started as the Drunk (Meghan) performed the swap with the center at the end of the night. Therefore, Meghan is the most likely player to hold the werewolf card.",
+    "chosen_vote": "Meghan"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell (Seer) claimed to see a werewolf in the center. Meghan (Drunk) swapped her card with the center, and Mitchell stated that she took the werewolf card. Although Mike (Robber) stole from Meghan and Paul (Troublemaker) swapped Justin and Mitchell, these actions do not change the fact that the player who started as the Drunk (Meghan) performed the swap with the center at the end of the night. Therefore, Meghan is the most likely player to hold the werewolf card.\",\n  \"chosen_vote\": \"Meghan\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell (Seer) claimed to see a werewolf in the center. Meghan (Drunk) swapped her card with the center, and Mitchell stated that she took the werewolf card. Although Mike (Robber) stole from Meghan and Paul (Troublemaker) swapped Justin and Mitchell, these actions do not change the fact that the player who started as the Drunk (Meghan) performed the swap with the center at the end of the night. Therefore, Meghan is the most likely player to hold the werewolf card.\",\n  \"chosen_vote\": \"Meghan\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Meghan",
+    "justification": "Mitchell (Seer) claimed to see a werewolf in the center. Meghan (Drunk) swapped her card with the center, and Mitchell stated that she took the werewolf card. Although Mike (Robber) stole from Meghan and Paul (Troublemaker) swapped Justin and Mitchell, these actions do not change the fact that the player who started as the Drunk (Meghan) performed the swap with the center at the end of the night. Therefore, Meghan is the most likely player to hold the werewolf card."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4191,
+    "output_token_count": 2094,
+    "generation_time_sec": 226.22138237953186,
+    "used_chat_template": true,
+    "input_char_count": 14573,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mike, James, Mitchell.\n    *   Roles involved (based on transcript): Seer, Robber, Villager.\n    *   Mitchell claims to be the Seer and says he saw two werewolves (in the center).\n    *   Mike claims to be the Robber and says he switched with Mitchell.\n    *   Justin claims to be a Villager.\n    *   James hasn't made a clear claim yet, but Mitchell and Mike are focusing on the center cards.\n\n    *   Mitchell: Claims Seer. Says he saw two werewolves in the center.\n    *   Mike: Claims Robber. Says he switched with Mitchell.\n    *   Justin: Claims Villager.\n    *   James: Hasn't claimed a role, but was interrupted/didn't get to speak much.\n\n    *   If Mitchell was the Seer and saw two werewolves in the center, then no one among the players is a werewolf.\n    *   If Mike was the Robber and switched with Mitchell, then Mike is now the Seer and Mitchell is now the Robber.\n    *   Wait, if Mike (Robber) switched with Mitchell (Seer), then Mitchell is now the Robber and Mike is now the Seer.\n    *   Mitchell says \"I saw two werewolves.\" If he was the Seer *before* the Robber switched him, he would have seen them. But the Robber acts *after* the Seer.\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   Seer (Mitchell) wakes up and looks at two center cards. He sees two werewolves.\n    *   Robber (Mike) wakes up and swaps cards with Mitchell.\n    *   Now: Mike is the Seer, Mitchell is the Robber.\n    *   Mitchell still knows he saw two werewolves in the center because he was the Seer at the time he looked.\n\n    *   If Mitchell saw two werewolves in the center, then there are no werewolves among the players (since there are only 2 werewolf cards total in a standard setup, or at least the center has them).\n    *   Wait, if there are two werewolves in the center, then no player is a werewolf.\n    *   If no player is a werewolf, Team Village wins if \"no one dies\" or \"no player is a werewolf and no one dies\".\n    *   Wait, the rule says: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   So if Mitchell is telling the truth, the best move for Team Village is \"No Werewolf\".\n\n    *   Could Mitchell be a werewolf lying?\n    *   Could Mike be a werewolf lying?\n    *   Could James be a werewolf?\n    *   James didn't say much. Justin suggested voting for James early on ([36] \"All right, let's all vote for James?\").\n    *   However, Mitchell and Mike's claims (Seer seeing 2 werewolves in center, Robber swapping) suggest no one is a werewolf.\n\n    *   If Mitchell is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If Mike is the Robber and swapped with Mitchell, he confirms Mitchell's role as Seer.\n    *   If both are telling the truth, there are no werewolves among the players.\n    *   If they are lying, they might be werewolves. But if they are werewolves, why would they both claim roles that lead to \"No Werewolf\"? (Actually, if they are werewolves, they want to avoid being voted out. Claiming no one is a werewolf helps them survive).\n    *   However, in a 4-player game, if the Seer sees 2 werewolves in the center, it's a very strong signal.\n\n    *   Justin: \"All right, let's all vote for James?\" (Very early, before claims).\n    *   Mitchell: \"I saw two werewolves.\"\n    *   Mike: \"I was the robber. I switched with you [Mitchell].\"\n    *   Justin: \"I'm a villager.\"\n    *   James: Didn't really say anything.\n\n    *   If Mitchell (Seer) saw 2 werewolves in the center, then no player is a werewolf.\n    *   If no player is a werewolf, the correct vote is \"No Werewolf\".\n\n    *   Is it possible there's only one werewolf and one werewolf is in the center?\n    *   Mitchell said \"I saw two werewolves.\" If he's the Seer and saw two in the center, then both werewolf cards are in the center.\n    *   If he's lying, he could be the werewolf.\n    *   But Mike backed him up. If Mike is the Robber and swapped with Mitchell, he knows Mitchell was the Seer.\n    *   If both are lying, they are likely the werewolf team. But there are only 4 players. If two are lying, they'd be the Werewolf and the Minion.\n    *   If Mitchell and Mike are the Werewolf/Minion, they are trying to convince the group that no one is a werewolf so they don't get voted out.\n    *   However, without more evidence, the most direct interpretation of the claims is that the werewolves are in the center.\n\n    *   If Mitchell is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If Mike is the Robber and swapped with Mitchell, he confirms Mitchell's identity.\n    *   This makes the \"No Werewolf\" scenario the most plausible based on the provided claims.\n\n    *   Wait, let me re-read the transcript.\n    *   [38] Mitchell: \"Before I say what I looked at, is there anyone that can back me for being a seer?\"\n    *   [39] Mike: \"Yes, I can. I was the robber. I switched with you.\"\n    *   [40] Mitchell: \"I saw two werewolves.\"\n    *   This sequence is interesting. Mike backs Mitchell *before* Mitchell reveals what he saw. This suggests they are coordinating or Mike actually knows Mitchell was the Seer.\n    *   If they are coordinating, they could be the werewolf team.\n    *   But if they are telling the truth, there are no werewolves.\n    *   In \"One Night Ultimate Werewolf\", if the Seer sees two werewolves in the center, the village wins by voting \"No Werewolf\".\n\n    *   If Mitchell and Mike are the Werewolf and Minion, they would want to avoid being voted out. Claiming the werewolves are in the center is a great way to do that.\n    *   But we have no evidence that they are lying.\n    *   If we assume they are telling the truth, the answer is \"No Werewolf\".\n    *   If we assume they are lying, who is the werewolf? James or Justin?\n    *   Justin suggested voting for James immediately. This is often a sign of a werewolf trying to deflect or a villager just guessing.\n    *   However, the most logical conclusion from the claims provided is that the werewolves are in the center.\n\n    *   Player list: Justin, Mike, James, Mitchell.\n    *   Claims: Mitchell (Seer), Mike (Robber), Justin (Villager).\n    *   Mitchell saw 2 werewolves in the center.\n    *   Mike confirms Mitchell was the Seer.\n    *   Conclusion: No werewolves among players.\n\n    *   Wait, if Mike (Robber) switched with Mitchell (Seer), then Mike is now the Seer and Mitchell is now the Robber.\n    *   Mitchell says \"I saw two werewolves.\" He saw them *when he was the Seer*.\n    *   This is consistent.\n\n    *   Is there any other possibility?\n    *   What if James is the werewolf?\n    *   If James is the werewolf, then Mitchell and Mike are lying.\n    *   But why would they both lie to say there are no werewolves?\n    *   If they are the werewolf team, they would lie.\n    *   But if they are the werewolf team, then Mitchell and Mike are the werewolves.\n    *   If we have to choose one person to vote out, and we suspect Mitchell and Mike are lying, we'd have to pick one of them.\n    *   But the prompt asks to make Team Village win.\n    *   If there are no werewolves, \"No Werewolf\" wins.\n    *   If there are werewolves, voting one out wins.\n    *   Given the claims, \"No Werewolf\" is the most supported conclusion.\n\n    *   Mitchell claims Seer and saw two werewolves in the center.\n    *   Mike claims Robber and confirms he swapped with Mitchell, verifying Mitchell's role.\n    *   If these claims are true, no player is a werewolf.\n    *   Therefore, the best choice for Team Village is \"No Werewolf\".",
+  "parsed_output": {
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves in the center of the table. Mike supports this by claiming to be the Robber who swapped cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are truthful, all werewolf cards are in the center, meaning no player is a werewolf. In this scenario, Team Village wins by voting 'No Werewolf'.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves in the center of the table. Mike supports this by claiming to be the Robber who swapped cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are truthful, all werewolf cards are in the center, meaning no player is a werewolf. In this scenario, Team Village wins by voting 'No Werewolf'.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves in the center of the table. Mike supports this by claiming to be the Robber who swapped cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are truthful, all werewolf cards are in the center, meaning no player is a werewolf. In this scenario, Team Village wins by voting 'No Werewolf'.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves in the center of the table. Mike supports this by claiming to be the Robber who swapped cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are truthful, all werewolf cards are in the center, meaning no player is a werewolf. In this scenario, Team Village wins by voting 'No Werewolf'."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2433,
+    "output_token_count": 2176,
+    "generation_time_sec": 444.996160030365,
+    "used_chat_template": true,
+    "input_char_count": 9104,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

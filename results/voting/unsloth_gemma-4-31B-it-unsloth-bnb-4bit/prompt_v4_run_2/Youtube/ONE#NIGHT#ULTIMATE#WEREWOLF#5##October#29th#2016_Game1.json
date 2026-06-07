@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#5##October#29th#2016_Game1.txt",
+  "player_names": [
+    "Mitchell",
+    "Chris",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Mitchell, Chris, Caitlynn, Mike.\n    *   Roles mentioned/claimed:\n        *   Caitlynn: Claims to have \"done things\" (Troublemaker). Claims she switched Chris (and someone else).\n        *   Chris: Claims he was the Seer (initially), then later claims he was the Werewolf (initially).\n        *   Mike: Claims he was the Seer (initially). Claims he saw a Werewolf and a good card in the center. Later claims he was the Werewolf (initially) and that he was switched with Chris.\n        *   Mitchell: Claims he was \"boring\" (Villager/Drunk/Insomniac). Later claims he was the Drunk.\n\n    *   Caitlynn claims she is the Troublemaker and switched Chris with someone.\n    *   Chris claims he was the Werewolf (initially).\n    *   Mike claims he was the Seer (initially), then changes his story to say he was the Werewolf (initially) and was switched with Chris.\n    *   Wait, let's re-read the transcript carefully.\n\n    *   [27] Chris: \"I was the seer.\"\n    *   [29] Mike: \"Oh, no. I don't think you were.\"\n    *   [31] Mike: \"Oh, and a troublemaker.\" (Referring to Caitlynn)\n    *   [34] Caitlynn: \"I did switch.\"\n    *   [36] Caitlynn: \"I switched Chris.\"\n    *   [42] Mike: \"You switched us two?\"\n    *   [43] Caitlynn: \"I switched Chris.\"\n    *   [50] Mitchell: \"All right, Mike. You started as a werewolf.\"\n    *   [51] Mike: \"No, I was a seer.\"\n    *   [54] Mike: \"I looked at two in the center.\"\n    *   [56] Mike: \"I saw a werewolf and a good card...\"\n    *   [58] Chris: \"I saw a werewolf and the drunk in the middle.\"\n    *   [64] Mike: \"...I believe you're still the drunk.\" (Wait, Chris claimed Seer at [27], now Mike says Chris is the Drunk).\n    *   [72] Caitlynn: \"I did not switch Mitchell.\"\n    *   [73] Mike: \"So it was me and Chris.\"\n    *   [75] Mike: \"I was the werewolf.\" (Wait, Mike just said he was the Seer at [51]).\n    *   [78] Mike: \"So now he's [Chris] the werewolf.\"\n    *   [80] Chris: \"Because I 100% percent was the werewolf. The lone werewolf.\"\n    *   [87] Chris: \"So then if you were the werewolf off the start, which card did you look at in the middle? Because there was only one werewolf.\" (Chris is calling out Mike's contradiction).\n    *   [94] Mike: \"I saw a werewolf in the center.\"\n    *   [95] Chris: \"So I was the werewolf and I saw the seer in the center.\"\n    *   [98] Mitchell: \"I believe he [Chris] was the werewolf because he said he saw a drunk and I was the drunk. And then, so now you're [Mike] the werewolf.\" (Wait, Mitchell's logic is confusing).\n\n    *   Caitlynn (Troublemaker) switched Chris and Mike.\n    *   Chris claims he started as the Werewolf.\n    *   Mike claims he started as the Seer, then claims he started as the Werewolf, then claims he saw a Werewolf in the center.\n    *   If Chris started as the Werewolf and was switched with Mike, Mike is now the Werewolf.\n    *   If Mike started as the Werewolf and was switched with Chris, Chris is now the Werewolf.\n    *   Chris admits he was the Werewolf (\"I 100% percent was the werewolf\").\n    *   Caitlynn says she switched Chris (and by implication, Mike).\n    *   If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf.\n    *   The players (Caitlynn, Chris, Mitchell) all agree to vote for Mike.\n\n    *   Chris: \"I 100% percent was the werewolf.\"\n    *   Caitlynn: \"I switched Chris [and Mike].\"\n    *   If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf.\n    *   Mike's claims are inconsistent (Seer -> Werewolf -> saw Werewolf in center). This makes him highly suspicious.\n    *   If Chris is telling the truth about being the Werewolf and Caitlynn is telling the truth about switching them, Mike is the current Werewolf.\n\n    *   Could Chris be the Tanner? He's admitting to being the Werewolf.\n    *   Could Mike be the Tanner? He's acting suspiciously and being voted out.\n    *   However, based on the claims:\n        *   Caitlynn (Troublemaker) switched Chris and Mike.\n        *   Chris (Starting Werewolf) -> now Mike.\n        *   Mike (Starting ?) -> now Chris.\n    *   If Chris was the Werewolf and was switched with Mike, Mike is the Werewolf.\n\n    *   Chris: \"I 100% percent was the werewolf.\"\n    *   Caitlynn: \"I switched Chris [and Mike].\"\n    *   Therefore, Mike is the Werewolf.\n    *   The group decides to vote Mike.\n\n    *   Wait, let's re-read [98]: \"I believe he [Chris] was the werewolf because he said he saw a drunk and I was the drunk. And then, so now you're [Mike] the werewolf.\"\n    *   Mitchell is confirming that if Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf.\n\n    *   Mike's claims:\n        1.  \"I was a seer.\" [51]\n        2.  \"I saw a werewolf and a good card [in the center].\" [56]\n        3.  \"I was the werewolf.\" [75]\n        4.  \"I saw a werewolf in the center.\" [94]\n    *   These are contradictory. If he was the Seer, he couldn't be the Werewolf. If he was the Werewolf, he couldn't be the Seer. If he saw a Werewolf in the center, he couldn't be the Werewolf himself (unless there are two, but Chris said \"lone werewolf\").\n    *   This inconsistency strongly suggests Mike is lying/bluffing or is the Werewolf trying to confuse the situation.\n\n    *   Caitlynn (Troublemaker) switched Chris and Mike.\n    *   Chris (Starting Werewolf) is now Mike.\n    *   Mike (Starting ?) is now Chris.\n    *   Vote: Mike.",
+  "parsed_output": {
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf. Furthermore, Mike's claims are highly contradictory, as he claims to be the Seer, then the Werewolf, and then claims to have seen a Werewolf in the center, making him the most likely candidate for elimination.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf. Furthermore, Mike's claims are highly contradictory, as he claims to be the Seer, then the Werewolf, and then claims to have seen a Werewolf in the center, making him the most likely candidate for elimination.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf. Furthermore, Mike's claims are highly contradictory, as he claims to be the Seer, then the Werewolf, and then claims to have seen a Werewolf in the center, making him the most likely candidate for elimination.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Caitlynn claims to be the Troublemaker and states she switched Chris and Mike. Chris admits that he was the starting Werewolf ('I 100% percent was the werewolf'). If Chris was the Werewolf and was switched with Mike, Mike is now the Werewolf. Furthermore, Mike's claims are highly contradictory, as he claims to be the Seer, then the Werewolf, and then claims to have seen a Werewolf in the center, making him the most likely candidate for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3694,
+    "output_token_count": 1733,
+    "generation_time_sec": 183.63165926933289,
+    "used_chat_template": true,
+    "input_char_count": 13047,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

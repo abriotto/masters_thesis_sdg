@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mitchell, Paul, Mike.\n    *   Goal: Eliminate a Werewolf to win (Team Village).\n\n    *   Mitchell: Claims Troublemaker. Claims he switched Paul and Justin.\n    *   Paul: Claims Robber. Claims he robbed Justin. Claims he saw Justin was the Seer. Later claims he was the Tanner.\n    *   Justin: Claims Seer. Claims he saw a Drunk and a Werewolf in the center. Later claims he was a Werewolf.\n    *   Mike: Claims Tanner (initially), then claims Robber.\n\n    *   *Mitchell (Troublemaker):* Claims he switched Paul and Justin.\n    *   *Paul (Robber/Tanner):* Claims he robbed Justin. If Paul was the Robber and robbed Justin, and Mitchell (Troublemaker) switched Paul and Justin, then Paul's final role would be Justin's starting role, and Justin's final role would be Paul's starting role.\n    *   *Justin (Seer/Werewolf):* Claims he was the Seer, then claims he was a Werewolf.\n    *   *Mike (Tanner/Robber):* Claims he was the Tanner, then claims he was the Robber.\n\n    *   Justin's final claim: \"I was a werewolf, so there's a werewolf in here.\" (Line 123).\n    *   Paul's final claim: \"I was the tanner.\" (Line 106).\n    *   Mike's final claim: \"I was actually the robber.\" (Line 113).\n    *   Mitchell's claim: Troublemaker.\n\n    *   If Justin is a Werewolf, voting for him wins the game for Team Village.\n    *   If Paul is the Tanner, voting for him makes the Tanner win.\n    *   If Mike is the Robber, he is Team Village.\n    *   If Mitchell is the Troublemaker, he is Team Village.\n\n    *   Justin admits to being a Werewolf at the end (Line 123).\n    *   Paul admits to being the Tanner (Line 106).\n    *   Mike's claims are inconsistent (Tanner, then Robber).\n    *   Mitchell's claims are consistent (Troublemaker).\n\n    *   Justin's admission \"I was a werewolf\" is the strongest lead for Team Village. Even if he's bluffing, he's the only one claiming to be a Werewolf.\n    *   Wait, let's re-read the transcript carefully.\n    *   Line 123: Justin: \"I was a werewolf, so there's a werewolf in here.\"\n    *   Line 127: Justin: \"I'm killing Paul.\" (Justin wants to kill Paul, who claimed to be the Tanner).\n    *   If Justin is the Werewolf, he wants to avoid being voted out. Admitting it is unusual unless he's trying to confuse the group or is playing a very strange strategy. However, in the context of \"One Night Ultimate Werewolf,\" a player admitting they are a werewolf usually means they are either the werewolf or the tanner.\n    *   But Paul *also* claimed to be the Tanner (Line 106).\n    *   If Paul is the Tanner, voting for him loses for the Village.\n    *   If Justin is the Werewolf, voting for him wins for the Village.\n\n    *   Justin: Seer -> Werewolf.\n    *   Paul: Robber -> Tanner.\n    *   Mike: Tanner -> Robber.\n    *   Mitchell: Troublemaker.\n\n    *   If Justin is the Werewolf, he is the target.\n    *   If Paul is the Tanner, he is not the target.\n    *   If Mike is the Robber, he is not the target.\n    *   If Mitchell is the Troublemaker, he is not the target.\n\n    *   Justin's admission \"I was a werewolf\" is the most direct piece of evidence for a werewolf's presence.\n\n    *   Justin: \"I was a werewolf, so there's a werewolf in here.\"\n    *   Paul: \"I was the tanner.\"\n    *   Mike: \"I was actually the robber.\"\n    *   Mitchell: \"Troublemaker.\"\n\n    If Justin is the Werewolf, voting for him wins. If Paul is the Tanner, voting for him loses. If Mike is the Robber, voting for him loses. If Mitchell is the Troublemaker, voting for him loses.\n\n    Is there any reason to doubt Justin? He claimed to be the Seer first, then said he saw a werewolf in the center, then finally admitted he was a werewolf. This sequence suggests he was lying to cover his identity and eventually gave up or tried a different bluff.\n\n    Wait, let's look at the roles again.\n    Justin: Werewolf.\n    Paul: Tanner.\n    Mike: Robber.\n    Mitchell: Troublemaker.\n    This fits the claims.\n\n    If Justin is the Werewolf, the Village wins by voting him out.\n\n    *   Justin: Claims Werewolf.\n    *   Paul: Claims Tanner.\n    *   Mike: Claims Robber.\n    *   Mitchell: Claims Troublemaker.\n    *   Target: Justin.",
+  "parsed_output": {
+    "justification": "Justin explicitly admits to being a Werewolf in line 123 ('I was a werewolf, so there's a werewolf in here'). Paul claims to be the Tanner (line 106), and Mike claims to be the Robber (line 113), while Mitchell claims to be the Troublemaker. Since the goal of Team Village is to eliminate a Werewolf, and Justin has confessed to the role, he is the most logical choice for elimination.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin explicitly admits to being a Werewolf in line 123 ('I was a werewolf, so there's a werewolf in here'). Paul claims to be the Tanner (line 106), and Mike claims to be the Robber (line 113), while Mitchell claims to be the Troublemaker. Since the goal of Team Village is to eliminate a Werewolf, and Justin has confessed to the role, he is the most logical choice for elimination.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin explicitly admits to being a Werewolf in line 123 ('I was a werewolf, so there's a werewolf in here'). Paul claims to be the Tanner (line 106), and Mike claims to be the Robber (line 113), while Mitchell claims to be the Troublemaker. Since the goal of Team Village is to eliminate a Werewolf, and Justin has confessed to the role, he is the most logical choice for elimination.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin explicitly admits to being a Werewolf in line 123 ('I was a werewolf, so there's a werewolf in here'). Paul claims to be the Tanner (line 106), and Mike claims to be the Robber (line 113), while Mitchell claims to be the Troublemaker. Since the goal of Team Village is to eliminate a Werewolf, and Justin has confessed to the role, he is the most logical choice for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4141,
+    "output_token_count": 1301,
+    "generation_time_sec": 143.14367938041687,
+    "used_chat_template": true,
+    "input_char_count": 14276,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

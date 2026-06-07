@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Justin: Claims Troublemaker (switched two people).\n    *   Caitlynn: Claims Robber (robbed Mitchell, saw Drunk).\n    *   Paul: Claims Seer (looked at two center cards, saw Minion).\n    *   Alysha: Claims Seer (looked at two center cards, saw Minion and Robber).\n    *   Mitchell: Claims Drunk turned Robber (robbed/robber-ed). Later says \"I'm a werewolf\" (likely bluffing or trolling).\n    *   Mike: Claims Revealer (revealed Mitchell as Tanner).\n\n    *   *Revealer:* This role is mentioned in the transcript (Announcer calls it), but it's *not* in the provided rules list. Wait, let me re-read the rules.\n    *   *Rules list:* Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Revealer* is NOT in the rules. However, the Announcer calls it. This is a discrepancy. Let's assume the Announcer's call is the source of truth for the game being played, even if the rule summary missed it.\n    *   *Revealer's ability (from transcript):* \"You may turn any other player's card face up. If the card you reveal is a werewolf or a tanner, turn it back over face down.\"\n    *   *Mike's claim:* Mike says he is the Revealer and revealed Mitchell as the Tanner.\n\n    *   Mike (Revealer) says Mitchell is the Tanner.\n    *   Mitchell says he was Drunk turned Robber.\n    *   Caitlynn says she was the Robber and robbed Mitchell, seeing Drunk.\n    *   Justin says he was the Troublemaker and switched two people (doesn't specify who, but later says \"these two\" referring to Mitchell and someone else, though it's vague).\n    *   Paul claims Seer (saw Minion in center).\n    *   Alysha claims Seer (saw Minion and Robber in center).\n\n    *   If Mike is the Revealer and Mitchell is the Tanner, Mitchell wins if voted out.\n    *   If Paul and Alysha both claim Seer, one is lying.\n    *   Paul says Alysha is a werewolf.\n    *   Alysha says Mitchell might be a werewolf.\n    *   Mitchell says \"I'm a werewolf\" at the end (likely a bluff to avoid being voted out if he's the Tanner, or just chaos).\n\n    *   *Scenario A: Mike is telling the truth.* Mitchell is the Tanner. Voting Mitchell makes the Tanner win.\n    *   *Scenario B: Paul is telling the truth.* He saw the Minion in the center.\n    *   *Scenario C: Alysha is telling the truth.* She saw the Minion and Robber in the center.\n    *   *Scenario D: Mike is lying.* He's a Werewolf/Minion trying to protect himself or frame Mitchell as the Tanner to avoid being voted out.\n\n    *   Paul and Alysha both claim Seer. Only one Seer exists.\n    *   Paul says Alysha is a werewolf.\n    *   Alysha says Paul is lying.\n    *   Paul says Mike and Alysha are lying.\n    *   Justin says he's the Troublemaker.\n    *   Caitlynn says she's the Robber.\n\n    *   If Paul is the Seer and saw the Minion in the center, and Alysha is lying about being the Seer, Alysha is a strong candidate for Werewolf.\n    *   If Alysha is the Seer and saw the Minion and Robber in the center, Paul is lying.\n    *   Mike's claim as \"Revealer\" is odd because it's not in the standard rules provided, but it's in the transcript. If Mike is a Werewolf, he'd want to divert attention. Claiming Mitchell is the Tanner is a great way to make people *not* vote for Mitchell, but it doesn't necessarily protect Mike.\n\n    *   Paul says: \"Alysha and Mike are definitely both lying.\"\n    *   Paul says: \"Alysha knows that [the minion is in the center] because she's a werewolf and she's the only werewolf.\"\n    *   Alysha says: \"I think Mitchell's a werewolf.\"\n    *   Mitchell says: \"I'm a werewolf\" (likely a bluff).\n\n    *   If Paul is the Seer and saw the Minion in the center, and the Minion is in the center, then the only way for Team Werewolf to win is if the Werewolf survives.\n    *   If Paul is correct that Alysha is the Werewolf, voting Alysha wins the game for the Village.\n    *   If Mike is a Werewolf/Minion, voting him also wins.\n    *   However, Paul specifically targets Alysha as the Werewolf.\n\n    *   Paul's logic: He claims to be the Seer and saw the Minion in the center. He accuses Alysha of lying about being the Seer and therefore being the Werewolf.\n    *   Alysha's logic: She claims to be the Seer and saw the Minion and Robber in the center.\n    *   Mike's claim: He claims to be the Revealer and says Mitchell is the Tanner.\n    *   If Mike is the Revealer, Mitchell is the Tanner. If Mitchell is the Tanner, voting him is a loss for the Village.\n    *   If Paul is the Seer, Alysha is likely the Werewolf.\n\n    *   Paul's claim is consistent. He says he saw the Minion in the center.\n    *   Alysha's claim is also consistent (Minion and Robber in center).\n    *   But Paul's accusation against Alysha is direct.\n    *   Wait, look at the transcript again. Paul says: \"I know for sure... Alysha and Mike are definitely both lying.\"\n    *   If Paul is the Seer and saw the Minion in the center, and the Minion is in the center, then the Werewolf must be among the players.\n    *   If Paul believes Alysha is the Werewolf, that's the most logical vote for the Village.\n\n    *   Justin: Troublemaker (Village)\n    *   Caitlynn: Robber (Village)\n    *   Paul: Seer (Village)\n    *   Alysha: Werewolf (Werewolf)\n    *   Mitchell: Tanner (Tanner)\n    *   Mike: Minion (Werewolf) - *Wait, if the Minion is in the center, Mike can't be the Minion.*\n    *   If the Minion is in the center, Mike must be the Werewolf or something else.\n    *   If Mike is the Werewolf, he'd lie about being the Revealer.\n\n    *   Paul says Alysha is the werewolf.\n    *   Alysha says Mitchell is the werewolf.\n    *   Mitchell says he is the werewolf (likely bluffing).\n    *   Mike says Mitchell is the Tanner.\n    *   If Mike is the Werewolf, he wants to protect himself. By calling Mitchell the Tanner, he makes people avoid voting Mitchell. But why would he do that if he's the Werewolf? He'd want people to vote for someone else entirely.\n    *   Actually, if Mike is the Werewolf, he wants to avoid being voted out. Calling Mitchell the Tanner doesn't directly help Mike unless it creates confusion.\n\n    *   Paul is very confident that Alysha is lying.\n    *   Alysha's claim to be the Seer contradicts Paul's.\n    *   If Paul is the Seer, Alysha is the Werewolf.\n    *   If Alysha is the Seer, Paul is the Werewolf.\n    *   Looking at the dialogue, Paul seems more analytical, while Alysha's claim is a bit more haphazard (\"I think it was robber\").\n\n    *   Paul's accusation: \"Alysha knows that because she's a werewolf and she's the only werewolf.\"\n    *   This is a strong lead.\n\n    *   Wait, Paul says: \"I know who the minion is\" (Line 28). Then later he says: \"I actually did look at two in the center\" (Line 90).\n    *   If he looked at the center and saw the Minion, he knows the Minion is not a player.\n    *   If the Minion is in the center, then the Werewolf is the only threat.\n    *   Paul's target is Alysha.\n\n    *   Paul's claim: Seer, saw Minion in center.\n    *   Alysha's claim: Seer, saw Minion and Robber in center.\n    *   Mike's claim: Revealer, saw Mitchell as Tanner.\n    *   If Paul is the Seer, Alysha is lying. If Alysha is lying and not the Tanner, she's likely the Werewolf.\n    *   If Mike is the Revealer, Mitchell is the Tanner.\n    *   If Mitchell is the Tanner, voting him is a loss.\n    *   Therefore, the best bet for the Village is Alysha.\n\n    *   Wait, Paul says \"Alysha and Mike are definitely both lying.\"\n    *   If Mike is lying about being the Revealer, he could be the Werewolf.\n    *   But Paul specifically says \"Alysha... is the only werewolf.\"\n    *   Let's re-read: \"Alysha knows that because she's a werewolf and she's the only werewolf.\" (Line 103).\n    *   This is a direct accusation.\n\n    *   Paul: Seer (Village)\n    *   Alysha: Werewolf (Werewolf)\n    *   Mike: Minion (Wait, Paul said Minion was in center) -> Mike: Villager/Other (Lying)\n    *   Mitchell: Tanner (Tanner)\n    *   Justin: Troublemaker (Village)\n    *   Caitlynn: Robber (Village)\n    *   This fits all the claims and accusations.\n\n    *   If Paul is the Werewolf and is framing Alysha.\n    *   If Alysha is the Seer and Paul is the Werewolf.\n    *   However, in these games, the most confident accuser who provides a consistent narrative (like Paul) is often the one to follow, or the one to suspect. But based on the provided transcript, Paul's argument that Alysha is the werewolf is the most developed.\n\n    *   Paul claims to be the Seer and saw the Minion in the center.\n    *   He identifies Alysha as the Werewolf because she also claimed to be the Seer (and thus is lying).\n    *   Mike's claim that Mitchell is the Tanner suggests Mitchell should not be voted out.\n    *   Therefore, Alysha is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Paul and Alysha both claim to be the Seer, meaning at least one of them is lying. Paul claims he saw the Minion in the center, which would mean the Minion is not a player; he subsequently accuses Alysha of being the only Werewolf because she is lying about her role. Mike claims to be the Revealer and identifies Mitchell as the Tanner, which suggests that voting for Mitchell would result in a loss for Team Village. Given the conflict between Paul and Alysha, and Paul's specific accusation, Alysha is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Alysha"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul and Alysha both claim to be the Seer, meaning at least one of them is lying. Paul claims he saw the Minion in the center, which would mean the Minion is not a player; he subsequently accuses Alysha of being the only Werewolf because she is lying about her role. Mike claims to be the Revealer and identifies Mitchell as the Tanner, which suggests that voting for Mitchell would result in a loss for Team Village. Given the conflict between Paul and Alysha, and Paul's specific accusation, Alysha is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Alysha\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul and Alysha both claim to be the Seer, meaning at least one of them is lying. Paul claims he saw the Minion in the center, which would mean the Minion is not a player; he subsequently accuses Alysha of being the only Werewolf because she is lying about her role. Mike claims to be the Revealer and identifies Mitchell as the Tanner, which suggests that voting for Mitchell would result in a loss for Team Village. Given the conflict between Paul and Alysha, and Paul's specific accusation, Alysha is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Alysha\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alysha",
+    "justification": "Paul and Alysha both claim to be the Seer, meaning at least one of them is lying. Paul claims he saw the Minion in the center, which would mean the Minion is not a player; he subsequently accuses Alysha of being the only Werewolf because she is lying about her role. Mike claims to be the Revealer and identifies Mitchell as the Tanner, which suggests that voting for Mitchell would result in a loss for Team Village. Given the conflict between Paul and Alysha, and Paul's specific accusation, Alysha is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4348,
+    "output_token_count": 2641,
+    "generation_time_sec": 556.2981295585632,
+    "used_chat_template": true,
+    "input_char_count": 14958,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

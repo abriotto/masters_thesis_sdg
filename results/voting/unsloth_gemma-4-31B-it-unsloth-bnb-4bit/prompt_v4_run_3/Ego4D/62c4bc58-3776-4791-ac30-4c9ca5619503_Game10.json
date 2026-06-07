@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game10.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Kevin, Kaelan, Jessica, Daniel.\n    *   Goal: Vote out a Werewolf to make Team Village win.\n    *   Winning Conditions:\n        *   Village: Vote out a Werewolf.\n        *   Werewolf: No Werewolf dies.\n        *   Tanner: Tanner dies.\n        *   Special case: If no player is a Werewolf and no one dies, Village wins.\n\n    *   [1] Kaelan: Mentions someone saw a card.\n    *   [3] Kaelan: Claims to be a Villager.\n    *   [4] Jessica: Claims to be a Villager (\"Same\").\n    *   [5] Daniel: Suggests Kaelan is the Tanner.\n    *   [10] Daniel: Suggests Kaelan might be the Werewolf.\n    *   [14] Daniel: Asks \"So we're all good with the center?\"\n    *   [15] Kevin: Says \"Yeah.\"\n    *   [16-20]: General banter/confusion.\n\n    *   Kaelan claims Villager.\n    *   Jessica claims Villager.\n    *   Daniel is questioning Kaelan (Tanner or Werewolf).\n    *   Kevin is mostly silent/frustrated.\n    *   Daniel asks if they are \"good with the center,\" and Kevin agrees. This suggests they are considering the possibility that no one is a Werewolf (all Werewolf cards are in the center).\n\n    *   There is very little concrete information.\n    *   Kaelan and Jessica both claim to be Villagers.\n    *   Daniel is trying to cast doubt on Kaelan.\n    *   The phrase \"good with the center\" usually means they suspect the Werewolf cards are in the center.\n    *   If they believe the Werewolf cards are in the center, the best move for Team Village is to vote for \"No Werewolf\" (or not vote anyone out, but the prompt asks for a choice).\n\n    *   If they vote \"No Werewolf\" and there *is* a Werewolf, Team Werewolf wins.\n    *   If they vote \"No Werewolf\" and there *is no* Werewolf, Team Village wins.\n    *   If they vote for a player and that player is a Werewolf, Team Village wins.\n    *   If they vote for a player and that player is the Tanner, the Tanner wins.\n    *   If they vote for a player and that player is a Villager, Team Werewolf wins (because no Werewolf died).\n\n    *   Kaelan claims Villager.\n    *   Jessica claims Villager.\n    *   Daniel is pushing the idea that Kaelan is the Werewolf or Tanner.\n    *   However, Daniel then asks if they are \"good with the center,\" and Kevin agrees.\n    *   This implies a consensus that no one is a Werewolf.\n\n    *   The transcript is very short and lacks strong evidence of any specific player being a Werewolf.\n    *   The conversation ends with Daniel and Kevin agreeing they are \"good with the center.\"\n    *   In One Night Ultimate Werewolf, if players suspect the Werewolf cards are in the center, they should vote \"No Werewolf\" to win.\n\n    *   Wait, let's re-read: \"So we're all good with the center?\" \"Yeah.\"\n    *   This is a strong indicator that the players themselves believe no one is a Werewolf.\n    *   As an external observer, I have no other information to contradict this.\n\n    *   Justification: Kaelan and Jessica both claim to be Villagers. Daniel initially questions Kaelan but then asks if they are \"good with the center,\" and Kevin agrees. This suggests the players believe the Werewolf cards are in the center, and since there is no evidence to the contrary, \"No Werewolf\" is the most logical choice.\n\n    *   Wait, let me double-check the transcript again.\n    *   [1] Kaelan: \"I don't know why this is necessary considering... saw the card.\" (Vague)\n    *   [3] Kaelan: \"I am... a Villager.\"\n    *   [4] Jessica: \"Same.\"\n    *   [5] Daniel: \"So he's the Tanner.\"\n    *   [10] Daniel: \"So maybe he's the Werewolf?\"\n    *   [14] Daniel: \"So we're all good with the center?\"\n    *   [15] Kevin: \"Yeah.\"\n    *   The shift from Daniel accusing Kaelan to asking about the center is quick. It seems they've decided not to risk voting someone out.\n\n    *   Is there any reason to suspect Daniel or Kevin?\n    *   Daniel is the one driving the conversation.\n    *   Kevin is barely participating.\n    *   But without more info, \"No Werewolf\" aligns with the players' own conclusion.\n\n    *   Wait, the prompt says: \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    *   Given the lack of evidence and the players' agreement on the center, this is the most supported conclusion.\n\n    *   Justification: Kaelan and Jessica both claim to be Villagers. While Daniel briefly suggests Kaelan could be the Tanner or Werewolf, he eventually asks if they are \"good with the center,\" and Kevin agrees. This indicates a consensus among the players that no Werewolf is present among them.\n    *   Chosen vote: No Werewolf.",
+  "parsed_output": {
+    "justification": "Kaelan and Jessica both claim to be Villagers. Although Daniel initially suggests Kaelan might be the Tanner or the Werewolf, he later asks if they are 'good with the center,' and Kevin agrees. This indicates a consensus among the players that the Werewolf cards are in the center and no player is a Werewolf.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kaelan and Jessica both claim to be Villagers. Although Daniel initially suggests Kaelan might be the Tanner or the Werewolf, he later asks if they are 'good with the center,' and Kevin agrees. This indicates a consensus among the players that the Werewolf cards are in the center and no player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kaelan and Jessica both claim to be Villagers. Although Daniel initially suggests Kaelan might be the Tanner or the Werewolf, he later asks if they are 'good with the center,' and Kevin agrees. This indicates a consensus among the players that the Werewolf cards are in the center and no player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Kaelan and Jessica both claim to be Villagers. Although Daniel initially suggests Kaelan might be the Tanner or the Werewolf, he later asks if they are 'good with the center,' and Kevin agrees. This indicates a consensus among the players that the Werewolf cards are in the center and no player is a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1997,
+    "output_token_count": 1334,
+    "generation_time_sec": 136.1314573287964,
+    "used_chat_template": true,
+    "input_char_count": 7750,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

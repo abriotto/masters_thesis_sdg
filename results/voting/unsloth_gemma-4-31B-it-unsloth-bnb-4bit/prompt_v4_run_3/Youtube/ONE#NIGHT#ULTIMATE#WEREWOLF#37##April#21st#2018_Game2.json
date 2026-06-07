@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mitchell\n    *   James\n    *   Mike\n\n    *   Mitchell claims to be the \"Revealer\" (a role not in the standard list provided, but let's look at the transcript). Wait, the announcer mentions \"Revealer\" in [8]. The rules provided *don't* list \"Revealer\", but the transcript does. Let's re-read the rules.\n    *   *Correction:* The provided rules list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Wait*, the transcript mentions \"Apprentice Seer\" and \"Revealer\". These are not in the provided rules list. However, the task says \"you have access only to the public discussion transcript and the game rules provided above.\" If the rules provided don't list \"Revealer\", but the announcer calls it, I must rely on the transcript's context.\n    *   Mitchell claims he was the Revealer and looked at Mike's card, and it was a Werewolf [10, 17, 19].\n    *   Mike claims he was the Troublemaker [20, 46, 52, 91].\n    *   Mike claims he switched Mitchell and Justin [49, 76].\n    *   Justin claims he was the \"little baby girl\" (likely a joke/nickname for a role) and looked in the middle [26]. He later says he saw a werewolf in the center [64, 105].\n    *   Caitlynn claims she robbed Justin [34, 36].\n    *   James claims he forgot who he was [13, 15].\n\n    *   Mitchell (Revealer) -> Mike (Werewolf).\n    *   Mike (Troublemaker) -> Switched Mitchell and Justin.\n    *   Caitlynn (Robber) -> Robbed Justin.\n    *   Justin (Seer/Apprentice Seer?) -> Saw a werewolf in the center.\n\n    *   If Mitchell is the Revealer and saw Mike as a Werewolf, Mike is a Werewolf.\n    *   If Mike is the Troublemaker and switched Mitchell and Justin, then Mitchell's role (Revealer) would have moved to Justin, and Justin's role would have moved to Mitchell.\n    *   Wait, if Mike switched Mitchell and Justin, then Mitchell is no longer the Revealer; Justin is. But Mitchell claims he *was* the Revealer and *already* looked at Mike.\n    *   The Revealer wakes up *after* the Troublemaker [8].\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n        (Wait, the announcer in the transcript says: Minion, Apprentice Seer, Robber, Troublemaker, Revealer).\n    *   If the Revealer wakes up *after* the Troublemaker, then the Troublemaker's switch happens *before* the Revealer acts.\n    *   If Mike (Troublemaker) switched Mitchell and Justin, and then Mitchell (Revealer) looked at Mike, it means Mitchell *became* the Revealer because of the switch.\n    *   But Mitchell says \"I was the revealer\" [10].\n    *   Let's re-examine:\n        *   Mitchell says he revealed Mike as a werewolf.\n        *   Mike says he is the Troublemaker and switched Mitchell and Justin.\n        *   If Mike is the Troublemaker and switched Mitchell and Justin, and Mitchell is now the Revealer, then Mitchell's information about Mike being a werewolf is still valid.\n        *   If Mike is lying about being the Troublemaker and is actually a Werewolf, then Mitchell's claim is likely true.\n        *   If Mitchell is lying and is the Werewolf, he's trying to frame Mike.\n\n    *   Caitlynn says she robbed Justin.\n    *   Justin says he saw a werewolf in the center.\n    *   If Justin saw a werewolf in the center, and there's only one werewolf (or some are in the center), this supports the idea that there might be a werewolf among the players or not.\n    *   Wait, if Justin saw a werewolf in the center, and Mitchell saw Mike as a werewolf, that's two werewolves (one in center, one Mike). This is possible.\n\n    *   Mitchell is very confident Mike is a werewolf.\n    *   Justin is voting for Mike.\n    *   Caitlynn seems to believe Justin/Mitchell.\n    *   James is confused but leaning towards voting for Mike or Mitchell.\n    *   Mike is desperately claiming to be the Troublemaker.\n\n    *   If Mike is the Troublemaker, he switched Mitchell and Justin.\n    *   If Mitchell is the Revealer, he saw Mike's card.\n    *   If Mike is the Werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is the Werewolf, he's lying about being the Revealer.\n    *   The Revealer's ability (according to the announcer) is to turn a card face up, but if it's a werewolf or tanner, turn it back face down [8].\n    *   Mitchell says \"Your card isn't flipped up and I revealed it. Explain that\" [23]. This matches the Revealer's rule (if it's a werewolf, it stays face down).\n    *   This makes Mitchell's claim very plausible. He knows the specific rule about the Revealer's action.\n\n    *   Mitchell's claim is consistent with the announcer's description of the Revealer's role.\n    *   Mike's defense (being the Troublemaker) doesn't negate Mitchell's finding, as the Revealer acts after the Troublemaker.\n    *   Justin and Caitlynn's interactions don't contradict Mitchell's claim.\n    *   Therefore, Mike is the most likely Werewolf.\n\n    *   Justin: \"I'm voting for you [Mike] no matter what.\"\n    *   Mitchell: \"I'm voting 100% for Mike.\"\n    *   Mike: \"I'm voting for Mitchell.\"\n    *   James: \"I want to believe you Mike, but more because I just want to kill Mitchell.\" (Wait, James says he wants to kill Mitchell, but then says \"Are you voting for Mike, Caitlynn? You want to kill Mitchell? Okay.\" - James is very confused).\n    *   Actually, James says [131]: \"Are you voting for Mike, Caitlynn? You want to kill Mitchell? Okay.\" This is contradictory.\n    *   Let's look at [124]: Justin says \"I'm voting for you [Mike].\"\n    *   Let's look at [127]: Mike says \"I'm voting for Mitchell.\"\n    *   Let's look at [128]: Mitchell says \"I'm voting 100% for Mike.\"\n    *   Let's look at [130]: Justin says \"I'm voting for Mike.\"\n\n    *   The most evidence points to Mike. Mitchell's knowledge of the Revealer's specific mechanic (card staying face down for werewolves) is a strong indicator of truthfulness.\n\n    *   Wait, the prompt asks to choose the player to vote out to make Team Village win.\n    *   If Mike is the Werewolf, voting him out wins the game.\n    *   If Mitchell is the Werewolf and is lying, voting Mike out loses the game.\n    *   However, based on the transcript, Mitchell's claim is more detailed and aligns with the announcer's instructions.\n\n    *   Justin: Seer/Apprentice Seer (saw werewolf in center).\n    *   Caitlynn: Robber (robbed Justin).\n    *   Mitchell: Revealer (saw Mike as werewolf).\n    *   Mike: Werewolf (claiming to be Troublemaker).\n    *   James: ? (forgot role).\n    *   This distribution is consistent.\n\n    *   Wait, if Justin was the Seer and saw a werewolf in the center, and Mike is a werewolf, that's two werewolves.\n    *   If Mike is the Troublemaker and switched Mitchell and Justin, then Mitchell (who was something else) became the Revealer.\n    *   The logic holds. Mike is the most suspicious.",
+  "parsed_output": {
+    "justification": "Mitchell claims to be the Revealer and identifies Mike as a Werewolf. His claim is supported by his knowledge of the Revealer's specific mechanic—that a revealed Werewolf card is turned back face down—which matches the announcer's instructions. Mike's defense that he was the Troublemaker does not invalidate Mitchell's discovery, as the Revealer acts after the Troublemaker in the night sequence. Justin and Caitlynn's claims do not contradict this, and the overall weight of evidence points to Mike being the Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims to be the Revealer and identifies Mike as a Werewolf. His claim is supported by his knowledge of the Revealer's specific mechanic—that a revealed Werewolf card is turned back face down—which matches the announcer's instructions. Mike's defense that he was the Troublemaker does not invalidate Mitchell's discovery, as the Revealer acts after the Troublemaker in the night sequence. Justin and Caitlynn's claims do not contradict this, and the overall weight of evidence points to Mike being the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims to be the Revealer and identifies Mike as a Werewolf. His claim is supported by his knowledge of the Revealer's specific mechanic—that a revealed Werewolf card is turned back face down—which matches the announcer's instructions. Mike's defense that he was the Troublemaker does not invalidate Mitchell's discovery, as the Revealer acts after the Troublemaker in the night sequence. Justin and Caitlynn's claims do not contradict this, and the overall weight of evidence points to Mike being the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mitchell claims to be the Revealer and identifies Mike as a Werewolf. His claim is supported by his knowledge of the Revealer's specific mechanic—that a revealed Werewolf card is turned back face down—which matches the announcer's instructions. Mike's defense that he was the Troublemaker does not invalidate Mitchell's discovery, as the Revealer acts after the Troublemaker in the night sequence. Justin and Caitlynn's claims do not contradict this, and the overall weight of evidence points to Mike being the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4425,
+    "output_token_count": 2079,
+    "generation_time_sec": 219.2953429222107,
+    "used_chat_template": true,
+    "input_char_count": 15112,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

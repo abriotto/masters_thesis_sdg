@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles involved (mentioned or implied): Insomniac, Seer, Robber, Troublemaker, Werewolf.\n\n    *   [1-8]: Paul, Justin, and Mitchell are joking around. Paul says \"you guys are both werewolves\" (likely joking). Mitchell and Justin say \"Goodnight fellow werewolves\" (likely joking/bluffing).\n    *   [9-15]: Night phase actions (Seer, Robber, Troublemaker, Insomniac).\n    *   [16-17]: Day phase begins.\n    *   [18]: Paul claims he started as the Insomniac but didn't wake up as the Insomniac (Wait, if he started as Insomniac, he *should* wake up at the end of the night. If he didn't, he might have been swapped).\n    *   [21]: Justin claims he switched Paul and Mitchell (Troublemaker action).\n    *   [29-31]: Mitchell claims he looked at Justin's card and saw Troublemaker (Seer action).\n    *   [32-33]: Justin asks Mitchell if he woke up as the Seer.\n    *   [36]: Paul admits \"I was a werewolf\" (starting role) and says \"that means that you're a werewolf now\" (referring to Mitchell, since Justin claimed to have swapped them).\n    *   [41]: Mitchell tries to backtrack, saying Justin didn't switch them and Paul is still the werewolf.\n    *   [42]: Justin insists he did switch them.\n\n    *   Justin: Claims Troublemaker.\n    *   Mitchell: Claims Seer (looked at Justin and saw Troublemaker).\n    *   Paul: Admits starting as Werewolf.\n\n    *   If Justin is the Troublemaker and he swapped Paul (Werewolf) and Mitchell (Seer):\n        *   Paul (Werewolf) $\\rightarrow$ Mitchell.\n        *   Mitchell (Seer) $\\rightarrow$ Paul.\n        *   Current roles: Justin (Troublemaker), Paul (Seer), Mitchell (Werewolf).\n    *   If Paul is the Werewolf and Justin is the Troublemaker, and they swapped:\n        *   Mitchell is now the Werewolf.\n    *   If Paul is lying about being the Werewolf (Tanner strategy?), but Justin is the Troublemaker and swapped them:\n        *   The person who ended up with the Werewolf card is the target.\n\n    *   Paul admits he was the Werewolf.\n    *   Justin claims he swapped Paul and Mitchell.\n    *   If Justin is telling the truth, Mitchell is now the Werewolf.\n    *   Mitchell tries to deny the swap happened (\"he didn't switch us\").\n    *   Justin insists he did (\"I definitely switched\").\n\n    *   If Paul started as Werewolf and Justin (Troublemaker) swapped Paul and Mitchell, Mitchell is now the Werewolf.\n    *   If Paul is the Werewolf and no swap happened, Paul is the Werewolf.\n    *   However, Paul *admitted* to being the Werewolf. In One Night Ultimate Werewolf, Werewolves usually bluff to survive. Paul admitting it is strange unless he's the Tanner or he knows he's been swapped and is trying to frame Mitchell.\n    *   Wait, Paul says: \"I was a werewolf. But that means that you're a werewolf now\" (to Mitchell). This confirms Paul believes he was swapped.\n    *   If Paul was the Werewolf and Justin swapped him with Mitchell, Mitchell is the Werewolf.\n\n    *   Justin: Troublemaker (claims).\n    *   Paul: Werewolf (starting role, claims).\n    *   Mitchell: Seer (starting role, claims).\n    *   Swap: Paul $\\leftrightarrow$ Mitchell.\n    *   Final roles: Justin (Troublemaker), Paul (Seer), Mitchell (Werewolf).\n\n    *   If Paul is the Tanner, he wants to be voted out. But he's claiming he was the Werewolf and was swapped.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out. He denies the swap.\n    *   If Justin is the Werewolf, he's bluffing as the Troublemaker. But Paul's admission of being the Werewolf makes this less likely unless they are both Werewolves. (Only 3 players, so max 2 werewolves).\n\n    *   Paul admits starting as Werewolf.\n    *   Justin claims to be Troublemaker and swapped Paul and Mitchell.\n    *   This makes Mitchell the current Werewolf.\n    *   Mitchell denies the swap.\n    *   Justin confirms the swap.\n    *   Therefore, Mitchell is the most likely candidate for the Werewolf card at the end of the night.\n\n    *   Paul: \"I was a werewolf. But that means that you're a werewolf now.\" (Referring to Mitchell).\n    *   Justin: \"I definitely switched.\"\n    *   Mitchell: \"He didn't switch us... you're still the werewolf [Paul].\"\n    *   If Justin is the Troublemaker and Paul was the Werewolf, Mitchell is now the Werewolf.\n\n    *   Could Paul be the Tanner? If Paul is the Tanner, he wants to be voted out. He claims he was the Werewolf. But he also says Mitchell is the Werewolf now.\n    *   Could Justin be the Werewolf? If Justin is the Werewolf, he's lying about being the Troublemaker.\n    *   However, based on the dialogue, the most consistent narrative is that Paul started as the Werewolf and was swapped with Mitchell by Justin.\n\n    *   Paul: Starting Werewolf $\\rightarrow$ Final Seer.\n    *   Mitchell: Starting Seer $\\rightarrow$ Final Werewolf.\n    *   Justin: Starting Troublemaker $\\rightarrow$ Final Troublemaker.\n    *   Vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Paul admits to starting as the Werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. If Justin's claim is true, the Werewolf card was moved from Paul to Mitchell. Mitchell denies the swap occurred, which is consistent with a Werewolf attempting to avoid elimination, while Justin insists the swap definitely happened.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul admits to starting as the Werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. If Justin's claim is true, the Werewolf card was moved from Paul to Mitchell. Mitchell denies the swap occurred, which is consistent with a Werewolf attempting to avoid elimination, while Justin insists the swap definitely happened.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul admits to starting as the Werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. If Justin's claim is true, the Werewolf card was moved from Paul to Mitchell. Mitchell denies the swap occurred, which is consistent with a Werewolf attempting to avoid elimination, while Justin insists the swap definitely happened.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Paul admits to starting as the Werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. If Justin's claim is true, the Werewolf card was moved from Paul to Mitchell. Mitchell denies the swap occurred, which is consistent with a Werewolf attempting to avoid elimination, while Justin insists the swap definitely happened."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2485,
+    "output_token_count": 1415,
+    "generation_time_sec": 291.33573746681213,
+    "used_chat_template": true,
+    "input_char_count": 9500,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

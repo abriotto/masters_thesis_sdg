@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims Drunk (switched with center) [31, 51, 55, 56, 106, 115]. Later claims he was the Werewolf [124] (Wait, he says \"I was the werewolf. I saw the werewolf right there\" - this is confusing, maybe he's bluffing or reacting to Mike's claim).\n    *   Caitlynn: Claims Drunk (switched with center) [33, 49, 61, 79, 81, 118, 134].\n    *   Mike: Claims Seer [36, 72, 103]. Claims he looked in the middle and saw a Werewolf and a Troublemaker [75, 121].\n    *   Justin: Claims Robber [64, 107, 129]. Claims he stole from Mike [64] and didn't see a Seer [64]. Then claims he stole from James [107] and James was not the Drunk [109].\n    *   Mitchell: Claims Insomniac [68, 70].\n\n    *   *Robber (Justin):* Justin claims to be the Robber. He first says he stole from Mike and didn't see a Seer [64]. Then he says he stole from James [107].\n    *   *Seer (Mike):* Mike claims to be the Seer. He says he saw a Werewolf and a Troublemaker in the center [75, 121].\n    *   *Drunk (James/Caitlynn):* Both James and Caitlynn claim to be the Drunk and switched with the center.\n    *   *Insomniac (Mitchell):* Mitchell claims to be the Insomniac.\n\n    *   If Mike is the Seer and saw a Werewolf and a Troublemaker in the center, then there is only one Werewolf card left in the game (since there are usually 2-3 Werewolf cards in the pool, but the rules say \"up to two Masons\" and \"at most one of each other listed role\", meaning only 1 Werewolf card is possible if the pool is 3 cards? No, the rules say \"multiple Werewolves\" are possible. Wait, \"at most one of each other listed role\" refers to the roles *except* Villagers and Werewolves).\n    *   If Mike saw a Werewolf in the center, and there's only one Werewolf card in the game, then no one is a Werewolf. But if there are two Werewolf cards, one is in the center and one is with a player.\n    *   Justin's claims are very inconsistent. He claims to be the Robber, but changes who he stole from (Mike [64] vs James [107]).\n    *   If Justin stole from James and James was the Drunk, Justin would now be the Drunk. If Justin stole from James and James was the Werewolf, Justin would now be the Werewolf.\n    *   James's sudden claim \"I was the werewolf\" [124] is very strange. He says \"I was the werewolf. I saw the werewolf right there\" while pointing at Justin. This is likely a slip of the tongue or a very confusing way of saying \"I think Justin is the werewolf\".\n\n    *   Justin's behavior is highly suspicious. He changes his story multiple times [64, 107, 129].\n    *   Mike (Seer) and James (who eventually points to Justin) both seem to converge on Justin.\n    *   Caitlynn admits she might be the Werewolf/Minion or just the Drunk [79, 134].\n    *   If Justin is the Robber and stole from James, and James was the Werewolf, Justin is now the Werewolf.\n    *   If Mike is the Seer and saw a Werewolf in the center, and there are two Werewolves in the game, one is still out there.\n    *   Let's look at the Robber action: Robber swaps cards and looks at the new card. If Justin is the Robber and stole from James, he knows James's starting role.\n    *   Justin says \"I stole from James... I can confirm that he was not the drunk\" [107, 109]. If James claimed Drunk and Justin (as Robber) knows he wasn't, then James is lying.\n    *   If James is lying about being the Drunk, he could be the Werewolf.\n    *   However, Justin's own inconsistency is the biggest red flag. He claims to be the Robber but changes his target.\n\n    *   Justin claims Robber.\n    *   Mike claims Seer.\n    *   Mitchell claims Insomniac.\n    *   James and Caitlynn both claim Drunk.\n    *   If Mike is the Seer and saw a Werewolf in the center, and Justin is the Robber who stole from James, and Justin is now the Werewolf (because he stole the Werewolf card from James), then Justin is the target.\n    *   Wait, James says \"Justin's the fucking werewolf\" [130].\n    *   Mike says \"I think this is what's happening... he got the werewolf\" [112], referring to Justin.\n\n    *   Justin's story is the most erratic.\n    *   Mike (Seer) and James both point to Justin.\n    *   Even if James was the starting Werewolf, the Robber (Justin) would have taken that card.\n    *   Therefore, Justin is the most likely candidate for the final Werewolf role.\n\n    *   Justin: Robber -> stole from James (Werewolf) -> now Werewolf.\n    *   James: Werewolf -> stolen by Justin -> now Robber (or whatever Justin had).\n    *   Mike: Seer.\n    *   Caitlynn: Drunk.\n    *   Mitchell: Insomniac.\n    *   Center: Werewolf, Troublemaker, (one other).\n    *   This fits the claims: Mike saw a Werewolf in the center. Justin stole from James. James lied about being the Drunk.\n\n    *   Justin's shifting claims (stole from Mike, then stole from James) and the consensus between Mike and James at the end make him the primary suspect.\n    *   If Justin stole the Werewolf card from James, Justin is the one to vote out.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly inconsistent; he first claims to be the Robber who stole from Mike, then later claims he stole from James. Mike, claiming to be the Seer, suggests that Justin ended up with the Werewolf card. James also explicitly identifies Justin as the Werewolf at the end of the discussion. Given the contradictions in Justin's story and the accusations from other players, he is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly inconsistent; he first claims to be the Robber who stole from Mike, then later claims he stole from James. Mike, claiming to be the Seer, suggests that Justin ended up with the Werewolf card. James also explicitly identifies Justin as the Werewolf at the end of the discussion. Given the contradictions in Justin's story and the accusations from other players, he is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly inconsistent; he first claims to be the Robber who stole from Mike, then later claims he stole from James. Mike, claiming to be the Seer, suggests that Justin ended up with the Werewolf card. James also explicitly identifies Justin as the Werewolf at the end of the discussion. Given the contradictions in Justin's story and the accusations from other players, he is the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly inconsistent; he first claims to be the Robber who stole from Mike, then later claims he stole from James. Mike, claiming to be the Seer, suggests that Justin ended up with the Werewolf card. James also explicitly identifies Justin as the Werewolf at the end of the discussion. Given the contradictions in Justin's story and the accusations from other players, he is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4155,
+    "output_token_count": 1602,
+    "generation_time_sec": 175.1468324661255,
+    "used_chat_template": true,
+    "input_char_count": 14286,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

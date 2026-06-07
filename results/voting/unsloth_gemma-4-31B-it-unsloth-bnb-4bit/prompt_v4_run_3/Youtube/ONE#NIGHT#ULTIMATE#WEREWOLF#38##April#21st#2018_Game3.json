@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#38##April#21st#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mitchell\n    *   James\n    *   Mike\n\n    *   Mitchell: Claims Seer, saw two cards in the middle (one of which was a Minion, according to later discussion).\n    *   Justin: Claims Robber, robbed Mitchell. (If Justin robbed Mitchell, Justin is now the Seer, and Mitchell is the Robber).\n    *   Mike: Claims Robber, robbed James. Claims James was a Revealer. Later claims to be the Tanner.\n    *   Caitlynn: Claims Robber, robbed Justin.\n    *   James: Initially confused. Later claims he was a Werewolf (\"I was werewolf\", \"Me and Mike are werewolves\").\n\n    *   *Revealer* is mentioned in the transcript (Announcer calls it, Mike mentions it). However, the provided role list *does not* include Revealer. This is a discrepancy. I must rely on the provided role list (Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf).\n    *   Wait, the Announcer *did* call \"Revealer\" in the transcript ([1]). But the role list provided in the prompt doesn't list it. I should ignore the \"Revealer\" role if it's not in the rules, or treat it as a non-standard role. Actually, the prompt says \"The selected roles may include...\" and lists them. If the Announcer calls a role not on the list, it's a weirdness of the transcript, but the logic of the game still applies.\n\n    *   Mitchell (Seer) -> Justin (Robber) robbed Mitchell.\n    *   If Justin robbed Mitchell, Justin is now the Seer, and Mitchell is the Robber.\n    *   Justin says he believes Mitchell's story (that Mitchell saw cards in the middle).\n    *   Mike claims to be the Tanner ([120], [142]).\n    *   James claims to be a Werewolf ([126], [153]).\n\n    *   James explicitly admits: \"I was werewolf\" ([126]) and \"Me and Mike are werewolves\" ([153]).\n    *   Mike claims to be the Tanner ([120], [142]).\n    *   If James is a Werewolf and Mike is the Tanner, voting James wins for the Village.\n    *   If James is a Werewolf and Mike is also a Werewolf, voting either wins for the Village.\n    *   If James is lying about being a Werewolf (trying to get voted out as a Tanner), then he's the Tanner. But Mike *also* claimed to be the Tanner. Only one Tanner can exist.\n    *   If Mike is the Tanner, James's admission of being a Werewolf is highly credible.\n\n    *   Justin: Robber (claimed)\n    *   Caitlynn: Robber (claimed)\n    *   Mitchell: Seer (claimed)\n    *   James: Werewolf (admitted)\n    *   Mike: Tanner (claimed)\n\n    *   If James is a Werewolf, voting him out wins the game for Team Village.\n    *   If James is the Tanner and Mike is the Werewolf, voting Mike wins.\n    *   However, James's admission is very direct: \"Me and Mike are werewolves.\" Even if he's confused, he's identifying himself as a Werewolf.\n    *   Mike's claim to be the Tanner is also direct.\n    *   If Mike is the Tanner, he *wants* to be voted out. If James is the Werewolf, he *doesn't* want to be voted out (unless he's confused or playing a very strange strategy).\n    *   Wait, James says \"Me and Mike are werewolves\" ([153]). If they are both werewolves, voting either one wins.\n    *   If James is the Werewolf and Mike is the Tanner, voting James wins.\n    *   If James is the Tanner and Mike is the Werewolf, voting Mike wins.\n    *   But James admitted to being a Werewolf. In One Night Ultimate Werewolf, players rarely admit to being the Werewolf unless they are confused or trying to mislead. However, James specifically says \"I was werewolf. I don't know what happened\" ([126]), suggesting he might have been swapped.\n\n    *   James: \"I was werewolf. I don't know what happened.\" ([126])\n    *   James: \"Me and Mike are werewolves.\" ([153])\n    *   Mike: \"I am 100% the tanner.\" ([142])\n    *   If Mike is the Tanner, then James is likely the Werewolf.\n    *   If James is the Werewolf, voting him out ensures a Village win.\n\n    *   Could James be the Tanner? He says \"Don't kill me\" ([85], [87], [96]), which is the opposite of what a Tanner wants.\n    *   Could Mike be the Werewolf? He claims to be the Tanner. Werewolves often bluff as the Tanner to avoid being voted out (because people are afraid to vote the Tanner).\n    *   However, James's admission is the strongest piece of evidence. Even if he's confused, he's claiming the role of Werewolf.\n\n    *   James admitted to being a Werewolf twice.\n    *   Mike claimed to be the Tanner.\n    *   Voting James is the most logical choice to eliminate a Werewolf.\n\n    *   Justin: Robber (claims he robbed Mitchell)\n    *   Mitchell: Seer (claims he saw center cards)\n    *   Caitlynn: Robber (claims she robbed Justin)\n    *   James: Werewolf (admitted)\n    *   Mike: Tanner (claimed)\n    *   If James is a Werewolf, voting him wins.\n\n    *   Wait, James says \"Me and Mike are werewolves\" ([153]). If both are werewolves, voting either wins.\n    *   If Mike is the Tanner, James is the only werewolf.\n    *   If James is the Tanner, Mike is the werewolf.\n    *   But James's behavior (\"Don't kill me\") is not Tanner-like. Mike's behavior (\"I am 100% the tanner\") is Tanner-like.\n    *   Therefore, James is the most likely Werewolf.\n\n    *   James: \"I was werewolf. I don't know what happened.\" ([126])\n    *   James: \"Me and Mike are werewolves.\" ([153])\n    *   Mike: \"I am 100% the tanner.\" ([142])\n    *   Conclusion: James is the most probable Werewolf.\n\n    *   Wait, let's check if there's any other possibility.\n    *   Could James be the Troublemaker? He says \"I don't know what to do\" and \"I'm so confused\".\n    *   But he explicitly says \"I was werewolf\".\n    *   If James is the Werewolf, voting him wins.\n\n    *   Justification: James explicitly admitted to being a Werewolf twice during the discussion (\"I was werewolf\" and \"Me and Mike are werewolves\"). While Mike also claimed to be a Werewolf in James's statement, Mike explicitly claimed to be the Tanner, and James's plea of \"Don't kill me\" is inconsistent with the Tanner's goal. Therefore, James is the most likely candidate for the Werewolf role.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be the Tanner, James's repeated admissions and his pleas of 'Don't kill me' are inconsistent with the Tanner's goal of being eliminated. Therefore, James is the most likely player to hold the Werewolf card.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be the Tanner, James's repeated admissions and his pleas of 'Don't kill me' are inconsistent with the Tanner's goal of being eliminated. Therefore, James is the most likely player to hold the Werewolf card.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be the Tanner, James's repeated admissions and his pleas of 'Don't kill me' are inconsistent with the Tanner's goal of being eliminated. Therefore, James is the most likely player to hold the Werewolf card.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being a Werewolf twice during the discussion, stating 'I was werewolf' and 'Me and Mike are werewolves.' While Mike also claimed to be the Tanner, James's repeated admissions and his pleas of 'Don't kill me' are inconsistent with the Tanner's goal of being eliminated. Therefore, James is the most likely player to hold the Werewolf card."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4606,
+    "output_token_count": 1809,
+    "generation_time_sec": 191.94412302970886,
+    "used_chat_template": true,
+    "input_char_count": 15181,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

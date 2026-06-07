@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles involved (based on announcer): Werewolf, Seer, Robber, Troublemaker, Insomniac. (Wait, the announcer only calls those, but the candidate roles are always players + 3. In this case, 3 players + 3 = 6 roles).\n    *   Announcer's sequence: Werewolves -> Seer -> Robber -> Troublemaker -> Insomniac.\n\n    *   Paul claims he was the Seer and saw that Justin started as a Werewolf ([25], [27], [47]).\n    *   Mitchell claims he was the Insomniac and woke up as himself ([30], [39], [72]).\n    *   Justin admits he started as a Werewolf ([71], [81]).\n    *   Justin suggests Mitchell might be the Robber ([57], [83]).\n    *   Paul is hesitant but eventually leans towards Justin being the Werewolf ([87], [89]).\n\n    *   If Paul is the Seer and saw Justin as a Werewolf, and Mitchell is the Insomniac and woke up as himself:\n        *   Justin started as a Werewolf.\n        *   If no Robber or Troublemaker swapped Justin's card, Justin is still a Werewolf.\n        *   If the Robber swapped Justin's card, the Robber is now the Werewolf.\n        *   If the Troublemaker swapped Justin's card with someone else, that someone else is now the Werewolf.\n    *   Mitchell's claim: He is the Insomniac and woke up as himself. This means he didn't have his card swapped by the Robber or Troublemaker (or if he did, he ended up as Insomniac again, which is unlikely).\n    *   Justin's admission: He started as a Werewolf. This is a huge tell. Usually, Werewolves lie about their starting role unless they are trying to confuse the situation or have been caught.\n    *   Paul's claim: He is the Seer and saw Justin as a Werewolf.\n\n    *   If Justin started as a Werewolf and Paul saw it, Justin is the primary suspect.\n    *   Could Justin be the Tanner? The Tanner wants to be voted out. Admitting to being a Werewolf is a classic Tanner strategy.\n    *   Could Mitchell be the Werewolf? He claims to be the Insomniac. If he's lying, he could be the Werewolf.\n    *   Could Paul be the Werewolf? He claims to be the Seer. If he's lying, he could be the Werewolf.\n    *   However, Justin *explicitly* admits he started as a Werewolf ([71]). Even if he's the Tanner, voting him out is the most logical move based on the provided information, unless there's strong evidence he's not a Werewolf.\n    *   Wait, if Justin is the Tanner, voting him out makes the Tanner win. But the goal for Team Village is to eliminate a Werewolf.\n    *   Let's re-evaluate:\n        *   Paul (Seer) -> Justin (Werewolf).\n        *   Mitchell (Insomniac) -> Mitchell (Insomniac).\n        *   Justin (Admits starting as Werewolf).\n    *   If these claims are true: Justin is the Werewolf.\n    *   If Paul is lying (Werewolf) and Mitchell is lying (Werewolf/Minion): They are trying to frame Justin. But in a 3-player game, there can't be two Werewolves and a Minion (that would be 3, but there are only 3 players total, and the rules say candidate roles = players + 3 = 6. Only 2 Werewolves max).\n    *   If Paul is the Werewolf and Mitchell is the Insomniac: Paul is lying about being the Seer.\n    *   If Mitchell is the Werewolf and Paul is the Seer: Mitchell is lying about being the Insomniac.\n    *   But Justin *admitted* it. In One Night Ultimate Werewolf, admitting you are the Werewolf is either:\n        1.  A truthful admission (you are the Werewolf).\n        2.  A Tanner play (you want to be voted out).\n        3.  A very confusing bluff.\n\n    *   If Justin is the Werewolf, Team Village wins by voting him out.\n    *   If Justin is the Tanner, Team Village loses (Tanner wins).\n    *   If Justin is a Villager and someone else is the Werewolf, Team Village loses.\n    *   Given the transcript, Paul and Mitchell both point to Justin. Justin admits it. There is no evidence pointing to Paul or Mitchell being the Werewolf other than general suspicion.\n\n    *   Paul: \"I know what Justin started with... Justin was a werewolf.\"\n    *   Mitchell: \"I was Insomniac and I woke up as myself.\"\n    *   Justin: \"I'm admitting that I started as a werewolf.\"\n    *   This creates a very strong case against Justin. Even if he's the Tanner, the most likely \"Werewolf\" candidate based on the discussion is Justin.\n\n    *   Could Mitchell be the Robber? Justin suggests this. If Mitchell was the Robber and stole the Werewolf card from Justin, Mitchell would be the Werewolf.\n    *   But Mitchell claims he is the Insomniac. If he were the Robber, he would have seen the card he stole.\n    *   If Mitchell stole the Werewolf card, he would know he is the Werewolf. He is claiming to be the Insomniac.\n    *   If Paul is the Seer and saw Justin as a Werewolf, and Mitchell is the Robber and stole that card, then Mitchell is the Werewolf.\n    *   However, Mitchell claims he is the Insomniac. If he's the Robber, he's lying.\n    *   But Justin's admission is the strongest piece of evidence. In most scenarios, the person admitting to being the Werewolf is the one to vote for, unless they are clearly the Tanner. There's no strong evidence Justin is the Tanner (he doesn't seem to be *trying* to get voted out as much as he is just accepting the evidence).\n\n    *   Justin: Admits starting as Werewolf.\n    *   Paul: Claims Seer, saw Justin as Werewolf.\n    *   Mitchell: Claims Insomniac, woke up as himself.\n    *   Conclusion: Justin is the most probable Werewolf.\n\n    *   Justification: Paul claims to be the Seer and identified Justin as the starting Werewolf. Mitchell claims to be the Insomniac and confirmed his own role, suggesting no swaps affected him. Justin explicitly admits to starting as the Werewolf, making him the most likely target for Team Village.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Paul claims to be the Seer and states he saw that Justin started as a Werewolf. Mitchell claims to be the Insomniac and confirms he woke up as himself, which suggests he was not swapped by the Robber or Troublemaker. Most importantly, Justin explicitly admits to starting as a Werewolf, making him the most likely candidate for elimination to ensure a Team Village win.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claims to be the Seer and states he saw that Justin started as a Werewolf. Mitchell claims to be the Insomniac and confirms he woke up as himself, which suggests he was not swapped by the Robber or Troublemaker. Most importantly, Justin explicitly admits to starting as a Werewolf, making him the most likely candidate for elimination to ensure a Team Village win.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claims to be the Seer and states he saw that Justin started as a Werewolf. Mitchell claims to be the Insomniac and confirms he woke up as himself, which suggests he was not swapped by the Robber or Troublemaker. Most importantly, Justin explicitly admits to starting as a Werewolf, making him the most likely candidate for elimination to ensure a Team Village win.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Paul claims to be the Seer and states he saw that Justin started as a Werewolf. Mitchell claims to be the Insomniac and confirms he woke up as himself, which suggests he was not swapped by the Robber or Troublemaker. Most importantly, Justin explicitly admits to starting as a Werewolf, making him the most likely candidate for elimination to ensure a Team Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3601,
+    "output_token_count": 1626,
+    "generation_time_sec": 174.32059407234192,
+    "used_chat_template": true,
+    "input_char_count": 13025,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

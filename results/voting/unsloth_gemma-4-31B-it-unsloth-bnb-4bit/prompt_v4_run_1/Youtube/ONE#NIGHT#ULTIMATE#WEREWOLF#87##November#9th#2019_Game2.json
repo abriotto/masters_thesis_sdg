@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#87##November#9th#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#87##November#9th#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Copycat (Doppelganger)\n    *   Werewolf\n    *   Seer\n    *   Robber\n    *   Troublemaker\n    *   (Others not explicitly mentioned as starting roles, but the announcer calls them).\n\n    *   Mike: Claims he saw one werewolf in the center (Line 11). Later says the other center card was the copycat (Line 74). This implies Mike is the Seer.\n    *   Paul: Claims he was a werewolf (Line 15). He asks people to vote for him, suggesting he might be the Tanner or just playing a high-risk strategy (Line 22).\n    *   Justin: Claims he is the Troublemaker (implied by \"I didn't switch anybody\" and \"I picked up your card, put it back down\" - Line 16, 18, 37). He insists he did *not* switch anyone (Line 16, 50, 59, 79, 82, 118, 133).\n    *   Mitchell: Doesn't explicitly claim a role initially, but later mentions \"I saw troublemaker\" (Line 115), which is confusing. Wait, let's re-read. Mitchell says \"I saw troublemaker because you fucked up this whole round\" (Line 115). This is ambiguous. Does he mean he saw Justin was the Troublemaker? Or that he is the Robber/Seer?\n\n    *   Mike (Seer): Saw 1 Werewolf and 1 Copycat in the center.\n    *   Paul (Starting Werewolf): Admits he was a werewolf.\n    *   Justin (Troublemaker): Claims he didn't switch anyone.\n    *   Mitchell (?): Role unclear.\n\n    *   If Mike is the Seer and saw a Werewolf and a Copycat in the center, then there is only one Werewolf card left in the game (since there are usually 2 werewolves in a standard deck, but the candidate roles vary).\n    *   Wait, the rules say \"the number of candidate roles is always equal to the number of players plus 3\". With 4 players, there are 7 candidate roles.\n    *   If Mike saw a Werewolf and a Copycat in the center, and Paul says he was a Werewolf, then Paul is the only Werewolf in the game.\n    *   If Justin (Troublemaker) didn't switch anyone, Paul remains the Werewolf.\n    *   If Paul is the Werewolf, voting him out wins the game for the Village.\n    *   Paul is actively asking to be voted out (Line 20, 22, 42, 91). This is typical behavior for a Tanner, but he explicitly said \"I was a werewolf\" (Line 15). If he's the Tanner, he's lying about being the werewolf to get votes. If he's the Werewolf, he's trying to confuse people or just playing weirdly.\n\n    *   If Paul is the Tanner, voting him out makes the Tanner win.\n    *   If Paul is the Werewolf, voting him out makes the Village win.\n    *   If Paul is the Werewolf and Justin (Troublemaker) *did* switch him with someone else, then Paul is no longer the Werewolf.\n    *   Justin insists he didn't switch. If Justin is telling the truth, Paul is the Werewolf.\n    *   Mike (Seer) saw a Werewolf in the center. If there were two Werewolves in the candidate pool, and one is in the center, only one is among the players. Paul admitted to being that one.\n\n    *   Mike (Seer): Saw 1 Werewolf, 1 Copycat in center.\n    *   Paul: Starting Werewolf.\n    *   Justin: Troublemaker (didn't switch).\n    *   Mitchell: ? (Maybe Villager/Robber/etc.)\n    *   Center: Werewolf, Copycat, [One more card].\n\n    *   If Paul is the Werewolf and wasn't switched, voting Paul wins.\n    *   If Paul is the Tanner and lying about being the Werewolf, voting Paul loses (Tanner wins).\n    *   However, Paul's admission \"I was a werewolf\" is a very strong lead. In One Night Ultimate Werewolf, players often bluff, but admitting to being the Werewolf is rare unless they are the Tanner or they've been swapped.\n    *   Wait, Paul says \"I hope you switched me\" (Line 15). This confirms he knows he started as a Werewolf.\n    *   If Justin (Troublemaker) didn't switch, Paul is still the Werewolf.\n    *   If Paul is the Werewolf, the Village wins by voting him out.\n\n    *   Could Paul be the Tanner? Tanners want to be voted out. They often lie about their role to attract votes.\n    *   Could Justin be lying about not switching? If Justin switched Paul with Mitchell, then Mitchell is the Werewolf.\n    *   But Justin is very insistent that he didn't switch.\n    *   Mike's information (Seer) is crucial. He saw one Werewolf in the center. This means there's only one Werewolf among the players. Paul admitted to being it.\n\n    *   If Paul is the Werewolf, voting him wins.\n    *   If Paul is the Tanner, voting him loses.\n    *   If Paul was switched with Mitchell, Mitchell is the Werewolf.\n    *   Given the transcript, Paul is the most obvious target. He admitted to being the Werewolf and is practically begging to be voted out. While this is Tanner-like, the Seer's info (one werewolf in center) supports the idea that there's only one werewolf in play, and Paul claimed it.\n\n    *   Paul: \"I was a werewolf.\"\n    *   Mike (Seer): \"I saw one werewolf [in the center].\"\n    *   Justin (Troublemaker): \"I didn't switch anybody.\"\n    *   Conclusion: Paul is the Werewolf.\n\n    *   Wait, if Paul is the Tanner, he would also say \"I was a werewolf\" to get votes.\n    *   But if Paul is the Tanner, who is the Werewolf?\n    *   If Mike saw one Werewolf in the center, and there are 2 Werewolves in the candidate pool, there's one left.\n    *   If Paul is the Tanner, then either Justin, Mitchell, or Mike must be the Werewolf.\n    *   But Paul's admission is the most direct evidence. In these logic puzzles, usually, the most direct claim (especially one that puts the player at risk) is the key.\n\n    *   Paul: \"I was a werewolf.\"\n    *   Justin: \"I didn't switch.\"\n    *   Mike: \"I saw one werewolf [in center].\"\n    *   If these are true, Paul is the Werewolf.\n    *   If Paul is the Tanner, he's lying. But we have no evidence for anyone else being the Werewolf.\n    *   Therefore, the most logical vote for Team Village is Paul.",
+  "parsed_output": {
+    "justification": "Paul explicitly admitted to starting as a Werewolf ('I was a werewolf'). Mike, acting as the Seer, stated he saw one Werewolf in the center, implying only one Werewolf is among the players. Justin, claiming to be the Troublemaker, insisted he did not switch any cards. If these statements are true, Paul remains the Werewolf and voting him out ensures a victory for Team Village.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admitted to starting as a Werewolf ('I was a werewolf'). Mike, acting as the Seer, stated he saw one Werewolf in the center, implying only one Werewolf is among the players. Justin, claiming to be the Troublemaker, insisted he did not switch any cards. If these statements are true, Paul remains the Werewolf and voting him out ensures a victory for Team Village.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admitted to starting as a Werewolf ('I was a werewolf'). Mike, acting as the Seer, stated he saw one Werewolf in the center, implying only one Werewolf is among the players. Justin, claiming to be the Troublemaker, insisted he did not switch any cards. If these statements are true, Paul remains the Werewolf and voting him out ensures a victory for Team Village.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admitted to starting as a Werewolf ('I was a werewolf'). Mike, acting as the Seer, stated he saw one Werewolf in the center, implying only one Werewolf is among the players. Justin, claiming to be the Troublemaker, insisted he did not switch any cards. If these statements are true, Paul remains the Werewolf and voting him out ensures a victory for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4625,
+    "output_token_count": 1728,
+    "generation_time_sec": 359.2315764427185,
+    "used_chat_template": true,
+    "input_char_count": 15592,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

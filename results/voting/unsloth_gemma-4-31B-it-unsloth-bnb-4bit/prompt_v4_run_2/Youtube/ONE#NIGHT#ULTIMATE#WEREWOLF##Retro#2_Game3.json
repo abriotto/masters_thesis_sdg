@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Dan\n    *   Mitchell\n    *   Caitlynn\n    *   Mike\n\n    *   Mitchell: Claims he was the Robber, stole from Caitlynn, and she was a Villager.\n    *   Mike: Claims he was the Troublemaker and switched two people (initially vague, then says he switched \"these two\" - likely referring to Mitchell and someone else, or perhaps Justin and someone else).\n    *   Justin: Admits \"I was a werewolf\" (Line 45).\n    *   Caitlynn: Claims she was a Villager.\n    *   Dan: Claims he was a Villager.\n\n    *   Justin says: \"I was a werewolf\" (Line 45).\n    *   Mitchell says: \"Justin's a werewolf\" (Line 53).\n    *   Justin says: \"Could be\" (Line 54) and \"I'd agree with that\" (Line 64) when Mitchell says Justin is a werewolf.\n\n    *   If Justin is the Werewolf, voting him out wins the game for Team Village.\n    *   Why would Justin admit to being a werewolf?\n        *   He might be the Tanner (trying to get voted out).\n        *   He might be a Werewolf who has given up or is playing a weird strategy.\n        *   He might be bluffing for some reason.\n    *   Let's check the roles claimed:\n        *   Mitchell: Robber (stole from Caitlynn, who was a Villager).\n        *   Mike: Troublemaker (switched two people).\n        *   Caitlynn: Villager.\n        *   Dan: Villager.\n        *   Justin: Werewolf (admitted).\n\n    *   If Justin is the Tanner, voting him out makes the Tanner win.\n    *   If Justin is the Werewolf, voting him out makes the Village win.\n    *   If Justin is lying and is actually a Villager, voting him out makes the Werewolf (whoever it is) win.\n\n    *   Wait, Justin says \"I was a werewolf\" very explicitly. In One Night Ultimate Werewolf, admitting to being the werewolf is highly unusual unless you are the Tanner or you've been caught.\n    *   Let's look at the claims again.\n        *   Mitchell (Robber) -> stole from Caitlynn (Villager).\n        *   Mike (Troublemaker) -> switched two people.\n        *   Justin -> admits to being Werewolf.\n    *   If Justin is the Werewolf, the Village wins by voting him.\n    *   If Justin is the Tanner, the Tanner wins.\n    *   If Justin is a Villager bluffing as a Werewolf, why would he do that? (Maybe to confuse the Werewolf/Minion, but it's unlikely).\n\n    *   Is there any other suspect?\n    *   Dan hasn't said much.\n    *   Mike claims Troublemaker.\n    *   Mitchell claims Robber.\n    *   Caitlynn claims Villager.\n    *   Justin admits Werewolf.\n\n    *   In most scenarios, if a player admits to being the Werewolf, they are either the Werewolf or the Tanner.\n    *   If we vote Justin, we either win (Werewolf) or lose (Tanner).\n    *   If we don't vote Justin and he *is* the Werewolf, we lose.\n    *   If we don't vote Justin and he is the Tanner, we might still win if we find the actual Werewolf.\n    *   However, based on the transcript, Justin is the only one claiming to be the Werewolf.\n\n    *   Justin: \"I was a werewolf. Did you steal from me?\" (Line 45).\n    *   This is a very direct admission.\n\n    *   Justin is the most likely candidate for elimination because he explicitly stated he was a werewolf. Even if he's the Tanner, the prompt asks to make Team Village win, and the most evidence points to Justin being the Werewolf (or the Tanner). Since we have no other leads, Justin is the primary target.\n\n    *   Wait, let's re-read Mike's part. Mike says he's the Troublemaker. He says he switched \"these two\" (Line 52). He then says \"I switched him back\" (Line 61), referring to Mitchell. This is confusing. If Mike is the Troublemaker, he swaps two *other* players. He cannot swap himself. If he swapped Mitchell and someone else, and then \"switched him back\", that's two swaps, but the Troublemaker only gets one swap.\n    *   Actually, looking at Line 61: \"And then I switched him back. So, you are still a robber actually.\" This implies Mike might be lying about being the Troublemaker or is confused about the rules.\n    *   However, Justin's admission is the strongest piece of evidence.\n\n    *   Justin admitted to being the werewolf.\n    *   Mitchell and Mike both point toward Justin.\n    *   The most logical choice to eliminate to achieve a Village win is the person who admitted to being the Werewolf.\n\n    *   Justification: Justin explicitly admitted to being a werewolf during the discussion. While this could be a bluff by the Tanner, it is the most direct evidence available in the transcript. Other players (Mitchell and Mike) also support the conclusion that Justin is the werewolf.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Justin explicitly admitted to being a werewolf during the discussion (Line 45). While this behavior is sometimes associated with the Tanner, it is the most direct evidence of a werewolf's identity provided in the transcript. Both Mitchell and Mike also conclude that Justin is the werewolf, making him the most logical target for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin explicitly admitted to being a werewolf during the discussion (Line 45). While this behavior is sometimes associated with the Tanner, it is the most direct evidence of a werewolf's identity provided in the transcript. Both Mitchell and Mike also conclude that Justin is the werewolf, making him the most logical target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin explicitly admitted to being a werewolf during the discussion (Line 45). While this behavior is sometimes associated with the Tanner, it is the most direct evidence of a werewolf's identity provided in the transcript. Both Mitchell and Mike also conclude that Justin is the werewolf, making him the most logical target for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin explicitly admitted to being a werewolf during the discussion (Line 45). While this behavior is sometimes associated with the Tanner, it is the most direct evidence of a werewolf's identity provided in the transcript. Both Mitchell and Mike also conclude that Justin is the werewolf, making him the most logical target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2785,
+    "output_token_count": 1314,
+    "generation_time_sec": 135.86330604553223,
+    "used_chat_template": true,
+    "input_char_count": 10313,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

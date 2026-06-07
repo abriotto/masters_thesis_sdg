@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Justin: Claims Seer (initially), then claims he was a Werewolf to start and saw a Seer (at [125]).\n    *   Caitlynn: Claims Troublemaker (at [17]), then claims Tanner (at [94]).\n    *   Paul: Claims Drunk (at [61]).\n    *   Alysha: Claims Revealer (at [28-31], [41], [44], [55]). She says she revealed Mike and saw a Werewolf.\n    *   Mitchell: Claims Troublemaker (at [24], [117]). Says he swapped Caitlynn with Paul (at [164]).\n    *   Mike: Claims Troublemaker (at [20]), then claims Drunk (at [84], [126], [171], [176]).\n\n    *   Revealer (Alysha) reveals Mike -> Werewolf.\n    *   Justin claims he was a Werewolf to start.\n    *   Mitchell (Troublemaker) claims he swapped Caitlynn and Paul.\n    *   Mike claims he was the Drunk.\n\n    *   *Alysha (Revealer):* She claims she revealed Mike and he is a Werewolf. If she is telling the truth, Mike is a Werewolf.\n    *   *Justin:* He admits he was a Werewolf to start ([125]). However, he also claimed to be a Seer earlier ([53]). He's being very contradictory.\n    *   *Mike:* He claims he was the Drunk. He's contradicting Paul's claim of being the Drunk.\n    *   *Caitlynn:* Claims she was the Tanner. If she is the Tanner, she wants to be voted out.\n    *   *Mitchell:* Claims Troublemaker. He says he swapped Caitlynn and Paul.\n\n    *   If Alysha is the Revealer and she saw Mike as a Werewolf, Mike is the target.\n    *   Justin admitted to being a Werewolf to start. If he wasn't swapped, he's a Werewolf.\n    *   Wait, let's look at the transcript again.\n    *   [125] Justin: \"I was a werewolf to start, and I saw a seer right here.\" (This is a very strange claim. Werewolves don't \"see\" seers unless they are the Minion or using some other ability, but the role \"Werewolf\" doesn't see other roles).\n    *   [41] Alysha: \"It was Mike.\" (Revealing Mike).\n    *   [44] Alysha: \"He's a werewolf.\"\n    *   [173] Alysha: \"I'm killing Mike.\"\n    *   [180] Justin: \"I'm killing Mike.\"\n    *   [181] Paul: \"Mike.\"\n\n    *   Mike is claiming to be the Drunk, but Alysha (Revealer) says he's a Werewolf.\n    *   Justin's claim of being a Werewolf to start is suspicious, but he's also acting erratic.\n    *   Caitlynn claims to be the Tanner.\n    *   If Mike is the Werewolf, voting him out wins for the Village.\n\n    *   Revealer is not in the standard role list provided in the \"Information and roles\" section, but it appears in the transcript ([16]). Wait, the prompt says \"The selected roles may include: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\"\n    *   The transcript mentions a \"Revealer\" ([16]). This is a non-standard role for the provided rules, but it's in the transcript. The Announcer calls the Revealer.\n    *   Alysha claims to be the Revealer. She says she revealed Mike and he is a Werewolf.\n    *   If we trust the Revealer's information, Mike is the Werewolf.\n\n    *   Justin: Claims Seer, then claims Werewolf.\n    *   Mike: Claims Troublemaker, then Drunk.\n    *   Paul: Claims Drunk.\n    *   Caitlynn: Claims Troublemaker, then Tanner.\n    *   Mitchell: Claims Troublemaker.\n    *   Alysha: Claims Revealer.\n\n    *   If Mike is the Werewolf, voting him out wins.\n    *   If Justin is the Werewolf, voting him out wins.\n    *   If Caitlynn is the Tanner, voting her out loses (unless a Werewolf is also voted out, but only one person is voted out).\n    *   Alysha's claim is the most direct evidence: \"I saw a werewolf... It was Mike.\"\n\n    *   Justin's claim \"I was a werewolf to start\" is very odd. If he was a werewolf, why would he admit it? Maybe he's the Tanner trying to get voted out? Or maybe he's just trolling.\n    *   However, Alysha's claim as the Revealer is a strong lead. In One Night Ultimate Werewolf, the Revealer's role is to reveal a card. If she says Mike is a Werewolf, and she's not the Tanner/Werewolf bluffing, Mike is the target.\n\n    *   Justin: \"I'm killing Mike.\"\n    *   Paul: \"Mike.\"\n    *   Alysha: \"I'm killing Mike.\"\n    *   The consensus seems to be Mike.\n\n    *   Wait, Justin said \"I was a werewolf to start\" ([125]). If he's telling the truth, he's a Werewolf. But he also said \"I don't think I'm the werewolf anymore\" ([131]).\n    *   If Mitchell (Troublemaker) swapped Justin with someone, Justin might not be a Werewolf anymore.\n    *   But Alysha's reveal of Mike happened *after* the Troublemaker's action (Revealer is the last action in the night sequence [16]).\n    *   Night action order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Revealer (added to the list in the transcript)\n        10. Insomniac (though the transcript says Revealer is last before \"Everyone wake up\").\n    *   Since the Revealer acts *after* the Troublemaker and Robber, the information the Revealer gets is the *final* role of the player.\n    *   Therefore, if Alysha is the Revealer and she saw Mike as a Werewolf, Mike is currently a Werewolf.\n\n    *   Justification: Alysha claims to be the Revealer and states she revealed Mike as a Werewolf. Since the Revealer's action occurs after the Troublemaker and Robber, this information reflects the final roles. Despite other confusing claims, the most direct evidence points to Mike.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "Alysha claims to be the Revealer and explicitly states that she revealed Mike and saw that he is a Werewolf. According to the night action order provided in the transcript, the Revealer acts after the Robber and Troublemaker, meaning the information gathered is based on the players' final roles. While other players (like Justin and Mike) make contradictory claims, the Revealer's direct observation of Mike as a Werewolf is the strongest piece of evidence for Team Village.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claims to be the Revealer and explicitly states that she revealed Mike and saw that he is a Werewolf. According to the night action order provided in the transcript, the Revealer acts after the Robber and Troublemaker, meaning the information gathered is based on the players' final roles. While other players (like Justin and Mike) make contradictory claims, the Revealer's direct observation of Mike as a Werewolf is the strongest piece of evidence for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claims to be the Revealer and explicitly states that she revealed Mike and saw that he is a Werewolf. According to the night action order provided in the transcript, the Revealer acts after the Robber and Troublemaker, meaning the information gathered is based on the players' final roles. While other players (like Justin and Mike) make contradictory claims, the Revealer's direct observation of Mike as a Werewolf is the strongest piece of evidence for Team Village.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Alysha claims to be the Revealer and explicitly states that she revealed Mike and saw that he is a Werewolf. According to the night action order provided in the transcript, the Revealer acts after the Robber and Troublemaker, meaning the information gathered is based on the players' final roles. While other players (like Justin and Mike) make contradictory claims, the Revealer's direct observation of Mike as a Werewolf is the strongest piece of evidence for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5018,
+    "output_token_count": 1750,
+    "generation_time_sec": 192.62424612045288,
+    "used_chat_template": true,
+    "input_char_count": 16267,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

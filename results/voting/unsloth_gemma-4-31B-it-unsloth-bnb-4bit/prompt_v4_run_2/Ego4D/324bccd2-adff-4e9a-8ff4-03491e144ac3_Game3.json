@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game3.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Roles mentioned/claimed:\n        *   Zack: Claims Seer. Saw Jacob as a Villager.\n        *   Jacob: Claims starting role was Villager.\n        *   Sean: Claims Troublemaker (swapped two cards).\n        *   Hunter: Claims Robber (stole a card).\n\n    *   Zack (Seer) -> looked at Jacob -> Villager.\n    *   Sean (Troublemaker) -> swapped two cards.\n    *   Hunter (Robber) -> stole a card.\n    *   Jacob (Villager).\n\n    *   Wait, let's look at the claims again.\n    *   Zack: \"I'm a seer.\" (Line 49). \"Villager...\" (Line 51) referring to Jacob.\n    *   Jacob: \"I'm also a villager.\" (Line 55). \"I know that I started with a villager\" (Line 61).\n    *   Sean: \"I swapped those two cards.\" (Line 114). (Claiming Troublemaker).\n    *   Hunter: \"I stole his card.\" (Line 115). (Claiming Robber).\n\n    *   If these claims are true:\n        *   Zack = Seer\n        *   Sean = Troublemaker\n        *   Hunter = Robber\n        *   Jacob = Villager\n    *   If these four roles are present, who is the Werewolf?\n    *   The candidate roles are players + 3 = 4 + 3 = 7.\n    *   If the roles are Seer, Troublemaker, Robber, and Villager, then the Werewolf cards must be in the center (role pool).\n    *   Wait, if there are no Werewolves among the players, Team Village wins if no one is voted out or if the \"No Werewolf\" condition is met.\n\n    *   Is anyone lying?\n    *   Sean and Hunter both claim roles that involve swapping.\n    *   Zack claims Seer.\n    *   Jacob claims Villager.\n    *   If one of them is a Werewolf, they would lie about their role.\n    *   Let's look at the behavior.\n    *   Hunter says: \"I'm going to vote for myself.\" (Line 129).\n    *   Jacob says: \"I'm voting me.\" (Line 130).\n    *   This behavior (voting for oneself) is typical of a Tanner or someone trying to be helpful/confused. But the Tanner wins if they are voted out.\n\n    *   If Zack is Seer, Sean is Troublemaker, Hunter is Robber, and Jacob is Villager, then there are no Werewolves among the players.\n    *   If there are no Werewolves, the correct answer is \"No Werewolf\".\n    *   Is there any evidence of a Werewolf?\n    *   The announcer called: Werewolves, Seer, Robber, Troublemaker.\n    *   The players claim to be: Seer (Zack), Robber (Hunter), Troublemaker (Sean), Villager (Jacob).\n    *   This accounts for all players.\n    *   If these claims are honest, no one is a Werewolf.\n    *   If someone is lying, who is the most likely suspect?\n    *   Werewolves often claim roles to blend in.\n    *   However, in this specific transcript, the players are openly claiming roles that perfectly fill the slots of the night actions called by the announcer.\n    *   Zack (Seer), Hunter (Robber), Sean (Troublemaker). That's three. Jacob (Villager) makes four.\n    *   If any of them were a Werewolf, they would have to be lying about their role.\n    *   But if they are all telling the truth, there is no Werewolf.\n\n    *   Wait, let's re-read the transcript carefully.\n    *   Line 129: Hunter says \"I'm going to vote for myself.\"\n    *   Line 130: Jacob says \"I'm voting me.\"\n    *   This is very strange. Usually, players try to find the werewolf.\n    *   If they are all Village-aligned, they might be confused or thinking there's no werewolf.\n    *   If there's no werewolf, \"No Werewolf\" is the correct choice.\n\n    *   Could Hunter be the Werewolf? He claims Robber.\n    *   Could Sean be the Werewolf? He claims Troublemaker.\n    *   Could Zack be the Werewolf? He claims Seer.\n    *   Could Jacob be the Werewolf? He claims Villager.\n    *   If the roles are Seer, Robber, Troublemaker, and Villager, then the Werewolf cards are in the center.\n    *   The prompt says: \"If you believe that no player holds the werewolf card (and thus all werewolf cards are in the center), you can indicate 'no Werewolf'.\"\n    *   Given the claims, it's highly probable that no one is a werewolf.\n\n    *   Zack: Seer (claims he saw Jacob as a villager).\n    *   Sean: Troublemaker (claims he swapped two cards).\n    *   Hunter: Robber (claims he stole a card).\n    *   Jacob: Villager (claims he started as a villager).\n    *   All four players have claimed a non-werewolf role.\n    *   If these claims are true, no one is a werewolf.\n    *   If one is lying, there's no strong evidence to point to a specific person as the werewolf over the others.\n    *   The most logical conclusion based on the provided claims is that no werewolf is present among the players.\n\n    *   Wait, let me double-check the roles.\n    *   Seer, Robber, Troublemaker, Villager.\n    *   Are there any other roles?\n    *   The announcer called: Werewolves, Seer, Robber, Troublemaker.\n    *   If the players are indeed these roles, then the Werewolf card(s) must be in the center.\n    *   The game rules state: \"Team Village wins: If no player is a Werewolf and no one dies.\"\n    *   Therefore, \"No Werewolf\" is the most consistent answer.\n\n    *   Zack: Seer\n    *   Sean: Troublemaker\n    *   Hunter: Robber\n    *   Jacob: Villager\n    *   All claims are consistent with the night actions called.\n    *   No one is claiming to be a werewolf or minion.\n    *   No one is accusing another of being a werewolf.\n    *   Conclusion: No Werewolf.",
+  "parsed_output": {
+    "justification": "The players have claimed roles that account for all participants: Zack claims to be the Seer, Sean claims to be the Troublemaker, Hunter claims to be the Robber, and Jacob claims to have started as a Villager. These claims align with the night actions called by the announcer. Since all players have claimed non-werewolf roles and there is no evidence of deception or accusations of werewolf activity, it is most likely that all werewolf cards are in the center.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"The players have claimed roles that account for all participants: Zack claims to be the Seer, Sean claims to be the Troublemaker, Hunter claims to be the Robber, and Jacob claims to have started as a Villager. These claims align with the night actions called by the announcer. Since all players have claimed non-werewolf roles and there is no evidence of deception or accusations of werewolf activity, it is most likely that all werewolf cards are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"The players have claimed roles that account for all participants: Zack claims to be the Seer, Sean claims to be the Troublemaker, Hunter claims to be the Robber, and Jacob claims to have started as a Villager. These claims align with the night actions called by the announcer. Since all players have claimed non-werewolf roles and there is no evidence of deception or accusations of werewolf activity, it is most likely that all werewolf cards are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "The players have claimed roles that account for all participants: Zack claims to be the Seer, Sean claims to be the Troublemaker, Hunter claims to be the Robber, and Jacob claims to have started as a Villager. These claims align with the night actions called by the announcer. Since all players have claimed non-werewolf roles and there is no evidence of deception or accusations of werewolf activity, it is most likely that all werewolf cards are in the center."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3927,
+    "output_token_count": 1645,
+    "generation_time_sec": 177.07063150405884,
+    "used_chat_template": true,
+    "input_char_count": 13466,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

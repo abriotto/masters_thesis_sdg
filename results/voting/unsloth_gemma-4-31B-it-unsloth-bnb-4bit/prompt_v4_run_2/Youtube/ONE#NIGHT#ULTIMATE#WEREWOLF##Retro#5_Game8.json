@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game8.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Justin: Claims Seer. Says he looked in the center and saw two normal cards (not two werewolves).\n        *   Mitchell: Claims Robber. Says he stole from Paul and saw an Insomniac card.\n        *   Paul: Claims he started as Insomniac.\n\n    *   Justin (Seer) -> Looked at center cards. Saw two \"normal\" cards.\n    *   Mitchell (Robber) -> Stole from Paul. Saw \"Insomniac\".\n    *   Paul (Insomniac) -> Started as Insomniac.\n\n    *   If Paul started as Insomniac and Mitchell (Robber) stole from Paul, Mitchell now has the Insomniac card, and Paul now has the Robber card.\n    *   If Justin is the Seer and saw two normal cards in the center, there is at least one Werewolf among the players (since there are 3 center cards and 3 players, total 6 cards. If 2 center cards are normal, the 3rd center card could be a werewolf, or one of the players could be a werewolf). Wait, the rules say \"number of candidate roles is always equal to the number of players plus 3\". So 3+3 = 6 roles.\n    *   Roles in play: Seer, Robber, Insomniac, and 3 others.\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   If these three claims are true:\n        *   Justin: Seer (Village)\n        *   Mitchell: Robber (Village) -> stole Insomniac from Paul.\n        *   Paul: Insomniac (Village) -> now Robber.\n    *   If all three are Village, then the Werewolf(s) must be in the center.\n    *   Wait, Justin said: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\" This is a bit ambiguous. If he saw two normal cards, the third center card could be a werewolf.\n    *   However, if Justin, Paul, and Mitchell are all Village, then the Werewolf must be in the center.\n\n    *   Justin: Claims Seer.\n    *   Mitchell: Claims Robber.\n    *   Paul: Claims Insomniac.\n    *   If Mitchell is the Werewolf, he would lie about being the Robber.\n    *   If Paul is the Werewolf, he would lie about being the Insomniac.\n    *   If Justin is the Werewolf, he would lie about being the Seer.\n\n    *   Justin says: \"I think Mitchell is the tanner.\"\n    *   Mitchell says: \"I think it might be Paul\" or \"He's [Justin] a werewolf.\"\n    *   Paul says: \"You're the one I don't trust [Mitchell].\"\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   If Mitchell robbed Paul (Insomniac), then Mitchell is now the Insomniac and Paul is now the Robber.\n    *   If this is true, all three are Village.\n    *   If all three are Village, the Werewolf is in the center.\n    *   If the Werewolf is in the center, the correct move is \"No Werewolf\".\n\n    *   Justin says: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\"\n    *   If he saw two normal cards, the third card in the center could be a Werewolf.\n    *   If the third card is a Werewolf, and the other two are normal, then there is only one Werewolf in the game.\n    *   If that Werewolf is in the center, then no player is a Werewolf.\n\n    *   Justin: \"I think Mitchell is the tanner.\"\n    *   Mitchell: \"I think it might be Paul.\"\n    *   Paul: \"You're the one I don't trust [Mitchell].\"\n    *   Justin and Paul seem to suspect Mitchell.\n    *   However, if Mitchell is the Tanner, voting him out makes the Tanner win.\n    *   If Mitchell is the Werewolf, voting him out makes the Village win.\n    *   If Mitchell is the Robber (as claimed), and Paul is the Insomniac (as claimed), and Justin is the Seer (as claimed), then no one is the Werewolf.\n\n    *   Justin claims Seer.\n    *   Mitchell claims Robber.\n    *   Paul claims Insomniac.\n    *   If these are true, they are all Village.\n    *   If they are all Village, the Werewolf must be in the center.\n    *   Is there any reason to believe one of them is lying?\n    *   Justin suspects Mitchell of being the Tanner.\n    *   If Mitchell is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf, he wants to avoid being voted out.\n    *   Mitchell's behavior: He claims Robber, says he stole from Paul, says Paul was Insomniac. This is consistent with Paul's claim.\n    *   If Mitchell were the Werewolf, would he claim Robber and \"confirm\" Paul's role? Maybe, to build trust.\n    *   But if Paul is actually the Insomniac, and Mitchell is the Werewolf, Mitchell couldn't have \"stolen\" the Insomniac card unless he was the Robber.\n    *   If Mitchell is the Robber, he is Village.\n    *   If Paul is the Insomniac, he is Village.\n    *   If Justin is the Seer, he is Village.\n    *   Conclusion: All three are Village.\n\n    *   Justin: Seer\n    *   Mitchell: Robber\n    *   Paul: Insomniac\n    *   All are Village roles.\n    *   Therefore, no player is a Werewolf.\n\n    *   Wait, Justin says \"I think Mitchell is the tanner.\"\n    *   If Mitchell is the Tanner, then the roles are Seer, Tanner, Insomniac.\n    *   Still, no Werewolf among the players.\n    *   If Justin is lying and is the Werewolf, he'd want to divert attention.\n    *   If Paul is lying and is the Werewolf, he'd want to divert attention.\n    *   But the claims are consistent: Paul (Insomniac) -> Mitchell (Robber) stole from Paul.\n    *   This consistency suggests they are telling the truth about their roles.\n\n    *   If Justin, Paul, and Mitchell are all Village/Tanner, then the Werewolf is in the center.\n    *   The goal for Team Village is to eliminate a Werewolf if one is present.\n    *   If no player is a Werewolf, Team Village wins if no one dies.\n    *   Therefore, \"No Werewolf\" is the best choice.\n\n    *   Justin: \"I looked in the center and I did not see two werewolves, I saw two normal cards.\"\n    *   This means the center cards were [Normal, Normal, ?].\n    *   The \"?\" could be a Werewolf or another normal card.\n    *   If the \"?\" is a Werewolf, then the Werewolf is in the center.\n    *   If the \"?\" is a normal card, then there are no Werewolves in the game at all.\n    *   In either case, no player is a Werewolf.\n\n    *   Justin: Seer\n    *   Paul: Insomniac\n    *   Mitchell: Robber\n    *   All these are Village roles.\n    *   If these claims are true, no player is a Werewolf.\n    *   The consistency between Paul and Mitchell's claims (Robber stole from Insomniac) makes it highly likely they are telling the truth.\n    *   Justin's claim as Seer doesn't contradict them.\n    *   Thus, no player is a Werewolf.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer, Paul claims to have started as the Insomniac, and Mitchell claims to be the Robber who stole from Paul. These claims are mutually consistent: Mitchell's claim that he stole the Insomniac card from Paul aligns with Paul's starting role. Since all three players are claiming Village-aligned roles (Seer, Robber, and Insomniac), and their stories are consistent, it is highly probable that no player is a Werewolf and the Werewolf card(s) are in the center.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer, Paul claims to have started as the Insomniac, and Mitchell claims to be the Robber who stole from Paul. These claims are mutually consistent: Mitchell's claim that he stole the Insomniac card from Paul aligns with Paul's starting role. Since all three players are claiming Village-aligned roles (Seer, Robber, and Insomniac), and their stories are consistent, it is highly probable that no player is a Werewolf and the Werewolf card(s) are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer, Paul claims to have started as the Insomniac, and Mitchell claims to be the Robber who stole from Paul. These claims are mutually consistent: Mitchell's claim that he stole the Insomniac card from Paul aligns with Paul's starting role. Since all three players are claiming Village-aligned roles (Seer, Robber, and Insomniac), and their stories are consistent, it is highly probable that no player is a Werewolf and the Werewolf card(s) are in the center.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Justin claims to be the Seer, Paul claims to have started as the Insomniac, and Mitchell claims to be the Robber who stole from Paul. These claims are mutually consistent: Mitchell's claim that he stole the Insomniac card from Paul aligns with Paul's starting role. Since all three players are claiming Village-aligned roles (Seer, Robber, and Insomniac), and their stories are consistent, it is highly probable that no player is a Werewolf and the Werewolf card(s) are in the center."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3416,
+    "output_token_count": 1952,
+    "generation_time_sec": 205.91855359077454,
+    "used_chat_template": true,
+    "input_char_count": 12132,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

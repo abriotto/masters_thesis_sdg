@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Caitlynn, Mike, James, Mitchell.\n    *   Roles mentioned/claimed:\n        *   James: Robber (claims he robbed Justin but forgot to look at the card).\n        *   Mike: Seer (claims he looked at Justin and saw a Werewolf).\n        *   Justin: Werewolf (claims he saw a card in the center, confirming he was a Werewolf).\n\n    *   James (Robber) robbed Justin.\n    *   Mike (Seer) saw Justin was a Werewolf.\n    *   Justin (Werewolf) confirms he was a Werewolf.\n    *   If James (Robber) robbed Justin (Werewolf), James now has the Werewolf card.\n    *   Justin now has the Robber card (since James took his).\n\n    *   James: Robber (starting) -> Werewolf (final).\n    *   Justin: Werewolf (starting) -> Robber (final).\n    *   Mike: Seer (final).\n    *   Caitlynn: ?\n    *   Mitchell: ?\n\n    *   Team Village wins if they eliminate a Werewolf.\n    *   James is currently the Werewolf (having stolen the card from Justin).\n    *   Justin is now the Robber (Village).\n    *   Mike is the Seer (Village).\n\n    *   James admits he robbed Justin.\n    *   Mike says Justin was a Werewolf.\n    *   Justin admits he was a Werewolf.\n    *   Therefore, James stole the Werewolf card.\n    *   James is the current Werewolf.\n\n    *   Wait, did the Troublemaker swap anyone?\n    *   The transcript doesn't mention a Troublemaker claiming anything.\n    *   Did the Drunk swap?\n    *   The transcript doesn't mention a Drunk claiming anything.\n    *   If James is the Werewolf, voting him out wins the game for the Village.\n\n    *   James: Robber -> Werewolf.\n    *   Justin: Werewolf -> Robber.\n    *   Mike: Seer.\n    *   Caitlynn: ?\n    *   Mitchell: ?\n    *   If James is the only Werewolf, voting him out is the correct move.\n\n    *   Justin: \"I was a werewolf.\" (Starting role)\n    *   James: \"I was the robber... robbing Justin.\" (Starting role)\n    *   Mike: \"I was the seer and I looked at what Justin was... it was a werewolf.\" (Starting role)\n    *   Since Robber acts after Seer, the Seer saw Justin's starting role (Werewolf). Then the Robber (James) swapped cards with Justin.\n    *   Final roles: James = Werewolf, Justin = Robber.\n\n    *   James is the Werewolf.\n    *   Voting James results in a Village win.",
+  "parsed_output": {
+    "justification": "James claimed to be the Robber and stated he robbed Justin. Mike (the Seer) and Justin both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James took the Werewolf card from Justin, making James the Werewolf at the end of the night.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claimed to be the Robber and stated he robbed Justin. Mike (the Seer) and Justin both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James took the Werewolf card from Justin, making James the Werewolf at the end of the night.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claimed to be the Robber and stated he robbed Justin. Mike (the Seer) and Justin both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James took the Werewolf card from Justin, making James the Werewolf at the end of the night.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James claimed to be the Robber and stated he robbed Justin. Mike (the Seer) and Justin both confirmed that Justin's starting role was a Werewolf. Since the Robber swaps cards with the target, James took the Werewolf card from Justin, making James the Werewolf at the end of the night."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2468,
+    "output_token_count": 735,
+    "generation_time_sec": 75.23619604110718,
+    "used_chat_template": true,
+    "input_char_count": 9393,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

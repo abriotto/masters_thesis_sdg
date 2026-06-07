@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game6.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot: Claims Doppelganger who took Insomniac role. Later suggests he might be the Tanner.\n    *   Ashley: Claims Seer. Says Sian is the Tanner.\n    *   James: Claims Troublemaker. Says he swapped Sukeshi and Chris.\n    *   Chris: Claims Hunter.\n    *   Sukeshi: Claims Robber who robbed the Seer (Ashley), then says James (Troublemaker) swapped her and Chris.\n    *   Sian: Claims Hunter.\n\n    *   Ashley (Seer) says Sian is the Tanner.\n    *   Sukeshi (Robber) says she robbed the Seer (Ashley), confirming Ashley's role.\n    *   James (Troublemaker) says he swapped Sukeshi and Chris.\n    *   If James is telling the truth, Sukeshi (who was Robber/Seer) and Chris (who was Hunter) were swapped.\n    *   Wait, let's re-examine the claims:\n        *   Sukeshi: \"I was a robber. I robbed the seer. I am now the seer, or I was.\" (Line 83, 88).\n        *   James: \"I'm the troublemaker. I switched you [Sukeshi] and Chris.\" (Line 76).\n        *   Chris: \"I'm the hunter.\" (Line 46).\n        *   Sian: \"I'm the hunter.\" (Line 45).\n        *   Ashley: \"I'm the seer, and I saw what you [Sian] are.\" (Line 52).\n\n    *   If Ashley is the Seer, she knows Sian's role. She says Sian is the Tanner (Line 63, 96, 169).\n    *   If Sukeshi is the Robber and robbed Ashley (the Seer), Sukeshi would know Ashley was the Seer. Sukeshi confirms this (Line 124).\n    *   If James is the Troublemaker and swapped Sukeshi and Chris:\n        *   Sukeshi (Robber/Seer) $\\leftrightarrow$ Chris (Hunter).\n        *   Now Chris is the Robber/Seer and Sukeshi is the Hunter.\n        *   This explains why Chris says \"I was the Hunter, but if James is telling the truth...\" (Line 128).\n    *   Elliot's claim: Doppelganger who took Insomniac.\n        *   If Elliot is the Doppelganger and took Insomniac, he should know who the Insomniac was.\n        *   James points out that no one is claiming Insomniac (Line 160).\n        *   Elliot's behavior is suspicious; he keeps changing his story or suggesting he's the Tanner (Line 117, 166).\n\n    *   Sian claims Hunter. Ashley (Seer) says Sian is the Tanner.\n    *   Elliot claims Doppelganger/Insomniac. He is heavily suspected by James, Ashley, and Sukeshi.\n    *   James claims Troublemaker.\n    *   Sukeshi claims Robber.\n    *   Chris claims Hunter.\n\n    *   If Ashley is the Seer and Sukeshi is the Robber, their stories align.\n    *   If James is the Troublemaker, his story aligns with Sukeshi and Chris.\n    *   This leaves Sian and Elliot.\n    *   Sian claims Hunter, but Ashley (Seer) says she's the Tanner.\n    *   Elliot claims Doppelganger/Insomniac, but his claim is weak and he's acting suspiciously.\n\n    *   If Sian is the Tanner, she *wants* to be voted out.\n    *   If Elliot is the Werewolf, he *doesn't* want to be voted out.\n    *   The goal of Team Village is to eliminate a Werewolf.\n    *   If Sian is the Tanner, voting her out makes the Tanner win, not the Village.\n    *   If Elliot is the Werewolf, voting him out makes the Village win.\n\n    *   Elliot's claim to be the Doppelganger who became the Insomniac is highly suspect because he cannot name the person he copied, and no one else is claiming Insomniac.\n    *   The group (James, Ashley, Sukeshi) seems to have converged on Elliot being the liar/Werewolf.\n    *   Sian is identified as the Tanner by the Seer (Ashley).\n\n    *   Ashley (Seer) $\\rightarrow$ Sian (Tanner).\n    *   Sukeshi (Robber) $\\rightarrow$ Confirms Ashley (Seer).\n    *   James (Troublemaker) $\\rightarrow$ Swapped Sukeshi and Chris.\n    *   Chris (Hunter) $\\rightarrow$ Swapped with Sukeshi.\n    *   Elliot $\\rightarrow$ Claims Doppelganger/Insomniac (Suspicious).\n\n    *   If Sian is the Tanner, she is not the Werewolf.\n    *   If Elliot is the only one left who could be the Werewolf (given the other roles are filled), he is the target.\n\n    *   Wait, let's check the roles again.\n    *   Players: Elliot, Ashley, James, Chris, Sukeshi, Sian (6 players).\n    *   Roles claimed:\n        *   Ashley: Seer\n        *   Sukeshi: Robber\n        *   James: Troublemaker\n        *   Chris: Hunter\n        *   Sian: Hunter (claimed) / Tanner (by Ashley)\n        *   Elliot: Doppelganger/Insomniac\n    *   If these roles are correct: Seer, Robber, Troublemaker, Hunter, Tanner, Doppelganger.\n    *   Wait, if these are the roles, where is the Werewolf?\n    *   If there is no Werewolf among the players, the Werewolf cards must be in the center.\n    *   However, the prompt asks to make Team Village win. Team Village wins if they eliminate a Werewolf OR if no one is a Werewolf and no one dies.\n    *   But if Elliot is lying about being the Doppelganger and is actually the Werewolf, then voting him out wins the game.\n    *   Let's re-evaluate Elliot's claim. He says he's the Doppelganger who took the Insomniac role. If he's the Werewolf, he's lying.\n    *   If Sian is the Tanner, she's not the Werewolf.\n    *   If Ashley, Sukeshi, James, and Chris are telling the truth about their roles (Seer, Robber, Troublemaker, Hunter), then the only remaining player who could be the Werewolf is Elliot.\n\n    *   Ashley (Seer) identifies Sian as the Tanner.\n    *   Sukeshi (Robber) confirms Ashley is the Seer.\n    *   James (Troublemaker) and Chris (Hunter) have a consistent story about being swapped.\n    *   Elliot's claim to be the Doppelganger/Insomniac is unsupported and suspicious.\n    *   Therefore, Elliot is the most likely Werewolf.\n\n    *   Wait, if Sian is the Tanner, and Elliot is the Werewolf, voting Elliot wins.\n    *   If Sian is the Werewolf and Ashley is lying, voting Sian wins.\n    *   But Ashley's role as Seer is backed by Sukeshi (Robber).\n    *   If Ashley and Sukeshi are both lying (e.g., they are Werewolves/Minions), then the situation changes. But usually, in these transcripts, the most consistent narrative is the intended one.\n    *   The narrative that Ashley=Seer, Sukeshi=Robber, James=Troublemaker, Chris=Hunter, Sian=Tanner, and Elliot=Werewolf is the most cohesive.\n\n    *   Justification: Ashley claims to be the Seer and identifies Sian as the Tanner. Sukeshi, claiming to be the Robber, confirms Ashley's role as the Seer. James and Chris's claims as Troublemaker and Hunter are consistent with each other. Elliot's claim to be the Doppelganger/Insomniac is unsupported and suspicious, making him the most likely Werewolf.\n    *   Chosen vote: Elliot.",
+  "parsed_output": {
+    "justification": "Ashley claims to be the Seer and identifies Sian as the Tanner. Sukeshi, claiming to be the Robber, confirms Ashley's role as the Seer, adding credibility to Ashley's claim. James (Troublemaker) and Chris (Hunter) provide a consistent narrative regarding a role swap. Elliot's claim to be the Doppelganger who became the Insomniac is unsupported and viewed as suspicious by the other players, making him the most likely Werewolf.",
+    "chosen_vote": "Elliot"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Ashley claims to be the Seer and identifies Sian as the Tanner. Sukeshi, claiming to be the Robber, confirms Ashley's role as the Seer, adding credibility to Ashley's claim. James (Troublemaker) and Chris (Hunter) provide a consistent narrative regarding a role swap. Elliot's claim to be the Doppelganger who became the Insomniac is unsupported and viewed as suspicious by the other players, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Elliot\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Ashley claims to be the Seer and identifies Sian as the Tanner. Sukeshi, claiming to be the Robber, confirms Ashley's role as the Seer, adding credibility to Ashley's claim. James (Troublemaker) and Chris (Hunter) provide a consistent narrative regarding a role swap. Elliot's claim to be the Doppelganger who became the Insomniac is unsupported and viewed as suspicious by the other players, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Elliot\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Elliot",
+    "justification": "Ashley claims to be the Seer and identifies Sian as the Tanner. Sukeshi, claiming to be the Robber, confirms Ashley's role as the Seer, adding credibility to Ashley's claim. James (Troublemaker) and Chris (Hunter) provide a consistent narrative regarding a role swap. Elliot's claim to be the Doppelganger who became the Insomniac is unsupported and viewed as suspicious by the other players, making him the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5266,
+    "output_token_count": 2003,
+    "generation_time_sec": 222.46254062652588,
+    "used_chat_template": true,
+    "input_char_count": 16188,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

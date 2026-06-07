@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game3.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Caitlynn\n    *   Mitchell\n    *   Alana\n    *   Mike\n\n    *   Alana: Claims she was the Insomniac [15]. Claims she ended up with the Robber card [17].\n    *   Mitchell: Claims Alana ended up with the card he started with [16], which was the Robber [17]. Claims he is now the Insomniac [19].\n    *   Caitlynn: Claims she is the Seer [22]. Claims she looked at Mitchell's Robber card [24].\n    *   Mike: Claims to be the Insomniac initially [12, 54], but then is accused of lying [12, 19]. Later, he suggests he might be the Tanner [29].\n\n    *   Caitlynn (Seer) says she saw Mitchell as the Robber.\n    *   Mitchell says he started as the Robber and Alana (Insomniac) ended up with it.\n    *   Alana says she was the Insomniac and ended up as the Robber.\n    *   Wait, let's re-read:\n        *   Alana: \"I was the insomniac\" [15].\n        *   Mitchell: \"But you ended up with the card that I started with\" [16].\n        *   Alana: \"Which is the robber. Yes.\" [17].\n        *   Caitlynn: \"I looked at Mitchell's robber\" [24].\n    *   This means:\n        *   Mitchell started as Robber.\n        *   Alana started as Insomniac.\n        *   Robber (Mitchell) swapped with Alana (Insomniac).\n        *   Now Alana is Robber, Mitchell is Insomniac.\n        *   Caitlynn (Seer) saw Mitchell's card (Robber) during the night. (Note: Seer wakes up *before* Robber, so Caitlynn saw Mitchell's starting card).\n    *   This narrative is consistent. Caitlynn, Mitchell, and Alana are coordinating their stories.\n\n    *   Mike claimed to be the Insomniac first [54].\n    *   But Alana and Mitchell both claim the Insomniac role (Alana started as it, Mitchell ended as it).\n    *   Mike is the odd one out.\n    *   The group suspects Mike is either the Werewolf or the Tanner [46, 81].\n    *   Mike admits he could be the Tanner [29, 72].\n\n    *   If Mike is the Werewolf, voting him out wins for the Village.\n    *   If Mike is the Tanner, voting him out wins for the Tanner.\n    *   If Mike is a Villager, voting him out doesn't help the Village.\n    *   Is there any other possibility?\n    *   Could Caitlynn, Mitchell, or Alana be the Werewolf?\n        *   They have a consistent story: Seer (Caitlynn) saw Robber (Mitchell), Robber (Mitchell) swapped with Insomniac (Alana).\n        *   If this story is true, none of them are Werewolves (unless one is a Doppelganger, but the roles fit).\n        *   If the story is a lie, they could be Werewolves/Minions working together. However, in a 4-player game, having 3 people coordinate a complex lie about Robber/Insomniac/Seer is less likely than one person (Mike) lying.\n\n    *   Mike claimed Insomniac, but Alana and Mitchell's story contradicts him.\n    *   Mike's behavior is described as anxious/sweaty [37, 38, 81].\n    *   The group concludes Mike is either the Werewolf or the Tanner.\n    *   If Mike is the Werewolf, the Village wins by voting him out.\n    *   If Mike is the Tanner, the Tanner wins.\n    *   If no one is the Werewolf, the Village wins if no one dies.\n    *   The players discuss voting \"to the left\" (which seems to be Mitchell, based on Caitlynn's comment [91]) to create a draw so no one dies [65, 66].\n    *   However, the prompt asks me to choose the player to vote out to make Team Village win.\n    *   If Mike is the Werewolf, voting Mike wins.\n    *   If Mike is the Tanner, voting Mike loses (Tanner wins).\n    *   If Mike is a Villager and there's a Werewolf elsewhere, voting Mike loses.\n    *   If there is no Werewolf, voting no one wins.\n\n    *   Let's look at the roles again: Seer, Robber, Insomniac, and Mike.\n    *   If Caitlynn=Seer, Mitchell=Insomniac (end), Alana=Robber (end), then Mike must be the remaining role.\n    *   Possible roles: Werewolf, Minion, Tanner, Villager, etc.\n    *   If Mike is the Werewolf, voting him is the only way to win (unless the Werewolf is in the center).\n    *   If Mike is the Tanner, voting him makes the Tanner win.\n    *   If Mike is a Villager, and the Werewolf is in the center, voting no one wins.\n    *   Wait, the transcript says: \"So if we all vote to the left, it's a draw. Nobody dies.\" [65].\n    *   But the prompt asks me to choose the player to vote out to make Team Village win.\n    *   If I believe Mike is the Werewolf, I vote Mike.\n    *   If I believe Mike is the Tanner, I vote \"No Werewolf\" (hoping the Werewolf is in the center).\n    *   Let's re-evaluate Mike's claim. He claimed Insomniac. Alana and Mitchell both claim the Insomniac role (start/end). This makes Mike a liar.\n    *   In One Night Ultimate Werewolf, a player who lies about their role is usually a Werewolf or the Tanner.\n    *   Given the options, Mike is the most suspicious.\n\n    *   Caitlynn: Seer (confirmed Mitchell as Robber).\n    *   Mitchell: Robber -> Insomniac.\n    *   Alana: Insomniac -> Robber.\n    *   Mike: Claimed Insomniac (Liar).\n    *   If Mike is the Werewolf, voting him wins.\n    *   If Mike is the Tanner, voting him loses.\n    *   If Mike is a Villager, voting him loses.\n    *   Is there any evidence Mike is the Werewolf specifically?\n    *   He claimed Insomniac immediately [54]. Werewolves often bluff roles.\n    *   The other three have a perfectly interlocking story. It's highly probable they are telling the truth.\n    *   Therefore, Mike is the only candidate for Werewolf.\n\n    *   Wait, the transcript ends with \"Vote left\" [106]. Caitlynn says \"I'm going to vote to the left. So I'm going to vote for Mitchell\" [91].\n    *   But the prompt asks *me* to choose the player to vote out to make Team Village win.\n    *   If I vote Mitchell, and the story (Seer/Robber/Insomniac) is true, I'm voting out a Villager.\n    *   If I vote Mike, and he is the Werewolf, the Village wins.\n    *   If I vote Mike, and he is the Tanner, the Tanner wins.\n    *   If I vote \"No Werewolf\", the Village wins if there is no Werewolf.\n    *   Usually, in these scenarios, the liar is the target. Mike is the liar.\n\n    *   Caitlynn (Seer) -> Mitchell (Robber)\n    *   Mitchell (Robber) swaps with Alana (Insomniac)\n    *   Alana (Robber), Mitchell (Insomniac)\n    *   Mike claims Insomniac.\n    *   Since Mitchell is the Insomniac, Mike is lying.\n    *   Mike is either Werewolf or Tanner.\n    *   If he's the Werewolf, voting him wins.\n    *   If he's the Tanner, voting him loses.\n    *   However, without more info, the most likely \"villain\" is the one lying about their role.\n\n    *   \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    *   Is it possible there's no werewolf?\n    *   If Mike is the Tanner, and the Werewolf cards are in the center, then \"No Werewolf\" is the correct answer.\n    *   But usually, the game is designed with a Werewolf present.\n    *   Let's look at Mike's behavior: \"sweat is beading down his forehead\" [37]. This is a classic tell for a Werewolf in these games.\n\n    *   Justification: Alana, Mitchell, and Caitlynn have a consistent story: Caitlynn (Seer) saw Mitchell as the Robber, and Mitchell (Robber) swapped cards with Alana (Insomniac). Mike claimed to be the Insomniac, which contradicts the established roles of Alana and Mitchell. Since Mike is lying about his role and exhibiting nervous behavior, he is the most likely candidate for the Werewolf.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "Alana, Mitchell, and Caitlynn have a consistent and interlocking story: Caitlynn (Seer) saw Mitchell as the Robber, and Mitchell (Robber) swapped cards with Alana (Insomniac), leaving Mitchell as the Insomniac and Alana as the Robber. Mike claimed to be the Insomniac, which directly contradicts the roles held by Alana and Mitchell. Because Mike is lying about his role and exhibiting nervous behavior, he is the most likely candidate to be the Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alana, Mitchell, and Caitlynn have a consistent and interlocking story: Caitlynn (Seer) saw Mitchell as the Robber, and Mitchell (Robber) swapped cards with Alana (Insomniac), leaving Mitchell as the Insomniac and Alana as the Robber. Mike claimed to be the Insomniac, which directly contradicts the roles held by Alana and Mitchell. Because Mike is lying about his role and exhibiting nervous behavior, he is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alana, Mitchell, and Caitlynn have a consistent and interlocking story: Caitlynn (Seer) saw Mitchell as the Robber, and Mitchell (Robber) swapped cards with Alana (Insomniac), leaving Mitchell as the Insomniac and Alana as the Robber. Mike claimed to be the Insomniac, which directly contradicts the roles held by Alana and Mitchell. Because Mike is lying about his role and exhibiting nervous behavior, he is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Alana, Mitchell, and Caitlynn have a consistent and interlocking story: Caitlynn (Seer) saw Mitchell as the Robber, and Mitchell (Robber) swapped cards with Alana (Insomniac), leaving Mitchell as the Insomniac and Alana as the Robber. Mike claimed to be the Insomniac, which directly contradicts the roles held by Alana and Mitchell. Because Mike is lying about his role and exhibiting nervous behavior, he is the most likely candidate to be the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3887,
+    "output_token_count": 2269,
+    "generation_time_sec": 240.2336709499359,
+    "used_chat_template": true,
+    "input_char_count": 13600,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, James, Paul, Mitchell.\n    *   Roles involved (based on transcript): Copycat (Doppelganger), Seer, Robber, Troublemaker, Werewolf, Tanner.\n\n    *   [2] Announcer: Copycat wakes up and looks at a center card.\n    *   [3] Justin asks James if he sees a Tanner. (Wait, Justin is talking *during* the night phase? The transcript shows Justin speaking while the announcer is talking. This is unusual. Let's re-read.)\n    *   [2-13] The announcer is calling roles. Justin, James, Paul, and Mitchell are reacting.\n    *   [10] Justin says \"Seer\" when the announcer calls the Seer. (This suggests Justin is claiming Seer or was the Seer).\n    *   [14] Everyone wakes up.\n\n    *   Justin claims to be Seer (or at least talks about seeing things).\n    *   Mitchell claims to be Seer [98, 138].\n    *   James claims he was the Robber [65, 101, 124, 126].\n    *   James claims he robbed Mitchell [101, 110, 124, 126].\n    *   James claims Mitchell was a Werewolf [110, 124].\n    *   James claims he is now a Werewolf because he robbed Mitchell [112, 121, 124].\n    *   Mitchell claims he was the Seer [98, 138] and saw a Werewolf and Robber in the center [143].\n    *   Mitchell later says \"I was werewolf\" [146] and thinks James robbed him, making James a werewolf. (Wait, Mitchell's claims are contradictory: [98] \"I was seer\", [146] \"I was werewolf\").\n    *   Paul is very quiet, but at [149] says \"I'm not telling you who I switched,\" implying he might be the Troublemaker.\n\n    *   James: Claims he robbed Mitchell. Claims Mitchell was a Werewolf. Claims he (James) is now a Werewolf. He is actively asking to be voted out [115, 145].\n    *   Mitchell: Claims he was Seer [98, 138], then claims he was Werewolf [146].\n    *   Justin: Claims he was Werewolf [133] (Wait, what? [133] \"I was a werewolf\").\n    *   Paul: Implies he switched people [149], suggesting he is the Troublemaker.\n\n    *   If James is the Robber and robbed Mitchell (a Werewolf), James is now the Werewolf.\n    *   If James is the Tanner, he wants to be voted out.\n    *   If Mitchell is the Werewolf and James robbed him, James is the Werewolf.\n    *   If Paul is the Troublemaker, he could have swapped anyone.\n\n    *   James is practically begging to be voted out: \"Kill me\" [112, 115, 145].\n    *   James claims he is currently a Werewolf because he robbed Mitchell.\n    *   If James is indeed a Werewolf (either starting or via Robber), voting him out wins for the Village.\n    *   If James is the Tanner, voting him out loses for the Village.\n    *   However, James's claim \"I robbed Mitchell who was a werewolf\" is a very specific claim. If he's the Tanner, he's lying to get votes. If he's the Robber who took a Werewolf card, he's telling the truth.\n\n    *   Justin: [133] \"I was a werewolf.\" (This is a very strange claim).\n    *   Mitchell: [146] \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If Mitchell was a Werewolf and James robbed him, James is now the Werewolf.\n    *   If Justin was also a Werewolf, there are two Werewolves.\n\n    *   James is the most obvious target. He's claiming to be a Werewolf and asking to be killed.\n    *   In One Night Ultimate Werewolf, if someone claims to be a Werewolf and asks to be killed, they are often the Tanner.\n    *   But let's look at the logic: James says he robbed Mitchell (Werewolf). Mitchell confirms he was a Werewolf [146].\n    *   If Mitchell was a Werewolf and James robbed him, James is now the Werewolf.\n    *   If James is the Werewolf, voting him out wins.\n    *   If James is the Tanner, voting him out loses.\n    *   Is there any other option? Paul is the Troublemaker? Justin is... something?\n    *   Wait, Mitchell's claim [146] \"I was werewolf\" contradicts his earlier claim [98, 138] \"I was seer\". This makes Mitchell look suspicious or confused.\n    *   If Mitchell was the Werewolf and James robbed him, James is the Werewolf.\n    *   If Mitchell is lying about being the Seer and is actually the Werewolf, and James is lying about robbing him, then Mitchell is the Werewolf.\n    *   But James is the one explicitly claiming the Werewolf role *now*.\n\n    *   James: \"I robbed from Mitchell who was a werewolf... I'm werewolf now... Kill me.\"\n    *   Mitchell: \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If both James and Mitchell agree that James is currently the Werewolf (because James robbed Mitchell), then James is the most logical vote for the Village.\n\n    *   Could James be the Tanner? Tanners want to be voted out. James is asking to be voted out.\n    *   Could Mitchell be the Tanner? Mitchell is not asking to be voted out.\n    *   Could Justin be the Tanner? Justin is not asking to be voted out.\n    *   Could Paul be the Tanner? Paul is not asking to be voted out.\n    *   If James is the Tanner, he's bluffing about being the Robber/Werewolf.\n    *   If James is the Robber who took a Werewolf card, he's a Werewolf.\n    *   Given the evidence, James is the only one claiming to be the Werewolf. In these games, usually, the person claiming to be the Werewolf is either the Tanner or actually the Werewolf (via Robber).\n\n    *   Justin: Claims he was a werewolf [133].\n    *   Mitchell: Claims he was a werewolf [146].\n    *   James: Claims he is a werewolf [112, 121, 124].\n    *   This is a chaotic game. However, James is the one most consistently identifying as the current Werewolf and requesting the vote.\n\n    *   If James is the Werewolf, Village wins.\n    *   If James is the Tanner, Tanner wins.\n    *   If James is a Villager, Werewolf wins (if one exists).\n    *   James's claim is the most direct. Mitchell supports the idea that James is the Werewolf now.\n\n    *   James claims he robbed Mitchell.\n    *   Mitchell confirms he was a Werewolf and James robbed him.\n    *   Therefore, James is the current Werewolf.\n    *   Voting James should result in a Village win.",
+  "parsed_output": {
+    "justification": "James explicitly claims to be the current Werewolf, stating that he was the Robber and stole the Werewolf card from Mitchell. Mitchell corroborates this by admitting he was a Werewolf and believes James robbed him, making James the current Werewolf. While James's request to be killed could suggest he is the Tanner, the combined claims of James and Mitchell strongly point to James holding the Werewolf card.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly claims to be the current Werewolf, stating that he was the Robber and stole the Werewolf card from Mitchell. Mitchell corroborates this by admitting he was a Werewolf and believes James robbed him, making James the current Werewolf. While James's request to be killed could suggest he is the Tanner, the combined claims of James and Mitchell strongly point to James holding the Werewolf card.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly claims to be the current Werewolf, stating that he was the Robber and stole the Werewolf card from Mitchell. Mitchell corroborates this by admitting he was a Werewolf and believes James robbed him, making James the current Werewolf. While James's request to be killed could suggest he is the Tanner, the combined claims of James and Mitchell strongly point to James holding the Werewolf card.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly claims to be the current Werewolf, stating that he was the Robber and stole the Werewolf card from Mitchell. Mitchell corroborates this by admitting he was a Werewolf and believes James robbed him, making James the current Werewolf. While James's request to be killed could suggest he is the Tanner, the combined claims of James and Mitchell strongly point to James holding the Werewolf card."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4202,
+    "output_token_count": 1815,
+    "generation_time_sec": 197.75764322280884,
+    "used_chat_template": true,
+    "input_char_count": 13980,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

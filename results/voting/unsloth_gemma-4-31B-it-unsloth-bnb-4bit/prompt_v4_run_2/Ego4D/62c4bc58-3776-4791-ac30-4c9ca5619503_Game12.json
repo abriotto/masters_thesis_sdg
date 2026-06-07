@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "62c4bc58-3776-4791-ac30-4c9ca5619503",
+  "game_key": "Game12",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/62c4bc58-3776-4791-ac30-4c9ca5619503_Game12.txt",
+  "player_names": [
+    "Kevin",
+    "Kaelan",
+    "Jessica",
+    "Daniel"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Kevin, Kaelan, Jessica, Daniel.\n    *   Goal: Vote out a Werewolf to make Team Village win.\n\n    *   Daniel: Claims he can confirm Kevin was the Mason (Line 5).\n    *   Kaelan: Claims to be the Troublemaker and says he swapped Daniel and Kevin (Line 6).\n    *   Kevin: Confirms he didn't see any other Masons (Line 14, 17).\n    *   Jessica: Mentions \"Kaelan's bar\" in response to a question about the Drunk (Line 22), but Kevin corrects her on how the Drunk works (Line 25).\n    *   Center Cards: Kevin looks at the center cards (Line 27) and reacts (\"Oh, brother\").\n    *   Conclusion: Kevin says \"Town wins\" (Line 31), but Daniel says \"Nope. Werewolves win\" (Line 34).\n\n    *   Kaelan claims Troublemaker.\n    *   Kevin claims Mason (confirmed by Daniel).\n    *   If Kaelan (Troublemaker) swapped Kevin (Mason) and Daniel, then Daniel is now the Mason and Kevin is whatever Daniel was.\n    *   Wait, the transcript is a bit chaotic. Let's re-read.\n    *   Daniel: \"I'll confirm that he [Kevin] was the Mason.\" (Line 5)\n    *   Kaelan: \"I swapped you two as the Troublemaker.\" (Line 6)\n    *   Kevin: \"I did not [see any other Masons].\" (Line 14)\n    *   If Kevin was the Mason and Kaelan swapped Kevin and Daniel, Daniel is now the Mason.\n    *   Kevin says he didn't see any other Masons. This means the other Mason card is in the center.\n    *   Kevin looks at the center cards (Line 27). He sees something that makes him think Town wins.\n    *   Daniel says \"Werewolves win\" (Line 34) and mentions \"The minion is supposed to draw a sus on themselves.\"\n\n    *   The transcript ends with the players discussing the outcome *after* looking at the center cards (which usually happens after the game is over in a home game setting, or they are cheating/revealing).\n    *   Wait, the prompt asks me to *choose* the player to vote out based on the discussion.\n    *   Let's look at the claims again:\n        *   Kaelan: Troublemaker (Village)\n        *   Kevin: Mason (Village)\n        *   Daniel: Claims to confirm Kevin was Mason.\n        *   Jessica: Doesn't claim a role, but makes a confused comment about the Drunk.\n    *   If Kaelan is the Troublemaker and swapped Kevin and Daniel, and Kevin was the Mason, then Daniel is now the Mason.\n    *   If Kevin was the Mason and didn't see another Mason, the other Mason is in the center.\n    *   If Kaelan is the Troublemaker, Kevin is the Mason (swapped to Daniel), and Daniel is... something else.\n    *   Jessica hasn't claimed anything.\n    *   Daniel's comment \"The minion is supposed to draw a sus on themselves\" suggests he might be the Minion or knows who the Minion is.\n\n    *   Kaelan (Troublemaker) - Village\n    *   Kevin (Mason/Swapped) - Village\n    *   Daniel (Mason/Swapped) - Village\n    *   Jessica - ?\n    *   If three players are claiming/confirmed as Village, Jessica is the most likely Werewolf.\n\n    *   Wait, Daniel says \"Werewolves win\" (Line 34). This implies a Werewolf survived.\n    *   If the game ended and they are reviewing, and Daniel says \"Werewolves win,\" it means the vote (which isn't explicitly shown in the transcript, but implied by the conclusion) failed to hit a Werewolf.\n    *   However, the task is to *choose* the player to vote out to make Team Village win.\n    *   Looking at the claims:\n        *   Kaelan: Troublemaker.\n        *   Kevin: Mason.\n        *   Daniel: Confirms Kevin.\n        *   Jessica: No claim, confused about the Drunk.\n    *   If Kaelan, Kevin, and Daniel are all Village-aligned (Troublemaker, Mason, and whoever Daniel was), Jessica is the only one left who could be the Werewolf.\n\n    *   Daniel: \"I'll confirm that he was the Mason.\" (Line 5)\n    *   Kaelan: \"I swapped you two as the Troublemaker.\" (Line 6)\n    *   If Kaelan is the Troublemaker and swapped Kevin and Daniel, and Kevin was the Mason, then Daniel is now the Mason.\n    *   If Kevin was the Mason and didn't see another Mason, the other Mason is in the center.\n    *   This means Kevin, Kaelan, and Daniel are all claiming/acting as Village.\n    *   Jessica is the only one who hasn't claimed a role and seems confused.\n\n    *   Is it possible Kaelan is lying about being the Troublemaker?\n    *   Is it possible Daniel is the Werewolf/Minion?\n    *   Daniel's comment \"The minion is supposed to draw a sus on themselves\" is very suspicious. It sounds like he's explaining the strategy of a Minion.\n    *   But if we have to pick one person, Jessica is the most \"silent\" and least \"confirmed\" in terms of role.\n    *   Wait, let's look at the center cards part. Kevin looks at the center and says \"Town wins\" (Line 31). Then Daniel says \"Nope. Werewolves win\" (Line 34).\n    *   This suggests that the Werewolf was *not* in the center, but among the players.\n    *   If the Werewolf is among the players, and Kaelan, Kevin, and Daniel are claiming Village roles, Jessica is the most likely candidate.\n\n    *   Kaelan: Troublemaker (Village)\n    *   Kevin: Mason (Village)\n    *   Daniel: (Confirmed Kevin) - Likely Village or Minion.\n    *   Jessica: No claim.\n    *   If Daniel is the Minion, he's Team Werewolf. If Jessica is the Werewolf, she's Team Werewolf.\n    *   The prompt asks to eliminate a Werewolf.\n    *   Between Jessica and Daniel, Jessica has provided zero evidence of being Village. Daniel has helped confirm Kevin.\n    *   Actually, looking at Line 34: \"The minion is supposed to draw a sus on themselves.\" This is Daniel speaking. He might be admitting he was the Minion or explaining why someone else (like Jessica) wasn't suspected.\n    *   If Daniel is the Minion, the Werewolf is still out there.\n    *   If Jessica is the Werewolf, voting her out wins the game.\n\n    *   Kaelan: Troublemaker.\n    *   Kevin: Mason.\n    *   Daniel: Confirms Kevin.\n    *   Jessica: No claim.\n    *   Most likely Werewolf: Jessica.\n\n    *   Wait, let's re-read the \"center cards\" part.\n    *   Kevin: \"Let's take a quick look at the center here... Oh, brother... We still win. Town wins.\"\n    *   Daniel: \"Nope. Werewolves win.\"\n    *   This means Kevin saw something in the center (maybe the Werewolf card?) and thought Town won because the Werewolf was in the center. But Daniel corrected him, saying Werewolves win.\n    *   If Werewolves win, it means a Werewolf *is* among the players and was *not* voted out.\n    *   If the Werewolf is among the players, and Kaelan, Kevin, and Daniel are claiming Village roles, Jessica is the most probable Werewolf.\n\n    *   Justification: Kaelan claims to be the Troublemaker, Kevin claims to be the Mason, and Daniel confirms Kevin's role. Jessica is the only player who does not claim a role and provides no evidence of being village-aligned. Therefore, Jessica is the most likely candidate to be the Werewolf.\n    *   Chosen vote: Jessica.",
+  "parsed_output": {
+    "justification": "Kaelan claims to be the Troublemaker, Kevin claims to be the Mason, and Daniel supports Kevin's claim. Jessica is the only player who does not claim a role and provides no evidence of being village-aligned. Given that the other three players are asserting village roles, Jessica is the most likely candidate to be the Werewolf.",
+    "chosen_vote": "Jessica"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Kaelan claims to be the Troublemaker, Kevin claims to be the Mason, and Daniel supports Kevin's claim. Jessica is the only player who does not claim a role and provides no evidence of being village-aligned. Given that the other three players are asserting village roles, Jessica is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Jessica\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Kaelan claims to be the Troublemaker, Kevin claims to be the Mason, and Daniel supports Kevin's claim. Jessica is the only player who does not claim a role and provides no evidence of being village-aligned. Given that the other three players are asserting village roles, Jessica is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Jessica\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Jessica",
+    "justification": "Kaelan claims to be the Troublemaker, Kevin claims to be the Mason, and Daniel supports Kevin's claim. Jessica is the only player who does not claim a role and provides no evidence of being village-aligned. Given that the other three players are asserting village roles, Jessica is the most likely candidate to be the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2252,
+    "output_token_count": 1970,
+    "generation_time_sec": 201.21641397476196,
+    "used_chat_template": true,
+    "input_char_count": 8543,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mitchell, Paul, Mike.\n    *   Goal: Eliminate a Werewolf to win (Team Village). If no Werewolf is present, \"No Werewolf\" wins.\n\n    *   Justin: Claims to be the Seer and saw two Werewolves in the center (meaning no Werewolves are among the players).\n    *   Mitchell: Claims to be the Insomniac (at [37]).\n    *   Paul:\n        *   Claims to be the Robber and robbed Justin, who was a Werewolf (at [48]).\n        *   Later claims he was the Tanner from the beginning (at [104]).\n    *   Mike:\n        *   Claims to be the Troublemaker (implied by [39], [44], [66], [98]).\n        *   Claims he switched Paul and Mitchell (at [98]).\n\n    *   Justin (Seer) -> Saw 2 Werewolves in center. (If true, no Werewolf among players).\n    *   Mitchell (Insomniac) -> Confirmed by himself.\n    *   Paul (Tanner) -> Admits he was the Tanner.\n    *   Mike (Troublemaker) -> Switched Paul and Mitchell.\n\n    *   If Justin is the Seer and saw 2 Werewolves in the center, then there are no Werewolves among the players.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Mike is the Troublemaker and switched Paul and Mitchell, and Paul was the Tanner, then Mitchell now has the Tanner card (if Paul started as Tanner). Wait, let's re-read.\n    *   Paul says: \"I robbed from Justin who was the Werewolf\" ([48]). Then later says \"I got a little caught up in my own lie\" ([97]) and \"I was the Tanner from the beginning\" ([104]).\n    *   If Paul was the Tanner and Mike (Troublemaker) switched Paul and Mitchell, then Mitchell is now the Tanner.\n    *   Justin's claim: \"I saw two werewolves in the middle\" ([51], [62]). If this is true, no one is a Werewolf.\n\n    *   Justin: Seer (claims 2 WW in center).\n    *   Mitchell: Insomniac (claims he was).\n    *   Paul: Tanner (admits it).\n    *   Mike: Troublemaker (switched Paul and Mitchell).\n    *   If Justin is telling the truth about the center cards, there are no Werewolves among the players.\n    *   If Paul was the Tanner and Mike switched Paul and Mitchell, Mitchell is now the Tanner.\n    *   If Paul was the Robber (as he first claimed) and robbed Justin (Werewolf), but then admitted he was lying and was actually the Tanner, then the \"Werewolf\" claim was a bluff.\n\n    *   Justin's claim of two werewolves in the center is the key. If we believe him, the answer is \"No Werewolf\".\n    *   Is there any reason to doubt Justin? He's consistent. Paul admitted to lying. Mike's actions as Troublemaker (switching Paul and Mitchell) don't create a Werewolf if there wasn't one.\n    *   If Justin is the Seer and saw 2 WW in the center, then the 3rd center card must be something else.\n    *   Wait, if there are 4 players, there are 7 candidate roles. 3 are in the center.\n    *   If 2 Werewolves are in the center, only 1 Werewolf card could possibly be in play. But if Justin saw 2, and there are only 2 Werewolves total in a standard setup (or the candidate roles selected), then no one is a Werewolf.\n    *   Actually, the rules say \"up to two Masons, and at most one of each other listed role\" (including Werewolf). Wait, \"multiple Villagers and multiple Werewolves\".\n    *   If Justin saw two Werewolves in the center, and the game only had two Werewolf cards in the candidate pool, then no player is a Werewolf.\n\n    *   Justin: Seer (claims 2 WW in center).\n    *   Paul: Tanner (admits it).\n    *   Mike: Troublemaker (switched Paul and Mitchell).\n    *   Mitchell: Insomniac.\n    *   If Justin is honest, no one is a Werewolf.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Mike switched Paul (Tanner) and Mitchell, Mitchell is now the Tanner.\n    *   The goal for Team Village is to eliminate a Werewolf. If no Werewolf is present, they win if no one dies (or if they don't kill the Tanner? No, the rules say: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\")\n    *   Wait, the rules say: \"If no player is a Werewolf and no one dies. This can happen if all Werewolf cards are in the center.\"\n    *   So if Justin is correct, the best move for Team Village is \"No Werewolf\".\n\n    *   Justin claims Seer, saw 2 WW in center.\n    *   Paul admits to being the Tanner and lying about robbing a Werewolf.\n    *   Mike claims Troublemaker and switched Paul and Mitchell.\n    *   Mitchell claims Insomniac.\n    *   There is no evidence of any player being a Werewolf. Justin's claim is the only piece of information regarding the Werewolves' location, and it places them in the center.\n\n    *   Justin: Seer\n    *   Paul: Tanner\n    *   Mike: Troublemaker\n    *   Mitchell: Insomniac\n    *   Center: Werewolf, Werewolf, [Other]\n    *   This fits all claims.\n\n    *   If Justin is lying and is actually the Werewolf, he would claim the Werewolves are in the center to avoid being voted out.\n    *   However, Paul admitted to lying. Mike's story is consistent. Mitchell's story is consistent.\n    *   If Justin were the Werewolf, he'd be the only one. But he claims there are *two* in the center.\n    *   If there are no Werewolves among the players, \"No Werewolf\" is the correct choice.",
+  "parsed_output": {
+    "justification": "Justin claims to be the Seer and states he saw two Werewolves in the center, which would mean no player is currently a Werewolf. Paul initially claimed to have robbed a Werewolf from Justin but later admitted he was lying and was actually the Tanner. Mike claims to be the Troublemaker and switched Paul and Mitchell. Given that Paul admitted his bluff and Justin's claim remains consistent, there is no evidence that any player is a Werewolf.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin claims to be the Seer and states he saw two Werewolves in the center, which would mean no player is currently a Werewolf. Paul initially claimed to have robbed a Werewolf from Justin but later admitted he was lying and was actually the Tanner. Mike claims to be the Troublemaker and switched Paul and Mitchell. Given that Paul admitted his bluff and Justin's claim remains consistent, there is no evidence that any player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin claims to be the Seer and states he saw two Werewolves in the center, which would mean no player is currently a Werewolf. Paul initially claimed to have robbed a Werewolf from Justin but later admitted he was lying and was actually the Tanner. Mike claims to be the Troublemaker and switched Paul and Mitchell. Given that Paul admitted his bluff and Justin's claim remains consistent, there is no evidence that any player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Justin claims to be the Seer and states he saw two Werewolves in the center, which would mean no player is currently a Werewolf. Paul initially claimed to have robbed a Werewolf from Justin but later admitted he was lying and was actually the Tanner. Mike claims to be the Troublemaker and switched Paul and Mitchell. Given that Paul admitted his bluff and Justin's claim remains consistent, there is no evidence that any player is a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3654,
+    "output_token_count": 1547,
+    "generation_time_sec": 166.89896845817566,
+    "used_chat_template": true,
+    "input_char_count": 12664,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

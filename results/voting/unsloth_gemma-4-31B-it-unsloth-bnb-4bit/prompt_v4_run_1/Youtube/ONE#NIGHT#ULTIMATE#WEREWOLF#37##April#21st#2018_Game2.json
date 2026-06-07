@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mitchell\n    *   James\n    *   Mike\n\n    *   Mitchell claims to be the \"Revealer\" (a role not in the standard list provided, but let's look at the transcript). Wait, the announcer mentions \"Revealer\" in [8]. The rules provided in the prompt *don't* list \"Revealer\", but the transcript does. Let's re-read the rules.\n    *   *Correction:* The rules provided in the prompt list: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   *Wait:* The transcript mentions \"Apprentice Seer\" and \"Revealer\". These are not in the provided rules list. However, the prompt says \"You have access only to the public discussion transcript and the game rules provided above.\" This is a contradiction. I must rely on the transcript's internal logic while using the provided rules as a framework.\n    *   *Actually*, looking closer at the transcript:\n        *   [8] Announcer: \"...Apprentice seer, wake up... Robber, wake up... Troublemaker, wake up... Revealer, wake up.\"\n        *   [10] Mitchell: \"I was the revealer. There was a bad person out there.\"\n        *   [19] Mitchell: \"He [Mike] was a werewolf.\"\n        *   [20] Mike: \"No. I was the troublemaker.\"\n        *   [22] Mike: \"I switched people.\"\n        *   [23] Mitchell: \"Your card isn't flipped up and I revealed it. Explain that.\" (This implies the Revealer flips a card face up unless it's a werewolf or tanner).\n        *   [26] Justin: \"I was the little baby girl and I looked in the middle...\" (Justin is likely the Apprentice Seer, as the announcer mentioned Apprentice Seer looks at center cards).\n        *   [34] Caitlynn: \"I robbed you [Justin].\"\n        *   [38] Caitlynn: \"Yes [Justin is telling the truth].\"\n        *   [42] Mike: \"I switched you, Mitchell.\"\n        *   [49] Mike: \"I switched Mitchell and Justin.\"\n        *   [64] Justin: \"I saw a werewolf in the center.\"\n\n    *   **Mitchell (Revealer):** Claims he revealed Mike and Mike was a werewolf.\n    *   **Mike (Troublemaker):** Claims he was the Troublemaker and switched Mitchell and Justin.\n    *   **Justin (Apprentice Seer):** Claims he looked at the center and saw a werewolf.\n    *   **Caitlynn (Robber):** Claims she robbed Justin.\n    *   **James:** Confused, doesn't remember his role.\n\n    *   If Mitchell is the Revealer and he revealed Mike, and Mike's card stayed face down, Mike must be a Werewolf or a Tanner.\n    *   If Mike is the Troublemaker, he would have switched two people. He claims he switched Mitchell and Justin.\n    *   If Mike is a Werewolf, he is lying about being the Troublemaker.\n    *   If Mitchell is a Werewolf, he is lying about being the Revealer.\n\n    *   Justin says he saw a werewolf in the center.\n    *   Caitlynn says she robbed Justin.\n    *   If Justin was the Apprentice Seer (looking at center cards), and Caitlynn robbed him, Caitlynn now has the Apprentice Seer card (or whatever Justin had).\n    *   Wait, the Robber swaps cards and *then* looks at the new card. So Caitlynn knows what Justin's card was.\n    *   Caitlynn confirms Justin's story (\"Yes\" in [38]). This suggests Justin was indeed the Apprentice Seer.\n\n    *   Mitchell says he revealed Mike and Mike was a werewolf.\n    *   Mike says he is the Troublemaker and switched Mitchell and Justin.\n    *   If Mike is the Troublemaker, he switched Mitchell and Justin.\n    *   If Mitchell was the Revealer, and Mike switched him with Justin, then Justin is now the Revealer and Mitchell is now the Apprentice Seer.\n    *   But Justin still claims he looked in the middle (Apprentice Seer action). This happened *before* the Troublemaker's action (Night action order: Apprentice Seer [implied by transcript] -> Robber -> Troublemaker -> Revealer).\n    *   Wait, let's check the announcer's order in [8]:\n        1.  Apprentice Seer\n        2.  Robber\n        3.  Troublemaker\n        4.  Revealer\n    *   If the order is Apprentice Seer -> Robber -> Troublemaker -> Revealer:\n        *   Justin (Apprentice Seer) looks at center.\n        *   Caitlynn (Robber) robs Justin. (Caitlynn is now Apprentice Seer, Justin is now Robber).\n        *   Mike (Troublemaker) switches Mitchell and Justin. (Mitchell is now Robber, Justin is now whatever Mitchell was).\n        *   Mitchell (now whatever Justin was) is the Revealer? No, the Revealer wakes up *last*.\n        *   If Mitchell was the Revealer *starting* role, he wakes up last. He reveals Mike.\n        *   If Mike is a Werewolf, the card stays face down.\n        *   If Mike is the Troublemaker, he's lying about his role.\n\n    *   Mitchell's claim is very direct: \"I revealed Mike, he's a werewolf.\"\n    *   Mike's claim is a defense: \"I'm the Troublemaker, I switched Mitchell and Justin.\"\n    *   If Mike were the Troublemaker, why would he switch Mitchell and Justin? It doesn't help a Troublemaker much unless he's trying to move a werewolf.\n    *   More importantly, if Mitchell is the Revealer, his ability is to flip a card. If the card is a werewolf, it stays face down. Mike's card is face down. This is consistent with Mike being a werewolf.\n    *   Justin and Caitlynn seem to believe Mitchell or at least are voting for Mike.\n    *   Justin says: \"I'm voting for you [Mike] no matter what.\"\n    *   Mitchell says: \"I'm voting 100% for Mike.\"\n    *   James says: \"I just want to kill Mitchell\" (but then seems to go along with the group).\n\n    *   If Mike is the Werewolf, Team Village wins by voting him out.\n    *   If Mitchell is the Werewolf and is lying about being the Revealer, voting Mike might lose the game.\n    *   However, the evidence against Mike (the Revealer's claim) is stronger than Mike's defense (claiming to be the Troublemaker and switching two other people).\n    *   Also, Justin's claim of seeing a werewolf in the center means there might be another werewolf or the only werewolf is in the center. But if Mike is a werewolf, the village wins.\n\n    *   The Revealer (Mitchell) identified Mike as a \"bad person\" (Werewolf/Tanner).\n    *   Mike's counter-claim (Troublemaker) is less convincing.\n    *   The majority of the players (Justin, Mitchell, and likely Caitlynn/James) are leaning towards Mike.\n    *   If Mike is the Werewolf, voting him out wins the game.\n\n    *   Wait, if Justin saw a werewolf in the center, and Mike is also a werewolf, there are two werewolves.\n    *   If Mike is the Tanner, voting him out makes the Tanner win. But the goal is to make Team Village win.\n    *   The most likely Werewolf based on the discussion is Mike.\n\n    *   Justin: Apprentice Seer (confirmed by Caitlynn)\n    *   Caitlynn: Robber (confirmed by Justin)\n    *   Mitchell: Revealer (claims)\n    *   Mike: Werewolf (claimed by Mitchell) / Troublemaker (claims)\n    *   James: ? (doesn't remember)\n\n    *   If Mitchell is the Revealer, he saw Mike's card. If it stayed face down, Mike is either a Werewolf or a Tanner.\n    *   If Mike is a Werewolf, voting him out wins.\n    *   If Mike is the Tanner, voting him out makes the Tanner win.\n    *   Is there any evidence Mike is the Tanner? Not really. He's defending himself aggressively, which werewolves do. Tanners usually try to get voted out. Mike is saying \"I am not a werewolf... I am the troublemaker.\" This is a typical werewolf bluff.\n\n    *   Justification: Mitchell claimed to be the Revealer and stated that he revealed Mike, whose card remained face down, indicating Mike is either a Werewolf or the Tanner. Mike's defense that he was the Troublemaker and switched Mitchell and Justin is less credible and sounds like a bluff. Since the goal is to eliminate a Werewolf, Mike is the most suspicious candidate.\n    *   Chosen vote: Mike.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Revealer and stated that he revealed Mike, whose card remained face down, which according to the Revealer's rules indicates the player is either a Werewolf or the Tanner. Mike's counter-claim that he was the Troublemaker and switched Mitchell and Justin is a common bluff and lacks supporting evidence from other players. Given the strong accusation from the Revealer and Mike's defensive behavior, Mike is the most likely candidate to be a Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Revealer and stated that he revealed Mike, whose card remained face down, which according to the Revealer's rules indicates the player is either a Werewolf or the Tanner. Mike's counter-claim that he was the Troublemaker and switched Mitchell and Justin is a common bluff and lacks supporting evidence from other players. Given the strong accusation from the Revealer and Mike's defensive behavior, Mike is the most likely candidate to be a Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Revealer and stated that he revealed Mike, whose card remained face down, which according to the Revealer's rules indicates the player is either a Werewolf or the Tanner. Mike's counter-claim that he was the Troublemaker and switched Mitchell and Justin is a common bluff and lacks supporting evidence from other players. Given the strong accusation from the Revealer and Mike's defensive behavior, Mike is the most likely candidate to be a Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mitchell claimed to be the Revealer and stated that he revealed Mike, whose card remained face down, which according to the Revealer's rules indicates the player is either a Werewolf or the Tanner. Mike's counter-claim that he was the Troublemaker and switched Mitchell and Justin is a common bluff and lacks supporting evidence from other players. Given the strong accusation from the Revealer and Mike's defensive behavior, Mike is the most likely candidate to be a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4425,
+    "output_token_count": 2198,
+    "generation_time_sec": 464.242214679718,
+    "used_chat_template": true,
+    "input_char_count": 15112,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

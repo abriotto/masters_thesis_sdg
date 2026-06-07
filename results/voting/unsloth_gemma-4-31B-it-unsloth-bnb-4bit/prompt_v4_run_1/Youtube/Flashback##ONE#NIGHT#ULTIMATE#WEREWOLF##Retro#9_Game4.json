@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Troublemaker. Says he switched two people, but not James.\n    *   Laura: Claims Villager.\n    *   Paul: Claims Robber. Says he robbed Mitchell.\n    *   James: Claims Seer. Says he looked at Paul and saw \"brown\" (Werewolf color).\n    *   Mitchell: Claims Villager (or \"one of these two\" - vague). Paul says he robbed Mitchell and Mitchell was a Villager.\n\n    *   James (Seer) says he looked at Paul and saw a Werewolf (brown).\n    *   Paul (Robber) says he robbed Mitchell and Mitchell was a Villager.\n    *   Justin (Troublemaker) says he switched two people (not James).\n    *   Laura (Villager) claims she is a Villager.\n\n    *   If James is the Seer and saw Paul as a Werewolf, Paul is the target.\n    *   If Paul is the Robber and robbed Mitchell, Paul knows Mitchell's starting role.\n    *   If Justin is the Troublemaker, he could have swapped Paul's card.\n    *   If Paul was a Werewolf and Justin swapped him, Paul might now be something else.\n    *   Wait, James says he saw Paul as a Werewolf. If Paul is the Robber, he might be lying about robbing Mitchell to hide his Werewolf identity.\n    *   Let's look at the timing:\n        1.  Seer (James) wakes up.\n        2.  Robber (Paul) wakes up.\n        3.  Troublemaker (Justin) wakes up.\n    *   If James (Seer) looked at Paul *before* Paul (Robber) swapped, James saw Paul's *starting* role.\n    *   If Paul (Robber) swapped with Mitchell, Paul's *final* role is whatever Mitchell had, and Mitchell's *final* role is whatever Paul had.\n    *   If James saw Paul as a Werewolf, and Paul swapped with Mitchell, then Mitchell is now the Werewolf.\n    *   However, if Paul is lying about being the Robber and is actually the Werewolf, then Paul is the target.\n\n    *   James: \"I was a Seer... I looked at Paul... I think it was brown.\" (Brown = Werewolf).\n    *   Paul: \"I will, right away, tell you I was the Robber... I robbed from Mitchell... Mitchell was the Villager.\"\n    *   Justin: \"I was a Troublemaker... I did switch people... I did not switch James.\"\n\n    *   Scenario A: James is telling the truth. Paul was a Werewolf.\n        *   If Paul is the Robber: Paul swapped with Mitchell. Mitchell is now the Werewolf.\n        *   If Paul is lying about being the Robber: Paul is still the Werewolf.\n    *   Scenario B: James is lying (Werewolf/Minion).\n        *   James is trying to frame Paul.\n    *   Scenario C: Justin (Troublemaker) swapped Paul.\n        *   If Paul was a Werewolf and Justin swapped him with someone else, that someone else is now the Werewolf.\n\n    *   James's claim is very specific: \"I was looking at the Insomniac... Paul said 'did someone just honestly...' and that's when I lifted the other card, looked at Paul... I think it was brown.\"\n    *   Paul's claim: \"I robbed from Mitchell... Mitchell was the Villager.\"\n    *   If Paul is the Robber and robbed Mitchell (Villager), Paul is now a Villager and Mitchell is now the Robber.\n    *   If James saw Paul as a Werewolf *before* the Robber action, then Paul started as a Werewolf.\n    *   If Paul started as a Werewolf and then robbed Mitchell (Villager), Paul is now a Villager and Mitchell is now a Werewolf.\n    *   Wait, the Robber swaps their card with another player. If Paul (Werewolf) robbed Mitchell (Villager), Paul becomes a Villager and Mitchell becomes a Werewolf.\n    *   But if Paul is the Robber, he is Team Village. A Robber cannot be a Werewolf. They are different starting roles.\n    *   If Paul *started* as a Werewolf, he cannot be the Robber.\n    *   Therefore, if James is telling the truth (Paul = Werewolf), Paul is lying about being the Robber.\n    *   If Paul is lying about being the Robber and is actually a Werewolf, then Paul is the target.\n\n    *   James (Seer) -> Paul (Werewolf).\n    *   Paul (Robber) -> Mitchell (Villager).\n    *   Justin (Troublemaker) -> Swapped two people (not James).\n    *   Laura (Villager).\n\n    If James is the Seer and saw Paul as a Werewolf, Paul is the most likely candidate for elimination, unless Paul was swapped by the Troublemaker.\n    Justin says he swapped two people but didn't say who.\n    If Justin swapped Paul with someone else, the Werewolf role moved.\n    But we don't know who Justin swapped.\n\n    Let's re-evaluate Paul's claim. Paul says he robbed Mitchell and Mitchell was a Villager. If Paul is the Robber, he is Village. If James saw Paul as a Werewolf, then either James is lying or Paul is lying.\n\n    If James is the Werewolf, he's framing Paul.\n    If Paul is the Werewolf, he's lying about being the Robber.\n\n    Looking at the transcript, Paul seems quite insistent on his Robber claim, but James's story about the \"brown\" card is very specific.\n\n    Wait, let's look at the roles again.\n    James: Seer.\n    Paul: Robber.\n    Justin: Troublemaker.\n    Laura: Villager.\n    Mitchell: Villager.\n\n    If these roles are true:\n    Seer (James) looks at Paul.\n    Robber (Paul) swaps with Mitchell.\n    Troublemaker (Justin) swaps two others.\n\n    If James saw Paul as a Werewolf, and Paul is the Robber, that's impossible because you only have one starting role. You can't start as both a Werewolf and a Robber.\n    So either James is lying or Paul is lying.\n\n    If James is lying, he might be the Werewolf.\n    If Paul is lying, he might be the Werewolf.\n\n    Let's look at the \"brown\" comment. In many versions of the game, Werewolf cards are brown/grey.\n    James says: \"I think it was brown.\"\n    Paul says: \"I robbed from Mitchell... Mitchell was the Villager.\"\n\n    If Paul is the Werewolf, he's lying about being the Robber.\n    If James is the Werewolf, he's lying about being the Seer.\n\n    Who is more likely?\n    Paul's claim that he robbed Mitchell and Mitchell was a Villager is a common bluff for a Werewolf to appear as a helpful Village role.\n    James's claim is very specific about the timing and the color.\n\n    Is there any other possibility?\n    What if Paul was the Werewolf, and Justin (Troublemaker) swapped Paul with someone else?\n    Justin says: \"I did switch people... I did not switch James.\"\n    If Justin swapped Paul with, say, Laura, then Laura would be the Werewolf. But we don't know who he swapped.\n\n    However, based on the available information, the most direct accusation is James against Paul.\n\n    Let's check the \"vote left\" discussion.\n    They are considering voting \"left\" (which usually means a coordinated vote to avoid killing anyone or to kill a specific person, but here it seems they are just undecided).\n    Paul says: \"I just don't want to vote left... my only suspicion, the possibility right now is Laura.\"\n    Paul is trying to shift suspicion to Laura.\n\n    Wait, Paul says: \"my only suspicion, the possibility right now is Laura.\"\n    Why Laura? \"Because last time you were a Werewolf, you said you were the Villager.\"\n    This is a meta-argument, not based on the current game's logic.\n\n    James's claim is the only one based on actual game information (seeing a brown card).\n\n    Let's re-read:\n    James: \"I was a Seer. I was looking at the Insomniac. And Paul said, 'did someone just honestly...' And that's when I lifted the other card, looked at Paul and set that one down. I think it was brown.\"\n    This is a very detailed account of the night phase.\n\n    If James is the Seer and Paul is the Werewolf:\n    James sees Paul (Werewolf).\n    Paul (Werewolf) pretends to be the Robber to avoid suspicion.\n    Justin (Troublemaker) swaps two people. If Justin swapped Paul, the Werewolf role moved. But we don't know who.\n\n    If we have to pick one person, Paul is the strongest candidate because he is directly accused by the Seer and is attempting to deflect suspicion using meta-logic about Laura.\n\n    Wait, let me double-check the Robber/Werewolf thing.\n    If Paul was the Robber, he couldn't have been a Werewolf.\n    If James saw Paul as a Werewolf, then Paul cannot be the Robber.\n    If Paul is not the Robber, he is lying.\n    If Paul is lying, he is likely the Werewolf.\n\n    Is there any chance James is the Werewolf?\n    If James is the Werewolf, he's lying about being the Seer to frame Paul.\n    But James's story is more detailed than Paul's.\n\n    Let's consider the Troublemaker (Justin).\n    Justin says he swapped two people, but not James.\n    If Justin swapped Paul and Laura, and Paul was the Werewolf, then Laura is now the Werewolf.\n    But we have no evidence of who Justin swapped.\n\n    Given the information, Paul is the most suspicious.\n\n    Wait, let me re-read the transcript one more time.\n    Paul: \"I robbed from Mitchell? ... So Mitchell's the Robber. I'm the Villager.\"\n    Wait, Paul says: \"I robbed from Mitchell? ... So Mitchell's the Robber. I'm the Villager.\"\n    This is confusing. If Paul is the Robber, he swaps his card with Mitchell. Paul then looks at the new card.\n    If Paul was the Robber and robbed Mitchell, Paul now has Mitchell's card and Mitchell has Paul's (Robber) card.\n    Paul says: \"Mitchell's the Robber. I'm the Villager.\"\n    This means Paul's new card is Villager, and Mitchell's new card is Robber.\n    This is consistent with the Robber's ability.\n\n    But this doesn't change the fact that if James (Seer) saw Paul as a Werewolf *before* the Robber action, then Paul *started* as a Werewolf.\n    If Paul started as a Werewolf, he cannot be the Robber.\n    The Robber is a starting role.\n    If Paul started as a Werewolf, he cannot wake up as the Robber.\n    Therefore, Paul's claim to be the Robber is a lie.\n\n    Conclusion: Paul is lying about his role and was seen as a Werewolf by the Seer.\n\n    One more check: Could James be the Werewolf?\n    If James is the Werewolf, he's lying about being the Seer.\n    If Paul is the Robber, he's telling the truth.\n    But Paul's attempt to frame Laura based on a previous game is a classic Werewolf move.\n\n    Therefore, Paul is the most likely Werewolf.\n\n    Wait, let me re-read the \"brown\" part.\n    James: \"I think it was brown.\"\n    In One Night Ultimate Werewolf, the Werewolf card is typically brown.\n\n    Final check on the players:\n    Justin: Troublemaker\n    Laura: Villager\n    Paul: Robber (claimed) / Werewolf (accused)\n    James: Seer\n    Mitchell: Villager\n\n    If Paul is the Werewolf, Team Village wins by voting him out.",
+  "parsed_output": {
+    "justification": "James claims to be the Seer and specifically states that he looked at Paul's card and saw it was brown (the color of the Werewolf card). Paul claims to be the Robber and says he robbed Mitchell, but if James is telling the truth, Paul could not have been the Robber because he started as a Werewolf. Paul's attempt to deflect suspicion onto Laura using meta-arguments about previous games further suggests he is bluffing to avoid elimination.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James claims to be the Seer and specifically states that he looked at Paul's card and saw it was brown (the color of the Werewolf card). Paul claims to be the Robber and says he robbed Mitchell, but if James is telling the truth, Paul could not have been the Robber because he started as a Werewolf. Paul's attempt to deflect suspicion onto Laura using meta-arguments about previous games further suggests he is bluffing to avoid elimination.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James claims to be the Seer and specifically states that he looked at Paul's card and saw it was brown (the color of the Werewolf card). Paul claims to be the Robber and says he robbed Mitchell, but if James is telling the truth, Paul could not have been the Robber because he started as a Werewolf. Paul's attempt to deflect suspicion onto Laura using meta-arguments about previous games further suggests he is bluffing to avoid elimination.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "James claims to be the Seer and specifically states that he looked at Paul's card and saw it was brown (the color of the Werewolf card). Paul claims to be the Robber and says he robbed Mitchell, but if James is telling the truth, Paul could not have been the Robber because he started as a Werewolf. Paul's attempt to deflect suspicion onto Laura using meta-arguments about previous games further suggests he is bluffing to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4425,
+    "output_token_count": 2882,
+    "generation_time_sec": 613.4506769180298,
+    "used_chat_template": true,
+    "input_char_count": 14986,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

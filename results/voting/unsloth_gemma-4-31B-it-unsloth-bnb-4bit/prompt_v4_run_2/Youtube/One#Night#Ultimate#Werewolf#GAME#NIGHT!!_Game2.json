@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#GAME#NIGHT!!",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#GAME#NIGHT!!_Game2.txt",
+  "player_names": [
+    "Eric",
+    "Shane",
+    "Calvin",
+    "Aaron",
+    "Rick"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Eric, Shane, Calvin, Aaron, Rick.\n    *   Roles involved (based on claims):\n        *   Rick: Claims Villager (starting).\n        *   Calvin: Claims Villager (starting).\n        *   Shane: Claims Robber, swapped with Eric.\n        *   Eric: Claims he was the Werewolf (starting), and since Shane swapped with him, Shane is now the Werewolf.\n        *   Aaron: Claims Seer, looked at Rick (Villager).\n\n    *   Shane says: \"I was a robber, I'd switch with Eric.\" (Line 39)\n    *   Eric says: \"If what Shane said is true, then I was the werewolf... if Shane is truthful and that he took my card and switched our cards... He's now a werewolf\" (Lines 58-62).\n    *   Shane confirms: \"I did.\" (Line 61) and \"I was a robber.\" (Line 63).\n    *   Aaron claims Seer and checked Rick (Villager). (Line 72).\n    *   Shane's final admission: \"I played my hand too early... Eric happened to be the werewolf. So, now once again, I am the werewolf. That's okay because I want to die.\" (Line 80).\n\n    *   Wait, Shane says \"I am the werewolf\" and \"I want to die\" in line 80.\n    *   If Shane is the Werewolf, voting him out wins for Team Village.\n    *   If Shane is the Tanner, voting him out wins for the Tanner.\n    *   However, Shane explicitly admits to being the Werewolf (after swapping with Eric).\n    *   Let's check the logic:\n        *   Eric (Starting: Werewolf) -> Shane (Ending: Werewolf)\n        *   Shane (Starting: Robber) -> Eric (Ending: Robber)\n        *   Aaron (Seer) checked Rick (Villager).\n        *   Calvin (Villager).\n        *   Rick (Villager).\n    *   If this sequence is true, Shane is the Werewolf.\n\n    *   Could Shane be the Tanner? Tanners want to die. Shane says \"I want to die\" (Line 80).\n    *   Could Shane be lying about being the Robber? If he's a Werewolf and trying to frame Eric? No, he's admitting to *being* the Werewolf now.\n    *   If Shane is the Tanner, he'd want people to vote for him.\n    *   If Shane is the Werewolf, he'd usually try to avoid being voted out. However, he admits it openly.\n    *   Wait, look at line 80 again: \"I am the werewolf. That's okay because I want to die.\" This is a contradiction for a Werewolf (who wants to survive) but fits a Tanner (who wants to die).\n    *   *But*, the prompt asks to make Team Village win. Team Village wins if they eliminate a Werewolf.\n    *   If Shane is the Werewolf, voting him wins.\n    *   If Shane is the Tanner, voting him makes the Tanner win.\n    *   Is there any other possibility?\n    *   If Eric was the Werewolf and Shane (Robber) swapped with him, Shane is now the Werewolf.\n    *   If Shane is the Werewolf, he's effectively confessing. While unusual for a Werewolf, it's the most direct evidence provided in the transcript.\n\n    *   Eric: Claims he was the Werewolf.\n    *   Shane: Claims he was the Robber and swapped with Eric.\n    *   Aaron: Claims Seer.\n    *   Calvin: Claims Villager.\n    *   Rick: Claims Villager.\n    *   If Shane is the Robber and Eric was the Werewolf, Shane is now the Werewolf.\n    *   If Shane is the Tanner, he's lying about being the Robber to get votes.\n    *   If Shane is the Werewolf, he's confessing (perhaps he's playing poorly or just wants the game to end).\n    *   Given the explicit confession \"I am the werewolf\" (Line 80), the most logical choice for the Village to attempt to win is to vote for Shane.\n\n    *   If Shane is the Tanner, voting him out doesn't help the Village.\n    *   If Shane is the Werewolf, voting him out wins the game.\n    *   Is there any evidence that someone else is the Werewolf?\n    *   Aaron (Seer) says Rick is a Villager.\n    *   Calvin says he's a Villager.\n    *   Eric says he was the Werewolf but is now the Robber.\n    *   If Shane is lying about being the Robber and is actually the Werewolf, he's still the Werewolf.\n    *   If Shane is the Tanner, he's lying about everything.\n    *   However, based on the provided transcript, the strongest lead is Shane's own admission.\n\n    *   Justification: Shane admitted to being the Robber and swapping cards with Eric. Eric claimed he was the starting Werewolf, meaning Shane is now the Werewolf. Shane explicitly confessed to being the Werewolf at the end of the discussion.\n    *   Chosen vote: Shane.",
+  "parsed_output": {
+    "justification": "Shane claimed to be the Robber and stated that he swapped cards with Eric. Eric admitted that he was the starting Werewolf, which means that after the swap, Shane became the Werewolf. Shane explicitly confessed to being the Werewolf at the end of the discussion, making him the primary target for Team Village.",
+    "chosen_vote": "Shane"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Shane claimed to be the Robber and stated that he swapped cards with Eric. Eric admitted that he was the starting Werewolf, which means that after the swap, Shane became the Werewolf. Shane explicitly confessed to being the Werewolf at the end of the discussion, making him the primary target for Team Village.\",\n  \"chosen_vote\": \"Shane\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Shane claimed to be the Robber and stated that he swapped cards with Eric. Eric admitted that he was the starting Werewolf, which means that after the swap, Shane became the Werewolf. Shane explicitly confessed to being the Werewolf at the end of the discussion, making him the primary target for Team Village.\",\n  \"chosen_vote\": \"Shane\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Shane",
+    "justification": "Shane claimed to be the Robber and stated that he swapped cards with Eric. Eric admitted that he was the starting Werewolf, which means that after the swap, Shane became the Werewolf. Shane explicitly confessed to being the Werewolf at the end of the discussion, making him the primary target for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3177,
+    "output_token_count": 1280,
+    "generation_time_sec": 131.55105829238892,
+    "used_chat_template": true,
+    "input_char_count": 11519,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

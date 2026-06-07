@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "0c2659db-7bd4-4b37-9b08-4e247befe382",
+  "game_key": "Game8",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/0c2659db-7bd4-4b37-9b08-4e247befe382_Game8.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Elliot: Claims Troublemaker.\n    *   Ashley: Claims Robber.\n    *   James: Claims Doppelganger (copied Robber).\n    *   Chris: Claims Hunter.\n    *   Sukeshi: Claims Seer.\n    *   Sian: No claim, remained quiet (\"no comment\").\n\n    *   Sukeshi (Seer) claims she saw Elliot was the Troublemaker.\n    *   Elliot (Troublemaker) confirms he swapped two people (Ashley and James).\n    *   Ashley (Robber) claims she robbed someone.\n    *   James (Doppelganger) claims he copied the Robber (Ashley).\n    *   Chris (Hunter) claims he was the Hunter.\n\n    *   Sukeshi (Seer) -> Confirms Elliot (Troublemaker).\n    *   Elliot (Troublemaker) -> Confirms he swapped Ashley and James.\n    *   Ashley (Robber) -> Claims Robber.\n    *   James (Doppelganger) -> Claims he copied Robber.\n    *   Chris (Hunter) -> Claims Hunter.\n    *   Sian -> No claim, silent.\n\n    *   If the claims are true:\n        *   Sukeshi: Seer (Village)\n        *   Elliot: Troublemaker (Village)\n        *   Ashley: Robber (Village)\n        *   James: Doppelganger (Village, since he copied Robber)\n        *   Chris: Hunter (Village)\n        *   Sian: ? (Werewolf, Minion, or Tanner)\n\n    *   Sian is the only player without a claimed role.\n    *   The group has collectively decided that Sian is the most suspicious because of her silence.\n    *   The group is voting for Sian.\n\n    *   If Sian is a Werewolf, Team Village wins.\n    *   If Sian is a Minion, Team Village does *not* win (Minions are Team Werewolf, but the win condition for Village is to eliminate a *Werewolf*). Wait, let me re-read the rules.\n    *   Rule check: \"Team Village wins: If at least one Werewolf dies.\"\n    *   Rule check: \"Team Werewolf includes Werewolf and Minion.\"\n    *   Wait, the rule says \"eliminate a Werewolf\". Does a Minion count as a Werewolf?\n    *   \"Team Werewolf includes Werewolf and Minion.\" Usually, in these games, eliminating the Minion doesn't count as eliminating a Werewolf unless the Minion is specifically called a Werewolf.\n    *   Let's re-read: \"Team Village wins: If at least one Werewolf dies.\"\n    *   If Sian is a Minion, does that count? Usually, no. But if Sian is the *only* werewolf-aligned player, and she's a Minion, the Werewolves still win if no actual Werewolf dies.\n    *   However, if Sian is the Werewolf, Team Village wins.\n    *   If Sian is the Tanner, the Tanner wins.\n    *   If Sian is a Villager, Team Werewolf wins (because no Werewolf died).\n\n    *   Sukeshi (Seer), Elliot (Troublemaker), Ashley (Robber), James (Doppelganger), Chris (Hunter).\n    *   That's 5 players claiming Village roles.\n    *   If all 5 are telling the truth, Sian *must* be the Werewolf, Minion, or Tanner.\n    *   If Sian is the Werewolf, voting her out is the only way to win.\n    *   If Sian is the Tanner, voting her out makes the Tanner win.\n    *   If Sian is the Minion, voting her out doesn't help the Village win unless there's also a Werewolf.\n\n    *   Is anyone else lying?\n    *   James claims he was the Doppelganger and copied the Robber.\n    *   Ashley claims she was the Robber.\n    *   Elliot claims he was the Troublemaker.\n    *   Sukeshi claims she was the Seer and saw Elliot was the Troublemaker.\n    *   Chris claims he was the Hunter.\n    *   This is a very consistent set of claims. If any of them are lying, they are likely the Werewolf/Minion.\n    *   But Sian's silence is the biggest red flag. In a game of One Night Ultimate Werewolf, the person who doesn't claim a role or provide information is often the Werewolf or the Tanner.\n\n    *   The most logical choice for Team Village is Sian, as everyone else has a role claim that is corroborated by others (Sukeshi confirms Elliot, Elliot confirms the swap of Ashley and James).\n\n    *   Sukeshi (Seer) -> Elliot (Troublemaker)\n    *   Elliot (Troublemaker) -> Swapped Ashley and James.\n    *   Ashley (Robber) -> Robbed someone.\n    *   James (Doppelganger) -> Copied Robber.\n    *   Chris (Hunter) -> Hunter.\n    *   Sian -> Silent.\n    *   All claims are consistent. Sian is the only one without a role.\n\n    *   Wait, if Sian is the Tanner, voting her out makes the Tanner win.\n    *   If Sian is the Werewolf, voting her out makes the Village win.\n    *   If Sian is the Minion, voting her out doesn't make the Village win.\n    *   If Sian is a Villager, voting her out makes the Werewolves win.\n    *   Given the information, Sian is the only viable target.\n\n    *   Justification: Sian is the only player who did not claim a role and remained silent throughout the discussion. The other five players (Sukeshi, Elliot, Ashley, James, and Chris) have provided consistent role claims (Seer, Troublemaker, Robber, Doppelganger, and Hunter) that corroborate each other. Therefore, Sian is the most likely candidate to be the Werewolf.\n    *   Chosen vote: Sian.",
+  "parsed_output": {
+    "justification": "Sian is the only player who did not claim a role and remained silent throughout the discussion. The other five players provided consistent role claims (Sukeshi as Seer, Elliot as Troublemaker, Ashley as Robber, James as Doppelganger, and Chris as Hunter) that corroborate one another. Since the other players' claims form a consistent narrative of the night's events, Sian is the most likely candidate to be the Werewolf.",
+    "chosen_vote": "Sian"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Sian is the only player who did not claim a role and remained silent throughout the discussion. The other five players provided consistent role claims (Sukeshi as Seer, Elliot as Troublemaker, Ashley as Robber, James as Doppelganger, and Chris as Hunter) that corroborate one another. Since the other players' claims form a consistent narrative of the night's events, Sian is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Sian\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Sian is the only player who did not claim a role and remained silent throughout the discussion. The other five players provided consistent role claims (Sukeshi as Seer, Elliot as Troublemaker, Ashley as Robber, James as Doppelganger, and Chris as Hunter) that corroborate one another. Since the other players' claims form a consistent narrative of the night's events, Sian is the most likely candidate to be the Werewolf.\",\n  \"chosen_vote\": \"Sian\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sian",
+    "justification": "Sian is the only player who did not claim a role and remained silent throughout the discussion. The other five players provided consistent role claims (Sukeshi as Seer, Elliot as Troublemaker, Ashley as Robber, James as Doppelganger, and Chris as Hunter) that corroborate one another. Since the other players' claims form a consistent narrative of the night's events, Sian is the most likely candidate to be the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4518,
+    "output_token_count": 1490,
+    "generation_time_sec": 160.15653252601624,
+    "used_chat_template": true,
+    "input_char_count": 14581,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Caitlynn, Mitchell, Alana, Mike.\n    *   Roles involved (based on transcript):\n        *   Caitlynn: Claims she looked at the center (Seer?).\n        *   Mitchell: Claims he is the Robber.\n        *   Mike: Claims he is the Troublemaker.\n        *   Alana: No specific claim, but others are discussing her.\n\n    *   Caitlynn: \"I looked at the center\" (Line 11). This suggests she is the Seer.\n    *   Mitchell: \"I can confirm that there were two people switching cards\" (Line 15). \"Yeah [I am the robber]\" (Line 18). \"I actually, I did not rob from Mike\" (Line 33).\n    *   Mike: \"I was the troublemaker\" (Line 22). \"I did switch you [Alana]\" (Line 38). Later says \"I didn't switch anybody\" (Line 49).\n    *   Alana: Doesn't claim a role, but is the target of discussion.\n\n    *   Caitlynn says: \"we kill Alana because that's what I saw in the center\" (Line 23). Wait, if she saw a Werewolf card in the center, Alana *cannot* be the Werewolf.\n    *   Wait, let's re-read Line 23: \"we kill Alana because that's what I saw in the center.\" This is confusing. If she saw a Werewolf in the center, the Werewolf is *not* Alana. But she says \"we kill Alana *because* that's what I saw in the center.\" This phrasing is ambiguous. Does she mean she saw Alana's card in the center (which is impossible) or she saw something that implies Alana is the werewolf?\n    *   Actually, look at Line 42-48:\n        *   Mike: \"You're a hundred percent the werewolf\" (to Caitlynn? or Alana?).\n        *   Alana: \"A hundred percent was the werewolf.\"\n        *   Mike: \"And you're a hundred percent the seer.\"\n        *   Caitlynn: \"Yeah.\"\n        *   Alana: \"And I looked at this card and this card was a werewolf.\"\n        *   Caitlynn: \"Also a werewolf.\"\n        *   Mike: \"This is also a werewolf.\"\n    *   This part of the transcript (Lines 40-50) looks like they are joking around or roleplaying. They are all calling each other werewolves.\n\n    *   Caitlynn: Claims Seer (looked at center).\n    *   Mitchell: Claims Robber.\n    *   Mike: Claims Troublemaker.\n    *   Alana: No claim.\n\n    *   If Caitlynn is the Seer and looked at the center, she knows which cards are not in play.\n    *   If Mitchell is the Robber, he knows his new card.\n    *   If Mike is the Troublemaker, he knows who he swapped.\n\n    *   Let's look at the \"joke\" section again.\n    *   Line 23: \"we kill Alana because that's what I saw in the center.\"\n    *   If Caitlynn saw a Werewolf card in the center, then there is one less Werewolf in play.\n    *   If she saw *two* Werewolf cards in the center, then there are no Werewolves in play (since there are usually only 2 max).\n    *   Wait, the transcript is very chaotic. They are joking and contradicting themselves.\n    *   Mike says \"I did switch you\" (Line 38) then \"I didn't switch anybody\" (Line 49).\n    *   Mitchell says \"I rob for me [Mike]\" (Line 20) then \"I actually, I did not rob from Mike\" (Line 33).\n\n    *   Caitlynn claims she looked at the center.\n    *   Mitchell claims Robber.\n    *   Mike claims Troublemaker.\n    *   Alana is the only one who hasn't claimed a role.\n    *   In these games, the person who doesn't claim a role or is the target of the others' claims is often the Werewolf or the Tanner.\n    *   However, look at Line 23 again: \"we kill Alana because that's what I saw in the center.\" If Caitlynn is the Seer and saw a Werewolf card in the center, why would that lead to killing Alana? Unless she saw *something else* in the center that makes Alana the only remaining suspect.\n    *   Wait, if Caitlynn saw the Werewolf card in the center, then the Werewolf is *not* in the game (or there's only one left).\n    *   Let's re-read: \"we kill Alana because that's what I saw in the center.\" This is so poorly phrased. Maybe she saw the *Villager* card in the center? Or the *Tanner* card?\n    *   Actually, look at the flow:\n        Caitlynn: \"I looked at the center.\"\n        Alana: \"I kind of want to know if there's any people who were switching cards...\"\n        Mitchell: \"I can confirm that there were two people switching cards.\"\n        Mike: \"I was the troublemaker.\"\n        Caitlynn: \"Oh, well then, we kill Alana because that's what I saw in the center.\"\n    *   This implies that because Mike (Troublemaker) and Mitchell (Robber) are claiming roles, and Caitlynn (Seer) saw something in the center, Alana is the only one left who could be the Werewolf.\n\n    *   Caitlynn: Seer (claims center)\n    *   Mitchell: Robber\n    *   Mike: Troublemaker\n    *   Alana: ? (Likely Werewolf)\n\n    *   Is Alana the Tanner? Tanners want to be voted out. Alana isn't really defending herself; she's mostly observing the chaos.\n    *   Is Alana the Werewolf? If the others are telling the truth about their roles, Alana must be the Werewolf (or the Tanner).\n    *   Is anyone lying?\n        *   Mike contradicts himself (\"I did switch you\" vs \"I didn't switch anybody\").\n        *   Mitchell contradicts himself (\"I rob for me [Mike]\" vs \"I actually, I did not rob from Mike\").\n    *   This contradiction suggests they are joking. In a casual game, players often mess around.\n    *   If we assume the roles they initially claimed (Caitlynn=Seer, Mitchell=Robber, Mike=Troublemaker), Alana is the odd one out.\n\n    *   Caitlynn says \"we kill Alana because that's what I saw in the center.\"\n    *   If Caitlynn saw the Werewolf card in the center, then Alana *cannot* be the Werewolf.\n    *   Wait... if the Werewolf card is in the center, then \"No Werewolf\" is the correct answer.\n    *   But she says \"we kill Alana *because* that's what I saw in the center.\" This is the key. If seeing a card in the center leads to voting for Alana, it means the card she saw *wasn't* the Werewolf card, but rather something that narrowed it down to Alana.\n    *   Example: If she saw the Tanner card in the center, then Alana isn't the Tanner. If she saw the Villager card, Alana isn't the Villager.\n    *   Actually, the most logical interpretation of \"we kill Alana because that's what I saw in the center\" in the context of a game is that the Seer saw something that confirms Alana is the Werewolf. (e.g., she saw the other Werewolf card and the Tanner card in the center, meaning only one Werewolf is in play, and it must be Alana).\n\n    *   Caitlynn: Seer\n    *   Mitchell: Robber\n    *   Mike: Troublemaker\n    *   Alana: Werewolf\n    *   This fits the distribution of roles.\n\n    *   Caitlynn: \"we kill Alana because that's what I saw in the center.\"\n    *   Alana: \"I feel like I do not know this rule.\" (Referring to the Troublemaker's \"may\" switch).\n    *   Alana doesn't deny being the werewolf; she just talks about the rules.\n    *   The group seems to have converged on Alana.\n\n    *   Could Alana be the Tanner? Possibly.\n    *   Could Mike or Mitchell be the Werewolf? They claimed roles. If Mike is the Werewolf, he's lying about being the Troublemaker. If Mitchell is the Werewolf, he's lying about being the Robber.\n    *   However, the prompt asks to make Team Village win. Based on the public discussion, the strongest lead is Alana.\n\n    *   Caitlynn claims to be the Seer and says her information from the center points to Alana.\n    *   Mitchell and Mike claim the Robber and Troublemaker roles, respectively.\n    *   Alana is the only player who does not claim a role and is identified as the target by the others.\n    *   Therefore, Alana is the most likely candidate for the Werewolf.",
+  "parsed_output": {
+    "justification": "Caitlynn claims to be the Seer and states that the information she saw in the center points to Alana being the Werewolf. Mitchell and Mike both claim the Robber and Troublemaker roles, respectively, leaving Alana as the only player without a claimed role. Despite some joking and contradictions in the transcript, the group consensus converges on Alana as the target for elimination.",
+    "chosen_vote": "Alana"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn claims to be the Seer and states that the information she saw in the center points to Alana being the Werewolf. Mitchell and Mike both claim the Robber and Troublemaker roles, respectively, leaving Alana as the only player without a claimed role. Despite some joking and contradictions in the transcript, the group consensus converges on Alana as the target for elimination.\",\n  \"chosen_vote\": \"Alana\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn claims to be the Seer and states that the information she saw in the center points to Alana being the Werewolf. Mitchell and Mike both claim the Robber and Troublemaker roles, respectively, leaving Alana as the only player without a claimed role. Despite some joking and contradictions in the transcript, the group consensus converges on Alana as the target for elimination.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alana",
+    "justification": "Caitlynn claims to be the Seer and states that the information she saw in the center points to Alana being the Werewolf. Mitchell and Mike both claim the Robber and Troublemaker roles, respectively, leaving Alana as the only player without a claimed role. Despite some joking and contradictions in the transcript, the group consensus converges on Alana as the target for elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3601,
+    "output_token_count": 2245,
+    "generation_time_sec": 455.617550611496,
+    "used_chat_template": true,
+    "input_char_count": 12726,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

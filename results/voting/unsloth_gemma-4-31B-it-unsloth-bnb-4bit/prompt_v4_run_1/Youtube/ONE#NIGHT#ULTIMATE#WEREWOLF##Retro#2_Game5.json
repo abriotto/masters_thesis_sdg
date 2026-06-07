@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Dan",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Dan\n    *   Mitchell\n    *   Caitlynn\n    *   Mike\n\n    *   Justin: Claims to be the Seer. Says he looked at two center cards and they were both Villagers.\n    *   Mitchell: Initially claims he was a \"special character\" and someone is lying about their role. Later admits he was lying about someone taking his position. Finally claims he was the Robber and stole from Dan.\n    *   Mike: Claims he switched two people (Troublemaker). He suggests Justin is the werewolf.\n    *   Caitlynn: Claims Justin is the werewolf. She says \"I looked at that\" (implying she knows Justin's role).\n    *   Dan: Very quiet, doesn't claim a role.\n\n    *   Justin (Seer) -> Center cards: Villager, Villager.\n    *   Mitchell (Robber) -> Stole from Dan.\n    *   Mike (Troublemaker) -> Switched two people.\n    *   Caitlynn (???) -> Claims Justin is the werewolf.\n\n    *   If Justin is the Seer and saw two Villagers in the center, and there are 5 players + 3 center cards = 8 cards total.\n    *   Roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   If two Villagers are in the center, the remaining 6 cards are distributed among the 5 players and 1 center card.\n    *   Wait, the rules say \"the number of candidate roles is always equal to the number of players plus 3\". So 5 players + 3 = 8 roles.\n    *   If Justin saw 2 Villagers in the center, that leaves 6 roles for 5 players and 1 center card.\n    *   If Justin is the Seer, Mitchell is the Robber, Mike is the Troublemaker, and Caitlynn is something else...\n    *   Caitlynn says \"I looked at that. Justin's the werewolf.\" How could she look at Justin's card?\n        *   Seer: Justin already claimed Seer.\n        *   Robber: Mitchell already claimed Robber.\n        *   Doppelganger: Could have looked at Justin's card.\n        *   Minion: Knows who the werewolves are.\n    *   If Caitlynn is the Minion or Doppelganger, she knows Justin is the werewolf.\n    *   If Justin is the werewolf, he's lying about being the Seer.\n    *   If Mitchell is the Robber and stole from Dan, he knows Dan's original role.\n    *   Mike claims he switched two people. If Mike is the Troublemaker, he swapped two players.\n\n    *   Justin claims Seer (Center: Villager, Villager).\n    *   Mitchell claims Robber (Stole from Dan).\n    *   Mike claims Troublemaker (Switched two people).\n    *   Caitlynn claims Justin is the werewolf.\n    *   Dan is silent.\n\n    *   If Justin is the Werewolf, he's lying about being the Seer.\n    *   If Caitlynn is the Minion, she knows Justin is the Werewolf.\n    *   If Mike is the Troublemaker, he might have swapped Justin with someone else, but he's pushing the narrative that Justin is the werewolf.\n    *   Wait, Caitlynn says \"I looked at that. Justin's the werewolf.\" This is a very strong claim. If she's the Seer, she looked at Justin. But Justin claimed Seer. If she's the Robber, she stole from Justin. But Mitchell claimed Robber. If she's the Doppelganger, she looked at Justin.\n    *   Let's look at the timeline:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker\n        8. Drunk\n        9. Insomniac\n\n    *   If Caitlynn is the Doppelganger, she looks at Justin's card first. If Justin was the Werewolf, she becomes the Werewolf.\n    *   If Justin is the Werewolf, he's lying about being the Seer.\n    *   If Mitchell is the Robber, he stole from Dan.\n    *   If Mike is the Troublemaker, he swapped two people.\n\n    *   Justin is the most accused.\n    *   Caitlynn and Mike are both pointing at Justin.\n    *   Mitchell's claims are confusing (first says someone is lying, then says he was the robber).\n    *   Dan is a non-entity in the conversation.\n\n    *   If Justin is the Werewolf, voting him out wins for the Village.\n    *   If Caitlynn is the Tanner, she wants to be voted out. But she's accusing Justin, not trying to get herself voted out.\n    *   If Justin is the Tanner, he might be lying about being the Seer to get votes. But he's trying to deflect votes toward Dan (\"What if we just kill Dan?\").\n\n    *   Caitlynn's statement \"I looked at that. Justin's the werewolf\" is the most direct piece of evidence. Even if she's the Minion or Doppelganger, she's identifying Justin as the Werewolf. If she's the Seer, she's identifying him.\n    *   Justin's claim to be the Seer is contradicted by Caitlynn's claim.\n    *   Mike also supports the idea that Justin is the werewolf.\n\n    *   Justin: Claims Seer.\n    *   Caitlynn: Claims she saw Justin is the Werewolf.\n    *   Mike: Claims he switched people and Justin is the Werewolf.\n    *   Mitchell: Claims Robber, stole from Dan.\n    *   Dan: Silent.\n\n    If Caitlynn is the Seer, Justin is the Werewolf.\n    If Caitlynn is the Doppelganger, she saw Justin was the Werewolf and became one.\n    If Caitlynn is the Minion, she knows Justin is the Werewolf.\n    In most of these scenarios, Justin is the Werewolf.\n\n    Wait, let's re-read: \"Caitlynn: I looked at that. Justin's the werewolf.\"\n    If she is the Seer, she looked at Justin.\n    If she is the Robber, she stole from Justin. (But Mitchell claimed Robber).\n    If she is the Doppelganger, she looked at Justin.\n\n    If Justin is the Werewolf, he would lie about being the Seer to avoid being caught.\n\n    Is there any reason to vote Dan or Mitchell?\n    Mitchell's behavior is erratic, but he's not being accused as strongly as Justin.\n    Dan is silent, which is sometimes a sign of a Werewolf, but Justin is actively lying/being accused.\n\n    Let's double-check the \"No Werewolf\" option.\n    If Justin is the Seer and saw two Villagers in the center, and the other center card is a Werewolf, then there are two Werewolves among the players.\n    If Justin is lying and there are no Werewolves, then the Werewolves are in the center. But the prompt asks to make Team Village win.\n\n    The strongest evidence points to Justin. Caitlynn and Mike are both targeting him. Caitlynn's claim \"I looked at that\" is a strong indicator of role-based knowledge.\n\n    *   Justin claims Seer.\n    *   Caitlynn claims she saw Justin is the Werewolf.\n    *   Mike supports Caitlynn.\n    *   Mitchell claims Robber.\n    *   Conclusion: Justin is likely the Werewolf.\n\n    Wait, let's look at Mitchell again.\n    Mitchell: \"I was lying about someone's taking my position.\"\n    Mitchell: \"I was the robber. I stole from Dan.\"\n    If Mitchell is the Robber and stole from Dan, he knows Dan's role. He says \"Dan wasn't being honest.\" But Dan hasn't said anything! This is very weird.\n    Wait, Dan *did* say \"I'm dying\" and \"Did I fuck up?\" and \"Where is it? Where is it? Here it is.\" (though those were mostly reactions).\n    If Mitchell is the Robber and stole from Dan, and says Dan wasn't being honest, maybe Dan is the Werewolf?\n    But Caitlynn's claim is much more direct: \"Justin's the werewolf.\"\n\n    Let's re-evaluate Caitlynn. If she's the Tanner, she wants to be voted out. She's not doing that.\n    If she's the Werewolf/Minion, she wants to divert suspicion. She's diverting it to Justin.\n    If she's the Seer, she's telling the truth.\n\n    Comparing Justin and Dan:\n    Justin is actively claiming a role (Seer) that is being contested.\n    Dan is silent.\n    Caitlynn is certain Justin is the werewolf.\n\n    Let's look at Mike's claim: \"I switched these two.\" (Referring to Justin and someone else?).\n    If Mike is the Troublemaker and switched Justin and someone else, Justin's current role might be different from his starting role.\n    But the win condition is based on the *final* card.\n    If Mike switched Justin (Werewolf) with someone else (e.g., Dan), then Dan would be the Werewolf.\n    However, Mike says \"Justin is the werewolf\" *after* saying he switched them. This implies Justin is *still* the werewolf or became one.\n\n    Actually, looking at the transcript:\n    Mike: \"I switched these two.\" (Pointing/referring to Justin and someone).\n    Caitlynn: \"Justin is the werewolf.\"\n    Mike: \"If he wasn't before, he is now.\"\n    This means Mike believes the swap resulted in Justin being the werewolf.\n\n    This makes Justin the primary target.",
+  "parsed_output": {
+    "justification": "Caitlynn explicitly claims to have seen that Justin is the werewolf ('I looked at that. Justin's the werewolf'), which suggests she is either the Seer, the Doppelganger, or the Minion. Mike supports this claim, stating that even if Justin wasn't the werewolf initially, he is now due to a card swap Mike performed as the Troublemaker. Justin's claim to be the Seer is contradicted by Caitlynn's direct accusation, making him the most likely candidate for the werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn explicitly claims to have seen that Justin is the werewolf ('I looked at that. Justin's the werewolf'), which suggests she is either the Seer, the Doppelganger, or the Minion. Mike supports this claim, stating that even if Justin wasn't the werewolf initially, he is now due to a card swap Mike performed as the Troublemaker. Justin's claim to be the Seer is contradicted by Caitlynn's direct accusation, making him the most likely candidate for the werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn explicitly claims to have seen that Justin is the werewolf ('I looked at that. Justin's the werewolf'), which suggests she is either the Seer, the Doppelganger, or the Minion. Mike supports this claim, stating that even if Justin wasn't the werewolf initially, he is now due to a card swap Mike performed as the Troublemaker. Justin's claim to be the Seer is contradicted by Caitlynn's direct accusation, making him the most likely candidate for the werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Caitlynn explicitly claims to have seen that Justin is the werewolf ('I looked at that. Justin's the werewolf'), which suggests she is either the Seer, the Doppelganger, or the Minion. Mike supports this claim, stating that even if Justin wasn't the werewolf initially, he is now due to a card swap Mike performed as the Troublemaker. Justin's claim to be the Seer is contradicted by Caitlynn's direct accusation, making him the most likely candidate for the werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3766,
+    "output_token_count": 2412,
+    "generation_time_sec": 501.74631333351135,
+    "used_chat_template": true,
+    "input_char_count": 13004,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

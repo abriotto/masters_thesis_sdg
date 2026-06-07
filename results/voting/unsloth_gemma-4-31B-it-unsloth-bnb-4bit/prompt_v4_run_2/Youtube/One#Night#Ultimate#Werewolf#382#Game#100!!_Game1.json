@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#382#Game#100!!",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#382#Game#100!!_Game1.txt",
+  "player_names": [
+    "Ed",
+    "Dustin",
+    "Katie",
+    "Brett",
+    "Kelsey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ed: Claims Seer, saw Brett as Troublemaker.\n    *   Dustin: Claims Insomniac, says he was trouble-made/robbed, now has the Doppelganger card.\n    *   Katie: Claims Doppelganger, then claims she Doppelganged Seer and saw two Werewolves in the center, then claims she was Robber and stole Kelsey's Tanner. (Very inconsistent).\n    *   Brett: Claims Troublemaker, says he trouble-made Dylan and Dustin.\n    *   Kelsey: Claims Seer (contradicted by Ed), then says she didn't do anything.\n    *   Dylan: Claims Hunter (line 63), then claims Werewolf (line 93, 137, 170).\n\n    *   Ed (Seer) -> Brett (Troublemaker).\n    *   Brett (Troublemaker) -> Swapped Dylan and Dustin.\n    *   Dylan (Werewolf) -> Woke up alone (meaning only one werewolf in play, or he's lying).\n    *   Dustin (Insomniac) -> Now has Doppelganger card (according to him).\n\n    *   If Dylan was a Werewolf and Brett swapped Dylan and Dustin, then Dustin is now the Werewolf.\n    *   Dylan claims he was the Werewolf and woke up alone. If this is true, and Brett swapped him with Dustin, Dustin is now the Werewolf.\n    *   Dustin claims he was the Insomniac and now has the Doppelganger card. This is confusing. If he was the Insomniac and Brett swapped him with Dylan (the Werewolf), he would be the Werewolf, not the Doppelganger.\n    *   Wait, Dustin says \"I was the Insomniac\" (line 46) and \"I have the Doppelganger now\" (line 55). This is impossible via Troublemaker (who swaps two *other* players). Only the Robber can swap their own card.\n    *   If Dustin was the Robber, he could have stolen the Doppelganger card. But the Robber acts *before* the Troublemaker.\n    *   Let's re-examine the claims:\n        *   Ed: Seer (saw Brett as Troublemaker).\n        *   Brett: Troublemaker (swapped Dylan and Dustin).\n        *   Dylan: Werewolf (woke up alone).\n        *   Dustin: Insomniac (now claims he has Doppelganger).\n        *   Kelsey: Claimed Seer, then said she did nothing.\n        *   Katie: Claimed Doppelganger, then Seer, then Robber. (Highly likely Tanner).\n\n    *   If Dylan was the Werewolf and Brett swapped Dylan and Dustin, Dustin is now the Werewolf.\n    *   Dylan admits he was the Werewolf (line 137, 170). In One Night Ultimate Werewolf, Werewolves often bluff, but admitting it is unusual unless they are trying to frame someone else (like Dustin) or they are the Tanner. However, Dylan's logic is: \"I was Werewolf... if he trouble-made me and Dustin, that's where the Werewolf ended up.\"\n    *   If Dylan was the Werewolf and was swapped with Dustin, Dustin is the Werewolf.\n    *   If Dylan is lying about being the Werewolf, he might be the Werewolf himself and trying to divert attention to Dustin.\n    *   But wait, if Dylan was the Werewolf and was swapped, he is no longer the Werewolf. Dustin is.\n\n    *   Ed (Seer) and Brett (Troublemaker) seem to be corroborating each other.\n    *   Dylan admits to being the Werewolf (starting role).\n    *   Brett (Troublemaker) swapped Dylan and Dustin.\n    *   Therefore, the Werewolf card moved from Dylan to Dustin.\n    *   Dustin's claim about being the Insomniac and then getting the Doppelganger card is logically inconsistent with the Troublemaker's action (Troublemaker swaps two *other* players). If Dustin was the Insomniac and was swapped with Dylan (the Werewolf), he would be the Werewolf. He wouldn't suddenly have the Doppelganger card.\n    *   This suggests Dustin is lying to cover up the fact that he is now the Werewolf.\n\n    *   Katie is claiming everything (Doppelganger, Seer, Robber). This is classic Tanner behavior.\n    *   Kelsey claimed Seer but then backed off.\n    *   Dylan admitted to being the Werewolf but says he was swapped.\n\n    *   If Dylan was the Werewolf and Brett swapped him with Dustin, Dustin is the Werewolf.\n    *   If Dylan is the Werewolf and is lying about being swapped, Dylan is the Werewolf.\n    *   However, Brett (the Troublemaker) confirms he swapped Dylan and Dustin.\n    *   If we trust Brett and Dylan's admission, Dustin is the current Werewolf.\n\n    *   Dylan: \"I was the werewolf and I woke up alone.\" (Line 137).\n    *   Brett: \"I trouble-made Dylan and Dustin.\" (Line 144).\n    *   Result: Dustin is now the Werewolf.\n\n    *   Dustin: \"I was the Insomniac... I have the Doppelganger now.\" (Lines 46, 55).\n    *   This is impossible. The Troublemaker swaps two other players. If Dustin was the Insomniac and was swapped with Dylan, he becomes whatever Dylan was. He cannot \"get the Doppelganger card\" from a Troublemaker swap unless Dylan was the Doppelganger. But Dylan says he was the Werewolf.\n    *   If Dylan was the Werewolf and Dustin was the Insomniac, and Brett swapped them, Dustin is now the Werewolf and Dylan is now the Insomniac.\n    *   Dustin's claim to be the Doppelganger is a lie.\n\n    *   Dylan: \"I was the werewolf and I woke up alone.\"\n    *   Brett: \"I trouble-made Dylan and Dustin.\"\n    *   Conclusion: Dustin is the Werewolf.\n\n    *   Could Dylan be the Werewolf and lying about the swap? No, Brett (the Troublemaker) confirmed the swap.\n    *   Could Brett be the Werewolf and lying about being the Troublemaker? Ed (the Seer) confirmed Brett was the Troublemaker.\n    *   Could Ed be the Werewolf and lying about being the Seer? Possible, but the internal logic of the other players' claims points strongly to Dustin.\n    *   Could Katie be the Werewolf? She's acting very much like a Tanner.\n\n    *   Dylan (Starting: Werewolf) -> Swapped by Brett -> (Ending: Insomniac/Villager).\n    *   Dustin (Starting: Insomniac) -> Swapped by Brett -> (Ending: Werewolf).\n    *   Therefore, voting for Dustin eliminates the Werewolf.",
+  "parsed_output": {
+    "justification": "Dylan admitted to starting as the Werewolf and waking up alone. Brett, whose role as Troublemaker was confirmed by Ed (the Seer), stated that he swapped Dylan and Dustin. Since the Troublemaker swaps the roles of two other players, the Werewolf card moved from Dylan to Dustin. Dustin's claim that he was the Insomniac and somehow ended up with the Doppelganger card is logically inconsistent with the Troublemaker's action, suggesting he is lying to hide his current status as the Werewolf.",
+    "chosen_vote": "Dustin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dylan admitted to starting as the Werewolf and waking up alone. Brett, whose role as Troublemaker was confirmed by Ed (the Seer), stated that he swapped Dylan and Dustin. Since the Troublemaker swaps the roles of two other players, the Werewolf card moved from Dylan to Dustin. Dustin's claim that he was the Insomniac and somehow ended up with the Doppelganger card is logically inconsistent with the Troublemaker's action, suggesting he is lying to hide his current status as the Werewolf.\",\n  \"chosen_vote\": \"Dustin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dylan admitted to starting as the Werewolf and waking up alone. Brett, whose role as Troublemaker was confirmed by Ed (the Seer), stated that he swapped Dylan and Dustin. Since the Troublemaker swaps the roles of two other players, the Werewolf card moved from Dylan to Dustin. Dustin's claim that he was the Insomniac and somehow ended up with the Doppelganger card is logically inconsistent with the Troublemaker's action, suggesting he is lying to hide his current status as the Werewolf.\",\n  \"chosen_vote\": \"Dustin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Dustin",
+    "justification": "Dylan admitted to starting as the Werewolf and waking up alone. Brett, whose role as Troublemaker was confirmed by Ed (the Seer), stated that he swapped Dylan and Dustin. Since the Troublemaker swaps the roles of two other players, the Werewolf card moved from Dylan to Dustin. Dustin's claim that he was the Insomniac and somehow ended up with the Doppelganger card is logically inconsistent with the Troublemaker's action, suggesting he is lying to hide his current status as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4824,
+    "output_token_count": 1685,
+    "generation_time_sec": 181.08010292053223,
+    "used_chat_template": true,
+    "input_char_count": 15840,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims Drunk (switched with center) [31, 51, 55, 56, 106, 115].\n    *   Caitlynn: Claims Drunk (switched with center) [33, 49, 61, 79, 81, 118, 134].\n    *   Mike: Claims Seer (looked in center, saw Werewolf and Troublemaker) [36, 72, 75, 121].\n    *   Justin: Claims Robber (stole from Mike [64], then claims he stole from James [107, 129]). He says he didn't see a Seer when stealing from Mike [64] and James was not the Drunk [119].\n    *   Mitchell: Claims Insomniac [68, 70].\n\n    *   *Mike (Seer):* Claims he saw a Werewolf and a Troublemaker in the center [121].\n    *   *Justin (Robber):* Claims he stole from Mike and didn't see a Seer [64]. Then claims he stole from James [107, 129].\n    *   *James (Drunk):* Claims he was the Drunk and switched with the center [31, 51, 106].\n    *   *Caitlynn (Drunk):* Claims she was the Drunk and switched with the center [33, 49, 61].\n    *   *Mitchell (Insomniac):* Claims he is the Insomniac [68, 70].\n\n    *   If Mike is the Seer and saw a Werewolf and a Troublemaker in the center, then there is only one Werewolf card left in the game (since there are usually 2-3 candidate roles for Werewolves/Minions, but the rules say \"up to two Masons\" and \"at most one of each other listed role\", and the candidate roles are players+3 = 8).\n    *   Wait, the rules say \"The selected roles may include... Werewolf\". It doesn't specify how many. Usually, there are 2 werewolves in a 5-player game, but the center cards could hold some.\n    *   If Mike saw a Werewolf in the center, and there were only 2 werewolves total, one is still in play.\n    *   Justin's claims are erratic. He first says he stole from Mike and didn't see a Seer [64]. If Mike *is* the Seer, Justin is lying. Then Justin says he stole from James [107, 129].\n    *   If Justin stole from James and James was the Drunk (who switched with the center), Justin would have seen whatever card James ended up with.\n    *   James claims he was the Drunk and switched with the center [106].\n    *   Caitlynn also claims she was the Drunk and switched with the center [61]. Only one person can be the Drunk.\n    *   If Mike is the Seer and saw a Werewolf and a Troublemaker in the center, and Justin stole from James, and Justin is now the Werewolf (because he stole the card James got from the center), then Justin is the target.\n    *   Wait, let's re-read: Mike says he saw a Werewolf and a Troublemaker in the center [121]. James says he (James) was the Drunk and switched with the center [106]. If James switched with the Werewolf card in the center, James became the Werewolf. Then Justin (Robber) stole from James [107, 129]. So Justin now has the Werewolf card.\n\n    *   Justin's behavior is highly suspicious. He changes his story multiple times:\n        1.  Stole from Mike, didn't see Seer [64].\n        2.  \"Just stirring the pot\" [90].\n        3.  Stole from James, James was not the Drunk [107, 119].\n    *   If Justin is the Robber and stole from James, and James was the Drunk who swapped with a Werewolf in the center, Justin is now the Werewolf.\n    *   James eventually claims \"Justin's the fucking werewolf\" [127, 130].\n    *   Mike supports this, suggesting Justin got the werewolf card [112].\n\n    *   If Mike is the Seer and saw a Werewolf in the center, and James (Drunk) swapped with it, James became the Werewolf.\n    *   If Justin (Robber) then stole from James, Justin became the Werewolf.\n    *   This makes Justin the current Werewolf.\n\n    *   Caitlynn claims she is the Drunk and wants to be voted out [79]. This is classic Tanner behavior.\n    *   If Caitlynn is the Tanner, she wants to be voted out.\n    *   If Justin is the Werewolf, the Village wins by voting him out.\n\n    *   Justin's contradictions are the strongest evidence. He claims to be the Robber but changes who he stole from and what he saw.\n    *   Mike's claim as Seer is consistent.\n    *   James's claim as Drunk is consistent (though Caitlynn also claims it).\n    *   If Mike is Seer and saw a Werewolf in the center, and James swapped with it, and Justin stole it, Justin is the Werewolf.\n\n    *   Justin: Robber -> stole from James (who was Drunk and swapped with Werewolf) -> now Werewolf.\n    *   James: Drunk -> swapped with Werewolf -> Robbed by Justin -> now whatever Justin had (likely Villager or Robber).\n    *   Mike: Seer.\n    *   Caitlynn: Tanner (claiming Drunk to get voted out).\n    *   Mitchell: Insomniac.\n\n    *   Wait, if Justin stole from James, and James had the Werewolf card (from the center), Justin is the Werewolf.\n    *   The goal is to eliminate a Werewolf. Justin is the most likely candidate.\n\n    *   Justin's shifting narrative (\"stole from Mike\" -> \"stole from James\") and the combination of Mike's Seer claim and James's Drunk claim point strongly to Justin holding the Werewolf card.\n\n    *   Justin: Robber (starting)\n    *   James: Drunk (starting)\n    *   Mike: Seer (starting)\n    *   Caitlynn: Tanner (starting)\n    *   Mitchell: Insomniac (starting)\n    *   Center: Werewolf, Troublemaker, Villager (for example)\n    *   Night Actions:\n        1.  Seer (Mike) looks at center: sees Werewolf and Troublemaker.\n        2.  Robber (Justin) steals from James.\n        3.  Troublemaker (none/center) - no action.\n        4.  Drunk (James) swaps with center (Werewolf).\n        5.  Insomniac (Mitchell) wakes up.\n    *   *Correction on Night Action Order:*\n        1.  Doppelganger\n        2.  Werewolves\n        3.  Minion\n        4.  Masons\n        5.  Seer (Mike)\n        6.  Robber (Justin)\n        7.  Troublemaker\n        8.  Drunk (James)\n        9.  Insomniac (Mitchell)\n    *   If the Robber (Justin) acts *before* the Drunk (James), the Drunk's swap happens *after* the Robber's steal.\n    *   Let's re-trace:\n        1.  Seer (Mike) sees Werewolf in center.\n        2.  Robber (Justin) steals from James (James is currently Drunk). Justin is now Drunk. James is now Robber.\n        3.  Drunk (now Justin) swaps with center (Werewolf). Justin is now Werewolf. James is still Robber.\n    *   Result: Justin is the Werewolf.\n\n    *   Wait, if Justin was the Robber and stole from James, and then Justin (as the new Drunk) swapped with the center, Justin becomes the Werewolf.\n    *   Alternatively, if James was the Drunk and swapped with the center *first*, then Justin stole it. But the Drunk acts *after* the Robber.\n    *   Order: Seer -> Robber -> Troublemaker -> Drunk -> Insomniac.\n    *   If James was the Drunk, he swaps *last* (before Insomniac).\n    *   If Justin was the Robber, he steals *before* the Drunk swaps.\n    *   So:\n        1.  Justin (Robber) steals from James (Drunk). Justin is now Drunk, James is now Robber.\n        2.  Justin (now Drunk) swaps with the center (Werewolf). Justin is now Werewolf.\n    *   Either way, Justin ends up with the Werewolf card if the Drunk/Robber interaction involves the center Werewolf.\n\n    *   Justin's claims are inconsistent and he is identified by James and Mike as the likely Werewolf. Caitlynn's behavior is consistent with a Tanner.\n\n    *   Justin is the most logical choice for the Werewolf.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly inconsistent; he first claims to have stolen from Mike and seen no Seer, then later claims to have stolen from James. Mike claims to be the Seer and saw a Werewolf in the center. If James was the Drunk and swapped with the center, or if Justin (as the Robber) stole the Drunk role from James and then swapped with the center, Justin is the most likely player to currently hold the Werewolf card. Caitlynn's behavior, specifically asking to be voted out, is characteristic of the Tanner.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly inconsistent; he first claims to have stolen from Mike and seen no Seer, then later claims to have stolen from James. Mike claims to be the Seer and saw a Werewolf in the center. If James was the Drunk and swapped with the center, or if Justin (as the Robber) stole the Drunk role from James and then swapped with the center, Justin is the most likely player to currently hold the Werewolf card. Caitlynn's behavior, specifically asking to be voted out, is characteristic of the Tanner.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly inconsistent; he first claims to have stolen from Mike and seen no Seer, then later claims to have stolen from James. Mike claims to be the Seer and saw a Werewolf in the center. If James was the Drunk and swapped with the center, or if Justin (as the Robber) stole the Drunk role from James and then swapped with the center, Justin is the most likely player to currently hold the Werewolf card. Caitlynn's behavior, specifically asking to be voted out, is characteristic of the Tanner.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly inconsistent; he first claims to have stolen from Mike and seen no Seer, then later claims to have stolen from James. Mike claims to be the Seer and saw a Werewolf in the center. If James was the Drunk and swapped with the center, or if Justin (as the Robber) stole the Drunk role from James and then swapped with the center, Justin is the most likely player to currently hold the Werewolf card. Caitlynn's behavior, specifically asking to be voted out, is characteristic of the Tanner."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4155,
+    "output_token_count": 2299,
+    "generation_time_sec": 479.65638852119446,
+    "used_chat_template": true,
+    "input_char_count": 14286,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

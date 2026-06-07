@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Justin: Claims Seer (initially), then claims he was a Werewolf to start (line 125).\n    *   Caitlynn: Claims Troublemaker (line 17), then claims Tanner (line 94).\n    *   Paul: Claims Drunk (line 61).\n    *   Alysha: Claims Revealer (line 28-31, 41, 44, 55). She says she revealed Mike and saw a Werewolf.\n    *   Mitchell: Claims Troublemaker (line 24, 117). Says he swapped Caitlynn with Paul (line 164).\n    *   Mike: Claims Troublemaker (line 20), then Drunk (line 84, 171, 176).\n\n    *   *Revealer (Alysha):* Alysha claims she revealed Mike and he was a Werewolf. (Note: The \"Revealer\" role is mentioned in the announcer's script [line 16], though it's not in the standard rules provided in the prompt. However, the transcript clearly shows the announcer calling a \"Revealer\").\n    *   *Seer (Justin):* Justin claims he looked at two center cards and one was \"good\" (Paul) and one was \"bad\" (line 64-73). Later, he claims he was a Werewolf to start (line 125).\n    *   *Troublemaker (Mitchell):* Mitchell claims he swapped Caitlynn and Paul (line 164).\n    *   *Drunk (Paul/Mike):* Both Paul and Mike claim to be the Drunk.\n\n    *   Alysha (Revealer) says Mike is a Werewolf.\n    *   Justin (who claims he was a Werewolf) says he's killing Mike.\n    *   Paul says he's killing Mike.\n    *   Caitlynn says Mike is a Werewolf.\n    *   Mitchell is undecided but leans toward Justin or Mike.\n\n    *   If Alysha is the Revealer and she saw Mike as a Werewolf, Mike is the target.\n    *   Mike's claims are inconsistent (Troublemaker -> Drunk).\n    *   Justin's claim of being a Werewolf to start is highly suspicious, but he's now voting for Mike.\n    *   Caitlynn's claim of being the Tanner is a strong signal to vote her out, but the evidence against Mike is stronger (Revealer's direct observation).\n    *   Wait, let's re-read the Revealer's ability: \"You may turn any other player's card face up. If the card you reveal is a werewolf or a tanner, turn it back over, face down.\"\n    *   Alysha says she revealed Mike and it was a Werewolf (line 44).\n\n    *   Mike claims he was the Drunk (line 84, 171).\n    *   Paul also claims he was the Drunk (line 61).\n    *   Only one Drunk can exist.\n    *   Alysha's claim as Revealer is the most direct piece of evidence.\n\n    *   Justin claims he was a Werewolf to start (line 125). If he was a Werewolf and wasn't swapped, he's a Werewolf. If he was swapped, he might not be.\n    *   However, the prompt asks to make Team Village win. Voting out a Werewolf is the goal.\n    *   Alysha's claim is very specific: \"I saw a werewolf\" (referring to Mike).\n    *   Mike's behavior is erratic.\n\n    *   Alysha (Revealer) -> Mike (Werewolf).\n    *   Justin (Self-admitted starting Werewolf) -> Mike.\n    *   Paul (Drunk) -> Mike.\n    *   Caitlynn (Tanner) -> Mike.\n    *   The consensus among the players (and the most reliable claim) points to Mike.\n\n    *   Wait, Justin said \"I was a werewolf to start\" (line 125). If he is still a werewolf, voting him out also wins. But he's trying to deflect to Mike.\n    *   If Alysha is the Revealer, her information is the most reliable. She explicitly identified Mike as a Werewolf.\n\n    *   Justin: Claims Seer, then starting Werewolf.\n    *   Caitlynn: Claims Troublemaker, then Tanner.\n    *   Paul: Claims Drunk.\n    *   Alysha: Claims Revealer.\n    *   Mitchell: Claims Troublemaker.\n    *   Mike: Claims Troublemaker, then Drunk.\n\n    *   If Alysha is the Revealer, Mike is a Werewolf.\n    *   If Mike is the Werewolf, voting him out wins for the Village.\n    *   If Justin is the Werewolf (since he admitted it), voting him out also wins.\n    *   However, the Revealer's role is designed to give a definitive answer.\n\n    *   Justin's admission \"I was a werewolf to start\" is very strange. Usually, werewolves don't admit it unless they've been swapped or are bluffing.\n    *   But Alysha's claim is the most direct. She says she revealed Mike and he was a werewolf.\n\n    *   Player to eliminate: Mike.\n    *   Justification: Alysha claimed the role of Revealer and stated she revealed Mike's card to be a Werewolf. Mike's claims were inconsistent, shifting from Troublemaker to Drunk. Multiple players, including Justin and Paul, converged on voting for Mike.",
+  "parsed_output": {
+    "justification": "Alysha claimed the role of Revealer and explicitly stated that she revealed Mike's card and saw that he was a Werewolf. Mike's claims were inconsistent throughout the discussion, first claiming to be a Troublemaker and later claiming to be the Drunk. Given the direct identification by the Revealer and the lack of a credible counter-claim, Mike is the most likely Werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Alysha claimed the role of Revealer and explicitly stated that she revealed Mike's card and saw that he was a Werewolf. Mike's claims were inconsistent throughout the discussion, first claiming to be a Troublemaker and later claiming to be the Drunk. Given the direct identification by the Revealer and the lack of a credible counter-claim, Mike is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Alysha claimed the role of Revealer and explicitly stated that she revealed Mike's card and saw that he was a Werewolf. Mike's claims were inconsistent throughout the discussion, first claiming to be a Troublemaker and later claiming to be the Drunk. Given the direct identification by the Revealer and the lack of a credible counter-claim, Mike is the most likely Werewolf.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Alysha claimed the role of Revealer and explicitly stated that she revealed Mike's card and saw that he was a Werewolf. Mike's claims were inconsistent throughout the discussion, first claiming to be a Troublemaker and later claiming to be the Drunk. Given the direct identification by the Revealer and the lack of a credible counter-claim, Mike is the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5018,
+    "output_token_count": 1407,
+    "generation_time_sec": 302.47728157043457,
+    "used_chat_template": true,
+    "input_char_count": 16267,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

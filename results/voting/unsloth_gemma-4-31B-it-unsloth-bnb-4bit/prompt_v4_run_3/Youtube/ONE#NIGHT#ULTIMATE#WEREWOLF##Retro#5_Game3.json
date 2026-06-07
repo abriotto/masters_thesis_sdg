@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be the Troublemaker. Says he did *not* switch anyone.\n    *   Paul: Claims he started as a Werewolf. Claims Mitchell is the Insomniac and is now a Werewolf (due to a switch). Later admits he was the only Werewolf if Justin didn't switch.\n    *   Mitchell: Claims to be the Seer. Initially says he saw two Werewolves (which is contradictory if he looked at a player, as he can only see one player's card or two center cards). Later changes his story to say he saw one Werewolf (Paul) and lied about the second one.\n\n    *   Justin (Troublemaker): If Justin is the Troublemaker and didn't switch anyone, the roles remain as they started (unless Robber/Drunk acted).\n    *   Paul (Werewolf): Paul openly admits to being a Werewolf (\"I was a werewolf. A hundred percent,\" \"I was the only werewolf\"). This is highly unusual for a Werewolf unless they are trying to confuse the other players or are the Tanner. However, Paul's behavior seems more like someone trying to explain a complex scenario rather than a Tanner trying to get voted out.\n    *   Mitchell (Seer): Mitchell claims to be the Seer and saw Paul as a Werewolf. His initial claim of seeing \"two werewolves\" was inconsistent (Seers see one player or two center cards). If he saw two center cards, he wouldn't know Paul is a Werewolf. If he saw Paul, he only saw one. He corrected this by saying he saw Paul and lied about the second one.\n\n    *   If Paul is the Werewolf and Justin didn't switch anyone, voting Paul wins for the Village.\n    *   If Mitchell is the Werewolf and is lying about being the Seer, voting Mitchell wins.\n    *   If Paul is the Tanner, he wants to be voted out. But Paul's admission \"I was the only werewolf\" is very direct.\n    *   Wait, Paul says: \"I was a werewolf... I started as the werewolf.\" Then he says \"If you didn't switch us, then I'm werewolf.\"\n    *   Mitchell says: \"I was a seer and I looked at his [Paul's] and it was a werewolf.\"\n\n    *   Justin: Troublemaker (didn't switch).\n    *   Paul: Werewolf.\n    *   Mitchell: Seer.\n    *   In this scenario, voting Paul wins.\n\n    *   Could Paul be the Tanner? Tanners want to be voted out. Admitting to being a Werewolf is a great way to get voted out.\n    *   Could Mitchell be the Werewolf? He claimed to be the Seer and saw Paul as a Werewolf. If Mitchell is the Werewolf, he's framing Paul.\n    *   However, Paul *also* admitted to being the Werewolf. Why would a Werewolf admit to being a Werewolf? Maybe to confuse the game or because he thinks he can convince them Mitchell is the actual Werewolf (via the Insomniac theory).\n    *   Let's look at Paul's logic: \"Mitchell is the Insomniac. He knows he's the werewolf now... I was werewolf... You switched us.\"\n    *   But Justin (Troublemaker) says he didn't switch anyone.\n    *   If Justin is telling the truth, Paul's \"switch\" theory fails.\n    *   If Paul is the Werewolf and Justin didn't switch, Paul is just admitting it (perhaps thinking he can pivot).\n    *   If Paul is the Tanner, he's lying about being the Werewolf to get voted out.\n\n    *   Paul: \"I was a werewolf. A hundred percent.\"\n    *   Mitchell: \"I was a seer and I looked at his and it was a werewolf.\"\n    *   Both Paul and Mitchell's statements point to Paul being the Werewolf.\n    *   If Paul is the Tanner, he wins. If Paul is the Werewolf, the Village wins.\n    *   Usually, in these logic puzzles, the most direct evidence (admission + Seer claim) points to the target.\n\n    *   Paul admits to being the Werewolf.\n    *   Mitchell claims to be the Seer and identifies Paul as the Werewolf.\n    *   Justin (Troublemaker) confirms he didn't switch anyone, meaning Paul's attempt to shift the role to Mitchell (via a hypothetical switch) is invalid.\n    *   Therefore, Paul is the most likely Werewolf.\n\n    *   Wait, Paul says: \"I was the only werewolf.\"\n    *   If Paul is the Werewolf, voting him wins.\n    *   If Paul is the Tanner, voting him loses (Tanner wins).\n    *   But based on the available information, Paul is the only one admitting to the role and being identified as such by the claimed Seer.\n\n    *   Justin: Troublemaker (no switch).\n    *   Paul: Werewolf.\n    *   Mitchell: Seer.\n    *   Result: Vote Paul.",
+  "parsed_output": {
+    "justification": "Paul explicitly admits to starting as the Werewolf ('I was a werewolf. A hundred percent', 'I was the only werewolf'). Mitchell claims to be the Seer and identifies Paul as the Werewolf. Justin, claiming to be the Troublemaker, states he did not switch any players, which invalidates Paul's attempt to argue that the Werewolf role was swapped to Mitchell.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admits to starting as the Werewolf ('I was a werewolf. A hundred percent', 'I was the only werewolf'). Mitchell claims to be the Seer and identifies Paul as the Werewolf. Justin, claiming to be the Troublemaker, states he did not switch any players, which invalidates Paul's attempt to argue that the Werewolf role was swapped to Mitchell.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admits to starting as the Werewolf ('I was a werewolf. A hundred percent', 'I was the only werewolf'). Mitchell claims to be the Seer and identifies Paul as the Werewolf. Justin, claiming to be the Troublemaker, states he did not switch any players, which invalidates Paul's attempt to argue that the Werewolf role was swapped to Mitchell.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admits to starting as the Werewolf ('I was a werewolf. A hundred percent', 'I was the only werewolf'). Mitchell claims to be the Seer and identifies Paul as the Werewolf. Justin, claiming to be the Troublemaker, states he did not switch any players, which invalidates Paul's attempt to argue that the Werewolf role was swapped to Mitchell."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3819,
+    "output_token_count": 1219,
+    "generation_time_sec": 132.53306937217712,
+    "used_chat_template": true,
+    "input_char_count": 13440,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

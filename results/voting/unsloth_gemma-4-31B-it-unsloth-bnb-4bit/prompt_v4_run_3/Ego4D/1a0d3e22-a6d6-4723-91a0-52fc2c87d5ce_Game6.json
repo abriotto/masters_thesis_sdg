@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/1a0d3e22-a6d6-4723-91a0-52fc2c87d5ce_Game6.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Zack, Sean, Hunter, Jacob.\n    *   Roles mentioned/claimed:\n        *   Jacob: Claims Seer.\n        *   Zack: Claims Robber.\n        *   Sean: Claims Villager.\n        *   Hunter: Claims Villager (but later jokes about being a werewolf).\n\n    *   Jacob (Seer) claims he looked at the center cards (or other players' cards? Let's re-read).\n    *   Transcript [77]: \"This was a werewolf. And this was a troublemaker.\" (Referring to center cards, as he says \"I was waiting to see if anyone would claim troublemaker\").\n    *   Wait, let's look closer at [77]: \"This was a werewolf. And this was a troublemaker.\" He's pointing at things.\n    *   Transcript [78]: Hunter says \"So we have a robber. And we have one werewolf.\"\n    *   Transcript [83]: Jacob says \"Zack, you're the robber.\"\n    *   Transcript [84]: Zack says \"I can confirm this is a villager\" (pointing to someone).\n    *   Transcript [86]: Hunter says \"The only possibility is me, right?\"\n    *   Transcript [87]: Jacob says \"Yeah.\"\n\n    *   Jacob (Seer) says: Center cards = 1 Werewolf, 1 Troublemaker.\n    *   Zack (Robber) says: He stole from a Villager.\n    *   Sean (Villager) says: He is a Villager.\n    *   Hunter (Villager) says: He is a Villager.\n\n    *   If Jacob is the Seer and saw a Werewolf and a Troublemaker in the center:\n        *   Center: Werewolf, Troublemaker, [Unknown 3rd card].\n        *   Players: Jacob (Seer), Zack (Robber), Sean (Villager), Hunter (Villager).\n        *   Wait, if there's a Werewolf in the center, and the other two center cards are Troublemaker and something else, then there might be no Werewolf among the players.\n        *   Let's re-read Jacob's claim carefully. [77]: \"This was a werewolf. And this was a troublemaker.\" He is referring to the center cards.\n        *   If one Werewolf is in the center, and there are only 4 players, the total number of cards is 7.\n        *   Roles used: Seer (Jacob), Robber (Zack), Villager (Sean), Villager (Hunter), Werewolf (Center), Troublemaker (Center), [Unknown] (Center).\n        *   In this scenario, there are NO werewolves among the players.\n\n    *   Wait, let's re-evaluate Jacob's claim. If Jacob is the Seer and he saw a Werewolf in the center, then the Werewolf is not a player.\n    *   If the Werewolf is in the center, Team Village wins if \"no player is a Werewolf and no one dies.\"\n    *   The players are discussing voting for themselves to avoid killing a villager.\n    *   Transcript [192-199]: Sean, Zack, and Jacob all agree to vote for themselves. Hunter also seems to agree.\n\n    *   Jacob claims Seer. He says he saw a Werewolf and a Troublemaker in the center.\n    *   If Jacob is telling the truth, there is no Werewolf among the players (unless there are two Werewolves in the game, but usually, in a 4-player game, there's only one or two).\n    *   If there's only one Werewolf and it's in the center, then \"No Werewolf\" is the correct answer.\n    *   Is there any reason to suspect Jacob is lying? He claimed Seer early. He provided specific info about the center.\n    *   Is there any reason to suspect Hunter is the Werewolf? Jacob says \"The only possibility is me [Hunter], right?\" but that's based on the assumption that the Werewolf *isn't* in the center. But Jacob *just said* he saw a Werewolf in the center.\n    *   Let's re-read [77] and [78] again.\n        *   Jacob: \"This was a werewolf. And this was a troublemaker.\" (Pointing to center).\n        *   Hunter: \"So we have a robber. And we have one werewolf.\" (Wait, Hunter is interpreting this as \"one werewolf [among us]\").\n        *   Jacob: \"Yep.\"\n        *   Wait, if Jacob saw a werewolf in the center, why did he say \"Yep\" to Hunter's \"we have one werewolf\"?\n        *   Maybe Jacob meant \"Yes, there is one werewolf [in the game, and it's in the center]\".\n        *   Or maybe Jacob is lying and is the Werewolf?\n        *   Or maybe Jacob is the Seer and he saw a werewolf *on a player*?\n        *   Let's look at [77] again: \"This was a werewolf. And this was a troublemaker.\" He's pointing. In these transcripts, \"this\" usually refers to the cards in the center when the Seer is talking about the center.\n        *   If Jacob saw a Werewolf in the center, then no player is a Werewolf.\n\n    *   If Jacob is the Seer and saw a Werewolf in the center, then no player is a Werewolf.\n    *   If Jacob is the Werewolf, he's lying about being the Seer and lying about the center cards.\n    *   If Hunter is the Werewolf, Jacob (Seer) would have seen him. But Jacob said he saw the Werewolf in the center.\n    *   Wait, let's re-read [77] again. \"This was a werewolf. And this was a troublemaker.\" If he's pointing at the center, then the Werewolf is not a player.\n    *   If the Werewolf is in the center, the Village wins if no one is voted out.\n    *   The players are all suggesting voting for themselves, which would result in a tie (4 votes for 4 different people), meaning no one dies.\n\n    *   Jacob: Claims Seer, says Werewolf is in the center.\n    *   Zack: Claims Robber.\n    *   Sean: Claims Villager.\n    *   Hunter: Claims Villager.\n    *   If Jacob is honest, there is no Werewolf among the players.\n    *   If Jacob is lying, he could be the Werewolf. But there's no evidence for this other than the possibility of lying.\n    *   The most consistent interpretation of the dialogue is that Jacob is the Seer and found a Werewolf in the center.\n\n    *   \"If no player is a Werewolf and no one dies... Team Village wins.\"\n    *   If Jacob's information is correct, the Werewolf is in the center.\n    *   Therefore, the correct choice is \"No Werewolf\".\n\n    *   Wait, let me double-check [77] one more time. \"This was a werewolf. And this was a troublemaker.\"\n    *   Could \"this\" refer to players? \"This [player] was a werewolf. And this [player] was a troublemaker.\"\n    *   If he was pointing at players, he would be accusing two people. But he only accuses one person later (Hunter) or suggests Hunter is the only possibility.\n    *   Actually, looking at [77] and [78]:\n        Jacob: \"This was a werewolf. And this was a troublemaker... This is a werewolf.\"\n        Hunter: \"So we have a robber. And we have one werewolf.\"\n        Jacob: \"Yep.\"\n    *   It sounds like Jacob is pointing at the center cards. \"This [card] was a werewolf. And this [card] was a troublemaker.\"\n    *   If the Werewolf is in the center, then no player is a Werewolf.\n\n    *   Jacob claims Seer and states he saw a Werewolf and a Troublemaker in the center.\n    *   Zack claims Robber and confirms he stole from a Villager.\n    *   Sean and Hunter claim to be Villagers.\n    *   If Jacob's claim is true, the Werewolf is not among the players.\n    *   The players' consensus to vote for themselves suggests they believe no one needs to be eliminated.\n    *   Therefore, \"No Werewolf\" is the most logical conclusion.",
+  "parsed_output": {
+    "justification": "Jacob claims to be the Seer and states that he saw a Werewolf and a Troublemaker among the center cards. Zack claims to be the Robber and confirms he stole from a Villager, while Sean and Hunter claim to be Villagers. If Jacob's information is accurate, the Werewolf is in the center and not held by any player. The players' final agreement to vote for themselves further suggests a consensus that no player is a Werewolf.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Jacob claims to be the Seer and states that he saw a Werewolf and a Troublemaker among the center cards. Zack claims to be the Robber and confirms he stole from a Villager, while Sean and Hunter claim to be Villagers. If Jacob's information is accurate, the Werewolf is in the center and not held by any player. The players' final agreement to vote for themselves further suggests a consensus that no player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Jacob claims to be the Seer and states that he saw a Werewolf and a Troublemaker among the center cards. Zack claims to be the Robber and confirms he stole from a Villager, while Sean and Hunter claim to be Villagers. If Jacob's information is accurate, the Werewolf is in the center and not held by any player. The players' final agreement to vote for themselves further suggests a consensus that no player is a Werewolf.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Jacob claims to be the Seer and states that he saw a Werewolf and a Troublemaker among the center cards. Zack claims to be the Robber and confirms he stole from a Villager, while Sean and Hunter claim to be Villagers. If Jacob's information is accurate, the Werewolf is in the center and not held by any player. The players' final agreement to vote for themselves further suggests a consensus that no player is a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5152,
+    "output_token_count": 2034,
+    "generation_time_sec": 225.7929072380066,
+    "used_chat_template": true,
+    "input_char_count": 16668,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
