@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   Justin: Claims Troublemaker. Says he switched Mike and James (or Mitchell and James? Let's re-read).\n    *   Mike: Claims Robber. Says he robbed Justin.\n    *   James: Claims Insomniac (starting role). Says he knows he was robbed or trouble-made.\n    *   Mitchell: Claims he started as a Werewolf (later changes this to Tanner).\n\n    *   [35] Justin: \"I was the troublemaker.\"\n    *   [54] Mike: \"I want to know who you switched before I reveal who I robbed.\"\n    *   [81] Mike: \"I did not rob from James.\"\n    *   [82] Justin: \"I switched these two.\" (Pointing to James and Mitchell? Or Mike and James? The transcript says \"these two\", but context suggests James and Mitchell).\n    *   [93] Mike: \"No, I stole from you [Justin].\"\n    *   [94] Justin: \"You stole from me. Can you back up my story?\"\n    *   [95] Mike: \"Yes.\"\n    *   [103] Justin: \"Right? So now you're the insomniac [Mitchell]. So does this story check out for everybody?\" (This implies Justin switched James and Mitchell).\n\n    *   James claims he was the Insomniac [29, 117].\n    *   James says he knows he was robbed or trouble-made [43, 49].\n    *   Mitchell claims he started as a Werewolf [60, 63, 89, 102], then changes it to Tanner [108, 110].\n    *   James eventually says: \"Mitchell is bullshitting and I am the werewolf so...\" [129].\n\n    *   If Justin is the Troublemaker and switched James and Mitchell:\n        *   James (Insomniac) $\\rightarrow$ Mitchell.\n        *   Mitchell (Werewolf/Tanner) $\\rightarrow$ James.\n    *   If Mike is the Robber and robbed Justin:\n        *   Mike $\\rightarrow$ Justin's role.\n        *   Justin $\\rightarrow$ Mike's role.\n    *   Wait, if Mike robbed Justin, and Justin was the Troublemaker, Mike is now the Troublemaker and Justin is whatever Mike was. But Justin is claiming to be the Troublemaker. This is a contradiction unless Mike is lying or Justin is lying.\n    *   Let's re-examine:\n        *   Justin: \"I was the troublemaker.\" [35]\n        *   Mike: \"I stole from you [Justin].\" [93]\n        *   If Mike stole from Justin, Mike is now the Troublemaker. Justin is now whatever Mike was.\n        *   But Justin is acting as the Troublemaker (claiming he switched people).\n        *   This means either:\n            1.  Justin is lying about being the Troublemaker.\n            2.  Mike is lying about robbing Justin.\n            3.  Justin was the Troublemaker, Mike robbed him, and Justin *still* thinks he's the Troublemaker (which is impossible, the Robber knows the new role). Wait, the Robber knows the new role, but the person robbed doesn't know they were robbed unless they are the Insomniac.\n            4.  Wait, the Robber swaps cards. If Mike (Robber) swaps with Justin (Troublemaker), Mike becomes the Troublemaker and Justin becomes the Robber.\n\n    *   James says: \"Mitchell is bullshitting and I am the werewolf so...\" [129].\n    *   This is a very strong admission. Even if he's bluffing as a Tanner, the most direct evidence of a Werewolf is James admitting it.\n    *   Mitchell's claims are erratic (Werewolf $\\rightarrow$ Tanner).\n    *   Justin and Mike are supporting each other's stories.\n\n    *   If James is the Werewolf, voting him out wins for the Village.\n    *   If James is the Tanner, voting him out wins for the Tanner.\n    *   If Mitchell is the Werewolf, voting him out wins for the Village.\n    *   James's admission \"I am the werewolf\" is the most explicit claim of being a werewolf in the transcript.\n\n    *   James claims he was the Insomniac.\n    *   Justin claims he switched James and Mitchell.\n    *   If James was the Insomniac and Mitchell was the Werewolf, and Justin switched them, James is now the Werewolf and Mitchell is now the Insomniac.\n    *   This aligns with James's admission \"I am the werewolf\".\n\n    *   James admitted to being the werewolf [129].\n    *   Justin's claim of switching James and Mitchell supports the idea that James ended up as the werewolf.\n    *   Mitchell's contradictory claims (Werewolf then Tanner) make him less reliable, but James's admission is a direct lead.\n\n    *   Could James be the Tanner? Tanners want to be voted out. Admitting to be a werewolf is a common Tanner strategy.\n    *   However, in the context of the game, the most likely target for the Village to win is the person who admitted to being the werewolf.\n\n    *   Justin: Troublemaker (claims)\n    *   Mike: Robber (claims)\n    *   James: Insomniac $\\rightarrow$ Werewolf (via Troublemaker switch)\n    *   Mitchell: Werewolf $\\rightarrow$ Insomniac (via Troublemaker switch)\n    *   Wait, if Mitchell started as Werewolf and was switched with James (Insomniac), then James is now the Werewolf.\n    *   This makes James the target.\n\n    *   James: \"Mitchell is bullshitting and I am the werewolf so...\" [129]\n    *   This is the most definitive statement in the game.\n\n    *   Justin: Troublemaker\n    *   Mike: Robber\n    *   James: Werewolf (final)\n    *   Mitchell: Insomniac (final)\n    *   This fits the narrative provided by the players.\n\n    *   If James is the Werewolf, voting him out wins.\n    *   If James is the Tanner, voting him out loses (Tanner wins).\n    *   If Mitchell is the Werewolf, voting James out loses.\n    *   But James explicitly said \"I am the werewolf\".\n\n    *   James's admission is the strongest piece of evidence.\n    *   The sequence of events (Justin switching James and Mitchell) supports James ending up as the Werewolf.\n    *   Therefore, James is the most logical choice to vote out.",
+  "parsed_output": {
+    "justification": "James explicitly admits to being the werewolf in the final moments of the discussion ('Mitchell is bullshitting and I am the werewolf so...'). This admission is supported by Justin's claim that he was the Troublemaker and switched James and Mitchell, which would have transferred the werewolf role to James if Mitchell had started as the werewolf. While James could be bluffing as the Tanner, his direct confession makes him the most likely candidate for elimination to ensure a Team Village win.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admits to being the werewolf in the final moments of the discussion ('Mitchell is bullshitting and I am the werewolf so...'). This admission is supported by Justin's claim that he was the Troublemaker and switched James and Mitchell, which would have transferred the werewolf role to James if Mitchell had started as the werewolf. While James could be bluffing as the Tanner, his direct confession makes him the most likely candidate for elimination to ensure a Team Village win.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admits to being the werewolf in the final moments of the discussion ('Mitchell is bullshitting and I am the werewolf so...'). This admission is supported by Justin's claim that he was the Troublemaker and switched James and Mitchell, which would have transferred the werewolf role to James if Mitchell had started as the werewolf. While James could be bluffing as the Tanner, his direct confession makes him the most likely candidate for elimination to ensure a Team Village win.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admits to being the werewolf in the final moments of the discussion ('Mitchell is bullshitting and I am the werewolf so...'). This admission is supported by Justin's claim that he was the Troublemaker and switched James and Mitchell, which would have transferred the werewolf role to James if Mitchell had started as the werewolf. While James could be bluffing as the Tanner, his direct confession makes him the most likely candidate for elimination to ensure a Team Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4099,
+    "output_token_count": 1636,
+    "generation_time_sec": 175.34201335906982,
+    "used_chat_template": true,
+    "input_char_count": 14191,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

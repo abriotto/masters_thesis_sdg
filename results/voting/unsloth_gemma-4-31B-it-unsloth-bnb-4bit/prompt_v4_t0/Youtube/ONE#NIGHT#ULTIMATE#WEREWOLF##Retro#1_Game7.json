@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be Seer, says James had a Werewolf card.\n    *   Alvin: Claims to be Robber.\n    *   James: Admits he had a Werewolf card (at the start of the night).\n    *   Mitchell: Claims to be Drunk (or was swapped with the Robber).\n\n    *   Justin (Seer) -> Looked at James -> Saw Werewolf.\n    *   Alvin (Robber) -> Swapped with someone.\n    *   Mitchell (Drunk) -> Swapped with center.\n    *   James (Werewolf) -> Started as Werewolf.\n\n    *   James explicitly admits: \"My first play was to look at this card, werewolf\" [44] and \"I really put myself up in a poor position here by admitting I'm the werewolf\" [87].\n    *   Justin claims he saw James as a Werewolf [36, 48, 63].\n    *   Alvin and Mitchell are discussing Robber/Drunk roles, but James's admission is the most critical piece of evidence.\n\n    *   James started as a Werewolf.\n    *   Did James's card change?\n        *   Robber (Alvin) swaps cards.\n        *   Troublemaker swaps two other players' cards.\n        *   Drunk swaps with the center.\n    *   If Alvin (Robber) swapped with James, James would now have the Robber card and Alvin would have the Werewolf card.\n    *   If the Troublemaker swapped James with someone else, James would have a different card.\n    *   However, James admits he *started* as a Werewolf.\n    *   Justin (Seer) saw James as a Werewolf. The Seer acts *before* the Robber and Troublemaker. So Justin's observation is consistent with James starting as a Werewolf.\n    *   James's admission \"I really put myself up in a poor position here by admitting I'm the werewolf\" [87] strongly suggests he is still a Werewolf or at least was one. Even if he was swapped, the goal of the Village is to eliminate a Werewolf. If James is the Werewolf, voting him out wins. If James was swapped by the Robber (Alvin), then Alvin is now the Werewolf.\n    *   Wait, let's re-read Alvin's claim. Alvin says \"I was the robber\" [27]. He doesn't say who he swapped with.\n    *   Mitchell says \"I switched it\" [33] regarding the Robber card, but he also says \"I thought I was [the robber]\" [30] and Alvin says \"Mitchell was the drunk\" [24]. This is confusing.\n    *   Let's look at the roles again:\n        *   Justin: Seer (claims)\n        *   Alvin: Robber (claims)\n        *   Mitchell: Drunk (claims/suggested)\n        *   James: Werewolf (admits)\n\n    *   If James is the Werewolf and wasn't swapped, voting James wins.\n    *   If James was swapped by the Robber (Alvin), then Alvin is the Werewolf.\n    *   If James was swapped by the Troublemaker, someone else is the Werewolf.\n    *   However, James's admission is very direct. He says \"I'm telling you- That's a werewolf card\" [75] and \"admitting I'm the werewolf\" [87].\n    *   In One Night Ultimate Werewolf, if a player admits to being the Werewolf, they are usually the target unless they are the Tanner. But the Tanner wants to be voted out. James's behavior (trying to divert the vote after admitting it [91]) is more consistent with a Werewolf who messed up than a Tanner who wants to die.\n\n    *   Justin (Seer) saw James (Werewolf).\n    *   James admits he is/was the Werewolf.\n    *   Alvin and Mitchell's confusion about Robber/Drunk doesn't outweigh James's admission.\n    *   Even if James was swapped, the most likely candidate for the Werewolf based on the transcript is James.\n\n    *   Justin: Seer.\n    *   Alvin: Robber.\n    *   Mitchell: Drunk.\n    *   James: Werewolf.\n    *   If this is the setup, voting James wins.\n\n    *   Could James be the Tanner? Tanners want to be voted out. James admitted he was the werewolf but then tried to say \"we should kill [the drunk]\" [37] and \"I was just trying to figure out who would possibly take that card and then kill them instead of me\" [91]. This is the opposite of Tanner behavior.\n    *   Could James be a Werewolf who was swapped? If Alvin (Robber) swapped with James, Alvin is now the Werewolf. But Alvin is not admitting to it, and James is.\n\n    *   James's admission is the strongest evidence.\n    *   Justin's claim as Seer supports this.\n    *   The other players (Alvin, Mitchell) are not providing strong counter-evidence that James is *not* the Werewolf.\n\n    *   Justification: James explicitly admitted to having the Werewolf card (\"admitting I'm the werewolf\"). Justin, claiming to be the Seer, corroborated this by stating he saw James's card as a Werewolf. While there were discussions about the Robber and Drunk roles, James's own admission is the most direct evidence of his identity.\n    *   Chosen vote: James.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to being the Werewolf multiple times, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf.' This admission is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. Although there was some confusion regarding the Robber and Drunk roles between Alvin and Mitchell, James's own confession is the most definitive piece of evidence.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly admitted to being the Werewolf multiple times, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf.' This admission is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. Although there was some confusion regarding the Robber and Drunk roles between Alvin and Mitchell, James's own confession is the most definitive piece of evidence.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly admitted to being the Werewolf multiple times, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf.' This admission is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. Although there was some confusion regarding the Robber and Drunk roles between Alvin and Mitchell, James's own confession is the most definitive piece of evidence.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to being the Werewolf multiple times, stating, 'I really put myself up in a poor position here by admitting I'm the werewolf.' This admission is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. Although there was some confusion regarding the Robber and Drunk roles between Alvin and Mitchell, James's own confession is the most definitive piece of evidence."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing",
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3486,
+    "output_token_count": 1369,
+    "generation_time_sec": 146.01930403709412,
+    "used_chat_template": true,
+    "input_char_count": 12630,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

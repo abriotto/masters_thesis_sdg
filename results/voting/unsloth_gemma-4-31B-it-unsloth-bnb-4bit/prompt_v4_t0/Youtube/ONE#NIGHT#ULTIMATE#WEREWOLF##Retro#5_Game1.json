@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Paul, Mitchell.\n    *   Roles involved (based on announcer): Werewolf, Seer, Robber, Troublemaker.\n    *   Night Actions:\n        1.  Werewolves wake up.\n        2.  Seer wakes up.\n        3.  Robber swaps and views.\n        4.  Troublemaker swaps two others.\n\n    *   Mitchell: Claims to be the Seer and saw two werewolves (or is a werewolf who saw a seer). This is a very strange claim. If he's the Seer, he can only look at *one* other player's card or *two* center cards. He cannot see \"two werewolves\" unless he looked at the center and saw two werewolf cards.\n    *   Justin: Claims to be the Troublemaker and says he switched Paul and Mitchell.\n    *   Paul: Claims he wasn't a werewolf (at the start) and has a \"pretty good idea\" of his current card.\n\n    *   Mitchell's claim: \"I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer one or the other.\"\n        *   If Mitchell is the Seer: He could have looked at the center and seen two werewolf cards. This would mean no one is a werewolf.\n        *   If Mitchell is a Werewolf: He might be lying to confuse the group.\n    *   Justin's claim: \"I might be [the Troublemaker]... I switched you [Paul and Mitchell].\"\n        *   If Justin is the Troublemaker: He swapped Paul and Mitchell.\n    *   Paul's claim: \"I wasn't a werewolf, I'll tell you that much.\"\n\n    *   Scenario A: Mitchell is the Seer and saw two werewolves in the center.\n        *   Center: Werewolf, Werewolf, [Something].\n        *   Players: Justin (Troublemaker), Paul (Villager/Other), Mitchell (Seer).\n        *   Result: No Werewolf among players. Vote \"No Werewolf\".\n    *   Scenario B: Mitchell is a Werewolf.\n        *   He claims to be the Seer to divert attention.\n        *   Justin (Troublemaker) swapped Paul and Mitchell.\n        *   If Mitchell was the Werewolf, Paul is now the Werewolf.\n        *   Result: Paul is the Werewolf.\n    *   Scenario C: Paul is the Werewolf.\n        *   Justin (Troublemaker) swapped Paul and Mitchell.\n        *   If Paul was the Werewolf, Mitchell is now the Werewolf.\n        *   Result: Mitchell is the Werewolf.\n    *   Scenario D: Justin is the Werewolf.\n        *   He's lying about being the Troublemaker.\n        *   Result: Justin is the Werewolf.\n\n    *   Mitchell's claim is highly suspicious. \"I saw two werewolves\" as a Seer is only possible if he looked at the center. If he looked at the center, there are no werewolves among the players.\n    *   However, Mitchell also says \"or I'm a werewolf and I just saw a seer\". This is a bizarre admission.\n    *   Justin claims he swapped Paul and Mitchell.\n    *   If Justin is the Troublemaker and Mitchell was the Werewolf, Paul is now the Werewolf.\n    *   If Justin is the Troublemaker and Paul was the Werewolf, Mitchell is now the Werewolf.\n    *   Paul says \"I wasn't a werewolf\" (starting role). If Paul is telling the truth and Justin swapped them, Mitchell is not the werewolf either (unless Mitchell started as one).\n    *   Wait, let's re-read Mitchell: \"I am the seer and I saw two werewolves or I'm a werewolf and I just saw a seer\".\n    *   If Mitchell is the Seer and saw two werewolves in the center, then no one is a werewolf.\n    *   If Mitchell is a Werewolf, he's trying to confuse.\n    *   Justin says he swapped Paul and Mitchell.\n    *   If Justin is the Troublemaker, and Mitchell was the Werewolf, Paul is now the Werewolf.\n    *   If Justin is the Troublemaker, and Paul was the Werewolf, Mitchell is now the Werewolf.\n    *   If Justin is the Werewolf, he's lying about being the Troublemaker.\n\n    *   Mitchell's claim \"I saw two werewolves\" (as Seer) implies the Werewolf cards are in the center.\n    *   If the Werewolf cards are in the center, Team Village wins by voting \"No Werewolf\".\n    *   Is there any evidence that Mitchell is lying? He's acting very erratic.\n    *   Paul says \"I wasn't a werewolf\".\n    *   Justin says he swapped them.\n    *   If Paul was not a werewolf and Mitchell was not a werewolf, and Justin is the Troublemaker, then no one is a werewolf.\n    *   If Mitchell is the Seer and saw two werewolves in the center, then no one is a werewolf.\n\n    *   If Mitchell is the Seer and saw two werewolves in the center, then no one is a werewolf.\n    *   If Mitchell is a Werewolf, he's lying.\n    *   If Justin is the Troublemaker and swapped Paul and Mitchell, and Paul says he wasn't a werewolf, then Mitchell must have been the werewolf for Paul to be one now, or vice versa.\n    *   But Mitchell's claim \"I saw two werewolves\" is the key. In a 3-player game, if the Seer sees two werewolves in the center, then there are no werewolves among the players.\n    *   Let's check the role pool. 3 players + 3 center cards = 6 cards.\n    *   If there are 2 werewolves in the center, only 1 werewolf card (at most) could be among the players. But the rules say \"up to two Werewolves\". If two are in the center, there could be zero or one more? No, usually the number of werewolves is fixed for the game setup.\n    *   Wait, the rules say \"The number of candidate roles is always equal to the number of players plus 3.\" For 3 players, that's 6 roles.\n    *   If the roles were [Werewolf, Werewolf, Seer, Troublemaker, Villager, Tanner], and the two Werewolves are in the center, then no one is a werewolf.\n\n    *   Mitchell's claim is the most specific piece of information. He claims to be the Seer and saw two werewolves (which must be in the center).\n    *   If we believe Mitchell, the answer is \"No Werewolf\".\n    *   If we don't believe Mitchell, he's likely the Werewolf (or the Tanner).\n    *   Justin's claim to be the Troublemaker and swap Paul/Mitchell adds complexity. If Justin is the Troublemaker and Mitchell was the Werewolf, Paul is now the Werewolf.\n    *   However, the players themselves decided to \"vote to the left\" (meaning no one gets a majority) to ensure no one dies, which is the winning condition for Team Village if no Werewolf is present.\n    *   The prompt asks me to choose the player to vote out to make Team Village win.\n    *   If no Werewolf is present, \"No Werewolf\" is the correct choice.\n    *   Given Mitchell's claim (Seer seeing two werewolves in the center) and the players' consensus to not kill anyone, \"No Werewolf\" is the most logical conclusion based on the provided transcript.\n\n    *   Mitchell claims to be the Seer and saw two werewolves (implying they are in the center).\n    *   Justin claims to be the Troublemaker and swapped Paul and Mitchell.\n    *   Paul claims he was not a werewolf.\n    *   If Mitchell's Seer claim is true, no player is a werewolf.\n    *   If Mitchell is lying and is a werewolf, and Justin swapped him with Paul, then Paul is the werewolf.\n    *   But the most direct interpretation of \"Seer saw two werewolves\" in a small game is that the werewolves are in the center.\n\n    *   Wait, Mitchell said: \"I am the seer and I saw two werewolves OR I'm a werewolf and I just saw a seer\".\n    *   This is a very strange way to talk. If he's a werewolf, he's admitting it? No, he's playing a game.\n    *   If he's the Seer and saw two werewolves in the center, then no one is a werewolf.\n    *   If he's a werewolf and saw a seer, he's just confusing the other players.\n    *   But look at the end: \"I say we go to a vote and I'll vote to the left... I'm with you on that... I'm going to vote to the left.\"\n    *   They are all agreeing to not kill anyone. This suggests they believe no one is a werewolf.\n\n    *   If Mitchell is the Seer and saw two werewolves in the center, then no one is a werewolf.\n    *   If Mitchell is a werewolf, he's trying to trick them into not voting.\n    *   If Justin is the Troublemaker and swapped Paul and Mitchell, and Paul was not a werewolf, then Mitchell must have been the werewolf for Paul to be one now.\n    *   But if Mitchell is the werewolf, why would he say \"I'm a werewolf and I just saw a seer\"? That's basically outing himself.\n    *   The most consistent path to a Village win, given the players' own conclusion, is that no werewolf is present.\n\n    *   Justification: Mitchell claims to be the Seer and saw two werewolves, which implies the werewolf cards are in the center. Paul denies being a werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. Since the players collectively agree to a voting pattern where no one dies, it suggests they believe no werewolf is present among them.\n    *   Chosen vote: No Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves, which, given the game's constraints, implies the werewolf cards are in the center. Paul denies being a werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. The players collectively agree to a voting strategy where no one dies, indicating a shared belief that no werewolf is present among the players.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves, which, given the game's constraints, implies the werewolf cards are in the center. Paul denies being a werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. The players collectively agree to a voting strategy where no one dies, indicating a shared belief that no werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw two werewolves, which, given the game's constraints, implies the werewolf cards are in the center. Paul denies being a werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. The players collectively agree to a voting strategy where no one dies, indicating a shared belief that no werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Mitchell claims to be the Seer and states he saw two werewolves, which, given the game's constraints, implies the werewolf cards are in the center. Paul denies being a werewolf, and Justin claims to be the Troublemaker who swapped Paul and Mitchell. The players collectively agree to a voting strategy where no one dies, indicating a shared belief that no werewolf is present among the players."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3120,
+    "output_token_count": 2371,
+    "generation_time_sec": 250.30787801742554,
+    "used_chat_template": true,
+    "input_char_count": 11553,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

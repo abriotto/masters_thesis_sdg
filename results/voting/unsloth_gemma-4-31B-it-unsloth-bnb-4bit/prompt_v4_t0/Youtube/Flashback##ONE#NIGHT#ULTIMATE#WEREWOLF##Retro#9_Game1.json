@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   Paul: Claims Villager.\n    *   Laura: Claims Villager.\n    *   Mitchell: Claims Insomniac.\n    *   James: Claims Robber. Says he stole from Paul (who was a Villager).\n    *   Justin: Claims Seer. Says he saw James as the Robber.\n\n    *   James (Robber) stole from Paul (Villager).\n    *   Justin (Seer) saw James (Robber).\n    *   Mitchell (Insomniac) woke up as Insomniac.\n    *   Paul (Villager) and Laura (Villager) have no special info.\n\n    *   If James is the Robber and stole from Paul (Villager), James is now a Villager.\n    *   If Justin is the Seer and saw James as the Robber, Justin is a Villager.\n    *   If Mitchell is the Insomniac and woke up as Insomniac, Mitchell is a Villager.\n    *   If Paul was a Villager and James stole his card, Paul is now the Robber (Wait, no. Robber steals the card. James takes Paul's card. Paul gets James's card).\n    *   Wait, let's re-read the Robber rule: \"The Robber swaps their card with another player's card, then looks at their new card.\"\n    *   So if James was the Robber and stole from Paul:\n        *   James now has Paul's card (Villager).\n        *   Paul now has James's card (Robber).\n    *   Wait, James says \"I was [the Robber]... and I stole [from Paul]... and I was disappointed... witness protection.\" This implies he stole a Villager card.\n    *   Justin (Seer) says \"I saw you as the robber.\" This means Justin saw James's *starting* role.\n\n    *   If everyone is telling the truth:\n        *   Justin: Seer (Village)\n        *   James: Robber (Village) -> now Villager\n        *   Paul: Villager (Village) -> now Robber\n        *   Mitchell: Insomniac (Village)\n        *   Laura: Villager (Village)\n    *   If this is true, there are no Werewolves among the players. All Werewolf cards would be in the center.\n\n    *   Paul and James are suspicious of Mitchell.\n    *   Paul thinks Mitchell claimed Insomniac too quickly, suggesting he might be a Werewolf who saw the Insomniac card in the center.\n    *   Justin defends Mitchell.\n    *   James is pushing for Mitchell.\n\n    *   If Mitchell is a Werewolf, he's lying about being the Insomniac.\n    *   If James is a Werewolf, he's lying about being the Robber. But Justin (Seer) confirmed him. If Justin is also a Werewolf, they could be colluding.\n    *   If Justin is a Werewolf, he's lying about being the Seer.\n    *   If Laura is a Werewolf, she's just staying quiet.\n\n    *   Justin (Seer) confirms James (Robber).\n    *   James (Robber) confirms Paul (Villager).\n    *   Mitchell (Insomniac) claims he woke up as Insomniac.\n    *   If these three are telling the truth, the only remaining person is Laura.\n    *   But wait, if Justin, James, and Mitchell are all telling the truth, then Paul and Laura are the only ones left. Paul claimed Villager. Laura claimed Villager.\n    *   If all these claims are true, there are no Werewolves.\n\n    *   Paul's logic: Mitchell claimed Insomniac too fast.\n    *   Is there any evidence Mitchell is lying? Not really, other than \"he said it too fast.\"\n    *   Is there any evidence anyone else is lying?\n    *   If James was the Robber and stole from Paul, and Justin saw James as the Robber, that's a very consistent story.\n    *   If Mitchell is the Insomniac, he's also consistent.\n    *   If Laura is the Werewolf, she hasn't said anything to defend herself or accuse others strongly.\n\n    *   If Mitchell is the Werewolf, he's lying about being the Insomniac.\n    *   If Laura is the Werewolf, she's just playing it safe.\n    *   If Justin and James are Werewolves, they are colluding (Justin confirming James). But the Seer wakes up *before* the Robber. If Justin was the Seer, he would have seen James's card *before* James swapped it. This matches the transcript.\n\n    *   Wait, let's look at the roles again.\n    *   Justin: Seer\n    *   James: Robber\n    *   Mitchell: Insomniac\n    *   Paul: Villager\n    *   Laura: Villager\n    *   If these are the roles, no one is a Werewolf.\n\n    *   Is it possible Mitchell is the Werewolf? Paul and James think so.\n    *   Is it possible Laura is the Werewolf? She's the only one who hasn't made a claim other than \"I was villager.\"\n    *   Is it possible Justin and James are Werewolves? Justin's confirmation of James is strong, but they could be lying. However, the Seer/Robber interaction is a common way to establish trust.\n\n    *   If I have to pick one person to vote out to make Team Village win, I need to find the Werewolf.\n    *   If I believe the claims:\n        *   Justin (Seer)\n        *   James (Robber)\n        *   Mitchell (Insomniac)\n        *   Paul (Villager)\n        *   Laura (Villager)\n    *   This means \"No Werewolf\".\n\n    *   Let's re-evaluate Mitchell. Paul says: \"I have some suspicions about Mitchell because he gave away that he was the insomniac so fast.\"\n    *   In One Night Ultimate Werewolf, claiming a role immediately can be a sign of a Werewolf trying to establish a fake identity.\n    *   However, the Insomniac is a very weak role (they just know they are the Insomniac).\n    *   If Mitchell is the Werewolf, he's the most likely target based on the discussion.\n    *   If Laura is the Werewolf, she's the \"quiet\" one.\n\n    *   Let's look at the claims again.\n    *   Justin: Seer.\n    *   James: Robber.\n    *   Mitchell: Insomniac.\n    *   Paul: Villager.\n    *   Laura: Villager.\n    *   If these are all true, no one is a Werewolf.\n    *   If one is lying, who is it?\n    *   If Mitchell is lying, he's the Werewolf.\n    *   If Laura is lying, she's the Werewolf.\n    *   If Justin/James are lying, they are the Werewolves.\n\n    *   Wait, look at the transcript again.\n    *   [107] Justin: \"I don't know what to say. I was the Insomniac, I woke up the insomniac. Getting a lot of heat.\"\n    *   Wait! Justin just claimed he was the Insomniac?\n    *   Let's re-read [46]: \"Justin: I know as a seer. I saw you as the robber.\"\n    *   And [107]: \"Justin: I don't know what to say. I was the Insomniac, I woke up the insomniac.\"\n    *   Justin changed his claim! He first claimed Seer, then claimed Insomniac.\n    *   This is a huge red flag. A player cannot be both the Seer and the Insomniac.\n\n    *   [46] Justin: \"I know as a seer. I saw you as the robber.\"\n    *   [107] Justin: \"I don't know what to say. I was the Insomniac, I woke up the insomniac.\"\n    *   Why would Justin do this?\n    *   Maybe he's confused? Or maybe he's the Werewolf and forgot which lie he told?\n    *   Or maybe he's the Doppelganger? (Doppelganger copies a role). But he can't copy two roles.\n    *   Or maybe he's the Drunk? (Drunk swaps with the center).\n    *   Wait, let's look at the context of [107].\n    *   [106] Paul: \"I'm voting for Mitchell.\"\n    *   [107] Justin: \"I don't know what to say. I was the Insomniac, I woke up the insomniac. Getting a lot of heat.\"\n    *   It seems Justin is trying to defend Mitchell by claiming *he* (Justin) was the Insomniac, or he's just completely lost.\n    *   Actually, looking at [107] again: \"I don't know what to say. I was the Insomniac, I woke up the insomniac.\"\n    *   This is a direct contradiction of his earlier claim [46] \"I know as a seer.\"\n\n    *   If Justin is lying about his role (claiming both Seer and Insomniac), he is almost certainly the Werewolf.\n    *   He tried to validate James (the Robber) to create an alliance.\n    *   He tried to protect Mitchell.\n    *   The contradiction in his own claims is the strongest piece of evidence in the transcript.\n\n    *   Justin claimed Seer at [46].\n    *   Justin claimed Insomniac at [107].\n    *   This contradiction is a clear indicator of deception or extreme confusion, making him the most likely Werewolf.\n\n    *   Could Justin be the Doppelganger? He could have copied the Seer, but he still can't be the Insomniac.\n    *   Could he be the Drunk? He could have swapped, but he wouldn't know he was the Insomniac unless he was the Insomniac.\n    *   The most likely explanation for claiming two different roles is that he is the Werewolf and is lying.\n\n    *   Justin: Claimed Seer, then claimed Insomniac. (Contradiction)\n    *   James: Claimed Robber. (Confirmed by Justin, but Justin is suspect)\n    *   Mitchell: Claimed Insomniac.\n    *   Paul: Claimed Villager.\n    *   Laura: Claimed Villager.\n    *   If Justin is the Werewolf, he's the one to vote out.\n\n    *   Wait, let me re-read [107] one more time.\n    *   \"Justin: I don't know what to say. I was the Insomniac, I woke up the insomniac. Getting a lot of heat.\"\n    *   Is it possible he's talking about Mitchell? \"I [meaning Mitchell] was the Insomniac\"? No, he says \"I was\".\n    *   Is it possible he's just joking? \"I don't know what to say. I was the Insomniac...\"\n    *   Even if he's joking, the contradiction is there. In a game of deduction, the person who contradicts their own role claim is the prime suspect.\n\n    *   Justin's contradiction: Seer [46] vs Insomniac [107].\n    *   This makes him the most likely Werewolf.\n    *   Voting for Justin is the best move for Team Village.\n\n    *   Wait, let me check if anyone else is more suspicious.\n    *   Mitchell claimed Insomniac.\n    *   James claimed Robber.\n    *   Paul and Laura claimed Villager.\n    *   If Justin is the Werewolf, he's the only one who lied (or messed up).\n    *   If Mitchell is the Werewolf, he's lying about being the Insomniac.\n    *   If James is the Werewolf, he's lying about being the Robber.\n    *   But Justin's contradiction is the most blatant error.\n\n    *   Wait, let me re-read the transcript one more time. Is there any other explanation for [107]?\n    *   [104] Justin: \"I'm not killing Mitchell.\"\n    *   [105] James: \"Because you guys both- you guys are both werewolves and you're trying to get his back.\"\n    *   [106] Paul: \"...I'm voting for Mitchell.\"\n    *   [107] Justin: \"I don't know what to say. I was the Insomniac, I woke up the insomniac. Getting a lot of heat.\"\n    *   It really looks like Justin is just confused or lying. He's defending Mitchell and suddenly claims to be the Insomniac, despite having claimed to be the Seer earlier.\n\n    *   Wait, let me look at the player list: Justin, Laura, Paul, James, Mitchell.\n    *   The contradiction is definitely Justin.\n\n    *   Justification: Justin claimed to be the Seer early in the discussion (confirming James as the Robber), but later claimed to be the Insomniac when defending Mitchell. This contradiction in role claims is a strong indicator that he is lying and is therefore the Werewolf.\n    *   Chosen vote: Justin.",
+  "parsed_output": {
+    "justification": "Justin provides two contradictory role claims during the discussion. At [46], he claims to be the Seer to confirm James's role as the Robber, but at [107], he claims he was the Insomniac while defending Mitchell. This inconsistency is a strong indicator of deception, making Justin the most likely Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin provides two contradictory role claims during the discussion. At [46], he claims to be the Seer to confirm James's role as the Robber, but at [107], he claims he was the Insomniac while defending Mitchell. This inconsistency is a strong indicator of deception, making Justin the most likely Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin provides two contradictory role claims during the discussion. At [46], he claims to be the Seer to confirm James's role as the Robber, but at [107], he claims he was the Insomniac while defending Mitchell. This inconsistency is a strong indicator of deception, making Justin the most likely Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin provides two contradictory role claims during the discussion. At [46], he claims to be the Seer to confirm James's role as the Robber, but at [107], he claims he was the Insomniac while defending Mitchell. This inconsistency is a strong indicator of deception, making Justin the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4069,
+    "output_token_count": 3153,
+    "generation_time_sec": 348.0222923755646,
+    "used_chat_template": true,
+    "input_char_count": 14332,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

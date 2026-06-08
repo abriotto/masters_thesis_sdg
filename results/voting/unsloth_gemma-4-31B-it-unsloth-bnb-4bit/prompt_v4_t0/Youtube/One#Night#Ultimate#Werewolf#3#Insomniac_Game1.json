@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#3#Insomniac",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#3#Insomniac_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Audrey: Claims Robber, took Dylan's card. Dylan was Seer. (Audrey is now Seer, Dylan is now Robber).\n    *   Dylan: Confirms he saw Audrey was a Robber (Wait, if Audrey took Dylan's card, Dylan is now the Robber. If Dylan was the Seer, he looked at Audrey's card *before* the Robber acted? No, Seer wakes up before Robber. So Dylan (Seer) looked at Audrey (Robber). Then Audrey (Robber) took Dylan's (Seer) card. So Audrey is now Seer, Dylan is now Robber).\n    *   Dan: Claims Troublemaker. Switched two cards.\n    *   Ed: Claims Insomniac. Woke up as Mason. (This implies Dan switched Ed's card with someone else's).\n    *   Katie: Claims Mason. Says she was \"all by herself\" (meaning only one Mason was awake, so the other Mason card is in the center). Later says she is now the Insomniac. (This implies Dan switched Katie's card with Ed's).\n    *   Brett: Claims Drunk. Switched his card with one from the middle.\n\n    *   Starting Roles (claimed):\n        *   Audrey: Robber\n        *   Dylan: Seer\n        *   Dan: Troublemaker\n        *   Ed: Insomniac\n        *   Katie: Mason\n        *   Brett: Drunk\n    *   Night Actions (claimed):\n        *   Seer (Dylan) looks at Audrey (Robber).\n        *   Robber (Audrey) takes Dylan's (Seer) card.\n        *   Troublemaker (Dan) swaps Ed (Insomniac) and Katie (Mason).\n        *   Drunk (Brett) swaps his card with the center.\n        *   Insomniac (Ed) wakes up and sees he is now a Mason.\n\n    *   Final Roles (claimed):\n        *   Audrey: Seer\n        *   Dylan: Robber\n        *   Dan: Troublemaker\n        *   Ed: Mason\n        *   Katie: Insomniac\n        *   Brett: ? (Drunk swapped with center)\n\n    *   If all claims are true:\n        *   Audrey: Seer\n        *   Dylan: Robber\n        *   Dan: Troublemaker\n        *   Ed: Mason\n        *   Katie: Insomniac\n        *   Brett: Whatever was in the center.\n    *   Wait, if Brett was the Drunk and swapped with the center, he could have swapped for a Werewolf, a Villager, or the other Mason.\n    *   If Brett is the only one left without a confirmed \"Village\" role, he is the prime suspect.\n\n    *   Werewolves: 1 or 2.\n    *   Minion: 0 or 1.\n    *   Tanner: 0 or 1.\n    *   The roles claimed are: Seer, Robber, Troublemaker, Mason, Insomniac, Drunk.\n    *   If these 6 roles were in play, and Brett swapped his Drunk card for a center card, the center cards were: [Werewolf, Werewolf, Tanner] or [Werewolf, Minion, Tanner] or [Werewolf, Villager, Tanner], etc.\n    *   If Brett swapped for a Werewolf, he is the Werewolf.\n    *   If Brett swapped for a Villager/Tanner/Mason, there might be Werewolves in the center.\n\n    *   Could Dan, Ed, Katie, Audrey, or Dylan be lying?\n    *   Audrey and Dylan's stories match.\n    *   Dan, Ed, and Katie's stories match (Troublemaker swapped Insomniac and Mason).\n    *   Brett is the outlier. He claims Drunk.\n    *   If Brett is a Werewolf, he would claim a role to avoid being voted out. Claiming Drunk is a way to explain why his role might have changed or why he doesn't have a \"confirmed\" role.\n    *   However, if Brett is the Tanner, he *wants* to be voted out.\n    *   If Brett is a Werewolf, he wants to survive.\n\n    *   The group is leaning heavily toward Brett.\n    *   Brett's defense is \"if you kill me and I'm the Mason, we lose.\" But Katie already claimed she was the Mason (starting role), and Ed woke up as the Mason. If there are two Masons, they both wake up. Katie said she was \"all by herself,\" meaning the other Mason card was in the center. If the other Mason card was in the center, Brett could have swapped into it, but it's more likely he's the Werewolf or the Tanner.\n    *   Wait, if Katie was the only Mason awake, the other Mason card is in the center. If Brett (Drunk) swapped with the center, he could now be the Mason.\n    *   But if Brett is the Werewolf, he's the only one who hasn't been \"verified\" by another player's claim.\n\n    *   Audrey (Robber -> Seer)\n    *   Dylan (Seer -> Robber)\n    *   Dan (Troublemaker)\n    *   Ed (Insomniac -> Mason)\n    *   Katie (Mason -> Insomniac)\n    *   Brett (Drunk -> ?)\n    *   All these roles are Village-aligned. If these claims are true, the only way a Werewolf is in the game is if Brett swapped into one or if someone is lying.\n    *   If Brett is lying and is actually a Werewolf, he's the target.\n    *   If Brett is telling the truth and swapped into a Werewolf, he's the target.\n    *   If Brett is telling the truth and swapped into a Villager/Mason/Tanner, then the Werewolves are in the center (\"No Werewolf\").\n    *   However, in these games, usually, the person with the least supporting evidence is the target. Brett is the only one whose role isn't corroborated by anyone else's action.\n\n    *   If Brett is the Tanner, voting him out makes the Tanner win.\n    *   If Brett is a Werewolf, voting him out makes the Village win.\n    *   If Brett is a Villager/Mason, voting him out makes the Werewolves win (if any are in the center) or the Village lose.\n    *   Given the claims, Brett is the most suspicious.\n\n    *   Audrey: Robber (took Dylan's Seer card)\n    *   Dylan: Seer (saw Audrey was Robber)\n    *   Dan: Troublemaker (swapped Ed and Katie)\n    *   Ed: Insomniac (woke up as Mason)\n    *   Katie: Mason (started as Mason, now Insomniac)\n    *   Brett: Drunk (swapped with center)\n    *   This accounts for 6 roles. The roles used were: Robber, Seer, Troublemaker, Insomniac, Mason, Drunk.\n    *   The remaining 3 cards (center) would be the ones not used.\n    *   If the game had 2 Werewolves and 1 Tanner, and those were the 3 center cards, then Brett (Drunk) could have swapped his Drunk card for one of those.\n    *   If Brett swapped for a Werewolf, he is the Werewolf.\n    *   If Brett swapped for the Tanner, he is the Tanner.\n    *   If Brett swapped for a Villager (if one was in the center), he is a Villager.\n    *   The most likely scenario for a \"win\" for the Village is to vote out the person who is most likely to be the Werewolf. Brett is the only one whose role is not corroborated.\n\n    *   Wait, let's re-read: \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    *   Is it possible there are no werewolves?\n    *   If Brett swapped for a Villager/Tanner/Mason, and the Werewolves are in the center, then \"No Werewolf\" is the answer.\n    *   But usually, the prompt asks to find the most likely Werewolf. Brett is the only one who could be a Werewolf based on the claims.\n\n    *   Audrey and Dylan corroborate each other.\n    *   Dan, Ed, and Katie corroborate each other.\n    *   Brett is alone.\n    *   Therefore, Brett is the most likely candidate for Werewolf.\n\n    *   Wait, let's check the Mason claim again.\n    *   Katie: \"There was only one Mason. So there's another Mason card in the middle. I was all by myself.\"\n    *   If there's another Mason card in the middle, and Brett (Drunk) swapped with the middle, Brett could be the other Mason.\n    *   If Brett is the other Mason, and the Werewolves are in the center, then \"No Werewolf\" is the correct answer.\n    *   However, the players in the game are voting for Brett. The prompt asks me to choose the player to vote out to make Team Village win.\n    *   If Brett is a Werewolf, voting him out wins.\n    *   If Brett is not a Werewolf, and no one else is, \"No Werewolf\" wins.\n    *   If Brett is not a Werewolf, but someone else is (meaning they are lying), then voting Brett loses.\n    *   But based on the transcript, the most logical target is Brett.\n\n    *   Audrey: Robber -> Seer\n    *   Dylan: Seer -> Robber\n    *   Dan: Troublemaker\n    *   Ed: Insomniac -> Mason\n    *   Katie: Mason -> Insomniac\n    *   Brett: Drunk -> ?\n    *   If these are all true, the only way a Werewolf is in the game is if Brett swapped into one. If Brett didn't swap into one, then all Werewolves are in the center.\n    *   If Brett is a Werewolf, voting him out wins.\n    *   If Brett is not a Werewolf, and no one else is, \"No Werewolf\" wins.\n    *   Is there any evidence that someone else is lying?\n    *   Dan, Ed, and Katie's story is very specific. Dan says he swapped Ed and Katie. Ed says he woke up as a Mason. Katie says she started as a Mason. This is a tight loop of corroboration.\n    *   Audrey and Dylan's story is also a tight loop. Audrey says she took Dylan's card. Dylan says he saw Audrey was a Robber.\n    *   Brett is the only one without a corroborating partner.\n\n    *   If Brett is the Werewolf, voting him out wins.\n    *   If Brett is the Tanner, voting him out makes the Tanner win.\n    *   If Brett is a Villager/Mason, and there are Werewolves in the center, voting him out makes the Werewolves win.\n    *   If Brett is a Villager/Mason, and there are no Werewolves in the game, voting him out makes the Village lose (because no one should die).\n    *   Wait, the rules say: \"Team Village wins: If at least one Werewolf dies. If no player is a Werewolf and no one dies.\"\n    *   So if Brett is not a Werewolf, the only way for the Village to win is to vote \"No Werewolf\".\n    *   But if Brett *is* a Werewolf, the only way to win is to vote Brett.\n    *   Which is more likely? In these games, the \"odd man out\" is usually the Werewolf.\n\n    *   Brett: \"I was the drunk. I switched one from the middle.\"\n    *   If he's lying, he could be the Werewolf.\n    *   If he's telling the truth, he could have swapped into a Werewolf.\n    *   Either way, he's the most likely Werewolf.\n\n    *   Justification: Audrey and Dylan's claims corroborate each other (Robber/Seer swap). Dan, Ed, and Katie's claims corroborate each other (Troublemaker swapped Insomniac and Mason). Brett is the only player whose role is not corroborated by any other player's actions or claims, making him the most likely Werewolf or the person who swapped into the Werewolf role.\n    *   Chosen vote: Brett.",
+  "parsed_output": {
+    "justification": "Audrey and Dylan's claims corroborate each other regarding a Robber/Seer swap. Similarly, Dan, Ed, and Katie's claims form a consistent narrative where the Troublemaker swapped the Insomniac and the Mason. Brett is the only player whose role is not corroborated by any other player's actions or claims, making him the most likely candidate for the Werewolf or the player who swapped into the Werewolf role via the Drunk ability.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Audrey and Dylan's claims corroborate each other regarding a Robber/Seer swap. Similarly, Dan, Ed, and Katie's claims form a consistent narrative where the Troublemaker swapped the Insomniac and the Mason. Brett is the only player whose role is not corroborated by any other player's actions or claims, making him the most likely candidate for the Werewolf or the player who swapped into the Werewolf role via the Drunk ability.\",\n  \"chosen_vote\": \"Brett\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Audrey and Dylan's claims corroborate each other regarding a Robber/Seer swap. Similarly, Dan, Ed, and Katie's claims form a consistent narrative where the Troublemaker swapped the Insomniac and the Mason. Brett is the only player whose role is not corroborated by any other player's actions or claims, making him the most likely candidate for the Werewolf or the player who swapped into the Werewolf role via the Drunk ability.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "Audrey and Dylan's claims corroborate each other regarding a Robber/Seer swap. Similarly, Dan, Ed, and Katie's claims form a consistent narrative where the Troublemaker swapped the Insomniac and the Mason. Brett is the only player whose role is not corroborated by any other player's actions or claims, making him the most likely candidate for the Werewolf or the player who swapped into the Werewolf role via the Drunk ability."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5399,
+    "output_token_count": 2950,
+    "generation_time_sec": 323.4317617416382,
+    "used_chat_template": true,
+    "input_char_count": 17288,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}
