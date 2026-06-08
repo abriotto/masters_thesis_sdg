@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Alvin, James, Mitchell.\n    *   Roles mentioned/claimed:\n        *   Mitchell: Troublemaker (claims he switched two cards).\n        *   Justin: Robber (claims he stole James's card and vouches for him).\n        *   Alvin: Villager (claims he is a villager).\n        *   James: No specific role claim, but accuses Justin and then Mitchell.\n\n    *   Mitchell claims Troublemaker. He says he switched \"me and Alvin\" (himself and Alvin).\n    *   Justin claims Robber. He says he stole James's card and therefore vouches for James.\n    *   Alvin claims Villager.\n    *   James accuses Justin, then switches to Mitchell.\n\n    *   *Scenario A: Mitchell is the Troublemaker.*\n        *   If Mitchell is the Troublemaker, he swapped himself and Alvin.\n        *   If Justin is the Robber and stole James's card, he knows James's *starting* role.\n        *   If Mitchell swapped himself and Alvin, the roles of Mitchell and Alvin changed.\n        *   Wait, Mitchell says \"I switched me and Alvin.\" The Troublemaker swaps *two other players*. The Troublemaker cannot swap themselves.\n        *   *Crucial Rule Check:* \"Troublemaker: The Troublemaker is a member of Team Village. During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\"\n        *   Mitchell's claim (\"I switched me and Alvin\") is a direct violation of the Troublemaker's ability. Therefore, Mitchell is lying about being the Troublemaker.\n\n    *   *Scenario B: Justin is the Robber.*\n        *   Justin claims he stole James's card. If he did, he knows James's starting role.\n        *   If Justin is the Robber, he is Team Village.\n\n    *   *Scenario C: Alvin is the Villager.*\n        *   Alvin claims to be a Villager.\n\n    *   *Scenario D: James is... something.*\n        *   James doesn't claim a role but is being vouched for by Justin.\n\n    *   Mitchell claimed to be the Troublemaker but said he swapped himself and Alvin.\n    *   The Troublemaker *cannot* swap themselves.\n    *   This makes Mitchell's claim a lie.\n    *   Why would Mitchell lie about being the Troublemaker?\n        *   He could be a Werewolf trying to confuse the group.\n        *   He could be the Tanner trying to get voted out.\n        *   He could be the Minion.\n\n    *   Justin claims Robber and vouches for James.\n    *   Alvin claims Villager.\n    *   James is accused by Justin (initially) and then supports the vote against Mitchell.\n    *   Mitchell is the only one who made a demonstrably false claim about the game rules.\n\n    *   If Mitchell is the Werewolf, voting him out wins for the Village.\n    *   If Mitchell is the Tanner, voting him out wins for the Tanner.\n    *   If Mitchell is the Minion, voting him out does *not* win for the Village (unless there's also a Werewolf and the Minion is counted as one, but the rules say \"eliminate a Werewolf\"). Wait, \"Team Village wins only if they eliminate a Werewolf\". The Minion is Team Werewolf, but is the Minion a \"Werewolf\"?\n    *   *Rule Check:* \"Team Werewolf includes Werewolf and Minion.\" \"Team Village wins: If at least one Werewolf dies.\"\n    *   Usually, in these games, the Minion is not a \"Werewolf\" for the win condition unless specified. However, the prompt says \"Team Village wins only if they eliminate a Werewolf\".\n    *   Let's re-read: \"Team Village wins: If at least one Werewolf dies.\" \"Team Werewolf includes Werewolf and Minion.\"\n    *   Actually, in most versions of the game, the Minion is not a Werewolf. But let's look at the evidence. Mitchell is the only one lying.\n\n    *   Justin: Robber (Possible)\n    *   Alvin: Villager (Possible)\n    *   James: ? (Possible)\n    *   Mitchell: Lying about Troublemaker (Highly suspicious)\n\n    *   Mitchell's claim \"I switched me and Alvin\" is impossible for a Troublemaker.\n    *   This makes him the most likely candidate for a Werewolf or Tanner.\n    *   Given the options, Mitchell is the strongest lead.\n\n    *   Wait, if Mitchell is the Tanner, voting him out loses for the Village.\n    *   But if he's a Werewolf, voting him out wins.\n    *   Is there any other evidence?\n    *   Justin claims Robber and vouches for James. If Justin is the Robber, he knows James's card. If James was a Werewolf, Justin (as Robber) would have stolen the Werewolf card and would now be the Werewolf. But Justin is vouching for James. This suggests James was not a Werewolf at the start.\n    *   If Justin is the Robber and stole James's card, and James was a Villager, Justin is now a Villager.\n    *   If Mitchell is the Werewolf, the Village wins.\n\n    *   Mitchell's lie is the most significant piece of information.\n    *   The claim \"I switched me and Alvin\" is a rule violation.\n    *   Therefore, Mitchell is likely the Werewolf (or Tanner/Minion).\n    *   Between the players, Mitchell is the most suspicious.\n\n    *   Justin: Robber (claims)\n    *   Alvin: Villager (claims)\n    *   James: (No claim)\n    *   Mitchell: Troublemaker (claims, but lies about the ability)\n\n    *   If Mitchell is the Werewolf, voting him out wins.\n    *   If Mitchell is the Tanner, voting him out loses.\n    *   If Mitchell is the Minion, voting him out doesn't win (unless the Minion counts as a Werewolf).\n    *   However, based on the provided transcript, Mitchell is the only one acting deceptively regarding the game mechanics.\n\n    *   Wait, let me double-check the Troublemaker rule again. \"The Troublemaker is a member of Team Village. During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\"\n    *   Yes, \"two other players\". Mitchell said \"I switched me and Alvin\". This is impossible.\n\n    *   Justification: Mitchell claimed to be the Troublemaker but stated he swapped his own card with Alvin's. According to the rules, the Troublemaker can only swap the cards of two other players, not their own. This blatant lie makes Mitchell the most suspicious player and the most likely Werewolf.\n    *   Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mitchell claimed to be the Troublemaker and stated that he switched his own card with Alvin's. However, the game rules explicitly state that the Troublemaker swaps the cards of two other players, meaning they cannot swap their own card. This contradiction indicates that Mitchell is lying about his role, making him the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated that he switched his own card with Alvin's. However, the game rules explicitly state that the Troublemaker swaps the cards of two other players, meaning they cannot swap their own card. This contradiction indicates that Mitchell is lying about his role, making him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claimed to be the Troublemaker and stated that he switched his own card with Alvin's. However, the game rules explicitly state that the Troublemaker swaps the cards of two other players, meaning they cannot swap their own card. This contradiction indicates that Mitchell is lying about his role, making him the most likely candidate for the Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell claimed to be the Troublemaker and stated that he switched his own card with Alvin's. However, the game rules explicitly state that the Troublemaker swaps the cards of two other players, meaning they cannot swap their own card. This contradiction indicates that Mitchell is lying about his role, making him the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2717,
+    "output_token_count": 1646,
+    "generation_time_sec": 170.30292749404907,
+    "used_chat_template": true,
+    "input_char_count": 9962,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

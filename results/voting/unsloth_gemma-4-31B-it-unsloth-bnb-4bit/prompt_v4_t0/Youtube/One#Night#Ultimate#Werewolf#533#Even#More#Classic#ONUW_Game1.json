@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Ryan\n    *   Katie\n    *   Brett\n    *   DeAndre\n\n    *   Werewolves (wake up, look for others/center)\n    *   Minion (wake up, see werewolves)\n    *   Robber (swap card, view new card)\n    *   Troublemaker (swap two other players' cards)\n    *   Drunk (swap card with center, no viewing)\n    *   Insomniac (view current card at end of night)\n\n    *   DeAndre claims he was Drunk ([13]).\n    *   Katie asks Ryan what he did as Troublemaker ([17]).\n    *   Ryan says he swapped Katie and Brett's cards ([24]).\n    *   Katie claims she was the Robber ([23], [33], [38]).\n    *   Katie claims she stole \"his troublemaker\" (referring to Ryan? Or Brett? [38]). Wait, she says \"I was the robber, and I stole his troublemaker.\" This is confusing. If she stole Ryan's Troublemaker, she is now the Troublemaker.\n    *   Brett claims he was the Tanner ([63]).\n    *   Ryan says he swapped Katie and Brett ([61], [70]).\n    *   Brett says if Ryan swapped him and Katie, and Brett was Tanner, then Katie now has the Tanner card ([63], [71]).\n    *   DeAndre admits \"Wolfing\" ([55]) after initially claiming Drunk ([13]).\n\n    *   *DeAndre:* Claimed Drunk ([13]), then admitted \"Wolfing\" ([55]).\n    *   *Katie:* Claimed Robber ([23], [33], [38]).\n    *   *Ryan:* Claimed Troublemaker ([24], [70]).\n    *   *Brett:* Claimed Tanner ([63]).\n\n    *   If Ryan (Troublemaker) swapped Katie (Robber) and Brett (Tanner):\n        *   Katie becomes Tanner.\n        *   Brett becomes Robber.\n    *   If DeAndre is a Werewolf/Minion:\n        *   Voting for DeAndre wins for the Village.\n\n    *   DeAndre's admission \"Wolfing\" ([55]) is a strong indicator.\n    *   Brett and Ryan are coordinating to vote for DeAndre ([64], [69], [77]).\n    *   Katie doesn't seem to oppose this ([82]).\n\n    *   Is DeAndre bluffing? He claimed Drunk, then said \"Wolfing\". In these games, players often joke or admit roles.\n    *   Is Brett the Tanner? If Brett was the Tanner and got swapped with Katie, Katie is now the Tanner. Voting for Katie would make the Tanner win.\n    *   Is Ryan the Troublemaker? He claims he swapped Katie and Brett.\n    *   If DeAndre is the Werewolf, voting for him wins.\n\n    *   DeAndre's behavior is highly suspicious (claiming Drunk, then admitting \"Wolfing\").\n    *   The other players (Ryan, Katie, Brett) have converged on DeAndre.\n    *   Even if the roles are messy, DeAndre is the most likely candidate for Werewolf/Minion based on the transcript.\n\n    *   Ryan: Troublemaker (swapped Katie/Brett)\n    *   Katie: Robber (stole something? She says she stole \"his troublemaker\", but Ryan says he's the Troublemaker. This is contradictory. If Katie stole Ryan's Troublemaker, she is the Troublemaker. But Ryan says *he* swapped them. Let's re-read.)\n    *   Transcript [24]: Ryan: \"I swapped yours and Brett's cards.\"\n    *   Transcript [38]: Katie: \"I was the robber, and I stole his troublemaker.\" (Wait, if she stole the Troublemaker, she is now the Troublemaker. But Ryan is acting as the Troublemaker).\n    *   Actually, looking at [22], Ryan asks \"So I'm guessing you were a robber then.\" Katie says \"Yes. You're right.\" ([23]).\n    *   Then Ryan says \"I swapped yours and Brett's cards.\" ([24]).\n    *   Then Katie says \"I was the robber, and I stole his troublemaker.\" ([38]). This is a contradiction. If she stole the Troublemaker, she'd be the Troublemaker. If Ryan is the Troublemaker, she couldn't have stolen it unless Ryan was the one she stole from. But Ryan is the one who performed the swap.\n    *   Let's ignore the confusion between Ryan and Katie for a moment and focus on DeAndre.\n    *   DeAndre: Claimed Drunk ([13]), then said \"Wolfing\" ([55]).\n    *   Brett: Claimed Tanner ([63]).\n    *   If DeAndre is the Werewolf, the Village wins.\n\n    *   DeAndre's admission \"Wolfing\" is the most direct piece of evidence.\n    *   The group consensus is to vote for DeAndre.\n    *   There is no strong evidence that anyone else is the Werewolf.\n\n    *   Justification: DeAndre initially claimed to be the Drunk but later admitted to \"wolfing,\" which strongly suggests he is a Werewolf or Minion. The other players, including Ryan and Brett, have converged on the conclusion that DeAndre is the most likely target. Even with the confusing claims about the Robber and Troublemaker roles, DeAndre's admission makes him the primary suspect.\n    *   Chosen vote: DeAndre.",
+  "parsed_output": {
+    "justification": "DeAndre initially claimed to be the Drunk but later explicitly admitted to 'wolfing' during the discussion. While there is some confusion regarding the Robber and Troublemaker roles between Ryan and Katie, the group consensus and DeAndre's own admission point to him being the Werewolf or Minion. Voting for DeAndre is the most logical choice for Team Village to secure a win.",
+    "chosen_vote": "DeAndre"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"DeAndre initially claimed to be the Drunk but later explicitly admitted to 'wolfing' during the discussion. While there is some confusion regarding the Robber and Troublemaker roles between Ryan and Katie, the group consensus and DeAndre's own admission point to him being the Werewolf or Minion. Voting for DeAndre is the most logical choice for Team Village to secure a win.\",\n  \"chosen_vote\": \"DeAndre\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"DeAndre initially claimed to be the Drunk but later explicitly admitted to 'wolfing' during the discussion. While there is some confusion regarding the Robber and Troublemaker roles between Ryan and Katie, the group consensus and DeAndre's own admission point to him being the Werewolf or Minion. Voting for DeAndre is the most logical choice for Team Village to secure a win.\",\n  \"chosen_vote\": \"DeAndre\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "DeAndre",
+    "justification": "DeAndre initially claimed to be the Drunk but later explicitly admitted to 'wolfing' during the discussion. While there is some confusion regarding the Robber and Troublemaker roles between Ryan and Katie, the group consensus and DeAndre's own admission point to him being the Werewolf or Minion. Voting for DeAndre is the most logical choice for Team Village to secure a win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3573,
+    "output_token_count": 1368,
+    "generation_time_sec": 145.9476659297943,
+    "used_chat_template": true,
+    "input_char_count": 12857,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

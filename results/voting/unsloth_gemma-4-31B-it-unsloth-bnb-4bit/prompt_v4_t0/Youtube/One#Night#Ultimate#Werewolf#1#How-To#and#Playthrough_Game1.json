@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#1#How-To#and#Playthrough_Game1.txt",
+  "player_names": [
+    "Dan",
+    "Ed",
+    "Katie",
+    "Brett",
+    "Audrey",
+    "Dylan"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Dan\n    *   Ed\n    *   Katie\n    *   Brett\n    *   Audrey\n    *   Dylan\n\n    *   Dan: Claims Seer (at [80]), then says he's a Villager (at [117]), then says he's not the Seer (at [168]).\n    *   Ed: Claims Villager (at [101]).\n    *   Katie: Claims Villager (at [32], [54], [94], [149], [209]).\n    *   Brett: Claims Villager (at [44], [46], [51], [87], [92], [112], [119], [130], [153], [158]).\n    *   Audrey: Claims Villager (at [33], [45], [49], [93], [109], [135], [138], [148], [210]).\n    *   Dylan: Claims Troublemaker (at [98], [146], [173], [179]).\n\n    *   Dan claimed Seer and said Brett is a Werewolf ([80]).\n    *   Dylan claimed Troublemaker and said he swapped Dan and Ed ([98], [125], [179], [201]).\n    *   If Dylan is the Troublemaker and swapped Dan and Ed, and Dan was the Seer, then Ed is now the Seer.\n    *   Ed then claims he is the Seer and Dan is a Villager ([191], [199]).\n    *   Brett strongly denies being a Werewolf and claims to be a Villager.\n    *   Katie and Audrey both claim to be Villagers.\n\n    *   Dan's claim: \"I'm the Seer and I looked at your [Brett's] card and you're a Werewolf\" ([80]).\n    *   Dylan's claim: \"I was the Troublemaker... I switched them [Dan and Ed]\" ([173], [179]).\n    *   If Dan was the Seer and saw Brett as a Werewolf, and Dylan swapped Dan and Ed, then Ed is now the Seer and Dan is whatever Ed was.\n    *   Ed claims he was a Villager ([101]).\n    *   So, if these claims are true:\n        *   Dan (starting Seer) -> Ed (ending Seer)\n        *   Ed (starting Villager) -> Dan (ending Villager)\n        *   Brett (starting Werewolf) -> Brett (ending Werewolf)\n        *   Dylan (starting Troublemaker) -> Dylan (ending Troublemaker)\n        *   Katie/Audrey (starting Villagers) -> Katie/Audrey (ending Villagers)\n\n    *   Wait, Dan says \"I'm not the Seer\" at [168]. This is consistent with Dylan's swap.\n    *   Dylan's behavior is erratic (the \"bomb squad\" tangent), but he consistently claims to be the Troublemaker and to have swapped Dan and Ed.\n    *   Dan's initial claim that Brett is a Werewolf is the strongest piece of evidence provided in the transcript.\n    *   Brett's defense is purely emotional (\"I'm a stupid Villager\", \"Why is everyone turning on me?\").\n    *   Katie and Audrey are also claiming Villager, but there are only two Villager cards in the candidate pool (usually, though the rules say \"multiple Villagers\" are possible). Let's check the candidate roles: \"The number of candidate roles is always equal to the number of players plus 3.\" (6 players + 3 = 9 roles).\n    *   Roles mentioned: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   If Dan was the Seer and saw Brett as a Werewolf, and no one else claimed to be the Robber (who could have stolen the Werewolf card from Brett), then Brett is the most likely candidate.\n\n    *   Dan: Seer (start) -> Villager (end)\n    *   Ed: Villager (start) -> Seer (end)\n    *   Dylan: Troublemaker (start) -> Troublemaker (end)\n    *   Brett: Werewolf (start) -> Werewolf (end)\n    *   Katie: Villager (start) -> Villager (end)\n    *   Audrey: Villager (start) -> Villager (end)\n    *   (This accounts for 6 players. The remaining 3 cards in the center would be the other roles).\n\n    *   Is there any reason to doubt Dan? He claimed Seer, then admitted he wasn't the Seer after Dylan claimed to have swapped him. This is consistent.\n    *   Is there any reason to doubt Dylan? He's acting chaotic, but his claim explains the shift in Dan's role.\n    *   Is there any reason to doubt Brett? He's the only one specifically identified as a Werewolf by a claimed Seer.\n\n    *   Dan's claim: Brett = Werewolf.\n    *   Dylan's claim: Swapped Dan and Ed.\n    *   Ed's claim: Now the Seer.\n    *   Brett's claim: Villager.\n    *   Katie/Audrey's claim: Villager.\n    *   The most direct evidence points to Brett.\n\n    *   Could Dan be the Werewolf lying about being the Seer? If Dan is the Werewolf, he'd want to frame someone else (Brett).\n    *   Could Dylan be the Werewolf lying about being the Troublemaker?\n    *   However, in these logic puzzles based on transcripts, the \"Seer\" claim usually provides the intended path to the solution unless contradicted by a more reliable claim.\n    *   Dan's claim was specific: \"I'm the Seer and I looked at your card and you're a Werewolf\" ([80]).\n    *   Brett's reaction is defensive.\n    *   The \"bomb squad\" distraction is just flavor.\n\n    *   Dan claimed Seer and identified Brett as a Werewolf.\n    *   Dylan claimed Troublemaker and swapped Dan and Ed.\n    *   This means Ed is now the Seer and Dan is now a Villager (assuming Ed started as one).\n    *   No one claimed to be the Robber, so Brett's card likely wasn't swapped.\n    *   Therefore, Brett is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Dan claimed to be the Seer and identified Brett as a Werewolf. Dylan claimed to be the Troublemaker and stated he swapped the cards of Dan and Ed, which explains why Dan later stated he was no longer the Seer and Ed claimed to be the Seer. Since no one claimed to be the Robber (who could have swapped Brett's card), the information that Brett is a Werewolf remains the most reliable lead.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Dan claimed to be the Seer and identified Brett as a Werewolf. Dylan claimed to be the Troublemaker and stated he swapped the cards of Dan and Ed, which explains why Dan later stated he was no longer the Seer and Ed claimed to be the Seer. Since no one claimed to be the Robber (who could have swapped Brett's card), the information that Brett is a Werewolf remains the most reliable lead.\",\n  \"chosen_vote\": \"Brett\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Dan claimed to be the Seer and identified Brett as a Werewolf. Dylan claimed to be the Troublemaker and stated he swapped the cards of Dan and Ed, which explains why Dan later stated he was no longer the Seer and Ed claimed to be the Seer. Since no one claimed to be the Robber (who could have swapped Brett's card), the information that Brett is a Werewolf remains the most reliable lead.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "Dan claimed to be the Seer and identified Brett as a Werewolf. Dylan claimed to be the Troublemaker and stated he swapped the cards of Dan and Ed, which explains why Dan later stated he was no longer the Seer and Ed claimed to be the Seer. Since no one claimed to be the Robber (who could have swapped Brett's card), the information that Brett is a Werewolf remains the most reliable lead."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6095,
+    "output_token_count": 1611,
+    "generation_time_sec": 182.17512226104736,
+    "used_chat_template": true,
+    "input_char_count": 19347,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

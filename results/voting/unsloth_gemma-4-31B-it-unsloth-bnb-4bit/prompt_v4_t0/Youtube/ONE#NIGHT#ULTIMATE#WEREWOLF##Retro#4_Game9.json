@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Mike\n    *   James\n    *   Mitchell\n\n    *   James: Claims Drunk (switched with center) [31, 51, 55, 56, 106, 115].\n    *   Caitlynn: Claims Drunk (switched with center) [33, 49, 61, 79, 81, 118, 134].\n    *   Mike: Claims Seer (looked in center, saw Werewolf and Troublemaker) [36, 48, 65, 72, 75, 103, 121].\n    *   Justin: Claims Robber (stole from Mike [64], then says he stole from James [107, 129]). He claims he didn't see a Seer when stealing from Mike [64].\n    *   Mitchell: Claims Insomniac [68, 70].\n\n    *   *Mike (Seer)*: Claims he saw a Werewolf and a Troublemaker in the center [121].\n    *   *Justin (Robber)*:\n        *   Claim 1: Stole from Mike, didn't see a Seer [64].\n        *   Claim 2: Stole from James, James was not the Drunk [107, 109, 119].\n    *   *James (Drunk)*: Claims he was the Drunk and switched with the center [31, 51, 106, 115].\n    *   *Caitlynn (Drunk)*: Claims she was the Drunk and switched with the center [33, 49, 61, 79, 81, 118, 134].\n    *   *Mitchell (Insomniac)*: Claims he is the Insomniac [68, 70].\n\n    *   If Mike is the Seer and saw a Werewolf and a Troublemaker in the center, then there is only one Werewolf card left in the game (since there are usually 2-3 Werewolf cards in the pool, but the rules say \"up to two Masons\" and \"at most one of each other listed role\", and the candidate roles are players+3 = 8. The roles listed are: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf).\n    *   Wait, the rules say \"up to two Masons\" and \"at most one of each other listed role\". This means there can only be *one* Werewolf card in the entire deck for this game setup (unless the rules imply multiple werewolves are possible, but it says \"at most one of each other listed role\"). Let's re-read: \"In the same game, there may be multiple Villagers and multiple Werewolves, up to two Masons, and at most one of each other listed role.\" Okay, so multiple Werewolves *are* possible.\n    *   If Mike (Seer) saw a Werewolf in the center, and there's only one Werewolf card in the game, then no one is a Werewolf. But if there are two, one is still out there.\n    *   Justin's claims are highly inconsistent. He first says he stole from Mike and didn't see a Seer. Then he says he stole from James.\n    *   If Justin stole from Mike and Mike was the Seer, Justin would have seen the Seer card. Justin says he didn't. This means either Mike is lying about being the Seer, or Justin is lying about what he saw/who he stole from.\n    *   If Justin stole from James and James was the Drunk, Justin would have seen the Drunk card. Justin says James was *not* the Drunk [109, 119].\n    *   James and Caitlynn both claim to be the Drunk. Only one can be the starting Drunk.\n    *   If James was the Drunk and switched with the center, and Mike (Seer) saw a Werewolf in the center, James might now be the Werewolf.\n    *   If Caitlynn was the Drunk and switched with the center, and Mike (Seer) saw a Werewolf in the center, Caitlynn might now be the Werewolf.\n    *   Justin's behavior is very suspicious (\"stir the pot\" [90], changing stories [111]).\n    *   At the end, James accuses Justin of being the Werewolf [127, 130].\n    *   Let's look at the Robber's action: Robber swaps their card with another player's card and looks at the new card.\n    *   If Justin was the Robber and stole from James, and James was the Drunk, Justin now has the Drunk card.\n    *   If Justin was the Robber and stole from Mike, and Mike was the Seer, Justin now has the Seer card.\n    *   Wait, Justin says \"I stole from Mike and I did not see a seer\" [64]. If Mike was the Seer, Justin would have seen the Seer card. Since Justin says he didn't, either Mike isn't the Seer or Justin is lying.\n    *   Then Justin says \"I stole from James... I can confirm that he was not the drunk\" [107, 109].\n    *   If Justin is the Werewolf, he would lie about his role and try to confuse the others.\n    *   Let's re-evaluate the \"Drunk\" claims. James and Caitlynn both claim to be the Drunk.\n    *   If James was the Drunk and switched with the center, and the center had a Werewolf (as Mike claims), James is now the Werewolf.\n    *   If Caitlynn was the Drunk and switched with the center, and the center had a Werewolf, Caitlynn is now the Werewolf.\n    *   However, Justin's erratic claims and the final push by James and Mike to vote Justin suggest Justin is the target.\n    *   Wait, James says \"I was the werewolf. I saw the werewolf right there\" [124] - this is a very confusing sentence. He might be saying \"I [know who] was the werewolf\" or he's bluffing/confused. Actually, looking at [124]: \"Okay. Mike's not the fucking seer. I was the werewolf. I saw the werewolf right there.\" This is extremely weird. Is James claiming to be the werewolf? Or is he saying \"I [know who] was the werewolf\"? Given the context \"Justin's the fucking werewolf\" [127], he's likely accusing Justin.\n    *   Let's look at Justin again. He claims to be the Robber. He claims he stole from Mike (no Seer) then claims he stole from James (no Drunk).\n    *   If Justin is the Werewolf, he's just making things up.\n    *   If Mike is the Seer and saw a Werewolf in the center, and James/Caitlynn were the Drunk, one of them might have swapped into the Werewolf role.\n    *   But the prompt asks to make Team Village win.\n    *   Justin's inconsistency is the strongest lead. He changed his story about who he robbed and what he saw multiple times.\n    *   James's statement [124] \"I was the werewolf\" is likely a slip of the tongue or a very strange way of saying he found the werewolf.\n    *   Let's re-read [124]: \"Okay. Mike's not the fucking seer. I was the werewolf. I saw the werewolf right there.\" This is so bizarre. If James is claiming to be the werewolf, he's either the Tanner or just confused. But then he immediately says \"Justin's the fucking werewolf\" [127].\n    *   Most likely, Justin is the Werewolf because of the blatant contradictions in his claims.\n\n    *   Justin claims Robber.\n    *   Claim 1: Robbed Mike, saw no Seer. (Contradicts Mike's claim to be Seer).\n    *   Claim 2: Robbed James, saw no Drunk. (Contradicts James's claim to be Drunk).\n    *   Justin admits he was \"stirring the pot\" [90].\n    *   James and Mike both point to Justin at the end.\n\n    *   If Mike is the Seer and saw a Werewolf in the center, and James was the Drunk who swapped with the center, James is now the Werewolf.\n    *   If Mike is the Seer and saw a Werewolf in the center, and Caitlynn was the Drunk who swapped with the center, Caitlynn is now the Werewolf.\n    *   But Justin's lies are more indicative of a Werewolf trying to create chaos.\n\n    *   Justin's claims are completely inconsistent. He claims to have robbed Mike and then claims to have robbed James. He claims he didn't see a Seer (contradicting Mike) and didn't see a Drunk (contradicting James). This level of deception is typical for a Werewolf.\n\n    *   Wait, let's look at [124] again. \"I was the werewolf. I saw the werewolf right there.\" If James is actually the Werewolf, he might be trying to frame Justin. But the phrasing is so odd.\n    *   Let's look at the roles again. If Justin is the Robber and he robbed James, and James was the Drunk, Justin now has the Drunk card. If Justin is the Robber and he robbed Mike, and Mike was the Seer, Justin now has the Seer card.\n    *   If Justin is the Werewolf, he's just lying about being the Robber.\n    *   Given the options, Justin is the most suspicious due to the multiple conflicting stories.\n\n    *   Justin: Robber (claims) -> Stole from Mike (no Seer) -> Stole from James (no Drunk).\n    *   Mike: Seer (claims) -> Saw Werewolf and Troublemaker in center.\n    *   James: Drunk (claims) -> Swapped with center.\n    *   Caitlynn: Drunk (claims) -> Swapped with center.\n    *   Mitchell: Insomniac (claims).\n    *   If Mike is Seer and saw Werewolf in center, and James/Caitlynn swapped with center, one of them is now the Werewolf.\n    *   However, Justin's behavior is the most \"Werewolf-like\" in terms of deception.\n    *   Let's re-read [124] one more time. \"I was the werewolf. I saw the werewolf right there.\" This is so strange. Could James be the Tanner? Or is he just speaking poorly? \"I was the werewolf\" could be a typo for \"I saw the werewolf\".\n    *   Actually, looking at the flow:\n        James: \"Mike's not the fucking seer. I was the werewolf. I saw the werewolf right there.\"\n        This is almost certainly a mistake in the transcript or a very weird way of speaking. He immediately follows it with \"Justin's the fucking werewolf.\"\n    *   Justin is the most logical choice for elimination because his claims are contradictory and he admits to \"stirring the pot.\"\n\n    *   Justin's claims about robbing Mike and James are contradictory.\n    *   He claims he didn't see a Seer when robbing Mike, which contradicts Mike's claim.\n    *   He claims he didn't see a Drunk when robbing James, which contradicts James's claim.\n    *   His admission of \"stirring the pot\" and the final accusations from James and Mike make him the primary suspect.",
+  "parsed_output": {
+    "justification": "Justin's claims are highly inconsistent and contradictory. He first claims to have robbed Mike and not seen a Seer, then later claims to have robbed James and not seen a Drunk, contradicting both Mike's and James's claims. He also admits to 'stirring the pot,' which is characteristic of a Werewolf attempting to create confusion. Both James and Mike ultimately identify Justin as the Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin's claims are highly inconsistent and contradictory. He first claims to have robbed Mike and not seen a Seer, then later claims to have robbed James and not seen a Drunk, contradicting both Mike's and James's claims. He also admits to 'stirring the pot,' which is characteristic of a Werewolf attempting to create confusion. Both James and Mike ultimately identify Justin as the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin's claims are highly inconsistent and contradictory. He first claims to have robbed Mike and not seen a Seer, then later claims to have robbed James and not seen a Drunk, contradicting both Mike's and James's claims. He also admits to 'stirring the pot,' which is characteristic of a Werewolf attempting to create confusion. Both James and Mike ultimately identify Justin as the Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin's claims are highly inconsistent and contradictory. He first claims to have robbed Mike and not seen a Seer, then later claims to have robbed James and not seen a Drunk, contradicting both Mike's and James's claims. He also admits to 'stirring the pot,' which is characteristic of a Werewolf attempting to create confusion. Both James and Mike ultimately identify Justin as the Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4155,
+    "output_token_count": 2783,
+    "generation_time_sec": 297.7565715312958,
+    "used_chat_template": true,
+    "input_char_count": 14286,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

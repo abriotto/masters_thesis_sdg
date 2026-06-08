@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Caitlynn\n    *   Paul\n    *   Alysha\n    *   Mitchell\n    *   Mike\n\n    *   Justin: Claims Troublemaker (switched two people).\n    *   Caitlynn: Claims Robber (robbed Mitchell, saw Drunk).\n    *   Paul: Claims Seer (looked at two center cards).\n    *   Alysha: Claims Seer (looked at two center cards, saw Minion and Robber).\n    *   Mitchell: Claims Drunk turned Robber (robbed/robber-ed).\n    *   Mike: Claims Revealer (revealed Mitchell as Tanner).\n\n    *   *Revealer:* This role is not in the standard rules provided in the prompt, but it appears in the transcript. The announcer says: \"Revealer, wake up. You may turn any other player's card face up. If the card you reveal is a werewolf or a tanner, turn it back over face down.\"\n    *   *Wait*, the prompt says \"The selected roles may include: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\" Revealer is *not* on the list. However, the announcer calls it. Let's look at the transcript again.\n    *   Announcer: \"Revealer, wake up... If the card you reveal is a werewolf or a tanner, turn it back over face down.\"\n    *   Mike claims to be the Revealer and says he revealed Mitchell as the Tanner.\n\n    *   Mike (Revealer) says Mitchell is the Tanner.\n    *   Mitchell says he was the Drunk turned Robber.\n    *   Caitlynn says she was the Robber and robbed Mitchell, seeing the Drunk.\n    *   Justin says he was the Troublemaker and switched two people.\n    *   Paul says he was the Seer and looked at the center.\n    *   Alysha says she was the Seer and looked at the center (saw Minion and Robber).\n\n    *   If Mike is the Revealer and Mitchell is the Tanner, then Mitchell is not a Werewolf.\n    *   If Alysha is the Seer and saw Minion and Robber in the center, then the Minion is not in play.\n    *   If Paul is the Seer and looked at the center, he didn't specify what he saw initially, but later says Alysha and Mike are lying.\n    *   Wait, Paul says: \"I know who the minion is\" (Line 28), then later says \"I actually did look at two in the center\" (Line 90). If he looked at the center, he can't know who the minion is unless the minion was in the center. But he says \"I know who the minion is\" (Line 28) and then \"I looked at someone's card\" (Line 79). He's contradicting himself.\n\n    *   Paul: \"I know who the minion is\" (Line 28) -> \"I looked at someone's card\" (Line 79) -> \"I actually did look at two in the center\" (Line 90).\n    *   Alysha: \"I was actually the seer\" (Line 95) -> \"I looked at two in the middle\" (Line 98) -> \"I saw minion and... robber\" (Line 100).\n    *   Mike: \"I revealed [Mitchell as] a Tanner\" (Line 47, 50).\n    *   Justin: \"I was the troublemaker... I switched to you two\" (Line 37). (He doesn't specify which two).\n\n    *   If Mike is the Revealer and Mitchell is the Tanner, Mitchell is not the werewolf.\n    *   If Alysha is the Seer and saw the Minion in the center, the Minion is not in play.\n    *   If Paul is lying about being the Seer (contradictions), he might be the Werewolf.\n    *   Let's look at Paul's claims:\n        *   Line 28: \"I know who the minion is.\"\n        *   Line 79: \"I looked at somebody's [card].\"\n        *   Line 90: \"I actually did look at two in the center.\"\n        *   Line 124: \"I don't know how Alysha knew this was minion unless she literally just guessed.\" (Wait, Alysha said she saw the minion in the center).\n        *   Line 129: \"Alysha and Mike are definitely both lying.\"\n\n    *   If Paul is the Werewolf, he would want to divert suspicion. He's attacking Alysha and Mike.\n    *   If Mike is the Revealer and Mitchell is the Tanner, then Mitchell is a safe vote for the Tanner (which the Village *doesn't* want, but the Tanner does).\n    *   If Alysha saw the Minion in the center, then the only threat is the Werewolf.\n    *   Who is the most likely Werewolf?\n        *   Paul is acting very suspiciously and contradicting his own claims about what he did as Seer.\n        *   Alysha and Mike's claims are consistent with each other (if Mike is Revealer and Alysha is Seer).\n        *   Justin's claim as Troublemaker is plausible.\n        *   Caitlynn's claim as Robber is plausible.\n\n    *   Paul's contradictions:\n        1.  \"I know who the minion is\" (implies he looked at a player).\n        2.  \"I looked at someone's card\" (confirms he looked at a player).\n        3.  \"I actually did look at two in the center\" (contradicts the above).\n    *   This pattern of lying/contradicting is a strong indicator of a Werewolf trying to fake a role.\n\n    *   If Paul is the Werewolf, voting him out wins the game for the Village.\n    *   If Mitchell is the Tanner, voting him out loses the game for the Village (Tanner wins).\n    *   If Mike or Alysha are Werewolves, they are playing more consistently.\n\n    *   Wait, Paul says in Line 105: \"This one is the minion. Alysha and I both confirm that.\" This is very confusing. He's pointing at someone? \"This one is the minion.\"\n    *   Then in Line 117: \"If this is the one that you switched with... it's Mike. This is the revealer. This is the minion.\"\n    *   Paul is making wild claims and contradicting himself.\n\n    *   Paul's behavior is the most erratic. He claims to be the Seer but changes his story about whether he looked at a player or the center. He then tries to frame Mike and Alysha.\n    *   Mike's claim as Revealer (though not a standard role) is presented as a fact by the announcer.\n    *   If Mike is the Revealer and Mitchell is the Tanner, Mitchell is not the Werewolf.\n    *   If Alysha is the Seer and saw the Minion in the center, the Minion is not in play.\n    *   This leaves Paul, Justin, and Caitlynn.\n    *   Justin and Caitlynn have consistent stories. Paul does not.\n\n    *   Paul is the most likely Werewolf due to his contradictory statements regarding his actions as the Seer.\n\n    *   Wait, let me re-read the transcript one more time.\n    *   Line 130: Mitchell says \"Don't vote for me, I'm a werewolf. I want to win.\"\n    *   This is a classic reverse-psychology bluff or a joke. If he were actually a werewolf, he wouldn't say that. If he's the Tanner, he *would* want people to vote for him, but he might be trying to trick them into *not* voting for him to avoid winning? No, the Tanner *wants* to die. If he says \"I'm a werewolf,\" he's trying to get votes.\n    *   But Mike (Revealer) said Mitchell is the Tanner. If Mike is telling the truth, Mitchell is the Tanner.\n    *   If Paul is the Werewolf, he's the target.\n\n    *   Paul's contradictions:\n        *   \"I know who the minion is\" (Line 28)\n        *   \"I looked at someone's card\" (Line 79)\n        *   \"I actually did look at two in the center\" (Line 90)\n    *   This is a huge red flag.\n\n    *   Is there any other possibility?\n    *   Could Alysha be the werewolf? She claims to be the Seer and saw the minion in the center.\n    *   Could Mike be the werewolf? He claims to be the Revealer.\n    *   But Paul's contradictions are the most glaring.\n\n    *   Paul's claims are inconsistent. He first says he knows who the minion is (implying he looked at a player), then says he looked at a player, then says he looked at the center. This inconsistency strongly suggests he is bluffing his role as the Seer to hide his identity as a Werewolf.\n\n    *   Wait, let me check the \"Revealer\" role again. The announcer explicitly calls it. Even if it's not in the \"selected roles\" list provided in the prompt's \"Information and roles\" section, it's in the transcript. The prompt says \"You have access only to the public discussion transcript and the game rules provided above.\" The rules list doesn't have Revealer, but the announcer's script does. I must rely on the transcript.\n\n    *   If Mike is the Revealer and Mitchell is the Tanner, then Mitchell is not the Werewolf.\n    *   If Paul is the Werewolf, voting him out wins.\n\n    *   Let's double-check Paul's statements again.\n    *   Line 28: \"I know who the minion is.\"\n    *   Line 79: \"I looked at somebody's [card].\"\n    *   Line 90: \"I actually did look at two in the center.\"\n    *   Line 124: \"I don't know how Alysha knew this was minion unless she literally just guessed.\" (Alysha said she saw the minion in the center).\n    *   Paul is definitely lying or very confused. In a game of Werewolf, this usually means they are the Werewolf.\n\n    *   Is there any chance Paul is the Tanner?\n    *   The Tanner wants to be voted out. Paul is trying to deflect suspicion from himself (\"I'm kidding. I was the seer\" - Line 88) and accusing others. This is not typical Tanner behavior.\n    *   Is there any chance Mitchell is the Werewolf?\n    *   Mike (Revealer) said Mitchell is the Tanner. If Mike is the Werewolf, he would lie about Mitchell being the Tanner to protect himself. But Mike's claim is consistent.\n    *   If Paul is the Werewolf, he's the best target.\n\n    *   Paul's contradictions about his Seer action (looking at a player vs. looking at the center) make him the most suspicious player.\n    *   Mike's claim as Revealer identifies Mitchell as the Tanner, and Alysha's claim as Seer suggests the Minion is in the center.\n    *   Therefore, Paul is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Paul's claims regarding his role as the Seer are highly contradictory. He first states he knows who the minion is (Line 28) and that he looked at someone's card (Line 79), but later claims he actually looked at two cards in the center (Line 90). This inconsistency is a strong indicator that he is bluffing his role to hide his identity as a Werewolf. Additionally, Mike (the Revealer) identified Mitchell as the Tanner, and Alysha (the Seer) indicated the Minion was in the center, leaving Paul as the most probable Werewolf.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul's claims regarding his role as the Seer are highly contradictory. He first states he knows who the minion is (Line 28) and that he looked at someone's card (Line 79), but later claims he actually looked at two cards in the center (Line 90). This inconsistency is a strong indicator that he is bluffing his role to hide his identity as a Werewolf. Additionally, Mike (the Revealer) identified Mitchell as the Tanner, and Alysha (the Seer) indicated the Minion was in the center, leaving Paul as the most probable Werewolf.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul's claims regarding his role as the Seer are highly contradictory. He first states he knows who the minion is (Line 28) and that he looked at someone's card (Line 79), but later claims he actually looked at two cards in the center (Line 90). This inconsistency is a strong indicator that he is bluffing his role to hide his identity as a Werewolf. Additionally, Mike (the Revealer) identified Mitchell as the Tanner, and Alysha (the Seer) indicated the Minion was in the center, leaving Paul as the most probable Werewolf.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul's claims regarding his role as the Seer are highly contradictory. He first states he knows who the minion is (Line 28) and that he looked at someone's card (Line 79), but later claims he actually looked at two cards in the center (Line 90). This inconsistency is a strong indicator that he is bluffing his role to hide his identity as a Werewolf. Additionally, Mike (the Revealer) identified Mitchell as the Tanner, and Alysha (the Seer) indicated the Minion was in the center, leaving Paul as the most probable Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4348,
+    "output_token_count": 2744,
+    "generation_time_sec": 295.83329010009766,
+    "used_chat_template": true,
+    "input_char_count": 14958,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

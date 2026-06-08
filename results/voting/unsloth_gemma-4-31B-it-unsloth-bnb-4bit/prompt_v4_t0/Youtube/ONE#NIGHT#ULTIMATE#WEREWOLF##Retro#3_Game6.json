@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Mike, James, Mitchell.\n    *   Roles involved (based on transcript): Seer, Robber, Troublemaker, Tanner, Werewolf.\n\n    *   Mike: Claims Seer. Says he looked at two cards in the center and they were both Werewolves. (If true, no Werewolves are among the players).\n    *   James: Claims Troublemaker. Says he swapped Justin and Mitchell.\n    *   Justin: Claims Troublemaker. Says he swapped James and Mitchell (or Justin and Mitchell, it's a bit messy).\n    *   Mitchell: Claims he started as the Tanner (at one point) and then claims he started as the Robber and stole from Justin.\n\n    *   If Mike is the Seer and saw two Werewolves in the center, then no one is a Werewolf. Team Village wins by voting \"No Werewolf\".\n    *   If Mike is lying (Werewolf or Tanner), he's trying to convince the group there are no Werewolves.\n    *   James and Justin both claim Troublemaker. Only one can be the Troublemaker. One is likely lying (Tanner or Werewolf).\n    *   Mitchell's claims are contradictory:\n        *   [44] \"I had the tanner at one point.\"\n        *   [118] \"I started as the robber.\"\n        *   [120] \"I stole from Justin.\"\n\n    *   If Mitchell was the Robber and stole from Justin, and Justin was the Tanner, then Mitchell became the Tanner.\n    *   If James or Justin was the Troublemaker and swapped Mitchell and Justin, the roles would move again.\n    *   Let's look at the \"two werewolves in the center\" claim. If Mike is telling the truth, the game is a \"No Werewolf\" win.\n    *   However, in these games, players often lie. If Mike is a Werewolf, he'd definitely claim the Werewolves are in the center.\n    *   James and Justin are fighting over the Troublemaker role.\n    *   Mitchell admits to being the Tanner at some point.\n\n    *   Mike: Claims Seer, saw 2 Werewolves in center.\n    *   James: Claims Troublemaker, swapped Justin/Mitchell.\n    *   Justin: Claims Troublemaker, swapped Justin/Mitchell (or James/Mitchell).\n    *   Mitchell: Claims Robber, stole from Justin. Also claims he was the Tanner.\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If Mike is a Werewolf, he's lying.\n    *   If Mitchell is the Tanner, he wants to be voted out.\n    *   If James or Justin is the Werewolf, they are lying about being the Troublemaker.\n\n    *   Mitchell says: \"I had the tanner at one point\" [44] and \"I started as the robber\" [118].\n    *   If Mitchell was the Robber and stole from Justin (who was the Tanner), Mitchell becomes the Tanner.\n    *   Then if James (Troublemaker) swapped Mitchell and Justin, Justin becomes the Tanner again and Mitchell becomes the Robber (or whatever he was).\n    *   This matches Justin's claim: \"So, that means I'm in the tanner\" [123].\n\n    *   If Mike is the Seer and saw 2 Werewolves in the center, then no one is a Werewolf.\n    *   If Mike is a Werewolf, he's the only one.\n    *   Wait, if there are 4 players and 3 center cards, and 2 werewolves are in the center, there's only 1 werewolf card left in the total pool (if the game uses 2 werewolves). But the rules say \"up to two Masons\" and \"at most one of each other listed role\", but \"multiple Werewolves\" are possible.\n    *   If Mike saw 2 werewolves in the center, and there are only 2 werewolves in the game, then no one is a werewolf.\n\n    *   Mike's claim is very strong (\"I guarantee I saw two werewolves\").\n    *   James and Justin are arguing, and Mitchell is confused.\n    *   If Mike is the Werewolf, he's playing a very bold bluff.\n    *   If Mike is the Seer, the answer is \"No Werewolf\".\n    *   Let's re-read: \"If you believe that no player holds the werewolf card... you can indicate 'no Werewolf'.\"\n    *   Is there any evidence Mike is lying? Justin and James both suspect him.\n    *   But Mitchell also says \"I do not believe there is a werewolf out there\" [56].\n    *   If Mitchell (who claims to be the Robber/Tanner) believes there's no werewolf, and Mike (Seer) says there are two in the center, it's highly likely there are no werewolves among the players.\n\n    *   If Mike is the Werewolf, he's the only one.\n    *   If Mike is the Seer, no one is the Werewolf.\n    *   If Mike is the Tanner, he wants to be voted out, but he's claiming there are no werewolves, which might make people *not* vote for him. (Wait, Tanners want to be voted out).\n    *   If Mike is the Tanner, he would claim to be the Werewolf or act suspicious. Claiming to be the Seer who saw werewolves in the center is a \"safe\" claim, not a \"Tanner\" claim.\n\n    *   Mike's claim that two werewolves are in the center is the most pivotal piece of information.\n    *   If we trust Mike, the answer is \"No Werewolf\".\n    *   If we don't trust Mike, who is the most likely werewolf?\n    *   James and Justin are both claiming Troublemaker. One is lying.\n    *   Mitchell is claiming Robber and Tanner.\n    *   If Mike is the werewolf, he's lying about the center cards.\n    *   However, the prompt asks to make Team Village win. If no werewolf is present, \"No Werewolf\" is the winning move. If a werewolf is present, voting them out is the winning move.\n    *   Given the transcript, Mike's claim is the only specific piece of \"information\" provided about the center cards. While it could be a bluff, without more evidence, it's the only lead.\n    *   Wait, Mitchell says \"I do not believe there is a werewolf out there\" [56]. This supports Mike's claim.\n\n    *   If Mike is the Seer and saw 2 werewolves in the center, then no one is a werewolf.\n    *   If Mike is a werewolf, he's lying.\n    *   If James or Justin is a werewolf, they are lying about being the Troublemaker.\n    *   If Mitchell is a werewolf, he's lying about being the Robber/Tanner.\n    *   But Mitchell's admission of being the Tanner [44, 93] makes him a likely candidate for the Tanner role, not the Werewolf.\n    *   The most consistent interpretation of the chaos is that Mike is the Seer, and the others are confused/lying about their roles (Tanner/Troublemaker/Robber).\n\n    *   Mike claims Seer and saw 2 werewolves in the center.\n    *   Mitchell agrees he doesn't believe there's a werewolf.\n    *   James and Justin are fighting over the Troublemaker role, and one likely is the Tanner.\n    *   If Mike is telling the truth, no one is a werewolf.\n\n    *   Wait, if Mike is the werewolf, he's the only one. If he's the only one, he'd want to convince everyone there are no werewolves.\n    *   But if Mike is the Seer, he's telling the truth.\n    *   In \"One Night Ultimate Werewolf\", if the Seer sees two werewolves in the center, they know for a fact that no one is a werewolf.\n    *   The most logical conclusion for an external observer is to trust the most specific claim unless it's contradicted. Mike's claim is specific.\n\n    *   Could Mike be the werewolf? Yes.\n    *   Could James be the werewolf? Yes.\n    *   Could Justin be the werewolf? Yes.\n    *   Could Mitchell be the werewolf? Yes.\n    *   But Mike's claim is the only one that provides a path to \"No Werewolf\".\n    *   Let's look at the players' behavior. James and Justin are very aggressive. Mitchell is admitting to being the Tanner. Mike is calm.\n    *   If Mike is the werewolf, he's playing it very cool.\n    *   If Mike is the Seer, he's just waiting to see if anyone else lies.\n    *   Given the options, \"No Werewolf\" is a strong possibility if Mike is the Seer.\n\n    *   Wait, Mitchell says \"I started as the robber. I stole from Justin.\" [118, 120].\n    *   If Mitchell was the Robber and stole from Justin, and Justin was the Werewolf, then Mitchell is now the Werewolf.\n    *   But Mitchell says \"I do not believe there is a werewolf out there\" [56].\n    *   If Mitchell is the Werewolf, he's lying.\n    *   But if Mike is the Seer and saw 2 werewolves in the center, then there are no werewolves among the players.\n    *   Let's assume Mike is the Seer. Then the answer is \"No Werewolf\".\n\n    *   If Mike is the werewolf, he's the only one.\n    *   If Mike is the Seer, no one is the werewolf.\n    *   If James is the werewolf, he's lying about being the Troublemaker.\n    *   If Justin is the werewolf, he's lying about being the Troublemaker.\n    *   If Mitchell is the werewolf, he's lying about being the Robber/Tanner.\n    *   The most likely scenario where Team Village wins is by trusting the Seer's claim that the werewolves are in the center.\n\n    *   Mike claims to be the Seer and saw two werewolves in the center.\n    *   Mitchell supports the idea that there are no werewolves.\n    *   James and Justin's conflict over the Troublemaker role suggests one of them is the Tanner.\n    *   If Mike's claim is true, no player is a werewolf.",
+  "parsed_output": {
+    "justification": "Mike claims to be the Seer and states he saw two Werewolf cards in the center, which would mean no player is currently a Werewolf. Mitchell supports this by stating he does not believe there is a Werewolf among the players. James and Justin both claim to be the Troublemaker, suggesting one of them is likely the Tanner attempting to deceive the group. Given the specific claim from Mike and the supporting sentiment from Mitchell, the most likely scenario for a Village win is that no Werewolf is present among the players.",
+    "chosen_vote": "No Werewolf"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claims to be the Seer and states he saw two Werewolf cards in the center, which would mean no player is currently a Werewolf. Mitchell supports this by stating he does not believe there is a Werewolf among the players. James and Justin both claim to be the Troublemaker, suggesting one of them is likely the Tanner attempting to deceive the group. Given the specific claim from Mike and the supporting sentiment from Mitchell, the most likely scenario for a Village win is that no Werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claims to be the Seer and states he saw two Werewolf cards in the center, which would mean no player is currently a Werewolf. Mitchell supports this by stating he does not believe there is a Werewolf among the players. James and Justin both claim to be the Troublemaker, suggesting one of them is likely the Tanner attempting to deceive the group. Given the specific claim from Mike and the supporting sentiment from Mitchell, the most likely scenario for a Village win is that no Werewolf is present among the players.\",\n  \"chosen_vote\": \"No Werewolf\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "No Werewolf",
+    "justification": "Mike claims to be the Seer and states he saw two Werewolf cards in the center, which would mean no player is currently a Werewolf. Mitchell supports this by stating he does not believe there is a Werewolf among the players. James and Justin both claim to be the Troublemaker, suggesting one of them is likely the Tanner attempting to deceive the group. Given the specific claim from Mike and the supporting sentiment from Mitchell, the most likely scenario for a Village win is that no Werewolf is present among the players."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3999,
+    "output_token_count": 2510,
+    "generation_time_sec": 275.70845198631287,
+    "used_chat_template": true,
+    "input_char_count": 13886,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

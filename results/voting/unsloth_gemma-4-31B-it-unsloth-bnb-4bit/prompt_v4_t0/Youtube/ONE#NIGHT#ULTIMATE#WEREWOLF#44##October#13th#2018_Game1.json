@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin: Claims to be the Robber. Claims he robbed Paul.\n    *   Mitchell: Claims to be the Seer (implied by \"I looked at two [cards]\" and \"I saw the robber in the middle\"). Claims he saw the Robber card in the center. Later claims he saw a Werewolf card in the center.\n    *   Paul: Claims he woke up as the Insomniac (or was robbed and became the Insomniac? He says \"I woke up as the robber as the insomniac\" - very confusing). Later agrees with Justin's story that Justin robbed him.\n    *   Mike: Claims he was the Insomniac.\n\n    *   Justin (Robber) -> Robbed Paul.\n    *   Paul (Insomniac) -> Robbed by Justin.\n    *   Mitchell (Seer) -> Saw Robber in center (contradicts Justin).\n    *   Mike (Insomniac) -> Claims he woke up as Insomniac (contradicts Paul/Justin).\n\n    *   If Mitchell is the Seer and saw the Robber in the center, then Justin cannot be the Robber.\n    *   If Justin is the Robber and robbed Paul, then Paul's card changed.\n    *   If Mike is the Insomniac, he should have woken up.\n    *   If Paul is the Insomniac, he should have woken up.\n    *   Wait, only one Insomniac exists. Both Mike and Paul claim to be/wake up as the Insomniac.\n    *   Mitchell claims he saw the Robber in the center. If the Robber is in the center, Justin is lying about being the Robber.\n    *   Mitchell also claims he saw a Werewolf in the center. If a Werewolf is in the center, there might be only one Werewolf left or none.\n\n    *   Justin: Claims Robber.\n    *   Mitchell: Claims Seer (saw Robber in center).\n    *   Paul: Claims Insomniac (or was robbed into it).\n    *   Mike: Claims Insomniac.\n\n    *   If Mitchell is telling the truth (Seer, saw Robber in center), then Justin is lying.\n    *   If Justin is lying about being the Robber, he could be a Werewolf or the Tanner.\n    *   If Mike and Paul both claim Insomniac, one is lying.\n    *   If Justin robbed Paul, Paul's role changed. If Paul was the Insomniac and Justin (Robber) took his card, Justin becomes the Insomniac and Paul becomes the Robber. But Justin claims he is the Robber. This is a contradiction. If Justin is the Robber, he takes the card of the person he robs. If he robbed Paul, he takes Paul's card. If Paul was the Insomniac, Justin is now the Insomniac. Justin cannot \"be the Robber\" after robbing someone; he becomes the role he stole.\n\n    *   Justin says: \"I was the robber. I robbed from Paul.\"\n    *   If Justin was the Robber, he swaps his card with Paul's. He then looks at the new card.\n    *   If Paul was the Insomniac, Justin is now the Insomniac.\n    *   But Justin says \"I am the robber\" (meaning his starting role or current role?). In One Night Ultimate Werewolf, the Robber *becomes* the role they steal.\n    *   Justin's claim: \"I was the robber. I robbed from Paul.\" This means he started as the Robber.\n    *   Paul's claim: \"I woke up as the robber as the insomniac.\" (Very confused phrasing).\n    *   Mike's claim: \"I was the insomniac.\"\n\n    *   If Mitchell is the Seer and saw the Robber in the center, then Justin is lying.\n    *   If Justin is lying and Mitchell is telling the truth, Justin is a strong candidate for Werewolf.\n    *   If Mike is the Insomniac and Paul is lying, Paul could be the Werewolf or Tanner.\n    *   If Paul is the Insomniac and Mike is lying, Mike could be the Werewolf or Tanner.\n\n    *   Mitchell: \"I saw the robber in the middle.\" (Line 11)\n    *   Mitchell: \"I know there's only one werewolf out there.\" (Line 22)\n    *   Mitchell: \"I saw a werewolf in the middle.\" (Line 75)\n    *   If Mitchell saw both the Robber and the Werewolf in the center, then:\n        *   The Robber is not in play.\n        *   One Werewolf is not in play.\n    *   If the Robber is not in play, Justin is lying about being the Robber.\n    *   If Justin is lying, he is likely the Werewolf (since the Minion is also Team Werewolf).\n\n    *   Justin claims he robbed Paul.\n    *   Paul claims he woke up as the Insomniac (or something similar).\n    *   Mike claims he woke up as the Insomniac.\n    *   If Mitchell is the Seer and saw the Robber in the center, Justin's story is a complete fabrication.\n    *   If Justin is lying, he's the most suspicious.\n\n    *   Justin: Claims Robber (contradicted by Mitchell).\n    *   Mitchell: Claims Seer (saw Robber and Werewolf in center).\n    *   Paul: Claims Insomniac (contradicted by Mike).\n    *   Mike: Claims Insomniac (contradicted by Paul).\n\n    *   If Mitchell is the Seer, he's likely telling the truth about the center cards.\n    *   If the Robber is in the center, Justin is lying.\n    *   If Justin is lying, he's either the Werewolf, Minion, or Tanner.\n    *   Given the chaos, Justin's insistence on being the Robber despite the Seer's claim makes him the primary target.\n\n    *   Wait, Mitchell says \"I saw the robber in the middle\" (Line 11) and then later \"I saw a werewolf in the middle\" (Line 75).\n    *   The Seer can look at *two* cards in the center. So he could have seen both.\n    *   If Robber and Werewolf are in the center, then Justin is lying and there is only one Werewolf left in the game (or none, if there was only one to begin with).\n    *   If Justin is lying, he is the most likely Werewolf.\n\n    *   Justin: \"I was the robber. I robbed from Paul.\"\n    *   Paul: \"I woke up as the robber as the insomniac.\" (This is nonsense).\n    *   Mike: \"I was the insomniac.\"\n    *   If Justin robbed Paul, and Paul was the Insomniac, Justin is now the Insomniac.\n    *   If Justin is the Insomniac, he would know his role.\n    *   But Justin keeps claiming to be the Robber.\n    *   This suggests Justin is lying.\n\n    *   Justin is the most inconsistent and is directly contradicted by Mitchell (the Seer).\n    *   Mitchell's claim of seeing the Robber in the center makes Justin's claim impossible.\n    *   Therefore, Justin is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell claims to be the Seer and states he saw the Robber card in the center, which directly contradicts Justin's claim of being the Robber. Furthermore, Justin's story is logically inconsistent: if he were the Robber and robbed Paul, he would have taken Paul's role and would no longer be the Robber. Since Mitchell's information as the Seer suggests the Robber is not in play, Justin is likely lying to cover his identity as a Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw the Robber card in the center, which directly contradicts Justin's claim of being the Robber. Furthermore, Justin's story is logically inconsistent: if he were the Robber and robbed Paul, he would have taken Paul's role and would no longer be the Robber. Since Mitchell's information as the Seer suggests the Robber is not in play, Justin is likely lying to cover his identity as a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell claims to be the Seer and states he saw the Robber card in the center, which directly contradicts Justin's claim of being the Robber. Furthermore, Justin's story is logically inconsistent: if he were the Robber and robbed Paul, he would have taken Paul's role and would no longer be the Robber. Since Mitchell's information as the Seer suggests the Robber is not in play, Justin is likely lying to cover his identity as a Werewolf.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Mitchell claims to be the Seer and states he saw the Robber card in the center, which directly contradicts Justin's claim of being the Robber. Furthermore, Justin's story is logically inconsistent: if he were the Robber and robbed Paul, he would have taken Paul's role and would no longer be the Robber. Since Mitchell's information as the Seer suggests the Robber is not in play, Justin is likely lying to cover his identity as a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4015,
+    "output_token_count": 1785,
+    "generation_time_sec": 192.3864598274231,
+    "used_chat_template": true,
+    "input_char_count": 13939,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

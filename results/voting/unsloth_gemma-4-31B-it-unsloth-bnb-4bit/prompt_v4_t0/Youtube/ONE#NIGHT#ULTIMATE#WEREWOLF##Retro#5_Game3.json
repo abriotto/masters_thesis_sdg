@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#5_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims to be the Troublemaker. Says he didn't switch anyone.\n    *   Paul: Claims he started as a Werewolf. Claims Mitchell is the Insomniac and is now a Werewolf (due to a switch). Later admits he was the only Werewolf if Justin didn't switch.\n    *   Mitchell: Initially claims to be the Seer and saw two Werewolves. Later changes his story to say he saw one Werewolf (Paul) and lied about the second one.\n\n    *   Justin (Troublemaker): Claims he didn't switch anyone. If he's telling the truth, no cards were swapped by the Troublemaker.\n    *   Paul (Werewolf): Admits he started as a Werewolf. He claims he was the only one.\n    *   Mitchell (Seer): Claims he saw Paul as a Werewolf.\n\n    *   If Paul is a Werewolf and Justin didn't switch anyone, Paul is still a Werewolf.\n    *   If Mitchell is the Seer and saw Paul as a Werewolf, this supports Paul being a Werewolf.\n    *   Paul's admission (\"I was a werewolf. A hundred percent.\") is a very strong signal. Usually, Werewolves lie about being Werewolves, but in this specific transcript, Paul seems to be trying to frame Mitchell by claiming Mitchell is the Insomniac who became a Werewolf. However, he eventually admits \"If you didn't switch us, then I'm werewolf.\"\n\n    *   Paul admits to being a Werewolf (starting role).\n    *   Justin (Troublemaker) says he didn't switch anyone.\n    *   Mitchell (Seer) says he saw Paul as a Werewolf.\n    *   Even if Paul is lying about being a Werewolf to confuse people, the weight of evidence (his own admission and Mitchell's claim) points to him.\n    *   Wait, Paul says \"I was a werewolf\" but then tries to say Mitchell is the one who is currently the werewolf. But if Justin didn't switch them, Paul remains the werewolf.\n\n    *   Paul: \"I was a werewolf. A hundred percent.\" (Line 67)\n    *   Paul: \"If you didn't switch us, then I'm werewolf.\" (Line 98)\n    *   Mitchell: \"I was a seer and I looked at his and it was a werewolf.\" (Line 101)\n    *   Justin: \"I didn't switch.\" (Line 106)\n\n    If Justin is the Troublemaker and didn't switch, and Paul started as a Werewolf, Paul is the Werewolf.\n\n    *   Could Paul be the Tanner? Tanners want to be voted out. Admitting to being a Werewolf is a great way to get voted out.\n    *   Could Mitchell be the Werewolf lying about being the Seer?\n    *   However, Paul's admission is very explicit. In a 3-player game, if someone admits to being the Werewolf and the Troublemaker says no switches happened, the most logical vote for the Village is that person.\n\n    *   Paul admits he started as a Werewolf.\n    *   Justin (Troublemaker) states he did not swap any cards.\n    *   Mitchell (Seer) identifies Paul as a Werewolf.\n    *   Therefore, Paul is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin, claiming to be the Troublemaker, states that he did not switch any players' cards. Mitchell, claiming to be the Seer, identifies Paul as a Werewolf. Given these statements, Paul is the most likely candidate for the Werewolf role.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin, claiming to be the Troublemaker, states that he did not switch any players' cards. Mitchell, claiming to be the Seer, identifies Paul as a Werewolf. Given these statements, Paul is the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin, claiming to be the Troublemaker, states that he did not switch any players' cards. Mitchell, claiming to be the Seer, identifies Paul as a Werewolf. Given these statements, Paul is the most likely candidate for the Werewolf role.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul explicitly admits multiple times that he started as a Werewolf ('I was a werewolf. A hundred percent.'). Justin, claiming to be the Troublemaker, states that he did not switch any players' cards. Mitchell, claiming to be the Seer, identifies Paul as a Werewolf. Given these statements, Paul is the most likely candidate for the Werewolf role."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3819,
+    "output_token_count": 847,
+    "generation_time_sec": 92.56012988090515,
+    "used_chat_template": true,
+    "input_char_count": 13440,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

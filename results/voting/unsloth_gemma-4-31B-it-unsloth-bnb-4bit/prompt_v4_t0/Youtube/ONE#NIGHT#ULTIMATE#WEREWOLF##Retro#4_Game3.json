@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Caitlynn, Mike, James, Mitchell.\n    *   Roles involved (based on transcript): Insomniac, Seer, Drunk.\n\n    *   James: Claims he was the Insomniac and woke up as a Seer. (Wait, he says \"I was the insomniac, but I woke up as a seer\").\n    *   Mitchell: Claims he was the Seer and looked at two cards in the center.\n    *   Mike: Claims he was the Seer and looked at Mitchell's card, seeing a Werewolf.\n    *   Justin: Confirms Mike's story. (Wait, Justin says \"I'm going to confirm Mike's story. And I switched to these two,\" - this is confusing. He might be claiming to be the Troublemaker or Robber? Or just supporting Mike).\n    *   Caitlynn: Admits she was the Drunk.\n\n    *   James: Insomniac -> Seer. (Possible if Robber or Troublemaker moved cards).\n    *   Mitchell: Seer (looked at center).\n    *   Mike: Seer (looked at Mitchell, saw Werewolf).\n    *   Caitlynn: Drunk.\n\n    *   Only one Seer card is available (unless there's a Doppelganger).\n    *   Three people are claiming Seer-like knowledge or roles: James, Mitchell, and Mike.\n    *   James claims he was Insomniac and woke up as Seer.\n    *   Mitchell claims he was Seer and looked at the center.\n    *   Mike claims he was Seer and looked at Mitchell.\n\n    *   If Mike is the Seer, Mitchell is a Werewolf.\n    *   If Mitchell is the Seer, Mike is lying.\n    *   If James is the Seer (via Insomniac check), both Mike and Mitchell might be lying.\n\n    *   Justin supports Mike.\n    *   Caitlynn admits to being the Drunk.\n    *   Mitchell is being targeted by Mike and Justin.\n\n    *   If Mike is the Seer and Mitchell is the Werewolf, voting Mitchell wins for the Village.\n    *   If Mitchell is the Seer and Mike is the Werewolf, voting Mike wins for the Village.\n    *   If James is the Seer, both could be lying.\n\n    *   James says: \"I was the insomniac, but I woke up as a seer.\"\n    *   Mitchell says: \"I looked at two in the middle because I was the seer...\"\n    *   Mike says: \"I'm going to say that I was the seer and I looked at Mitchell's and he was a werewolf.\"\n    *   Justin says: \"I'm going to confirm Mike's story.\"\n\n    Wait, if James woke up as a Seer (Insomniac), and Mike claims to be the Seer, and Mitchell claims to be the Seer... something is very wrong.\n\n    Let's look at the roles:\n    - Seer: 1\n    - Insomniac: 1\n    - Drunk: 1\n    - Robber: 1\n    - Troublemaker: 1\n    - Doppelganger: 1\n\n    If James was the Insomniac and woke up as the Seer, he knows he is the Seer.\n    If Mike is the Seer, he knows Mitchell is a Werewolf.\n    If Mitchell is the Seer, he knows the center cards.\n\n    Wait, if James is the Insomniac and woke up as the Seer, then Mike and Mitchell *cannot* be the Seer (unless there's a Doppelganger).\n\n    However, in these games, the most aggressive claim often points to the Werewolf or the Seer. Mike is very confident that Mitchell is the Werewolf. Justin is backing Mike.\n\n    Let's re-read Justin's line: \"I'm going to confirm Mike's story. And I switched to these two,\". This is very vague. \"Switched to these two\" sounds like a Troublemaker. If Justin is the Troublemaker, he swapped two people.\n\n    If Justin (Troublemaker) swapped Mike and Mitchell, and Mike was the Seer, Mike would have looked at Mitchell *before* the swap? No, Seer wakes up before Troublemaker.\n    Night Order:\n    1. Doppelganger\n    2. Werewolves\n    3. Minion\n    4. Masons\n    5. Seer\n    6. Robber\n    7. Troublemaker\n    8. Drunk\n    9. Insomniac\n\n    If Mike was the Seer, he looked at Mitchell (Werewolf). Then the Troublemaker (Justin?) might have swapped Mitchell with someone else. But the Seer's information is about the card *at the time of looking*.\n\n    Wait, if Mike is the Seer and saw Mitchell as a Werewolf, and then Justin (Troublemaker) swapped Mitchell with someone else, Mitchell might not be the Werewolf anymore. But the prompt asks who to vote out to make Team Village win.\n\n    Let's look at the claims again.\n    Mike: \"Mitchell is the werewolf.\"\n    Justin: \"I feel like we have to kill Mitchell.\"\n    Mitchell: \"Should we vote now?\" (Seems eager to end it, or perhaps he's the Tanner?)\n\n    If Mitchell is the Tanner, he wants to be voted out.\n    If Mitchell is the Werewolf, he wants to avoid it.\n    If Mitchell is the Seer, he's being framed.\n\n    Comparing Mike and Mitchell:\n    Mike's claim is specific (\"Mitchell is a werewolf\").\n    Mitchell's claim is also specific (\"I looked at two in the middle\").\n\n    In One Night Ultimate Werewolf, when multiple people claim the same role, usually the one being accused is the target. Mike and Justin are teaming up against Mitchell.\n\n    Let's check James again: \"I was the insomniac, but I woke up as a seer.\"\n    If James is the Insomniac and woke up as the Seer, then Mike is lying about being the Seer. If Mike is lying about being the Seer to frame Mitchell, Mike could be the Werewolf.\n\n    Wait, if James is the Insomniac and woke up as the Seer, then the Seer card was moved to him. Who moves cards? Robber or Troublemaker.\n    If the Robber took the Seer card from Mike, then Mike *was* the Seer but isn't anymore. But Mike would still have the information he gained as Seer.\n\n    This is getting complex. Let's simplify.\n    Mike says Mitchell is a Werewolf.\n    Justin supports Mike.\n    Mitchell claims to be the Seer.\n    James claims to be the Insomniac who became the Seer.\n\n    If James is telling the truth, he is the current Seer.\n    If Mike is telling the truth, he was the Seer and saw Mitchell as a Werewolf.\n    If Mitchell is telling the truth, he was the Seer and looked at the center.\n\n    Only one person can be the starting Seer.\n    If Mike was the starting Seer, he saw Mitchell.\n    If Mitchell was the starting Seer, he saw the center.\n    If James became the Seer, someone (Robber/Troublemaker) moved the Seer card.\n\n    If Mike was the Seer and the Robber (James?) took the card, James would wake up as the Seer. This matches James's claim.\n    So:\n    1. Mike (Seer) looks at Mitchell (Werewolf).\n    2. James (Robber) steals the Seer card from Mike.\n    3. James (now Seer) wakes up as Insomniac? No, Insomniac is a separate role.\n\n    Wait, James said: \"I was the insomniac, but I woke up as a seer.\"\n    The Insomniac wakes up *last*. If the Insomniac wakes up and sees they are now the Seer, it means the Troublemaker or Robber swapped their card.\n    If the Robber (who wakes up at 6) swapped their card with the Insomniac (who wakes up at 9), the Robber would get the Insomniac card and the Insomniac would get the Robber's card.\n    If the Troublemaker (who wakes up at 7) swapped the Insomniac's card with the Seer's card, the Insomniac would wake up as the Seer.\n\n    So, if James (Insomniac) woke up as the Seer, then the Troublemaker swapped the Seer card and the Insomniac card.\n    If the Seer card was swapped *away* from the person who was the Seer, that person (the original Seer) still has the information they gathered.\n    If Mike was the original Seer, he saw Mitchell as a Werewolf. Then the Troublemaker swapped Mike's Seer card with James's Insomniac card.\n    This means:\n    - Mike: Original Seer (saw Mitchell = Werewolf).\n    - James: Original Insomniac (now Seer).\n    - Mitchell: Werewolf.\n    - Justin: Troublemaker (swapped Mike and James).\n    - Caitlynn: Drunk.\n\n    This scenario is perfectly consistent with all statements.\n    - Mike's claim: \"I was the seer and I looked at Mitchell's and he was a werewolf.\" (True, he was the starting Seer).\n    - James's claim: \"I was the insomniac, but I woke up as a seer.\" (True, he was the starting Insomniac, swapped by Troublemaker).\n    - Justin's claim: \"I'm going to confirm Mike's story. And I switched to these two.\" (True, he was the Troublemaker).\n    - Caitlynn's claim: \"I was a drunk.\" (True).\n    - Mitchell's claim: \"I looked at two in the middle because I was the seer.\" (False, he is the Werewolf).\n\n    Therefore, Mitchell is the most likely Werewolf.\n\n    - Could Mitchell be the Seer? If Mitchell is the Seer, then Mike is lying. If Mike is lying, he could be the Werewolf.\n    - Could James be lying? If James is the Werewolf, he's trying to confuse the situation.\n    - But the consistency of the \"Troublemaker swapped Seer and Insomniac\" theory is very strong.\n\n    - Mike (Seer) -> sees Mitchell (Werewolf).\n    - Justin (Troublemaker) -> swaps Mike (Seer) and James (Insomniac).\n    - James (Insomniac) -> wakes up and sees he is now the Seer.\n    - Mitchell (Werewolf) -> lies and says he is the Seer.\n    - Caitlynn (Drunk) -> just exists.\n\n    This fits every single piece of dialogue.\n\n    - Justification: Mike claims to be the Seer and identifies Mitchell as the Werewolf. James's claim of being the Insomniac who woke up as the Seer suggests a card swap occurred, which is supported by Justin's hint at having \"switched\" players (likely as the Troublemaker). This makes Mike's initial information as the Seer reliable, while Mitchell's claim to be the Seer is a likely bluff by the Werewolf.\n    - Chosen vote: Mitchell.",
+  "parsed_output": {
+    "justification": "Mike claims to be the Seer and identifies Mitchell as the Werewolf. James's claim of being the Insomniac who woke up as the Seer suggests a card swap occurred, which is supported by Justin's hint at having 'switched' players (likely as the Troublemaker). This makes Mike's initial information as the Seer reliable, while Mitchell's claim to be the Seer is a likely bluff by the Werewolf to avoid elimination.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike claims to be the Seer and identifies Mitchell as the Werewolf. James's claim of being the Insomniac who woke up as the Seer suggests a card swap occurred, which is supported by Justin's hint at having 'switched' players (likely as the Troublemaker). This makes Mike's initial information as the Seer reliable, while Mitchell's claim to be the Seer is a likely bluff by the Werewolf to avoid elimination.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike claims to be the Seer and identifies Mitchell as the Werewolf. James's claim of being the Insomniac who woke up as the Seer suggests a card swap occurred, which is supported by Justin's hint at having 'switched' players (likely as the Troublemaker). This makes Mike's initial information as the Seer reliable, while Mitchell's claim to be the Seer is a likely bluff by the Werewolf to avoid elimination.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mike claims to be the Seer and identifies Mitchell as the Werewolf. James's claim of being the Insomniac who woke up as the Seer suggests a card swap occurred, which is supported by Justin's hint at having 'switched' players (likely as the Troublemaker). This makes Mike's initial information as the Seer reliable, while Mitchell's claim to be the Seer is a likely bluff by the Werewolf to avoid elimination."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2233,
+    "output_token_count": 2678,
+    "generation_time_sec": 276.77526569366455,
+    "used_chat_template": true,
+    "input_char_count": 8910,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}
