@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Laura\n    *   Paul\n    *   James\n    *   Mitchell\n\n    *   James: Claims Seer. Says Tanner and Werewolf are in the center.\n    *   Laura: Claims Insomniac. Says she was Robber and switched with Mitchell (who is now Robber).\n    *   Mitchell: Claims Robber (confirms Laura's claim).\n    *   Justin: Claims Hunter.\n    *   Paul: Claims Seer. Says he looked at James and saw Tanner.\n\n    *   James vs. Paul: Both claim Seer.\n    *   James says: Tanner and Werewolf are in the center.\n    *   Paul says: James is the Tanner.\n    *   If James is the Seer and saw Tanner/Werewolf in the center, then no one is a Werewolf (since only one Werewolf card exists in the pool of 8 roles, and if one is in the center, and there's only one werewolf total, then no one is a werewolf). Wait, the rules say \"up to two werewolves\". If James saw *a* werewolf in the center, there could still be another werewolf in play. But he says \"Tanner and Werewolf in the center\".\n    *   If Paul is the Seer and saw James is the Tanner, then James is the Tanner.\n    *   If Paul is the Werewolf, he's lying about being the Seer to frame James.\n    *   If James is the Werewolf, he's lying about being the Seer to hide his identity and claim the werewolf is in the center.\n\n    *   Laura claims she was Robber and switched with Mitchell.\n    *   Mitchell confirms he woke up as Robber.\n    *   Wait, the Robber wakes up, swaps, and *then* looks. If Laura was Robber, she swapped with Mitchell and then saw her new card. If she saw \"Insomniac\", then Mitchell was the Insomniac.\n    *   But the Insomniac wakes up *after* the Robber. If Mitchell was the Insomniac, he would have checked his card at the end of the night and known he was the Insomniac (unless he was swapped again).\n    *   Wait, Laura says: \"I will say that I switched with Mitchell and that's why he is the Robber now and I'm the Insomniac because I was the Robber and he was the insomniac.\"\n    *   This is confusing. If Laura was the Robber, she swaps with Mitchell. She becomes whatever Mitchell was, and Mitchell becomes the Robber. If she became the Insomniac, then Mitchell was the Insomniac. Then Mitchell (now the Robber) doesn't wake up as Insomniac. Laura (now the Insomniac) wakes up and sees she is the Insomniac.\n    *   Mitchell says: \"I woke up as Robber.\" This is impossible. The Robber doesn't \"wake up\" as Robber; they wake up *to perform the action* of robbing. If he means he discovered he was the Robber, how? The Robber doesn't check their card at the end of the night. Only the Insomniac does.\n    *   Wait, if Mitchell was the Insomniac, he would have woken up at the end of the night and seen his card. If Laura (Robber) had already swapped with him, he would have seen \"Robber\". So Mitchell waking up as Insomniac and seeing \"Robber\" makes sense.\n    *   So Laura (Robber) -> swaps with Mitchell (Insomniac) -> Laura is now Insomniac, Mitchell is now Robber.\n    *   Then Insomniac (Laura) wakes up and sees she is the Insomniac.\n    *   This sequence is consistent.\n\n    *   James (Seer) vs. Paul (Seer).\n    *   James says: Tanner and Werewolf in center.\n    *   Paul says: James is Tanner.\n    *   If James is telling the truth, there is one Werewolf in the center. Since there are 5 players and 8 roles (5+3), and the roles are: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf.\n    *   Wait, the player list is 5 people. The candidate roles are 5+3 = 8.\n    *   If James saw a Werewolf in the center, and there's only one Werewolf in the game, then no one is a Werewolf.\n    *   If Paul is the Werewolf, he's lying.\n    *   If James is the Werewolf, he's lying.\n    *   Let's look at the behavior. Paul is very aggressive about James being the Tanner. James is more passive.\n    *   Justin claims Hunter.\n    *   If Paul is the Werewolf, he wants to avoid being voted out. Framing James as the Tanner is a great way to get James voted out (Tanner wins if voted out, but the Village loses if they vote out the Tanner instead of a Werewolf... wait, no. If the Tanner is voted out, the Tanner wins. If a Werewolf is voted out, the Village wins).\n    *   Wait, if the Village votes out the Tanner, the Tanner wins and the Village loses (because they didn't vote out a Werewolf).\n    *   So if Paul is the Werewolf, he wants the Village to vote for James (Tanner).\n    *   If James is the Werewolf, he wants the Village to believe no one is a Werewolf or to vote for someone else.\n\n    *   James: \"Tanner and Werewolf in the center.\"\n    *   Paul: \"I was a seer... I looked at James... He's the Tanner.\"\n    *   If Paul is the Seer, James is the Tanner. If James is the Tanner, he wants to be voted out. But James is claiming to be the Seer and saying the Werewolf is in the center (which would mean no one is a Werewolf). This is a weird strategy for a Tanner. A Tanner usually tries to look suspicious to get voted out. James is trying to look like a helpful Seer.\n    *   If James is the Werewolf, he's lying about the center cards to make the Village think there's no Werewolf in play.\n    *   If Paul is the Werewolf, he's lying about being the Seer to frame James.\n\n    *   Justin: Hunter.\n    *   Laura: Insomniac (was Robber).\n    *   Mitchell: Robber (was Insomniac).\n    *   James: Seer?\n    *   Paul: Seer?\n    *   One of them must be lying.\n    *   If James is the Seer, Paul is the Werewolf.\n    *   If Paul is the Seer, James is the Tanner.\n    *   If James is the Werewolf, he's lying about being the Seer.\n    *   If Paul is the Werewolf, he's lying about being the Seer.\n\n    *   James says: \"Tanner and Werewolf in the center.\"\n    *   Paul says: \"James is the Tanner.\"\n    *   If James is the Tanner, he's lying about being the Seer. Why would a Tanner lie about being the Seer and say the Werewolf is in the center? That doesn't help him get voted out.\n    *   If James is the Werewolf, he's lying about being the Seer and saying the Werewolf is in the center to convince the Village to vote \"No Werewolf\".\n    *   If Paul is the Werewolf, he's lying about being the Seer and framing James as the Tanner to get James voted out.\n\n    *   Wait, if Paul is the Werewolf and he frames James as the Tanner, and the Village votes for James, the Tanner (if James actually is the Tanner) wins. But if James is just a Villager, the Werewolf (Paul) wins because no Werewolf was voted out.\n    *   Let's re-evaluate Paul's claim. Paul says he's the Seer and James is the Tanner.\n    *   If Paul is the Werewolf, he's trying to divert attention.\n    *   If James is the Werewolf, he's trying to convince everyone there's no Werewolf.\n\n    *   Justin says: \"I'm more likely to go Paul.\"\n    *   Laura says: \"I guess I'll vote for James?\"\n    *   Mitchell says: \"I'm voting left\" (likely referring to Paul or James).\n    *   Paul says: \"I'm voting for Justin.\" (Wait, why? Paul says Justin is the only possible werewolf? \"Justin is the only possible werewolf at this point, because I know what he is, and I feel really good about what you guys are.\")\n    *   Wait, Paul said: \"I know what [Justin] is\". How does Paul know what Justin is? Paul claimed to be the Seer and said he looked at James. He didn't say he looked at Justin.\n    *   If Paul is the Seer, he only gets one look. He used it on James. So he *cannot* know what Justin is.\n    *   This is a huge red flag. Paul is lying about his information.\n\n    *   Paul claims to be the Seer.\n    *   Paul claims he looked at James and saw the Tanner.\n    *   Paul then claims he knows what Justin is (\"Justin is the only possible werewolf... because I know what he is\").\n    *   A Seer cannot know both James's role and Justin's role unless he looked at the center and somehow deduced it, but he specifically said he looked at James.\n    *   Therefore, Paul is lying.\n\n    *   If Paul is lying about being the Seer, he is likely the Werewolf.\n    *   James's claim (Seer, saw Werewolf in center) is more consistent, although it's a common Werewolf bluff. However, Paul's contradiction is a direct evidence of lying.\n\n    *   Justin: Hunter.\n    *   Laura: Insomniac.\n    *   Mitchell: Robber.\n    *   James: Seer.\n    *   Paul: Werewolf.\n    *   This fits. Paul lies about being the Seer to frame James and then accidentally reveals he's lying by claiming to know Justin's role.\n\n    *   Wait, Paul said: \"Justin is the only possible werewolf at this point, because I know what he is\".\n    *   Could Paul be the Robber? No, Mitchell and Laura already claimed Robber/Insomniac.\n    *   Could Paul be the Troublemaker? Troublemaker doesn't get information.\n    *   Could Paul be the Doppelganger? If he copied the Seer, he'd still only have one look.\n    *   The most likely scenario is that Paul is the Werewolf and is bluffing poorly.\n\n    *   James says: \"Tanner and Werewolf in the center.\"\n    *   If James is the Seer and saw a Werewolf in the center, and there's only one Werewolf in the game, then no one is a Werewolf.\n    *   But if there are two Werewolves, one could be in the center and one could be a player.\n    *   However, the prompt asks to choose the player to vote out to make Team Village win.\n    *   If Paul is the Werewolf, voting him out wins the game.\n    *   If James is the Werewolf, voting him out wins the game.\n    *   Given Paul's slip-up, Paul is the most suspicious.\n\n    *   Paul's claim to be the Seer is contradicted by his claim to know Justin's role.\n    *   James's claim is consistent.\n    *   Laura and Mitchell's claims are consistent with each other.\n    *   Justin's claim to be the Hunter is plausible.\n    *   Therefore, Paul is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Paul claims to be the Seer and states he used his ability to look at James, identifying him as the Tanner. However, Paul later claims that Justin is the only possible werewolf because he 'knows what he is,' which is impossible for a Seer who has already used their single look on another player. This contradiction strongly suggests that Paul is lying about his role to divert suspicion, making him the most likely Werewolf.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Paul claims to be the Seer and states he used his ability to look at James, identifying him as the Tanner. However, Paul later claims that Justin is the only possible werewolf because he 'knows what he is,' which is impossible for a Seer who has already used their single look on another player. This contradiction strongly suggests that Paul is lying about his role to divert suspicion, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Paul claims to be the Seer and states he used his ability to look at James, identifying him as the Tanner. However, Paul later claims that Justin is the only possible werewolf because he 'knows what he is,' which is impossible for a Seer who has already used their single look on another player. This contradiction strongly suggests that Paul is lying about his role to divert suspicion, making him the most likely Werewolf.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Paul claims to be the Seer and states he used his ability to look at James, identifying him as the Tanner. However, Paul later claims that Justin is the only possible werewolf because he 'knows what he is,' which is impossible for a Seer who has already used their single look on another player. This contradiction strongly suggests that Paul is lying about his role to divert suspicion, making him the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4781,
+    "output_token_count": 2800,
+    "generation_time_sec": 307.1360640525818,
+    "used_chat_template": true,
+    "input_char_count": 15735,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

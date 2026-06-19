@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#64##March#23rd#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "James",
+    "Paul",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, James, Paul, Mitchell.\n    *   Roles involved (mentioned or implied): Doppelganger (Copycat), Werewolf, Seer, Robber, Troublemaker, Tanner.\n\n    *   [2] Announcer: Copycat wakes up and looks at a center card.\n    *   [3] Justin: \"James, you see a tanner?\" (Wait, Justin is talking *during* the night phase? This is unusual. The transcript shows Justin speaking while the announcer is talking. This suggests Justin might be trying to influence the game or is just talking out loud).\n    *   [4] James: \"Yeah.\" (James responds to Justin's question about the tanner).\n    *   [8] Werewolves wake up.\n    *   [9] Seer wakes up.\n    *   [12] Robber wakes up.\n    *   [13] Troublemaker wakes up.\n\n    *   Justin: Claims to be a werewolf at [133] (\"I was a werewolf\").\n    *   James: Claims he robbed Mitchell [101, 110, 124, 126] and that Mitchell was a werewolf [110, 124]. He claims he is now a werewolf [112, 121, 124]. He asks to be killed [112, 115, 145].\n    *   Mitchell: Claims he was the Seer [98, 138]. Claims he saw a werewolf and a robber in the center [143]. Later says \"I was werewolf\" [146] and thinks James robbed him, making James a werewolf.\n    *   Paul: Doesn't claim a specific role but mentions \"who I switched\" [149], implying he might be the Troublemaker.\n\n    *   James says: \"I robbed from Mitchell who was a werewolf... I'm a werewolf now.\"\n    *   Mitchell says: \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If James robbed Mitchell and Mitchell was a werewolf, James is now the werewolf and Mitchell is now the Robber (Village).\n    *   If Mitchell was the werewolf and James robbed him, James is the werewolf.\n    *   Wait, Mitchell's claims are contradictory. First, he says he was the Seer [98, 138], then he says he was a werewolf [146].\n    *   Justin claims he was a werewolf [133].\n\n    *   If James is a werewolf (either starting or via robbery), voting him out wins for the Village.\n    *   James is actively asking to be killed [112, 115, 145]. This is typical behavior for a Tanner, but he's claiming to be a werewolf.\n    *   If James is the Tanner, voting him out makes the Tanner win.\n    *   If James is a werewolf, voting him out makes the Village win.\n    *   Let's look at the claims again.\n    *   James: \"I robbed from Mitchell who was a werewolf... I'm a werewolf now.\"\n    *   Mitchell: \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If both agree that James is currently the werewolf, the most logical vote for the Village is James.\n\n    *   Justin: Claims he was a werewolf [133].\n    *   James: Claims he is a werewolf [112, 121, 124].\n    *   Mitchell: Claims he was a werewolf [146] but was robbed by James.\n    *   Paul: Claims he \"switched\" someone [149], suggesting Troublemaker.\n\n    *   If James is a werewolf, voting him wins.\n    *   If James is the Tanner, voting him loses (Tanner wins).\n    *   However, James's claim of being a werewolf is supported by Mitchell's claim that he was the one robbed.\n    *   If James is lying about being a werewolf to get voted out, he's the Tanner.\n    *   If James is telling the truth about robbing a werewolf, he is the werewolf.\n    *   Wait, look at [112]: \"I'm a werewolf... Kill me.\" This is very Tanner-like.\n    *   But look at [146]: Mitchell says \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If Mitchell is the werewolf and James robbed him, James is the werewolf.\n    *   If Justin is also a werewolf [133], there are two werewolves.\n\n    *   James is the most obvious target. He's claiming to be a werewolf and asking to be killed.\n    *   While this is a classic Tanner move, the corroboration from Mitchell (who also admits to being a werewolf/robbed) makes it more likely that James is actually a werewolf.\n    *   Even if James is the Tanner, the prompt asks to make Team Village win. If James is a werewolf, voting him wins. If he's the Tanner, voting him loses.\n    *   Is there anyone else? Justin claimed to be a werewolf too.\n    *   But James is the one most players are leaning towards.\n\n    *   James claims he robbed Mitchell and became a werewolf.\n    *   Mitchell confirms he was a werewolf and was robbed by James.\n    *   This means James is currently the werewolf.\n    *   Voting James should result in a Village win.\n\n    *   Wait, Mitchell's claims are all over the place.\n    *   [98] \"I was seer.\"\n    *   [138] \"I was this Seer.\"\n    *   [146] \"I was werewolf.\"\n    *   This inconsistency makes Mitchell suspicious. But if Mitchell was the werewolf and James robbed him, James is the werewolf.\n    *   If Mitchell is lying about everything, James might be the Tanner.\n    *   However, based on the available information, James is the most likely candidate for a werewolf (or at least the one the players are converging on).\n\n    *   Justin: Claims werewolf.\n    *   James: Claims werewolf (via robbery).\n    *   Mitchell: Claims Seer, then werewolf (robbed).\n    *   Paul: Claims Troublemaker.\n    *   If James is the werewolf, voting him wins. If Justin is the werewolf, voting him wins.\n    *   James is more explicitly claiming to be the werewolf *now* and asking for the vote.\n\n    *   James: \"I robbed from Mitchell who was a werewolf... I'm a werewolf now.\"\n    *   Mitchell: \"I was werewolf. I think he did rob from me. I think he's a werewolf now.\"\n    *   If this is true, James is the werewolf.\n\n    *   Could James be the Tanner? Tanners want to be voted out. James is asking to be voted out.\n    *   Could Mitchell be the Tanner? He's contradicting himself.\n    *   But the most direct evidence (even if it's just claims) points to James being a werewolf.\n\n    *   Justin: \"I was a werewolf.\"\n    *   James: \"I'm a werewolf now.\"\n    *   If both are werewolves, voting either wins. James is more vocal about it.\n\n    *   James claims he robbed Mitchell and is now a werewolf.\n    *   Mitchell corroborates this by stating he was a werewolf and was robbed by James.\n    *   Therefore, James is the most likely current werewolf.\n    *   Voting James should lead to a Team Village victory.",
+  "parsed_output": {
+    "justification": "James explicitly claims to be a werewolf, stating that he robbed Mitchell, who was a werewolf, and thus became one himself. Mitchell corroborates this by admitting he was a werewolf and believes James robbed him. While James's request to be killed is characteristic of a Tanner, the mutual agreement between James and Mitchell regarding the robbery and the werewolf role makes James the most likely target for Team Village to win.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"James explicitly claims to be a werewolf, stating that he robbed Mitchell, who was a werewolf, and thus became one himself. Mitchell corroborates this by admitting he was a werewolf and believes James robbed him. While James's request to be killed is characteristic of a Tanner, the mutual agreement between James and Mitchell regarding the robbery and the werewolf role makes James the most likely target for Team Village to win.\",\n  \"chosen_vote\": \"James\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"James explicitly claims to be a werewolf, stating that he robbed Mitchell, who was a werewolf, and thus became one himself. Mitchell corroborates this by admitting he was a werewolf and believes James robbed him. While James's request to be killed is characteristic of a Tanner, the mutual agreement between James and Mitchell regarding the robbery and the werewolf role makes James the most likely target for Team Village to win.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly claims to be a werewolf, stating that he robbed Mitchell, who was a werewolf, and thus became one himself. Mitchell corroborates this by admitting he was a werewolf and believes James robbed him. While James's request to be killed is characteristic of a Tanner, the mutual agreement between James and Mitchell regarding the robbery and the werewolf role makes James the most likely target for Team Village to win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4202,
+    "output_token_count": 1832,
+    "generation_time_sec": 196.3855288028717,
+    "used_chat_template": true,
+    "input_char_count": 13980,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}

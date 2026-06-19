@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game4",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game4.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript to determine who is likely a Werewolf. The transcript is messy, but we can parse roles. There are five players: Justin, Laura, Paul, James, Mitchell. Roles: possible roles include Werewolf, etc. We need to deduce from actions.\n\nWe have to consider the night actions. The transcript shows the announcer calling roles in order. Let's parse:\n\n- [1] Announcer: Match. Close your eyes.\n- [2] Justin: I forgot what I am. (He doesn't know his role)\n- [3] Mitchell: Okay.\n- [4] Justin: God damnit Mitchell.\n- [5] Announcer: Werewolves, wake up and look for other werewolf. If there is only one werewolf, you may look at a card.\n- [6] Paul: How are there three of us?\n- [7] Mitchell: What? Oh!\n- [8] Paul: What? Oh!\n- [9] Announcer: Werewolves, close your eyes. Seer, wake up. You may look at another player's card or two of the center's cards.\n- [10] Paul: Does someone like really obviously look at another player's card.\n- [11] Announcer: Seer, close your eyes. Robber, wake up. You may exchange your card with another player's card and then view [crosstalk 00:00:40].\n- [12] Justin: Did you ever like, just punch your skull really hard.\n- [13] Mitchell: Yeah.\n- [14] James: Mitchell is unconscious and we don't know.\n- [15] Announcer: ... cards between the two other players. Troublemaker, close your eyes. Insomniac, wake up.\n- [16] James: Robber.\n- [17] Mitchell: Robert.\n- [18] Announcer: Insomniac, close your eyes. Everyone, keep your eyes closed and reach out and move your card around slightly.\n- [19] Mitchell: Sorry, I think I just moved your card Paul.\n- [20] Paul: It's okay.\n- [21] Announcer: Everyone-\n- [22] Paul: Now it's double.\n- [23] Announcer: ... wake up.\n- [24] Paul: I have no idea if it was tampered with.\n- [25] Mitchell: Oh boy.\n- [26] Paul: I will, right away, tell you I was the Robber.\n- [27] Laura: I was the Villager when I went to sleep.\n- [28] Justin: I was a Troublemaker and or a Seer or-\n- [29] Paul: And-\n- [30] Justin: No. I was a Troublemaker.\n- [31] Mitchell: Nice.\n- [32] Paul: Oh, you're lying. Justin is lying.\n- [33] Mitchell: I was one of these two.\n- [34] Justin: Nice. James?\n- [35] Justin: Seer or Insomniac or a Werewolf. Okay. Okay. So those are two you saw in the center.\n- [36] Mitchell: Snap.\n- [37] Paul: No, no.\n- [38] Justin: So Mitchell, ... etc.\n\nThis transcript is extremely chaotic. Hard to parse. But we can glean some info: The roles that had night actions: Werewolves, Seer, Robber, Troublemaker, Insomniac. The transcript indicates that the werewolves woke up, but we don't know how many werewolves. The announcer says \"Werewolves, wake up and look for other werewolf. If there is only one werewolf, you may look at a card.\" That implies there might be more than one werewolf. But the transcript shows \"How are there three of us?\" maybe referring to the number of werewolves? Actually \"How are there three of us?\" might refer to the number of werewolves? Not sure.\n\nWe need to deduce who is likely a werewolf. The transcript shows that Justin claims to be a Troublemaker, but also says \"I was a Troublemaker and or a Seer or-\" then clarifies \"No. I was a Troublemaker.\" So Justin claims to be a Troublemaker. But the troublemaker swaps two other players' cards. That would mean that Justin's card might have changed. But we don't know.\n\nAlso, Paul says \"I was the Robber\" at [26]. So Paul claims to be the Robber. The robber swaps his card with another player's card and then views his new card. So Paul's final card might be something else.\n\nMitchell says \"I was one of these two.\" Not clear.\n\nLaura says \"I was the Villager when I went to sleep.\" So Laura claims to be a Villager.\n\nJames says \"I was a Seer.\" He says he looked at the Insomniac. So James might have looked at the Insomniac's card. But the Insomniac is a role that looks at their own card at the end of the night. So James might have looked at the Insomniac's card. But we don't know.\n\nWe need to figure out who is likely a werewolf. The werewolves are the ones that can identify each other. They might be among the players. The transcript shows that the werewolves were called to wake up. But we don't know which players are werewolves. The transcript shows that the werewolves might be among the players. The werewolves might be the ones that are not identified as other roles. For example, if Justin claims to be a Troublemaker, but the troublemaker is a village role. So Justin might not be a werewolf. But he might have swapped his card. But we don't know.\n\nLet's examine the roles: The possible roles include Werewolf, Minion, etc. But the transcript doesn't mention Minion. So likely no Minion.\n\nWe need to find evidence of a werewolf. The werewolves would have been called to wake up. The transcript shows that the werewolves were called to wake up at [5]. But we don't know which players were werewolves. The transcript shows that the werewolves might be among the players. But we need to deduce from the conversation.\n\nThe transcript is extremely confusing. But perhaps we can deduce that the werewolves are the ones that are not identified as other roles. For instance, if Justin claims to be a Troublemaker, but the troublemaker is a village role. So Justin is not a werewolf. Similarly, Paul claims to be the Robber, which is a village role. So Paul is not a werewolf. James claims to be a Seer, which is a village role. So James is not a werewolf. Laura claims to be a Villager, which is a village role. So Laura is not a werewolf. That leaves Mitchell. Mitchell hasn't claimed a role. He says \"I was one of these two.\" He might be a werewolf. But we need to check if Mitchell could be a werewolf. He hasn't claimed a role. He might be a werewolf. But we need to see if he could be a werewolf.\n\nBut we also need to consider that the troublemaker swapped two other players' cards. That means that the troublemaker might have swapped his card with someone else. But the troublemaker is a village role. So if Justin is the troublemaker, he swapped two other players' cards. That could have swapped a werewolf into his card. But we don't know.\n\nBut the transcript shows that the troublemaker is a village role. So if Justin is the troublemaker, he might have swapped his card with someone else. But we don't know.\n\nBut the question: \"Based on the public discussion, vote for the player you believe is a Werewolf as their end role.\" So we need to pick a player that is likely a werewolf. Based on the transcript, the only plausible suspect is Mitchell. Because he hasn't claimed a role. He might be a werewolf. But we need to confirm.\n\nHowever, we need to consider that the werewolves might be among the players. The transcript shows that the werewolves were called to wake up. But we don't know which players are werewolves. But we can deduce that the werewolves might be the ones that are not identified as other roles. So Mitchell might be a werewolf.\n\nBut we also need to consider that the troublemaker swapped two other players' cards. That might have swapped a werewolf into his card. But we don't know.\n\nAlternatively, maybe the werewolves are the ones that are not identified as other roles. But we need to consider that the werewolves might be the ones that are not identified as other roles. So Mitchell might be a werewolf.\n\nThus, the best guess is that Mitchell is the werewolf. So we will vote for Mitchell.\n\nNow we need to produce justification: We need to explain why we think Mitchell is the werewolf. We need to mention that the other players claimed to be village roles, leaving Mitchell as the only unknown. Also, the troublemaker swapped two other players' cards, but that doesn't affect Mitchell. So we think Mitchell is the werewolf.\n\nWe need to output JSON with \"justification\" and \"chosen_vote\".\n\nLet's craft a concise justification: \"All other players claimed village roles; Mitchell did not claim a role, making him the most likely werewolf.\"\n\nWe need to ensure the JSON is valid.",
+  "parsed_output": {
+    "justification": "All five players claimed village roles except Mitchell, who did not disclose a role. The night actions indicate that the werewolves were called to wake up, but no one identified themselves as a werewolf. Since the troublemaker and robber are village roles, the only remaining suspect is Mitchell, who likely holds a werewolf card.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"All five players claimed village roles except Mitchell, who did not disclose a role. The night actions indicate that the werewolves were called to wake up, but no one identified themselves as a werewolf. Since the troublemaker and robber are village roles, the only remaining suspect is Mitchell, who likely holds a werewolf card.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"All five players claimed village roles except Mitchell, who did not disclose a role. The night actions indicate that the werewolves were called to wake up, but no one identified themselves as a werewolf. Since the troublemaker and robber are village roles, the only remaining suspect is Mitchell, who likely holds a werewolf card.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "All five players claimed village roles except Mitchell, who did not disclose a role. The night actions indicate that the werewolves were called to wake up, but no one identified themselves as a werewolf. Since the troublemaker and robber are village roles, the only remaining suspect is Mitchell, who likely holds a werewolf card."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3839,
+    "output_token_count": 2055,
+    "generation_time_sec": 645.6861956119537,
+    "used_chat_template": true,
+    "input_char_count": 14811,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

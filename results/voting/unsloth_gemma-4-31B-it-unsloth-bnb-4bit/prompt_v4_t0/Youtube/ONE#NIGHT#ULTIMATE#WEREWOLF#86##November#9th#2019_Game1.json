@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 12000,
+  "max_seq_length": 20384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin\n    *   Mitchell\n    *   Paul\n    *   Mike\n\n    *   Justin: Claims to be Troublemaker (T). Says he switched Mike with someone (Paul).\n    *   Mitchell: Claims to be Robber (R). Says he robbed Paul.\n    *   Paul: Claims to be Robber (R). Says he robbed Justin.\n    *   Mike: Claims to be Seer (S) / Copycat (C). Initially says he didn't see a werewolf in the center, then changes his story, saying he saw a werewolf as Seer but lied as Copycat.\n\n    *   *Copycat (Doppelganger):* Wakes up first.\n    *   *Werewolves:* Wake up second.\n    *   *Seer:* Wakes up fifth.\n    *   *Robber:* Wakes up sixth.\n    *   *Troublemaker:* Wakes up seventh.\n    *   *Drunk:* Wakes up eighth.\n    *   *Insomniac:* Wakes up ninth.\n\n    *   Paul and Mitchell both claim to be the Robber. Only one Robber exists.\n    *   Paul says he robbed Justin.\n    *   Mitchell says he robbed Paul.\n    *   Justin claims to be the Troublemaker and says he switched Mike with Paul.\n\n    *   If Justin is the Troublemaker and switched Mike and Paul:\n        *   Mike's final role is Paul's starting role.\n        *   Paul's final role is Mike's starting role.\n    *   If Paul is the Robber and robbed Justin:\n        *   Paul's role becomes Justin's starting role.\n        *   Justin's role becomes Paul's starting role.\n    *   If Mitchell is the Robber and robbed Paul:\n        *   Mitchell's role becomes Paul's starting role.\n        *   Paul's role becomes Mitchell's starting role.\n\n    *   Mike's claims are contradictory and suspicious. He first says he didn't see a werewolf in the center, then says he did. He claims to be the Copycat who became the Seer.\n    *   If Mike is the Copycat and became the Seer, he would have looked at a player or the center.\n    *   If Mike is a Werewolf, he would lie about being the Seer/Copycat.\n    *   Paul and Mitchell are fighting over the Robber role. One of them is likely lying or the Tanner.\n    *   Justin claims to be the Troublemaker.\n\n    *   Justin says he switched Mike and Paul.\n    *   If Justin is the Troublemaker:\n        *   Mike (starting role) <-> Paul (starting role).\n    *   If Paul is the Robber:\n        *   Paul (starting role) <-> Justin (starting role).\n    *   If Mitchell is the Robber:\n        *   Mitchell (starting role) <-> Paul (starting role).\n\n    *Wait, let's look at the claims again:*\n    *   Paul: \"I started as a robber... I stole from Justin.\"\n    *   Mitchell: \"I'm the robber and I robbed you [Paul].\"\n    *   Justin: \"I'm the troublemaker... I switched Mike with [Paul].\"\n\n    *Scenario A: Justin is Troublemaker, Paul is Robber.*\n    1.  Paul (Robber) steals from Justin. Paul is now Justin's role, Justin is now Robber.\n    2.  Justin (Troublemaker) switches Mike and Paul. Mike is now Justin's role, Paul is now Mike's role.\n    *Result:* Paul has Mike's starting role. Mike has Justin's starting role. Justin has Paul's starting role (Robber).\n\n    *Scenario B: Justin is Troublemaker, Mitchell is Robber.*\n    1.  Mitchell (Robber) steals from Paul. Mitchell is now Paul's role, Paul is now Robber.\n    2.  Justin (Troublemaker) switches Mike and Paul. Mike is now Paul's role, Paul is now Mike's role.\n    *Result:* Paul has Mike's starting role. Mike has Paul's starting role. Mitchell has Paul's starting role? No, Mitchell has Paul's starting role, and Mike also has Paul's starting role? No, that's impossible.\n\n    *Let's re-evaluate Scenario B:*\n    1.  Mitchell (Robber) steals from Paul. Mitchell gets Paul's card. Paul gets Robber card.\n    2.  Justin (Troublemaker) switches Mike and Paul. Mike gets Paul's card (Robber), Paul gets Mike's card.\n    *Result:* Mike is Robber, Paul is Mike's starting role, Mitchell is Paul's starting role.\n\n    *   Mike's behavior is very erratic. He claims to be the Copycat/Seer but contradicts himself about the center cards.\n    *   If Mike is a Werewolf, he'd want to divert attention.\n    *   If Paul is the Tanner, he'd want to be voted out. Paul says \"I think I'm going to need to probably die\" and \"I hope you vote for me\". This is a huge red flag for the Tanner.\n    *   If Paul is the Tanner, then Mitchell or Mike is more likely to be the Werewolf.\n\n    *   Justin: Troublemaker (claims)\n    *   Paul: Tanner (claims/behavior)\n    *   Mitchell: Robber (claims)\n    *   Mike: Werewolf (suspicious claims about Seer/Copycat)\n\n    *Wait, let's check the voting:*\n    *   Mitchell votes Paul.\n    *   Justin votes Paul.\n    *   Mike votes Paul.\n    *   Paul votes \"not Mitchell\" (effectively voting for someone else, maybe Justin).\n\n    *   If Paul is the Tanner, voting him out makes the Tanner win, and the Village loses (unless a Werewolf is also voted out, but only one person is voted out).\n    *   If Mike is the Werewolf, voting Paul is a mistake.\n    *   Is Mike the Werewolf? He claimed to be the Seer/Copycat and lied about the center cards. He's the most logically inconsistent player.\n    *   Is Paul the Werewolf? He's acting like a Tanner.\n    *   Is Mitchell the Werewolf? He's claiming Robber.\n\n    *   Mike's claim: \"As the copycat, I did not see werewolves. As the seer, I saw werewolves.\"\n    *   This is nonsense. If he's the Copycat and became the Seer, he only has one set of information. He can't \"not see\" and \"see\" at the same time. He's clearly lying.\n    *   If Mike is lying about being the Seer/Copycat, he is likely the Werewolf or the Tanner.\n    *   Paul is openly inviting votes (\"I hope you vote for me\"), which is classic Tanner behavior.\n    *   If Paul is the Tanner and Mike is the Werewolf, the Village should vote for Mike.\n\n    *   Justin says he switched Mike and Paul.\n    *   If Mike was the Werewolf and Paul was the Villager, and Justin switched them, then Paul is now the Werewolf and Mike is now the Villager.\n    *   If Paul is now the Werewolf, voting him out wins the game for the Village.\n\n    *   Justin (T) switches Mike (W) and Paul (V).\n    *   Paul is now the Werewolf.\n    *   Mike is now the Villager.\n    *   Paul (now W) acts like the Tanner to confuse people or just because he's confused.\n    *   Voting Paul wins.\n\n    *   Justin (T) switches Mike (V) and Paul (W).\n    *   Mike is now the Werewolf.\n    *   Paul is now the Villager.\n    *   Voting Paul loses.\n\n    *   Justin (T) switches Mike (V) and Paul (V).\n    *   Mike is still V, Paul is still V.\n    *   Werewolf is Mitchell or Justin.\n    *   Voting Paul loses.\n\n    *   Mike's lies are the most blatant. He's trying to cover his tracks.\n    *   Paul's behavior is very Tanner-like.\n    *   If Paul is the Tanner, he's not the Werewolf.\n    *   If Mike is the Werewolf, voting him wins.\n    *   But Justin says he switched Mike and Paul. If Justin is telling the truth, the roles of Mike and Paul are swapped.\n    *   If Mike was the Werewolf, Paul is now the Werewolf.\n    *   If Paul was the Werewolf, Mike is now the Werewolf.\n\n    *   Mike's claim to be the Copycat/Seer is highly suspect.\n    *   Paul's claim to be the Robber is contested by Mitchell.\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Mike is the Werewolf, he wants to avoid being voted out.\n    *   Justin's switch (if true) means the person who *was* the Werewolf is now the other person.\n    *   If Mike was the Werewolf, Paul is now the Werewolf.\n    *   If Paul was the Werewolf, Mike is now the Werewolf.\n    *   Wait, if Paul is the Tanner, he can't be the Werewolf. If Paul is the Tanner, then Mike is the most likely Werewolf. If Justin switched them, then Mike is now the Tanner and Paul is now the Werewolf.\n\n    *   Let's re-read: \"I'm going to vote for Paul... because you're the one that I switched Mike with... and Mike's the person I actually trust the least right now.\"\n    *   Justin's logic: Mike is suspicious (likely Werewolf) -> Justin switched Mike with Paul -> Paul is now the Werewolf.\n    *   This is a consistent line of reasoning for a Village player.\n\n    *   If Paul is the Tanner, he wants to be voted out.\n    *   If Paul is the Werewolf (via switch), voting him out wins.\n    *   If Paul is just a Villager, voting him out loses.\n    *   If Mike is the Werewolf (and wasn't switched), voting him out wins.\n    *   If Mike is the Werewolf (and was switched), voting Paul wins.\n\n    *   Mike's contradictions are the strongest evidence of a Werewolf.\n    *   Justin's claim of switching Mike and Paul is the key.\n    *   If we trust Justin, the target should be Paul.\n\n    *   Justin: Troublemaker\n    *   Mitchell: Robber\n    *   Paul: Werewolf (swapped from Mike)\n    *   Mike: Villager (swapped from Paul)\n    *   (Or Paul is Tanner, but the switch makes him the Werewolf if Mike was the Werewolf).\n\n    *Wait, if Paul is the Tanner, he can't be the Werewolf.*\n    *   If Mike was the Werewolf and Paul was the Tanner:\n        *   Justin switches Mike (W) and Paul (T).\n        *   Now Paul is the Werewolf and Mike is the Tanner.\n        *   Voting Paul wins.\n\n    *   If Mike was the Tanner and Paul was the Werewolf:\n        *   Justin switches Mike (T) and Paul (W).\n        *   Now Paul is the Tanner and Mike is the Werewolf.\n        *   Voting Paul makes the Tanner win.\n\n    *   However, Mike's lies are more typical of a Werewolf trying to fake a role (Seer/Copycat) than a Tanner trying to get voted out. Paul's behavior is much more typical of a Tanner.\n\n    *   Therefore, the most likely scenario is that Mike was the Werewolf, and Justin switched him with Paul.\n\n    *   Justin: Troublemaker\n    *   Mitchell: Robber\n    *   Paul: Werewolf (via switch)\n    *   Mike: Villager (via switch)\n    *   Vote: Paul.",
+  "parsed_output": {
+    "justification": "Mike's claims to be the Seer/Copycat are contradictory and highly suspicious, as he first claims he didn't see a werewolf in the center and then changes his story. Justin claims to be the Troublemaker and states he switched Mike with Paul. If Mike was the Werewolf, this switch makes Paul the Werewolf. Paul's behavior—openly inviting votes and suggesting he needs to die—is characteristic of the Tanner, but if he was swapped with a Werewolf, he becomes the target for a Village win.",
+    "chosen_vote": "Paul"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike's claims to be the Seer/Copycat are contradictory and highly suspicious, as he first claims he didn't see a werewolf in the center and then changes his story. Justin claims to be the Troublemaker and states he switched Mike with Paul. If Mike was the Werewolf, this switch makes Paul the Werewolf. Paul's behavior—openly inviting votes and suggesting he needs to die—is characteristic of the Tanner, but if he was swapped with a Werewolf, he becomes the target for a Village win.\",\n  \"chosen_vote\": \"Paul\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike's claims to be the Seer/Copycat are contradictory and highly suspicious, as he first claims he didn't see a werewolf in the center and then changes his story. Justin claims to be the Troublemaker and states he switched Mike with Paul. If Mike was the Werewolf, this switch makes Paul the Werewolf. Paul's behavior—openly inviting votes and suggesting he needs to die—is characteristic of the Tanner, but if he was swapped with a Werewolf, he becomes the target for a Village win.\",\n  \"chosen_vote\": \"Paul\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Paul",
+    "justification": "Mike's claims to be the Seer/Copycat are contradictory and highly suspicious, as he first claims he didn't see a werewolf in the center and then changes his story. Justin claims to be the Troublemaker and states he switched Mike with Paul. If Mike was the Werewolf, this switch makes Paul the Werewolf. Paul's behavior—openly inviting votes and suggesting he needs to die—is characteristic of the Tanner, but if he was swapped with a Werewolf, he becomes the target for a Village win."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4449,
+    "output_token_count": 2860,
+    "generation_time_sec": 311.1423816680908,
+    "used_chat_template": true,
+    "input_char_count": 14938,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 20384,
+    "hf_device_map": null
+  }
+}
