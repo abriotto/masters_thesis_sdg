@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript to determine which player is likely a werewolf. We have four players: Justin, Mike, James, Mitchell. We need to deduce roles based on actions.\n\nWe have a game with roles: There are 4 players + 3 center cards = 7 roles chosen. The roles available: Doppelganger, Drunk, Hunter, Insomniac, Mason, Minion, Robber, Seer, Tanner, Troublemaker, Villager, Werewolf. In a 4-player game, there will be 4 roles assigned to players, 3 center cards. The roles chosen may include duplicates? Actually each role appears at most once except Villager and Werewolf can appear multiple times. So possible roles: maybe 1 werewolf, 1 minion, etc. But we don't know.\n\nWe need to parse the transcript to infer actions. The transcript is messy; many lines are not clear. Let's try to reconstruct.\n\nThe transcript starts with the announcer calling night actions. The order: Doppelganger, Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac. The transcript shows the announcer calling \"Everyone, close your eyes.\" Then James says \"Oh god, we've made a mistake.\" Then the announcer says \"Werewolves, wake up and look for other werewolves. (Still more laughter) If there is only one-\" Then Mike says \"-There's two right?\" So presumably there are two werewolves? But the transcript indicates confusion.\n\nThen the announcer says \"You may look at a card from the center. Werewolves, close your eyes. Seer, wake up. You may look at another players' card or two of the center cards.\" So the Seer wakes up. Then Justin says \"I feel like I'm cheating on a girlfriend right now. But it's like the normal voice dude.\" Not sure.\n\nThen the announcer says \"Seer, close your eyes. Robber, wake up.\" So the Robber wakes up. Then Justin says \"Rubber.\" etc. The transcript seems to be a comedic video with random comments. Hard to parse.\n\nLater, the announcer says \"Robber, close your eyes. Insomniac, wake up and look at your card.\" So the Insomniac wakes up. Then the announcer says \"Insomniac, close your eyes. Everyone, keep your eyes closed and reach out and move your card around slightly.\" This is weird.\n\nThen the transcript continues with random comments about \"Rubber,\" \"voice,\" etc. Then at line 24, \"Announcer: Everyone, wake up.\" So the night ends.\n\nAfter that, the players talk. They mention \"I was a villager,\" \"I was a villager the whole time,\" etc. They talk about stealing, etc. The transcript is confusing.\n\nWe need to deduce which player is likely a werewolf. We need to consider the roles and actions.\n\nLet's try to parse the actions:\n\n- The night actions: The announcer calls the roles in order. The transcript shows the announcer calling \"Werewolves, wake up and look for other werewolves.\" So there are werewolves. The transcript indicates that the announcer says \"If there is only one-\" then Mike says \"-There's two right?\" So maybe there are two werewolves. But the transcript is unclear.\n\n- The Seer wakes up. The Seer may look at a card. But we don't know what they looked at.\n\n- The Robber wakes up. The Robber may swap with someone. But we don't know who.\n\n- The Insomniac wakes up. The Insomniac may look at their card.\n\nBut the transcript doesn't provide details of what each player did. It seems the transcript is mostly random commentary, not actual actions.\n\nThus, we cannot determine the exact roles. However, we can use logic: In a 4-player game, typical roles: 1 werewolf, 1 minion, 1 seer, 1 robber, 1 insomniac, etc. But we don't know.\n\nWe need to guess which player is likely a werewolf based on the conversation. The conversation includes accusations: Justin says \"I think Mike might be a werewolf.\" Then Mike denies. Then Justin says \"Mike's a werewolf.\" Then Mike denies again. Then James says \"Mike's a werewolf.\" Then Mike says \"No, they're both werewolves.\" Then James says \"Mike's a werewolf.\" Then Mike says \"No, James...\" etc. So there's confusion.\n\nIt seems that Justin suspects Mike. But we need to decide which player is likely a werewolf.\n\nWe can consider that the werewolf(s) may try to deflect suspicion. The conversation shows that Justin is accusing Mike. But maybe Justin is lying. But we need to decide.\n\nWe can also consider that the werewolf may have swapped roles. For example, the werewolf could have been a villager at start, then swapped to a werewolf. But we don't know.\n\nGiven the limited information, we might guess that Mike is the werewolf because Justin suspects him. But we need justification.\n\nAlternatively, maybe James is the werewolf. But the conversation shows that Justin says \"Mike's a werewolf.\" So likely Mike is suspect.\n\nThus, choose Mike.\n\nNow produce JSON with justification.",
+  "parsed_output": {
+    "justification": "The transcript shows a pattern of accusations centered on Mike, with several players repeatedly stating that Mike is a werewolf.  Justin explicitly states “I think Mike might be a werewolf” and later “Mike’s a werewolf.”  Despite Mike’s denials, the repeated focus on him suggests he is the most likely suspect.  No other player receives similar attention, so Mike stands out as the probable werewolf.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows a pattern of accusations centered on Mike, with several players repeatedly stating that Mike is a werewolf.  Justin explicitly states “I think Mike might be a werewolf” and later “Mike’s a werewolf.”  Despite Mike’s denials, the repeated focus on him suggests he is the most likely suspect.  No other player receives similar attention, so Mike stands out as the probable werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows a pattern of accusations centered on Mike, with several players repeatedly stating that Mike is a werewolf.  Justin explicitly states “I think Mike might be a werewolf” and later “Mike’s a werewolf.”  Despite Mike’s denials, the repeated focus on him suggests he is the most likely suspect.  No other player receives similar attention, so Mike stands out as the probable werewolf.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript shows a pattern of accusations centered on Mike, with several players repeatedly stating that Mike is a werewolf.  Justin explicitly states “I think Mike might be a werewolf” and later “Mike’s a werewolf.”  Despite Mike’s denials, the repeated focus on him suggests he is the most likely suspect.  No other player receives similar attention, so Mike stands out as the probable werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2997,
+    "output_token_count": 1213,
+    "generation_time_sec": 380.87918853759766,
+    "used_chat_template": true,
+    "input_char_count": 11568,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

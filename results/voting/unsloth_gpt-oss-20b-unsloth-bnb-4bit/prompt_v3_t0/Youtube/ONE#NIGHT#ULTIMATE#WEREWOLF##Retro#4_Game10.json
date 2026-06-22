@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game10.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine which player is likely a Werewolf based on transcript. The transcript is messy; many lines are unclear. We need to parse roles. There are 5 players: Justin, Caitlynn, Mike, James, Mitchell. Roles: we know there are 5 roles plus 3 center. But we don't know which roles were chosen. We need to deduce from actions.\n\nNight actions: The announcer calls roles in order. The transcript shows the announcer calling: \"Werewolves wake up. ... Minion, wake up. Seer, wake up. Robber, wake up. Troublemaker, wake up. Drunk, wake up. Insomniac, wake up.\" So the roles present: Werewolf(s), Minion, Seer, Robber, Troublemaker, Drunk, Insomniac. Also maybe other roles like Mason, etc. But we don't know.\n\nWe need to figure out who might be a Werewolf. The transcript indicates confusion about who is who. Many statements about \"I was the seer\" etc. Let's analyze.\n\nWe need to consider that the roles are random. The transcript shows that Mike says \"I was the seer\" and \"I looked at you\". That suggests Mike might have been the Seer. But the Seer would look at a card. But the transcript shows that Mike says \"I looked at you\" (maybe looked at someone). But the Seer would look at a card, not a person. But maybe he looked at someone's card. But the transcript is ambiguous.\n\nAlso, there's mention of \"Troublemaker\" and \"Robber\". The Troublemaker swaps two other players. The Robber swaps with someone and looks at new card. The Drunk swaps with center. The Insomniac looks at their card at end of night.\n\nWe need to deduce who might be a Werewolf. The transcript shows that \"James\" says \"I was the insomniac\" earlier? Actually line 36: \"James: No.\" Wait line 35: \"Caitlynn: Did you wake up as the Insomniac?\" line 36: \"James: No.\" So James is not the Insomniac. But line 39: \"Mike: Did you switch him? All right. Did you wake up as this seer?\" line 38: \"James: No.\" So James is not the Seer. So maybe Mike is the Seer. But line 40: \"Mike: You were with the robber and switched?\" line 42: \"Justin: I can't confirm.\" So maybe Mike is the Seer.\n\nBut we need to find who is a Werewolf. The transcript seems to revolve around confusion about who is the Seer, Troublemaker, etc. The only mention of \"werewolf\" is line 53: \"James: There's a good chance he's a werewolf.\" That refers to Mitchell? Actually line 51: \"Although if Mitchell was a drunk,\" line 52: \"Mike: Drunk.\" line 53: \"James: There's a good chance he's a werewolf.\" So James thinks Mitchell might be a werewolf. But we need to decide.\n\nLet's examine the roles: The roles present: Werewolf(s), Minion, Seer, Troublemaker, Drunk, Insomniac. Possibly also a Mason? But not sure.\n\nWe need to deduce who might be a Werewolf. The transcript shows that \"Mike\" says \"I was the seer\" and \"I looked at you.\" That implies Mike looked at someone. But the Seer would look at a card, not a person. But maybe he looked at a card belonging to someone else. But the transcript is confusing.\n\nAlso, \"Justin\" says \"I can't confirm\" etc. \"Caitlynn\" says \"I did not say anything.\" \"Mike\" says \"I was the seer.\" So maybe Mike is the Seer. But the Seer is a village role. So not a werewolf.\n\nThe only suspect is Mitchell. James says \"There's a good chance he's a werewolf.\" So maybe Mitchell is a werewolf. But we need to justify.\n\nLet's analyze the transcript for clues: The transcript shows that \"Mike\" says \"I was the seer\" and \"I looked at you.\" That suggests Mike looked at someone else's card. But the Seer would look at a card, not a person. But maybe he looked at a card belonging to someone else. But the transcript is ambiguous.\n\nAlso, \"Justin\" says \"I can't confirm\" etc. \"Caitlynn\" says \"I did not say anything.\" \"Mike\" says \"I was the seer.\" So maybe Mike is the Seer. But the Seer is not a werewolf.\n\nNow, \"James\" says \"There's a good chance he's a werewolf.\" That refers to Mitchell. So maybe Mitchell is a werewolf. But we need to justify.\n\nAlternatively, maybe the only suspect is Mitchell because he is the only one not identified as a known role. But we need to consider that the roles may have swapped. For example, the Troublemaker swapped two players. The Robber swapped with someone. The Drunk swapped with center. The Insomniac looked at their card. So the final roles may differ.\n\nBut we need to guess which player is a werewolf. The transcript shows confusion about who is the werewolf. The only mention of \"there's a good chance he's a werewolf\" is about Mitchell. So likely Mitchell is the werewolf.\n\nThus, we choose Mitchell.\n\nBut we need to provide justification: Based on the transcript, the only plausible suspect is Mitchell. The conversation indicates that James suspects Mitchell might be a werewolf. The rest of the transcript doesn't provide evidence for other players being werewolves. So we vote for Mitchell.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript contains a direct suspicion that Mitchell might be a werewolf—James states, “There’s a good chance he’s a werewolf.” No other player is identified as a suspect, and the discussion revolves around Mitchell’s role. Given the lack of evidence for other werewolves and the explicit mention, Mitchell is the most likely candidate.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript contains a direct suspicion that Mitchell might be a werewolf—James states, “There’s a good chance he’s a werewolf.” No other player is identified as a suspect, and the discussion revolves around Mitchell’s role. Given the lack of evidence for other werewolves and the explicit mention, Mitchell is the most likely candidate.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript contains a direct suspicion that Mitchell might be a werewolf—James states, “There’s a good chance he’s a werewolf.” No other player is identified as a suspect, and the discussion revolves around Mitchell’s role. Given the lack of evidence for other werewolves and the explicit mention, Mitchell is the most likely candidate.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript contains a direct suspicion that Mitchell might be a werewolf—James states, “There’s a good chance he’s a werewolf.” No other player is identified as a suspect, and the discussion revolves around Mitchell’s role. Given the lack of evidence for other werewolves and the explicit mention, Mitchell is the most likely candidate."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3395,
+    "output_token_count": 1305,
+    "generation_time_sec": 410.19627690315247,
+    "used_chat_template": true,
+    "input_char_count": 12921,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

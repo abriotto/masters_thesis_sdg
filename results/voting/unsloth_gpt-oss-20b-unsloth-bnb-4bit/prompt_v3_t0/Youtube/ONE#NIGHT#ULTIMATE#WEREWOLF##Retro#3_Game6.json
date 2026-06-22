@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine who is likely a werewolf based on transcript. We have four players: Justin, Mike, James, Mitchell. Roles unknown. We need to guess who is werewolf. The transcript is chaotic, many accusations. We need to deduce from actions: The night actions: Werewolves, Seer, Robber, Troublemaker, Insomniac. But we don't know who had which role. However, we can infer from statements: e.g., \"Mike: I looked at two werewolves.\" That suggests Mike might be the Seer (he looked at two center cards). But the Seer could be any of the four. Also \"Mike: I looked at two werewolves\" indicates he saw two werewolves in center? That would mean there are two werewolves in center, meaning no werewolves among players. But that contradicts later claims that there are werewolves among players. Maybe Mike is lying.\n\nAlso \"Mitchell: I had the tanner at one point.\" That suggests Mitchell might have been the tanner originally, but maybe swapped. The tanner is a role that wants to die. So if someone is tanner, they'd try to get voted out. But the transcript shows accusations of being tanner.\n\nWe need to decide which player is likely a werewolf. Let's analyze.\n\nWe have roles: There are 4 players + 3 center = 7 roles. The roles available: 1 each of most except duplicates: max 2 Masons, etc. So possible roles: Among 7 roles, there could be 0-2 werewolves. The transcript mentions \"there are two werewolves in the middle.\" That implies center has two werewolves. That would mean no werewolves among players. But later, someone says \"Mike is a werewolf.\" So contradictory.\n\nMaybe the transcript is intentionally confusing. We need to pick a player to vote for as werewolf. We need to base on evidence: Who seems to be lying about being a werewolf? The transcript shows that James says \"Mike is a werewolf.\" Also Justin says \"Mike's a werewolf.\" So both Justin and James accuse Mike. So likely Mike is werewolf. But let's check if any other evidence: \"Mike: I looked at two werewolves.\" That could be a lie. If Mike is werewolf, he might lie about seeing werewolves. He might claim to have seen two werewolves in center to deflect suspicion. But if there are two werewolves in center, that would mean no werewolves among players. So if Mike is werewolf, that statement is false. So it's plausible.\n\nAlso \"Mitchell: I had the tanner at one point.\" That suggests Mitchell might have been tanner originally, but maybe swapped. But if Mitchell was tanner, he would want to die. But he didn't die. So maybe he is not tanner.\n\nThus, likely Mike is werewolf. Let's justify: Many accusations point to Mike. Also Mike's statement \"I looked at two werewolves\" is suspicious. So choose Mike.\n\nNow produce JSON.",
+  "parsed_output": {
+    "justification": "The transcript is dominated by accusations that Mike is a werewolf—both Justin and James repeatedly claim that Mike is a werewolf.  Mike’s own statement that he “looked at two werewolves” is inconsistent with the claim that there are two werewolves in the center, suggesting he is lying.  No other player has any credible evidence indicating they are a werewolf, and the pattern of blame points squarely at Mike.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\"justification\":\"The transcript is dominated by accusations that Mike is a werewolf—both Justin and James repeatedly claim that Mike is a werewolf.  Mike’s own statement that he “looked at two werewolves” is inconsistent with the claim that there are two werewolves in the center, suggesting he is lying.  No other player has any credible evidence indicating they are a werewolf, and the pattern of blame points squarely at Mike.\",\"chosen_vote\":\"Mike\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript is dominated by accusations that Mike is a werewolf—both Justin and James repeatedly claim that Mike is a werewolf.  Mike’s own statement that he “looked at two werewolves” is inconsistent with the claim that there are two werewolves in the center, suggesting he is lying.  No other player has any credible evidence indicating they are a werewolf, and the pattern of blame points squarely at Mike.\",\"chosen_vote\":\"Mike\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The transcript is dominated by accusations that Mike is a werewolf—both Justin and James repeatedly claim that Mike is a werewolf.  Mike’s own statement that he “looked at two werewolves” is inconsistent with the claim that there are two werewolves in the center, suggesting he is lying.  No other player has any credible evidence indicating they are a werewolf, and the pattern of blame points squarely at Mike."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3528,
+    "output_token_count": 737,
+    "generation_time_sec": 232.10297274589539,
+    "used_chat_template": true,
+    "input_char_count": 13711,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

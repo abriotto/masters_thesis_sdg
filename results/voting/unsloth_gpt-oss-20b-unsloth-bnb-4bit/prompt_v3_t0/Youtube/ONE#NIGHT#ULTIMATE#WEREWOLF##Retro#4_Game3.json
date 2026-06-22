@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine who is likely a werewolf based on transcript. We have 5 players: Justin, Caitlynn, Mike, James, Mitchell. Roles unknown. We have transcript of night actions? Let's parse.\n\nTranscript lines:\n\n[1] Announcer: Everyone, close your eyes. Werewolves, wake up and look for other werewolves\n[2] James: What in the world is going on in this game?\n[3] Announcer: If there are no other werewolves, pick a card from the center.\n[4] Justin: I was thinking the exact same thing.\n[5] Announcer: Werewolves close your eyes. Minion, wake up. Werewolves, stick out your thumb so the minion can see who you are. Werewolves, put your thumb away. Minion, close your eyes. Seer, wake up. You may look at another player's card or two of the center cards.\n[6] James: So many choices.\n[7] Announcer: Seer close your eyes. Robber, wake up. You may exchange your card with another player's card and then view your new card. Robber, close... etc.\n\nSo the night actions: Werewolves (maybe 0 or more). Minion wakes up after werewolves. Seer wakes up. Robber wakes up. Troublemaker wakes up. Drunk wakes up. Insomniac wakes up. Then everyone moves.\n\nBut we don't know who had which role. We have statements from players about their roles. Let's parse.\n\nLine [8]: James: \"Okay. We're going to open with Justin and say I was the insomniac, but I woke up as a seer.\" So James claims he was the insomniac initially, but after night actions he ended up as a seer. That means his starting role was Insomniac, but after night actions he became Seer. That implies that someone swapped him into Seer. Who could have swapped? The Troublemaker swaps two other players. The Robber swaps with someone else. The Drunk swaps with center. The Minion doesn't swap. The Minion just knows who werewolves are. The Minion cannot change roles. The Minion can't swap. The Minion is a werewolf ally. The Minion's ability is to learn who werewolves are. So the only roles that can change roles are Robber, Troublemaker, Drunk, and maybe the Minion? Actually Minion doesn't change roles. So James being a Seer after night indicates that someone swapped him into Seer. Could be the Troublemaker swapped two other players, maybe including James. Or the Robber swapped with James. Or the Drunk swapped with center. But the Drunk would swap with center, not with James. So likely the Troublemaker swapped James with someone else. But the Troublemaker swaps two other players, not necessarily James. Wait: The Troublemaker's ability: \"exchange the cards of two other players without looking at them.\" So the Troublemaker chooses two other players to swap. So if James was the target, the Troublemaker could have swapped James with someone else. So James ended up as Seer. So the Troublemaker swapped James with someone else, giving him Seer. So the Troublemaker is a Villager (team village). So the Troublemaker is not a werewolf.\n\nLine [9]: Mitchell: \"That makes no sense. I looked at two in the middle because I was the seer and I saw those two.\" So Mitchell says he was the Seer and looked at two center cards. That means Mitchell started as Seer. He didn't get swapped. So his role remained Seer. So Mitchell is a Villager.\n\nLine [10]: Mike: \"I'm going to say that I was the seer and I looked at Mitchell's and he was a werewolf.\" So Mike says he was Seer and looked at Mitchell's card and found he was a werewolf. That means Mike started as Seer too? Wait, but we already have Mitchell as Seer. So maybe Mike is also Seer? But only one Seer per game. So maybe Mike is lying. Or maybe Mike is the Robber? But he says he was Seer. So maybe Mike is lying or misremembering. But let's parse.\n\nLine [11]: Justin: \"I'm going to confirm Mike's story. And I switched to these two,\" (unclear what \"these two\" refers to). Possibly Justin swapped with two players? Not clear.\n\nLine [12]: Mike: \"But Caitlynn was the drunk.\"\n\nLine [13]: Caitlynn: \"I was a drunk.\"\n\nLine [14]: Justin: \"Caitlynn which one did you switch with?\" So Justin asks which card Caitlynn swapped with.\n\nLine [15]: Caitlynn: \"Well, I'm hoping Mitchell is wrong.\"\n\nLine [16]: Justin: \"Well, Mitchell is wrong.\"\n\nLine [17]: Mike: \"Mitchell is very wrong. It's still possible She's aware, but we know for sure. Mitchell is the werewolf.\"\n\nLine [18]: Justin: \"I feel like we have to kill Mitchell.\"\n\nLine [19]: Mitchell: \"Should we vote now?\"\n\nLine [20]: Justin: \"Yeah.\"\n\nLine [21]: Announcer: Time is up Everyone.\n\nLine [22]: Mike: \"No, I looked at it.\"\n\nThis transcript is confusing. It seems like players are claiming roles. We need to deduce who is likely a werewolf.\n\nWe know that the only roles that can become werewolf are those that start as werewolf or minion. But we don't know starting roles. However, we can infer from statements.\n\nMike says he was Seer and looked at Mitchell's card and found he was a werewolf. That suggests that Mike looked at Mitchell's card and saw it's a werewolf. But if Mike was Seer, he would have looked at a player's card. But he says he looked at Mitchell's card. So he looked at Mitchell's card and found it was a werewolf. That means Mitchell's card was a werewolf. So Mitchell is a werewolf. But wait, Mitchell also said he was Seer. But if Mitchell is a werewolf, he cannot be Seer. So something inconsistent. Maybe Mike is lying. Or maybe Mike is the Minion? But he says he was Seer. So maybe Mike is lying about his role. But we need to decide.\n\nLet's analyze each player's potential role.\n\nWe have 5 players: Justin, Caitlynn, Mike, James, Mitchell.\n\nWe know that there are 5 roles chosen from the list. There are 5 players + 3 center = 8 roles. So 8 roles total. We don't know which ones are chosen. But we can guess.\n\nFrom the transcript, we see that there is a Drunk, a Troublemaker, a Seer, a Robber, a Minion, a Werewolf, maybe a second Werewolf, maybe a Mason, etc. But we don't know.\n\nWe know that the Drunk swapped with a center card. The Troublemaker swapped two other players. The Robber swapped with someone else. The Minion didn't swap. The Seer looked at a card. The Insomniac looked at his own card. The Minion knows who werewolves are. The Minion might have told others.\n\nBut we don't have explicit statements about the Minion. But we have that Mike says he was Seer. But if Mike was Seer, he would have looked at a card. He says he looked at Mitchell's card and found he was a werewolf. That implies that Mitchell's card was a werewolf. But Mitchell also said he was Seer. So contradictory. So either Mitchell is lying or Mike is lying. But we need to decide.\n\nWe also have that James says he was Insomniac but ended up as Seer. That means James was swapped into Seer. So James is not a werewolf.\n\nWe have that Caitlynn says she was a drunk. So Caitlynn is a drunk. So she swapped with a center card. So she is not a werewolf.\n\nThus the only suspect left is Mitchell. He says he was Seer. But if he is a werewolf, he cannot be Seer. So maybe he is lying. But we need to decide who is likely a werewolf.\n\nGiven that Mike says Mitchell is a werewolf, and Justin also says we have to kill Mitchell. So likely Mitchell is the werewolf.\n\nBut we need to consider that Mitchell might be the Minion. But the Minion is a werewolf ally. But the Minion would not be a werewolf. But the Minion is a werewolf ally. But the Minion's role is not a werewolf card; it's a separate role. But the Minion is part of the werewolf team. So if Mitchell is Minion, he is part of the werewolf team. But the Minion is not a werewolf card. But the question is: \"vote for the player you believe is a Werewolf as their end role.\" So we need to vote for a player who ends up as a werewolf. That could be a werewolf card or a Minion. But the question says \"vote for the player you believe is a Werewolf as their end role.\" So we need to choose a player who ends up as a werewolf card. So we need to find who ended up as a werewolf card.\n\nFrom the transcript, we see that Mitchell is suspected to be a werewolf. But we need to confirm.\n\nLet's examine the logic: If Mitchell is a werewolf, he would have been a werewolf at the start. He would not have swapped. He would not have looked at anyone. He would not have been the Seer. But he says he was Seer. So he is lying. But maybe he is the Minion? But the Minion is a werewolf ally. But the Minion is not a werewolf card. But the question is to vote for the player you believe is a Werewolf as their end role. So we need to choose a player who ends up as a werewolf card. That could be Mitchell if he is indeed a werewolf. But we need to confirm.\n\nAlternatively, maybe the werewolf is James. But James says he was Insomniac but ended up as Seer. So he is not a werewolf.\n\nWhat about Mike? Mike says he was Seer. But he might be lying. But if Mike is the Minion, he would be a werewolf ally. But he says he was Seer. So he is lying. But we need to decide.\n\nLet's think: The only plausible werewolf is Mitchell. Because the transcripts show that others are not werewolves. So we will vote for Mitchell.\n\nNow we need to produce justification: 3-5 sentences. Provide reasoning.\n\nLet's craft the JSON accordingly.",
+  "parsed_output": {
+    "justification": "The transcript shows that only Mitchell is consistently suspected of being a werewolf.  Mitchell claims to be a Seer, yet Mike reports that Mitchell’s card was a werewolf, and both Justin and Mike agree that Mitchell should be eliminated.  No other player’s statements indicate a werewolf identity, and the drunk, insomniac, and troublemaker roles are clearly identified as non‑werewolf.  Therefore, the most likely werewolf is Mitchell.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"The transcript shows that only Mitchell is consistently suspected of being a werewolf.  Mitchell claims to be a Seer, yet Mike reports that Mitchell’s card was a werewolf, and both Justin and Mike agree that Mitchell should be eliminated.  No other player’s statements indicate a werewolf identity, and the drunk, insomniac, and troublemaker roles are clearly identified as non‑werewolf.  Therefore, the most likely werewolf is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"The transcript shows that only Mitchell is consistently suspected of being a werewolf.  Mitchell claims to be a Seer, yet Mike reports that Mitchell’s card was a werewolf, and both Justin and Mike agree that Mitchell should be eliminated.  No other player’s statements indicate a werewolf identity, and the drunk, insomniac, and troublemaker roles are clearly identified as non‑werewolf.  Therefore, the most likely werewolf is Mitchell.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript shows that only Mitchell is consistently suspected of being a werewolf.  Mitchell claims to be a Seer, yet Mike reports that Mitchell’s card was a werewolf, and both Justin and Mike agree that Mitchell should be eliminated.  No other player’s statements indicate a werewolf identity, and the drunk, insomniac, and troublemaker roles are clearly identified as non‑werewolf.  Therefore, the most likely werewolf is Mitchell."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2090,
+    "output_token_count": 2392,
+    "generation_time_sec": 751.3636918067932,
+    "used_chat_template": true,
+    "input_char_count": 8735,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

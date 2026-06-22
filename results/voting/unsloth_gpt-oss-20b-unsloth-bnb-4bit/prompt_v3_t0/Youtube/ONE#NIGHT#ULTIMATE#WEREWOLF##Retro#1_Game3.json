@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to analyze the transcript to determine which player is likely a Werewolf. We have four players: Justin, Alvin, James, Mitchell. Roles unknown. We need to deduce based on actions.\n\nWe have a Night phase: roles called: Doppelganger (none), Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac. In transcript, we see only the Robber and Troublemaker actions. The rest are not mentioned. So likely only Robber and Troublemaker had night actions. That means the other roles are probably Villagers or maybe other roles that didn't act. But we don't know.\n\nRobber: wakes up, exchanges card with another player, then views new card. In transcript, Justin says \"Robber.\" Then \"You may exchange your card with another player's card.\" Then James says \"Robert.\" Wait, maybe mis-typo. Then Justin says \"Robert.\" Then \"And then view your new card.\" Then Justin: \"Wake up, Robert.\" James: \"Yeah, Robert, do it.\" So seems like Justin is the Robber, and he swapped with someone? Actually, the transcript is confusing. Let's parse:\n\nAnnouncer: Robber. Wake up.\nJustin: Robber. (maybe Justin identifies himself as Robber)\nAnnouncer: You may exchange your card with another player's card.\nJames: Robert. (maybe James says \"Robert\"?)\nJustin: Robert. (Justin says \"Robert\" again)\nAnnouncer: And then view your new card.\nJustin: Wake up, Robert.\nJames: Yeah, Robert, do it.\nAnnouncer: Robber. Close your eyes.\nSo it seems Justin is the Robber, and he swapped with someone? But unclear.\n\nThen Troublemaker: wakes up, exchanges between two other players. In transcript, we see \"Troublemaker. Wake up. You may exchanges between two other players.\" Then James says \"I thought I would be able to hear people moving shit a lot more than this.\" Not clear.\n\nBut the main point: The only night actions were Robber and Troublemaker. So the roles of the players might be: Justin (Robber), James (Troublemaker?), others maybe Villagers. But we need to deduce who is Werewolf.\n\nWe need to consider that the Robber and Troublemaker swapped cards. So the final roles may differ from starting roles. But we don't know starting roles.\n\nWe need to infer from the discussion: People talk about \"I know Justin's a werewolf\" etc. So someone claims to have seen Justin's card. That suggests someone looked at a card. Who could have looked? The Seer can look at a card. The Robber can look at his new card after swap. The Troublemaker cannot look. The Drunk cannot look. The Minion cannot look. The Masons cannot look. The Insomniac can look at their own card at end. The Minion knows werewolves. The Seer can look at a card. So someone might have looked at Justin's card and found it to be Werewolf. That person could be the Seer or the Robber (if he swapped with Justin). But the Robber swapped with someone else, not necessarily Justin. But the transcript shows Justin says \"Wake up, Robert.\" That might be a confusion.\n\nLet's step back: The transcript is messy. But we can glean that the players are discussing who is werewolf. Many statements: \"I'm going to trust Alvin. It's Justin.\" \"I know Justin's a werewolf.\" \"I think Justin... Well, I know Justin's a werewolf but there could be more than one.\" So many claim Justin is werewolf. Also some mention \"I think it could be Mitchell.\" So it's ambiguous.\n\nWe need to decide which player is likely werewolf. We need to consider that the Robber swapped with someone. If Justin is the Robber, he swapped with someone else. He then looked at his new card. He might have discovered his new card is something. But we don't know.\n\nAlso, the Troublemaker swapped two other players. That could have swapped a werewolf into a different player. So the final roles could be different.\n\nGiven the confusion, we need to guess. The most likely suspect is Justin, because many statements point to him being werewolf. But we need to justify.\n\nWe should consider that the Seer could have looked at a card. The transcript shows Alvin says \"I straight up looked at his card and it was the werewolf card.\" That implies Alvin is the Seer. He looked at Justin's card and found it to be werewolf. So Alvin is the Seer. So he knows Justin is werewolf. So Justin is indeed werewolf. So we should vote for Justin.\n\nThus chosen_vote: Justin.\n\nNow produce justification: mention that Alvin is Seer, looked at Justin's card, found werewolf, so Justin is werewolf. Also mention that Robber and Troublemaker actions could have swapped but not relevant. So answer: Justin.\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Alvin claims to have looked at a card and found it to be a werewolf; the only way to legitimately look at a card is via the Seer’s ability. Since Alvin states he saw Justin’s card as a werewolf, it strongly indicates that Justin is the werewolf. The other players’ statements are inconclusive and the night actions (Robber and Troublemaker) do not alter this conclusion. Therefore, the most probable werewolf is Justin.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\":\"Alvin claims to have looked at a card and found it to be a werewolf; the only way to legitimately look at a card is via the Seer’s ability. Since Alvin states he saw Justin’s card as a werewolf, it strongly indicates that Justin is the werewolf. The other players’ statements are inconclusive and the night actions (Robber and Troublemaker) do not alter this conclusion. Therefore, the most probable werewolf is Justin.\",\"chosen_vote\":\"Justin\"}",
+  "response_for_parsing": "{\"justification\":\"Alvin claims to have looked at a card and found it to be a werewolf; the only way to legitimately look at a card is via the Seer’s ability. Since Alvin states he saw Justin’s card as a werewolf, it strongly indicates that Justin is the werewolf. The other players’ statements are inconclusive and the night actions (Robber and Troublemaker) do not alter this conclusion. Therefore, the most probable werewolf is Justin.\",\"chosen_vote\":\"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Alvin claims to have looked at a card and found it to be a werewolf; the only way to legitimately look at a card is via the Seer’s ability. Since Alvin states he saw Justin’s card as a werewolf, it strongly indicates that Justin is the werewolf. The other players’ statements are inconclusive and the night actions (Robber and Troublemaker) do not alter this conclusion. Therefore, the most probable werewolf is Justin."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2962,
+    "output_token_count": 1165,
+    "generation_time_sec": 367.43006658554077,
+    "used_chat_template": true,
+    "input_char_count": 11829,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}

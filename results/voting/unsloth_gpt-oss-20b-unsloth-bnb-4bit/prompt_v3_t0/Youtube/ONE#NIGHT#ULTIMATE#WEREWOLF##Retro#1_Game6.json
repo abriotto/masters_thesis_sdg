@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game6",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game6.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "prompt_path": "src/prompts/voting_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 8000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "medium",
+  "gemma_enable_thinking": false,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "We need to determine which player is likely a Werewolf based on the transcript. The transcript is messy, but we can parse.\n\nPlayers: Justin, Alvin, James, Mitchell.\n\nWe need to deduce roles. The transcript shows confusion. Let's try to interpret.\n\nAt start, roles unknown. The night actions: The announcer calls roles in order. We have some lines: [2] Justin: Robert! (maybe a joke). [3] James: This sounds like a Disney ride you know. [4] Announcer: Werewolves wake up and look for other Werewolves. If there is only one Werewolf, you may look at a card from the center. Werewolves close your eyes, seer wake up. You may look at another player's card or two of the center cards. [5] James: Mitchell. I'm just throwing all my hate on you right now. I'm sorry. [6] Announcer: Seer close your eyes, Robber wake up. [7] James: It's because you to my left. That's literally my tactic, to the left. [8] Announcer: You may exchange your card with another player's card and then view your new card. Robber close your eyes. [9] Justin: Robert! [10] Announcer: Drunk, wake up and exchange your card with a card from the center. Drunk close your eyes. Everyone keep your eyes closed reach out at your card around, slightly. [11] Mitchell: [inaudible 00:01:10] shorten that time. [12] Justin: That's good idea. [13] Announcer: Everyone wake up. [14] Justin: Hey, everybody it's morning time. [15] Mitchell: Good morning everyone. [16] James: I was the hunter. [17] Alvin: I know he was the hunter because I was the seer and I saw that he was the hunter. [18] James: Could we possibly just not have werewolves? Like I know it was a hunter. That's something I shouldn't be [inaudible 00:01:41] ... etc.\n\nSo we have some statements: James says \"I was the hunter.\" Alvin says \"I know he was the hunter because I was the seer and I saw that he was the hunter.\" So Alvin claims to be the seer and saw that James was the hunter. That implies that Alvin saw James's card (Hunter) during the night. That means Alvin was the Seer. So Alvin's role is Seer. He saw James's card. So James must have been Hunter. So James's final role is Hunter. Hunter is a Village role. So James is not a Werewolf.\n\nNow, we need to find who could be Werewolf. We have four players: Justin, Alvin, James, Mitchell. We know Alvin is Seer. James is Hunter. That leaves Justin and Mitchell. We need to determine if either could be Werewolf.\n\nLet's examine further transcripts: [21] Justin: They're both the werewolf, but I was the robber. Wait, line 21: \"Justin: They're both the werewolf, but I was the robber.\" That seems contradictory: \"They're both the werewolf\" maybe meaning \"They're both the werewolf\"? Actually \"They're both the werewolf\" maybe a typo. But \"but I was the robber\" indicates Justin was the Robber. So Justin's role is Robber. Robber swaps with someone. He swapped with Alvin. [23] Justin: I was the robber and I swapped with Alvin. So Justin swapped with Alvin. So Justin's final role after swap is whatever Alvin had before swap. But we know Alvin was Seer. So after swap, Justin ends up with Seer? Wait, let's analyze: Robber's ability: swap your card with another player's card, then look at your new card. So Justin swapped with Alvin. So Justin's new card is Alvin's original card (Seer). So Justin ends up as Seer. But the transcript says \"I was the robber and I swapped with Alvin.\" So yes, Justin ended up with Seer. So Justin is not a Werewolf.\n\nNow Mitchell: We need to see if Mitchell could be Werewolf. Let's see lines: [22] Mitchell: I was only the villager. [24] Mitchell: So if that's true, you would be able to verify his story and he's verifying his story. [25] Justin: Yes. [26] Mitchell: And I'm the only one without a verified story. [27] Alvin: I think Justin's addendum was a little timely. So it could be Justin lying. [28] James: It could be, but I like Mitchell's whole not verified argument yeah. [29] Mitchell: But if you get me, it's a 50/50 whether I'm werewolf, if that's where we're at so far. [30] James: I'm a hunter I'm taking by shots at everything. [31] Alvin: Justin has a story. [32] Mitchell: But we could all... [33] James: They could both be werewolf. [34] Justin: But so are you saying that you're not the seer because I'm confirming that you are. [35] Alvin: I am the seer. [36] Justin: Yeah. I'm with you on that. [37] James: If you were the seer, you saw me. [38] Alvin: But you already know that. I said I was the seer, so... [39] Justin: That's fair, that's fair. I was as always with the robber. It's nice to wait and lay it tactically, I admit that. I did that because I wanted to sus it out beforehand right? You don't have to trust me. It's fine. I trust you. And I trust James. [40] James: Let's go Mitchell. [41] Mitchell: So here I am with a completely unverified story. I have no information to give... [42] James: A werewolf would do that. [43] Mitchell: I don't know. [44] James: I also do that. [45] Mitchell: A werewolf absolutely would do it. [46] Alvin: It's almost too convenient though. It's like, maybe he is just a villager. [47] Mitchell: We might not have a werewolf this time. [48] James: But... [49] Alvin: I still think it's Justin for some reason. [50] James: But what if it's to these two fuckers? Alvin is just saying he was a seer. [51] Mitchell: Let's hash it out and see if there could be a combo of two going here. [52] Alvin: Are you saying you're a hunter then? [53] James: No, I'm a hunter and I was up front with you guys so I don't need to pick my role and I'm going to... [54] Alvin: That's why when I was the seer I check... [55] James: Yeah but that could be... [56] Mitchell: So it is possible from your perspective and from mine that they're both werewolves I think. [57] James: I'm still finding shots at you. Just so you know, you got to come on straight. [58] Mitchell: I am in a bad spot. I won't lie about that. [59] Justin: I'm believing...what...like...I'm like you know...I don't know if anyone is actually werewolf here right? [60] James: Neither do I but my feeling is if anyone it was, it's Mitchell. [61] Alvin: I think it's Justin because I think if... [62] Mitchell: Justin isn't... [63] Alvin: Mitchell just... [64] James: What if they're both werewolves? [65] Mitchell: Alvin raise a good point. I don't... [66] Justin: It's true, it's true. [67] James: No, he did... [68] Justin: ... etc.\n\nThis is confusing. But we know that James is Hunter. So he cannot be Werewolf. So the only possible werewolves are Justin and Mitchell. But we know Justin is Robber, not Werewolf. So the only possible werewolf left is Mitchell. But we need to confirm if Mitchell could be Werewolf. Did Mitchell claim to be a villager? He said \"I was only the villager.\" That suggests he claimed to be a villager. But that could be false. He might be lying. But we need to decide.\n\nAlso, we know that the Robber swapped with Alvin. So Justin ended up as Seer. So Justin is not a Werewolf. So the only suspect is Mitchell. But we need to consider if Mitchell could be a Werewolf. He might have been a Werewolf originally, but swapped? Wait, the Robber swapped with Alvin, not with Mitchell. So Mitchell didn't swap. So Mitchell's role remains whatever it was originally. He could be Werewolf. But we need to see if any evidence indicates he is not. He says \"I was only the villager.\" That could be a lie. But we need to decide.\n\nGiven the transcript, the only plausible werewolf is Mitchell. So we will vote for Mitchell.\n\nBut we need to provide justification.\n\nLet's craft a concise explanation: Based on the transcript, we know that Alvin is Seer, James is Hunter, Justin is Robber (and ended up as Seer). The only remaining player is Mitchell, who claims to be a villager but may be lying. No other evidence indicates a werewolf among the other players. Therefore, Mitchell is the most likely werewolf.\n\nThus chosen_vote: \"Mitchell\".\n\nLet's produce JSON.",
+  "parsed_output": {
+    "justification": "Alvin’s statements reveal he was the Seer and saw James’s card as Hunter, confirming James is not a Werewolf. Justin’s comments indicate he was the Robber and swapped with Alvin, ending up as Seer, so he is also not a Werewolf. The only remaining player, Mitchell, claims to be a villager but offers no corroborating evidence; no other player’s actions suggest a Werewolf. Therefore, Mitchell is the most likely Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\":\"Alvin’s statements reveal he was the Seer and saw James’s card as Hunter, confirming James is not a Werewolf. Justin’s comments indicate he was the Robber and swapped with Alvin, ending up as Seer, so he is also not a Werewolf. The only remaining player, Mitchell, claims to be a villager but offers no corroborating evidence; no other player’s actions suggest a Werewolf. Therefore, Mitchell is the most likely Werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "response_for_parsing": "{\"justification\":\"Alvin’s statements reveal he was the Seer and saw James’s card as Hunter, confirming James is not a Werewolf. Justin’s comments indicate he was the Robber and swapped with Alvin, ending up as Seer, so he is also not a Werewolf. The only remaining player, Mitchell, claims to be a villager but offers no corroborating evidence; no other player’s actions suggest a Werewolf. Therefore, Mitchell is the most likely Werewolf.\",\"chosen_vote\":\"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Alvin’s statements reveal he was the Seer and saw James’s card as Hunter, confirming James is not a Werewolf. Justin’s comments indicate he was the Robber and swapped with Alvin, ending up as Seer, so he is also not a Werewolf. The only remaining player, Mitchell, claims to be a villager but offers no corroborating evidence; no other player’s actions suggest a Werewolf. Therefore, Mitchell is the most likely Werewolf."
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3595,
+    "output_token_count": 2122,
+    "generation_time_sec": 668.7868413925171,
+    "used_chat_template": true,
+    "input_char_count": 14412,
+    "model_family": "gpt_oss",
+    "handler": "GptOssHandler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": "medium",
+    "gemma_enable_thinking": null,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gpt-oss-20b-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": {
+      "": 0
+    }
+  }
+}
