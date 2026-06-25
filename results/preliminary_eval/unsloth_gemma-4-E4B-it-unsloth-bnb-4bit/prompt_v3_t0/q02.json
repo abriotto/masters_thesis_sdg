@@ -1,0 +1,51 @@
+{
+  "question_id": "q02",
+  "dimension": "role_swapping",
+  "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_t0",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to answer a rule-understanding question about ONUW based *strictly* on the provided rules, using a specific JSON format (justification + answer).\n2.  **Identify Key Information/Roles:**\n    *   Player A = Insomniac.\n    *   Player B = Troublemaker.\n    *   Action: During the Night phase, Player B swaps Player A's card with Player C's card.\n    *   Question: Does Player A know their card was swapped before the Day phase begins?\n3.  **Consult Rules for Troublemaker (Player B):**\n    *   Troublemaker: \"During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\"\n4.  **Consult Rules for Card Swaps/Knowledge:**\n    *   \"Critically, players may not know that their role swapped.\"\n    *   \"Information learned earlier in the Night phase is not automatically updated after later swaps.\"\n    *   The Troublemaker swaps cards *without looking at them*.\n5.  **Determine Player A's Knowledge:**\n    *   The Troublemaker (Player B) performs the swap without looking at the cards.\n    *   The rules state that players may not know their role swapped.\n    *   The Insomniac (Player A) only looks at their current card *at the end* of the Night phase.\n    *   The swap happens during the Night phase, but the rules do not state that the recipient of the swap (Player A) is informed of the action.\n6.  **Formulate Justification (1-2 sentences):** The rules state that the Troublemaker swaps cards without looking at them, and critically, players may not know that their role swapped.\n7.  **Formulate Answer:** No.\n8.  **Construct JSON:** (Ensure strict adherence to output format.)",
+  "parsed_output": {
+    "justification": "The rules state that the Troublemaker swaps the cards of two other players without looking at them, and critically, players may not know that their role swapped.",
+    "answer": "No"
+  },
+  "raw_response": "{\n  \"justification\": \"The rules state that the Troublemaker swaps the cards of two other players without looking at them, and critically, players may not know that their role swapped.\",\n  \"answer\": \"No\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The rules state that the Troublemaker swaps the cards of two other players without looking at them, and critically, players may not know that their role swapped.\",\n  \"answer\": \"No\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The rules state that the Troublemaker swaps the cards of two other players without looking at them, and critically, players may not know that their role swapped.",
+    "answer": "No"
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1628,
+    "output_token_count": 473,
+    "generation_time_sec": 36.80146527290344,
+    "used_chat_template": true,
+    "input_char_count": 6837,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
