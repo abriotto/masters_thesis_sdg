@@ -1,0 +1,51 @@
+{
+  "question_id": "q02",
+  "dimension": "role_swapping",
+  "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_run_2",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to determine if Player A (Insomniac) knows their card was swapped by Player B (Troublemaker) with Player C's card during the Night phase.\n2.  **Identify Key Roles and Actions:**\n    *   Player A's starting role: Insomniac.\n    *   Player B's starting role: Troublemaker.\n    *   Action: Player B (Troublemaker) swaps Player A's card with Player C's card.\n    *   Relevant rules: Roles, abilities, Night action order, and rules regarding role swaps/information flow.\n3.  **Check the Night Action Order:**\n    1. Doppelganger\n    2. Werewolves\n    3. Minion\n    4. Masons\n    5. Seer\n    6. Robber\n    7. Troublemaker (Player B acts here)\n    8. Drunk\n    9. Insomniac (Player A acts here)\n4.  **Analyze Player B's Role (Troublemaker):**\n    *   Ability: \"The Troublemaker swaps the cards of two other players without looking at them.\"\n    *   Action: Player B swaps A's card and C's card.\n5.  **Analyze Player A's Role (Insomniac):**\n    *   Ability: \"At the end of the Night phase, the Insomniac looks at their current card.\"\n6.  **Determine Information Flow and Timing:**\n    *   The swap happens during the Night phase, specifically when the Troublemaker acts.\n    *   Player A is *not* performing an action that reveals the swap immediately.\n    *   Player A only gets to look at their card *at the end* of the Night phase (due to the Insomniac ability).\n7.  **Conclusion based on rules:** Since the swap happens during the Night phase, and Player A only checks their card *after* the Night phase is complete, Player A will not know the swap happened until the Day phase begins (or later, depending on when the Insomniac checks). The question asks if Player A knows *before* the Day phase begins.\n\n8.  **Draft Justification and Answer:** Ensure the justification is strict and based on the rules provided.\n\n    *   *Justification Check:* The Insomniac only looks at their card at the end of the Night phase. Since the swap occurred during the Night phase, Player A does not know until that moment passes.\n    *   *Answer Check:* No. (Since they don't know before the Day phase).",
+  "parsed_output": {
+    "justification": "The Insomniac's ability states that they look at their current card only at the end of the Night phase. Since the card swap occurred during the Night phase, Player A does not have the information until after the Night phase concludes.",
+    "answer": "No"
+  },
+  "raw_response": "{\n  \"justification\": \"The Insomniac's ability states that they look at their current card only at the end of the Night phase. Since the card swap occurred during the Night phase, Player A does not have the information until after the Night phase concludes.\",\n  \"answer\": \"No\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The Insomniac's ability states that they look at their current card only at the end of the Night phase. Since the card swap occurred during the Night phase, Player A does not have the information until after the Night phase concludes.\",\n  \"answer\": \"No\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The Insomniac's ability states that they look at their current card only at the end of the Night phase. Since the card swap occurred during the Night phase, Player A does not have the information until after the Night phase concludes.",
+    "answer": "No"
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1628,
+    "output_token_count": 639,
+    "generation_time_sec": 48.487717151641846,
+    "used_chat_template": true,
+    "input_char_count": 6837,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
