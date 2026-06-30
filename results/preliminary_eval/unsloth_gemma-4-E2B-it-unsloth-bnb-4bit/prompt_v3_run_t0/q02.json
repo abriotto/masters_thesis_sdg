@@ -1,0 +1,51 @@
+{
+  "question_id": "q02",
+  "dimension": "role_swapping",
+  "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_run_t0",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to determine if Player A (Insomniac) knows their card was swapped by Player B (Troublemaker) with Player C's card during the Night phase.\n2.  **Identify Key Roles and Actions:**\n    *   Player A's starting role: Insomniac.\n    *   Player B's starting role: Troublemaker.\n    *   Action: Player B (Troublemaker) swaps Player A's card with Player C's card.\n    *   Relevant rules: Role abilities, Night action order, and information flow.\n3.  **Review Insomniac Role Ability:**\n    *   Insomniac: A member of Team Village. At the end of the Night phase, the Insomniac looks at their current card.\n4.  **Review Troublemaker Role Ability:**\n    *   Troublemaker: A member of Team Village. During the Night phase, the Troublemaker swaps the cards of two other players without looking at them.\n5.  **Review Night Action Order:**\n    *   1. Doppelganger\n    *   2. Werewolves\n    *   3. Minion\n    *   4. Masons\n    *   5. Seer\n    *   6. Robber\n    *   7. Troublemaker (Player B acts here)\n    *   8. Drunk\n    *   9. Insomniac (Player A acts here)\n6.  **Determine the Sequence of Events:**\n    *   The question states: \"Player B swaps Player A's card with Player C's card.\"\n    *   The Troublemaker action happens during the Night phase (Step 7).\n    *   The Insomniac action happens at the end of the Night phase (Step 9).\n7.  **Analyze Information Flow regarding Swaps:**\n    *   The rules state: \"Because some roles can change cards during the night, a player may believe they are one role while actually ending the night as another role.\"\n    *   The question asks if Player A knows *their card was swapped*.\n    *   The Insomniac's ability is to look at their *current* card at the end of the Night phase.\n    *   The Troublemaker's ability is to swap two cards without looking.\n8.  **Conclusion based on Rules:** Since the Troublemaker performs the swap without looking, Player A (Insomniac) has no immediate knowledge of the swap occurring. Player A only learns their new role (if any) when the Insomniac ability triggers at the end of the Night phase.\n\n9.  **Formulate Justification and Answer.** (Ensure strict adherence to the required format.)",
+  "parsed_output": {
+    "justification": "The Troublemaker role swaps cards without looking, meaning Player A (Insomniac) has no immediate knowledge of the swap. Player A only learns their current card at the end of the Night phase via the Insomniac's ability.",
+    "answer": "No"
+  },
+  "raw_response": "{\n  \"justification\": \"The Troublemaker role swaps cards without looking, meaning Player A (Insomniac) has no immediate knowledge of the swap. Player A only learns their current card at the end of the Night phase via the Insomniac's ability.\",\n  \"answer\": \"No\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The Troublemaker role swaps cards without looking, meaning Player A (Insomniac) has no immediate knowledge of the swap. Player A only learns their current card at the end of the Night phase via the Insomniac's ability.\",\n  \"answer\": \"No\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The Troublemaker role swaps cards without looking, meaning Player A (Insomniac) has no immediate knowledge of the swap. Player A only learns their current card at the end of the Night phase via the Insomniac's ability.",
+    "answer": "No"
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1628,
+    "output_token_count": 666,
+    "generation_time_sec": 50.17481517791748,
+    "used_chat_template": true,
+    "input_char_count": 6837,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

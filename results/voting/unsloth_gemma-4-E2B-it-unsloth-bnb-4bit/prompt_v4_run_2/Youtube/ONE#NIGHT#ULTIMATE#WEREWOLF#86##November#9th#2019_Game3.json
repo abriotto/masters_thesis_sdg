@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#86##November#9th#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** I need to act as an external observer of a One Night Ultimate Werewolf game, use the provided transcript and rules, and choose a player to vote out to make Team Village win (by eliminating a Werewolf).\n\n2.  **Analyze the Game Rules & Winning Conditions:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   Team Village wins if no player is a Werewolf and no one dies (if all Werewolf cards are in the center).\n    *   Werewolves win if no Werewolves die.\n    *   Tanner wins if they die.\n\n3.  **Analyze the Player List and Transcript:**\n    *   Players: Justin, Mitchell, Paul, Mike.\n    *   The transcript is highly chaotic, involving accusations of switching roles (Robber/Doppelganger mechanics) and claims about who is a Werewolf or Tanner.\n\n    *   Key events/claims:\n        *   [13] Justin suggests killing Paul.\n        *   [14] Mike says \"Yeah, sounds good. Three werewolves.\" (Accusing Justin/Mitchell/Paul).\n        *   [21] Justin claims he was the Troublemaker.\n        *   [22] Paul claims Justin started that, he's a worf.\n        *   [24] Mike says \"I do. I robbed from you.\" (Implying Mike robbed Justin).\n        *   [51] Justin denies robbing Mitchell, but Mitchell might have robbed Paul.\n        *   [76] Mitchell says, \"Correct [started as a werewolf].\"\n        *   [104] Justin says, \"He's werewolf [referring to Mitchell].\"\n        *   [111] Mitchell is voting for Justin.\n        *   [106] Justin is voting for Paul.\n\n4.  **Determine Potential Werewolves:**\n    *   Mitchell explicitly claims he started as a Werewolf [76].\n    *   Mike initially accused three werewolves [14].\n    *   Paul was accused by Justin [22].\n    *   The complexity introduced by Robber/Doppelganger makes definitive identification impossible without knowing the actual card swaps.\n\n5.  **Evaluate Voting Options based on Goal (Eliminate Werewolf):**\n    *   If Mitchell is the Werewolf (based on his self-identification), voting for him is ideal.\n    *   If Justin is the Werewolf (based on Mike's accusation and later claims), voting for him is ideal.\n    *   If Paul is the Werewolf (based on Justin's initial suggestion and Mike's accusation), voting for him is ideal.\n\n6.  **Synthesize the Vote:** The transcript shows extreme uncertainty and mutual accusations. However, Mitchell explicitly states he started as a Werewolf [76]. Given the goal is to eliminate a Werewolf, Mitchell is the strongest candidate based on self-identification, even if the game mechanics are confusing.\n\n7.  **Formulate Justification:** Focus on the player who claims to be a Werewolf, acknowledging the uncertainty inherent in the transcript.\n\n8.  **Final Check against Output Format:** Must be strict JSON format.",
+  "parsed_output": {
+    "justification": "Mitchell explicitly stated that he started as a Werewolf during the discussion, which provides the strongest initial evidence for him being the target. While the transcript is filled with accusations and role swaps, focusing the vote on the player who claims the Werewolf role maximizes the chance of eliminating a Werewolf and securing a victory for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"Mitchell explicitly stated that he started as a Werewolf during the discussion, which provides the strongest initial evidence for him being the target. While the transcript is filled with accusations and role swaps, focusing the vote on the player who claims the Werewolf role maximizes the chance of eliminating a Werewolf and securing a victory for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell explicitly stated that he started as a Werewolf during the discussion, which provides the strongest initial evidence for him being the target. While the transcript is filled with accusations and role swaps, focusing the vote on the player who claims the Werewolf role maximizes the chance of eliminating a Werewolf and securing a victory for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell explicitly stated that he started as a Werewolf during the discussion, which provides the strongest initial evidence for him being the target. While the transcript is filled with accusations and role swaps, focusing the vote on the player who claims the Werewolf role maximizes the chance of eliminating a Werewolf and securing a victory for Team Village."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3768,
+    "output_token_count": 784,
+    "generation_time_sec": 61.6485857963562,
+    "used_chat_template": true,
+    "input_char_count": 13309,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

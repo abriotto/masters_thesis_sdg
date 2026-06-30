@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#89##November#30th#2019",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#89##November#30th#2019_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to eliminate to make Team Village win. Team Village wins by eliminating a Werewolf, or if no Werewolves are present and no one dies. I must analyze the provided transcript based on the game rules and roles.\n\n2.  **Identify Players and Roles (Initial State & Swaps):**\n    *   Players: Justin, Mitchell, Paul, James.\n    *   Roles mentioned/implied: Villager, Werewolf, Troublemaker, Robber, Seer, Tanner, Apprentice Seer (swapped role), Witch (swapped role).\n\n    *   *Key Events:*\n        *   [21] James: Troublemaker.\n        *   [34] James: Yo. I was the troublemaker. (Confirms initial role or a swap).\n        *   [42] Mitchell: You're not the troublemaker anymore, my friend. (Suggests a swap occurred).\n        *   [119] James: I switched you.\n        *   [124] James: Okay. Swap Justin and Paul.\n        *   [131] James: You're a werewolf?\n        *   [142] Mitchell: Justin's a werewolf.\n        *   [143] James: Justin's the werewolf.\n\n    *   *Conclusion on Roles:* Based on the end of the transcript, Justin is identified as the Werewolf by Mitchell and James.\n\n3.  **Determine Winning Condition:** Team Village wins if a Werewolf dies.\n\n4.  **Identify the Target:** Justin is the identified Werewolf.\n\n5.  **Formulate Justification:** The transcript clearly indicates that Justin was identified as the Werewolf by Mitchell and James during the voting phase. Eliminating Justin ensures Team Village wins immediately.\n\n6.  **Construct JSON Output.**",
+  "parsed_output": {
+    "justification": "The transcript culminates with Mitchell and James identifying Justin as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting out Justin is the optimal move to secure the victory for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript culminates with Mitchell and James identifying Justin as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting out Justin is the optimal move to secure the victory for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript culminates with Mitchell and James identifying Justin as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting out Justin is the optimal move to secure the victory for Team Village.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The transcript culminates with Mitchell and James identifying Justin as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting out Justin is the optimal move to secure the victory for Team Village."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4178,
+    "output_token_count": 475,
+    "generation_time_sec": 37.68513894081116,
+    "used_chat_template": true,
+    "input_char_count": 14321,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

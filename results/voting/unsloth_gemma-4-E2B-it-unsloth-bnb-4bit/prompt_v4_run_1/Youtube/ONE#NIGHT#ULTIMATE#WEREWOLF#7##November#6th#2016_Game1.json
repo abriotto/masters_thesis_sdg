@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win (eliminate a Werewolf). If no Werewolf is found, choose \"No Werewolf\".\n\n2.  **Analyze the Game Rules & Roles:**\n    *   Teams: Team Village (Win by eliminating Werewolf), Team Werewolf (Win by surviving Werewolves), Tanner (Win by dying).\n    *   Winning condition for Village: Eliminate a Werewolf OR no Werewolves present and no one dies.\n    *   Player List: Caitlynn, Mitchell, Alana, Mike.\n    *   Night Action Order: Doppelganger, Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac.\n\n3.  **Analyze the Transcript for Information/Clues:**\n    *   The transcript is primarily focused on role identification and confusion about who is who, especially regarding the Robber and Troublemaker roles (swapping cards).\n    *   Key exchange points:\n        *   Alana claims to be the Robber (14), then later says she is the Villager (25).\n        *   Mitchell claims to be the old Troublemaker (16), then later claims to have switched with Alana (35).\n        *   The discussion revolves around who the Werewolf is (38, 41, 55, 56, 57, 58, 60, 62, 63).\n        *   The core conflict is whether Mitchell or Caitlynn is the Werewolf, based on card swaps and accusations.\n        *   Alana attempts to argue that she switched with Mitchell originally, implying Mitchell was the Werewolf (90).\n        *   Mike suggests that both Mitchell and Caitlynn *could* be werewolves, complicating the situation (86).\n        *   Alana concludes: \"Neither of us were werewolves. So there really is only one werewolf and logically it's me (Alana).\" (93).\n\n4.  **Evaluate the Current Situation (Day Phase/Voting Prep):**\n    *   The players are highly confused about their roles due to card swapping (Robber/Troublemaker).\n    *   Alana has made a definitive claim that she is the Werewolf (93).\n    *   Mitchell and Caitlynn are also strongly suspected.\n    *   Mike remains uncertain (\"either of them,\" 67).\n\n5.  **Determine the Vote Target:**\n    *   The goal is to eliminate a Werewolf.\n    *   Alana is the primary suspect based on her own logic and the flow of conversation.\n    *   If Alana is the Werewolf, voting her out is the optimal move for Team Village.\n\n6.  **Formulate Justification:** State that Alana's argument points to her being the Werewolf, and voting her out maximizes the chances of Team Village winning.\n\n7.  **Final Check:** Ensure the output adheres strictly to the required JSON format. (Player list: Caitlynn, Mitchell, Alana, Mike).",
+  "parsed_output": {
+    "justification": "Alana explicitly argues that based on the card swaps and logic, she is the sole Werewolf, stating 'So there really is only one werewolf and logically it's me.' Since Team Village wins by eliminating a Werewolf, voting Alana out is the most strategic move to secure a victory. Although other players remain suspects, Alana's self-identification, supported by the confusion surrounding the roles, makes her the prime target.",
+    "chosen_vote": "Alana"
+  },
+  "raw_response": "{\n  \"justification\": \"Alana explicitly argues that based on the card swaps and logic, she is the sole Werewolf, stating 'So there really is only one werewolf and logically it's me.' Since Team Village wins by eliminating a Werewolf, voting Alana out is the most strategic move to secure a victory. Although other players remain suspects, Alana's self-identification, supported by the confusion surrounding the roles, makes her the prime target.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Alana explicitly argues that based on the card swaps and logic, she is the sole Werewolf, stating 'So there really is only one werewolf and logically it's me.' Since Team Village wins by eliminating a Werewolf, voting Alana out is the most strategic move to secure a victory. Although other players remain suspects, Alana's self-identification, supported by the confusion surrounding the roles, makes her the prime target.\",\n  \"chosen_vote\": \"Alana\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Alana",
+    "justification": "Alana explicitly argues that based on the card swaps and logic, she is the sole Werewolf, stating 'So there really is only one werewolf and logically it's me.' Since Team Village wins by eliminating a Werewolf, voting Alana out is the most strategic move to secure a victory. Although other players remain suspects, Alana's self-identification, supported by the confusion surrounding the roles, makes her the prime target."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3443,
+    "output_token_count": 791,
+    "generation_time_sec": 60.46388578414917,
+    "used_chat_template": true,
+    "input_char_count": 12098,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "question_id": "q02",
+  "dimension": "role_swapping",
+  "question": "Player A is the Insomniac. Player B is the Troublemaker. During the Night phase, Player B swaps Player A's card with Player C's card. Before the Day phase begins, does Player A know their card was swapped?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_run_1",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to determine if Player A (Insomniac) knows their card was swapped by Player B (Troublemaker) with Player C's card during the Night phase.\n2.  **Identify the Roles and Actions:**\n    *   Player A's starting role: Insomniac.\n    *   Player B's starting role: Troublemaker.\n    *   Action: Player B (Troublemaker) swaps Player A's card with Player C's card.\n3.  **Review Relevant Rules (Roles and Abilities, Night Action Order):**\n    *   Insomniac ability: \"At the end of the Night phase, the Insomniac looks at their current card.\"\n    *   Troublemaker ability: \"The Troublemaker swaps the cards of two other players without looking at them.\"\n    *   Night Action Order:\n        1. Doppelganger\n        2. Werewolves\n        3. Minion\n        4. Masons\n        5. Seer\n        6. Robber\n        7. Troublemaker (This is the action that happens)\n        8. Drunk\n        9. Insomniac (This is the action that happens *after* the swap)\n4.  **Determine the Sequence of Events:**\n    *   The action happens during the Night phase.\n    *   The Troublemaker acts (swaps A's card with C's card).\n    *   The Insomniac acts (looks at their current card).\n5.  **Evaluate Knowledge:**\n    *   Player A is the Insomniac.\n    *   The Insomniac's ability is to look at their current card *at the end of the Night phase*.\n    *   The Troublemaker's action (swapping cards) happens before the Insomniac's final check.\n    *   The rules state: \"Because some roles can change cards during the night, a player may believe they are one role while actually ending the night as another role.\"\n    *   The question asks if Player A knows *their card was swapped*.\n6.  **Conclusion based on Rules:** The rules imply that roles can swap cards, and the Insomniac checks their card at the end. Since the swap happened during the Night phase, Player A's card might have changed. However, the rules do not explicitly state that the Insomniac gains knowledge of *who* swapped their card, only that they look at their resulting card. Crucially, the question asks if A knows *their card was swapped*. Since the Insomniac's ability is just to look at the resulting card, and the rules emphasize that players may not know their role swapped, we must rely on the defined abilities. The Insomniac's ability is passive observation of the result.\n7.  **Formulate Justification and Answer.** (Focusing strictly on the Insomniac's defined action.)",
+  "parsed_output": {
+    "justification": "The Insomniac's ability is to look at their current card at the end of the Night phase, which reveals the resulting role but does not explicitly inform them that a swap occurred.",
+    "answer": "No"
+  },
+  "raw_response": "{\n  \"justification\": \"The Insomniac's ability is to look at their current card at the end of the Night phase, which reveals the resulting role but does not explicitly inform them that a swap occurred.\",\n  \"answer\": \"No\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The Insomniac's ability is to look at their current card at the end of the Night phase, which reveals the resulting role but does not explicitly inform them that a swap occurred.\",\n  \"answer\": \"No\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The Insomniac's ability is to look at their current card at the end of the Night phase, which reveals the resulting role but does not explicitly inform them that a swap occurred.",
+    "answer": "No"
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1628,
+    "output_token_count": 697,
+    "generation_time_sec": 52.94386863708496,
+    "used_chat_template": true,
+    "input_char_count": 6837,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

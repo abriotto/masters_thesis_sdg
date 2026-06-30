@@ -1,0 +1,51 @@
+{
+  "question_id": "q04",
+  "dimension": "secret_actions_and_information",
+  "question": "The Minion wakes up and sees that Player X is the only Werewolf. Later in the Night phase, the Troublemaker swaps Player X's card with Player Y's card. When the Day phase begins, who does the Minion believe is the Werewolf?",
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v3_run_t0",
+  "eval_prompt_path": "src/prompts/preliminary_eval_prompt_v3.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "The Minion learns the identity of the Werewolves during the Night phase, and the Troublemaker's action changes the card held by Player X, meaning the Minion's initial knowledge is invalidated.",
+    "answer": "Player Y"
+  },
+  "raw_response": "{\n      \"justification\": \"The Minion learns the identity of the Werewolves during the Night phase, and the Troublemaker's action changes the card held by Player X, meaning the Minion's initial knowledge is invalidated.\",\n      \"answer\": \"Player Y\"\n    }",
+  "response_for_parsing": "{\n      \"justification\": \"The Minion learns the identity of the Werewolves during the Night phase, and the Troublemaker's action changes the card held by Player X, meaning the Minion's initial knowledge is invalidated.\",\n      \"answer\": \"Player Y\"\n    }",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "justification": "The Minion learns the identity of the Werewolves during the Night phase, and the Troublemaker's action changes the card held by Player X, meaning the Minion's initial knowledge is invalidated.",
+    "answer": "Player Y"
+  },
+  "soft_warnings": [],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 1633,
+    "output_token_count": 64,
+    "generation_time_sec": 5.127600431442261,
+    "used_chat_template": true,
+    "input_char_count": 6855,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

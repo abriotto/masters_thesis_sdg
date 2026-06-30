@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is found, choose \"No Werewolf\". The output must be a specific JSON structure.\n\n2.  **Analyze the Game Rules & Winning Conditions:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   Team Village wins if no player is a Werewolf and no one dies (if all Werewolf cards are in the center).\n    *   Werewolves win if no Werewolves die.\n    *   Tanner wins if the Tanner dies.\n\n3.  **Analyze the Player List and Transcript:**\n    *   Players: Caitlynn, Mitchell, Alana, Mike.\n    *   Roles: The transcript heavily focuses on role swaps (Robber, Drunk, Seer, Troublemaker) and identifying the Werewolf.\n\n    *   Key deductions from the transcript:\n        *   Mitchell claims to have been the Drunk (32, 38, 66).\n        *   Caitlynn saw a \"horse shit\" card in the center (51).\n        *   Mike and Alana interacted regarding robbing/seeing roles (57, 58, 59, 60).\n        *   The core conflict revolves around who is the Werewolf.\n        *   Mitchell eventually admits: \"I actually was a werewolf to begin with.\" (100, 105).\n        *   Caitlynn confirms: \"So I'm the werewolf, fucking kill me.\" (103).\n        *   Alana supports Caitlynn: \"Yeah, it's you. I think that's right.\" (104).\n        *   Mitchell confirms: \"She's right, I was the werewolf.\" (105).\n\n4.  **Determine the Werewolf:** Based on the transcript, Mitchell and Caitlynn strongly claim to be the Werewolf. Mitchell explicitly states he was the werewolf.\n\n5.  **Determine the Vote Target:** Since Mitchell is identified as the Werewolf, voting for Mitchell is the optimal strategy for Team Village to win.\n\n6.  **Formulate the Justification:** Explain that the transcript reveals Mitchell's role, confirming he is the Werewolf. Eliminating him guarantees Team Village a win.\n\n7.  **Construct the Output (JSON format check):** Ensure the output adheres strictly to the required JSON structure.",
+  "parsed_output": {
+    "justification": "The transcript strongly indicates that Mitchell is the Werewolf, as he explicitly states, 'I actually was a werewolf to begin with,' and Caitlynn confirms this, stating, 'So I'm the werewolf, fucking kill me.' Eliminating the Werewolf is the only way for Team Village to win. Therefore, Mitchell is the target for the vote.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript strongly indicates that Mitchell is the Werewolf, as he explicitly states, 'I actually was a werewolf to begin with,' and Caitlynn confirms this, stating, 'So I'm the werewolf, fucking kill me.' Eliminating the Werewolf is the only way for Team Village to win. Therefore, Mitchell is the target for the vote.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript strongly indicates that Mitchell is the Werewolf, as he explicitly states, 'I actually was a werewolf to begin with,' and Caitlynn confirms this, stating, 'So I'm the werewolf, fucking kill me.' Eliminating the Werewolf is the only way for Team Village to win. Therefore, Mitchell is the target for the vote.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript strongly indicates that Mitchell is the Werewolf, as he explicitly states, 'I actually was a werewolf to begin with,' and Caitlynn confirms this, stating, 'So I'm the werewolf, fucking kill me.' Eliminating the Werewolf is the only way for Team Village to win. Therefore, Mitchell is the target for the vote."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3818,
+    "output_token_count": 636,
+    "generation_time_sec": 49.196309089660645,
+    "used_chat_template": true,
+    "input_char_count": 13138,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

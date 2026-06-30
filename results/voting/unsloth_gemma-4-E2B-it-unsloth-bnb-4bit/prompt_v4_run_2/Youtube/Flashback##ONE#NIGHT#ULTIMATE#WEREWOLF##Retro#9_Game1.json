@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to select one player to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is identified, select \"No Werewolf\". The output must be a JSON object with a justification.\n\n2.  **Analyze the Game Rules & Context:**\n    *   **Winning Condition (Village):** Eliminate a Werewolf. If no Werewolf is present, and no one dies, Village wins.\n    *   **Player List:** Justin, Laura, Paul, James, Mitchell.\n    *   **Roles:** Need to determine who is a Werewolf based on the transcript.\n    *   **Night Actions/Order:** Doppelganger, Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac.\n\n3.  **Analyze the Transcript for Role Identification/Suspicion:**\n    *   The transcript is heavily focused on who is who (Robber, Insomniac, Villager) and attempts to deduce Werewolves.\n    *   (106) Paul explicitly votes for Mitchell: \"I think he plays too safe, like I saw the insomniac, that's a fucking sweet story. I'm voting for Mitchell.\"\n    *   (105) James suggests Justin and Paul are both Werewolves trying to protect Mitchell.\n    *   (107) Justin claims to be the Insomniac (\"I was the Insomniac, I woke up the insomniac. Getting a lot of heat.\").\n    *   (82, 87) Mitchell denies being the Werewolf.\n    *   (92) James claims \"I do\" (implying he is a Werewolf).\n    *   (94) James mentions Paul knows he's a Werewolf too.\n    *   (106) Paul is suspicious of Mitchell.\n\n4.  **Evaluate Potential Werewolves:**\n    *   The discussion is highly conflicted. Justin claims Insomniac. James claims Werewolf. Paul is suspicious of Mitchell.\n    *   If we assume the goal is to find the Werewolf, we must choose the player most likely to be one, or the one most strongly suspected.\n\n5.  **Determine the Vote Strategy:**\n    *   Paul is the most vocal suspect, voting for Mitchell based on Mitchell's perceived \"safe story\" (Insomniac).\n    *   James also seems to be leaning towards Werewolf (92, 94).\n    *   Mitchell is strongly suspected by Paul.\n\n6.  **Final Decision Check:** Since the transcript does not definitively confirm the Werewolf role, I must base the choice on the strongest suspicion or the player who is actively being targeted. Mitchell is the primary target of suspicion in the final voting discussion.\n\n7.  **Construct the JSON Output.** (Focusing on Mitchell due to the explicit suspicion expressed by Paul.)",
+  "parsed_output": {
+    "justification": "The discussion heavily focuses on identifying the Werewolf, with Paul explicitly expressing suspicion toward Mitchell, believing Mitchell's claim of being the Insomniac is too 'sweet a story.' While other players offer conflicting accusations, Mitchell is the primary target of suspicion in the final voting phase. Eliminating him maximizes the chances of eliminating a Werewolf and securing a win for Team Village.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"The discussion heavily focuses on identifying the Werewolf, with Paul explicitly expressing suspicion toward Mitchell, believing Mitchell's claim of being the Insomniac is too 'sweet a story.' While other players offer conflicting accusations, Mitchell is the primary target of suspicion in the final voting phase. Eliminating him maximizes the chances of eliminating a Werewolf and securing a win for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The discussion heavily focuses on identifying the Werewolf, with Paul explicitly expressing suspicion toward Mitchell, believing Mitchell's claim of being the Insomniac is too 'sweet a story.' While other players offer conflicting accusations, Mitchell is the primary target of suspicion in the final voting phase. Eliminating him maximizes the chances of eliminating a Werewolf and securing a win for Team Village.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The discussion heavily focuses on identifying the Werewolf, with Paul explicitly expressing suspicion toward Mitchell, believing Mitchell's claim of being the Insomniac is too 'sweet a story.' While other players offer conflicting accusations, Mitchell is the primary target of suspicion in the final voting phase. Eliminating him maximizes the chances of eliminating a Werewolf and securing a win for Team Village."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4069,
+    "output_token_count": 729,
+    "generation_time_sec": 64.46073579788208,
+    "used_chat_template": true,
+    "input_char_count": 14332,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

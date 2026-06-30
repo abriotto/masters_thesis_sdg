@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is found, select \"No Werewolf\". The output must be a JSON object with justification and the chosen vote.\n\n2.  **Analyze the Game Rules & Winning Conditions:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   Team Village wins if no player is a Werewolf and no one dies (if all Werewolf cards are in the center).\n    *   Werewolves win if no Werewolves die.\n    *   Tanner wins if the Tanner dies.\n\n3.  **Analyze the Transcript for Werewolf Identification:** I need to look for strong accusations, contradictions, or self-incrimination regarding the Werewolf role.\n\n    *   [75] Mike: It was a werewolf. (Mike claims the center card was a Werewolf.)\n    *   [76] Justin: Oh, shit.\n    *   [121] Mike: Well, there was only one werewolf, cause I did see a werewolf and a troublemaker.\n    *   [122] James: You saw a troublemaker right there?\n    *   [124] James: Okay. Mike's not the fucking seer. I was the werewolf. I saw the werewolf right there. (James claims he was the Werewolf and saw the Werewolf.)\n    *   [130] James: Justin's the werewolf.\n    *   [137] James: Gank Justin. Vote now... I don't want to wait ten, nine seconds.\n\n4.  **Evaluate the Accusations:**\n    *   James accuses Justin.\n    *   Justin is accused by James and also by Mike (implied by the sequence leading to James's accusation).\n    *   Mike claims he saw a Werewolf and a Troublemaker.\n    *   James claims he was the Werewolf.\n\n5.  **Determine the Most Likely Target:** In the final moments, James explicitly votes for Justin (\"Gank Justin. Vote now...\"). While Mike also points suspicion, James's direct accusation and subsequent vote are the strongest evidence available in the transcript.\n\n6.  **Formulate the Justification:** Focus on James's claim and the resulting vote.\n\n7.  **Final Check:** The task requires choosing a player or \"No Werewolf\". Based on the transcript, Justin is the primary target identified by James.",
+  "parsed_output": {
+    "justification": "James explicitly accuses Justin of being the Werewolf and immediately calls for a vote against him. Although other players offer conflicting information, James's direct accusation and subsequent vote represent the strongest evidence available in the transcript for identifying a potential Werewolf.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\": \"James explicitly accuses Justin of being the Werewolf and immediately calls for a vote against him. Although other players offer conflicting information, James's direct accusation and subsequent vote represent the strongest evidence available in the transcript for identifying a potential Werewolf.\", \"chosen_vote\": \"Justin\"}",
+  "response_for_parsing": "{\"justification\": \"James explicitly accuses Justin of being the Werewolf and immediately calls for a vote against him. Although other players offer conflicting information, James's direct accusation and subsequent vote represent the strongest evidence available in the transcript for identifying a potential Werewolf.\", \"chosen_vote\": \"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "James explicitly accuses Justin of being the Werewolf and immediately calls for a vote against him. Although other players offer conflicting information, James's direct accusation and subsequent vote represent the strongest evidence available in the transcript for identifying a potential Werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4155,
+    "output_token_count": 610,
+    "generation_time_sec": 47.47925353050232,
+    "used_chat_template": true,
+    "input_char_count": 14286,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

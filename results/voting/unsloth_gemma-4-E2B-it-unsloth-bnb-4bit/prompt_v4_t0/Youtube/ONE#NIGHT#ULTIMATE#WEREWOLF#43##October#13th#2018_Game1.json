@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is found, select \"No Werewolf\". The output must be a JSON object with a justification and the chosen vote.\n\n2.  **Analyze the Game Rules & Winning Conditions:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   Team Village wins if no player is a Werewolf and no one dies (if all Werewolf cards are in the center).\n    *   Werewolves win if no Werewolves die.\n    *   Tanner wins if they die.\n\n3.  **Analyze the Transcript for Clues/Accusations:**\n    *   The transcript is heavily focused on role swapping (Robber, Troublemaker, Revealer) and identifying Werewolves.\n    *   Key claims:\n        *   Paul revealed both werewolves (24).\n        *   Paul switched the werewolf with someone as the Troublemaker (35).\n        *   Mike revealed one werewolf (26).\n        *   Justin was the Seer (97).\n        *   Mike looked at Mitchell's card and it was a werewolf (101).\n        *   Mitchell was identified as a werewolf (56).\n        *   Paul suggests voting for Mike (160).\n        *   Justin suggests killing Mitchell (152).\n        *   Mike confirms seeing Mitchell as a werewolf (157, 159).\n\n4.  **Evaluate the Evidence (Focusing on the Werewolf identification):**\n    *   Mike claims he looked at Mitchell's card and it was a Werewolf (101).\n    *   Mike confirms seeing Mitchell as a werewolf (157, 159).\n    *   Justin suggests killing Mitchell (152).\n    *   Paul suggests voting for Mike (160).\n\n5.  **Determine the Vote Strategy:**\n    *   The consensus seems to point strongly towards Mitchell being the Werewolf, based on multiple claims (Mike's observation, Justin's suggestion).\n    *   If Mitchell is the Werewolf, voting for him ensures Team Village eliminates a Werewolf, fulfilling the primary win condition.\n\n6.  **Formulate Justification:** State the evidence supporting the conclusion that Mitchell is the Werewolf, focusing on the role swaps and direct observations mentioned in the transcript.\n\n7.  **Final Selection:** Mitchell.\n\n8.  **Construct JSON Output.** (Self-Correction: Ensure the output strictly adheres to the required JSON format.)",
+  "parsed_output": {
+    "justification": "Multiple players, including Mike, claimed to have identified Mitchell's card as a Werewolf, and Mitchell was also identified as a Werewolf by Mike during the final moments of the discussion. Given that Team Village wins by eliminating a Werewolf, voting for Mitchell is the strongest move based on the available evidence.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"Multiple players, including Mike, claimed to have identified Mitchell's card as a Werewolf, and Mitchell was also identified as a Werewolf by Mike during the final moments of the discussion. Given that Team Village wins by eliminating a Werewolf, voting for Mitchell is the strongest move based on the available evidence.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Multiple players, including Mike, claimed to have identified Mitchell's card as a Werewolf, and Mitchell was also identified as a Werewolf by Mike during the final moments of the discussion. Given that Team Village wins by eliminating a Werewolf, voting for Mitchell is the strongest move based on the available evidence.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Multiple players, including Mike, claimed to have identified Mitchell's card as a Werewolf, and Mitchell was also identified as a Werewolf by Mike during the final moments of the discussion. Given that Team Village wins by eliminating a Werewolf, voting for Mitchell is the strongest move based on the available evidence."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4649,
+    "output_token_count": 651,
+    "generation_time_sec": 49.93085527420044,
+    "used_chat_template": true,
+    "input_char_count": 15453,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

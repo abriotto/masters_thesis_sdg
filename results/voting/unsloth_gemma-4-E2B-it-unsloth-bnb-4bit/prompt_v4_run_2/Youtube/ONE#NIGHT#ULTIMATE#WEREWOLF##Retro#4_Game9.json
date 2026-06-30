@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to make Team Village win. Team Village wins by eliminating a Werewolf. If no Werewolf is present, Team Village also wins.\n\n2.  **Analyze the Roles and Setup:**\n    *   Players: Justin, Caitlynn, Mike, James, Mitchell.\n    *   Roles: Villager, Werewolf, Minion, Seer, Robber, Troublemaker, Drunk, Insomniac, Mason, Hunter, Doppelganger, Tanner. (Need to determine who has which role based on the transcript).\n    *   Winning Conditions:\n        *   Village wins if a Werewolf dies.\n        *   Village wins if no Werewolf is present and no one dies (all Werewolf cards in the center).\n        *   Werewolf wins if no Werewolves die.\n        *   Tanner wins if they die.\n\n3.  **Analyze the Transcript for Key Information/Accusations:**\n    *   The game revolves around who is the Seer, Drunk, and Werewolf.\n    *   Key claims/confessions:\n        *   James claims to be the Drunk (31).\n        *   Caitlynn claims to be the Drunk (33).\n        *   Mike claims to be the Seer (36).\n        *   Mike claims he saw a Werewolf and a Troublemaker (121).\n        *   James claims Justin is the Werewolf (130).\n        *   Mike claims Justin is the Werewolf (131).\n        *   James claims he was the Werewolf (124).\n        *   Justin claims he stole from Mike (107).\n        *   Mike claims he saw a Werewolf and a Troublemaker (121).\n\n4.  **Evaluate the Voting Situation (The End Game):**\n    *   James initiates the vote: \"Gank Justin. Vote now... I don't want to wait ten, nine seconds.\" (137)\n    *   The vote is targeted at Justin.\n\n5.  **Determine the Most Likely Werewolf:**\n    *   The conflict is intense, with multiple accusations (Justin, James, Mike).\n    *   Mike claims he saw a Werewolf and a Troublemaker (121).\n    *   James claims Justin is the Werewolf (130).\n    *   Mike claims Justin is the Werewolf (131).\n    *   James claims he was the Werewolf (124).\n\n6.  **Apply Logic based on Role Dynamics (Hypothetical Scenario Check):**\n    *   If James is the Werewolf, Team Village needs to eliminate him.\n    *   If Justin is the Werewolf, Team Village needs to eliminate him.\n    *   If Mike is the Werewolf, Team Village needs to eliminate him.\n\n7.  **Focus on the Final Accusation:** James explicitly targets Justin.\n\n8.  **Conclusion for Voting:** Since the game is ending and James has made a direct accusation, and given the high level of uncertainty, voting for the player most directly accused or identified as the threat is the standard approach. Justin is the primary target.\n\n9.  **Construct the JSON Output.** (Ensure the justification is concise and addresses the need to eliminate a Werewolf.)",
+  "parsed_output": {
+    "justification": "The discussion has devolved into intense accusations regarding who the Werewolf is, with James directly accusing Justin. Given the high level of conflict and the immediate call for a vote, targeting the player most directly implicated by another player is the most logical move to maximize the chance of eliminating a Werewolf and securing a victory for Team Village.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\"justification\": \"The discussion has devolved into intense accusations regarding who the Werewolf is, with James directly accusing Justin. Given the high level of conflict and the immediate call for a vote, targeting the player most directly implicated by another player is the most logical move to maximize the chance of eliminating a Werewolf and securing a victory for Team Village.\", \"chosen_vote\": \"Justin\"}",
+  "response_for_parsing": "{\"justification\": \"The discussion has devolved into intense accusations regarding who the Werewolf is, with James directly accusing Justin. Given the high level of conflict and the immediate call for a vote, targeting the player most directly implicated by another player is the most logical move to maximize the chance of eliminating a Werewolf and securing a victory for Team Village.\", \"chosen_vote\": \"Justin\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The discussion has devolved into intense accusations regarding who the Werewolf is, with James directly accusing Justin. Given the high level of conflict and the immediate call for a vote, targeting the player most directly implicated by another player is the most logical move to maximize the chance of eliminating a Werewolf and securing a victory for Team Village."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4155,
+    "output_token_count": 814,
+    "generation_time_sec": 63.15669918060303,
+    "used_chat_template": true,
+    "input_char_count": 14286,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

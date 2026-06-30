@@ -1,0 +1,70 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "prompt_version": "v4_t0",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "top_k": 0,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is found, select \"No Werewolf\". The output must be a JSON object with a justification and the chosen vote.\n\n2.  **Analyze the Game Rules & Context:**\n    *   **Teams/Winning:** Team Village wins by eliminating a Werewolf. Team Werewolf wins by surviving Werewolves. Tanner wins by dying.\n    *   **Player List:** Justin, Mike, James, Mitchell.\n    *   **Roles:** Villager (Village), Werewolf (Werewolf), Seer (Village), Robber (Village), Troublemaker (Village), Insomniac (Village), Drunk (Village), Hunter (Village), Mason (Village), Minion (Werewolf), Doppelganger, Tanner.\n    *   **Night Order:** Doppelganger, Werewolves, Minion, Masons, Seer, Robber, Troublemaker, Drunk, Insomniac.\n    *   **Goal:** Identify the Werewolf(s) and vote them out.\n\n3.  **Analyze the Transcript for Clues:**\n    *   The transcript is heavily focused on role swapping and accusations.\n    *   [32] Justin: I was a villager.\n    *   [47] James: No, I was a villager.\n    *   [48] Mitchell: So you woke up as a villager? You went to sleep as an Insomniac and you woke up as a villager? Is that what you're claiming?\n    *   [52] Mike: No, I was actually villager the whole time.\n    *   [53] Mitchell: So why did you say, \"Insomniac\"?\n    *   [96] Mike: I am the villager.\n    *   [97] Justin: You're not the villager.\n    *   [101] Justin: That's it, let's hang him. Let's hang him. Click \"vote now.\" (Targeting Mitchell, based on previous claims).\n\n4.  **Evaluate Suspects and Claims:**\n    *   Mike claims to be the Villager (52, 96).\n    *   Justin claims to have been a Villager (32).\n    *   James claims to have been a Villager (47).\n    *   Mitchell claims to have stolen a villager (78, 80).\n    *   Mike is accused of being a Werewolf (57, 69, 81, 82, 84, 85, 88, 90).\n    *   Justin accuses Mike (71, 81).\n\n5.  **Determine Werewolf Likelihood:**\n    *   The core conflict revolves around who is the Villager and who is the Werewolf.\n    *   Mike is strongly suspected by Justin and James.\n    *   However, the transcript is highly confusing due to role swaps (Insomniac/Villager claims).\n    *   If Mike is the Werewolf, Team Village needs to vote him out.\n\n6.  **Formulate the Strategy:** Since the transcript is inconclusive regarding definitive role identification, I must rely on the strongest accusation or the player who seems most inconsistent or targeted. Mike is repeatedly accused of being the Werewolf.\n\n7.  **Final Decision Check:**\n    *   If I vote Mike, and he is the Werewolf, Team Village wins.\n    *   If I vote someone else, and Mike is the Werewolf, Team Village loses.\n    *   Given the high level of suspicion directed at Mike, he is the primary target.\n\n8.  **Construct the JSON Output.** (Focusing on Mike as the most likely Werewolf based on the discussion flow.)",
+  "parsed_output": {
+    "justification": "The discussion centers heavily on conflicting claims regarding who is the Villager and who is the Werewolf, with Mike being repeatedly accused by Justin and James. Although the transcript is confusing due to potential role swaps, Mike is the primary target of suspicion, with Justin explicitly stating, 'I think Mike might be a werewolf.' To maximize the chances of Team Village winning, eliminating the most strongly suspected Werewolf is the optimal strategy.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "{\n  \"justification\": \"The discussion centers heavily on conflicting claims regarding who is the Villager and who is the Werewolf, with Mike being repeatedly accused by Justin and James. Although the transcript is confusing due to potential role swaps, Mike is the primary target of suspicion, with Justin explicitly stating, 'I think Mike might be a werewolf.' To maximize the chances of Team Village winning, eliminating the most strongly suspected Werewolf is the optimal strategy.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The discussion centers heavily on conflicting claims regarding who is the Villager and who is the Werewolf, with Mike being repeatedly accused by Justin and James. Although the transcript is confusing due to potential role swaps, Mike is the primary target of suspicion, with Justin explicitly stating, 'I think Mike might be a werewolf.' To maximize the chances of Team Village winning, eliminating the most strongly suspected Werewolf is the optimal strategy.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "The discussion centers heavily on conflicting claims regarding who is the Villager and who is the Werewolf, with Mike being repeatedly accused by Justin and James. Although the transcript is confusing due to potential role swaps, Mike is the primary target of suspicion, with Justin explicitly stating, 'I think Mike might be a werewolf.' To maximize the chances of Team Village winning, eliminating the most strongly suspected Werewolf is the optimal strategy."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3360,
+    "output_token_count": 952,
+    "generation_time_sec": 71.71517777442932,
+    "used_chat_template": true,
+    "input_char_count": 11743,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "top_k": null,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
