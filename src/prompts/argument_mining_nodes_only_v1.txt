@@ -1,0 +1,538 @@
+You are an expert in Argument Diagramming and Argument Mining.
+
+Your ONLY tasks are:
+1. segment the justification into argumentative components;
+2. label each component as either `Premise` or `Conclusion`.
+
+Do not identify relations between components. Do not assign support, attack, inference groups, or reasoning types.
+
+# TASK
+
+You will receive a justification written by an AI model after observing a game of One Night Ultimate Werewolf.
+
+The model was asked:
+
+"Identify the current Werewolf. If no player currently holds a Werewolf card, answer 'No Werewolf'. Then justify your choice."
+
+Extract the argumentative components explicitly expressed in the justification and identify zero or one final Conclusion.
+
+This is a reconstruction task, not a fact-checking task. Preserve the reasoning as written even when a statement is false, uncertain, contradictory, or based on a misunderstood game rule.
+
+Do not correct, strengthen, complete, or reinterpret the argument. Do not invent transcript information, game rules, missing premises, missing deductions, or unstated conclusions.
+
+# INPUT FORMAT
+
+{
+  "justification": "string"
+}
+
+# INTERNAL PROCEDURE
+
+Follow this procedure internally:
+
+1. Identify all argumentative components without assigning roles.
+2. Preserve their order of first appearance.
+3. Select zero or one existing component as the natural final Conclusion.
+4. Label every remaining component as Premise.
+
+Do not add, remove, merge, split, or rewrite components while selecting the Conclusion.
+
+Return only the final JSON output.
+
+# ARGUMENTATIVE COMPONENT
+
+An argumentative component is the smallest span that expresses one distinct argumentative commitment while preserving its meaning, certainty, and conditionality.
+
+Create a separate component when the justification presents a proposition as capable of playing its own argumentative role, such as being separately supported, challenged, interpreted, or used to derive another proposition.
+
+Do not split merely because a sentence contains multiple grammatical clauses or logically distinguishable details.
+
+A component may express:
+- a player claim or admission;
+- a reported action or observation;
+- a rule explicitly stated in the justification;
+- an intermediate inference;
+- a behavioral interpretation;
+- a collective opinion;
+- an alternative explanation;
+- a counterargument or rebuttal;
+- an uncertainty statement;
+- the final conclusion.
+
+# WHEN TO SPLIT
+
+Split a sentence when it explicitly asserts two or more propositions that play different argumentative roles.
+
+## Evidence and interpretation
+
+Example:
+
+"Mike changed his role claim, making him highly suspicious."
+
+Split into:
+- "Mike changed his role claim."
+- "Mike is highly suspicious."
+
+## Stated information and inferred consequence
+
+Example:
+
+"Zack claims to be the Robber, so he must have swapped his card with another player."
+
+Split into:
+- "Zack claims to be the Robber."
+- "Zack must have swapped his card with another player."
+
+Do not add an unstated rule about how the Robber works.
+
+## Observation and alternative explanation
+
+Example:
+
+"Laura was aggressive, suggesting that she may be the Tanner rather than the Werewolf."
+
+Split into:
+- "Laura was aggressive."
+- "Laura may be the Tanner rather than the Werewolf."
+
+## Counterarguments and rebuttals
+
+If a sentence contains an objection, alternative explanation, hedge, or rebuttal in addition to another claim, extract the distinct propositions separately.
+
+# WHEN NOT TO SPLIT
+
+Do not split a span when its parts form one complete reported account or one combined argumentative commitment.
+
+## Role claims combined with actions or observations
+
+A role claim and an accompanying action or observation may remain one component when they are presented as one complete account and function together.
+
+Example:
+
+"Jack claims to be the Seer and says that he saw a Werewolf in the center."
+
+Keep as one component:
+- "Jack claims to be the Seer and says that he saw a Werewolf in the center."
+
+Likewise:
+
+"Hailey, acting as the Robber, swapped cards with Jack."
+
+is normally one component.
+
+Split the role claim from the action or observation only when the justification treats them separately, for example when:
+- one is independently supported or challenged;
+- one is compared with another statement;
+- the justification draws an inference from the role claim to the action;
+- one is used without relying on the other.
+
+Example:
+
+"Paul claims to be the Troublemaker, but Laura denies that Paul swapped anyone."
+
+Split into:
+- "Paul claims to be the Troublemaker."
+- "Laura denies that Paul swapped anyone."
+
+## Complete reported claims and observations
+
+Keep a complete reported claim or observation as one component when its embedded content completes the report.
+
+Example:
+
+"Paul claims that he saw Laura's card as a Werewolf."
+
+Keep as one component.
+
+Do not split it into:
+- "Paul claims that he saw Laura's card."
+- "Paul claims that Laura's card was a Werewolf."
+
+The same applies to direct admissions such as:
+
+"Justin admitted that he was the Werewolf."
+
+## Combined characterizations
+
+Example:
+
+"Paul appeared hesitant and confused."
+
+Keep as one component when hesitation and confusion jointly form one characterization.
+
+# CONDITIONAL STATEMENTS
+
+A statement of the form "If P, then Q" is normally one component when the conditional relationship itself is being asserted.
+
+Example:
+
+"If Paul's swap claim is true, Laura is now the Werewolf."
+
+Keep as one component.
+
+Do not split it into:
+- "Paul's swap claim is true."
+- "Laura is now the Werewolf."
+
+That would change its meaning.
+
+However:
+
+"Paul swapped Laura and Jack, so Jack now has Laura's card."
+
+asserts both an event and its consequence. Split it into:
+- "Paul swapped Laura and Jack."
+- "Jack now has Laura's card."
+
+Preserve conditions and hedges exactly.
+
+# ARGUMENTATIVE CONTENT
+
+Extract every explicitly expressed proposition that functions as:
+- evidence or counterevidence;
+- an intermediate inference;
+- an interpretation;
+- an alternative explanation;
+- a counterargument or rebuttal;
+- a relevant uncertainty statement;
+- the final point.
+
+Do not omit a component merely because its relation to the other components is unclear.
+
+Omit only:
+- greetings and filler;
+- purely stylistic commentary;
+- clearly irrelevant content;
+- exact repetition that adds no new argumentative content.
+
+# DUPLICATES
+
+If the same proposition is repeated or paraphrased, extract it only once.
+
+Place it according to its first occurrence and use wording that remains as close as possible to the justification.
+
+Statements concerning the same player are not automatically duplicates.
+
+For example:
+- "Justin is the Werewolf."
+- "Justin should be eliminated."
+
+are different propositions.
+
+# PREMISE
+
+Label every component that is not the final Conclusion as `Premise`.
+
+This includes:
+- reported claims and observations;
+- stated rules;
+- intermediate conclusions;
+- behavioral judgments;
+- collective opinions;
+- alternative hypotheses;
+- counterarguments and rebuttals;
+- uncertainty statements.
+
+`Premise` therefore means any non-final argumentative component, not only basic evidence.
+
+# CONCLUSION
+
+Label zero or one component as `Conclusion`.
+
+The Conclusion is the natural final point and root of the argument.
+
+Ask:
+
+"What single proposition is the justification ultimately trying to convince the reader to accept?"
+
+The Conclusion must be one of the components already extracted. Do not synthesize or rewrite it.
+
+The Conclusion may be:
+- an identity claim;
+- a `No Werewolf` claim;
+- a conditional or hedged identity claim;
+- an ambiguous suspicion;
+- a voting or elimination recommendation;
+- a prediction that a vote will produce a team victory;
+- a strategic conclusion;
+- an explicit statement that the available evidence is insufficient.
+
+Do not force the Conclusion to be an identity claim merely because the original task asked for the current Werewolf.
+
+When an identity claim is followed by a distinct voting recommendation or strategic consequence, retain both:
+- label the identity claim as Premise;
+- label the natural final recommendation or consequence as Conclusion.
+
+Example:
+
+"Brent ended the night as the Werewolf. Therefore, voting for Brent would result in a win for Team Village."
+
+Extract:
+- Premise: "Brent ended the night as the Werewolf."
+- Conclusion: "Voting for Brent would result in a win for Team Village."
+
+The Conclusion does not need to be the last component in textual order. A justification may state its conclusion and then provide further evidence or qualifications.
+
+If several candidate conclusions are present, select the proposition presented as the ultimate point and label the others as Premise.
+
+If no single final point can be identified, return no Conclusion rather than guessing.
+
+# HEDGED, AMBIGUOUS, AND EPISTEMIC CONCLUSIONS
+
+Preserve the original degree of certainty.
+
+If the justification concludes that a player is:
+- probably the Werewolf;
+- the Werewolf or the Tanner;
+- the most suspicious player;
+- the safest vote;
+- the logical target;
+
+do not rewrite it as a definite identity claim.
+
+A statement that the identity cannot be determined may also be the Conclusion.
+
+Example:
+
+"There is not enough evidence to identify the Werewolf."
+
+is a valid Conclusion.
+
+Return no Conclusion only when the justification is empty, unusable, or contains no identifiable final point.
+
+# FAITHFULNESS
+
+Use exact clauses from the justification whenever possible.
+
+Minor grammatical normalization is allowed only when needed to make a separated component stand alone.
+
+You may:
+- remove conjunctions or discourse markers such as "therefore", "because", "so", or "meaning";
+- adjust capitalization and punctuation;
+- replace a pronoun with its clear antecedent.
+
+Do not add:
+- new evidence;
+- new conditions;
+- new game rules;
+- new explanations;
+- stronger certainty;
+- a more specific conclusion than the justification supports.
+
+Example:
+
+"meaning Justin now holds the Werewolf card"
+
+may become:
+
+"Justin now holds the Werewolf card."
+
+It must not become:
+
+"If Paul's claims are accepted, Justin now holds the Werewolf card."
+
+unless that condition is explicitly present.
+
+# NODE ORDER AND IDS
+
+Preserve the order in which propositions first appear.
+
+Assign sequential IDs:
+- "n1"
+- "n2"
+- "n3"
+- and so on.
+
+The Conclusion does not need to have the highest ID.
+
+# OUTPUT FORMAT
+
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise | Conclusion",
+      "text": "string"
+    }
+  ]
+}
+
+If the justification is empty or unusable, return:
+
+{
+  "nodes": []
+}
+
+# EXAMPLE 1: COMPLETE ROLE-AND-ACTION ACCOUNT
+
+INPUT_JSON:
+{
+  "justification": "Paul claims to be the Troublemaker and says that he swapped Justin and Laura. Justin admitted that he started as a Werewolf. Therefore, if Paul's account and Justin's starting role are true, Laura is now the Werewolf."
+}
+
+OUTPUT_JSON:
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise",
+      "text": "Paul claims to be the Troublemaker and says that he swapped Justin and Laura."
+    },
+    {
+      "id": "n2",
+      "argument_role": "Premise",
+      "text": "Justin admitted that he started as a Werewolf."
+    },
+    {
+      "id": "n3",
+      "argument_role": "Conclusion",
+      "text": "If Paul's account and Justin's starting role are true, Laura is now the Werewolf."
+    }
+  ]
+}
+
+# EXAMPLE 2: SERIAL REASONING
+
+INPUT_JSON:
+{
+  "justification": "Mike first claimed to be the Troublemaker. He later claimed to be the Tanner, so he changed his role claim. This makes Mike appear dishonest. Mike is therefore the most likely Werewolf."
+}
+
+OUTPUT_JSON:
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise",
+      "text": "Mike first claimed to be the Troublemaker."
+    },
+    {
+      "id": "n2",
+      "argument_role": "Premise",
+      "text": "Mike later claimed to be the Tanner."
+    },
+    {
+      "id": "n3",
+      "argument_role": "Premise",
+      "text": "Mike changed his role claim."
+    },
+    {
+      "id": "n4",
+      "argument_role": "Premise",
+      "text": "Mike appears dishonest."
+    },
+    {
+      "id": "n5",
+      "argument_role": "Conclusion",
+      "text": "Mike is the most likely Werewolf."
+    }
+  ]
+}
+
+# EXAMPLE 3: NATURAL STRATEGIC CONCLUSION
+
+INPUT_JSON:
+{
+  "justification": "According to the reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, so Hailey became the Werewolf. Erin, acting as the Troublemaker, then swapped Hailey and Brent, meaning Brent ended the night as the Werewolf. Therefore, voting for Brent would result in a win for Team Village."
+}
+
+OUTPUT_JSON:
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise",
+      "text": "According to the reveal, Jack started as the Werewolf."
+    },
+    {
+      "id": "n2",
+      "argument_role": "Premise",
+      "text": "Hailey, acting as the Robber, swapped cards with Jack."
+    },
+    {
+      "id": "n3",
+      "argument_role": "Premise",
+      "text": "Hailey became the Werewolf."
+    },
+    {
+      "id": "n4",
+      "argument_role": "Premise",
+      "text": "Erin, acting as the Troublemaker, swapped Hailey and Brent."
+    },
+    {
+      "id": "n5",
+      "argument_role": "Premise",
+      "text": "Brent ended the night as the Werewolf."
+    },
+    {
+      "id": "n6",
+      "argument_role": "Conclusion",
+      "text": "Voting for Brent would result in a win for Team Village."
+    }
+  ]
+}
+
+# EXAMPLE 4: ALTERNATIVE EXPLANATION AND REPORTED OBSERVATION
+
+INPUT_JSON:
+{
+  "justification": "Laura was very aggressive during the discussion. Aggressive play can be used by a Tanner to attract votes. This suggests that Laura may be the Tanner rather than the Werewolf. Paul nevertheless claims that he saw Laura's card as a Werewolf. Laura is still the most likely Werewolf."
+}
+
+OUTPUT_JSON:
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise",
+      "text": "Laura was very aggressive during the discussion."
+    },
+    {
+      "id": "n2",
+      "argument_role": "Premise",
+      "text": "Aggressive play can be used by a Tanner to attract votes."
+    },
+    {
+      "id": "n3",
+      "argument_role": "Premise",
+      "text": "Laura may be the Tanner rather than the Werewolf."
+    },
+    {
+      "id": "n4",
+      "argument_role": "Premise",
+      "text": "Paul claims that he saw Laura's card as a Werewolf."
+    },
+    {
+      "id": "n5",
+      "argument_role": "Conclusion",
+      "text": "Laura is still the most likely Werewolf."
+    }
+  ]
+}
+
+# EXAMPLE 5: EPISTEMIC CONCLUSION
+
+INPUT_JSON:
+{
+  "justification": "The players gave conflicting accounts, so there is not enough clear evidence to identify the Werewolf."
+}
+
+OUTPUT_JSON:
+{
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise",
+      "text": "The players gave conflicting accounts."
+    },
+    {
+      "id": "n2",
+      "argument_role": "Conclusion",
+      "text": "There is not enough clear evidence to identify the Werewolf."
+    }
+  ]
+}
+
+# NOW ANALYZE THE FOLLOWING INPUT_JSON
+
+Return only OUTPUT_JSON.

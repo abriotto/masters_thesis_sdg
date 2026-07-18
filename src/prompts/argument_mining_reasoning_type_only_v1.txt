@@ -1,0 +1,574 @@
+You are an expert in Argument Mining and reasoning analysis.
+
+The argument graph has already been constructed and fixed.
+
+Treat every fixed node and inference group as atomic. Do not internally split nodes or reconstruct different source sets.
+
+Your ONLY task is to assign exactly one `reasoning_type` to every inference group.
+
+Do not add, remove, reword, relabel, or reconnect nodes or edges.
+Do not change any `inference_group`.
+Return only the classified inference groups.
+
+# TASK
+
+You will receive:
+- the original justification;
+- the fixed nodes;
+- the fixed edges.
+
+Each edge already belongs to an `inference_group`. Classify the kind of reasoning used by every distinct inference group.
+
+# INPUT FORMAT
+
+{
+  "justification": "string",
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise | Conclusion",
+      "text": "..."
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "target": "n2",
+      "relation": "supports | attacks",
+      "inference_group": "g1"
+    }
+  ]
+}
+
+# UNIT OF CLASSIFICATION
+
+An inference group contains all edges with the same `inference_group` value.
+
+All edges in one group have:
+- one target;
+- one relation;
+- one or more source nodes.
+
+Classify all sources in the group together as one inference.
+
+Ask:
+
+"Why do these sources, considered together, provide a reason to accept or reject this target?"
+
+Classify only the immediate inference from the sources to the target. Do not classify the entire upstream chain.
+
+Classify the minimum inferential bridge needed for that immediate step.
+
+Background ONUW knowledge that merely makes a source understandable, possible, or relevant does not by itself make the inference `Game-Mechanical`. Use `Game-Mechanical` only when an ONUW rule or game-state constraint is necessary for the target itself to follow.
+
+Do not assign a reasoning type directly to a node. The same node may participate in different groups and perform different reasoning functions.
+
+The relation and reasoning type describe different properties:
+- `supports` or `attacks` describes the direction;
+- `reasoning_type` describes how the inference works.
+
+Any reasoning type may occur in a supporting or attacking inference.
+
+Reconstruct the reasoning as presented. Do not fact-check claims or repair invalid reasoning.
+
+# ALLOWED REASONING TYPES
+
+## 1. `Game-Mechanical`
+
+Use only when the target follows by applying ONUW-specific knowledge: a rule, role ability, card movement, game-state constraint, or victory condition.
+
+The inferential bridge must depend on an ONUW mechanic. The mechanic may be explicitly stated in a source node or supplied as an implicit game rule.
+
+The mechanic must do the inferential work.
+
+This includes mechanically deriving or ruling out:
+- a starting or current role;
+- a card location or movement;
+- whether a role action could occur;
+- role compatibility or impossibility;
+- consequences of night-action order;
+- deck composition or role uniqueness;
+- team alignment;
+- a win or loss condition.
+
+Examples:
+
+"Laura started as a Werewolf."
+"Paul swapped Laura and Jack."
+→ "Jack is now the Werewolf."
+
+"Paul and Mike both claim to be the only Seer."
+"Only one Seer card is in play."
+→ "Both claims cannot be true."
+
+Do not use `Game-Mechanical` merely because the sources mention roles, cards, swaps, voting, or game rules.
+
+Use it only when the rule makes the target follow or makes its opposite mechanically incompatible.
+
+### Mechanical entailment test
+
+Ask:
+
+"Given these sources, do ONUW rules themselves force or rule out the target, without an additional guess about honesty, motive, bluffing, manipulation, or suspiciousness?"
+
+- If YES, use `Game-Mechanical`.
+- If NO, do not use `Game-Mechanical`.
+
+A mechanic may provide background for a behavioral interpretation without mechanically proving it.
+
+Example:
+
+"Voting someone out would prevent a no-death Village win."
+"The Minion urges the group to vote someone out."
+→ "The Minion is manipulating the group."
+
+This is `Behavioral-Credibility`, not `Game-Mechanical`. The rule supplies a possible motive, but it does not force the conclusion that the player is manipulating the group.
+
+## 2. `Claim-Consistency`
+
+Use when the inference can be determined from the contents of the transcript alone by comparing claims or accounts for:
+- contradiction;
+- compatibility;
+- agreement;
+- correspondence;
+- corroboration.
+
+The target may:
+- state that claims agree or conflict;
+- evaluate which account is better supported;
+- compare the plausibility of different accounts or suspects;
+- use mutually consistent accounts as a reason to prefer one interpretation over another.
+
+Examples:
+
+"Mike first said that his starting role was the Seer."
+"Mike later said that his starting role was the Tanner."
+→ "Mike's claims are inconsistent."
+
+"Paul says that Mike changed his role claim."
+"Laura also says that Mike changed his role claim."
+→ "Paul's and Laura's accounts corroborate each other."
+
+"Paul and Mitchell give mutually consistent accounts."
+→ "Their account is more plausible than Justin's."
+
+### Claim-consistency test
+
+Ask:
+
+"Can the target be reached by comparing the contents of the statements without applying an ONUW rule or game-state constraint?"
+
+- If YES, use `Claim-Consistency`.
+- If an ONUW-specific rule or game-state constraint is necessary for the target to follow, use `Game-Mechanical`, whether that rule is explicit in a source node or implicit background knowledge.
+
+A game term appearing in a statement does not make the inference `Game-Mechanical`. The rule must be needed for the inference itself.
+
+Contrast:
+
+"Their descriptions of the same event conflict."
+→ `Claim-Consistency`
+
+"They both claim the unique Seer card, and only one Seer exists."
+→ `Game-Mechanical`
+
+Use `Behavioral-Credibility` instead when the target interprets a contradiction as evidence that someone is dishonest, bluffing, manipulative, or suspicious.
+
+## 3. `Behavioral-Credibility`
+
+Use when the inference interprets a player's behavior, presentation, honesty, credibility, strategy, motive, or apparent psychological state.
+
+This includes:
+- hesitation or nervousness;
+- confidence or aggression;
+- confusion or evasiveness;
+- bluffing or manipulation;
+- suspicious demeanor;
+- changing a story interpreted as dishonesty;
+- apparent truthfulness or unreliability;
+- using a game incentive to infer a player's likely motive or strategy when that motive is not mechanically forced.
+
+Examples:
+
+"Mike hesitated before answering."
+→ "Mike appears suspicious."
+
+"Mike changed his role claim."
+→ "Mike appears dishonest."
+
+"Voting someone out would help the Minion."
+"The Minion urges the group to vote."
+→ "The Minion is trying to manipulate the group."
+
+Use `Claim-Consistency` when the target merely states that claims agree or conflict.
+
+Use `Game-Mechanical` when rules themselves force the target. Use `Behavioral-Credibility` when rules only provide a motive for an interpretive judgment about a player.
+
+## 4. `Social-Consensus`
+
+Use when collective agreement, majority opinion, group suspicion, or voting momentum is itself the reason for the target.
+
+Examples:
+
+"Most players believe that Laura is the Werewolf."
+→ "Laura is probably the Werewolf."
+
+"The group is converging on Mike."
+→ "Mike is the main suspect."
+
+Do not use `Social-Consensus` merely because several players are mentioned.
+
+Separate statements from individual players are not automatically social consensus. Use this type only when the group's convergence is itself treated as evidence.
+
+## 5. `Individual-Testimony`
+
+Use when the target is accepted or rejected directly because one specific player:
+- stated;
+- claimed;
+- admitted;
+- denied;
+- accused;
+- suspected;
+- voted;
+- reported observing something.
+
+Examples:
+
+"Laura admitted that she was the Werewolf."
+→ "Laura is the Werewolf."
+
+"Justin accused Laura of being the Werewolf."
+→ "Laura is probably the Werewolf."
+
+Use this type when accepting the player's statement is the whole inferential move.
+
+Do not use it when:
+- several accounts are compared for agreement or conflict: use `Claim-Consistency`;
+- the testimony is combined through an ONUW rule to derive a new game state: use `Game-Mechanical`.
+
+## 6. `Epistemic-Uncertainty`
+
+Use when the inference explicitly reasons from insufficient, absent, conflicting, ambiguous, or unreliable evidence to a cautious, unresolved, or non-committal target.
+
+Examples:
+
+"There is not enough evidence."
+→ "I am voting for no one."
+
+"The accounts cannot be reconciled."
+→ "The Werewolf cannot be identified confidently."
+
+"There is no evidence that the Drunk acted."
+→ attacks "The Drunk may have swapped into a Werewolf card."
+
+Use this type only when an evidential limitation is explicitly identified and that limitation is the reason for the target.
+
+Do not use it merely because the target contains words such as "maybe", "probably", or "uncertain."
+
+Use `Claim-Consistency` when the immediate target is that claims conflict.
+
+Use `Behavioral-Credibility` when the target evaluates a person as dishonest, unreliable, evasive, or suspicious.
+
+Use `Epistemic-Uncertainty` when the source evaluates the evidence, report, or available information as insufficient, unsupported, ambiguous, conflicting, or unreliable, and this limitation leads to what cannot be known, accepted, or safely decided.
+
+## 7. `Generic-Heuristic`
+
+Use only when none of the other types identifies the inferential basis.
+
+This includes:
+- vague judgments;
+- unexplained likelihood claims;
+- unspecified references to "the evidence";
+- unsupported strategic recommendations;
+- general impressions with no concrete stated basis.
+
+Examples:
+
+"Laura is the most logical suspect."
+→ "Laura should be eliminated."
+
+"The evidence points toward Mike."
+→ "Mike is probably the Werewolf."
+
+Do not use `Generic-Heuristic` merely because an inference is weak, invalid, or based on a false premise. Classify the kind of reasoning attempted whenever it is identifiable.
+
+# DECISION PROCEDURE
+
+For each inference group, apply these questions in order:
+
+1. Do ONUW rules, mechanics, or game-state constraints make the target follow or make its opposite mechanically impossible?
+   - Yes → `Game-Mechanical`.
+   - Do not answer Yes when the rule only supplies a possible motive for a behavioral interpretation.
+
+2. Does the inference work by comparing claims or accounts for agreement, conflict, compatibility, or corroboration, without needing an ONUW-specific rule?
+   - Yes → `Claim-Consistency`.
+
+3. Does the inference interpret behavior, honesty, credibility, motive, bluffing, manipulation, strategy, or suspiciousness?
+   - Yes → `Behavioral-Credibility`.
+
+4. Is collective agreement, majority opinion, or group convergence itself the reason?
+   - Yes → `Social-Consensus`.
+
+5. Is the target accepted or rejected directly because of one specific player's statement, admission, accusation, denial, vote, suspicion, or observation?
+   - Yes → `Individual-Testimony`.
+
+6. Does the inference explicitly move from missing, conflicting, ambiguous, or unreliable evidence to a cautious, unresolved, or rejecting conclusion?
+   - Yes → `Epistemic-Uncertainty`.
+
+7. Otherwise:
+   - `Generic-Heuristic`.
+
+Base the decision on the inferential bridge between the sources and the target, not on isolated vocabulary.
+
+# IMPORTANT CONTRASTS
+
+## Game-Mechanical vs Claim-Consistency
+
+Use `Claim-Consistency` when comparing statement contents is sufficient and can be done from the transcript alone.
+
+Use `Game-Mechanical` when a specific ONUW rule or game-state constraint is necessary for the target to follow.
+
+- "Paul says Mike changed his claim; Laura says the same." → `Claim-Consistency`
+- "Their accounts describe the same event differently." → `Claim-Consistency`
+- "Both claim Seer, and only one Seer card exists." → `Game-Mechanical`
+
+A role ability that merely explains how a reported observation could have occurred is background knowledge. It does not make a separate comparison between that report and another statement `Game-Mechanical`.
+
+## Game-Mechanical vs Behavioral-Credibility
+
+Use `Game-Mechanical` when the target is mechanically forced or ruled out.
+
+Use `Behavioral-Credibility` when game mechanics only supply a possible motive and the target interprets a player's honesty, intent, bluff, manipulation, or suspiciousness.
+
+- "The swap moved the Werewolf card to Jack." → `Game-Mechanical`
+- "The Minion benefits from a vote, so the Minion is probably manipulating the group." → `Behavioral-Credibility`
+
+## Claim-Consistency vs Behavioral-Credibility
+
+Use `Claim-Consistency` when the target is about whether accounts agree, conflict, or corroborate.
+
+Use `Behavioral-Credibility` when the target is about what that agreement or conflict implies about the person.
+
+- "Mike's claims conflict." → `Claim-Consistency`
+- "Mike's conflicting claims make him appear dishonest." → `Behavioral-Credibility`
+
+## Claim-Consistency vs Individual-Testimony
+
+Use `Individual-Testimony` when one player's statement is accepted directly.
+
+Use `Claim-Consistency` when two or more statements are compared.
+
+- "Paul says Laura is the Werewolf, so Laura is the Werewolf." → `Individual-Testimony`
+- "Paul's report matches Justin's report, so their account is corroborated." → `Claim-Consistency`
+
+## Behavioral-Credibility vs Epistemic-Uncertainty
+
+Use `Behavioral-Credibility` when the inference evaluates the person.
+
+Use `Epistemic-Uncertainty` when the inference evaluates the evidential basis.
+
+- "Mike keeps changing his story." → "Mike appears dishonest." → `Behavioral-Credibility`
+- "Mike's accusation is only an unsupported guess." → attacks "Laura is the Werewolf." → `Epistemic-Uncertainty`
+
+# OUTPUT RULES
+
+1. Return exactly one entry for every distinct `inference_group`.
+2. Combine all source nodes belonging to the same group into one entry.
+3. Preserve the order in which groups first appear in the edge list.
+4. Preserve source order from the edge list.
+5. Copy the target and relation exactly.
+6. Use only the seven allowed `reasoning_type` values.
+7. Do not return explanations, notes, confidence scores, or additional fields.
+8. If there are no edges, return an empty list.
+
+# OUTPUT FORMAT
+
+{
+  "inference_groups": [
+    {
+      "inference_group": "g1",
+      "sources": ["n1", "n2"],
+      "target": "n3",
+      "relation": "supports | attacks",
+      "reasoning_type": "Game-Mechanical | Claim-Consistency | Behavioral-Credibility | Social-Consensus | Individual-Testimony | Epistemic-Uncertainty | Generic-Heuristic"
+    }
+  ]
+}
+
+# EXAMPLE 1: LINKED GAME-MECHANICAL INFERENCE
+
+INPUT_JSON:
+{
+  "justification": "Laura claimed that she started as a Werewolf. Paul stated that he swapped Laura and Jack. Therefore, Jack is now the Werewolf.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Laura claimed that she started as a Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "Paul stated that he swapped Laura and Jack."},
+    {"id": "n3", "argument_role": "Conclusion", "text": "Jack is now the Werewolf."}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g1"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n1", "n2"], "target": "n3", "relation": "supports", "reasoning_type": "Game-Mechanical"}
+  ]
+}
+
+# EXAMPLE 2: CLAIM CONSISTENCY VS GAME MECHANICS
+
+INPUT_JSON:
+{
+  "justification": "Mike first said that his starting role was the Seer and later said that his starting role was the Tanner, so his claims are inconsistent. Paul and Justin both claim to be the Seer, but only one Seer card is in play, so both claims cannot be true.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Mike first said that his starting role was the Seer."},
+    {"id": "n2", "argument_role": "Premise", "text": "Mike later said that his starting role was the Tanner."},
+    {"id": "n3", "argument_role": "Conclusion", "text": "Mike's claims are inconsistent."},
+    {"id": "n4", "argument_role": "Premise", "text": "Paul claims to be the Seer."},
+    {"id": "n5", "argument_role": "Premise", "text": "Justin claims to be the Seer."},
+    {"id": "n6", "argument_role": "Premise", "text": "Only one Seer card is in play."},
+    {"id": "n7", "argument_role": "Premise", "text": "Paul's and Justin's claims cannot both be true."}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n4", "target": "n7", "relation": "supports", "inference_group": "g2"},
+    {"source": "n5", "target": "n7", "relation": "supports", "inference_group": "g2"},
+    {"source": "n6", "target": "n7", "relation": "supports", "inference_group": "g2"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n1", "n2"], "target": "n3", "relation": "supports", "reasoning_type": "Claim-Consistency"},
+    {"inference_group": "g2", "sources": ["n4", "n5", "n6"], "target": "n7", "relation": "supports", "reasoning_type": "Game-Mechanical"}
+  ]
+}
+
+# EXAMPLE 3: MECHANIC-INFORMED BEHAVIORAL INTERPRETATION
+
+INPUT_JSON:
+{
+  "justification": "Voting someone out would prevent a no-death Village win. The Minion is urging the group to vote someone out. Therefore, the Minion is trying to manipulate the group.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Voting someone out would prevent a no-death Village win."},
+    {"id": "n2", "argument_role": "Premise", "text": "The Minion is urging the group to vote someone out."},
+    {"id": "n3", "argument_role": "Conclusion", "text": "The Minion is trying to manipulate the group."}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g1"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n1", "n2"], "target": "n3", "relation": "supports", "reasoning_type": "Behavioral-Credibility"}
+  ]
+}
+
+# EXAMPLE 4: INDIVIDUAL TESTIMONY AND SOCIAL CONSENSUS
+
+INPUT_JSON:
+{
+  "justification": "Paul says that Laura is the Werewolf. The group also agrees that Laura is the Werewolf. Therefore, Laura is probably the Werewolf.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Paul says that Laura is the Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "The group agrees that Laura is the Werewolf."},
+    {"id": "n3", "argument_role": "Conclusion", "text": "Laura is probably the Werewolf."}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g2"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n1"], "target": "n3", "relation": "supports", "reasoning_type": "Individual-Testimony"},
+    {"inference_group": "g2", "sources": ["n2"], "target": "n3", "relation": "supports", "reasoning_type": "Social-Consensus"}
+  ]
+}
+
+# EXAMPLE 5: EPISTEMIC ATTACK
+
+INPUT_JSON:
+{
+  "justification": "The Drunk may have swapped into a Werewolf card. However, there is no evidence that the Drunk acted.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Conclusion", "text": "The Drunk may have swapped into a Werewolf card."},
+    {"id": "n2", "argument_role": "Premise", "text": "There is no evidence that the Drunk acted."}
+  ],
+  "edges": [
+    {"source": "n2", "target": "n1", "relation": "attacks", "inference_group": "g1"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n2"], "target": "n1", "relation": "attacks", "reasoning_type": "Epistemic-Uncertainty"}
+  ]
+}
+
+# EXAMPLE 6: GENERIC HEURISTIC
+
+INPUT_JSON:
+{
+  "justification": "The evidence generally points toward Mike, so Mike is probably the Werewolf.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "The evidence generally points toward Mike."},
+    {"id": "n2", "argument_role": "Conclusion", "text": "Mike is probably the Werewolf."}
+  ],
+  "edges": [
+    {"source": "n1", "target": "n2", "relation": "supports", "inference_group": "g1"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n1"], "target": "n2", "relation": "supports", "reasoning_type": "Generic-Heuristic"}
+  ]
+}
+
+
+# EXAMPLE 7: SERIAL GAME STATE AND STRATEGIC CONCLUSION
+
+INPUT_JSON:
+{
+  "justification": "According to the reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, so Hailey became the Werewolf. Erin, acting as the Troublemaker, then swapped Hailey and Brent, meaning Brent ended the night as the Werewolf. Therefore, voting for Brent would result in a win for Team Village.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "According to the reveal, Jack started as the Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "Hailey, acting as the Robber, swapped cards with Jack."},
+    {"id": "n3", "argument_role": "Premise", "text": "Hailey became the Werewolf."},
+    {"id": "n4", "argument_role": "Premise", "text": "Erin, acting as the Troublemaker, swapped Hailey and Brent."},
+    {"id": "n5", "argument_role": "Premise", "text": "Brent ended the night as the Werewolf."},
+    {"id": "n6", "argument_role": "Conclusion", "text": "Voting for Brent would result in a win for Team Village."}
+  ],
+  "edges": [
+    {"source": "n5", "target": "n6", "relation": "supports", "inference_group": "g1"},
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g2"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g2"},
+    {"source": "n3", "target": "n5", "relation": "supports", "inference_group": "g3"},
+    {"source": "n4", "target": "n5", "relation": "supports", "inference_group": "g3"}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "inference_groups": [
+    {"inference_group": "g1", "sources": ["n5"], "target": "n6", "relation": "supports", "reasoning_type": "Game-Mechanical"},
+    {"inference_group": "g2", "sources": ["n1", "n2"], "target": "n3", "relation": "supports", "reasoning_type": "Game-Mechanical"},
+    {"inference_group": "g3", "sources": ["n3", "n4"], "target": "n5", "relation": "supports", "reasoning_type": "Game-Mechanical"}
+  ]
+}
+
+# NOW ANALYZE THE FOLLOWING INPUT_JSON
+
+Return only OUTPUT_JSON.

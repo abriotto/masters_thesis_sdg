@@ -1,0 +1,401 @@
+You are an expert in Argument Diagramming and Argument Mining.
+
+The argumentative nodes have already been identified and fixed.
+
+Your ONLY tasks are:
+1. identify the direct argumentative relations between the given nodes;
+2. group source nodes that participate in the same direct inference.
+
+Do not add, remove, reword, reorder, or relabel nodes.
+Do not assign reasoning types.
+Return only the edge list.
+
+# TASK
+
+You will receive:
+- the original justification;
+- a fixed list of nodes, each with an `id`, `argument_role`, and `text`.
+
+Determine which nodes directly `support` or `attack` other nodes. Then assign one `inference_group` to each distinct direct inference.
+
+The fixed nodes are authoritative and atomic. Use the original justification only to recover context, references, discourse markers, and intended argumentative function.
+
+Do not internally split a node or create separate relations for clauses contained inside the same node.
+
+# INPUT FORMAT
+
+{
+  "justification": "string",
+  "nodes": [
+    {
+      "id": "n1",
+      "argument_role": "Premise | Conclusion",
+      "text": "..."
+    }
+  ]
+}
+
+# RECONSTRUCT THE ARGUMENT AS PRESENTED
+
+Determine relations according to how the justification uses each proposition.
+
+Do not fact-check claims, verify game mechanics, or repair invalid reasoning.
+
+If the justification presents one or more nodes as a reason for accepting a target, represent a `supports` inference, even if the reasoning is false or invalid.
+
+If it presents one or more nodes as a counter-reason against accepting a target, represent an `attacks` inference.
+
+Do not reinterpret intended support as attack merely because correct ONUW mechanics would lead elsewhere.
+
+Connectives such as "because", "therefore", "however", "although", and "even though" are useful signals but are not required.
+
+Do not infer a relation merely because nodes mention the same player, role, claim, or event.
+
+# INTERNAL PROCEDURE
+
+Follow this procedure internally:
+
+1. Locate the node labelled `Conclusion`, if one exists.
+2. Process the Conclusion as the first possible target.
+3. Then process each Premise as a possible target, following input order.
+4. For each target, examine every other node as a possible source.
+5. Identify all direct supporting and attacking inferences into that target.
+6. Decide whether each inference has one source or multiple linked sources.
+7. Use the smallest source set that expresses the complete direct inference.
+8. Before finalizing a multi-source group, check:
+   - whether removing any proposed source leaves the same complete direct reason intact;
+   - whether any proposed source is inferred from another source in that same group.
+9. Check for skipped intermediate nodes, invented relations, duplicate edges, and cycles.
+
+Do not show this procedure. Return only the final JSON.
+
+# RELATION TYPES
+
+## `supports`
+
+Use `supports` when a source, alone or together with the other sources in its inference group, is presented as evidence, explanation, or reasoning for accepting the target.
+
+## `attacks`
+
+Use `attacks` when a source, alone or together with the other sources in its inference group, functions as a counter-reason against accepting the target.
+
+This broad relation includes:
+- contradiction or denial;
+- an incompatible role or identity claim;
+- a competing explanation;
+- a qualification or exception;
+- questioning a claim's reliability;
+- describing evidence as uncertain, unconfirmed, or only a guess;
+- any other consideration that weakens confidence in the target.
+
+An attacking inference does not need to prove the target false. It is sufficient that it argues against accepting the target as stated.
+
+Each source-target pair may have at most one relation. Choose the relation that best represents its argumentative function in context.
+
+# DIRECT AND INDIRECT RELATIONS
+
+A relation is direct when no explicitly represented node mediates between the source inference and the target.
+
+If:
+
+A → B → C
+
+represent both direct steps, but do not also add A → C unless A provides a separate direct reason for C.
+
+This applies to both `supports` and `attacks`.
+
+## Implicit warrants
+
+A direct inference may rely on an unstated warrant, such as an ONUW mechanic or a general assumption, when that warrant is clearly the intended bridge between the fixed nodes.
+
+Do not create a new node for an unstated warrant.
+
+An implicit warrant does not count as an intermediate node. An explicitly extracted proposition does.
+
+## Explicit intermediate nodes
+
+When an intermediate proposition is explicitly represented as a node, preserve the serial structure.
+
+If A is used to establish B, and B is then used to establish C, represent:
+
+A → B → C
+
+Do not represent:
+
+A + B → C
+
+Do not skip B by adding A → C unless A also provides a separate direct reason for C.
+
+## Sources that depend on one another
+
+Never place two nodes in the same inference group when one is explicitly presented as a consequence, interpretation, evaluation, or explanation of the other.
+
+Such nodes are serial steps, not linked co-premises.
+
+Before finalizing a multi-source group, ask:
+
+"Is any proposed source established by another proposed source in this same group?"
+
+If YES, separate them into serial inference groups.
+
+Example:
+
+- "Justin claims that someone is lying."
+- "Justin recommends that nobody be eliminated."
+- "These positions are inconsistent."
+- "This inconsistency suggests manipulation."
+- "Justin is probably the Werewolf."
+
+Represent:
+
+first claim + recommendation
+→ positions are inconsistent
+→ inconsistency suggests manipulation
+→ Justin is probably the Werewolf
+
+Do not group "positions are inconsistent" and "inconsistency suggests manipulation" together as co-premises for the final conclusion.
+
+# MINIMAL SOURCE SETS
+
+Use the smallest source set that expresses the complete direct inference as presented.
+
+Do not include a node merely because it provides background, context, or explains why another source is possible.
+
+Before finalizing a multi-source group, ask:
+
+"If this source were removed, would the remaining source or sources still express the same complete direct reason?"
+
+If YES, omit that source from the group.
+
+This applies even when the omitted node is relevant to the broader discussion. Nodes do not need to be connected.
+
+# INFERENCE GROUPS
+
+An `inference_group` represents one complete direct inference made by one or more source nodes toward one target.
+
+Every edge must have a non-null `inference_group`.
+
+A single-source inference forms its own group.
+
+## Linked sources
+
+Sources are linked when they must be combined to form one direct reason.
+
+First remove any source that is unnecessary under the minimal-source rule.
+
+Then ask:
+
+"If one remaining source were removed, would the other source or sources still express the same complete direct reason for or against the target?"
+
+If NO, the remaining sources are linked and their edges share one `inference_group`.
+
+The relation describes the group as a whole. An individual linked source need not provide a complete reason by itself.
+
+## Independent inferences
+
+Sources are independent when each source, or each separate linked source set, provides its own direct reason concerning the target.
+
+Independent inferences must receive different `inference_group` values.
+
+Do not place sources in the same group merely because they:
+- have the same target;
+- have the same relation;
+- concern the same player;
+- point in the same general direction.
+
+## Group constraints
+
+Each inference group:
+- has exactly one target;
+- has exactly one relation;
+- contains one or more sources;
+- is not reused for another target or relation.
+
+Assign IDs sequentially as `"g1"`, `"g2"`, `"g3"`, and so on.
+
+# COUNTERARGUMENT STRUCTURE
+
+Any Premise may attack a Conclusion or another Premise.
+
+If one node weakens a counterargument, connect it to the counterargument itself rather than directly to the final Conclusion, unless it also independently bears on the Conclusion.
+
+Example:
+
+- "Brent suspects that Erin's card was swapped away."
+- "Brent's suspicion was only a guess."
+- "Erin is the most likely Werewolf."
+
+Represent:
+- the suspicion attacks the Conclusion;
+- "only a guess" attacks the suspicion.
+
+Do not automatically create attacks in both directions between inconsistent nodes. Follow the argumentative direction presented in the justification.
+
+# GRAPH CONSTRAINTS
+
+1. Every source and target must reference an existing node ID.
+2. Do not alter, split, or reinterpret the fixed nodes.
+3. Do not create self-edges.
+4. Do not create duplicate edges.
+5. Each source-target pair may have at most one relation.
+6. Do not create cycles.
+7. A node labelled `Conclusion` must have zero outgoing edges.
+8. Do not assume that the Conclusion is the final or highest-numbered node.
+9. Do not add transitive edges that skip an explicit intermediate node.
+10. A node may have multiple outgoing edges only when it directly bears on multiple targets.
+11. Do not force every node to connect.
+12. Disconnected nodes and empty edge lists are valid.
+13. Every edge must have one non-null `inference_group`.
+14. Do not reuse an inference group for a different target or relation.
+
+# OUTPUT ORDER
+
+Process targets in this order:
+1. the Conclusion, if one exists;
+2. the remaining nodes in input order.
+
+For each target:
+1. list supporting inferences before attacking inferences;
+2. order groups by the first source appearing in the node list;
+3. keep edges from the same group consecutive;
+4. order sources within a group according to node order.
+
+Assign group IDs according to the order in which groups first appear.
+
+# OUTPUT FORMAT
+
+{
+  "edges": [
+    {
+      "source": "n1",
+      "target": "n2",
+      "relation": "supports | attacks",
+      "inference_group": "g1"
+    }
+  ]
+}
+
+If no direct relations exist, return:
+
+{
+  "edges": []
+}
+
+# EXAMPLE 1: LINKED SUPPORT
+
+INPUT_JSON:
+{
+  "justification": "Paul says that he swapped Justin and Laura. Justin admitted that he started as a Werewolf. Therefore, if both claims are true, Laura is now the Werewolf.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Paul says that he swapped Justin and Laura."},
+    {"id": "n2", "argument_role": "Premise", "text": "Justin admitted that he started as a Werewolf."},
+    {"id": "n3", "argument_role": "Conclusion", "text": "If both claims are true, Laura is now the Werewolf."}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "edges": [
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g1"}
+  ]
+}
+
+# EXAMPLE 2: SERIAL STRUCTURE AND INDEPENDENT SUPPORT
+
+INPUT_JSON:
+{
+  "justification": "Mike first claimed to be the Troublemaker. He later claimed to be the Tanner. These claims are inconsistent. This inconsistency makes Mike appear dishonest. Mike is therefore the most likely Werewolf. The group also suspects Mike.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Mike first claimed to be the Troublemaker."},
+    {"id": "n2", "argument_role": "Premise", "text": "Mike later claimed to be the Tanner."},
+    {"id": "n3", "argument_role": "Premise", "text": "Mike's claims are inconsistent."},
+    {"id": "n4", "argument_role": "Premise", "text": "This inconsistency makes Mike appear dishonest."},
+    {"id": "n5", "argument_role": "Conclusion", "text": "Mike is the most likely Werewolf."},
+    {"id": "n6", "argument_role": "Premise", "text": "The group also suspects Mike."}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "edges": [
+    {"source": "n4", "target": "n5", "relation": "supports", "inference_group": "g1"},
+    {"source": "n6", "target": "n5", "relation": "supports", "inference_group": "g2"},
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g3"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g3"},
+    {"source": "n3", "target": "n4", "relation": "supports", "inference_group": "g4"}
+  ]
+}
+
+# EXAMPLE 3: COUNTERARGUMENT CHAIN
+
+INPUT_JSON:
+{
+  "justification": "Erin admitted to being the Werewolf. Brent suspected that Erin's Werewolf card might have been swapped away, but this was only a guess. Erin is therefore the most likely Werewolf.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "Erin admitted to being the Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "Brent suspected that Erin's Werewolf card might have been swapped away."},
+    {"id": "n3", "argument_role": "Premise", "text": "Brent's suspicion was only a guess."},
+    {"id": "n4", "argument_role": "Conclusion", "text": "Erin is the most likely Werewolf."}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "edges": [
+    {"source": "n1", "target": "n4", "relation": "supports", "inference_group": "g1"},
+    {"source": "n2", "target": "n4", "relation": "attacks", "inference_group": "g2"},
+    {"source": "n3", "target": "n2", "relation": "attacks", "inference_group": "g3"}
+  ]
+}
+
+# EXAMPLE 4: LINKED ATTACK
+
+INPUT_JSON:
+{
+  "justification": "Laura is still the Werewolf, even though Paul says that he swapped Laura and Mike and Mike says that he started as a Villager.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Conclusion", "text": "Laura is still the Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "Paul says that he swapped Laura and Mike."},
+    {"id": "n3", "argument_role": "Premise", "text": "Mike says that he started as a Villager."}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "edges": [
+    {"source": "n2", "target": "n1", "relation": "attacks", "inference_group": "g1"},
+    {"source": "n3", "target": "n1", "relation": "attacks", "inference_group": "g1"}
+  ]
+}
+
+
+# EXAMPLE 5: SERIAL GAME STATE AND NATURAL STRATEGIC CONCLUSION
+
+INPUT_JSON:
+{
+  "justification": "According to the reveal, Jack started as the Werewolf. Hailey, acting as the Robber, swapped cards with Jack, so Hailey became the Werewolf. Erin, acting as the Troublemaker, then swapped Hailey and Brent, meaning Brent ended the night as the Werewolf. Therefore, voting for Brent would result in a win for Team Village.",
+  "nodes": [
+    {"id": "n1", "argument_role": "Premise", "text": "According to the reveal, Jack started as the Werewolf."},
+    {"id": "n2", "argument_role": "Premise", "text": "Hailey, acting as the Robber, swapped cards with Jack."},
+    {"id": "n3", "argument_role": "Premise", "text": "Hailey became the Werewolf."},
+    {"id": "n4", "argument_role": "Premise", "text": "Erin, acting as the Troublemaker, swapped Hailey and Brent."},
+    {"id": "n5", "argument_role": "Premise", "text": "Brent ended the night as the Werewolf."},
+    {"id": "n6", "argument_role": "Conclusion", "text": "Voting for Brent would result in a win for Team Village."}
+  ]
+}
+
+OUTPUT_JSON:
+{
+  "edges": [
+    {"source": "n5", "target": "n6", "relation": "supports", "inference_group": "g1"},
+    {"source": "n1", "target": "n3", "relation": "supports", "inference_group": "g2"},
+    {"source": "n2", "target": "n3", "relation": "supports", "inference_group": "g2"},
+    {"source": "n3", "target": "n5", "relation": "supports", "inference_group": "g3"},
+    {"source": "n4", "target": "n5", "relation": "supports", "inference_group": "g3"}
+  ]
+}
+
+# NOW ANALYZE THE FOLLOWING INPUT_JSON
+
+Return only OUTPUT_JSON.

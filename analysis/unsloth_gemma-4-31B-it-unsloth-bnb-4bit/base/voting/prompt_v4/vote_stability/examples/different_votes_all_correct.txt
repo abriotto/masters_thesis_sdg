@@ -1,0 +1,74 @@
+========================================================================================
+
+AGREEMENT CASE: different_votes_all_correct
+
+N EXAMPLES: 2
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Ego4D / 62c4bc58-3776-4791-ac30-4c9ca5619503 / Game7
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Jessica', 'Daniel']
+
+PLAYERS
+  0. Kevin: Seer -> Seer
+  1. Kaelan: Drunk -> Center Card
+  2. Jessica: Werewolf -> Werewolf  <-- correct target
+  3. Daniel: Werewolf -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Jessica | status=player_vote | correct=True | matched=Jessica (Werewolf)
+  run_2      [stochastic] vote=Jessica | status=player_vote | correct=True | matched=Jessica (Werewolf)
+  run_3      [stochastic] vote=Daniel | status=player_vote | correct=True | matched=Daniel (Werewolf)
+  greedy_t0  [greedy    ] vote=Jessica | status=player_vote | correct=True | matched=Jessica (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Daniel's claim of being both the Seer and the Insomniac is possible if his card was swapped during the night. However, there is a direct contradiction between Kaelan and Jessica: Jessica claims she was the Robber and robbed Kaelan, but Kaelan claims he performed the Drunk's action of swapping his card with the center. If Jessica had robbed Kaelan while he was the Drunk, Jessica would have become the Drunk and performed the swap, not Kaelan. Jessica's admission that she might have forgotten to look at the card she robbed further suggests she is bluffing, making her the most likely Werewolf.
+
+run_2 [stochastic]
+Jessica claims to be the Robber and says she robbed Kaelan. Kaelan claims to be the Drunk and says he swapped his card with the center. According to the night action order, the Robber acts before the Drunk; if Jessica had robbed Kaelan (the Drunk), Jessica would have become the Drunk and performed the swap, meaning Kaelan would not have swapped. Since Kaelan's claim to have swapped is inconsistent with Jessica's claim to have robbed him, Jessica is likely lying and is therefore the most probable Werewolf.
+
+run_3 [stochastic]
+Daniel makes two contradictory claims about his role: he first states he was the Insomniac and remained the Insomniac upon waking, but then claims he was the Seer and saw that Kaelan was the Drunk. Since a player can only have one starting role, and his use of the word 'still' implies he did not change roles, these claims are logically impossible. This blatant inconsistency strongly suggests that Daniel is lying to manipulate the discussion, which is characteristic of a Werewolf.
+
+greedy_t0 [greedy]
+Jessica claims to be the Robber and says she robbed Kaelan, but then admits she 'forgot to look' at the card she stole. According to the game rules, the Robber must look at their new card after swapping, making her claim highly suspicious and a common tell for a Werewolf bluffing. Additionally, both Kaelan and Kevin express strong suspicion toward her, and she attempts to backtrack her vote at the end of the discussion.
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016 / Game4
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Caitlynn', 'Mitchell']
+
+PLAYERS
+  0. Caitlynn: Werewolf -> Werewolf  <-- correct target
+  1. Mitchell: Werewolf -> Werewolf  <-- correct target
+  2. Alana: Drunk -> Troublemaker
+  3. Mike: Tanner -> Tanner
+
+MODEL VOTES
+  run_1      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  run_2      [stochastic] vote=Caitlynn | status=player_vote | correct=True | matched=Caitlynn (Werewolf)
+  run_3      [stochastic] vote=Caitlynn | status=player_vote | correct=True | matched=Caitlynn (Werewolf)
+  greedy_t0  [greedy    ] vote=Caitlynn | status=player_vote | correct=True | matched=Caitlynn (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Alana claims to be the Seer and explicitly identifies Mitchell as the werewolf multiple times (e.g., [34], [73]). Mike's claim that he was the Insomniac but woke up as the Seer [51] suggests a swap occurred, which contradicts Mitchell's claim that he is the Insomniac and was not swapped [63]. While Alana confusingly pivots to Caitlynn at the very end, the most consistent narrative is that Alana (Seer) saw Mitchell (Werewolf), and Mike (Insomniac) was swapped with Alana by a Troublemaker (likely Caitlynn).
+
+run_2 [stochastic]
+Alana claims to be the Seer and initially suspects Mitchell, but later shifts her target to Caitlynn, stating that Caitlynn was a werewolf and is now pretending to be the Troublemaker. Mitchell, claiming to be the Insomniac, also strongly supports voting for Caitlynn. Since Alana and Mitchell have converged on Caitlynn as the most likely Werewolf, and Caitlynn has not provided a clear role claim of her own, she is the most probable target for Team Village.
+
+run_3 [stochastic]
+Alana claims to be the Seer and initially identifies Mitchell as the werewolf, but later shifts her target to Caitlynn, suggesting that a Troublemaker may have swapped their cards. Mitchell also strongly supports voting for Caitlynn, and Caitlynn remains passive throughout the discussion without providing a strong role claim or defense. Given the consensus between Alana and Mitchell and the Seer's identification, Caitlynn is the most likely candidate for the werewolf.
+
+greedy_t0 [greedy]
+Alana claims to be the Seer and identifies Caitlynn as the werewolf, stating she saw this during the night. While there is conflict between Mitchell and Mike regarding who the Insomniac is, Alana and Mitchell both converge on Caitlynn as the target for elimination. Alana's consistency in accusing Caitlynn (from her initial comment at [34] to her final conclusion at [104]) makes Caitlynn the most probable werewolf.
+

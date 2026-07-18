@@ -1,0 +1,108 @@
+========================================================================================
+
+AGREEMENT CASE: same_vote_all_correct
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#3 / Game3
+----------------------------------------------------------------------------------------
+Correct vote type: circle
+Correct player(s): []
+
+PLAYERS
+  0. Justin: Villager -> Villager
+  1. Mike: Robber -> Seer
+  2. James: Villager -> Villager
+  3. Mitchell: Seer -> Robber
+
+MODEL VOTES
+  run_1      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  run_2      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  run_3      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  greedy_t0  [greedy    ] vote=No Werewolf | status=circle_vote | correct=True
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Mitchell claims to be the Seer and states he saw two werewolves in the center of the table. Mike supports this by claiming to be the Robber who swapped cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are truthful, all werewolf cards are in the center, meaning no player is a werewolf. In this scenario, Team Village wins by voting 'No Werewolf'.
+
+run_2 [stochastic]
+Mitchell claims to be the Seer and states he saw 'two werewolves'. Since the Seer can only look at one other player's card or two center cards, seeing two werewolves implies they are both in the center. Mike supports Mitchell's claim by stating he was the Robber and switched cards with him. If these claims are true, no player is a werewolf, and the Village wins by voting 'No Werewolf'.
+
+run_3 [stochastic]
+Mitchell claims to be the Seer and states that he saw two werewolves in the center. Mike supports this by claiming to be the Robber who switched cards with Mitchell, thereby confirming Mitchell's starting role as the Seer. If these claims are true, then no player is currently a werewolf, and the Village wins by voting 'No Werewolf'.
+
+greedy_t0 [greedy]
+Mitchell claims to be the Seer and states that he saw two werewolves in the center cards. Mike supports this claim by stating he was the Robber and swapped cards with Mitchell, which would confirm Mitchell's starting role as the Seer. If these claims are true, no player currently holds a werewolf card, and Team Village wins if no one is voted out.
+
+========================================================================================
+GAME: Youtube / Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11 / Game4
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Paul']
+
+PLAYERS
+  0. Justin: Troublemaker -> Troublemaker
+  1. Laura: Hunter -> Hunter
+  2. Paul: Mason -> Werewolf  <-- correct target
+  3. James: Tanner -> Tanner
+  4. Mitchell: Werewolf -> Mason
+
+MODEL VOTES
+  run_1      [stochastic] vote=Paul | status=player_vote | correct=True | matched=Paul (Werewolf)
+  run_2      [stochastic] vote=Paul | status=player_vote | correct=True | matched=Paul (Werewolf)
+  run_3      [stochastic] vote=Paul | status=player_vote | correct=True | matched=Paul (Werewolf)
+  greedy_t0  [greedy    ] vote=Paul | status=player_vote | correct=True | matched=Paul (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Both Paul and Mitchell claimed to be Werewolves during the latter half of the discussion. Paul's claims were highly inconsistent, shifting from Mason to Werewolf, then to Insomniac, and finally back to Werewolf. Since Team Village wins by eliminating any Werewolf, and Paul explicitly admitted to being one multiple times, he is the most viable target for elimination.
+
+run_2 [stochastic]
+Both Paul and Mitchell explicitly confessed to being Werewolves during the discussion. Paul initially claimed to be a Mason but later admitted, 'I'm the werewolf and you guys know it' and 'I was werewolf to begin with.' Since eliminating any Werewolf ensures a victory for Team Village, voting for Paul is a winning move.
+
+run_3 [stochastic]
+Both Paul and Mitchell admitted to being werewolves during the discussion. Paul explicitly stated he was a werewolf and suggested that the group could vote for either him or Mitchell to win. Since Team Village wins by eliminating at least one werewolf, voting for Paul is a guaranteed win for the village.
+
+greedy_t0 [greedy]
+Both Paul and Mitchell explicitly admitted to being Werewolves during the discussion. Paul stated multiple times that he was a Werewolf, and Mitchell also confessed to being one. Since Team Village wins by eliminating at least one Werewolf, voting for Paul (as the group decided) ensures a victory.
+
+========================================================================================
+GAME: Youtube / Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10 / Game1
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Laura']
+
+PLAYERS
+  0. Justin: Werewolf -> Villager
+  1. Laura: Villager -> Werewolf  <-- correct target
+  2. Paul: Troublemaker -> Troublemaker
+  3. James: Insomniac -> Insomniac
+  4. Mitchell: Tanner -> Tanner
+
+MODEL VOTES
+  run_1      [stochastic] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+  run_2      [stochastic] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+  run_3      [stochastic] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+  greedy_t0  [greedy    ] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Paul claims to be the Troublemaker and states he swapped Justin and Laura. Justin initially claimed to be the Seer but later admitted he was actually a Werewolf and was swapped with Laura. If Paul's claim about the swap and Justin's claim about his starting role are both true, Laura is now the Werewolf. While Mitchell's claims about whom he robbed were inconsistent, the combined testimony of Paul and Justin strongly points to Laura as the current Werewolf.
+
+run_2 [stochastic]
+Justin admits to starting as a Werewolf, and Paul claims to be the Troublemaker who swapped Justin's card with Laura's. If both these claims are true, Laura currently holds the Werewolf card. While Justin's behavior is erratic (initially claiming to be the Seer), the combination of his admission and Paul's swap makes Laura the most likely target for Team Village.
+
+run_3 [stochastic]
+Paul claims to be the Troublemaker and states he swapped Justin and Laura. Justin initially claimed to be the Seer but later admitted he was actually a Werewolf at the start of the game. If Paul's swap is legitimate and Justin was the starting Werewolf, then Laura is now the Werewolf. Despite Justin's contradictory claims, the combination of the Troublemaker's swap and Justin's admission points to Laura as the current Werewolf.
+
+greedy_t0 [greedy]
+Justin admitted to starting as a Werewolf, and Paul claimed to be the Troublemaker who swapped Justin's card with Laura's. Mitchell claimed to be the Robber and stated he robbed Laura's card before the swap occurred. Following the night action order (Robber then Troublemaker), if Mitchell robbed Laura (Villager) and Paul then swapped Justin (Werewolf) and Laura (now Robber), Laura would end the night as the Werewolf. Therefore, voting for Laura is the most logical choice for Team Village to win.
+

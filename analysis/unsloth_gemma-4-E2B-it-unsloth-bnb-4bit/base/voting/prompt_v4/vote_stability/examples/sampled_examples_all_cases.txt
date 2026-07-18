@@ -1,0 +1,513 @@
+========================================================================================
+
+AGREEMENT CASE: different_votes_all_correct
+
+N EXAMPLES: 2
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#7##November#6th#2016 / Game4
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Caitlynn', 'Mitchell']
+
+PLAYERS
+  0. Caitlynn: Werewolf -> Werewolf  <-- correct target
+  1. Mitchell: Werewolf -> Werewolf  <-- correct target
+  2. Alana: Drunk -> Troublemaker
+  3. Mike: Tanner -> Tanner
+
+MODEL VOTES
+  run_1      [stochastic] vote=Caitlynn | status=player_vote | correct=True | matched=Caitlynn (Werewolf)
+  run_2      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  run_3      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  greedy_t0  [greedy    ] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion centers around role swaps and identifying the Werewolf, with Mitchell expressing strong confidence that Caitlynn is the Werewolf. Alana explicitly states that the team 'just have to kill one werewolf,' indicating a collective intent to eliminate a Werewolf. While the evidence is based on player belief and accusations rather than concrete actions, Mitchell's conviction makes Caitlynn the primary target for elimination to achieve the objective of Team Village.
+
+run_2 [stochastic]
+The discussion transcript heavily focuses suspicion on Mitchell, who is repeatedly identified as the potential Werewolf by other players. Alana explicitly states that they 'just have to kill one werewolf,' and Mitchell is the primary target of the collective suspicion. Given the goal is to eliminate a Werewolf to win, Mitchell is the most logical choice to vote out to maximize the chances of Team Village winning.
+
+run_3 [stochastic]
+The discussion transcript indicates high suspicion among the players regarding who the Werewolf might be, particularly focusing on Mitchell and Caitlynn. Alana explicitly states that they 'just have to kill one werewolf,' suggesting a strong Village alignment goal. Mitchell is repeatedly accused of being the Werewolf by Mike and Alana, and the general atmosphere suggests intense conflict and deception. Based on the concentrated suspicion directed at Mitchell, he is the most logical target to eliminate to support Team Village's win condition.
+
+greedy_t0 [greedy]
+The discussion transcript is highly confusing and filled with conflicting claims about who holds which role, making definitive identification of the Werewolf impossible. However, Mitchell is heavily suspected by other players, including Alana and Mike, who express confidence that he is the Werewolf. Since Team Village needs to eliminate a Werewolf to win, targeting the most strongly suspected player is the best strategic move based on the available information.
+
+========================================================================================
+GAME: Youtube / One#Night#Ultimate#Love#Letter##ONE#NIGHT#ULTIMATE#WEREWOLF / Game3
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Justin', 'Tyler']
+
+PLAYERS
+  0. Justin: Werewolf -> Werewolf  <-- correct target
+  1. Mitchell: Drunk -> Seer
+  2. Paul: Troublemaker -> Troublemaker
+  3. Tyler: Werewolf -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Tyler | status=player_vote | correct=True | matched=Tyler (Werewolf)
+  run_2      [stochastic] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+  run_3      [stochastic] vote=Tyler | status=player_vote | correct=True | matched=Tyler (Werewolf)
+  greedy_t0  [greedy    ] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Tyler explicitly stated that his card was Werewolf during the discussion, making him the most likely candidate for elimination. Furthermore, the transcript shows significant confusion and role swapping, suggesting the Werewolf identity is highly contested and potentially involves multiple players. Voting for Tyler maximizes the chance of eliminating a Werewolf and securing a victory for Team Village.
+
+run_2 [stochastic]
+Tyler claimed his card was Werewolf, and later suggested that Justin might be the only Werewolf remaining if a swap occurred. Although the transcript is confusing due to multiple role swaps (Robber, Drunk), the collective suspicion points strongly toward Justin holding the Werewolf role. Eliminating Justin maximizes the chance of Team Village winning by removing a Werewolf.
+
+run_3 [stochastic]
+Tyler's card was explicitly identified as Werewolf by Tyler himself during the discussion, making him the primary suspect for the Werewolf role. While there is significant confusion regarding role swaps (Justin claiming to be a Werewolf and Paul claiming to have switched two Werewolves), voting for Tyler maximizes the chances of eliminating a Werewolf and achieving the Team Village win condition. Since the goal is to eliminate a Werewolf, Tyler is the most logical target.
+
+greedy_t0 [greedy]
+The discussion centers around role swapping and identity confusion, particularly involving Justin and Tyler. Tyler explicitly states that Justin is the werewolf, and this claim is reinforced by Tyler suggesting that if a switch occurred, Justin would be the only werewolf remaining. Since Team Village wins by eliminating a Werewolf, voting for Justin is the most direct path to victory based on the current information.
+
+
+
+========================================================================================
+
+AGREEMENT CASE: different_votes_all_wrong
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#4##July#14th#2016 / Game2
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Justin', 'Mitchell']
+
+PLAYERS
+  0. Justin: Werewolf -> Werewolf  <-- correct target
+  1. Paul: Robber -> Seer
+  2. Mitchell: Werewolf -> Werewolf  <-- correct target
+  3. Mike: Seer -> Robber
+
+MODEL VOTES
+  run_1      [stochastic] vote=No Werewolf | status=circle_vote | correct=False
+  run_2      [stochastic] vote=Mike | status=player_vote | correct=False | matched=Mike (Robber)
+  run_3      [stochastic] vote=Paul | status=player_vote | correct=False | matched=Paul (Seer)
+  greedy_t0  [greedy    ] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion is highly confusing due to role swaps and conflicting claims regarding who is the Tanner or the Werewolf. Paul claims to be the Werewolf, while Mitchell denies it, and Justin is accused by others. Since there is no consistent or reliable evidence identifying a Werewolf, and given the uncertainty introduced by potential role swaps, I cannot confidently identify a target.
+
+run_2 [stochastic]
+The discussion is highly confusing due to multiple role swaps (Robber/Tanner) and conflicting claims about who holds which role. However, the final voting dynamic indicates a clear consensus among Justin and Mike to vote out Mike. While the evidence is circumstantial, in the absence of concrete proof, voting for the player targeted by the majority of the group is the safest strategy to attempt to eliminate a Werewolf and secure a Team Village win.
+
+run_3 [stochastic]
+Paul repeatedly claimed to be the Werewolf during the discussion phase, which is a strong indicator of suspicion, even if he is lying. Given the high level of uncertainty and conflicting accusations among the players, targeting the player who directly claims the Werewolf role is the most logical move for Team Village to attempt to eliminate a Werewolf.
+
+greedy_t0 [greedy]
+The discussion transcript is highly confusing due to card swapping and conflicting claims about roles, making definitive identification difficult. However, Mitchell is repeatedly implicated in deception, specifically regarding switching cards and having an 'unconfirmed story,' which aligns with the behavior of a Werewolf trying to sow distrust. Since Team Village wins by eliminating a Werewolf, targeting the most suspicious player, Mitchell, is the best strategy to maximize the chances of success.
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016 / Game3
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Caitlynn', 'Mike']
+
+PLAYERS
+  0. Caitlynn: Werewolf -> Werewolf  <-- correct target
+  1. Mitchell: Robber -> Insomniac
+  2. Alana: Insomniac -> Robber
+  3. Mike: Werewolf -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=No Werewolf | status=circle_vote | correct=False
+  run_2      [stochastic] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Insomniac)
+  run_3      [stochastic] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Insomniac)
+  greedy_t0  [greedy    ] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Insomniac)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion centers on speculating whether Mike is the Tanner or the Werewolf, based on his anxiety and quick speaking style. While there is suspicion directed towards him, the transcript does not contain any concrete evidence or confirmed actions that definitively point to a Werewolf. Since Team Village wins if no Werewolves are present, and I cannot confirm any Werewolf is active, I must assume no Werewolf is present.
+
+run_2 [stochastic]
+The discussion centers heavily on Mitchell's suspicious behavior and role confusion, suggesting he might be either a Tanner or a Werewolf. While there is no definitive proof, Mitchell is the primary target of suspicion, and voting for him is the only way Team Village can eliminate a Werewolf. Given the pressure and the need to make a decisive move, I will vote for Mitchell, hoping he is the Werewolf.
+
+run_3 [stochastic]
+The discussion heavily focuses on Mitchell's identity, suggesting he is either the Tanner or the Werewolf. Caitlynn explicitly votes for Mitchell, and Alana suggests he might be the Tanner based on his behavior (anxious, quick speech). Given that Team Village needs to eliminate a Werewolf to win, Mitchell is the primary suspect and the most logical target to vote out.
+
+greedy_t0 [greedy]
+The discussion centers around the possibility of Mitchell being either the Werewolf or the Tanner, based on his behavior and card swaps. While the evidence is circumstantial, the conversation strongly suggests that Mitchell is trying to play a strategic role (Tanner) to avoid elimination, or he is the Werewolf attempting to mislead the group. Since Team Village needs to eliminate a Werewolf, Mitchell is the most logical target based on the collective suspicion.
+
+========================================================================================
+GAME: Youtube / The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF / Game7
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Paul']
+
+PLAYERS
+  0. Justin: Troublemaker -> Robber
+  1. Mitchell: Minion -> Minion
+  2. Paul: Tanner -> Werewolf  <-- correct target
+  3. James: Robber -> Troublemaker
+  4. Tyler: Werewolf -> Tanner
+
+MODEL VOTES
+  run_1      [stochastic] vote=Tyler | status=player_vote | correct=False | matched=Tyler (Tanner)
+  run_2      [stochastic] vote=James | status=player_vote | correct=False | matched=James (Troublemaker)
+  run_3      [stochastic] vote=Tyler | status=player_vote | correct=False | matched=Tyler (Tanner)
+  greedy_t0  [greedy    ] vote=Tyler | status=player_vote | correct=False | matched=Tyler (Tanner)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Tyler explicitly claimed that he saw at least one werewolf card in the center, which is the strongest piece of evidence suggesting a Werewolf is present. Although this claim could be a lie, in the context of the game, it provides the clearest path to eliminating a Werewolf and securing a win for Team Village. Voting for the player making the most incriminating claim is the logical strategy.
+
+run_2 [stochastic]
+The transcript indicates that Tyler claims to have seen at least one Werewolf in the center cards, which suggests a Werewolf is present. Given that Team Village needs to eliminate a Werewolf to win, and the Werewolves aim to survive, voting out the person who seems most suspicious or who might be a Werewolf is the best strategy. Since James was the one who pointed out the presence of a Werewolf in the center, and he was also claiming to be the Robber (which involved card swapping), he is a plausible suspect. However, the core objective is to eliminate a Werewolf. Since the evidence points towards a Werewolf being present, a vote is necessary.
+
+run_3 [stochastic]
+The transcript indicates that Tyler claimed to see a Werewolf in the center cards, which is a crucial piece of information. While this information could be a lie, it points towards a potential Werewolf presence. Given the general atmosphere of uncertainty and the fact that the game is nearing the voting phase, voting out a player who seems to be making strong claims or who might be a Werewolf is the best strategy for Team Village.
+
+greedy_t0 [greedy]
+The transcript indicates that Tyler claimed to see at least one Werewolf in the center cards, which is a crucial piece of information. While this information could be a lie, it directly points towards a Werewolf being present. Given the goal is to eliminate a Werewolf to win, voting for Tyler is the most logical move to eliminate a potential Werewolf, especially since the Seer role is often used to point out threats.
+
+
+
+========================================================================================
+
+AGREEMENT CASE: different_votes_mixed_correctness
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Ego4D / 0c2659db-7bd4-4b37-9b08-4e247befe382 / Game4
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Ashley', 'Sukeshi']
+
+PLAYERS
+  0. Elliot: Robber -> Tanner
+  1. Ashley: Werewolf -> Werewolf  <-- correct target
+  2. James: Insomniac -> Insomniac
+  3. Chris: Seer -> Seer
+  4. Sukeshi: Werewolf -> Werewolf  <-- correct target
+  5. Sian: Tanner -> Robber
+
+MODEL VOTES
+  run_1      [stochastic] vote=Elliot | status=player_vote | correct=False | matched=Elliot (Tanner)
+  run_2      [stochastic] vote=Ashley | status=player_vote | correct=True | matched=Ashley (Werewolf)
+  run_3      [stochastic] vote=Ashley | status=player_vote | correct=True | matched=Ashley (Werewolf)
+  greedy_t0  [greedy    ] vote=Sian | status=player_vote | correct=False | matched=Sian (Robber)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion heavily suggested that Ashley claimed to be the Werewolf, and Elliot was identified as the Robber, a Village role. Given the high suspicion surrounding the Werewolf role and the goal of Team Village to eliminate a Werewolf, voting for Elliot is a strategic move, as he is a plausible target and potentially a Werewolf, which would secure a win for Team Village.
+
+run_2 [stochastic]
+Ashley explicitly claimed to be the Werewolf during the discussion, which makes her a prime suspect. Although other players like Sian and Chris raised doubts about her role, her self-identification provides the strongest immediate target for Team Village to eliminate a Werewolf. Eliminating her increases the chances of Team Village winning by removing a Werewolf from the game.
+
+run_3 [stochastic]
+Ashley explicitly stated she was the Werewolf during the discussion, which is a strong indicator, even though players may lie. The conversation centered around Elliot potentially swapping with Ashley and becoming the Werewolf, suggesting high volatility in roles. Given the objective is to eliminate a Werewolf, voting out the player who claims the Werewolf role is the most direct path to achieving a Team Village victory.
+
+greedy_t0 [greedy]
+Sian received the highest number of votes during the voting phase, suggesting the group believes Sian is the most likely Werewolf. While Sian claimed to be the Villager, the consensus among the players points toward Sian being the target. Eliminating the player with the most votes is the optimal strategy to maximize the chances of Team Village winning by removing a Werewolf.
+
+========================================================================================
+GAME: Youtube / One#Night#Ultimate#Werewolf#363#Even#More#Classic#Werewolf / Game1
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Katie']
+
+PLAYERS
+  0. Pete: Mason -> Robber
+  1. Katie: Werewolf -> Werewolf  <-- correct target
+  2. Brett: Mason -> Mason
+  3. George: Robber -> Mason
+  4. Kelsey: Minion -> Minion
+  5. Dylan: Drunk -> Troublemaker
+
+MODEL VOTES
+  run_1      [stochastic] vote=Kelsey | status=player_vote | correct=False | matched=Kelsey (Minion)
+  run_2      [stochastic] vote=Pete | status=player_vote | correct=False | matched=Pete (Robber)
+  run_3      [stochastic] vote=Katie | status=player_vote | correct=True | matched=Katie (Werewolf)
+  greedy_t0  [greedy    ] vote=Pete | status=player_vote | correct=False | matched=Pete (Robber)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The transcript shows significant role swapping and confusion, making definitive identification difficult. However, Brett and Katie express strong suspicion regarding Dylan and Kelsey, suggesting they might be the Werewolves. Since Team Village needs to eliminate a Werewolf, voting for Kelsey targets the player most implicated by other players in the discussion.
+
+run_2 [stochastic]
+The discussion is heavily focused on role swapping and deception, making definitive identification difficult. However, Pete explicitly claimed to be a Werewolf earlier in the transcript, and the final collective guess mentioned two Werewolves among the players. To maximize the chances of Team Village eliminating a Werewolf, Pete is the most logical target.
+
+run_3 [stochastic]
+The discussion becomes highly confusing due to card swaps, but the final accusation in the transcript suggests that Pete is the Tanner, while Katie and Brett are the Werewolves. Since Team Village wins by eliminating a Werewolf, voting for either Katie or Brett is the necessary action to secure victory. Given the final stated roles, Katie is the most likely target.
+
+greedy_t0 [greedy]
+The transcript is highly confusing due to numerous role swaps and players lying about their identities. However, Pete explicitly states that he believes there is a Werewolf present, claiming, "Werewolf, one of them's a Werewolf, and one of them's a Tanner" (303). Since Team Village wins by eliminating a Werewolf, and Pete is the only player making a direct accusation regarding the Werewolf identity, he is the target.
+
+========================================================================================
+GAME: Youtube / Visions#from#2016##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#11 / Game3
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Laura', 'James']
+
+PLAYERS
+  0. Justin: Tanner -> Tanner
+  1. Laura: Werewolf -> Werewolf  <-- correct target
+  2. Paul: Mason -> Mason
+  3. James: Werewolf -> Werewolf  <-- correct target
+  4. Mitchell: Hunter -> Hunter
+
+MODEL VOTES
+  run_1      [stochastic] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+  run_2      [stochastic] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+  run_3      [stochastic] vote=No Werewolf | status=circle_vote | correct=False
+  greedy_t0  [greedy    ] vote=Laura | status=player_vote | correct=True | matched=Laura (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Laura explicitly claims to be the Werewolf, and the discussion centers around whether she is truthful, which is a strong indicator. While other players are suspected of being the Tanner or Hunter, Laura's direct claim makes her the most immediate target for Team Village to eliminate a Werewolf. If she is indeed the Werewolf, this vote secures a win for Team Village.
+
+run_2 [stochastic]
+Laura explicitly claimed to be the Werewolf twice during the discussion, which is a strong indicator. Furthermore, James suggested a strategy to vote Paul out if Laura was indeed the Werewolf, and Mitchell agreed to that strategy. Given the conflicting accusations and the direct statement, Laura is the most likely Werewolf, and eliminating her ensures Team Village wins.
+
+run_3 [stochastic]
+The discussion transcript is highly ambiguous regarding the true roles of the players, with multiple conflicting claims about who is the Werewolf, Hunter, or Tanner. Laura explicitly claimed to be the Werewolf, but this claim is not corroborated, and other players are attempting to deduce roles based on circumstantial evidence and accusations. Since there is no definitive consensus or concrete proof that a Werewolf is present, I cannot confidently make an accusation.
+
+greedy_t0 [greedy]
+Laura explicitly claimed to be the Werewolf during the discussion, which makes her the primary target for Team Village to eliminate. While the transcript is full of conflicting claims about who switched cards and who is the Hunter or Tanner, Laura's direct admission provides the strongest immediate suspicion. Eliminating her maximizes the chance of Team Village winning by removing a Werewolf.
+
+
+
+========================================================================================
+
+AGREEMENT CASE: same_vote_all_correct
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1 / Game5
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Mitchell']
+
+PLAYERS
+  0. Justin: Villager -> Villager
+  1. Alvin: Werewolf -> Robber
+  2. James: Villager -> Villager
+  3. Mitchell: Robber -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  run_2      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  run_3      [stochastic] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+  greedy_t0  [greedy    ] vote=Mitchell | status=player_vote | correct=True | matched=Mitchell (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion strongly suggests that Mitchell is the Werewolf. Mitchell claimed to have seen the Werewolf and stated that the Werewolf knew whether he was telling the truth or not, which is a classic indicator of a Werewolf trying to sow doubt. Both James and Alvin ultimately conclude that Mitchell is the Werewolf, leading to a unanimous vote in the transcript. To maximize the chances of Team Village winning, Mitchell must be eliminated.
+
+run_2 [stochastic]
+The discussion heavily centers on Mitchell, with multiple players (Justin, James, and Alvin) concluding that he is the Werewolf. Mitchell claimed to be the Seer, but the suspicions built around his actions and the subsequent declarations of belief suggest he is the target. To maximize the chances of Team Village winning, eliminating the suspected Werewolf is the primary objective.
+
+run_3 [stochastic]
+The discussion overwhelmingly points to Mitchell as the Werewolf. Multiple players, including James and Justin, express strong suspicion, and Mitchell himself makes a compelling claim that he saw the Werewolf. Since Team Village wins by eliminating a Werewolf, voting for Mitchell is the optimal strategy to achieve the win condition.
+
+greedy_t0 [greedy]
+The discussion heavily points suspicion toward Mitchell, who claims to have seen the Werewolf and asserts that Alvin is the Werewolf. James explicitly votes for Mitchell, suggesting he believes Mitchell is the Werewolf. Since Team Village wins by eliminating a Werewolf, voting out Mitchell is the optimal strategy based on the current public discussion.
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#2 / Game2
+----------------------------------------------------------------------------------------
+Correct vote type: circle
+Correct player(s): []
+
+PLAYERS
+  0. Justin: Seer -> Villager
+  1. Dan: Villager -> Seer
+  2. Mitchell: Villager -> Robber
+  3. Caitlynn: Robber -> Villager
+  4. Mike: Troublemaker -> Troublemaker
+
+MODEL VOTES
+  run_1      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  run_2      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  run_3      [stochastic] vote=No Werewolf | status=circle_vote | correct=True
+  greedy_t0  [greedy    ] vote=No Werewolf | status=circle_vote | correct=True
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion transcript is highly confusing and centered around players attempting to identify roles and accusations of card swaps. There is no definitive evidence or clear accusation pointing to a Werewolf. Since I have no private information and cannot confirm any player's role, I cannot confidently identify a Werewolf.
+
+run_2 [stochastic]
+The discussion transcript is highly confusing and filled with conflicting claims regarding role swaps and identities, making it impossible to definitively identify a Werewolf. Players are openly questioning each other's roles and actions, suggesting a high degree of deception or misdirection. Since there is no concrete evidence pointing to a specific player holding the Werewolf card, I must conclude that no Werewolf was present.
+
+run_3 [stochastic]
+The transcript primarily focuses on role confusion and card swapping, making it difficult to definitively identify the Werewolf. While players are discussing alibis and potential deception, no player explicitly claims or is confirmed to be the Werewolf. Since I cannot confirm the presence of a Werewolf, I must adhere to the rule that allows me to indicate 'No Werewolf' if I am confident none are present.
+
+greedy_t0 [greedy]
+The discussion transcript focuses heavily on role identification and card swapping, leading to confusion about who is who. While several roles (Villager, Troublemaker) have been tentatively identified, there is no concrete evidence or action recorded that confirms the presence of a Werewolf. Since Team Village wins if no Werewolves are present and no one dies, and given the lack of clear Werewolf activity, it is safest to assume no Werewolf is currently active.
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018 / Game2
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Justin']
+
+PLAYERS
+  0. Justin: Werewolf -> Werewolf  <-- correct target
+  1. Mitchell: Tanner -> Tanner
+  2. Paul: Troublemaker -> Troublemaker
+  3. Mike: Robber -> Robber
+
+MODEL VOTES
+  run_1      [stochastic] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+  run_2      [stochastic] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+  run_3      [stochastic] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+  greedy_t0  [greedy    ] vote=Justin | status=player_vote | correct=True | matched=Justin (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Justin is the primary suspect for the Werewolf, as he explicitly claims to have seen one and is accused by Mitchell of being the Werewolf. While the discussion is heavily complicated by role swaps and deception, Justin's statement serves as the most direct accusation pointing toward a Werewolf presence. Eliminating him maximizes the chance of eliminating a Werewolf and securing a Team Village victory.
+
+run_2 [stochastic]
+The transcript is highly confusing due to multiple role swaps and self-referential claims, making it difficult to definitively identify the Werewolf. However, Mitchell explicitly suggests Justin is the werewolf, and Justin himself claims to have seen a werewolf and then immediately pivots to claiming to be the Tanner. Given the pressure and the nature of the game, Justin is the primary suspect who has placed himself in the Werewolf role, making him the most logical target for Team Village to eliminate.
+
+run_3 [stochastic]
+The discussion is highly convoluted due to role swaps, making definitive identification impossible. However, Justin explicitly states he saw a werewolf and theorizes that Mike might be the werewolf because Mike was 'happy that we're not killing him.' To ensure Team Village wins, we must eliminate a Werewolf. Based on the transcript's internal logic, Justin is the player who most strongly implies the presence of a Werewolf.
+
+greedy_t0 [greedy]
+Justin explicitly stated that he saw a werewolf and claimed to be the werewolf, which is a strong indicator. Although the transcript is filled with role swaps and conflicting claims about who is the Tanner or Robber, Justin's self-identification as the Werewolf makes him the primary target for Team Village to eliminate. Eliminating the suspected Werewolf maximizes the chance of Team Village winning.
+
+
+
+========================================================================================
+
+AGREEMENT CASE: same_vote_all_wrong
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#43##October#13th#2018 / Game3
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Mike']
+
+PLAYERS
+  0. Justin: Werewolf -> Tanner
+  1. Mitchell: Troublemaker -> Troublemaker
+  2. Paul: Tanner -> Robber
+  3. Mike: Robber -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Justin | status=player_vote | correct=False | matched=Justin (Tanner)
+  run_2      [stochastic] vote=Justin | status=player_vote | correct=False | matched=Justin (Tanner)
+  run_3      [stochastic] vote=Justin | status=player_vote | correct=False | matched=Justin (Tanner)
+  greedy_t0  [greedy    ] vote=Justin | status=player_vote | correct=False | matched=Justin (Tanner)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Justin explicitly claims to be the Werewolf in the discussion, stating 'I was a werewolf, so there's a werewolf in here.' Since Team Village wins by eliminating a Werewolf, voting for Justin is the most direct way to achieve the objective. Although other players make conflicting claims about their roles (Robber, Troublemaker, Tanner), Justin's self-identification provides the strongest immediate target for the Village.
+
+run_2 [stochastic]
+Justin explicitly claims to be the Werewolf, which provides the strongest immediate indicator for Team Village to target. Although the transcript is filled with role swaps and accusations, Justin's direct statement about his role is a critical piece of information. Eliminating the player who claims to be the Werewolf maximizes the chances of Team Village winning by fulfilling their primary objective.
+
+run_3 [stochastic]
+Justin made the most direct claim of being a Werewolf, stating 'I was a werewolf, so there's a werewolf in here.' While the transcript is full of role swaps and accusations, targeting the player who explicitly identifies as a Werewolf maximizes the chances of eliminating a threat and securing a victory for Team Village. Given the high degree of uncertainty, this is the most aggressive move to fulfill the winning condition.
+
+greedy_t0 [greedy]
+Justin explicitly stated, "I was a werewolf, so there's a werewolf in here," which is a direct claim for the Werewolf role. Although the transcript is filled with role swaps and conflicting accusations, this direct statement provides the strongest initial evidence for a Werewolf. To maximize the chances of Team Village winning, eliminating the player who claims to be the Werewolf is the most strategic move.
+
+========================================================================================
+GAME: Youtube / ONE#NIGHT#ULTIMATE#WEREWOLF#44##October#13th#2018 / Game5
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Mike']
+
+PLAYERS
+  0. Justin: Seer -> Robber
+  1. Mitchell: Troublemaker -> Troublemaker
+  2. Paul: Werewolf -> Seer
+  3. Mike: Robber -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Troublemaker)
+  run_2      [stochastic] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Troublemaker)
+  run_3      [stochastic] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Troublemaker)
+  greedy_t0  [greedy    ] vote=Mitchell | status=player_vote | correct=False | matched=Mitchell (Troublemaker)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion is heavily focused on role swaps and conflicting claims regarding who the Werewolf is. Mitchell explicitly states he swapped roles and claims he started as a Werewolf, which aligns with the Werewolf's strategy to divert suspicion. Although the evidence is circumstantial, Mitchell's aggressive claims and attempts to mislead the group make him the highest risk target. Eliminating him maximizes the chance of Team Village achieving its goal of removing a Werewolf.
+
+run_2 [stochastic]
+The discussion centers heavily around role swaps and accusations, specifically Mitchell claiming he swapped roles with the Werewolf. While the transcript is confusing due to multiple role changes, Mitchell's claim provides the strongest suspicion of a Werewolf. As Team Village needs to eliminate a Werewolf to win, voting for the player who directly implicated the Werewolf is the most strategic move.
+
+run_3 [stochastic]
+The discussion is highly confusing due to multiple role swaps and conflicting claims regarding who started as which role. Mitchell aggressively claims he swapped roles and accuses Justin, which is a strong indicator of potential deception. Since Team Village needs to eliminate a Werewolf to win, Mitchell is the most suspicious player, as his statements are designed to sow doubt and shift blame. Voting for Mitchell increases the chances of eliminating a Werewolf.
+
+greedy_t0 [greedy]
+The discussion is highly confusing due to role swaps and conflicting claims, making definitive identification difficult. However, Mitchell explicitly claims he swapped roles with a Werewolf and is actively trying to cast suspicion on others. Given the goal is to eliminate a Werewolf, Mitchell is the most suspicious player and the most likely candidate to be attempting to manipulate the vote.
+
+========================================================================================
+GAME: Youtube / One#Night#Ultimate#Werewolf#533#Even#More#Classic#ONUW / Game1
+----------------------------------------------------------------------------------------
+Correct vote type: circle
+Correct player(s): []
+
+PLAYERS
+  0. Ryan: Troublemaker -> Robber
+  1. Katie: Robber -> Tanner
+  2. Brett: Tanner -> Troublemaker
+  3. DeAndre: Drunk -> Minion
+
+MODEL VOTES
+  run_1      [stochastic] vote=DeAndre | status=player_vote | correct=False | matched=DeAndre (Minion)
+  run_2      [stochastic] vote=DeAndre | status=player_vote | correct=False | matched=DeAndre (Minion)
+  run_3      [stochastic] vote=DeAndre | status=player_vote | correct=False | matched=DeAndre (Minion)
+  greedy_t0  [greedy    ] vote=DeAndre | status=player_vote | correct=False | matched=DeAndre (Minion)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+The discussion centers around DeAndre's claimed roles, specifically whether he was drunk or wolfing, which Brett suggests could imply he is a Werewolf or Minion. Given that Team Village wins by eliminating a Werewolf, DeAndre is the most likely target for elimination. While the roles are uncertain due to card swaps, the collective suspicion points toward him being the threat. Voting for DeAndre maximizes the chances of eliminating a Werewolf.
+
+run_2 [stochastic]
+The discussion centers heavily on DeAndre's identity, with players debating whether he is the Werewolf, the Minion, or simply the Drunk. Brett repeatedly suggests voting for DeAndre because he might be a Werewolf or Minion, aiming to eliminate a threat. Since Team Village needs to eliminate a Werewolf, targeting the player who is the subject of the most suspicion—DeAndre—is the most strategic move to increase the chances of winning.
+
+run_3 [stochastic]
+The discussion centers on identifying DeAndre's role, with Brett suggesting DeAndre is either a Werewolf or a Minion. Since Team Village wins by eliminating a Werewolf, voting for DeAndre is the most logical move based on the current suspicions. If DeAndre is indeed a Werewolf, this vote secures a win for Team Village.
+
+greedy_t0 [greedy]
+The discussion strongly suggests that DeAndre is either the Werewolf or the Minion, as he claimed to be Drunk but was suspected to be Wolfing. Since Team Village needs to eliminate a Werewolf to win, voting for DeAndre is the most logical move to attempt to eliminate a Werewolf. While the roles are confusing due to swaps, DeAndre remains the primary suspect for the Werewolf role based on the collective suspicion.
+

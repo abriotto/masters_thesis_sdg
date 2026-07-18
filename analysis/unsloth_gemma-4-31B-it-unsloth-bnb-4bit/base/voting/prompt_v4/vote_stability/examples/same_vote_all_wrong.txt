@@ -1,0 +1,111 @@
+========================================================================================
+
+AGREEMENT CASE: same_vote_all_wrong
+
+N EXAMPLES: 3
+
+========================================================================================
+
+
+
+========================================================================================
+GAME: Ego4D / 0c2659db-7bd4-4b37-9b08-4e247befe382 / Game4
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Ashley', 'Sukeshi']
+
+PLAYERS
+  0. Elliot: Robber -> Tanner
+  1. Ashley: Werewolf -> Werewolf  <-- correct target
+  2. James: Insomniac -> Insomniac
+  3. Chris: Seer -> Seer
+  4. Sukeshi: Werewolf -> Werewolf  <-- correct target
+  5. Sian: Tanner -> Robber
+
+MODEL VOTES
+  run_1      [stochastic] vote=Elliot | status=player_vote | correct=False | matched=Elliot (Tanner)
+  run_2      [stochastic] vote=Elliot | status=player_vote | correct=False | matched=Elliot (Tanner)
+  run_3      [stochastic] vote=Elliot | status=player_vote | correct=False | matched=Elliot (Tanner)
+  greedy_t0  [greedy    ] vote=Elliot | status=player_vote | correct=False | matched=Elliot (Tanner)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Ashley admitted to being the Werewolf (T136, T140), and Elliot later admitted to being the Robber and swapping cards with Ashley (T196, T264). According to the game rules, the Robber swaps their card with another player and takes on that role's alignment and win conditions. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Voting for Elliot is the most logical choice to ensure a Team Village win.
+
+run_2 [stochastic]
+Ashley admitted to starting as the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment and win conditions. Therefore, if their claims are true, Elliot is now the Werewolf. While other players like Sukeshi and Sian were suspected, the direct admissions from Ashley and Elliot provide the strongest evidence for Elliot being the current Werewolf.
+
+run_3 [stochastic]
+Ashley admitted to being the Werewolf, and Elliot admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber swaps their card with another player and takes on that role's alignment. Therefore, if Ashley was the Werewolf and Elliot swapped with her, Elliot is now the Werewolf. Chris's claim as the Seer, stating the Troublemaker was in the center, suggests no other swaps occurred to change this state.
+
+greedy_t0 [greedy]
+Ashley admitted to being a Werewolf, and Elliot later admitted to being the Robber and swapping cards with Ashley. According to the game rules, the Robber takes the role and alignment of the player they swap with. Therefore, if both claims are true, Elliot is now the Werewolf. Chris (claiming Seer) stated that the Troublemaker was in the center, meaning no other swaps occurred to change Elliot's role after the Robber's action.
+
+========================================================================================
+GAME: Youtube / One#Night#Ultimate#Werewolf#362#More#Classic#Werewolf / Game1
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Pete', 'Katie']
+
+PLAYERS
+  0. Pete: Werewolf -> Werewolf  <-- correct target
+  1. Katie: Werewolf -> Werewolf  <-- correct target
+  2. Brett: Tanner -> Robber
+  3. George: Minion -> Minion
+  4. Kelsey: Robber -> Tanner
+  5. Dylan: Mason -> Mason
+
+MODEL VOTES
+  run_1      [stochastic] vote=Kelsey | status=player_vote | correct=False | matched=Kelsey (Tanner)
+  run_2      [stochastic] vote=Kelsey | status=player_vote | correct=False | matched=Kelsey (Tanner)
+  run_3      [stochastic] vote=Kelsey | status=player_vote | correct=False | matched=Kelsey (Tanner)
+  greedy_t0  [greedy    ] vote=Pete | status=player_vote | correct=True | matched=Pete (Werewolf)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This erratic behavior is a strong indicator of a Werewolf attempting to bluff or a Tanner attempting to be voted out. Given that Pete consistently claims to be the Minion and other players (Brett, George, Katie, Dylan) have remained relatively consistent in their roles, Kelsey is the most likely candidate for the Werewolf card, potentially using the Tanner claim as a bluff to avoid elimination.
+
+run_2 [stochastic]
+Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber and finally to Tanner. This pattern of erratic deception is characteristic of a Werewolf attempting to confuse the other players or a Tanner seeking elimination. While Pete's claim to be the Minion is unusual, Kelsey's multiple contradictions make her the most suspicious candidate for a Werewolf.
+
+run_3 [stochastic]
+Kelsey's claims are highly inconsistent, shifting from Troublemaker to Robber, then to Tanner, and finally denying being the Tanner. This erratic behavior is characteristic of a Werewolf attempting to bluff or a Tanner attempting to attract votes. While Pete's claim to be a Minion is unusual, Kelsey's multiple contradictions make her the most suspicious candidate for the Werewolf role.
+
+greedy_t0 [greedy]
+Pete repeatedly claims to be the Minion, which is a member of Team Werewolf. While the Minion is not the Werewolf, it is common for the Werewolf to bluff as the Minion to admit to being on the 'evil' team without being the primary target for elimination. Kelsey's erratic claims (Troublemaker to Robber to Tanner) suggest she is likely the Tanner, as she is actively trying to attract votes. Since Pete is the only player who has explicitly aligned himself with Team Werewolf, he is the most probable candidate for the Werewolf role.
+
+========================================================================================
+GAME: Youtube / Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7 / Game5
+----------------------------------------------------------------------------------------
+Correct vote type: player
+Correct player(s): ['Justin', 'Mike']
+
+PLAYERS
+  0. Justin: Werewolf -> Werewolf  <-- correct target
+  1. Eric: Werewolf -> Tanner
+  2. Paul: Villager -> Villager
+  3. Mitchell: Troublemaker -> Troublemaker
+  4. Mike: Tanner -> Werewolf  <-- correct target
+
+MODEL VOTES
+  run_1      [stochastic] vote=Eric | status=player_vote | correct=False | matched=Eric (Tanner)
+  run_2      [stochastic] vote=Eric | status=player_vote | correct=False | matched=Eric (Tanner)
+  run_3      [stochastic] vote=Eric | status=player_vote | correct=False | matched=Eric (Tanner)
+  greedy_t0  [greedy    ] vote=Eric | status=player_vote | correct=False | matched=Eric (Tanner)
+
+JUSTIFICATIONS
+
+run_1 [stochastic]
+Eric admits to starting as a Werewolf and claiming to have seen another Werewolf, yet he aggressively attempts to divert the vote toward Mitchell. This contradictory behavior—openly admitting to a villainous role while simultaneously framing another player—is a common tactic used by Werewolves to confuse the Village. While Mitchell also admits to starting as a Werewolf, he suggests he is no longer one, and Justin's claim that Mitchell was the Tanner makes Mitchell a less likely target for a Village win.
+
+run_2 [stochastic]
+Eric and Mitchell both claim to have started as Werewolves, which is highly unusual and suggests either a bluff or the presence of the Tanner. Justin, claiming the Robber role, stated that he robbed Mitchell and found the Tanner card, which would mean Mitchell is the Tanner. If Mitchell is the Tanner, Eric's claim to be a Werewolf is more likely to be true, making him the primary target for Team Village to eliminate.
+
+run_3 [stochastic]
+Both Eric and Mitchell claim to have started as Werewolves, which is highly unusual and suggests either bluffing or a desire to confuse the group. Justin claims that Mitchell was the Tanner, and Mike claims to have switched Justin and Mitchell, which would potentially make Mitchell the Tanner. Eric's behavior—admitting to being a Werewolf while simultaneously pushing the vote toward Mitchell—is a common strategy for a Werewolf attempting to divert suspicion or a Tanner attempting to be voted out, but given the conflicting claims, Eric is the most suspicious target for Team Village.
+
+greedy_t0 [greedy]
+Both Eric and Mitchell claim to have started as werewolves. However, Justin explicitly identifies Mitchell as the Tanner, and Mitchell's behavior of admitting to being a werewolf while simultaneously claiming he is no longer one is characteristic of a Tanner attempting to attract votes. Eric's admission that he started as a werewolf, combined with his attempts to deflect suspicion onto Mitchell, makes him the most likely candidate for the current werewolf.
+
