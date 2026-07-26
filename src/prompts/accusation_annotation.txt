@@ -1,0 +1,90 @@
+You are annotating player-targeted accusations in transcripts of One Night Ultimate Werewolf.
+
+Input: a list of player names, a full transcript, and some lines marked `<<ACCUSATION_TO_RESOLVE>>`. These lines are already known to contain an accusation. For each marked line, decide if it's relevant, and if so, identify the accused.
+
+# Relevant types (only these two)
+
+**werewolf** — the accuser claims, suspects, or hypothesizes that a specific player is a Werewolf (direct, hedged, conditional, or pronoun-resolved).
+Not werewolf: accusations of being any other role (Tanner, Minion, Seer, etc.), "the Werewolf is in the center," or the speaker calling themselves a Werewolf.
+
+**deception** — the accuser claims or strongly implies another player is intentionally lying, faking a role, hiding info, or colluding to mislead.
+Not deception: disagreement, confusion, forgetting, lacking information, not understanding the rules, or generic suspicion with no dishonesty implied.
+
+These are independent — a line can have one, both, or neither. If they target different players, return them as separate relations.
+
+# Identifying the accused
+
+- Resolve pronouns ("you," "he," "they," "you two," etc.) using context.
+- The accuser is always the speaker of the marked line — never re-infer this.
+- Don't confuse the accused with a mere vote target, hypothetical example, or evidence mention.
+- If the accuser expresses uncertainty about *which* of exactly two specific players is the target ("one of these two," "it's one of them," "you guys," "one of you two") — and those two candidates are clearly identifiable from context (e.g. the only two players involved in that exchange, or the two players just named) — return **both names** in `accused` rather than `UNKNOWN`. The target is a resolved pair; the accuser just hasn't committed to one of the two.
+- Only use `UNKNOWN` when the target is not narrowed to a specific pair this way — e.g. a true whole-group disjunction ("one of you is lying," "someone here is lying") with three or more remaining candidates, or no clear pair established in context.
+- If the accusation type is clear but the target can't be resolved (including the whole-group disjunction case above), use `"accused": ["UNKNOWN"]` and set `requires_review: true`.
+
+# Determining relevance
+
+A marked line is relevant if it contains at least one werewolf or deception accusation, and not relevant otherwise. This is expressed entirely through `relations`:
+
+- If relevant: `relations` contains one or more `{type, accused, evidence}` objects.
+- If not relevant: `relations: []` and `requires_review: false`.
+- If relevant but the target can't be pinned down: still one or more relations, just with `accused: ["UNKNOWN"]` and `requires_review: true` on that item.
+
+Do **not** set `requires_review: true` just because a pronoun needed resolving from context, or because the accusation was indirect/hedged rather than explicit — if you could confidently resolve it, no review is needed. Only flag genuine ambiguity you couldn't settle (i.e. only when `accused` contains `"UNKNOWN"`).
+
+# Output
+
+Return **valid JSON only** (no markdown, no commentary), one item per marked line, in this schema:
+
+```json
+{
+  "items": [
+    {
+      "line_number": 14,
+      "accuser": "Danieal",
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": ["Jessica"],
+          "evidence": "unless Jess was the Werewolf"
+        }
+      ],
+      "requires_review": false
+    }
+  ]
+}
+```
+
+- `line_number`: copy exactly from `[N]` at the start of the marked line — do not renumber.
+- `relations` and `accused` are always lists (empty list `[]` when nothing relevant was found).
+- `evidence`: a short quoted phrase from the marked line only (not other lines).
+- Return exactly one item per marked line — no skipping, no extras.
+
+# Examples
+
+**Werewolf, target resolved via context:**
+`[14] Danieal: Unless Jess was the Werewolf, she could admit it and we'd all shoot Kevin. <<ACCUSATION_TO_RESOLVE>>`
+→ werewolf accusation against Jessica. Kevin is just a vote target, not accused.
+
+**Deception:**
+`[47] Kevin: Unless you're lying about your role. <<ACCUSATION_TO_RESOLVE>>` (context: "you" = Danieal)
+→ deception accusation against Danieal.
+
+**Both types, different targets:**
+`[50] James: Elliot might be the Werewolf, but Sian is lying about what she heard. <<ACCUSATION_TO_RESOLVE>>`
+→ werewolf against Elliot; deception against Sian (two separate relations).
+
+**Not relevant (non-Werewolf role accusation):**
+`[118] Sukeshi: I think Ashley is a Minion. <<ACCUSATION_TO_RESOLVE>>`
+→ `relations: []`, `requires_review: false`.
+
+**Pair disjunction, target narrowed to two:**
+`[151] Sukeshi: It think between these two <<ACCUSATION_TO_RESOLVE>>` (context: suspicion has narrowed to Justin and Mitchell, the only two candidates raised)
+→ werewolf relation, `accused: ["Justin", "Mitchell"]`, `requires_review: false` — the target is a resolved pair, just not narrowed to one individual.
+
+**Unresolved target (true whole-group disjunction):**
+`[92] Ashley: You're definitely not telling the truth. <<ACCUSATION_TO_RESOLVE>>` (context never clarifies who "you" is, and more than two players remain candidates)
+→ deception relation, `accused: ["UNKNOWN"]`, `requires_review: true`.
+
+Now annotate every line marked `<<ACCUSATION_TO_RESOLVE>>` in the following transcript. Return JSON only.
+
+{{TRANSCRIPT}}

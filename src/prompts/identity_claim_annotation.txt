@@ -1,0 +1,77 @@
+You are annotating identity (role) claims in transcripts of One Night Ultimate Werewolf.
+
+Input: a list of player names, a full transcript, and some lines marked `<<IDENTITY_CLAIM_TO_RESOLVE>>`. These lines are already known to be a player declaring what role they are or were dealt. For each marked line, identify which role (or roles) the speaker is claiming.
+
+# What counts as the claimed role
+
+The speaker of the marked line is always the one making the claim -- never a role attributed to anyone else.
+
+Identify the role either from:
+- an explicit name ("I'm the Seer", "I was the Robber"), or
+- a described night action that clearly maps to one role's ability, using standard ONUW role abilities as a guide:
+  - **Werewolf**: wakes with other Werewolves.
+  - **Minion**: wakes and sees who the Werewolves are (but isn't one).
+  - **Mason**: wakes and sees the other Mason(s).
+  - **Seer**: looks at another player's card, or two of the center cards.
+  - **Robber**: swaps their own card with another player's, then looks at their new card.
+  - **Troublemaker**: swaps two OTHER players' cards, without looking at either.
+  - **Drunk**: swaps their own card with a center card, without looking.
+  - **Insomniac**: looks at their own card at the end of the night (to see if it changed).
+  - **Villager**: has no night action.
+  - **Tanner**: wants to be killed; has no night action.
+  - **Hunter**: has no night action, but if killed, whoever they point at also dies.
+- Use the role name as it would normally be called in ONUW, even if a game uses an expansion role not listed above -- describe it as named/implied in the transcript rather than forcing it into this list.
+
+A single marked line can claim more than one role if it explicitly states more than one (e.g. "I was the Villager, but I guess someone changed me before" claims both Villager and an acknowledgement of being changed -- if a second specific role isn't named, that's still just one claim). Only extract roles that are actually stated or clearly described in that line -- do not infer a role from what happened to the player on OTHER lines, and do not try to resolve whether an earlier and later claim by the same player are consistent with each other. That comparison is intentionally left for a separate pass; your job here is only to read what this one line says.
+
+# When there's no resolvable role
+
+If the marked line doesn't actually name or clearly describe a specific role (e.g. it's vague, hedging, or about something other than the speaker's own identity), return `"claimed_roles": []` and `"requires_review": false`.
+
+If the line is clearly a role claim but you can't tell which role, return `"claimed_roles": ["UNKNOWN"]` and set `"requires_review": true`.
+
+Do not set `requires_review: true` just because the phrasing is indirect (a described action instead of a named role) -- if you can confidently map it to a role, no review is needed. Only flag genuine ambiguity you couldn't resolve.
+
+# Output
+
+Return **valid JSON only** (no markdown, no commentary), one item per marked line, in this schema:
+
+```json
+{
+  "items": [
+    {
+      "line_number": 42,
+      "claimed_roles": ["Seer"],
+      "evidence": "I am the Seer",
+      "requires_review": false
+    }
+  ]
+}
+```
+
+- `line_number`: copy exactly from `[N]` at the start of the marked line -- do not renumber.
+- `claimed_roles` is always a list (empty list `[]` when nothing resolvable was found).
+- `evidence`: a short quoted phrase from the marked line only (not other lines).
+- Return exactly one item per marked line -- no skipping, no extras.
+
+# Examples
+
+**Explicit role name:**
+`[15] Jack: I was the Robber. <<IDENTITY_CLAIM_TO_RESOLVE>>`
+→ `claimed_roles: ["Robber"]`, `evidence: "I was the Robber"`, `requires_review: false`.
+
+**Described action, no name given:**
+`[27] Hailey: I looked at two of the middle cards. <<IDENTITY_CLAIM_TO_RESOLVE>>`
+→ `claimed_roles: ["Seer"]`, `evidence: "looked at two of the middle cards"`, `requires_review: false`.
+
+**Vague, no specific role:**
+`[33] Erin: I'm not a threat to anyone. <<IDENTITY_CLAIM_TO_RESOLVE>>`
+→ `claimed_roles: []`, `evidence: "not a threat to anyone"`, `requires_review: false`.
+
+**Genuinely unresolvable:**
+`[41] Paul: I had one of the weird ones. <<IDENTITY_CLAIM_TO_RESOLVE>>` (no further context clarifies which role "the weird ones" refers to)
+→ `claimed_roles: ["UNKNOWN"]`, `evidence: "one of the weird ones"`, `requires_review: true`.
+
+Now annotate every line marked `<<IDENTITY_CLAIM_TO_RESOLVE>>` in the following transcript. Return JSON only.
+
+{{TRANSCRIPT}}
