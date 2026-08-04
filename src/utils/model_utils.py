@@ -6,6 +6,7 @@ import re
 import time
 import warnings
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Literal, Optional, Tuple
 
 
@@ -272,11 +273,46 @@ def _unsloth_from_pretrained(
     )
 
 
+def _attach_adapter(model: Any, adapter_path: str) -> Any:
+    """
+    Load a LoRA adapter on top of an already-loaded base model.
+
+    The base checkpoint is loaded first and the adapter applied to it, rather than
+    letting the adapter config resolve its own base. That keeps the quantized base
+    byte-identical between the finetuned and non-finetuned conditions, which is what
+    makes the before/after comparison meaningful.
+    """
+    try:
+        from peft import PeftModel
+    except ImportError as exc:
+        raise ImportError(
+            "peft is required to load a finetuned adapter. "
+            "Install it in the environment where you run the experiments."
+        ) from exc
+
+    path = Path(adapter_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Adapter path does not exist: {path}")
+    if not (path / "adapter_config.json").exists():
+        raise FileNotFoundError(
+            f"No adapter_config.json under {path}. "
+            "Point --adapter_path at a saved LoRA directory."
+        )
+
+    model = PeftModel.from_pretrained(model, str(path))
+    model.eval()
+
+    setattr(model, "_local_adapter_path", str(path))
+    setattr(model, "_local_backend", "unsloth+peft")
+    return model
+
+
 def load_local_model(
     model_name: str,
     max_seq_length: int = 8192,
     dtype: Any = None,
     full_finetuning: bool = False,
+    adapter_path: Optional[str] = None,
 ) -> Tuple[Any, Any]:
     family = get_model_family(model_name)
     model_io, model, _ = _unsloth_from_pretrained(
@@ -286,6 +322,8 @@ def load_local_model(
         dtype=dtype,
         full_finetuning=full_finetuning,
     )
+    if adapter_path:
+        model = _attach_adapter(model, adapter_path)
     return model_io, model
 
 

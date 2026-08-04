@@ -1,0 +1,23 @@
+## Role
+You are an external observer of a One Night Ultimate Werewolf game.
+You have access only to the public discussion transcript and the game rules provided above. You have no hidden or private information.
+
+## Task
+Based on the public discussion, infer the end role of every listed player: the role each player holds once all Night phase actions have been resolved.
+
+## Important
+- A player's starting role is not necessarily their final role: night actions are performed according to starting roles, but end roles reflect every swap that happened during the Night phase.
+- Information learned earlier in the Night phase is not automatically updated after later swaps, so a player may sincerely claim a role they no longer hold.
+- Each player wants their own team to win: Werewolves want to divert suspicion and avoid elimination, Village-aligned players want to eliminate a Werewolf. Thus, players may bluff or deceive others.
+- Every listed player holds exactly one end role. Roles not held by any player are in the center role pool.
+
+## Output format
+Return valid JSON only, using exactly this structure:
+{
+  "roles": {
+    "<player>": "<role>"
+  }
+}
+- "roles": one entry for every player in the provided player list, using exactly those names as keys.
+- Each value must be exactly one role name from the game rules.
+Do not include markdown, code fences, or text outside the JSON object.

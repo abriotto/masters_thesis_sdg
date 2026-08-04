@@ -38,30 +38,7 @@ from src.utils.experiment_utils import (
 from src.utils.io_utils import find_repo_root, load_json, load_text
 from src.utils.json_utils import parse_model_json
 from src.utils.model_utils import call_local_model, load_local_model
-
-
-def build_full_prompt(
-    base_prompt: str,
-    rules_text: str,
-    player_names: list[str],
-    transcript_text: str,
-) -> str:
-    players_str = ", ".join(player_names)
-
-    return f"""{base_prompt}
-
-Here are the game rules:
-
-{rules_text}
-
-## Player list
-
-{players_str}
-
-## Transcript
-
-{transcript_text}
-""".strip()
+from src.utils.prompt_utils import build_full_prompt
 
 
 def validate_vote_output(obj: Optional[dict[str, Any]], player_names: list[str]) -> dict[str, Any]:
@@ -155,6 +132,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prompt_path", type=str, required=True)
     parser.add_argument("--rules_path", type=str, default="src/prompts/onuw_rules_v2.txt")
     parser.add_argument("--model_name", type=str, required=True)
+    parser.add_argument(
+        "--adapter_path",
+        type=str,
+        default=None,
+        help=(
+            "Optional LoRA adapter directory. The base checkpoint stays identical to the "
+            "non-finetuned run; results go to a separate adapter-specific results root."
+        ),
+    )
     parser.add_argument("--prompt_version", type=str, required=True)
     parser.add_argument("--task_name", type=str, default="voting")
 
@@ -209,6 +195,7 @@ def build_result_record(
         "player_names": row["player_names"],
         "backend": "unsloth_local",
         "model_name": args.model_name,
+        "adapter_path": args.adapter_path,
         "prompt_version": args.prompt_version,
         "prompt_path": args.prompt_path,
         "rules_path": args.rules_path,
@@ -254,6 +241,7 @@ def build_error_record(
         "player_names": row.get("player_names"),
         "backend": "unsloth_local",
         "model_name": args.model_name,
+        "adapter_path": args.adapter_path,
         "prompt_version": args.prompt_version,
         "prompt_path": args.prompt_path,
         "rules_path": args.rules_path,
@@ -295,11 +283,13 @@ def main() -> None:
         task_name=args.task_name,
         model_name=args.model_name,
         prompt_version=args.prompt_version,
+        adapter_path=args.adapter_path,
     )
 
     model_io, model = load_local_model(
         model_name=args.model_name,
         max_seq_length=args.max_seq_length,
+        adapter_path=args.adapter_path,
     )
 
     print(f"Loaded {len(rows)} games from {index_path}", flush=True)
@@ -307,6 +297,7 @@ def main() -> None:
     print(f"Rules file: {rules_path}", flush=True)
     print("Backend: unsloth_local", flush=True)
     print(f"Model: {args.model_name}", flush=True)
+    print(f"Adapter: {args.adapter_path or 'none (base model)'}", flush=True)
     print(f"Reasoning effort: {args.reasoning_effort}", flush=True)
     print(f"Gemma thinking enabled: {args.gemma_enable_thinking}", flush=True)
     print(f"Max new tokens: {args.max_new_tokens}", flush=True)

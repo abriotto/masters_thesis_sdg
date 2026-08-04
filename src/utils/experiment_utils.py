@@ -22,17 +22,44 @@ def save_json(path: Path, obj: dict[str, Any]) -> None:
         json.dump(obj, f, indent=2, ensure_ascii=False)
 
 
+def adapter_label(adapter_path: str) -> str:
+    """
+    Short, unambiguous name for a finetuning adapter directory.
+
+    Checkpoint directories are named `final_adapter` or `checkpoint-N` inside a run
+    directory, so the run name is prepended to keep different runs (and different
+    epochs of the same run) distinguishable.
+    """
+    path = Path(adapter_path)
+    name = path.name
+    if name == "final_adapter" or name.startswith("checkpoint-"):
+        return f"{path.parent.name}-{name}"
+    return name
+
+
 def build_results_root(
     repo_root: Path,
     task_name: str,
     model_name: str,
     prompt_version: str,
+    adapter_path: Optional[str] = None,
 ) -> Path:
+    """
+    Results directory for one experimental condition.
+
+    An adapter gets its own model-level directory. Finetuned and base runs of the same
+    checkpoint and prompt version would otherwise share a path, which either overwrites
+    the baseline (with --overwrite) or skips every game (without it).
+    """
+    model_dir = safe_path_name(model_name)
+    if adapter_path:
+        model_dir = f"{model_dir}__ft_{safe_path_name(adapter_label(adapter_path))}"
+
     results_root = (
         repo_root
         / "results"
         / task_name
-        / safe_path_name(model_name)
+        / model_dir
         / f"prompt_{prompt_version}"
     )
     results_root.mkdir(parents=True, exist_ok=True)
