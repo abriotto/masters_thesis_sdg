@@ -12,8 +12,15 @@ data/lai2023
 data/raw/
 
 logs/
-slurm_files/
+# Ignore slurm scripts by default, but track the finetuning ones so they reach
+# the cluster via git. Negation requires globbing the contents rather than the
+# directory: git cannot re-include a file whose parent directory is excluded.
+slurm_files/*
+!slurm_files/ft_*.slurm
 unsloth_compiled_cache/
+
+# Finetuned adapters live on the cluster, not in git.
+models/
 results/voting/openai_gpt-oss-20b/prompt_v1
 results/voting/openai_gpt-oss-20b/prompt_v2
 results/voting/google_gemma-4-31B-it/prompt_v2_8bit
