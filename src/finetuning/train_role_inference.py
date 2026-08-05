@@ -39,6 +39,7 @@ from pathlib import Path
 from typing import Any
 
 from src.utils.io_utils import find_repo_root
+from src.utils.model_utils import load_local_model_for_training
 
 
 INSTRUCTION_PART = "<|turn>user\n"
@@ -211,12 +212,11 @@ def build_model_and_tokenizer(args: argparse.Namespace):
     from unsloth import FastModel
     from unsloth.chat_templates import get_chat_template
 
-    model, tokenizer = FastModel.from_pretrained(
+    # Shares the loader policy with the voting evaluation (see model_utils), so the
+    # base being finetuned is loaded identically to the base being compared against.
+    tokenizer, model = load_local_model_for_training(
         model_name=args.model_name,
-        dtype=None,
         max_seq_length=args.max_seq_length,
-        load_in_4bit=True,
-        full_finetuning=False,
     )
 
     model = FastModel.get_peft_model(

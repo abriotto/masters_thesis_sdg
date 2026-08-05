@@ -184,14 +184,21 @@ def _loader_registry(FastLanguageModel: Any, FastModel: Any) -> dict[str, Any]:
     return registry
 
 
-def _safe_set_tokenizer_defaults(tokenizer_or_processor: Any) -> None:
+def _safe_set_tokenizer_defaults(
+    tokenizer_or_processor: Any,
+    padding_side: str = "left",
+) -> None:
+    """
+    `padding_side` is "left" for generation and "right" for training. Left padding a
+    training batch misaligns the causal targets against the loss mask.
+    """
     if getattr(tokenizer_or_processor, "pad_token", None) is None:
         eos = getattr(tokenizer_or_processor, "eos_token", None)
         if eos is not None:
             tokenizer_or_processor.pad_token = eos
 
     if hasattr(tokenizer_or_processor, "padding_side"):
-        tokenizer_or_processor.padding_side = "left"
+        tokenizer_or_processor.padding_side = padding_side
 
 
 def _unsloth_from_pretrained(
@@ -200,6 +207,7 @@ def _unsloth_from_pretrained(
     max_seq_length: int,
     dtype: Any = None,
     full_finetuning: bool = False,
+    prepare_for_inference: bool = True,
 ) -> Tuple[Any, Any, str]:
     """
     Unsloth-only loader.
@@ -207,6 +215,11 @@ def _unsloth_from_pretrained(
     No Gemini dependency.
     No legacy HF-local fallback.
     No checkpoint aliasing/normalization.
+
+    `prepare_for_inference=False` is the finetuning path: the model is left in
+    training mode with right-padded batches. Everything else - loader choice,
+    quantization, attention implementation - is shared with the inference path, so
+    the finetuned and non-finetuned conditions run on the same quantized base.
     """
     FastLanguageModel, FastModel = _load_unsloth_classes()
     registry = _loader_registry(FastLanguageModel, FastModel)
@@ -233,12 +246,13 @@ def _unsloth_from_pretrained(
         try:
             model, model_io = loader.from_pretrained(**common_kwargs)
 
-            # Some Unsloth helpers mutate the model in-place and return None.
-            for_inference = getattr(loader, "for_inference", None)
-            if callable(for_inference):
-                maybe_model = for_inference(model)
-                if maybe_model is not None:
-                    model = maybe_model
+            if prepare_for_inference:
+                # Some Unsloth helpers mutate the model in-place and return None.
+                for_inference = getattr(loader, "for_inference", None)
+                if callable(for_inference):
+                    maybe_model = for_inference(model)
+                    if maybe_model is not None:
+                        model = maybe_model
 
             if model is None:
                 raise RuntimeError(
@@ -260,8 +274,12 @@ def _unsloth_from_pretrained(
             setattr(model, "_last_thought_block", None)
             setattr(model, "_last_prompt_formatter", None)
 
-            _safe_set_tokenizer_defaults(model_io)
-            model.eval()
+            _safe_set_tokenizer_defaults(
+                model_io,
+                padding_side="left" if prepare_for_inference else "right",
+            )
+            if prepare_for_inference:
+                model.eval()
             return model_io, model, loader_name
 
         except Exception as exc:
@@ -324,6 +342,31 @@ def load_local_model(
     )
     if adapter_path:
         model = _attach_adapter(model, adapter_path)
+    return model_io, model
+
+
+def load_local_model_for_training(
+    model_name: str,
+    max_seq_length: int = 4096,
+    dtype: Any = None,
+) -> Tuple[Any, Any]:
+    """
+    Load the base checkpoint for finetuning.
+
+    Shares get_loader_policy with load_local_model, so the base used for training is
+    loaded exactly the way the voting evaluation loads it. Attaching LoRA is left to
+    the caller (FastModel.get_peft_model), since the adapter configuration belongs to
+    the training script rather than to this policy layer.
+    """
+    family = get_model_family(model_name)
+    model_io, model, _ = _unsloth_from_pretrained(
+        model_name=model_name,
+        family=family,
+        max_seq_length=max_seq_length,
+        dtype=dtype,
+        full_finetuning=False,
+        prepare_for_inference=False,
+    )
     return model_io, model
 
 
@@ -781,6 +824,7 @@ __all__ = [
     "get_model_io_info",
     "get_model_input_device",
     "load_local_model",
+    "load_local_model_for_training",
     "load_local_model_bundle",
     "call_local_model",
 ]
