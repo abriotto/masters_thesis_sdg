@@ -159,6 +159,56 @@ def report_thought_channel(text: str, label: str) -> bool:
     return has_thought
 
 
+def probe_template_variants(model_name: str, messages: list[dict[str, str]]) -> None:
+    """
+    Does ANY template/flag combination put a thought block into a completed
+    assistant turn?
+
+    The claim being tested is that the thought channel is model-generated content
+    rather than something the template inserts, so no flag can add it when the target
+    text has none. Worth verifying rather than assuming, since the whole target-format
+    decision rests on it.
+    """
+    from transformers import AutoTokenizer
+    from unsloth.chat_templates import get_chat_template
+
+    print("\n" + "=" * 78)
+    print("TEMPLATE PROBE - can any flag inject a thought block?")
+    print("=" * 78)
+
+    variants = [
+        ("gemma-4-thinking", {}),
+        ("gemma-4-thinking", {"enable_thinking": True}),
+        ("gemma-4", {}),
+        ("gemma-4", {"enable_thinking": True}),
+    ]
+
+    for template_name, extra_kwargs in variants:
+        label = f"{template_name} + {extra_kwargs or 'no flags'}"
+        try:
+            tokenizer = AutoTokenizer.from_pretrained(model_name)
+            tokenizer = get_chat_template(tokenizer, chat_template=template_name)
+            text = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=False,
+                **extra_kwargs,
+            ).removeprefix("<bos>")
+        except Exception as exc:
+            print(f"  {label:48s} -> unavailable: {type(exc).__name__}: {exc}")
+            continue
+
+        has_thought = "channel>thought" in text
+        tail = text[-90:].replace("\n", "\\n")
+        print(f"  {label:48s} -> thought block: {has_thought}")
+        print(f"  {'':48s}    tail: ...{tail}")
+
+    print(
+        "\n  If every row says False, the thought channel cannot come from the template.\n"
+        "  It has to be present in the target text itself, or not at all."
+    )
+
+
 def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
     """Tokenizer-only inspection. Runs on a laptop; no model weights are downloaded."""
     from transformers import AutoTokenizer
@@ -204,6 +254,8 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
         "will push the model to skip the thought channel. Decide that deliberately\n"
         "before running, since the voting eval uses thinking mode."
     )
+
+    probe_template_variants(args.model_name, example["messages"])
     print("\nThis is an approximation of train_on_responses_only (string-level).")
     print("Run --inspect_only on the GPU node for the exact token-level mask.")
 
