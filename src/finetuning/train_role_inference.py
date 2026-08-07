@@ -353,10 +353,25 @@ def print_exact_loss_span(trainer: Any, tokenizer: Any) -> None:
     report_thought_channel(decoded, "supervised span")
 
 
-def run_smoke_test(model: Any, tokenizer: Any, val_rows: list[dict[str, Any]], n: int) -> None:
-    """Confirm the thought channel still fires after training."""
-    import torch
+def run_smoke_test(
+    model: Any,
+    model_io: Any,
+    model_name: str,
+    val_rows: list[dict[str, Any]],
+    n: int,
+) -> None:
+    """
+    Confirm the thought channel still fires after training.
+
+    Generation goes through call_local_model, i.e. the exact path run_llm_votes uses.
+    That matters twice over: Gemma 4's model_io is a multimodal Processor whose
+    apply_chat_template rejects plain-string content when tokenize=True, and the
+    `internal_thoughts` measured here is then the same field the voting results record
+    (non-empty in 960/960 baseline games).
+    """
     from unsloth import FastModel
+
+    from src.utils.model_utils import call_local_model
 
     if n <= 0:
         return
@@ -365,48 +380,53 @@ def run_smoke_test(model: Any, tokenizer: Any, val_rows: list[dict[str, Any]], n
     print("POST-TRAINING SMOKE TEST - is the thought channel still alive?")
     print("=" * 78)
 
-    FastModel.for_inference(model)
+    try:
+        FastModel.for_inference(model)
+    except Exception as exc:
+        print(f"  (for_inference unavailable: {exc}; falling back to model.eval())")
+        model.eval()
+
+    sampled = val_rows[:n]
     empty_thoughts = 0
 
-    for row in val_rows[:n]:
-        inputs = tokenizer.apply_chat_template(
-            [{"role": "user", "content": row["prompt"]}],
-            add_generation_prompt=True,
-            tokenize=True,
-            return_dict=True,
-            return_tensors="pt",
-        ).to("cuda")
-
-        with torch.inference_mode():
-            output = model.generate(
-                **inputs,
+    for row in sampled:
+        try:
+            text, debug_info = call_local_model(
+                model=model,
+                model_io=model_io,
+                prompt=row["prompt"],
+                model_name=model_name,
                 max_new_tokens=768,
-                use_cache=True,
-                # Same decoding as the voting evaluation.
+                gemma_enable_thinking=True,
+                return_debug_info=True,
                 temperature=1.0,
                 top_p=0.95,
                 top_k=64,
             )
+        except Exception as exc:
+            print(f"\n[{row['session_name']}] generation FAILED: {type(exc).__name__}: {exc}")
+            continue
 
-        generated = tokenizer.decode(
-            output[0][inputs["input_ids"].shape[-1] :], skip_special_tokens=False
-        )
-        has_thought = "channel>thought" in generated
+        thoughts = (debug_info or {}).get("internal_thoughts")
+        has_thought = bool(thoughts and str(thoughts).strip())
         if not has_thought:
             empty_thoughts += 1
 
-        print(f"\n[{row['session_name']}] thought channel: {has_thought}")
-        print(f"  gold: {row['completion']}")
-        print(f"  generated (first 400 chars): {generated[:400]!r}")
+        print(f"\n[{row['session_name']}] thought channel present: {has_thought}")
+        print(f"  gold:   {row['completion']}")
+        print(f"  answer: {text[:200]!r}")
+        if has_thought:
+            print(f"  thought (first 200 chars): {str(thoughts)[:200]!r}")
 
+    print(
+        f"\n  thought channel present in {len(sampled) - empty_thoughts}/{len(sampled)} "
+        "sampled generations (baseline: 960/960)."
+    )
     if empty_thoughts:
         print(
-            f"\n  !! {empty_thoughts}/{min(n, len(val_rows))} generations had NO thought "
-            "channel. The finetune may have suppressed reasoning; consider an earlier "
-            "epoch checkpoint before running the voting evaluation."
+            "  !! Reasoning may have been suppressed by finetuning. Check an earlier "
+            "epoch checkpoint before spending GPU hours on the voting reruns."
         )
-    else:
-        print("\n  Thought channel intact on all sampled generations.")
 
 
 def main() -> None:
@@ -505,7 +525,8 @@ def main() -> None:
 
     run_smoke_test(
         model=model,
-        tokenizer=tokenizer,
+        model_io=tokenizer,
+        model_name=args.model_name,
         val_rows=load_jsonl(repo_root / args.val_path),
         n=args.smoke_test_samples,
     )
