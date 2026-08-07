@@ -119,6 +119,16 @@ def parse_args() -> argparse.Namespace:
         default=3,
         help="After training, generate on N val examples to confirm the thought channel survived.",
     )
+    parser.add_argument(
+        "--smoke_test_max_new_tokens",
+        type=int,
+        default=10000,
+        help=(
+            "Must be large enough for a full thought block plus the answer. The voting "
+            "runs use 10000 and thought blocks alone reach ~7700 tokens; a small budget "
+            "truncates mid-thought, which breaks the parser and looks like suppression."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -206,6 +216,45 @@ def probe_template_variants(model_name: str, messages: list[dict[str, str]]) -> 
     print(
         "\n  If every row says False, the thought channel cannot come from the template.\n"
         "  It has to be present in the target text itself, or not at all."
+    )
+
+    # The decisive question for the suppression risk: at inference time, does
+    # enable_thinking PRE-FILL the thought marker into the generation prompt?
+    #
+    # If it does, the model is already inside the thought channel before it emits a
+    # single token, and finetuning on answer-only targets cannot stop it thinking.
+    # If it does not, emitting <|channel>thought is the model's own choice, and
+    # training against 297 examples that skip it can plausibly erode that choice.
+    print("\n" + "=" * 78)
+    print("GENERATION PROMPT PROBE - does enable_thinking pre-fill the thought marker?")
+    print("=" * 78)
+
+    user_only = [m for m in messages if m.get("role") == "user"]
+
+    for template_name in ("gemma-4-thinking", "gemma-4"):
+        for flag in (True, False):
+            label = f"{template_name} + enable_thinking={flag}"
+            try:
+                tokenizer = AutoTokenizer.from_pretrained(model_name)
+                tokenizer = get_chat_template(tokenizer, chat_template=template_name)
+                text = tokenizer.apply_chat_template(
+                    user_only,
+                    tokenize=False,
+                    add_generation_prompt=True,
+                    enable_thinking=flag,
+                )
+            except Exception as exc:
+                print(f"  {label:44s} -> unavailable: {type(exc).__name__}")
+                continue
+
+            prefilled = "channel>thought" in text[-200:]
+            print(f"  {label:44s} -> thought marker pre-filled: {prefilled}")
+            print(f"  {'':44s}    prompt ends: ...{text[-70:]!r}")
+
+    print(
+        "\n  pre-filled True  -> the model cannot skip thinking; suppression risk is moot.\n"
+        "  pre-filled False -> emitting the thought marker is the model's own choice,\n"
+        "                      and answer-only finetuning could erode it. ft_03 decides."
     )
 
 
@@ -359,6 +408,7 @@ def run_smoke_test(
     model_name: str,
     val_rows: list[dict[str, Any]],
     n: int,
+    max_new_tokens: int = 10000,
 ) -> None:
     """
     Confirm the thought channel still fires after training.
@@ -367,7 +417,7 @@ def run_smoke_test(
     That matters twice over: Gemma 4's model_io is a multimodal Processor whose
     apply_chat_template rejects plain-string content when tokenize=True, and the
     `internal_thoughts` measured here is then the same field the voting results record
-    (non-empty in 960/960 baseline games).
+    (non-empty in all 573 games of the prompt_v4 baseline runs).
     """
     from unsloth import FastModel
 
@@ -396,7 +446,7 @@ def run_smoke_test(
                 model_io=model_io,
                 prompt=row["prompt"],
                 model_name=model_name,
-                max_new_tokens=768,
+                max_new_tokens=max_new_tokens,
                 gemma_enable_thinking=True,
                 return_debug_info=True,
                 temperature=1.0,
@@ -407,20 +457,37 @@ def run_smoke_test(
             print(f"\n[{row['session_name']}] generation FAILED: {type(exc).__name__}: {exc}")
             continue
 
-        thoughts = (debug_info or {}).get("internal_thoughts")
-        has_thought = bool(thoughts and str(thoughts).strip())
+        debug_info = debug_info or {}
+        thoughts = debug_info.get("internal_thoughts")
+        parsed_thought = bool(thoughts and str(thoughts).strip())
+
+        # A thought that runs past max_new_tokens never emits its closing marker, so
+        # parse_reasoning_response cannot split it and returns the raw text instead.
+        # That is truncation, NOT suppression - detect the opening marker directly so
+        # the two are never confused.
+        emitted_marker = "channel>thought" in (text or "")
+        has_thought = parsed_thought or emitted_marker
+
+        out_tokens = debug_info.get("output_token_count")
+        truncated = bool(out_tokens and out_tokens >= max_new_tokens)
+
         if not has_thought:
             empty_thoughts += 1
 
-        print(f"\n[{row['session_name']}] thought channel present: {has_thought}")
+        print(f"\n[{row['session_name']}] thought channel emitted: {has_thought}")
+        print(f"  parsed cleanly: {parsed_thought}   output tokens: {out_tokens}/{max_new_tokens}")
+        if truncated:
+            print("  !! hit the token cap - raise --smoke_test_max_new_tokens")
+        elif emitted_marker and not parsed_thought:
+            print("  !! thought emitted but not parseable (no closing marker)")
         print(f"  gold:   {row['completion']}")
         print(f"  answer: {text[:200]!r}")
-        if has_thought:
+        if parsed_thought:
             print(f"  thought (first 200 chars): {str(thoughts)[:200]!r}")
 
     print(
-        f"\n  thought channel present in {len(sampled) - empty_thoughts}/{len(sampled)} "
-        "sampled generations (baseline: 960/960)."
+        f"\n  thought channel emitted in {len(sampled) - empty_thoughts}/{len(sampled)} "
+        "sampled generations (baseline: 573/573 across prompt_v4 runs 1-3)."
     )
     if empty_thoughts:
         print(
@@ -529,6 +596,7 @@ def main() -> None:
         model_name=args.model_name,
         val_rows=load_jsonl(repo_root / args.val_path),
         n=args.smoke_test_samples,
+        max_new_tokens=args.smoke_test_max_new_tokens,
     )
 
 
