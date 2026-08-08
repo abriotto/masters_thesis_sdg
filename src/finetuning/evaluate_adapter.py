@@ -6,11 +6,10 @@ Diagnose a finetuned adapter before spending GPU hours on the voting reruns.
 Answers three questions, for the base model or any checkpoint:
 
 1. Does the model still emit a thought channel on the VOTING prompt?
-   The training smoke test probes the role-inference prompt, i.e. the training
-   distribution, where the finetuned model trivially reproduces the answer-only
-   format. The voting prompt is a different instruction with a different output
-   schema that the adapter never saw. Suppression there would confound the whole
-   experiment; suppression only on the training prompt would not.
+   Measured by running src.voting.run_llm_votes itself - with --adapter_path and a
+   small --max_games - and summarising its output here via
+   --summarize_voting_results. Generation is NOT reimplemented in this file: a copy
+   of the runner would only tell you about the copy.
 
 2. Did role inference actually improve, and on which roles?
    Reported per role, because parts of the label are not recoverable from a public
@@ -32,10 +31,9 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Optional
 
-from src.utils.io_utils import find_repo_root, load_json, load_text
+from src.utils.io_utils import find_repo_root, load_json
 from src.utils.json_utils import parse_model_json
 from src.utils.model_utils import call_local_model, load_local_model
-from src.utils.prompt_utils import build_full_prompt
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -185,74 +183,85 @@ def run_role_inference(
     }
 
 
-def run_voting_probe(
-    model: Any,
-    model_io: Any,
-    args: argparse.Namespace,
-    repo_root: Path,
-) -> dict[str, Any]:
+def summarize_voting_results(repo_root: Path, results_dir: str) -> dict[str, Any]:
     """
-    The decisive check: does the adapter still reason on the ACTUAL evaluation prompt?
+    Summarise voting results produced by src.voting.run_llm_votes.
 
-    Uses the same prompt assembly as run_llm_votes, so the only thing being varied is
-    the adapter.
+    Deliberately does NOT generate anything. Re-implementing the voting loop here
+    would mean measuring a copy of the runner rather than the runner itself; instead
+    run_llm_votes writes its normal result JSONs (with --adapter_path and a small
+    --max_games) and this reads them. Same code path as the real evaluation.
     """
-    index = load_json(repo_root / args.index_path)
-    base_prompt = load_text(repo_root / args.voting_prompt_path)
-    rules_text = load_text(repo_root / args.rules_path)
-    rows = index[: args.voting_probe]
+    root = repo_root / results_dir
+    if not root.exists():
+        raise FileNotFoundError(f"No results under {root}")
+
+    files = sorted(root.rglob("*.json"))
+    if not files:
+        raise FileNotFoundError(f"No result JSONs under {root}")
 
     print("\n" + "=" * 78)
-    print(f"VOTING PROMPT PROBE - {len(rows)} games (the condition that actually matters)")
+    print(f"VOTING RESULTS SUMMARY - {results_dir}")
     print("=" * 78)
 
     emitted = 0
-    valid_json = 0
+    valid = 0
     out_tokens: list[int] = []
+    just_chars: list[int] = []
+    thought_chars: list[int] = []
+    errors = 0
 
-    for i, row in enumerate(rows, start=1):
-        transcript = load_text(repo_root / row["processed_txt_path"])
-        prompt = build_full_prompt(
-            base_prompt=base_prompt,
-            rules_text=rules_text,
-            player_names=row["player_names"],
-            transcript_text=transcript,
-        )
-        text, debug_info = generate(
-            model, model_io, args.model_name, prompt, args.max_new_tokens
-        )
-        has_thought, parsed_clean = thought_present(text, debug_info)
-        emitted += int(has_thought)
-        if debug_info.get("output_token_count"):
-            out_tokens.append(int(debug_info["output_token_count"]))
+    for path in files:
+        record = load_json(path)
+        if record.get("error"):
+            errors += 1
+            continue
 
-        parsed = parse_model_json(text)
-        ok = isinstance(parsed, dict) and "chosen_vote" in parsed and "justification" in parsed
-        valid_json += int(ok)
+        thoughts = record.get("internal_thoughts") or ""
+        if str(thoughts).strip():
+            emitted += 1
+            thought_chars.append(len(str(thoughts)))
 
-        justification = (parsed or {}).get("justification") if isinstance(parsed, dict) else None
+        if (record.get("validation") or {}).get("is_valid"):
+            valid += 1
+
+        parsed = record.get("parsed_output") or {}
+        justification = parsed.get("justification")
+        if isinstance(justification, str):
+            just_chars.append(len(justification))
+
+        tokens = (record.get("debug_info") or {}).get("output_token_count")
+        if tokens:
+            out_tokens.append(int(tokens))
+
+    n = len(files)
+
+    def _spread(values: list[int], label: str, reference: str = "") -> None:
+        if not values:
+            print(f"  {label:22s} (none)")
+            return
+        ordered = sorted(values)
         print(
-            f"[{i}/{len(rows)}] {row['session_name']}/{row['game_key']}  "
-            f"thought={has_thought} (parsed={parsed_clean})  "
-            f"tokens={debug_info.get('output_token_count')}  schema_ok={ok}"
+            f"  {label:22s} min {ordered[0]:6d}  median {ordered[len(ordered) // 2]:6d}  "
+            f"max {ordered[-1]:6d}   {reference}"
         )
-        if justification:
-            print(f"      justification ({len(str(justification))} chars): {str(justification)[:160]!r}")
 
-    print(f"\nthought channel:  {emitted}/{len(rows)}   (baseline: 573/573)")
-    print(f"valid vote JSON:  {valid_json}/{len(rows)}")
-    if out_tokens:
-        print(
-            f"output tokens:    min {min(out_tokens)} / "
-            f"median {sorted(out_tokens)[len(out_tokens) // 2]} / max {max(out_tokens)}"
-            "   (baseline median: 2884)"
-        )
+    print(f"  games:                 {n}   (errors: {errors})")
+    print(f"  thought channel:       {emitted}/{n}          baseline: 573/573")
+    print(f"  valid vote JSON:       {valid}/{n}")
+    _spread(out_tokens, "output tokens", "baseline median: 2884")
+    _spread(just_chars, "justification chars", "baseline median: 452")
+    _spread(thought_chars, "thought chars", "baseline median: 9893")
 
     return {
-        "num_games": len(rows),
+        "results_dir": results_dir,
+        "num_games": n,
+        "num_errors": errors,
         "thought_channel_emitted": emitted,
-        "valid_vote_json": valid_json,
+        "valid_vote_json": valid,
         "output_tokens": out_tokens,
+        "justification_chars": just_chars,
+        "thought_chars": thought_chars,
     }
 
 
@@ -277,21 +286,23 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default="data/processed/lai2023/onuw_transcripts_ready/index_cleaned.json",
     )
-    parser.add_argument("--voting_prompt_path", type=str, default="src/prompts/voting_prompt_v4.txt")
-    parser.add_argument("--rules_path", type=str, default="src/prompts/onuw_rules_v2.txt")
     parser.add_argument("--max_seq_length", type=int, default=12000)
     parser.add_argument("--max_new_tokens", type=int, default=10000)
     parser.add_argument("--limit", type=int, default=-1, help="Cap role-inference episodes.")
     parser.add_argument(
-        "--voting_probe",
-        type=int,
-        default=5,
-        help="Games to run through the voting prompt. 0 disables.",
+        "--summarize_voting_results",
+        type=str,
+        default=None,
+        help=(
+            "Path to a results directory written by src.voting.run_llm_votes, relative "
+            "to the repo root. Summarised without generating anything - run the real "
+            "runner with --adapter_path and --max_games, then point this at its output."
+        ),
     )
     parser.add_argument(
         "--skip_role_inference",
         action="store_true",
-        help="Only run the voting probe (much faster).",
+        help="Only summarise voting results; load no model.",
     )
     parser.add_argument("--output_path", type=str, default=None)
     return parser.parse_args()
@@ -301,27 +312,28 @@ def main() -> None:
     args = parse_args()
     repo_root = find_repo_root()
 
-    label = args.adapter_path or "BASE (no adapter)"
-    print(f"Model:   {args.model_name}")
-    print(f"Adapter: {label}")
-
-    model_io, model = load_local_model(
-        model_name=args.model_name,
-        max_seq_length=args.max_seq_length,
-        adapter_path=args.adapter_path,
-    )
-
     results: dict[str, Any] = {
         "model_name": args.model_name,
         "adapter_path": args.adapter_path,
         "max_new_tokens": args.max_new_tokens,
     }
 
-    if not args.skip_role_inference:
-        results["role_inference"] = run_role_inference(model, model_io, args, repo_root)
+    if args.summarize_voting_results:
+        results["voting_summary"] = summarize_voting_results(
+            repo_root, args.summarize_voting_results
+        )
 
-    if args.voting_probe > 0:
-        results["voting_probe"] = run_voting_probe(model, model_io, args, repo_root)
+    if not args.skip_role_inference:
+        label = args.adapter_path or "BASE (no adapter)"
+        print(f"Model:   {args.model_name}")
+        print(f"Adapter: {label}")
+
+        model_io, model = load_local_model(
+            model_name=args.model_name,
+            max_seq_length=args.max_seq_length,
+            adapter_path=args.adapter_path,
+        )
+        results["role_inference"] = run_role_inference(model, model_io, args, repo_root)
 
     if args.output_path:
         out = repo_root / args.output_path
