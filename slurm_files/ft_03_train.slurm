@@ -2,7 +2,7 @@
 #SBATCH --job-name=ft_role
 #SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_role_%j.out
 #SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_role_%j.err
-#SBATCH --partition=debug
+#SBATCH --partition=owner1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
@@ -26,12 +26,7 @@ cd /home/abriotto/Tesi/masters_thesis_sdg || exit 1
 nvidia-smi
 echo "=== Job $SLURM_JOB_ID on $(hostname) ==="
 echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
-
-python -m src.finetuning.train_role_inference \
-  --output_dir models/finetuned/gemma-4-31B-role-inference-v1 \
-  --num_train_epochs 3 \
-  --smoke_test_samples 3
-
+python -m src.finetuning.train_role_inference --train_path data/processed/jin2024_onuw/sft_role_inference_v2/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_v2/val.jsonl --output_dir models/finetuned/gemma-4-31B-role-inference-v2 --num_train_epochs 1 --learning_rate 5e-5 --lora_r 4 --lora_alpha 4 --smoke_test_samples 1
 echo
 echo "=== training finished ==="
 echo "Adapter:     models/finetuned/gemma-4-31B-role-inference-v1/final_adapter"

@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Flashback##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#9_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-31B-role-inference-v1/checkpoint-25",
+  "prompt_version": "v4_probe_ckpt25",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": null,
+  "parsed_output": {
+    "justification": "Paul claims to be a Villager, and James claims to be the Robber who stole Paul's card. Justin claims to be the Seer who saw James as the Robber. Mitchell claims to be the Insomniac. If these claims are true, the only remaining player is Laura, who claims to be a Villager. However, Paul's suspicion of Mitchell is strong, and Mitchell's claim to be the Insomniac is a common bluff for Werewolves. Given the lack of other information, Mitchell is the most likely candidate for the Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\": \"Paul claims to be a Villager, and James claims to be the Robber who stole Paul's card. Justin claims to be the Seer who saw James as the Robber. Mitchell claims to be the Insomniac. If these claims are true, the only remaining player is Laura, who claims to be a Villager. However, Paul's suspicion of Mitchell is strong, and Mitchell's claim to be the Insomniac is a common bluff for Werewolves. Given the lack of other information, Mitchell is the most likely candidate for the Werewolf.\", \"chosen_vote\": \"Mitchell\"}",
+  "response_for_parsing": "{\"justification\": \"Paul claims to be a Villager, and James claims to be the Robber who stole Paul's card. Justin claims to be the Seer who saw James as the Robber. Mitchell claims to be the Insomniac. If these claims are true, the only remaining player is Laura, who claims to be a Villager. However, Paul's suspicion of Mitchell is strong, and Mitchell's claim to be the Insomniac is a common bluff for Werewolves. Given the lack of other information, Mitchell is the most likely candidate for the Werewolf.\", \"chosen_vote\": \"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Paul claims to be a Villager, and James claims to be the Robber who stole Paul's card. Justin claims to be the Seer who saw James as the Robber. Mitchell claims to be the Insomniac. If these claims are true, the only remaining player is Laura, who claims to be a Villager. However, Paul's suspicion of Mitchell is strong, and Mitchell's claim to be the Insomniac is a common bluff for Werewolves. Given the lack of other information, Mitchell is the most likely candidate for the Werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4068,
+    "output_token_count": 130,
+    "generation_time_sec": 27.74247169494629,
+    "used_chat_template": true,
+    "input_char_count": 14329,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

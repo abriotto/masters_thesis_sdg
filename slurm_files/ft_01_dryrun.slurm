@@ -1,22 +1,17 @@
 #!/bin/bash
-#SBATCH --job-name=ft_dryrun
-#SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_dryrun_%j.out
-#SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_dryrun_%j.err
-#SBATCH --partition=debug
+#SBATCH --job-name=ft01_gemma
+#SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft01_gemma_%j.out
+#SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft01_gemma_%j.err
+#SBATCH --partition=owner1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=8G
-#SBATCH --time=00:20:00
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:1
+#SBATCH --time=20:00:00
 #SBATCH --account=thesis
-
-# Steps 1-2: environment check + tokenizer-only dry run. No GPU needed.
-# If your partition refuses jobs without a GPU, add: #SBATCH --gres=gpu:1
-
-set -euo pipefail
 
 cd /home/abriotto/Tesi/masters_thesis_sdg || exit 1
 
-# conda activate <your_env>   # uncomment if the cluster needs it
+
 
 echo "=== Job $SLURM_JOB_ID on $(hostname) ==="
 
