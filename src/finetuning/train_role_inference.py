@@ -14,19 +14,26 @@ Two deviations from the reference, both deliberate:
   There is no budget for a second run, so intermediate checkpoints are the only
   fallback if the last epoch turns out to have over-trained.
 
-THE THING TO CHECK BEFORE YOU TRAIN
------------------------------------
-Targets are answer-only: `{"roles": {...}}`, with no thinking block (see
-build_sft_dataset.py for why). In Gemma 4 the thought channel is emitted by the model
-as content, not injected by the template, and train_on_responses_only starts the loss
-at <|turn>model - i.e. BEFORE any thought channel. So if the rendered assistant turn
-contains no thought tokens, training teaches the model to skip the thought channel and
-answer immediately. The voting task runs WITH thinking enabled, so that would suppress
-exactly the reasoning the experiment is trying to measure, and it would look like a
-finding rather than an artefact.
+TWO DATASET MODES
+-----------------
+1. Answer-only (build_sft_dataset.py). Targets are `{"roles": {...}}` with no thought
+   block, loss anchored at `<|turn>model\\n`. MEASURED TO SUPPRESS REASONING: after 25
+   steps the model dropped from ~6,360 output tokens with a full thought block to ~130
+   with none on the voting prompt, with thinking explicitly enabled. Every sequence
+   went `<|turn>model` -> `{`, so it learned to skip the thought channel. Kept for
+   reference and as the documented control, not recommended.
+
+2. Traced (build_traced_dataset.py). The assistant turn is
+   `<|channel>thought {base-model reasoning} <channel|> {gold answer}`, with
+   --response_part '<channel|>' so the thought is unsupervised context and only the
+   gold answer is trained, and --enable_thinking_in_prompt so the prompt matches the
+   voting evaluation. Thinking never leaves the training distribution, and no gradient
+   shapes the reasoning that is later measured. This also satisfies Unsloth's guidance
+   to keep >=75% reasoning-style examples when finetuning Gemma 4.
 
 Run --dry_run (tokenizer only, no GPU) and then --inspect_only (real collator) and read
-what is actually inside the loss span before committing the run.
+what is actually inside the loss span before committing the run. For mode 2 the
+supervised span must be the gold JSON alone, with the thought block masked.
 """
 
 import unsloth  # noqa: F401  - must precede transformers/trl imports
@@ -73,6 +80,26 @@ def parse_args() -> argparse.Namespace:
         default="models/finetuned/gemma-4-31B-role-inference-v1",
     )
     parser.add_argument("--chat_template", type=str, default="gemma-4-thinking")
+    parser.add_argument(
+        "--response_part",
+        type=str,
+        default=RESPONSE_PART,
+        help=(
+            "Where the loss starts. Default '<|turn>model\\n' supervises the whole "
+            "assistant turn. For the traced dataset pass '<channel|>' so the thought "
+            "block stays unsupervised context and only the gold answer is trained."
+        ),
+    )
+    parser.add_argument(
+        "--enable_thinking_in_prompt",
+        action="store_true",
+        help=(
+            "Render training prompts in thinking-ON format, matching the voting "
+            "evaluation. Only meaningful when the targets contain a thought block - "
+            "pairing it with answer-only targets trains the model to ignore the "
+            "thinking instruction."
+        ),
+    )
 
     parser.add_argument("--max_seq_length", type=int, default=4096)
     parser.add_argument("--lora_r", type=int, default=8)
@@ -147,18 +174,34 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
         return [json.loads(line) for line in handle if line.strip()]
 
 
-def render_example(tokenizer: Any, messages: list[dict[str, str]]) -> str:
+def render_example(
+    tokenizer: Any,
+    messages: list[dict[str, str]],
+    enable_thinking: bool = False,
+) -> str:
     """
     Render a completed conversation for training.
 
     `.removeprefix("<bos>")` matches the reference notebook: the tokenizer adds BOS
     again at tokenization time, and a doubled BOS silently degrades training.
+
+    `enable_thinking` is documented for inference, so not every template version
+    accepts it on a completed turn; fall back rather than fail, and let --dry_run show
+    which path was taken.
     """
-    text = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=False,
-    )
+    kwargs: dict[str, Any] = {"tokenize": False, "add_generation_prompt": False}
+    if enable_thinking:
+        try:
+            text = tokenizer.apply_chat_template(messages, **kwargs, enable_thinking=True)
+            return text.removeprefix("<bos>")
+        except TypeError:
+            print(
+                "  NOTE: this chat template does not accept enable_thinking on a "
+                "completed turn; rendering without it.",
+                flush=True,
+            )
+
+    text = tokenizer.apply_chat_template(messages, **kwargs)
     return text.removeprefix("<bos>")
 
 
@@ -272,7 +315,7 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
 
     train = load_jsonl(repo_root / args.train_path)
     example = train[0]
-    text = render_example(tokenizer, example["messages"])
+    text = render_example(tokenizer, example["messages"], args.enable_thinking_in_prompt)
 
     print(f"\nExample: {example['session_name']}")
     print(f"Chat template: {args.chat_template}")
@@ -346,7 +389,9 @@ def build_datasets(args: argparse.Namespace, repo_root: Path, tokenizer: Any):
             [
                 {
                     "session_name": row["session_name"],
-                    "text": render_example(tokenizer, row["messages"]),
+                    "text": render_example(
+                        tokenizer, row["messages"], args.enable_thinking_in_prompt
+                    ),
                 }
                 for row in rows
             ]
@@ -550,7 +595,7 @@ def main() -> None:
     trainer = train_on_responses_only(
         trainer,
         instruction_part=INSTRUCTION_PART,
-        response_part=RESPONSE_PART,
+        response_part=args.response_part,
     )
 
     print_exact_loss_span(trainer, tokenizer)
