@@ -174,6 +174,48 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
         return [json.loads(line) for line in handle if line.strip()]
 
 
+THOUGHT_MARKER = "channel>thought"
+TURN_END = "<turn|>\n"
+
+
+def render_traced_example(
+    tokenizer: Any,
+    messages: list[dict[str, str]],
+    enable_thinking: bool,
+) -> str:
+    """
+    Render a training example whose assistant turn contains a thought block.
+
+    apply_chat_template CANNOT be used for this. The gemma-4-thinking template strips
+    thought blocks out of completed assistant turns - Unsloth's guidance is that
+    thoughts are not carried in conversation history - so passing
+    "<|channel>thought ... <channel|>{answer}" as message content silently yields just
+    the answer, byte-identical to an answer-only example.
+
+    Instead: render the PROMPT with add_generation_prompt=True (exactly the string the
+    model sees at inference, ending at "<|turn>model\\n"), then append the assistant
+    text verbatim and close the turn. The sequence is then
+
+        <|turn>user ...<turn|>\\n<|turn>model\\n<|channel>thought ...<channel|>{answer}<turn|>\\n
+
+    which is what train_on_responses_only(response_part="<channel|>") expects.
+    """
+    prompt_messages = [m for m in messages if m.get("role") != "assistant"]
+    assistant = next((m for m in messages if m.get("role") == "assistant"), None)
+    if assistant is None:
+        raise ValueError("Traced example has no assistant message.")
+
+    kwargs: dict[str, Any] = {"tokenize": False, "add_generation_prompt": True}
+    try:
+        prompt_text = tokenizer.apply_chat_template(
+            prompt_messages, **kwargs, enable_thinking=enable_thinking
+        )
+    except TypeError:
+        prompt_text = tokenizer.apply_chat_template(prompt_messages, **kwargs)
+
+    return (prompt_text + assistant["content"] + TURN_END).removeprefix("<bos>")
+
+
 def render_example(
     tokenizer: Any,
     messages: list[dict[str, str]],
@@ -189,6 +231,11 @@ def render_example(
     accepts it on a completed turn; fall back rather than fail, and let --dry_run show
     which path was taken.
     """
+    # Targets containing a thought block must bypass the template, which would strip it.
+    assistant = next((m for m in messages if m.get("role") == "assistant"), None)
+    if assistant and THOUGHT_MARKER in str(assistant.get("content", "")):
+        return render_traced_example(tokenizer, messages, enable_thinking)
+
     kwargs: dict[str, Any] = {"tokenize": False, "add_generation_prompt": False}
     if enable_thinking:
         try:
@@ -324,6 +371,12 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
     print(f"Chat template: {args.chat_template}")
     print(f"response_part: {args.response_part!r}")
     print(f"enable_thinking_in_prompt: {args.enable_thinking_in_prompt}")
+    target_has_thought = THOUGHT_MARKER in str(
+        next((m for m in example["messages"] if m.get("role") == "assistant"), {}).get("content", "")
+    )
+    print(
+        f"Render path: {'manual (target has a thought block)' if target_has_thought else 'apply_chat_template'}"
+    )
     print(f"Rendered length: {len(text)} chars")
 
     ids = tokenizer(text, add_special_tokens=False)["input_ids"]
