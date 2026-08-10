@@ -388,12 +388,16 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
     print(text[-600:])
 
     print("\n--- approximate loss span (text after the response marker) ---")
-    marker_index = text.rfind(RESPONSE_PART)
+    # Must use the ARGUMENT, not the module default: the traced dataset anchors on
+    # "<channel|>" so the thought stays unsupervised, and reporting the default
+    # would show the thought inside the loss span and look like a masking failure.
+    marker = args.response_part
+    marker_index = text.find(marker)
     if marker_index == -1:
-        print(f"  !! response marker {RESPONSE_PART!r} NOT FOUND.")
+        print(f"  !! response marker {marker!r} NOT FOUND.")
         print("  train_on_responses_only would mask everything. Check the template name.")
     else:
-        trained_span = text[marker_index + len(RESPONSE_PART) :]
+        trained_span = text[marker_index + len(marker) :]
         print(repr(trained_span))
         print(f"\n  trained span: {len(trained_span)} chars")
 
@@ -507,7 +511,7 @@ def print_exact_loss_span(trainer: Any, tokenizer: Any) -> None:
     if not supervised:
         raise RuntimeError(
             "Nothing is supervised - train_on_responses_only masked the whole sequence. "
-            f"Check that response_part={RESPONSE_PART!r} matches this chat template."
+            f"Check that response_part={args.response_part!r} matches this chat template."
         )
 
     decoded = tokenizer.decode(supervised)
