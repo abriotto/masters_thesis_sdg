@@ -317,8 +317,13 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
     example = train[0]
     text = render_example(tokenizer, example["messages"], args.enable_thinking_in_prompt)
 
-    print(f"\nExample: {example['session_name']}")
+    # Print the dataset path. --train_path defaults to the answer-only dataset, so
+    # omitting it silently inspects the wrong data and the output still looks sane.
+    print(f"\nDataset: {args.train_path}  ({len(train)} rows)")
+    print(f"Example: {example['session_name']}")
     print(f"Chat template: {args.chat_template}")
+    print(f"response_part: {args.response_part!r}")
+    print(f"enable_thinking_in_prompt: {args.enable_thinking_in_prompt}")
     print(f"Rendered length: {len(text)} chars")
 
     ids = tokenizer(text, add_special_tokens=False)["input_ids"]
@@ -340,7 +345,24 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
         print(f"\n  trained span: {len(trained_span)} chars")
 
     print("\n--- thought channel check ---")
-    report_thought_channel(text, "rendered assistant turn")
+    has_thought = report_thought_channel(text, "rendered assistant turn")
+
+    # The traced design pairs a thought-anchored response_part with targets that
+    # contain a thought block. Either one without the other is a misconfiguration:
+    # the mask would land in the wrong place, or nothing would be supervised at all.
+    anchored_on_thought = "channel" in args.response_part
+    if anchored_on_thought and not has_thought:
+        print(
+            "\n  !! MISMATCH: --response_part is anchored on the thought channel but "
+            "this example\n     has no thought block. You are almost certainly pointing "
+            "at the answer-only\n     dataset - check the --train_path printed above."
+        )
+    elif has_thought and not anchored_on_thought:
+        print(
+            "\n  !! MISMATCH: this example HAS a thought block but --response_part is "
+            "the default,\n     so the loss would cover the reasoning as well as the "
+            "answer. Pass --response_part '<channel|>'."
+        )
     print(
         "\nIf no thought markers appear above, the targets are answer-only and training\n"
         "will push the model to skip the thought channel. Decide that deliberately\n"
