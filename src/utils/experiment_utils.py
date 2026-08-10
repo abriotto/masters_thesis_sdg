@@ -66,6 +66,25 @@ def build_results_root(
     return results_root
 
 
+def split_model_dir(model_dir: str) -> tuple[str, str]:
+    """Split a results/ model directory into (base model name, analysis stage).
+
+    The inverse of the ``__ft_`` suffix added by :func:`build_results_root`, so
+    the analysis tree can separate base and finetuned runs without a second
+    source of truth for which is which.
+
+    >>> split_model_dir("unsloth_gemma-4-E2B-it")
+    ('unsloth_gemma-4-E2B-it', 'base')
+    >>> split_model_dir("unsloth_gemma-4-E2B-it__ft_final_adapter")
+    ('unsloth_gemma-4-E2B-it', 'ft_final_adapter')
+    """
+    marker = "__ft_"
+    if marker in model_dir:
+        base, adapter = model_dir.split(marker, 1)
+        return base, f"ft_{adapter}"
+    return model_dir, "base"
+
+
 def select_rows(
     rows: Sequence[dict[str, Any]],
     start_index: int = 0,

@@ -25,13 +25,52 @@ same order - so the two variants are directly comparable.
 import argparse
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable, Optional
 
 from src.utils.io_utils import find_repo_root
 
 
 THOUGHT_OPEN = "<|channel>thought"
 THOUGHT_CLOSE = "<channel|>"
+
+# Fallback only. Measured against a real trace this UNDER-counts by ~16% overall and
+# ~23% on the reasoning text itself: chain-of-thought is bullets, newlines, repeated
+# player names and short function words, closer to 3.2 chars/token than 4. Under-
+# counting is the dangerous direction here - the gold answer sits at the end of the
+# sequence, so an example that slips past the filter gets truncated in training and
+# loses its entire supervised span.
+FALLBACK_CHARS_PER_TOKEN = 3.2
+
+
+def make_token_counter(model_name: Optional[str]) -> tuple[Callable[[str], int], str]:
+    """
+    Return (counter, description). Uses the real tokenizer when available.
+    """
+    if not model_name:
+        return (
+            lambda text: int(len(text) / FALLBACK_CHARS_PER_TOKEN),
+            f"heuristic (chars/{FALLBACK_CHARS_PER_TOKEN})",
+        )
+
+    try:
+        from transformers import AutoTokenizer
+
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+    except Exception as exc:
+        print(
+            f"  WARNING: could not load tokenizer for {model_name} "
+            f"({type(exc).__name__}); falling back to the heuristic.",
+            flush=True,
+        )
+        return (
+            lambda text: int(len(text) / FALLBACK_CHARS_PER_TOKEN),
+            f"heuristic (chars/{FALLBACK_CHARS_PER_TOKEN})",
+        )
+
+    def count(text: str) -> int:
+        return len(tokenizer(text, add_special_tokens=False)["input_ids"])
+
+    return count, f"tokenizer ({model_name})"
 
 
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -77,14 +116,24 @@ def parse_args() -> argparse.Namespace:
         default="data/processed/jin2024_onuw/sft_role_inference_traced",
     )
     parser.add_argument(
+        "--model_name",
+        type=str,
+        default="unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+        help=(
+            "Tokenizer used to measure sequence length exactly. Pass an empty string "
+            "to fall back to the char heuristic (not recommended - it under-counts)."
+        ),
+    )
+    parser.add_argument(
         "--max_total_tokens",
         type=int,
         default=12288,
         help=(
-            "Drop examples whose prompt+thought+answer exceeds this, estimated at 4 "
-            "chars/token. Must match the trainer's --max_seq_length: the gold answer "
-            "sits at the END of the sequence, so truncation deletes the entire "
-            "supervised span and training silently learns nothing."
+            "Drop examples whose prompt+thought+answer exceeds this, measured with the "
+            "real tokenizer. Set it a few hundred BELOW the trainer's --max_seq_length "
+            "to leave room for chat-template markers, which are not counted here. The "
+            "gold answer sits at the END of the sequence, so truncation deletes the "
+            "entire supervised span and training silently learns nothing."
         ),
     )
     parser.add_argument(
@@ -109,6 +158,9 @@ def main() -> None:
             f"No traces at {traces_path}. Run src.finetuning.generate_traces first."
         )
 
+    count_tokens, counter_desc = make_token_counter(args.model_name)
+    print(f"Length measured with: {counter_desc}")
+
     traces = {row["session_name"]: row for row in load_jsonl(traces_path)}
     source_dir = repo_root / args.source_dir
     output_dir = repo_root / args.output_dir
@@ -117,6 +169,8 @@ def main() -> None:
         "traces_path": args.traces_path,
         "source_dir": args.source_dir,
         "require_agreement": args.require_agreement,
+        "length_counter": counter_desc,
+        "max_total_tokens": args.max_total_tokens,
         "splits": {},
     }
 
@@ -161,8 +215,8 @@ def main() -> None:
                 dropped["marker_in_trace"] += 1
                 continue
 
-            approx_tokens = (len(row["prompt"]) + len(assistant)) // 4
-            if approx_tokens > args.max_total_tokens:
+            total_tokens = count_tokens(row["prompt"]) + count_tokens(assistant)
+            if total_tokens > args.max_total_tokens:
                 dropped["too_long"] += 1
                 continue
             built.append(
@@ -181,7 +235,7 @@ def main() -> None:
 
         write_jsonl(output_dir / f"{split}.jsonl", built)
 
-        lengths = sorted((len(r["prompt"]) + len(r["completion"])) // 4 for r in built)
+        lengths = sorted(count_tokens(r["prompt"]) + count_tokens(r["completion"]) for r in built)
         agreed = sum(1 for r in built if r["trace_agrees_with_gold"])
         stats["splits"][split] = {
             "source_rows": len(rows),
@@ -189,7 +243,7 @@ def main() -> None:
             "dropped": dropped,
             "trace_agrees_with_gold": agreed,
             "agreement_rate": (agreed / len(built)) if built else None,
-            "approx_tokens": {
+            "total_tokens": {
                 "min": lengths[0] if lengths else None,
                 "median": lengths[len(lengths) // 2] if lengths else None,
                 "max": lengths[-1] if lengths else None,
@@ -199,7 +253,7 @@ def main() -> None:
         print(f"{split}: {len(built)}/{len(rows)} kept   dropped={dropped}")
         if built:
             print(f"  trace answer agreed with gold: {agreed}/{len(built)} = {agreed / len(built):.1%}")
-            print(f"  approx tokens: min {lengths[0]} / median {lengths[len(lengths)//2]} / max {lengths[-1]}"
+            print(f"  total tokens:  min {lengths[0]} / median {lengths[len(lengths)//2]} / max {lengths[-1]}"
                   f"   (trainer --max_seq_length must exceed the max)")
 
     (output_dir / "dataset_stats.json").write_text(
