@@ -129,6 +129,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--logging_steps", type=int, default=1)
     parser.add_argument("--seed", type=int, default=3407)
     parser.add_argument("--report_to", type=str, default="none")
+    parser.add_argument(
+        "--eval_strategy",
+        type=str,
+        choices=["no", "epoch", "steps"],
+        default="no",
+        help=(
+            "OFF by default. HF's eval path casts full logits to fp32 - "
+            "[batch, seq_len, vocab] with a ~262k vocab - which OOMs at long "
+            "sequence lengths even though training itself fits comfortably "
+            "(Unsloth uses fused cross-entropy and never materialises them). "
+            "Val loss is diluted cross-entropy over ~46 tokens and should not "
+            "drive checkpoint selection anyway; use role accuracy and the voting "
+            "probe instead."
+        ),
+    )
 
     parser.add_argument(
         "--dry_run",
@@ -649,7 +664,7 @@ def main() -> None:
         model=model,
         tokenizer=tokenizer,
         train_dataset=train_dataset,
-        eval_dataset=val_dataset,
+        eval_dataset=val_dataset if args.eval_strategy != "no" else None,
         args=SFTConfig(
             output_dir=str(output_dir),
             dataset_text_field="text",
@@ -667,7 +682,9 @@ def main() -> None:
             seed=args.seed,
             report_to=args.report_to,
             save_strategy="epoch",
-            eval_strategy="epoch",
+            eval_strategy=args.eval_strategy,
+            # Only relevant when eval is on; keeps the fp32 logit cast survivable.
+            per_device_eval_batch_size=1,
         ),
     )
 
