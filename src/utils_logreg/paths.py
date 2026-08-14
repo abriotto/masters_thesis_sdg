@@ -4,12 +4,12 @@ import json
 import sys
 
 
-def find_project_root(start=None, marker=("data", "lai2023")):
+def find_project_root(start=None, marker=("data", "raw", "lai2023")):
     """
     Walk upward from `start` until a directory containing `marker` is found.
 
     Default marker checks for:
-        <root>/data/lai2023
+        <root>/data/raw/lai2023
     """
     start = Path.cwd() if start is None else Path(start).resolve()
 

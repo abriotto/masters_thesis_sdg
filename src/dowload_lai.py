@@ -4,7 +4,7 @@ from pathlib import Path
 
 # 1. Route to your raw data folder
 project_root = Path.cwd().parents[1]
-raw_dir = project_root / "data" / "lai2023"
+raw_dir = project_root / "data" / "raw" / "lai2023"
 raw_dir.mkdir(parents=True, exist_ok=True)
 
 # 2. Download ONLY the text/JSON files, ignoring videos
