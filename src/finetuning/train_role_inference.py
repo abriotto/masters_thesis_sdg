@@ -304,6 +304,7 @@ def probe_template_variants(model_name: str, messages: list[dict[str, str]]) -> 
 
     print("\n" + "=" * 78)
     print("TEMPLATE PROBE - can any flag inject a thought block?")
+    print(f"tokenizer: {model_name}")
     print("=" * 78)
 
     variants = [
@@ -347,6 +348,7 @@ def probe_template_variants(model_name: str, messages: list[dict[str, str]]) -> 
     # training against 297 examples that skip it can plausibly erode that choice.
     print("\n" + "=" * 78)
     print("GENERATION PROMPT PROBE - does enable_thinking pre-fill the thought marker?")
+    print(f"tokenizer: {model_name}")
     print("=" * 78)
 
     user_only = [m for m in messages if m.get("role") == "user"]
@@ -398,7 +400,8 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
 
     # Print the dataset path. --train_path defaults to the answer-only dataset, so
     # omitting it silently inspects the wrong data and the output still looks sane.
-    print(f"\nDataset: {args.train_path}  ({len(train)} rows)")
+    print(f"\nModel:   {args.model_name}")
+    print(f"Dataset: {args.train_path}  ({len(train)} rows)")
     print(f"Example: {example['session_name']}")
     print(f"Chat template: {args.chat_template}")
     print(f"response_part: {args.response_part!r}")
