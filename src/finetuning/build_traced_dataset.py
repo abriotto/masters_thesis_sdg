@@ -30,6 +30,10 @@ from typing import Any, Callable, Optional
 from src.utils.io_utils import find_repo_root
 
 
+# Gemma 4 thought delimiters. The 12B/26B/31B checkpoints use these; the small
+# E2B/E4B checkpoints use a different pair, so both are CLI-overridable. Discover a
+# model's pair with the trainer's --dry_run generation-prompt probe: rendering with
+# enable_thinking=False pre-fills an empty thought block, which shows both markers.
 THOUGHT_OPEN = "<|channel>thought"
 THOUGHT_CLOSE = "<channel|>"
 
@@ -85,14 +89,19 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def build_assistant_content(trace: str, gold_completion: str) -> str:
+def build_assistant_content(
+    trace: str,
+    gold_completion: str,
+    thought_open: str = THOUGHT_OPEN,
+    thought_close: str = THOUGHT_CLOSE,
+) -> str:
     """
     Assemble the thought block plus gold answer.
 
     The trace is stripped and re-wrapped rather than reused verbatim, because
     parse_reasoning_response already removed the channel markers when extracting it.
     """
-    return f"{THOUGHT_OPEN}\n{trace.strip()}\n{THOUGHT_CLOSE}{gold_completion}"
+    return f"{thought_open}\n{trace.strip()}\n{thought_close}{gold_completion}"
 
 
 def parse_args() -> argparse.Namespace:
@@ -114,6 +123,21 @@ def parse_args() -> argparse.Namespace:
         "--output_dir",
         type=str,
         default="data/processed/jin2024_onuw/sft_role_inference_traced",
+    )
+    parser.add_argument(
+        "--thought_open",
+        type=str,
+        default=THOUGHT_OPEN,
+        help="Opening thought delimiter for this checkpoint (31B default).",
+    )
+    parser.add_argument(
+        "--thought_close",
+        type=str,
+        default=THOUGHT_CLOSE,
+        help=(
+            "Closing thought delimiter. MUST equal the trainer's --response_part, "
+            "or the loss mask lands in the wrong place."
+        ),
     )
     parser.add_argument(
         "--model_name",
@@ -169,6 +193,8 @@ def main() -> None:
         "traces_path": args.traces_path,
         "source_dir": args.source_dir,
         "require_agreement": args.require_agreement,
+        "thought_open": args.thought_open,
+        "thought_close": args.thought_close,
         "length_counter": counter_desc,
         "max_total_tokens": args.max_total_tokens,
         "splits": {},
@@ -206,12 +232,14 @@ def main() -> None:
             # anchor into the middle of the reasoning, silently supervising the wrong
             # span. Drop rather than risk it.
             trace_text = trace_row["trace"]
-            if THOUGHT_CLOSE in trace_text or THOUGHT_OPEN in trace_text:
+            if args.thought_close in trace_text or args.thought_open in trace_text:
                 dropped["marker_in_trace"] += 1
                 continue
 
-            assistant = build_assistant_content(trace_text, row["completion"])
-            if assistant.count(THOUGHT_CLOSE) != 1:
+            assistant = build_assistant_content(
+                trace_text, row["completion"], args.thought_open, args.thought_close
+            )
+            if assistant.count(args.thought_close) != 1:
                 dropped["marker_in_trace"] += 1
                 continue
 
@@ -264,7 +292,7 @@ def main() -> None:
     print(
         "\nTrain with:\n"
         "  --train_path <output_dir>/train.jsonl --val_path <output_dir>/val.jsonl \\\n"
-        f"  --response_part '{THOUGHT_CLOSE}' --enable_thinking_in_prompt"
+        f"  --response_part '{args.thought_close}' --enable_thinking_in_prompt"
     )
 
 

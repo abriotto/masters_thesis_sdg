@@ -231,10 +231,23 @@ def render_traced_example(
     return (prompt_text + assistant["content"] + TURN_END).removeprefix("<bos>")
 
 
+def has_thought_block(content: str, response_part: str) -> bool:
+    """
+    Whether an assistant turn carries a thought block, for any checkpoint.
+
+    A non-default response_part IS the closing thought delimiter, so its presence in
+    the content identifies a traced target without knowing the model's token names.
+    """
+    if response_part and response_part != RESPONSE_PART and response_part in content:
+        return True
+    return THOUGHT_MARKER in content
+
+
 def render_example(
     tokenizer: Any,
     messages: list[dict[str, str]],
     enable_thinking: bool = False,
+    response_part: str = RESPONSE_PART,
 ) -> str:
     """
     Render a completed conversation for training.
@@ -246,9 +259,11 @@ def render_example(
     accepts it on a completed turn; fall back rather than fail, and let --dry_run show
     which path was taken.
     """
-    # Targets containing a thought block must bypass the template, which would strip it.
+    # Targets containing a thought block must bypass the template, which would strip
+    # it. Detected via the response_part marker rather than a hardcoded 31B token, so
+    # this works for checkpoints with different thought delimiters (E2B/E4B).
     assistant = next((m for m in messages if m.get("role") == "assistant"), None)
-    if assistant and THOUGHT_MARKER in str(assistant.get("content", "")):
+    if assistant and has_thought_block(str(assistant.get("content", "")), response_part):
         return render_traced_example(tokenizer, messages, enable_thinking)
 
     kwargs: dict[str, Any] = {"tokenize": False, "add_generation_prompt": False}
@@ -377,7 +392,9 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
 
     train = load_jsonl(repo_root / args.train_path)
     example = train[0]
-    text = render_example(tokenizer, example["messages"], args.enable_thinking_in_prompt)
+    text = render_example(
+        tokenizer, example["messages"], args.enable_thinking_in_prompt, args.response_part
+    )
 
     # Print the dataset path. --train_path defaults to the answer-only dataset, so
     # omitting it silently inspects the wrong data and the output still looks sane.
@@ -386,8 +403,9 @@ def do_dry_run(args: argparse.Namespace, repo_root: Path) -> None:
     print(f"Chat template: {args.chat_template}")
     print(f"response_part: {args.response_part!r}")
     print(f"enable_thinking_in_prompt: {args.enable_thinking_in_prompt}")
-    target_has_thought = THOUGHT_MARKER in str(
-        next((m for m in example["messages"] if m.get("role") == "assistant"), {}).get("content", "")
+    target_has_thought = has_thought_block(
+        str(next((m for m in example["messages"] if m.get("role") == "assistant"), {}).get("content", "")),
+        args.response_part,
     )
     print(
         f"Render path: {'manual (target has a thought block)' if target_has_thought else 'apply_chat_template'}"
@@ -484,7 +502,10 @@ def build_datasets(args: argparse.Namespace, repo_root: Path, tokenizer: Any):
                 {
                     "session_name": row["session_name"],
                     "text": render_example(
-                        tokenizer, row["messages"], args.enable_thinking_in_prompt
+                        tokenizer,
+                        row["messages"],
+                        args.enable_thinking_in_prompt,
+                        args.response_part,
                     ),
                 }
                 for row in rows
