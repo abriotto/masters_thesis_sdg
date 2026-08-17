@@ -1,0 +1,179 @@
+You are annotating player-targeted accusations in transcripts of One Night Ultimate Werewolf.
+
+The upstream `Accusation` label is broad: it may mark claims about identity, behaviour, mechanics, voting, or credibility. Therefore, every line marked `<<ACCUSATION_TO_RESOLVE>>` is only a candidate anchor. It is not guaranteed to contain either target relation below.
+
+Use the full transcript to interpret each marked line, but output relations only for marked lines and only when the marked line expresses, continues, or clearly refers back to the accusation being annotated.
+
+# Relevant relation types
+
+Annotate only these two independent types. A marked line may contain one, both, or neither.
+
+## `werewolf`
+
+The accuser attributes the actual or possible Werewolf role to a specific or contextually resolvable player or group. The attribution may be direct, hedged, conditional, elliptical, playful, sarcastic, or completed by nearby context.
+
+Do not annotate `werewolf` for:
+
+- accusations of another role, such as Tanner, Minion, Seer, Robber, or Troublemaker;
+- statements about a Werewolf card being in the center;
+- the speaker calling themselves a Werewolf;
+- a vote, suspicion, nervous behaviour, or other evidence without an actual Werewolf-role attribution;
+- a quoted or reported self-claim or accusation that the current speaker is merely recounting;
+- a rule or strategy hypothetical not applied to a specific player in the current game.
+
+Tone does not cancel an attribution. If a joke still presents a current player as possibly being the Werewolf, annotate it.
+
+## `deception`
+
+The accuser claims or strongly implies that another player is intentionally lying, faking a role, fabricating a story, withholding relevant information, or colluding to mislead the group.
+
+Do not annotate `deception` for:
+
+- disagreement, contradiction, confusion, forgetting, lack of information, or a rules mistake;
+- a claim that may be false when the speaker does not frame the falsehood as intentional;
+- generic distrust or suspicion such as "I don't trust you," "I don't believe that," "sus," "shady," or "suspicious" unless the same local exchange clearly entails deliberate dishonesty;
+- changing a vote, claiming quickly, looking nervous, or throwing somebody under the bus without a claim of intentional deception.
+
+Do not infer deception merely because intentional dishonesty would be one possible explanation. The discourse must make that meaning clear.
+
+# Context: resolve meaning, do not invent it
+
+Interpret a marked line in the nearest coherent exchange, using the rest of the transcript when necessary. Context may legitimately supply:
+
+- the referent of a pronoun or demonstrative (`you`, `he`, `they`, `these two`);
+- an omitted predicate in a short answer or elliptical continuation;
+- the beginning or end of a sentence interrupted across adjacent turns;
+- the proposition referenced by a direct agreement, denial, contrast, or continuation.
+
+A marked line may inherit a relation from context only when it is an anchor for that same proposition: it expresses the accusation, directly continues it, or clearly refers back to it. Mere topical proximity is insufficient.
+
+Prefer the nearest coherent interpretation. A later line may clarify a marked line only when it is a direct grammatical or semantic continuation in the same exchange, not when it merely makes an earlier vague remark look accusatory in hindsight.
+
+If the local discourse leaves the marked line genuinely ambiguous between `werewolf`, `deception`, and an irrelevant accusation, return no relation. Do not complete an unspecified predicate just because one of the two target labels would be plausible.
+
+Reported speech is not automatically the current speaker's accusation. Quoting "she said I was a Werewolf" or reminding somebody of their earlier self-claim does not create a new `werewolf` relation unless the current speaker also adopts that attribution.
+
+A conditional is relevant when it applies a live possibility to a current player (for example, "if Nora is the Werewolf..."). A generic explanation of what players should do "if someone is a Werewolf" is not.
+
+# Accuser and accused targets
+
+- The `accuser` is always the speaker of the marked line. Copy that player's name exactly; do not re-infer the accuser.
+- Resolve targets from the local discourse whenever the reference is clear.
+- Do not confuse the accused with a vote target, a hypothetical example, an evidence mention, or the speaker themselves.
+- If the accusation is explicitly about an identifiable pair (for example, "one of these two" when exactly two players are established), put both names in `accused`. Uncertainty about which member is guilty does not make the pair unresolved.
+- If it is about an identifiable collective, put every identifiable member of that collective in `accused`.
+- Use `"accused": ["UNKNOWN"]` only when the relation type is clear but its target cannot be resolved to a person, pair, or identifiable collective.
+- Set `requires_review: true` if and only if at least one relation in that item has `"UNKNOWN"` as its accused target. Otherwise set it to `false`.
+
+# One decision for every marked line
+
+Return exactly one item for every line marked `<<ACCUSATION_TO_RESOLVE>>`, in transcript order. Never return an item for an unmarked line, and never skip or deduplicate marked lines.
+
+When an accusation is distributed across multiple marked lines, more than one item may contain the same relation only if each marked line independently anchors or directly continues that same clear accusation. A line that merely shares the topic receives no inherited relation.
+
+For each marked line:
+
+1. Read its nearest coherent exchange and determine what the marked speaker is asserting there.
+2. Decide independently whether that assertion attributes the Werewolf role and whether it alleges intentional deception.
+3. If neither meaning is clear, use `relations: []` and `requires_review: false`.
+4. For each clear relation, resolve the accused player, pair, or collective. Use `UNKNOWN` only when the type is clear and the target is not.
+5. Copy a short, exact, contiguous evidence substring from the marked line itself. Never paraphrase and never quote evidence from an unmarked context line.
+
+The evidence may be elliptical: it need not repeat words supplied by context, but it must be the exact part of the marked line that anchors or continues the resolved accusation.
+
+# Output contract
+
+Return valid JSON only, with no markdown or commentary, using this schema:
+
+```json
+{
+  "items": [
+    {
+      "line_number": 14,
+      "accuser": "Nora",
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": ["Omar"],
+          "evidence": "Omar could still be the Werewolf"
+        }
+      ],
+      "requires_review": false
+    }
+  ]
+}
+```
+
+- Copy `line_number` exactly from `[N]` at the start of the marked line; do not renumber.
+- `relations` and `accused` are always JSON lists.
+- Every `type` is exactly `"werewolf"` or `"deception"`.
+- Every named `accuser` and `accused` player must use the spelling in the supplied player list.
+- `evidence` is one exact contiguous substring from the corresponding marked line.
+
+# Boundary examples
+
+Direct role attribution, with a different vote target:
+
+`[21] Nora: Omar could still be the Werewolf, so voting Leo would be a mistake. <<ACCUSATION_TO_RESOLVE>>`
+
+Annotate `werewolf` against Omar. Leo is a vote target, not the accused.
+
+Intentional deception:
+
+`[34] Priya: Mia fabricated that Seer story. <<ACCUSATION_TO_RESOLVE>>`
+
+Annotate `deception` against Mia.
+
+Generic distrust without intentional dishonesty:
+
+`[40] Leo: I don't trust Zoe at all. <<ACCUSATION_TO_RESOLVE>>`
+
+Return no relations.
+
+Predicate completed by a direct local continuation:
+
+`[51] Nora: Between Omar and Priya... <<ACCUSATION_TO_RESOLVE>>`
+`[52] Leo: For what?`
+`[53] Nora: One of those two has to be the Werewolf.`
+
+For line 51, annotate `werewolf` against both Omar and Priya: line 53 directly completes Nora's interrupted proposition.
+
+No contextual invention:
+
+`[60] Mia: I'm leaning toward Leo. <<ACCUSATION_TO_RESOLVE>>`
+`[61] Zoe: I still think the Robber caused this.`
+
+Return no relations for line 60. The missing predicate is not established as Werewolf identity or deception.
+
+Distributed accusation with two genuine anchors:
+
+`[70] Omar: You're saying you saw my card, <<ACCUSATION_TO_RESOLVE>>`
+`[71] Omar: but you know that never happened. <<ACCUSATION_TO_RESOLVE>>`
+
+If the local context resolves `you` to Priya, both marked lines directly form the same claim of intentional fabrication, so each may receive a `deception` relation against Priya with evidence copied from its own line.
+
+Reported statement rather than a new accusation:
+
+`[82] Zoe: Earlier, Mia said that Leo was the Werewolf. <<ACCUSATION_TO_RESOLVE>>`
+
+Return no relations unless Zoe clearly adopts Mia's claim in the same local exchange.
+
+Live conditional versus generic hypothetical:
+
+`[90] Priya: If Nora is the Werewolf, that explains her vote. <<ACCUSATION_TO_RESOLVE>>`
+
+Annotate `werewolf` against Nora.
+
+`[91] Priya: If a player is a Werewolf, they usually redirect the vote. <<ACCUSATION_TO_RESOLVE>>`
+
+Return no relations because this is a general strategy statement.
+
+Playful attribution with an unresolved target:
+
+`[101] Leo: Maybe he's enjoying his Werewolf night a little too much. <<ACCUSATION_TO_RESOLVE>>`
+
+If the local context does not identify `he`, annotate `werewolf` against `UNKNOWN` and set `requires_review: true`.
+
+Now annotate every line marked `<<ACCUSATION_TO_RESOLVE>>` in the following transcript. Return JSON only.
+
+{{TRANSCRIPT}}

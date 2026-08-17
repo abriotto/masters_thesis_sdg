@@ -10,17 +10,31 @@ Consistency judgements (role conflicts, self-contradictions) are deliberately
 excluded: they are verdicts on whether a claim held up, not persuasion acts.
 
 Every block also has a temporal variant, counting the same features separately
-in the first and second half of the game. The split is the game's own timeline
-(utterance ``Rec_Id <= n/2``) and it is identical for both blocks, because the
-``line_number`` in the DeepSeek outputs is the annotation ``Rec_Id``.
+in the first and second half of the game. The split cuts the annotated dialogue
+into two equal halves: an utterance is ``early`` if its **ordinal position** in
+the dialogue is ``<= n_utterances / 2``.
+
+Position, not ``Rec_Id``, is what defines the cut. ``Rec_Id`` and the DeepSeek
+``line_number`` both index the *full transcript*, which is about 5% longer than
+the annotated dialogue because unannotated lines (announcer turns) are skipped.
+Comparing either of them against ``n_utterances / 2`` mixes two scales and moves
+the cut roughly 5% early, which is what this module used to do. Block B is
+mapped onto the same scale by converting its ``line_number`` to a dialogue
+ordinal, so both blocks still split at exactly the same point.
 """
 
+from bisect import bisect_right
 from collections import Counter
 import json
 import re
 
 import numpy as np
 import pandas as pd
+
+try:                                    # notebooks put src/ on sys.path
+    from utils.speakers import normalize_speaker
+except ImportError:                     # imported as src.utils_choice.features
+    from src.utils.speakers import normalize_speaker
 
 PT_LABELS = ["Accusation", "Defense", "Interrogation", "Identity Declaration",
              "Evidence", "Call for Action"]
@@ -73,9 +87,34 @@ def ckey(source, session, game):
     return (str(source).strip(), canonical_session(session), canonical_game(game))
 
 
+# ------------------------------------------------------------ temporal split --
+def half_from_position(position, n_utt):
+    """First or second half of the annotated dialogue, by ordinal position."""
+    return "early" if n_utt and position <= n_utt / 2 else "late"
+
+
+def half_from_line_number(line_number, recs, n_utt):
+    """Same split for block B, whose positions are full-transcript line numbers.
+
+    ``recs`` is the sorted list of ``Rec_Id`` for the game's annotated
+    utterances. The number of them at or before ``line_number`` is that line's
+    ordinal position in the dialogue, which puts block B on block A's scale.
+    """
+    return half_from_position(bisect_right(recs, line_number), n_utt)
+
+
 # ------------------------------------------------------------------ block A --
+# Lai et al. ship the Avalon games in split/avalon.json alongside the ONUW splits.
+# Those are a different game and are excluded from this corpus, but a bare glob
+# over split/*.json picks them up: 8 games and 2,841 annotated utterances. Match
+# the three canonical split files by name so they are never loaded.
+ONUW_SPLIT_FILES = ("train.json", "val.json", "test.json")
+
+
 def iter_annotation_games(annot_root):
     for split_file in sorted(annot_root.rglob("split/*.json")):
+        if split_file.name not in ONUW_SPLIT_FILES:
+            continue
         source = split_file.parent.parent.name
         for game in json.loads(split_file.read_text(encoding="utf-8")):
             session = (game.get("video_name") or game.get("session")
@@ -103,12 +142,12 @@ def load_technique_features(annot_root):
         rec_speaker[key] = {}
         per_speaker = {}
         for i, utt in enumerate(dialogue, start=1):
-            sp = str(utt.get("speaker", "")).strip()
-            if not sp:
+            sp = normalize_speaker(utt.get("speaker"))
+            if sp is None:
                 continue
             rec = int(utt.get("Rec_Id", i))
             rec_speaker[key][rec] = sp
-            half = "early" if rec <= n_utt / 2 else "late"
+            half = half_from_position(i, n_utt)
             d = per_speaker.setdefault(sp, Counter())
             d["n_utterances"] += 1
             d[f"n_utterances_{half}"] += 1
@@ -133,9 +172,16 @@ def load_technique_features(annot_root):
 
 
 # ------------------------------------------------------------------ block B --
-def load_accusation_features(acc_root, game_length):
+def load_accusation_features(acc_root, game_length, rec_speaker=None):
     """Werewolf- and deception-type accusations *received*, per player, split by
-    half of the game via the accusing utterance's line number."""
+    half of the game via the accusing utterance's line number.
+
+    ``rec_speaker`` supplies the game timeline from :func:`load_technique_features`
+    and is required to place block B on block A's scale. It is optional only so
+    that older call sites keep working; without it the split falls back to
+    comparing a transcript line number against an utterance count, which cuts
+    about 5% early.
+    """
     rows = []
     for p in sorted(acc_root.rglob("*.json")):
         try:
@@ -147,9 +193,13 @@ def load_accusation_features(acc_root, game_length):
             continue
         key = ckey(meta["source"], meta["session"], meta["game"])
         n_utt = game_length.get(key)
+        recs = sorted(rec_speaker.get(key, {})) if rec_speaker is not None else None
         for item in rec.get("items", []):
-            half = ("early" if n_utt and item.get("line_number", 0) <= n_utt / 2
-                    else "late")
+            line_number = item.get("line_number", 0)
+            if recs:
+                half = half_from_line_number(line_number, recs, n_utt)
+            else:
+                half = "early" if n_utt and line_number <= n_utt / 2 else "late"
             for rel in item.get("relations", []):
                 if rel.get("type") not in ("werewolf", "deception"):
                     continue
@@ -211,12 +261,13 @@ def load_identity_claim_features(ic_csv, game_length, rec_speaker):
         if not n_utt:
             continue
         per = {}
+        recs = sorted(rec_speaker.get(key, {}))
         for item in rec.get("items", []):
             ln = item.get("line_number")
             sp = rec_speaker.get(key, {}).get(ln)
             if sp is None:
                 continue
-            half = "early" if ln <= n_utt / 2 else "late"
+            half = half_from_line_number(ln, recs, n_utt)
             per.setdefault((sp, half), set()).update(item.get("claimed_roles") or [])
         for (sp, half), claimed in per.items():
             rows.append({"key": key, "player": sp,

@@ -59,7 +59,7 @@ DEFAULT_OUTPUT_ROOT = Path(
 )
 DEFAULT_PROMPT_PATH = Path(
     r"C:\Users\annab\Documents\GitHub\masters_thesis_sdg\src\prompts"
-    r"\accusation_annotation.txt"
+    r"\accusation_annotation_hybrid.txt"
 )
 
 
