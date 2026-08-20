@@ -53,7 +53,7 @@ MODEL_ORDER = ["2B", "4B", "31B"]
 VOTE_TABLE_REL = Path("base/voting/prompt_v4/vote_stability/tables/llm_vote_file_level.csv")
 
 DEFAULT_ANALYSIS_ROOT = REPO_ROOT / "analysis"
-DEFAULT_OUTPUT_DIR = REPO_ROOT / "data" / "processed" / "justification_annotations" / "pilot_v1"
+DEFAULT_OUTPUT_DIR = REPO_ROOT / "results" / "justification_annotation" / "pilot_v1"
 
 DEFAULT_N = 40
 DEFAULT_SEED = 42

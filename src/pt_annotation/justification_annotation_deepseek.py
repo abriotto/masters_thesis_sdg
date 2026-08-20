@@ -74,7 +74,7 @@ ALLOWED_CATEGORIES = {
 }
 ALLOWED_USES = {"used", "discounted", "mentioned"}
 
-DEFAULT_PILOT_DIR = REPO_ROOT / "data" / "processed" / "justification_annotations" / "pilot_v1"
+DEFAULT_PILOT_DIR = REPO_ROOT / "results" / "justification_annotation" / "pilot_v1"
 DEFAULT_INPUT_PATH = DEFAULT_PILOT_DIR / "pilot_sample.jsonl"
 DEFAULT_OUTPUT_PATH = DEFAULT_PILOT_DIR / "pilot_annotations.jsonl"
 DEFAULT_PROMPT_PATH = REPO_ROOT / "src" / "prompts" / "justification_annotation.txt"

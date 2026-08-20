@@ -68,7 +68,7 @@ $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas
 # picks up where it stopped instead of paying for every call again.
 # ------------------------------------------------------------
 
-SAMPLE=data/processed/justification_annotations/pilot_v1/pilot_sample.jsonl
+SAMPLE=results/justification_annotation/pilot_v1/pilot_sample.jsonl
 
 if [[ ! -f "$SAMPLE" ]]; then
     echo "=== Drawing pilot sample ==="

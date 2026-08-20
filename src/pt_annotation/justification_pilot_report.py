@@ -33,9 +33,9 @@ per decision, with blank verdict columns. This is a check of the model's
 output, not independent coding, so what it yields is an error rate against
 your adjudication -- not a chance-corrected agreement coefficient.
 
-Outputs go to analysis/, not data/, because they are results about the
-instrument. The review sheet is the exception and sits with the pilot data,
-since it is a working file you fill in.
+Everything for this pilot lives under results/justification_annotation/pilot_v1/:
+the sample, the raw annotations, the review sheet, and the summary tables in
+tables/. One run, one folder.
 
 Usage:
     python src/pt_annotation/justification_pilot_report.py
@@ -53,14 +53,11 @@ import pandas as pd
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
-DEFAULT_PILOT_DIR = REPO_ROOT / "data" / "processed" / "justification_annotations" / "pilot_v1"
+DEFAULT_PILOT_DIR = REPO_ROOT / "results" / "justification_annotation" / "pilot_v1"
 DEFAULT_ANNOTATIONS_PATH = DEFAULT_PILOT_DIR / "pilot_annotations.jsonl"
 DEFAULT_SAMPLE_PATH = DEFAULT_PILOT_DIR / "pilot_sample.jsonl"
 DEFAULT_REVIEW_SHEET_PATH = DEFAULT_PILOT_DIR / "pilot_review_sheet.csv"
-DEFAULT_OUTPUT_DIR = (
-    REPO_ROOT / "analysis" / "cross_model" / "base" / "voting" / "prompt_v4"
-    / "justification_analysis" / "pilot"
-)
+DEFAULT_OUTPUT_DIR = DEFAULT_PILOT_DIR / "tables"
 
 CATEGORIES = [
     "Deduction", "Consistency", "Payoff",
