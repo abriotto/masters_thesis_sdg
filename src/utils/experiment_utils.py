@@ -196,10 +196,17 @@ def prepare_response_for_json(raw_response: Any) -> Any:
 
 
 def count_sentences(text: str) -> int:
-    """A lightweight sentence counter suitable for soft warnings only."""
-    if not isinstance(text, str) or not text.strip():
-        return 0
-    return len(re.findall(r"[.!?]+(?:\s|$)", text.strip()))
+    """Sentence count for the generation-time soft warnings.
+
+    Delegates to src/utils/sentences.py so that the count used to warn
+    "justification_may_exceed_5_sentences" at generation time is the same
+    count used by the DiMLex analysis and the same segmentation the
+    justification annotator receives. The previous local regex counted
+    terminal-punctuation groups, so it treated "i.e." as two sentence ends.
+    """
+    from src.utils.sentences import count_sentences as _count_sentences
+
+    return _count_sentences(text)
 
 
 def add_common_soft_warnings(

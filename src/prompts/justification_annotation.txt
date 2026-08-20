@@ -1,0 +1,410 @@
+TASK
+
+You are annotating justifications produced by language models after reading transcripts of One Night Ultimate Werewolf (ONUW). The model was asked to vote for the player it believed should be eliminated as the Werewolf, or to state that there was no Werewolf, and to justify that choice.
+
+Your task is NOT to evaluate whether the vote is correct or whether the reasoning is logically valid. Identify only:
+
+1. what kinds of evidence or reasoning the written justification presents;
+2. how each identified item is used relative to the stated judgement.
+
+Annotate only what is supported by the written justification. Do not reconstruct missing reasoning or infer the model's hidden reasoning.
+
+INPUT
+
+You will receive:
+
+1. `vote`: the model's final vote;
+2. `sentences`: the complete justification, already divided into sentences.
+
+Sentence boundaries are fixed. Do not merge, split, rewrite, or reorder sentences.
+
+You may use the full justification as context when interpreting a sentence, but attach an annotation to a sentence only when the corresponding evidence or reasoning is expressed in that sentence.
+
+GENERAL PRINCIPLE
+
+Categories describe the EVIDENTIAL OR INFERENTIAL BASIS of the stated reasoning, not merely the semantic content or conclusion of a sentence.
+
+Example:
+"The Tanner does not wake up at night, so Julie must be lying."
+→ `Deduction`
+
+Do NOT additionally assign `Behavioral` merely because the conclusion is that Julie is lying. The basis of the inference is a game rule.
+
+A sentence may receive multiple categories only when DISTINCT evidential or inferential bases are genuinely present.
+
+ANNOTATION CATEGORIES
+
+The categories are divided into INTERNAL and EXTERNAL reasoning.
+
+INTERNAL reasoning derives primarily from game mechanics, the game state, relationships among claims, or the game's objective.
+
+EXTERNAL reasoning derives primarily from players as sources: what they assert, whom they suspect, or how they behave.
+
+1. DEDUCTION
+
+Assign `Deduction` when an ONUW rule, role mechanic, role constraint, or known card movement is APPLIED to derive or exclude a conclusion about the current game state.
+
+Examples include tracing swaps, inferring current roles from night actions, applying role constraints, or determining that a player can/cannot be a Werewolf because of game mechanics.
+
+Example:
+"Elliot says he robbed Ashley, who started as the Werewolf, so Elliot would now hold the Werewolf card."
+→ `Deduction`
+
+Merely stating a rule is NOT Deduction.
+
+"The Robber swaps their card with another player's card."
+→ no `Deduction`
+→ `rule_mentioned = true`
+
+"The Robber swaps cards, so if Elliot robbed Ashley, Elliot is now the Werewolf."
+→ `Deduction`
+→ `rule_mentioned = true`
+
+Logical comparison among claims without applying game mechanics is normally `Consistency`, not `Deduction`.
+
+2. CONSISTENCY
+
+Assign `Consistency` when the justification compares claims or pieces of stated information for contradiction, compatibility, corroboration, inconsistency, mutual support, changes in an account, unexplained conflict, or absence of expected support/counterclaims.
+
+Examples:
+"Clint's later statement contradicts what he said earlier."
+→ `Consistency`
+
+"Ashley and Elliot give compatible accounts of the swap."
+→ `Consistency`
+
+"Nobody else supports Tyler's version of events."
+→ `Consistency`
+
+Do NOT automatically assign `Testimony` because claims are quoted or summarized inside a Consistency comparison.
+
+"Mitchell first claims to be a Villager and later says that he was the Werewolf."
+→ `Consistency`
+
+Assign `Testimony` as well only if the factual content of a claim functions as a DISTINCT evidential basis.
+
+3. PAYOFF
+
+Assign `Payoff` when the justification reasons from the game's winning condition or from the strategic consequences of a vote to determine which voting action should be taken.
+
+Example:
+"Sian is probably the Minion, but eliminating the Minion does not help us if a Werewolf remains, so Ashley is the better vote."
+→ `Payoff`
+
+Do NOT assign `Payoff` merely because someone is recommended as the vote.
+
+Distinguish strategic behaviour from strategic consequences:
+
+"James keeps asking everyone to vote for him, which is typical Tanner behavior."
+→ `Behavioral`
+
+"James is probably the Tanner, so voting him out would give him the win; therefore we should vote Mitchell."
+→ `Payoff`
+
+4. TESTIMONY
+
+Assign `Testimony` when a player's factual assertion is represented as a distinct evidential item.
+
+This includes claimed roles, actions, observations, card movements, cards seen, admissions, or other factual claims about the game state.
+
+Examples:
+"Ashley says she started as the Werewolf."
+→ `Testimony`
+
+"Elliot claims that he robbed Ashley."
+→ `Testimony`
+
+A player's judgement about whom to suspect, trust, accuse, or vote for is `Social`, not `Testimony`.
+
+"Tyler claims to be the Seer and says Clint is the Werewolf."
+→ `Testimony` for "claims to be the Seer"
+→ `Social` for "says Clint is the Werewolf"
+
+Do not mechanically assign `Testimony` when claims occur only as material being compared in a `Consistency` inference.
+
+5. SOCIAL
+
+Assign `Social` when another player's suspicion, accusation, judgement, endorsement, agreement, voting preference, or group consensus about a TARGET PLAYER is represented in the justification.
+
+Examples:
+"Tyler believes Clint is the Werewolf."
+→ `Social`
+
+"Several players accuse Ashley."
+→ `Social`
+
+"Erin and Margaret agree with Tyler's suspicion."
+→ `Social`
+
+Distinguish USING another player's judgement from EVALUATING the act of making that judgement:
+
+"Mitchell also suspects James, which adds to the evidence against James."
+→ `Social`
+
+"Mitchell keeps trying to redirect the vote toward James, which makes Mitchell look suspicious."
+→ `Behavioral`
+
+In the second case, the vote-shifting is evidence about Mitchell's own behaviour; it is not Social evidence against James.
+
+6. BEHAVIORAL
+
+Assign `Behavioral` when the justification bases a judgement on a player's behaviour, credibility, manner, motives, strategic incentives, or perceived trustworthiness.
+
+Examples include evasiveness, vagueness, defensiveness, apparent honesty/dishonesty, motivation to lie, attempts to manipulate the group, or behaviour interpreted as characteristic of a role.
+
+Examples:
+"Clint is unusually evasive about his role."
+→ `Behavioral`
+
+"James keeps begging to be voted out, which is characteristic Tanner behavior."
+→ `Behavioral`
+
+"As the Minion, he would have a motive to protect the Werewolf."
+→ `Behavioral`
+
+If a factual claim and a behavioural evaluation independently function as evidence, both categories may apply:
+
+"Clint admits he could be the Werewolf, and his vague answers make him difficult to trust."
+→ `Testimony` + `Behavioral`
+
+Do NOT assign `Behavioral` solely because another inference concludes that someone is lying, suspicious, trustworthy, etc.
+
+"The Tanner does not wake up at night, so Julie must be lying."
+→ `Deduction` only
+
+"Julie keeps changing her story and gives evasive answers, so I think she is lying."
+→ `Behavioral`
+
+7. OTHER
+
+Assign `Other` only when a genuine evidential or inferential basis relevant to the vote does not fit any category above.
+
+`Other` is a coverage category, NOT a default category.
+
+Do NOT assign `Other` to conclusions without new evidence, repetitions of the vote, filler, rhetorical wording, or sentences with no identifiable evidential basis. In those cases return:
+`"annotations": []`
+
+For `Other`, briefly describe the uncaptured basis in `other_description`.
+
+EVIDENCE USE
+
+For every category annotation, assign exactly one `use` value:
+
+* `used`
+* `discounted`
+* `mentioned`
+
+These labels describe how the WRITTEN JUSTIFICATION presents the evidence, not whether the model internally relied on it.
+
+USED
+
+Assign `used` when the evidence or inference is presented as contributing to the stated judgement. This includes supporting the selected player, strengthening the case, weakening an alternative, excluding another possibility, narrowing the candidate set, or otherwise helping justify the vote.
+
+"Tyler also suspects Clint, which strengthens the case against him."
+→ `Social`, `used`
+
+DISCOUNTED
+
+Assign `discounted` when the justification explicitly rejects, questions, downweights, overrides, or contrasts the evidence with stronger evidence.
+
+"Several players suspected Ashley, but those accusations are weaker than Elliot's direct admission."
+→ `Social`, `discounted`
+
+MENTIONED
+
+Assign `mentioned` when the information appears but the justification does not clearly establish that it contributes to the judgement and does not explicitly reject/downweight it.
+
+"Tyler suspected Clint earlier in the discussion."
+→ `Social`, `mentioned` if no surrounding text establishes that this suspicion contributes to the vote.
+
+CONSERVATIVE RULE:
+Do NOT infer `used` merely because information appears in the justification. Absence of rejection does not imply `used`. When uncertain between `used` and `mentioned`, choose `mentioned`. Assign `discounted` only when rejection or downweighting is textually supported.
+
+RULE-MENTIONED FLAG
+
+For every sentence return:
+`"rule_mentioned": true`
+or
+`"rule_mentioned": false`
+
+Set it to `true` when the sentence explicitly states, paraphrases, or invokes an ONUW rule, role mechanic, role constraint, card movement, or win-condition rule.
+
+This flag is independent of the annotation category.
+
+"The Robber swaps their card with another player's card."
+→ `rule_mentioned = true`
+→ no `Deduction`
+
+"If Elliot robbed Ashley, then Elliot now has Ashley's Werewolf card."
+→ `rule_mentioned = true`
+→ `Deduction`
+
+A `Payoff` sentence may also have `rule_mentioned = true` when it invokes a win condition or role-specific voting consequence.
+
+Do not flag vague expressions such as "according to the rules" unless an actual rule or mechanic is invoked.
+
+BOUNDARY RULES
+
+Apply these distinctions consistently:
+
+* Game mechanics, role constraints, card movements → `Deduction`
+* Contradiction, corroboration, compatibility among claims → `Consistency`
+* Factual content of a player's assertion used as evidence → `Testimony`
+* Another player's suspicion/judgement used as evidence about its target → `Social`
+* Accusing, defending, or vote-shifting used as evidence about the speaker → `Behavioral`
+* Player behaviour or motives used to infer identity → `Behavioral`
+* Consequences of a vote for the game's outcome → `Payoff`
+
+For `Consistency` vs `Testimony`: claims used only as objects being compared are `Consistency`; add `Testimony` only if the content of a claim independently functions as evidence.
+
+For `Deduction` vs `Payoff`: game rules used to establish identity/game state are `Deduction`; rules or win conditions used to determine which voting action is strategically desirable are `Payoff`.
+
+INFERENCE-BASIS RULE:
+Annotate the basis of an inference, not every semantic property of its conclusion.
+
+MULTI-LABEL AND EVIDENCE SPANS
+
+Assign multiple categories only when distinct evidential or inferential bases occur.
+
+For every annotation, provide the SHORTEST EXACT SPAN from the original sentence that demonstrates the annotation. Do not paraphrase `evidence_span`.
+
+The same category may occur more than once in a sentence only for genuinely distinct evidential items, particularly if they have different `use` values. Do not create duplicate annotations for the same item.
+
+FULL EXAMPLE
+
+Example input:
+
+{
+"vote": "Mitchell",
+"sentences": [
+{
+"sentence_id": 1,
+"text": "Mitchell's behavior is highly contradictory; he first claims to be a Villager, then explicitly admits 'I was the Werewolf' twice, and finally attempts to shift the vote toward James."
+},
+{
+"sentence_id": 2,
+"text": "James, conversely, is begging to be voted out, which is characteristic behavior for the Tanner role."
+},
+{
+"sentence_id": 3,
+"text": "If James is the Tanner, he cannot be the Werewolf, making Mitchell the most likely candidate for the Werewolf role, regardless of whether a swap occurred."
+}
+]
+}
+
+Example output:
+
+{
+"vote": "Mitchell",
+"sentences": [
+{
+"sentence_id": 1,
+"text": "Mitchell's behavior is highly contradictory; he first claims to be a Villager, then explicitly admits 'I was the Werewolf' twice, and finally attempts to shift the vote toward James.",
+"rule_mentioned": false,
+"annotations": [
+{
+"category": "Consistency",
+"use": "used",
+"evidence_span": "he first claims to be a Villager, then explicitly admits 'I was the Werewolf' twice",
+"other_description": null
+},
+{
+"category": "Behavioral",
+"use": "used",
+"evidence_span": "attempts to shift the vote toward James",
+"other_description": null
+}
+]
+},
+{
+"sentence_id": 2,
+"text": "James, conversely, is begging to be voted out, which is characteristic behavior for the Tanner role.",
+"rule_mentioned": false,
+"annotations": [
+{
+"category": "Behavioral",
+"use": "used",
+"evidence_span": "begging to be voted out, which is characteristic behavior for the Tanner role",
+"other_description": null
+}
+]
+},
+{
+"sentence_id": 3,
+"text": "If James is the Tanner, he cannot be the Werewolf, making Mitchell the most likely candidate for the Werewolf role, regardless of whether a swap occurred.",
+"rule_mentioned": true,
+"annotations": [
+{
+"category": "Deduction",
+"use": "used",
+"evidence_span": "If James is the Tanner, he cannot be the Werewolf, making Mitchell the most likely candidate for the Werewolf role",
+"other_description": null
+}
+]
+}
+]
+}
+
+OUTPUT FORMAT
+
+Return exactly this JSON structure:
+
+{
+"vote": "<input vote>",
+"sentences": [
+{
+"sentence_id": 1,
+"text": "<exact original sentence>",
+"rule_mentioned": false,
+"annotations": [
+{
+"category": "Deduction",
+"use": "used",
+"evidence_span": "<exact minimal span from this sentence>",
+"other_description": null
+}
+]
+}
+]
+}
+
+Allowed `category` values:
+`Deduction`, `Consistency`, `Payoff`, `Testimony`, `Social`, `Behavioral`, `Other`
+
+Allowed `use` values:
+`used`, `discounted`, `mentioned`
+
+For categories other than `Other`, always return:
+`"other_description": null`
+
+For `Other`, provide a short description of the uncaptured evidential basis.
+
+If a sentence contains no relevant evidence or reasoning:
+`"annotations": []`
+
+Preserve every input sentence exactly.
+Preserve every `sentence_id`.
+Preserve the input `vote`.
+
+Do NOT:
+
+* assess correctness or ground truth;
+* assess whether player claims are actually true;
+* repair reasoning or misunderstood rules;
+* add missing premises;
+* reconstruct information from the original transcript;
+* infer hidden reasoning or what the model "must have meant";
+* force every sentence to receive an annotation.
+
+Annotate the STATED REASONING only.
+
+STRICT OUTPUT REQUIREMENT
+
+Return ONLY the requested JSON object.
+
+The first character must be `{` and the last character must be `}`.
+
+Do not use Markdown code fences.
+Do not include introductory or concluding text, explanations, comments, or any content outside the JSON.
+
+The response must be directly parseable by a standard JSON parser.
