@@ -2,18 +2,17 @@
 #SBATCH --job-name=just_annot
 #SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/just_annot_%j.out
 #SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/just_annot_%j.err
-#SBATCH --partition=owner1
+#SBATCH --partition=debug
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=4G
 #SBATCH --time=04:00:00
 #SBATCH --account=thesis
 
-# No --gres=gpu here on purpose. This job only makes HTTPS calls to the
-# DeepSeek API: it spends its whole wall time waiting on the network, and
-# holding a GPU idle for hours would be wasted allocation. If owner1 is
-# GPU-only on this cluster, switch --partition to a CPU queue; nothing else
-# in this script needs to change.
+# partition=debug and no --gres=gpu, both on purpose. This job only makes
+# HTTPS calls to the DeepSeek API: it spends its whole wall time waiting on
+# the network, so it neither needs a GPU nor belongs on the GPU queue
+# (owner1), where it would hold an accelerator idle for hours.
 
 set -euo pipefail
 
