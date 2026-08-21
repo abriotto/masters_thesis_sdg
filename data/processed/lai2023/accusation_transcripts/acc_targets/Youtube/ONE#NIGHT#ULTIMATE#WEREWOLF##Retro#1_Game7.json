@@ -12,8 +12,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T11:31:16.099403+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-17T21:13:05.014073+00:00",
     "expected_line_numbers": [
       24,
       26,
@@ -65,7 +65,7 @@
           "accused": [
             "Mitchell"
           ],
-          "evidence": "you could be the werewolf and you don't even know"
+          "evidence": "you could be the werewolf"
         }
       ],
       "requires_review": false
@@ -77,9 +77,11 @@
         {
           "type": "werewolf",
           "accused": [
-            "Mitchell"
+            "UNKNOWN"
           ],
-          "evidence": "if anyone was the drunk, that was a werewolf"
+          "evidence": "if anyone was the drunk, that was a werewolf",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
         }
       ],
       "requires_review": false
@@ -93,7 +95,17 @@
     {
       "line_number": 46,
       "accuser": "James",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "UNKNOWN"
+          ],
+          "evidence": "there's werewolves out there",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
+        }
+      ],
       "requires_review": false
     },
     {
@@ -137,7 +149,7 @@
           "accused": [
             "James"
           ],
-          "evidence": "You're admitting you know you're a werewolf"
+          "evidence": "you know you're a werewolf"
         }
       ],
       "requires_review": false

@@ -13,8 +13,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T14:01:46.170662+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-18T16:53:39.595554+00:00",
     "expected_line_numbers": [
       12,
       30,
@@ -61,15 +61,7 @@
     {
       "line_number": 30,
       "accuser": "Paul",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "James"
-          ],
-          "evidence": "He switched me"
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
@@ -81,7 +73,7 @@
           "accused": [
             "James"
           ],
-          "evidence": "James gets intimidated by weaving multiple lies"
+          "evidence": "weaving multiple lies"
         }
       ],
       "requires_review": false
@@ -95,7 +87,7 @@
           "accused": [
             "James"
           ],
-          "evidence": "he just yells when he is lying"
+          "evidence": "he is lying"
         }
       ],
       "requires_review": false
@@ -177,16 +169,10 @@
         {
           "type": "werewolf",
           "accused": [
-            "Tyler"
-          ],
-          "evidence": "Tyler was one of the werewolves"
-        },
-        {
-          "type": "werewolf",
-          "accused": [
+            "Tyler",
             "Mitchell"
           ],
-          "evidence": "you are now a werewolf"
+          "evidence": "Tyler was one of the werewolves, and you are now a werewolf"
         }
       ],
       "requires_review": false
@@ -194,7 +180,17 @@
     {
       "line_number": 101,
       "accuser": "Paul",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "UNKNOWN"
+          ],
+          "evidence": "there's another werewolf out there",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
+        }
+      ],
       "requires_review": false
     },
     {
@@ -232,15 +228,7 @@
     {
       "line_number": 113,
       "accuser": "Mitchell",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "Paul"
-          ],
-          "evidence": "Your story doesn't check out"
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
@@ -258,7 +246,7 @@
           "accused": [
             "Tyler"
           ],
-          "evidence": "verified by a liar"
+          "evidence": "You're verified by a liar"
         }
       ],
       "requires_review": false

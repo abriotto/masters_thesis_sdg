@@ -38,7 +38,8 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-v4-pro"
 DEFAULT_REASONING_EFFORT = "high"
 DEFAULT_GENERATION_SEED = 42
-DEFAULT_MAX_TOKENS = 16384
+DEFAULT_MAX_TOKENS = 32768  # start at the cap: high-effort thinking tokens count toward this,
+                            # so 16384 truncated ~half of transcripts and burned a wasted call
 DEFAULT_MAX_TOKENS_CAP = 32768  # hard ceiling per your 32k limit -- never exceeded, even after length-cap retries
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_RETRY_SLEEP_SECONDS = 20.0

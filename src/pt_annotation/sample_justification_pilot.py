@@ -35,6 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.sentences import build_sentence_records  # noqa: E402
+from src.pt_annotation.annotation_schema import DEFAULT_SCHEMA, SCHEMAS  # noqa: E402
 
 
 # ============================================================
@@ -53,7 +54,12 @@ MODEL_ORDER = ["2B", "4B", "31B"]
 VOTE_TABLE_REL = Path("base/voting/prompt_v4/vote_stability/tables/llm_vote_file_level.csv")
 
 DEFAULT_ANALYSIS_ROOT = REPO_ROOT / "analysis"
-DEFAULT_OUTPUT_DIR = REPO_ROOT / "results" / "justification_annotation" / "pilot_v1"
+RESULTS_ROOT = REPO_ROOT / "results" / "justification_annotation"
+
+# The sample itself is schema-independent -- the same 40 justifications, split
+# the same way. It is written per schema anyway so each pilot folder is
+# self-contained, and because the seed is fixed the two samples are identical
+# by construction: v1 and v2 output can be compared row for row.
 
 DEFAULT_N = 40
 DEFAULT_SEED = 42
@@ -195,7 +201,8 @@ def parse_args():
         description="Draw the stratified pilot sample for the justification-annotation prompt."
     )
     parser.add_argument("--analysis-root", type=Path, default=DEFAULT_ANALYSIS_ROOT)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--schema", default=DEFAULT_SCHEMA, choices=sorted(SCHEMAS))
+    parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--n", type=int, default=DEFAULT_N, help="Total justifications to draw.")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return parser.parse_args()
@@ -203,6 +210,9 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    if args.output_dir is None:
+        args.output_dir = RESULTS_ROOT / f"pilot_{args.schema}"
 
     frame = load_frame(args.analysis_root)
     print(f"Frame: {len(frame)} justifications across {frame['model'].nunique()} models")

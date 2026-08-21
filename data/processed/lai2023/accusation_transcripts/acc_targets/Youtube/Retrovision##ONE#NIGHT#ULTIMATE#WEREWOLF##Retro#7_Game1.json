@@ -13,8 +13,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T13:50:06.665113+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-18T16:01:51.607667+00:00",
     "expected_line_numbers": [
       7,
       16,
@@ -34,9 +34,7 @@
       110,
       111
     ],
-    "validation_flags": [
-      "annotated lines not marked in transcript: [116, 135, 136, 144, 153]"
-    ]
+    "validation_flags": []
   },
   "items": [
     {
@@ -54,7 +52,15 @@
     {
       "line_number": 17,
       "accuser": "Mitchell",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "Justin"
+          ],
+          "evidence": "Or Werewolf."
+        }
+      ],
       "requires_review": false
     },
     {
@@ -106,15 +112,7 @@
     {
       "line_number": 54,
       "accuser": "Mitchell",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "Mike"
-          ],
-          "evidence": "I don't believe that, though."
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
@@ -126,7 +124,7 @@
           "accused": [
             "Justin"
           ],
-          "evidence": "I think we have one Werewolf."
+          "evidence": "I think we have one Werewolf"
         }
       ],
       "requires_review": false
@@ -134,30 +132,13 @@
     {
       "line_number": 91,
       "accuser": "Eric",
-      "relations": [
-        {
-          "type": "werewolf",
-          "accused": [
-            "Justin"
-          ],
-          "evidence": "I think it's a hundred percent true, and that's-"
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
       "line_number": 95,
       "accuser": "Justin",
-      "relations": [
-        {
-          "type": "werewolf",
-          "accused": [
-            "Paul",
-            "Eric"
-          ],
-          "evidence": "They were quick to confirm their story, and you guys are just..."
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
@@ -167,10 +148,11 @@
         {
           "type": "werewolf",
           "accused": [
-            "Paul",
-            "Eric"
+            "UNKNOWN"
           ],
-          "evidence": "I think that you guys are both Werewolves."
+          "evidence": "I think that you guys are both Werewolves",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
         }
       ],
       "requires_review": false
@@ -182,9 +164,11 @@
         {
           "type": "werewolf",
           "accused": [
-            "Justin"
+            "UNKNOWN"
           ],
-          "evidence": "it's cause he's a Werewolf."
+          "evidence": "he's a Werewolf",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
         }
       ],
       "requires_review": false
@@ -196,10 +180,11 @@
         {
           "type": "werewolf",
           "accused": [
-            "Justin",
-            "Eric"
+            "UNKNOWN"
           ],
-          "evidence": "I think it's those two."
+          "evidence": "I think it's those two",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
         }
       ],
       "requires_review": false
@@ -211,87 +196,11 @@
         {
           "type": "werewolf",
           "accused": [
-            "Mike",
-            "Paul"
+            "UNKNOWN"
           ],
-          "evidence": "No, I think it's you two."
-        }
-      ],
-      "requires_review": false
-    },
-    {
-      "line_number": 116,
-      "accuser": "Paul",
-      "relations": [
-        {
-          "type": "werewolf",
-          "accused": [
-            "Eric"
-          ],
-          "evidence": "you're literally the other Werewolf."
-        }
-      ],
-      "requires_review": false
-    },
-    {
-      "line_number": 135,
-      "accuser": "Justin",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "Paul"
-          ],
-          "evidence": "If you were the Robber, then how can you be the Troublemaker?"
-        }
-      ],
-      "requires_review": false
-    },
-    {
-      "line_number": 136,
-      "accuser": "Mitchell",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "Paul"
-          ],
-          "evidence": "I think you're lying."
-        }
-      ],
-      "requires_review": false
-    },
-    {
-      "line_number": 144,
-      "accuser": "Paul",
-      "relations": [
-        {
-          "type": "werewolf",
-          "accused": [
-            "Mike"
-          ],
-          "evidence": "If you're the Robber, and you stole from Mike, then he's the Werewolf."
-        }
-      ],
-      "requires_review": false
-    },
-    {
-      "line_number": 153,
-      "accuser": "Paul",
-      "relations": [
-        {
-          "type": "werewolf",
-          "accused": [
-            "Eric"
-          ],
-          "evidence": "But he lied about being the Robber. That's a Werewolf move!"
-        },
-        {
-          "type": "deception",
-          "accused": [
-            "Eric"
-          ],
-          "evidence": "But he lied about being the Robber. That's a Werewolf move!"
+          "evidence": "I think it's you two",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
         }
       ],
       "requires_review": false

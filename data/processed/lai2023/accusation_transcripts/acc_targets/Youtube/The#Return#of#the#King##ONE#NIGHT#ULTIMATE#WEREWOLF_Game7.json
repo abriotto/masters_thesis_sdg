@@ -13,8 +13,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T14:03:19.960560+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-18T16:57:34.309540+00:00",
     "expected_line_numbers": [
       24,
       28,
@@ -50,29 +50,13 @@
     {
       "line_number": 28,
       "accuser": "Tyler",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "James"
-          ],
-          "evidence": "I don't think that that card is a seer."
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
       "line_number": 40,
       "accuser": "Tyler",
-      "relations": [
-        {
-          "type": "deception",
-          "accused": [
-            "James"
-          ],
-          "evidence": "I really don't think you're the seer with that face."
-        }
-      ],
+      "relations": [],
       "requires_review": false
     },
     {
@@ -102,7 +86,15 @@
     {
       "line_number": 69,
       "accuser": "James",
-      "relations": [],
+      "relations": [
+        {
+          "type": "deception",
+          "accused": [
+            "Tyler"
+          ],
+          "evidence": "He could be."
+        }
+      ],
       "requires_review": false
     },
     {
@@ -188,11 +180,11 @@
       "accuser": "Paul",
       "relations": [
         {
-          "type": "werewolf",
+          "type": "deception",
           "accused": [
             "Justin"
           ],
-          "evidence": "I think it's Justin."
+          "evidence": "he's not going to tell us who he trouble made"
         }
       ],
       "requires_review": false
@@ -212,7 +204,17 @@
     {
       "line_number": 152,
       "accuser": "Justin",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "UNKNOWN"
+          ],
+          "evidence": "We have two werewolves and a minion",
+          "manually_reviewed": true,
+          "confirmed_unresolvable": true
+        }
+      ],
       "requires_review": false
     }
   ]

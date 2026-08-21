@@ -60,7 +60,7 @@ PYTHON=${PYTHON:-python}
 $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas', pandas.__version__)"
 
 # ------------------------------------------------------------
-# Sample, annotate, report
+# Sample and annotate
 #
 # --resume makes the annotation step idempotent: it appends only
 # justifications that are not already in the output file with a successful
@@ -68,23 +68,32 @@ $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas
 # picks up where it stopped instead of paying for every call again.
 # ------------------------------------------------------------
 
-SAMPLE=results/justification_annotation/pilot_v1/pilot_sample.jsonl
+# SCHEMA selects the prompt, the allowed categories and the output folder.
+# Override at submit time without editing this file:
+#   sbatch --export=ALL,SCHEMA=v1 slurm_files/justification_annotation_pilot.slurm
+SCHEMA=${SCHEMA:-v2}
+
+PILOT_DIR=results/justification_annotation/pilot_${SCHEMA}
+SAMPLE=$PILOT_DIR/pilot_sample.jsonl
+
+echo "Schema: $SCHEMA  ->  $PILOT_DIR"
+echo
 
 if [[ ! -f "$SAMPLE" ]]; then
     echo "=== Drawing pilot sample ==="
-    $PYTHON src/pt_annotation/sample_justification_pilot.py
+    $PYTHON src/pt_annotation/sample_justification_pilot.py --schema "$SCHEMA"
 else
     echo "=== Pilot sample already drawn, reusing it ==="
-    echo "    (delete $SAMPLE to redraw; the seed makes it reproducible)"
+    echo "    (delete $SAMPLE to redraw; the seed makes it reproducible, and"
+    echo "     identical across schemas, so v1 and v2 annotate the same 40)"
 fi
 
 echo
 echo "=== Annotating with DeepSeek ==="
-$PYTHON src/pt_annotation/justification_annotation_deepseek.py --resume
+$PYTHON src/pt_annotation/justification_annotation_deepseek.py --schema "$SCHEMA" --resume
 
 echo
-echo "=== Pilot report ==="
-$PYTHON src/pt_annotation/justification_pilot_report.py
+echo "Review the result in notebooks/05_annotation_val/."
 
 echo
 echo "finished: $(date --iso-8601=seconds)"

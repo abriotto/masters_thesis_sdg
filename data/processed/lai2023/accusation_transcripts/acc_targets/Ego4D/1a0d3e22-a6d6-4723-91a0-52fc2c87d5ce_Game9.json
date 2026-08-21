@@ -12,8 +12,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T14:34:12.897718+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-17T17:31:22.202077+00:00",
     "expected_line_numbers": [
       7,
       9,
@@ -55,7 +55,7 @@
           "accused": [
             "Zack"
           ],
-          "evidence": "Zack's the werewolf"
+          "evidence": "Zack's the werewolf then"
         }
       ],
       "requires_review": false
@@ -65,22 +65,20 @@
       "accuser": "Jacob",
       "relations": [
         {
-          "type": "deception",
-          "accused": [
-            "UNKNOWN"
-          ],
-          "evidence": "one of you are lying",
-          "manually_reviewed": true,
-          "confirmed_unresolvable": true
-        },
-        {
           "type": "werewolf",
           "accused": [
-            "UNKNOWN"
+            "Sean",
+            "Hunter"
           ],
-          "evidence": "you are now a robber or a werewolf",
-          "manually_reviewed": true,
-          "confirmed_unresolvable": true
+          "evidence": "you are now a robber or a werewolf"
+        },
+        {
+          "type": "deception",
+          "accused": [
+            "Sean",
+            "Hunter"
+          ],
+          "evidence": "one of you are lying"
         }
       ],
       "requires_review": false
@@ -100,7 +98,15 @@
     {
       "line_number": 23,
       "accuser": "Jacob",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "Zack"
+          ],
+          "evidence": "Yes."
+        }
+      ],
       "requires_review": false
     },
     {
@@ -120,27 +126,35 @@
     {
       "line_number": 27,
       "accuser": "Jacob",
-      "relations": [],
-      "requires_review": false
-    },
-    {
-      "line_number": 51,
-      "accuser": "Sean",
-      "relations": [],
-      "requires_review": false
-    },
-    {
-      "line_number": 69,
-      "accuser": "Hunter",
       "relations": [
         {
           "type": "deception",
           "accused": [
             "Sean"
           ],
-          "evidence": "He's playing victim again"
+          "evidence": "Because that results in you not being picked"
         }
       ],
+      "requires_review": false
+    },
+    {
+      "line_number": 51,
+      "accuser": "Sean",
+      "relations": [
+        {
+          "type": "deception",
+          "accused": [
+            "Jacob"
+          ],
+          "evidence": "If the seer did check in there. Then, you're screwed pretty much."
+        }
+      ],
+      "requires_review": false
+    },
+    {
+      "line_number": 69,
+      "accuser": "Hunter",
+      "relations": [],
       "requires_review": false
     },
     {
@@ -165,7 +179,7 @@
           "accused": [
             "Sean"
           ],
-          "evidence": "is trying to cover that up"
+          "evidence": "trying to cover that up"
         }
       ],
       "requires_review": false

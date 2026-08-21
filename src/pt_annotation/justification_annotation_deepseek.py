@@ -1,12 +1,14 @@
 """
-Runner for annotating LLM vote justifications with the epistemic-basis scheme
-defined in src/prompts/justification_annotation.txt, using DeepSeek V4 Pro --
-the same model, decoding settings and call conventions used for the Lai corpus
+Runner for annotating LLM vote justifications with DeepSeek V4 Pro -- the same
+model, decoding settings and call conventions used for the Lai corpus
 annotations, so that the two annotation layers are comparable.
 
-The prompt is the authority for the scheme. JUSTIFICATION_CODEBOOK.md is an
-earlier draft and is out of date; the category set here (seven categories
-including Payoff, plus a per-sentence rule_mentioned flag) follows the prompt.
+The prompt is the authority for the scheme, and there are now two of them.
+--schema selects which (default v2); src/pt_annotation/annotation_schema.py
+holds what each one allows, and the validator follows it. v2 renamed three
+categories, added Uncertainty, and dropped the `use` and `rule_mentioned`
+fields, so validating v2 output against the v1 contract would reject every
+response.
 
 Reads the pilot sample produced by sample_justification_pilot.py (one JSON
 object per line: vote plus pre-split sentences) and calls DeepSeek once per
@@ -18,18 +20,18 @@ Two things differ from accusation_annotation_deepseek.py:
   * The prompt has no {{TRANSCRIPT}} placeholder. It defines an input schema
     instead, so the instructions go in as the system message and the
     {vote, sentences} object as the user message.
-  * Validation is much stricter, because this prompt has never been run.
-    Sentence coverage, verbatim text preservation, the category and use
-    vocabularies, and evidence_span substring-exactness are all checked. The
+  * Validation is much stricter, because these prompts are being piloted.
+    Sentence coverage, verbatim text preservation, the schema's category
+    vocabulary, and evidence_span substring-exactness are all checked. The
     pilot's job is to surface where the prompt fails, so failures are
     recorded rather than silently repaired.
 
 Usage:
     set DEEPSEEK_API_KEY=...
     python src/pt_annotation/justification_annotation_deepseek.py --dry-run
-    python src/pt_annotation/justification_annotation_deepseek.py
-    python src/pt_annotation/justification_annotation_deepseek.py --resume
     python src/pt_annotation/justification_annotation_deepseek.py --max-items 3
+    python src/pt_annotation/justification_annotation_deepseek.py --resume
+    python src/pt_annotation/justification_annotation_deepseek.py --schema v1
 """
 
 import argparse
@@ -45,6 +47,12 @@ from openai import OpenAI
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
+
+from src.pt_annotation.annotation_schema import (  # noqa: E402
+    DEFAULT_SCHEMA,
+    SCHEMAS,
+    get_schema,
+)
 
 
 # ============================================================
@@ -68,16 +76,19 @@ DEFAULT_MAX_TOKENS_CAP = 32768
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_RETRY_SLEEP_SECONDS = 20.0
 
-ALLOWED_CATEGORIES = {
-    "Deduction", "Consistency", "Payoff",
-    "Testimony", "Social", "Behavioral", "Other",
-}
-ALLOWED_USES = {"used", "discounted", "mentioned"}
+DEFAULT_SCHEMA_NAME = DEFAULT_SCHEMA          # "v2"
+PROMPT_DIR = REPO_ROOT / "src" / "prompts"
+RESULTS_ROOT = REPO_ROOT / "results" / "justification_annotation"
 
-DEFAULT_PILOT_DIR = REPO_ROOT / "results" / "justification_annotation" / "pilot_v1"
-DEFAULT_INPUT_PATH = DEFAULT_PILOT_DIR / "pilot_sample.jsonl"
-DEFAULT_OUTPUT_PATH = DEFAULT_PILOT_DIR / "pilot_annotations.jsonl"
-DEFAULT_PROMPT_PATH = REPO_ROOT / "src" / "prompts" / "justification_annotation.txt"
+
+def pilot_dir_for(schema_name):
+    """One folder per schema version: results/justification_annotation/pilot_v2/.
+
+    Keeping them apart matters because the two schemas are not comparable
+    row-for-row -- same 40 justifications, different category vocabulary --
+    and mixing their output in one file would silently corrupt both.
+    """
+    return RESULTS_ROOT / f"pilot_{schema_name}"
 
 
 # ============================================================
@@ -116,7 +127,7 @@ def normalise_whitespace(text):
 # report how often the prompt is followed, which is the point of running it.
 # ============================================================
 
-def validate_annotation(parsed, item):
+def validate_annotation(parsed, item, schema):
     flags = []
 
     expected_sentences = {s["sentence_id"]: s["text"] for s in item["sentences"]}
@@ -152,7 +163,7 @@ def validate_annotation(parsed, item):
         elif normalise_whitespace(returned_text) != normalise_whitespace(expected_text):
             flags.append(f"{label}: text was altered")
 
-        if not isinstance(sentence.get("rule_mentioned"), bool):
+        if schema.has_rule_mentioned and not isinstance(sentence.get("rule_mentioned"), bool):
             flags.append(
                 f"{label}: rule_mentioned is {sentence.get('rule_mentioned')!r}, not a boolean"
             )
@@ -173,10 +184,17 @@ def validate_annotation(parsed, item):
             span = annotation.get("evidence_span")
             description = annotation.get("other_description")
 
-            if category not in ALLOWED_CATEGORIES:
+            if category not in schema.allowed_categories():
                 flags.append(f"{label}: invalid category {category!r}")
-            if use not in ALLOWED_USES:
-                flags.append(f"{label}: invalid use {use!r}")
+
+            if schema.has_use:
+                if use not in schema.uses:
+                    flags.append(f"{label}: invalid use {use!r}")
+            elif use is not None:
+                # v2 removed `use`. A response still carrying it means the
+                # model is working from the old scheme, which is worth
+                # knowing rather than quietly ignoring.
+                flags.append(f"{label}: unexpected `use` field for schema {schema.name}")
 
             # evidence_span exactness is the load-bearing check. If spans are
             # paraphrased they cannot be aligned to the text, and every
@@ -357,7 +375,7 @@ def build_user_message(item):
     return json.dumps(payload, ensure_ascii=False, indent=2)
 
 
-def process_item(client, item, system_prompt, model, args):
+def process_item(client, item, system_prompt, model, args, schema):
     base_metadata = {
         "justification_id": item["justification_id"],
         "model_under_annotation": item["model"],
@@ -369,6 +387,7 @@ def process_item(client, item, system_prompt, model, args):
         "reasoning_effort": DEFAULT_REASONING_EFFORT,
         "seed": DEFAULT_GENERATION_SEED,
         "prompt_path": str(args.prompt_path.relative_to(REPO_ROOT)),
+        "schema": schema.name,
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -390,7 +409,7 @@ def process_item(client, item, system_prompt, model, args):
             max_retries=args.max_retries,
             retry_sleep_seconds=args.retry_sleep_seconds,
         )
-        validation_flags = validate_annotation(parsed, item)
+        validation_flags = validate_annotation(parsed, item, schema)
         return {
             "metadata": {
                 **base_metadata,
@@ -434,9 +453,15 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Annotate LLM vote justifications with the epistemic-basis scheme via DeepSeek."
     )
-    parser.add_argument("--input-path", type=Path, default=DEFAULT_INPUT_PATH)
-    parser.add_argument("--output-path", type=Path, default=DEFAULT_OUTPUT_PATH)
-    parser.add_argument("--prompt-path", type=Path, default=DEFAULT_PROMPT_PATH)
+    parser.add_argument(
+        "--schema", default=DEFAULT_SCHEMA_NAME, choices=sorted(SCHEMAS),
+        help="Annotation scheme version. Selects the prompt, the allowed "
+             "categories, and the output folder (pilot_<schema>).",
+    )
+    # Left as None so they can be derived from --schema after parsing.
+    parser.add_argument("--input-path", type=Path, default=None)
+    parser.add_argument("--output-path", type=Path, default=None)
+    parser.add_argument("--prompt-path", type=Path, default=None)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--max-retries", type=int, default=DEFAULT_MAX_RETRIES)
     parser.add_argument("--retry-sleep-seconds", type=float, default=DEFAULT_RETRY_SLEEP_SECONDS)
@@ -452,6 +477,21 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    schema = get_schema(args.schema)
+    pilot_dir = pilot_dir_for(schema.name)
+
+    if args.prompt_path is None:
+        args.prompt_path = PROMPT_DIR / schema.prompt_filename
+    if args.input_path is None:
+        args.input_path = pilot_dir / "pilot_sample.jsonl"
+    if args.output_path is None:
+        args.output_path = pilot_dir / "pilot_annotations.jsonl"
+
+    # A dry run must never touch real output. It opens the file in write mode,
+    # which would truncate a completed pilot just for a payload sanity check.
+    if args.dry_run:
+        args.output_path = args.output_path.with_suffix(".dryrun.jsonl")
 
     if not args.dry_run:
         api_key = os.environ.get("DEEPSEEK_API_KEY")
@@ -469,6 +509,8 @@ def main():
     print(f"Input      : {args.input_path}")
     print(f"Output     : {args.output_path}")
     print(f"Prompt     : {args.prompt_path}")
+    print(f"Schema     : {schema.name} ({len(schema.categories)} categories"
+          + (", with use" if schema.has_use else ", no use field") + ")")
     print(f"Model      : {args.model} (effort={DEFAULT_REASONING_EFFORT}, "
           f"seed={DEFAULT_GENERATION_SEED}, max_tokens={DEFAULT_MAX_TOKENS})")
     print(f"Mode       : {'DRY RUN (no API calls)' if args.dry_run else 'live'}")
@@ -494,7 +536,7 @@ def main():
                 continue
 
             print(f"Annotating: {justification_id} ({len(item['sentences'])} sentences)")
-            record = process_item(client, item, system_prompt, args.model, args)
+            record = process_item(client, item, system_prompt, args.model, args, schema)
 
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
             handle.flush()

@@ -12,8 +12,8 @@
     ],
     "model": "deepseek-v4-pro",
     "reasoning_effort": "high",
-    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation.txt",
-    "generated_at_utc": "2026-07-19T13:28:13.957354+00:00",
+    "prompt_path": "C:\\Users\\annab\\Documents\\GitHub\\masters_thesis_sdg\\src\\prompts\\accusation_annotation_hybrid.txt",
+    "generated_at_utc": "2026-08-18T14:54:49.350778+00:00",
     "expected_line_numbers": [
       29,
       55,
@@ -29,7 +29,15 @@
     {
       "line_number": 29,
       "accuser": "Mitchell",
-      "relations": [],
+      "relations": [
+        {
+          "type": "werewolf",
+          "accused": [
+            "Caitlynn"
+          ],
+          "evidence": "you're the riskiest character"
+        }
+      ],
       "requires_review": false
     },
     {
@@ -39,11 +47,10 @@
         {
           "type": "werewolf",
           "accused": [
-            "UNKNOWN"
+            "Alana",
+            "Mike"
           ],
-          "evidence": "one of us are",
-          "manually_reviewed": true,
-          "confirmed_unresolvable": true
+          "evidence": "if you are now not the werewolf that means one of us are"
         }
       ],
       "requires_review": false
@@ -78,7 +85,7 @@
           "accused": [
             "Alana"
           ],
-          "evidence": "pretended that you actually robbed her instead of me"
+          "evidence": "What you could have done is pretended that you actually robbed her instead of me"
         }
       ],
       "requires_review": false
@@ -105,9 +112,17 @@
           "type": "werewolf",
           "accused": [
             "Mitchell",
-            "Caitlynn"
+            "Alana"
           ],
           "evidence": "they could both be werewolves"
+        },
+        {
+          "type": "deception",
+          "accused": [
+            "Mitchell",
+            "Alana"
+          ],
+          "evidence": "playing a very nice game of politely pinning it on you now"
         }
       ],
       "requires_review": false
