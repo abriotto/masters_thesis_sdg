@@ -22,4 +22,4 @@ echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 
 export PYTORCH_ALLOC_CONF=expandable_segments:True
 
-python -m src.finetuning.train_role_inference --train_path data/processed/jin2024_onuw/sft_role_inference_traced/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_traced/val.jsonl --output_dir models/finetuned/gemma-4-31B-role-inference-traced --response_part '<channel|>' --enable_thinking_in_prompt --max_seq_length 12288 --num_train_epochs 3 --smoke_test_samples 3
+python -m src.finetuning.train_role_inference --train_path data/processed/jin2024_onuw/sft_role_inference_traced_31B/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_traced_31B/val.jsonl --output_dir models/finetuned/gemma-4-31B-role-inference-traced --response_part '<channel|>' --enable_thinking_in_prompt --max_seq_length 12288 --num_train_epochs 3 --smoke_test_samples 3

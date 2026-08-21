@@ -30,10 +30,11 @@ from typing import Any, Callable, Optional
 from src.utils.io_utils import find_repo_root
 
 
-# Gemma 4 thought delimiters. The 12B/26B/31B checkpoints use these; the small
-# E2B/E4B checkpoints use a different pair, so both are CLI-overridable. Discover a
-# model's pair with the trainer's --dry_run generation-prompt probe: rendering with
-# enable_thinking=False pre-fills an empty thought block, which shows both markers.
+# Gemma 4 thought delimiters. VERIFIED IDENTICAL on unsloth/gemma-4-31B-it and
+# gemma-4-E4B-it via the trainer's --dry_run generation-prompt probe, despite
+# Google's docs suggesting the small checkpoints use <|think|>/<think|>. E2B is
+# unverified, so both stay CLI-overridable: render with enable_thinking=False and
+# the prompt tail shows the pre-filled empty thought block, i.e. both markers.
 THOUGHT_OPEN = "<|channel>thought"
 THOUGHT_CLOSE = "<channel|>"
 
@@ -111,7 +112,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--traces_path",
         type=str,
-        default="data/processed/jin2024_onuw/traces/role_inference_traces.jsonl",
+        default="data/processed/jin2024_onuw/traces/role_inference_traces_31B.jsonl",
     )
     parser.add_argument(
         "--source_dir",
@@ -122,7 +123,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output_dir",
         type=str,
-        default="data/processed/jin2024_onuw/sft_role_inference_traced",
+        default="data/processed/jin2024_onuw/sft_role_inference_traced_31B",
     )
     parser.add_argument(
         "--thought_open",

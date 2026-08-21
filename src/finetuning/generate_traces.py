@@ -163,7 +163,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output_path",
         type=str,
-        default="data/processed/jin2024_onuw/traces/role_inference_traces.jsonl",
+        default="data/processed/jin2024_onuw/traces/role_inference_traces_31B.jsonl",
     )
     parser.add_argument("--max_seq_length", type=int, default=16384)
     parser.add_argument(
