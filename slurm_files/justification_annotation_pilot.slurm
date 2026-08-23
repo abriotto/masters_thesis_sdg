@@ -69,8 +69,8 @@ $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas
 
 # SCHEMA selects the prompt, the allowed categories and the output folder.
 # Override at submit time without editing this file:
-#   sbatch --export=ALL,SCHEMA=v1 slurm_files/justification_annotation_pilot.slurm
-SCHEMA=${SCHEMA:-v2}
+#   sbatch --export=ALL,SCHEMA=v2 slurm_files/justification_annotation_pilot.slurm
+SCHEMA=${SCHEMA:-v3}
 
 PILOT_DIR=results/justification_annotation/pilot_${SCHEMA}
 SAMPLE=$PILOT_DIR/pilot_sample.jsonl

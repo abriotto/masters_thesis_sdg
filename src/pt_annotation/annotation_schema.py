@@ -59,9 +59,25 @@ V2 = Schema(
     has_rule_mentioned=False,
 )
 
-SCHEMAS = {"v1": V1, "v2": V2}
+# v3 is v2's scheme with rewritten guidance: the categories, the output shape
+# and the absent `use`/`rule_mentioned` fields are all identical, verified
+# against the prompt's OUTPUT FORMAT section. Only the wording that leads the
+# annotator to a category changed, which is why this is a new prompt file
+# rather than a new vocabulary.
+#
+# Note the filename is "annotations" (plural) where v1 and v2 are
+# "annotation" -- matching the file on disk, not the pattern.
+V3 = Schema(
+    name="v3",
+    prompt_filename="justification_annotations_v3.txt",
+    categories=V2.categories,
+    has_use=False,
+    has_rule_mentioned=False,
+)
 
-DEFAULT_SCHEMA = "v2"
+SCHEMAS = {"v1": V1, "v2": V2, "v3": V3}
+
+DEFAULT_SCHEMA = "v3"
 
 
 def get_schema(name):
