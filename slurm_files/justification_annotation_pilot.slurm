@@ -80,7 +80,7 @@ echo
 
 if [[ ! -f "$SAMPLE" ]]; then
     echo "=== Drawing pilot sample ==="
-    $PYTHON src/pt_annotation/sample_justification_pilot.py --schema "$SCHEMA"
+    $PYTHON src/pt_annotation/justification_sample_pilot.py --schema "$SCHEMA"
 else
     echo "=== Pilot sample already drawn, reusing it ==="
     echo "    (delete $SAMPLE to redraw; the seed makes it reproducible, and"

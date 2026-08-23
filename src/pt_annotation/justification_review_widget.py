@@ -13,7 +13,7 @@ mid-review loses nothing.
 import ipywidgets as widgets
 from IPython.display import HTML, display
 
-from src.pt_annotation.review_tools import VERDICTS, render_justification
+from src.pt_annotation.justification_review_tools import VERDICTS, render_justification
 
 
 class ReviewApp:

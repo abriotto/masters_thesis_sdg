@@ -3,14 +3,14 @@ Runner for annotating LLM vote justifications with DeepSeek V4 Pro -- the same
 model, decoding settings and call conventions used for the Lai corpus
 annotations, so that the two annotation layers are comparable.
 
-The prompt is the authority for the scheme, and there are now two of them.
---schema selects which (default v2); src/pt_annotation/annotation_schema.py
+The prompt is the authority for the scheme, and there are three of them.
+--schema selects which (default v3); src/pt_annotation/justification_schema.py
 holds what each one allows, and the validator follows it. v2 renamed three
 categories, added Uncertainty, and dropped the `use` and `rule_mentioned`
-fields, so validating v2 output against the v1 contract would reject every
-response.
+fields, so validating v2/v3 output against the v1 contract would reject every
+response. v3 shares v2's vocabulary and differs only in wording.
 
-Reads the pilot sample produced by sample_justification_pilot.py (one JSON
+Reads the pilot sample produced by justification_sample_pilot.py (one JSON
 object per line: vote plus pre-split sentences) and calls DeepSeek once per
 justification. Output is one JSONL file, one line per justification, with the
 model output plus validation flags.
@@ -48,7 +48,7 @@ from openai import OpenAI
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.pt_annotation.annotation_schema import (  # noqa: E402
+from src.pt_annotation.justification_schema import (  # noqa: E402
     DEFAULT_SCHEMA,
     SCHEMAS,
     get_schema,
@@ -76,17 +76,18 @@ DEFAULT_MAX_TOKENS_CAP = 32768
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_RETRY_SLEEP_SECONDS = 20.0
 
-DEFAULT_SCHEMA_NAME = DEFAULT_SCHEMA          # "v2"
+DEFAULT_SCHEMA_NAME = DEFAULT_SCHEMA          # "v3"
 PROMPT_DIR = REPO_ROOT / "src" / "prompts"
 RESULTS_ROOT = REPO_ROOT / "results" / "justification_annotation"
 
 
 def pilot_dir_for(schema_name):
-    """One folder per schema version: results/justification_annotation/pilot_v2/.
+    """One folder per schema version: results/justification_annotation/pilot_v3/.
 
-    Keeping them apart matters because the two schemas are not comparable
-    row-for-row -- same 40 justifications, different category vocabulary --
-    and mixing their output in one file would silently corrupt both.
+    Keeping them apart matters because output from different schemas is not
+    comparable row-for-row -- the same 40 justifications, but v1's category
+    vocabulary differs from v2/v3's -- and mixing them in one file would
+    silently corrupt both.
     """
     return RESULTS_ROOT / f"pilot_{schema_name}"
 

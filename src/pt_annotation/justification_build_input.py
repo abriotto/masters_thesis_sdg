@@ -24,9 +24,9 @@ Layout:
       annotations/<...>.jsonl    written later by the runner
 
 Usage:
-    python src/pt_annotation/build_annotation_input.py
-    python src/pt_annotation/build_annotation_input.py --schema v3
-    python src/pt_annotation/build_annotation_input.py --dry-run
+    python src/pt_annotation/justification_build_input.py
+    python src/pt_annotation/justification_build_input.py --schema v3
+    python src/pt_annotation/justification_build_input.py --dry-run
 """
 
 import argparse
@@ -39,8 +39,8 @@ import pandas as pd
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.pt_annotation.annotation_schema import DEFAULT_SCHEMA, SCHEMAS  # noqa: E402
-from src.pt_annotation.sample_justification_pilot import (  # noqa: E402
+from src.pt_annotation.justification_schema import DEFAULT_SCHEMA, SCHEMAS  # noqa: E402
+from src.pt_annotation.justification_sample_pilot import (  # noqa: E402
     DEFAULT_ANALYSIS_ROOT,
     MODEL_ORDER,
     load_frame,

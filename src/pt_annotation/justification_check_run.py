@@ -11,9 +11,9 @@ Exit code is 0 only when every shard is complete and unflagged, so this can
 gate the merge step in a script.
 
 Usage:
-    python src/pt_annotation/check_annotation_run.py
-    python src/pt_annotation/check_annotation_run.py --schema v3
-    python src/pt_annotation/check_annotation_run.py --merge
+    python src/pt_annotation/justification_check_run.py
+    python src/pt_annotation/justification_check_run.py --schema v3
+    python src/pt_annotation/justification_check_run.py --merge
 """
 
 import argparse
@@ -25,7 +25,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
-from src.pt_annotation.annotation_schema import DEFAULT_SCHEMA, SCHEMAS, get_schema  # noqa: E402
+from src.pt_annotation.justification_schema import DEFAULT_SCHEMA, SCHEMAS, get_schema  # noqa: E402
 
 RESULTS_ROOT = REPO_ROOT / "results" / "justification_annotation"
 
@@ -95,7 +95,7 @@ def main():
     manifest_path = full_dir / "manifest.json"
 
     if not manifest_path.exists():
-        sys.exit(f"No manifest at {manifest_path}. Run build_annotation_input.py first.")
+        sys.exit(f"No manifest at {manifest_path}. Run justification_build_input.py first.")
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     schema = get_schema(manifest.get("schema", args.schema))

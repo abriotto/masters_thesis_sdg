@@ -22,7 +22,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.pt_annotation.annotation_schema import (  # noqa: E402
+from src.pt_annotation.justification_schema import (  # noqa: E402
     CATEGORY_COLORS,
     detect_schema,
     get_schema,

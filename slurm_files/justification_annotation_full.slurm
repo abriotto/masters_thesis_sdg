@@ -81,7 +81,7 @@ $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas
 
 if [[ ! -f "$MANIFEST" ]]; then
     echo "ERROR: $MANIFEST not found. Build the shards first:" >&2
-    echo "  $PYTHON src/pt_annotation/build_annotation_input.py --schema $SCHEMA" >&2
+    echo "  $PYTHON src/pt_annotation/justification_build_input.py --schema $SCHEMA" >&2
     exit 1
 fi
 

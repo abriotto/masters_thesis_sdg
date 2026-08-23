@@ -20,8 +20,8 @@ The review sheet for checking the model's output is produced afterwards by
 justification_pilot_report.py, once there is output to check.
 
 Usage:
-    python src/pt_annotation/sample_justification_pilot.py
-    python src/pt_annotation/sample_justification_pilot.py --n 50 --seed 7
+    python src/pt_annotation/justification_sample_pilot.py
+    python src/pt_annotation/justification_sample_pilot.py --n 50 --seed 7
 """
 
 import argparse
@@ -35,7 +35,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.utils.sentences import build_sentence_records  # noqa: E402
-from src.pt_annotation.annotation_schema import DEFAULT_SCHEMA, SCHEMAS  # noqa: E402
+from src.pt_annotation.justification_schema import DEFAULT_SCHEMA, SCHEMAS  # noqa: E402
 
 
 # ============================================================
