@@ -18,9 +18,11 @@
 # times out is resubmitted on its own (`--array=7`) instead of taking the
 # other eleven down with it.
 #
-# Wall time is 8h for a shard measured at ~3.6h (191 calls x 68s, from the
-# pilot). The margin is deliberate -- the slowest pilot call took 152s, and a
-# task that dies at the limit wastes every call it had not yet written.
+# Wall time is 8h against a shard measured at ~3.6h (191 calls x 68s, one at
+# a time). The margin is deliberate and cheap: the slowest pilot call took
+# 152s, throttling stretches things unpredictably, and a task killed at the
+# limit wastes every call it had not yet written. Reserving time a task does
+# not use costs nothing.
 #
 # No --gres=gpu, 1 CPU and 2G per task, all for the same reason: this only
 # makes HTTPS calls and spends ~99% of its runtime blocked on the network.
@@ -47,21 +49,9 @@ cd "$REPO" || exit 1
 
 mkdir -p "$REPO/logs"
 
-# SCHEMA selects the prompt, the allowed categories and the output folder.
-# The default is NOT hardcoded here: it is read from justification_schema.py,
-# so there is one place that decides which prompt is current. A second copy of
-# the default in this file is exactly how a run silently used the wrong
-# schema once already.
-#
-# Override at submit time:
-#   sbatch --export=ALL,SCHEMA=v3 slurm_files/justification_annotation_full.slurm
-SCHEMA=${SCHEMA:-$($PYTHON -c "from src.pt_annotation.justification_schema import DEFAULT_SCHEMA; print(DEFAULT_SCHEMA)")}
-FULL_DIR=results/justification_annotation/full_${SCHEMA}
-MANIFEST=$FULL_DIR/manifest.json
 
 echo "=== Job $SLURM_ARRAY_JOB_ID task $SLURM_ARRAY_TASK_ID on $(hostname) ==="
 echo "started: $(date --iso-8601=seconds)"
-echo "schema : $SCHEMA"
 
 # ------------------------------------------------------------
 # API key -- never written into this file, which is in git.
@@ -84,6 +74,33 @@ fi
 
 # conda activate <your_env>   # uncomment if the cluster needs it
 PYTHON=${PYTHON:-python}
+
+# Parallel API calls WITHIN each task, on top of the 12 array tasks.
+#
+# Default 1: with 12 tasks that is 12 concurrent calls, one per (model, run).
+# Conservative on purpose -- the only latency ever measured against DeepSeek
+# is at a single stream, so 12 is already an extrapolation and 48 would be a
+# guess. A 3.6h run that finishes is worth more than a 55min run that trips
+# rate limiting halfway.
+#
+# To go faster once 12 is known to be fine (the work is network-bound, so
+# this costs no extra CPU):
+#   sbatch --export=ALL,CONCURRENCY=4 slurm_files/justification_annotation_full.slurm
+CONCURRENCY=${CONCURRENCY:-1}
+
+# SCHEMA selects the prompt, the allowed categories and the output folder.
+# The default is NOT hardcoded here: it is read from justification_schema.py,
+# so there is one place that decides which prompt is current. A second copy of
+# the default in this file is exactly how a run silently used the wrong
+# schema once already.
+#
+# Override at submit time:
+#   sbatch --export=ALL,SCHEMA=v3 slurm_files/justification_annotation_full.slurm
+SCHEMA=${SCHEMA:-$($PYTHON -c "from src.pt_annotation.justification_schema import DEFAULT_SCHEMA; print(DEFAULT_SCHEMA)")}
+FULL_DIR=results/justification_annotation/full_${SCHEMA}
+MANIFEST=$FULL_DIR/manifest.json
+
+echo "schema : $SCHEMA"
 
 $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas', pandas.__version__)"
 
@@ -114,7 +131,7 @@ else:
 PYEOF
 )
 
-echo "shard  : [$SLURM_ARRAY_TASK_ID] $SHARD_KEY  ($SHARD_N justifications)"
+echo "shard  : [$SLURM_ARRAY_TASK_ID] $SHARD_KEY  ($SHARD_N justifications, concurrency $CONCURRENCY)"
 echo "input  : $FULL_DIR/$SHARD_IN"
 echo "output : $FULL_DIR/$SHARD_OUT"
 echo

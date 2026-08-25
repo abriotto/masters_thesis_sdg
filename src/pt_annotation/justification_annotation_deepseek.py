@@ -40,6 +40,7 @@ import os
 import re
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -467,6 +468,13 @@ def parse_args():
     parser.add_argument("--max-retries", type=int, default=DEFAULT_MAX_RETRIES)
     parser.add_argument("--retry-sleep-seconds", type=float, default=DEFAULT_RETRY_SLEEP_SECONDS)
     parser.add_argument("--max-items", type=int, default=None, help="Annotate at most N justifications.")
+    parser.add_argument(
+        "--concurrency", type=int, default=1,
+        help="Number of justifications to annotate in parallel. The work is "
+             "network-bound, so this raises throughput without using more "
+             "CPUs. Start low: the API may throttle, and retries at high "
+             "concurrency cost wall time, not just calls.",
+    )
     parser.add_argument("--resume", action="store_true", help="Skip justifications already annotated.")
     parser.add_argument(
         "--dry-run",
@@ -514,6 +522,8 @@ def main():
           + (", with use" if schema.has_use else ", no use field") + ")")
     print(f"Model      : {args.model} (effort={DEFAULT_REASONING_EFFORT}, "
           f"seed={DEFAULT_GENERATION_SEED}, max_tokens={DEFAULT_MAX_TOKENS})")
+    print(f"Concurrency: {args.concurrency}"
+          + ("" if args.concurrency > 1 else " (sequential)"))
     print(f"Mode       : {'DRY RUN (no API calls)' if args.dry_run else 'live'}")
     print(f"Items      : {len(items)}"
           + (f", {len(already_done)} already annotated" if args.resume else ""))
@@ -524,35 +534,78 @@ def main():
 
     processed = skipped = errored = flagged = 0
 
+    pending = [i for i in items if i["justification_id"] not in already_done]
+    skipped = len(items) - len(pending)
+    if args.max_items is not None:
+        pending = pending[:args.max_items]
+
+    def record_result(handle, record):
+        """Write one result and update the counters. Called only from the
+        main thread, so the file needs no lock."""
+        nonlocal processed, errored, flagged
+        handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+        handle.flush()
+
+        metadata = record["metadata"]
+        label = metadata["justification_id"]
+        if "error" in metadata:
+            errored += 1
+            print(f"  ERROR {label}: {metadata['error']}")
+        else:
+            processed += 1
+            flags = metadata.get("validation_flags", [])
+            if flags:
+                flagged += 1
+                print(f"  FLAG  {label}")
+                for flag in flags:
+                    print(f"        - {flag}")
+
     with args.output_path.open(write_mode, encoding="utf-8") as handle:
-        for item in items:
-            if args.max_items is not None and processed >= args.max_items:
-                print(f"Reached --max-items={args.max_items}. Stopping.")
-                break
-
-            justification_id = item["justification_id"]
-
-            if justification_id in already_done:
-                skipped += 1
-                continue
-
-            print(f"Annotating: {justification_id} ({len(item['sentences'])} sentences)")
-            record = process_item(client, item, system_prompt, args.model, args, schema)
-
-            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
-            handle.flush()
-
-            metadata = record["metadata"]
-            if "error" in metadata:
-                errored += 1
-                print(f"  Error: {metadata['error']}")
-            else:
-                processed += 1
-                flags = metadata.get("validation_flags", [])
-                if flags:
-                    flagged += 1
-                    for flag in flags:
-                        print(f"  FLAG: {flag}")
+        if args.concurrency <= 1:
+            for item in pending:
+                print(f"Annotating: {item['justification_id']} "
+                      f"({len(item['sentences'])} sentences)")
+                record_result(
+                    handle,
+                    process_item(client, item, system_prompt, args.model, args, schema),
+                )
+        else:
+            # Each call spends ~99% of its time blocked on the network, so
+            # threads raise throughput without needing more CPUs -- which
+            # matters because the cluster partition caps how many SLURM tasks
+            # can run, not how many sockets one task may hold open.
+            #
+            # Only the main thread touches the file: workers return records
+            # and results are written as they complete. That keeps the output
+            # append-only and interleaving-free without a lock, and --resume
+            # still works if the task dies mid-run.
+            total = len(pending)
+            done = 0
+            with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+                futures = {
+                    pool.submit(
+                        process_item, client, item, system_prompt,
+                        args.model, args, schema,
+                    ): item
+                    for item in pending
+                }
+                for future in as_completed(futures):
+                    done += 1
+                    item = futures[future]
+                    try:
+                        record = future.result()
+                    except Exception as error:          # never lose the row
+                        record = {
+                            "metadata": {
+                                "justification_id": item["justification_id"],
+                                "schema": schema.name,
+                                "error": str(error),
+                                "error_type": type(error).__name__,
+                            },
+                            "annotation": None,
+                        }
+                    print(f"[{done}/{total}] {item['justification_id']}")
+                    record_result(handle, record)
 
     print()
     print(f"Annotated          : {processed}")
