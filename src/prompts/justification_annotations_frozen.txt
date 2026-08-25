@@ -1,0 +1,669 @@
+TASK
+
+You are annotating the semantic content of justifications produced by language models for One Night Ultimate Werewolf (ONUW).
+
+For each sentence, identify the TYPES OF INFORMATION that the justification actively reasons with.
+
+The goal is to determine WHAT the stated reasoning is grounded in.
+
+Do NOT classify:
+- logical or deductive form;
+- causal, conditional, or other discourse relations;
+- whether the reasoning is correct;
+- whether the justification reflects the model's internal reasoning.
+
+These aspects are outside this annotation task.
+
+
+INPUT
+
+You will receive:
+
+1. `vote`: the model's final vote;
+2. `sentences`: the complete justification, already divided into sentences.
+
+Sentence boundaries are fixed.
+
+Do not merge, split, rewrite, or reorder sentences.
+
+You may use the complete justification as context when interpreting a sentence, but annotate only information expressed in that sentence.
+
+
+GENERAL ANNOTATION PRINCIPLE
+
+Annotate the distinct TYPES OF INFORMATION that the sentence actively uses as part of its stated reasoning.
+
+A sentence may receive multiple categories when genuinely different semantic components are involved.
+
+Information may be used to:
+- support or motivate a judgement;
+- exclude a possibility;
+- challenge information;
+- compare alternatives;
+- motivate a voting decision;
+- establish that the available evidence is insufficient.
+
+Do NOT annotate:
+- filler;
+- a bare repetition of the final vote;
+- information mentioned only as background;
+- a category merely because a related keyword appears;
+- the conclusion itself merely because its wording resembles one of the categories.
+
+IMPORTANT:
+
+A TOPIC MENTION IS NOT SUFFICIENT FOR AN ANNOTATION.
+
+For example:
+
+"multiple role swaps"
+→ NOT automatically Mechanical
+
+"many role claims"
+→ NOT automatically Testimony
+
+"conflicting claims"
+→ NOT automatically ClaimComparison
+
+A category should be assigned only when an actual proposition of that type is expressed and actively used in the reasoning.
+
+For every annotation, provide the shortest exact span from the sentence that demonstrates the category.
+
+
+CATEGORIES
+
+
+1. MECHANICAL
+
+Assign `Mechanical` only when the sentence explicitly states a CONCRETE ONUW rule, mechanical constraint, or rule-governed consequence concerning roles, actions, information, timing, card ownership, or the resulting game state.
+
+This includes:
+- what a specific role can or cannot do;
+- night-action order;
+- how a role action changes card ownership;
+- information mechanically available to a role;
+- constraints on possible role or card configurations;
+- concrete consequences produced by ONUW role mechanics.
+
+Examples:
+
+"The Tanner does not wake during the night."
+→ Mechanical
+
+"The Troublemaker acts after the Robber."
+→ Mechanical
+
+"If Elliot robbed Ashley, Elliot would now hold Ashley's card."
+→ Mechanical
+
+"If Justin's card was swapped with Caitlynn's, Caitlynn would now hold Justin's original card."
+→ Mechanical
+
+
+Do NOT assign Mechanical merely because the sentence mentions:
+- a role;
+- a role swap;
+- a role change;
+- a night action;
+- a card;
+- the center;
+- a possible game state.
+
+Examples:
+
+"There were multiple role swaps."
+→ NOT Mechanical
+
+"The discussion involved several role changes."
+→ NOT Mechanical
+
+"James was involved in the Robber action."
+→ NOT Mechanical
+
+"The Werewolf may currently be in the center."
+→ NOT Mechanical
+
+"All Werewolf cards could be in the center."
+→ NOT Mechanical
+
+These describe events, topics, possibilities, or hypothesized game states, but they do not state or apply a concrete game rule.
+
+Use this diagnostic question:
+
+WHAT SPECIFIC ONUW RULE OR MECHANICAL CONSEQUENCE IS EXPRESSED?
+
+If no concrete rule or rule-governed consequence can be identified, do not assign `Mechanical`.
+
+Victory conditions and consequences for winning or losing belong to `Payoff`, not `Mechanical`.
+
+
+2. TESTIMONY
+
+Assign `Testimony` when the sentence uses the content of a CONCRETE FACTUAL CLAIM attributed to a player.
+
+This includes claims about:
+- the player's role;
+- an action performed;
+- a card seen;
+- a swap;
+- an observation;
+- an admission;
+- a factual identification of another player's role;
+- another factual aspect of the game.
+
+Examples:
+
+"Ashley says she started as the Werewolf."
+→ Testimony
+
+"Dan says he swapped Justin and Caitlynn."
+→ Testimony
+
+"Kaelan claimed to see the Werewolf."
+→ Testimony
+
+"Mitchell says he saw the Robber card in the center."
+→ Testimony
+
+"Paul identified Mitchell as the Troublemaker."
+→ Testimony
+
+
+Do NOT assign Testimony merely because the sentence refers generically to:
+- "claims";
+- "role claims";
+- "statements";
+- "what players said";
+- "conflicting accounts".
+
+Examples:
+
+"The discussion contains many role claims."
+→ NOT Testimony
+
+"There are several conflicting claims."
+→ NOT Testimony
+
+The content of a sufficiently specific factual claim must be expressed.
+
+
+Distinguish a factual claim or identification from an accusation, suspicion, or evaluation.
+
+"Paul identified Mitchell as the Troublemaker."
+→ Testimony
+
+"Paul says he saw Mitchell perform the Troublemaker action."
+→ Testimony
+
+"Paul suspects Mitchell is the Werewolf."
+→ SocialJudgment
+
+"Paul accuses Mitchell of being the Werewolf."
+→ SocialJudgment
+
+A statement presented as a factual observation or identification is Testimony.
+A statement presented as suspicion, accusation, trust, distrust, or voting judgement is SocialJudgment.
+
+
+3. SOCIALJUDGMENT
+
+Assign `SocialJudgment` when another player's judgement ABOUT A PLAYER is actively used as information in the reasoning.
+
+This includes:
+- accusations;
+- suspicions;
+- judgements that a player is innocent or guilty;
+- expressions of trust or distrust;
+- voting preferences;
+- endorsements of another player's suspicion;
+- agreement or consensus about a player.
+
+Examples:
+
+"Dan directly accused Mike of being the Werewolf."
+→ SocialJudgment
+
+"Several players also suspect Ashley."
+→ SocialJudgment
+
+"Erin and Margaret both believe Clint is suspicious."
+→ SocialJudgment
+
+"Dan's accusation is the strongest lead against Mike."
+→ SocialJudgment
+
+"Eliminating Mike based on this direct accusation seems safest."
+→ SocialJudgment
+
+
+SocialJudgment concerns another player's EVALUATION of a player.
+
+Do not assign SocialJudgment merely because one player states factual information about another player.
+
+"Paul identified Mitchell as the Troublemaker."
+→ Testimony
+
+"Paul says he saw Mitchell perform the Troublemaker action."
+→ Testimony
+
+"Paul suspects Mitchell is the Werewolf."
+→ SocialJudgment
+
+
+A generic judgement about the overall game state is not SocialJudgment.
+
+"Mitchell thinks a Werewolf is probably present."
+→ NOT SocialJudgment
+
+
+Distinguish the content of an accusation from the behaviour of making that accusation:
+
+"Mitchell suspects James, which adds to the case against James."
+→ SocialJudgment
+
+"Mitchell keeps redirecting the vote toward James, which makes Mitchell look suspicious."
+→ Behavioral
+
+In the second example, Mitchell's behaviour is being evaluated as evidence about Mitchell himself.
+
+
+4. BEHAVIORAL
+
+Assign `Behavioral` when the sentence reasons from a player's behaviour, credibility, manner, motive, incentive, or apparent strategy.
+
+This includes:
+- evasiveness;
+- vagueness;
+- defensiveness;
+- apparent honesty or dishonesty;
+- attempts to manipulate the discussion;
+- attempts to redirect suspicion;
+- strategic conversational behaviour;
+- motives for lying or protecting another player;
+- behaviour interpreted as characteristic of a role.
+
+Examples:
+
+"Clint is evasive about what happened during the night."
+→ Behavioral
+
+"Mitchell keeps redirecting suspicion toward James."
+→ Behavioral
+
+"James keeps asking everyone to vote for him, which looks like Tanner behavior."
+→ Behavioral
+
+"He would have a motive to protect the Werewolf."
+→ Behavioral
+
+
+Do NOT assign Behavioral simply because another kind of information leads to the conclusion that a player is lying.
+
+"The Tanner does not wake during the night, so Julie's claim that she woke must be false."
+→ Mechanical + Testimony
+→ NOT Behavioral
+
+The claim is rejected using a game rule, not an observation of Julie's behaviour.
+
+
+Also distinguish behaviour used as evidence ABOUT THE ACTOR from a social judgement used as evidence ABOUT ITS TARGET.
+
+"Mitchell keeps pushing everyone to vote for James, which makes Mitchell look suspicious."
+→ Behavioral
+
+"Mitchell is pushing everyone to vote for James, which adds to the case against James."
+→ SocialJudgment
+
+In the first case, Mitchell's behaviour is evidence about Mitchell.
+In the second case, Mitchell's voting judgement is being used as evidence about James.
+
+
+5. CLAIMCOMPARISON
+
+Assign `ClaimComparison` only when the relationship between TWO OR MORE SUFFICIENTLY SPECIFIC PLAYER CLAIMS or accounts is itself used as information.
+
+This includes:
+- contradiction;
+- inconsistency;
+- corroboration;
+- agreement;
+- compatibility or incompatibility;
+- a change in one player's account.
+
+Examples:
+
+"Julie first says she did nothing at night, but later says she woke and saw a card."
+→ Testimony + ClaimComparison
+
+"Ashley's account agrees with Elliot's description of the swap."
+→ Testimony + ClaimComparison
+
+"Ashley says Elliot robbed her, whereas Elliot says he robbed Julie; the two accounts cannot both be true."
+→ Testimony + ClaimComparison
+
+
+The specific claims do not always need to be repeated in the same sentence if they are clearly identifiable from the surrounding justification.
+
+For example, if previous sentences have already described two different claims made by Mitchell:
+
+"Mitchell's claims are contradictory."
+→ ClaimComparison
+
+This is allowed because the contradiction concerns a specific player's identifiable claims.
+
+However:
+
+"The players' claims are contradictory."
+→ Uncertainty
+
+"There are many contradictory role claims."
+→ Uncertainty
+
+These generic statements do not identify a sufficiently specific comparison.
+
+
+Do NOT assign ClaimComparison merely because a sentence says that claims in the discussion are:
+- conflicting;
+- inconsistent;
+- contradictory;
+- confusing.
+
+Examples:
+
+"There are many conflicting claims."
+→ Uncertainty
+
+"Players are making inconsistent role claims."
+→ Uncertainty
+
+"The discussion is confusing because everyone is saying contradictory things."
+→ Uncertainty
+
+These sentences use disagreement only to establish that the available information is unclear or unresolved. They do not compare sufficiently specific claims.
+
+
+Use this diagnostic question:
+
+CAN YOU IDENTIFY THE SPECIFIC CLAIMS OR ACCOUNTS WHOSE RELATIONSHIP IS BEING USED, EITHER IN THIS SENTENCE OR CLEARLY FROM THE SURROUNDING JUSTIFICATION?
+
+If not, do not assign `ClaimComparison`.
+
+
+Do NOT assign ClaimComparison when a player's claim conflicts with a GAME RULE rather than another player claim.
+
+"Since the Tanner does not wake during the night, Julie's claim that she woke must be false."
+→ Mechanical + Testimony
+→ NOT ClaimComparison
+
+
+6. PAYOFF
+
+Assign `Payoff` when the sentence invokes:
+- a victory or defeat condition;
+- the consequence of a voting outcome for winning or losing;
+- the desirability of a voting action because of its possible game outcome.
+
+This includes both stating a relevant win condition and applying it to a voting decision.
+
+Examples:
+
+"Team Village wins if a Werewolf is eliminated."
+→ Payoff
+
+"If no player holds a Werewolf, Team Village wins if nobody is eliminated."
+→ Payoff
+
+"If James is the Tanner, voting him out would give him the win."
+→ Payoff
+
+"Eliminating Mike maximizes the chance of winning by removing a Werewolf."
+→ Payoff
+
+
+Payoff is distinct from Mechanical.
+
+Mechanical concerns role and card mechanics that determine the GAME STATE.
+
+Payoff concerns WINNING, LOSING, or the consequences of a VOTING OUTCOME.
+
+
+A sentence may contain both when distinct information is present:
+
+"The swap would leave Caitlynn holding Justin's Werewolf card, so eliminating Caitlynn would give Team Village the win."
+→ Mechanical + Payoff
+
+
+7. UNCERTAINTY
+
+Assign `Uncertainty` when the absence, insufficiency, ambiguity, or unresolved nature of the available information is itself used as part of the reasoning.
+
+This includes:
+- lack of evidence;
+- lack of confirmation;
+- inability to identify a player confidently;
+- multiple unresolved possibilities;
+- ambiguity about the game state;
+- unresolved disagreement among claims;
+- absence of a clear candidate.
+
+Examples:
+
+"No player has been definitively identified as a Werewolf."
+→ Uncertainty
+
+"There is no concrete evidence that a Werewolf is present."
+→ Uncertainty
+
+"The possible role changes make the final identities impossible to determine."
+→ Uncertainty
+
+"The conflicting role claims leave no clear candidate."
+→ Uncertainty
+
+
+Do NOT assign other categories merely because the description of the uncertainty contains related vocabulary.
+
+Example:
+
+"The discussion is highly confusing because of multiple role swaps and conflicting claims."
+
+→ Uncertainty only
+
+NOT Mechanical merely because "role swaps" appears.
+NOT Testimony merely because "claims" appears.
+NOT ClaimComparison merely because "conflicting claims" appears.
+
+
+Distinguish generic conflict from a specific claim comparison:
+
+"Mitchell's two claims contradict each other."
+→ ClaimComparison
+
+"The discussion contains many contradictory claims."
+→ Uncertainty
+
+
+Do NOT assign Uncertainty merely because words such as:
+- probably;
+- possibly;
+- likely;
+- may;
+- perhaps
+
+are present.
+
+The uncertainty itself must function as information in the reasoning.
+
+
+8. OTHER
+
+Assign `Other` only when the sentence actively reasons from a type of information that does not fit any category above.
+
+Provide a short description in `other_description`.
+
+Other is a coverage category, NOT a default category.
+
+Do NOT use Other for:
+- filler;
+- rhetorical wording;
+- bare conclusions;
+- repetition of the vote;
+- sentences containing no relevant semantic basis.
+
+In those cases return:
+
+"annotations": []
+
+
+MULTI-LABEL PRINCIPLE
+
+Multiple labels are allowed only when the sentence genuinely uses multiple distinct semantic components.
+
+Each label must correspond to a distinct piece or type of information.
+
+
+Example 1:
+
+"Since the Tanner does not wake during the night, Julie's claim that she woke must be false."
+
+Mechanical:
+"the Tanner does not wake during the night"
+
+Testimony:
+"Julie's claim that she woke"
+
+NOT ClaimComparison, because the claim is evaluated against a game rule rather than another player claim.
+
+
+Example 2:
+
+"Julie first says she did nothing at night, but later claims she woke and saw a card."
+
+Testimony:
+"Julie first says she did nothing at night"
+and/or
+"later claims she woke and saw a card"
+
+ClaimComparison:
+"Julie first says she did nothing at night, but later claims she woke and saw a card"
+
+
+Example 3:
+
+"Several players suspect Ashley, and Ashley keeps avoiding questions."
+
+SocialJudgment:
+"Several players suspect Ashley"
+
+Behavioral:
+"Ashley keeps avoiding questions"
+
+
+Example 4:
+
+"Dan says he swapped Justin and Caitlynn, which would move Justin's card to Caitlynn."
+
+Testimony:
+"Dan says he swapped Justin and Caitlynn"
+
+Mechanical:
+"which would move Justin's card to Caitlynn"
+
+
+Example 5:
+
+"Paul and Dan both accuse James, while James admits that he started as the Werewolf."
+
+SocialJudgment:
+"Paul and Dan both accuse James"
+
+Testimony:
+"James admits that he started as the Werewolf"
+
+
+Do NOT assign multiple labels merely because the same phrase could loosely fit multiple definitions.
+
+
+IMPORTANT NEGATIVE EXAMPLE
+
+Sentence:
+
+"The discussion is highly confusing due to multiple role swaps and conflicting claims regarding who is the Robber, Insomniac, and Tanner."
+
+Correct annotation:
+
+Uncertainty:
+"highly confusing"
+
+Do NOT annotate:
+- Mechanical for "multiple role swaps";
+- Testimony for "claims regarding who is the Robber, Insomniac, and Tanner";
+- ClaimComparison for "conflicting claims".
+
+The sentence refers generically to these phenomena but does not state:
+- a concrete ONUW rule or mechanical consequence;
+- a concrete factual player claim;
+- a relationship between sufficiently specific player claims.
+
+
+OUTPUT FORMAT
+
+Return exactly one JSON object with this structure:
+
+{
+  "vote": "<exact input vote>",
+  "sentences": [
+    {
+      "sentence_id": 1,
+      "text": "<exact original sentence>",
+      "annotations": [
+        {
+          "category": "Mechanical",
+          "evidence_span": "<shortest exact span supporting this category>",
+          "other_description": null
+        }
+      ]
+    }
+  ]
+}
+
+Allowed category values:
+
+- `Mechanical`
+- `Testimony`
+- `SocialJudgment`
+- `Behavioral`
+- `ClaimComparison`
+- `Payoff`
+- `Uncertainty`
+- `Other`
+
+For every category other than `Other`:
+
+"other_description": null
+
+For `Other`, provide a short description of the uncaptured semantic basis.
+
+If a sentence contains no relevant semantic information:
+
+"annotations": []
+
+Preserve:
+- the exact input `vote`;
+- every `sentence_id`;
+- every sentence exactly as provided.
+
+Do not alter the input text.
+
+
+STRICT OUTPUT REQUIREMENT
+
+Return ONLY the requested JSON object.
+
+The first character must be `{`.
+The last character must be `}`.
+
+Do not use Markdown code fences.
+Do not include explanations, comments, introductory text, concluding text, or any other content outside the JSON.
+
+The response must be directly parseable by a standard JSON parser.

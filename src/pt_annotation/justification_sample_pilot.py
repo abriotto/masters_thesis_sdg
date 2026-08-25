@@ -116,6 +116,29 @@ def load_frame(analysis_root):
     return frame.sort_values("justification_id").reset_index(drop=True)
 
 
+def load_excluded_ids(paths):
+    """justification_ids already spent on earlier pilots.
+
+    A prompt developed against a sample cannot be validated on that same
+    sample: whatever wording was changed in response to those 40 will look
+    right on those 40. Excluding them is what makes the frozen run a
+    validation rather than a second look at the development set.
+    """
+    excluded, games = set(), set()
+    for path in paths:
+        path = Path(path)
+        if not path.exists():
+            raise FileNotFoundError(f"--exclude file not found: {path}")
+        with path.open("r", encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if line:
+                    record = json.loads(line)
+                    excluded.add(record["justification_id"])
+                    games.add(record["game_id"])
+    return excluded, games
+
+
 def allocate(n_total, n_cells):
     """Largest-remainder allocation, so cells differ by at most one."""
     base, remainder = divmod(n_total, n_cells)
@@ -205,6 +228,19 @@ def parse_args():
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--n", type=int, default=DEFAULT_N, help="Total justifications to draw.")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    parser.add_argument(
+        "--exclude-games", action="store_true",
+        help="Also exclude every justification from a GAME used in --exclude. "
+             "Stricter: without it, the same transcript can reappear via a "
+             "different model or run, which shares content with the "
+             "development set even though the text differs.",
+    )
+    parser.add_argument(
+        "--exclude", type=Path, nargs="*", default=None,
+        help="Sample JSONL file(s) whose justifications must NOT be drawn. Use "
+             "this to keep a validation sample disjoint from the pilots the "
+             "prompt was developed on.",
+    )
     return parser.parse_args()
 
 
@@ -215,6 +251,17 @@ def main():
         args.output_dir = RESULTS_ROOT / f"pilot_{args.schema}"
 
     frame = load_frame(args.analysis_root)
+    n_corpus = len(frame)
+
+    excluded, excluded_games = load_excluded_ids(args.exclude or [])
+    if excluded:
+        frame = frame[~frame["justification_id"].isin(excluded)].copy()
+        note = f"Excluded {len(excluded)} already-used justifications"
+        if args.exclude_games:
+            frame = frame[~frame["game_id"].isin(excluded_games)].copy()
+            note += f" and every justification from their {len(excluded_games)} games"
+        print(f"{note} ({n_corpus} -> {len(frame)} eligible)")
+
     print(f"Frame: {len(frame)} justifications across {frame['model'].nunique()} models")
     print(frame.groupby(["model", "is_correct"]).size().to_string())
     print()
@@ -227,6 +274,24 @@ def main():
     jsonl_path = args.output_dir / "pilot_sample.jsonl"
     write_annotator_input(sample, jsonl_path)
 
+    # Provenance beside the sample: how it was drawn, and what it was kept
+    # disjoint from. Without this the disjointness claim is unverifiable later.
+    meta_path = args.output_dir / "sample_meta.json"
+    meta_path.write_text(json.dumps({
+        "schema": args.schema,
+        "n_requested": args.n,
+        "n_drawn": int(len(sample)),
+        "seed": args.seed,
+        "corpus_size": n_corpus,
+        "eligible_after_exclusions": int(len(frame)),
+        "excluded_sources": [str(p) for p in (args.exclude or [])],
+        "n_excluded": len(excluded),
+        "excluded_games": sorted(excluded_games) if args.exclude_games else [],
+        "game_level_exclusion": bool(args.exclude_games),
+        "stratified_by": ["model", "is_correct"],
+        "justification_ids": sample["justification_id"].tolist(),
+    }, indent=2) + chr(10), encoding="utf-8")
+
     print(f"Sampled {len(sample)} justifications, {int(sample['n_sentences'].sum())} sentences")
     print(sample.groupby(["model", "is_correct"]).size().to_string())
     print()
@@ -238,6 +303,7 @@ def main():
     )
     print()
     print(f"Annotator input : {jsonl_path}")
+    print(f"Draw provenance : {meta_path}")
 
 
 if __name__ == "__main__":

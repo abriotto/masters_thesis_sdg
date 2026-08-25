@@ -75,9 +75,26 @@ V3 = Schema(
     has_rule_mentioned=False,
 )
 
-SCHEMAS = {"v1": V1, "v2": V2, "v3": V3}
+# The candidate for the full run. Same taxonomy and output shape as v2/v3 --
+# verified against the prompt's OUTPUT FORMAT section -- with the category
+# guidance clarified further.
+#
+# "frozen" is a claim about the scheme, not a version bump: it is the wording
+# intended to be fixed for the full corpus, which is why it gets a validation
+# run on justifications the earlier pilots never touched. v1-v3 were developed
+# against the same 40, so those 40 can no longer measure anything: any prompt
+# tuned on them will look good on them.
+FROZEN = Schema(
+    name="frozen",
+    prompt_filename="justification_annotations_frozen.txt",
+    categories=V2.categories,
+    has_use=False,
+    has_rule_mentioned=False,
+)
 
-DEFAULT_SCHEMA = "v3"
+SCHEMAS = {"v1": V1, "v2": V2, "v3": V3, "frozen": FROZEN}
+
+DEFAULT_SCHEMA = "frozen"
 
 
 def get_schema(name):
