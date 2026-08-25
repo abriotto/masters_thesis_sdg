@@ -47,7 +47,15 @@ cd "$REPO" || exit 1
 
 mkdir -p "$REPO/logs"
 
-SCHEMA=${SCHEMA:-v3}
+# SCHEMA selects the prompt, the allowed categories and the output folder.
+# The default is NOT hardcoded here: it is read from justification_schema.py,
+# so there is one place that decides which prompt is current. A second copy of
+# the default in this file is exactly how a run silently used the wrong
+# schema once already.
+#
+# Override at submit time:
+#   sbatch --export=ALL,SCHEMA=v3 slurm_files/justification_annotation_full.slurm
+SCHEMA=${SCHEMA:-$($PYTHON -c "from src.pt_annotation.justification_schema import DEFAULT_SCHEMA; print(DEFAULT_SCHEMA)")}
 FULL_DIR=results/justification_annotation/full_${SCHEMA}
 MANIFEST=$FULL_DIR/manifest.json
 

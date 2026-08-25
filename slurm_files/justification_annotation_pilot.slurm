@@ -68,9 +68,14 @@ $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas
 # ------------------------------------------------------------
 
 # SCHEMA selects the prompt, the allowed categories and the output folder.
-# Override at submit time without editing this file:
-#   sbatch --export=ALL,SCHEMA=v2 slurm_files/justification_annotation_pilot.slurm
-SCHEMA=${SCHEMA:-v3}
+# The default is NOT hardcoded here: it is read from justification_schema.py,
+# so there is one place that decides which prompt is current. A second copy of
+# the default in this file is exactly how a run silently used the wrong
+# schema once already.
+#
+# Override at submit time:
+#   sbatch --export=ALL,SCHEMA=v3 slurm_files/justification_annotation_pilot.slurm
+SCHEMA=${SCHEMA:-$($PYTHON -c "from src.pt_annotation.justification_schema import DEFAULT_SCHEMA; print(DEFAULT_SCHEMA)")}
 
 PILOT_DIR=results/justification_annotation/pilot_${SCHEMA}
 SAMPLE=$PILOT_DIR/pilot_sample.jsonl
@@ -83,8 +88,9 @@ if [[ ! -f "$SAMPLE" ]]; then
     $PYTHON src/pt_annotation/justification_sample_pilot.py --schema "$SCHEMA"
 else
     echo "=== Pilot sample already drawn, reusing it ==="
-    echo "    (delete $SAMPLE to redraw; the seed makes it reproducible, and"
-    echo "     identical across schemas, so v1 and v2 annotate the same 40)"
+    echo "    (delete $SAMPLE to redraw -- but do NOT for a validation sample:"
+    echo "     it was drawn disjoint from earlier pilots and a plain redraw"
+    echo "     would not reproduce the exclusions)"
 fi
 
 echo
