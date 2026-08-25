@@ -1,0 +1,27 @@
+check,passed,detail
+corpus: 191 cleaned ONUW games,True,191
+corpus: 60 unique players,True,60
+corpus: 36 unique compositions,True,36
+pairwise: exactly n-1 candidate rows per voter,True,
+pairwise: exactly one positive per voter,True,
+pairwise: voter != candidate,True,
+pairwise: chosen candidate is on the roster,True,
+pairwise: 2882 rows / 784 positives,True,"2882 rows, 784 positives"
+features: totals identical to the RQ1 feature table,True,
+features: early + late == overall,True,
+features: unresolved names identical to RQ1,True,
+features: no ground-truth role or outcome in the feature list,True,
+cv: fold assignments identical to the LLM RQ1 pipeline,True,
+"cv: no composition, game or pair spans train and test",True,
+cv: no outer-test game enters the inner CV,True,
+"numerical: Strategy held-out probabilities finite and in [0, 1]",True,
+numerical: Strategy every logistic fit converged,True,asserted inside hm.fit_logreg
+"numerical: Strategy Temporal held-out probabilities finite and in [0, 1]",True,
+numerical: Strategy Temporal every logistic fit converged,True,asserted inside hm.fit_logreg
+"numerical: Combined held-out probabilities finite and in [0, 1]",True,
+numerical: Combined every logistic fit converged,True,asserted inside hm.fit_logreg
+numerical: 0 bootstrap failures in the fidelity intervals,True,
+numerical: 0 bootstrap failures in the coefficient bootstrap,True,
+numerical: selected C never censored at a grid endpoint (< 25%),True,12%
+determinism: a second nested-CV run reproduces every held-out probability,True,
+determinism: a second run selects the same C in every fold,True,
