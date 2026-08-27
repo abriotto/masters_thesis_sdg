@@ -1,3 +1,7 @@
+> **DEPRECATED - not for thesis results.** Superseded by the
+> justification-level analysis in `../joint_discourse_semantic_justification/`.
+> See `DEPRECATED.md` in this directory for why.
+
 # Joint discourse x semantic analysis (RQ2)
 
 Downstream of two finished layers, neither of which is modified here:
