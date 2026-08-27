@@ -1,9 +1,10 @@
 """Qualitative inspection driven by the JUSTIFICATION-level analysis.
 
-Supersedes `joint.joint_qualitative`, whose sample was selected from
-same-sentence pairings. That selection is now known to be a packaging
-artefact for at least one of the two patterns, so its examples must not be
-used to characterise a justification-level association.
+Replaces an earlier sample that was selected from same-sentence pairings.
+That selection turned out to be a packaging artefact for at least one of the
+two patterns, so its examples could not characterise a justification-level
+association; it has been deleted along with the rest of the sentence-level
+strand.
 
 Selection here is at the justification level: a justification qualifies if it
 contains the semantic category anywhere and the discourse relation anywhere.
