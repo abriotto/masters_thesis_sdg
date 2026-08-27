@@ -122,73 +122,179 @@ def figure_semantic_prevalence(model_prevalence: pd.DataFrame, path: Path) -> Pa
 # F2 - co-occurrence
 # ---------------------------------------------------------------------------
 
-def figure_cooccurrence(joint: pd.DataFrame, lift: pd.DataFrame,
-                        path: Path, decoding: str = "Stochastic") -> Path:
-    """F2: joint prevalence (top row) and lift (bottom row) per model.
+# Sized for `\includegraphics[width=\linewidth]` in a single-column thesis.
+# The figure is authored at the width it will be printed at, so the point
+# sizes below are the point sizes the reader gets - no silent rescaling.
+SINGLE_COLUMN_WIDTH = 6.5
 
-    Two rows because they answer different questions and are read differently:
-    joint prevalence is how often a pair actually co-occurs, lift is whether it
-    does so more than its marginals imply. The lift diagonal is blank by
-    construction - see `semantic_final.cooccurrence`.
+MATRIX_LABELS = [c.replace("Judgment", "Judg.").replace("Comparison", "Comp.")
+                 for c in CATEGORY_ORDER]
+
+CELL_FONTSIZE = 6.0
+TICK_FONTSIZE = 6.5
+PANEL_TITLE_FONTSIZE = 8.5
+SUPTITLE_FONTSIZE = 10.0
+SUBTITLE_FONTSIZE = 7.5
+UNDEFINED_COLOR = "#e4e4e4"
+
+
+def _decoding_subtitle(decoding: str) -> str:
+    """Greedy is ONE deterministic run per game and must never be described as
+    a mean - the previous combined figure said 'mean of 3 runs' for both."""
+    if decoding == "Greedy":
+        return "greedy decoding, one run per game"
+    return "mean across the three stochastic runs"
+
+
+def _cell_text_color(image, value) -> str:
+    """Black or white, whichever the cell's own colour can carry.
+
+    Read off the colormap rather than guessed from a value threshold, so it
+    stays correct for both the sequential and the diverging scale.
     """
-    # hspace is generous on purpose: the rotated tick labels of the top row
-    # otherwise run into the titles of the bottom row.
-    fig, axes = plt.subplots(2, 3, figsize=(11.5, 8.4),
-                             gridspec_kw={"hspace": 0.45})
-    n = len(CATEGORY_ORDER)
-    labels = [c.replace("Judgment", "Judg.").replace("Comparison", "Comp.")
-              for c in CATEGORY_ORDER]
+    red, green, blue, _ = image.cmap(image.norm(value))
+    luminance = 0.299 * red + 0.587 * green + 0.114 * blue
+    return "white" if luminance < 0.5 else "black"
 
-    joint_images = []
-    for j, model in enumerate(MODEL_ORDER):
+
+def _matrix_axis(ax, show_y_labels: bool) -> None:
+    n = len(CATEGORY_ORDER)
+    ax.set_xticks(range(n))
+    ax.set_yticks(range(n))
+    ax.set_xticklabels(MATRIX_LABELS, rotation=45, ha="right",
+                       fontsize=TICK_FONTSIZE)
+    ax.set_yticklabels(MATRIX_LABELS if show_y_labels else [""] * n,
+                       fontsize=TICK_FONTSIZE)
+    ax.tick_params(length=2, pad=1.5)
+
+
+def figure_cooccurrence_prevalence(joint: pd.DataFrame, path: Path,
+                                   decoding: str = "Stochastic") -> Path:
+    """Three joint-prevalence matrices, one per model, on one row.
+
+    Joint prevalence is the share of justifications carrying both categories.
+    The diagonal is a category with itself, which is its marginal prevalence -
+    kept, and outlined, because it is the reference the off-diagonal cells are
+    read against.
+    """
+    n = len(CATEGORY_ORDER)
+    # constrained layout, not a hand-tuned wspace: the panels carry an equal
+    # aspect, so their true height is only known after the labels are laid
+    # out. Letting matplotlib solve it is what removes the dead space.
+    fig, axes = plt.subplots(1, 3, figsize=(SINGLE_COLUMN_WIDTH, 2.6),
+                             layout="constrained")
+    fig.get_layout_engine().set(w_pad=0.01, h_pad=0.01, wspace=0.02)
+
+    image = None
+    for column, (ax, model) in enumerate(zip(axes, MODEL_ORDER)):
         matrix = 100 * cooccurrence_matrix(
             joint, model, decoding, "joint_prevalence_mean"
         ).to_numpy(dtype=float)
-        image = axes[0, j].imshow(matrix, cmap="viridis", vmin=0, vmax=100)
-        joint_images.append(image)
-        axes[0, j].set_title(f"{MODEL_LABELS[model]} - joint prevalence (%)",
-                             fontsize=9)
+        image = ax.imshow(matrix, cmap="viridis", vmin=0, vmax=100)
+        ax.set_title(MODEL_LABELS[model], fontsize=PANEL_TITLE_FONTSIZE,
+                     pad=3)
+
         for a in range(n):
             for b in range(n):
-                value = matrix[a, b]
-                axes[0, j].text(
-                    b, a, f"{value:.0f}", ha="center", va="center", fontsize=6,
-                    color="white" if value < 55 else "black",
-                )
+                ax.text(b, a, f"{matrix[a, b]:.0f}", ha="center", va="center",
+                        fontsize=CELL_FONTSIZE,
+                        color=_cell_text_color(image, matrix[a, b]))
+            ax.add_patch(plt.Rectangle(
+                (a - 0.5, a - 0.5), 1, 1, fill=False,
+                edgecolor="white", linewidth=0.7,
+            ))
+        _matrix_axis(ax, show_y_labels=column == 0)
 
-    lift_matrices = [
-        cooccurrence_matrix(lift, model, decoding, "lift_mean").to_numpy(dtype=float)
+    colorbar = fig.colorbar(image, ax=axes, fraction=0.030, pad=0.012,
+                            aspect=28)
+    colorbar.set_label("joint prevalence (%)", fontsize=TICK_FONTSIZE)
+    colorbar.ax.tick_params(labelsize=TICK_FONTSIZE, length=2)
+
+    fig.suptitle("Justification-level semantic co-occurrence",
+                 fontsize=SUPTITLE_FONTSIZE)
+    # The decoding note sits at the bottom rather than under the title: as a
+    # second heading it collided with the title once the tight bounding box
+    # was applied, and it reads as a source line anyway.
+    fig.supxlabel("\n" + _decoding_subtitle(decoding),
+                  fontsize=SUBTITLE_FONTSIZE, color="#444444")
+    return _save(fig, path)
+
+
+def figure_cooccurrence_lift(lift: pd.DataFrame, path: Path,
+                             decoding: str = "Stochastic") -> Path:
+    """Three lift matrices, one per model, on one row.
+
+    Lift is joint prevalence divided by the product of the marginals, so the
+    scale is centred on 1 and symmetric: red is more co-occurrence than the
+    marginals imply, blue less, white about as expected. The diagonal is
+    undefined and is drawn in grey so it cannot be misread as lift = 1, which
+    is very nearly the same white.
+
+    Secondary and diagnostic. A pair resting on a handful of justifications
+    can carry a large lift, which is why the support counts stay in
+    `S6b_cooccurrence_ranked_pairs.csv` and the footnote points at them.
+    """
+    n = len(CATEGORY_ORDER)
+    matrices = [
+        cooccurrence_matrix(lift, model, decoding, "lift_mean")
+        .to_numpy(dtype=float)
         for model in MODEL_ORDER
     ]
-    finite = np.concatenate([m[np.isfinite(m)] for m in lift_matrices])
+
+    # One symmetric scale across all three models, so the panels are
+    # comparable and white falls exactly on lift = 1.
+    #
+    # Symmetric means the low end is 1 - span, which dips below zero whenever
+    # some pair reaches a lift above 2 (it does, for greedy). A lift cannot be
+    # negative, so that stretch of blue is simply unreachable - the tick list
+    # below starts at 0 so no impossible value is ever printed. A TwoSlopeNorm
+    # would remove the unreachable tail, but it renders the colorbar blank
+    # under constrained layout in matplotlib 3.10, so this is the trade.
+    finite = np.concatenate([m[np.isfinite(m)] for m in matrices])
     span = max(abs(1 - finite.min()), abs(finite.max() - 1))
     vmin, vmax = 1 - span, 1 + span
 
-    lift_image = None
-    for j, model in enumerate(MODEL_ORDER):
-        matrix = lift_matrices[j]
-        lift_image = axes[1, j].imshow(matrix, cmap="RdBu_r", vmin=vmin, vmax=vmax)
-        axes[1, j].set_title(f"{MODEL_LABELS[model]} - lift", fontsize=9)
+    colormap = plt.get_cmap("RdBu_r").copy()
+    colormap.set_bad(UNDEFINED_COLOR)
+
+    fig, axes = plt.subplots(1, 3, figsize=(SINGLE_COLUMN_WIDTH, 2.6),
+                             layout="constrained")
+    fig.get_layout_engine().set(w_pad=0.01, h_pad=0.01, wspace=0.02)
+
+    image = None
+    for column, (ax, model, matrix) in enumerate(zip(axes, MODEL_ORDER,
+                                                     matrices)):
+        image = ax.imshow(np.ma.masked_invalid(matrix), cmap=colormap,
+                          vmin=vmin, vmax=vmax)
+        ax.set_title(MODEL_LABELS[model], fontsize=PANEL_TITLE_FONTSIZE,
+                     pad=3)
+
         for a in range(n):
             for b in range(n):
                 value = matrix[a, b]
                 if np.isfinite(value):
-                    axes[1, j].text(b, a, f"{value:.2f}", ha="center",
-                                    va="center", fontsize=6, color="black")
+                    ax.text(b, a, f"{value:.2f}", ha="center", va="center",
+                            fontsize=CELL_FONTSIZE,
+                            color=_cell_text_color(image, value))
+        _matrix_axis(ax, show_y_labels=column == 0)
 
-    for row in range(2):
-        for col in range(3):
-            ax = axes[row, col]
-            ax.set_xticks(range(n))
-            ax.set_yticks(range(n))
-            ax.set_xticklabels(labels, rotation=45, ha="right", fontsize=6)
-            ax.set_yticklabels(labels if col == 0 else [""] * n, fontsize=6)
+    colorbar = fig.colorbar(image, ax=axes, fraction=0.030, pad=0.012,
+                            aspect=28)
+    colorbar.set_label("lift", fontsize=TICK_FONTSIZE)
+    low = max(vmin, 0.0)
+    colorbar.set_ticks([round(v, 2) for v in
+                        (low, (1 + low) / 2, 1.0, (1 + vmax) / 2, vmax)])
+    colorbar.ax.tick_params(labelsize=TICK_FONTSIZE, length=2)
+    colorbar.ax.axhline(1.0, color="black", linewidth=0.8)
 
-    fig.colorbar(joint_images[-1], ax=axes[0, :], fraction=0.020, pad=0.01)
-    fig.colorbar(lift_image, ax=axes[1, :], fraction=0.020, pad=0.01)
-    fig.suptitle(
-        f"Justification-level semantic co-occurrence ({decoding.lower()}, "
-        "mean of 3 runs)", fontsize=10,
+    fig.suptitle("Semantic co-occurrence: lift", fontsize=SUPTITLE_FONTSIZE)
+    # Leading blank line is padding: the rotated tick labels reach a long way
+    # down and the note otherwise sits right on top of them.
+    fig.supxlabel(
+        "\n" + _decoding_subtitle(decoding)
+        + "\nGrey diagonal: undefined. Lift on thin-support pairs is volatile"
+        " - see support counts in S6b_cooccurrence_ranked_pairs.csv.",
+        fontsize=SUBTITLE_FONTSIZE - 1, color="#444444",
     )
     return _save(fig, path)
 
@@ -346,10 +452,12 @@ def build_final_figures(tables: Dict[str, pd.DataFrame],
         figure_semantic_prevalence(
             tables["S3_model_semantic_prevalence"],
             directory / "F1_semantic_prevalence.png"),
-        figure_cooccurrence(
+        figure_cooccurrence_prevalence(
             tables["S5_cooccurrence_joint_prevalence"],
+            directory / "F2_semantic_cooccurrence_prevalence.png"),
+        figure_cooccurrence_lift(
             tables["S6_cooccurrence_lift"],
-            directory / "F2_semantic_cooccurrence.png"),
+            directory / "F2b_semantic_cooccurrence_lift.png"),
         figure_correctness_presence(
             tables["S7_correctness_presence_association"],
             directory / "F3_correctness_presence_association.png"),
@@ -359,10 +467,13 @@ def build_final_figures(tables: Dict[str, pd.DataFrame],
         figure_within_game(
             tables["S10_within_game_correctness_contrasts"],
             directory / "F5_within_game_correctness.png"),
-        figure_cooccurrence(
+        figure_cooccurrence_prevalence(
             tables["S5_cooccurrence_joint_prevalence"],
+            directory / "F2c_semantic_cooccurrence_prevalence_greedy.png",
+            decoding="Greedy"),
+        figure_cooccurrence_lift(
             tables["S6_cooccurrence_lift"],
-            directory / "F2b_semantic_cooccurrence_greedy.png",
+            directory / "F2d_semantic_cooccurrence_lift_greedy.png",
             decoding="Greedy"),
         figure_correctness_presence(
             tables["S7_correctness_presence_association"],
