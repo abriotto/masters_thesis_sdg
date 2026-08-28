@@ -1,0 +1,90 @@
+Manual validation report - source: manual_validation_completed.csv
+rows: 50  |  {'accepted': 30, 'rejected_nosense': 10, 'not_enumerated': 10}
+Raw counts only. No confidence intervals, no corpus-level precision estimate, no recall.
+
+====================================================================================
+ACCEPTED discopy RELATIONS
+====================================================================================
+
+Connective identification: 30/30 judged actual discourse connectives
+Top-level sense: 29/30 correct (among those judged connectives, with a manual category given)
+
+-- by predicted top-level category --
+   Comparison   sense correct 7/7
+   Contingency  sense correct 7/7
+   Expansion    sense correct 8/8
+   Temporal     sense correct 7/8
+
+-- by form ambiguity --
+   non-ambiguous  connective 20/20
+   ambiguous      connective 10/10
+
+-- by confidence band --
+   low(<0.5)      connective 3/3
+   mid(0.5-0.9)   connective 13/13
+   high(>=0.9)    connective 14/14
+
+-- individual errors --
+   [#26] 'further' p=0.73 - sense Temporal -> should be Expansion
+        Sean further supported this by claiming he was the Seer and saw that Hunter was the Werewolf.
+
+====================================================================================
+NoSense REJECTIONS  (contextual-classification evidence)
+====================================================================================
+Missed-relation / coverage diagnostic over DiMLex-identified candidates. NOT recall; no corpus-level figure may be derived.
+
+1/10 manually judged valid discourse relations
+
+-- individual cases judged valid --
+   [#34] 'but' DiMLex=Comparison manual=Comparison
+        He admits to switching people but refuses to specify who he switched with, which is a highly evasive tactic.
+
+-- forms responsible --
+   form
+   but    1
+
+====================================================================================
+NEVER-ENUMERATED CANDIDATES  (candidate-coverage evidence)
+====================================================================================
+Missed-relation / coverage diagnostic over DiMLex-identified candidates. NOT recall; no corpus-level figure may be derived.
+
+3/10 manually judged valid discourse relations
+
+-- individual cases judged valid --
+   [#43] 'despite' DiMLex=Comparison manual=Comparison
+        Despite the complexity of the roles and the constant lying, the collective consensus of the group has narrowed the focus entirely onto Mitchell.
+   [#45] 'given' DiMLex=Contingency manual=Contingency
+        Given the high level of suspicion surrounding Mitchell's shifting roles, he is the most likely candidate to be the Werewolf, which Team Village needs 
+   [#50] 'given that' DiMLex=Contingency manual=Contingency
+        Given that Mitchell claims to be the Robber who robbed James (the Seer) and Paul claims to be the Troublemaker, Justin is the most likely candidate to
+
+-- forms responsible --
+   form
+   despite       1
+   given         1
+   given that    1
+
+====================================================================================
+EVIDENCE FOR OPTIONS A / B / C  (no automatic choice)
+====================================================================================
+This section assembles evidence only. No threshold decides the option: which failures matter depends on the research question, which is a human judgement made after reading the cases below.
+
+A. discopy as the main contextual analysis
+   accepted cases judged NOT connectives : 0/30
+   accepted cases with a sense error     : 1
+   -> weaker if either count is high relative to the sample
+
+B. DiMLex candidate inventory + contextual disambiguation
+   never-enumerated judged valid relations: 3/10
+   NoSense rejections judged valid        : 1/10
+   -> B addresses ONLY the never-enumerated column. NoSense errors are contextual-classification failures that supplying DiMLex candidates would not fix, because the same classifier fires on the same span.
+
+C. retain the lexical DiMLex analysis
+   -> supported only if discopy is unreliable overall, i.e. if the accepted-case error counts above are high.
+
+-- conditional (if / then / if ... then) cases in the sample --
+   [#3] 'if' type=accepted pred=Contingency manual=Contingency
+   [#8] 'then' type=accepted pred=Temporal manual=Temporal
+   [#9] 'if' type=accepted pred=Contingency manual=Contingency
+   [#14] 'If' type=accepted pred=Contingency manual=Contingency
+   [#46] 'then' type=not_enumerated pred=nan manual=-

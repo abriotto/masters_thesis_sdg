@@ -1,0 +1,60 @@
+\begin{table}
+\caption{Paired game-level bootstrap, 95\% percentile CIs for pairwise model differences in relation density}
+\begin{tabular}{llllrrrrrrrrrr}
+\toprule
+ &  &  &  & rate\_a & rate\_b & difference & ci\_low & ci\_high & ci\_excludes\_zero & n\_runs\_averaged & n\_games & n\_replicates & seed \\
+decoding_group & metric & model_a & model_b &  &  &  &  &  &  &  &  &  &  \\
+\midrule
+\multirow[t]{15}{*}{Stochastic} & \multirow[t]{3}{*}{All relations} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 3.317 & 3.542 & -0.225 & -0.453 & -0.002 & True & 3 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 3.317 & 2.801 & 0.516 & 0.328 & 0.708 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 2.801 & 3.542 & -0.741 & -0.958 & -0.523 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Contingency} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 1.138 & 1.067 & 0.071 & -0.062 & 0.203 & False & 3 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 1.138 & 0.509 & 0.629 & 0.513 & 0.741 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.509 & 1.067 & -0.557 & -0.678 & -0.439 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Comparison} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 0.939 & 0.688 & 0.251 & 0.141 & 0.360 & True & 3 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 0.939 & 1.201 & -0.262 & -0.355 & -0.166 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 1.201 & 0.688 & 0.513 & 0.407 & 0.618 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Expansion} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 0.966 & 1.023 & -0.057 & -0.211 & 0.095 & False & 3 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 0.966 & 0.652 & 0.314 & 0.188 & 0.435 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.652 & 1.023 & -0.371 & -0.501 & -0.241 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Temporal} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 0.274 & 0.764 & -0.490 & -0.610 & -0.371 & True & 3 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 0.274 & 0.439 & -0.165 & -0.253 & -0.078 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.439 & 0.764 & -0.325 & -0.456 & -0.192 & True & 3 & 191 & 10000 & 20260826 \\
+\cline{1-14} \cline{2-14} \cline{3-14}
+\multirow[t]{15}{*}{Greedy} & \multirow[t]{3}{*}{All relations} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 3.574 & 3.640 & -0.065 & -0.442 & 0.330 & False & 1 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 3.574 & 2.933 & 0.641 & 0.331 & 0.955 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 2.933 & 3.640 & -0.707 & -1.030 & -0.378 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Contingency} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 1.354 & 0.997 & 0.356 & 0.141 & 0.576 & True & 1 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 1.354 & 0.637 & 0.717 & 0.512 & 0.916 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.637 & 0.997 & -0.360 & -0.550 & -0.169 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Comparison} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 1.013 & 0.669 & 0.344 & 0.187 & 0.503 & True & 1 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 1.013 & 1.126 & -0.112 & -0.276 & 0.052 & False & 1 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 1.126 & 0.669 & 0.456 & 0.290 & 0.618 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Expansion} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 1.005 & 1.178 & -0.173 & -0.401 & 0.051 & False & 1 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 1.005 & 0.714 & 0.291 & 0.096 & 0.486 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.714 & 1.178 & -0.464 & -0.661 & -0.268 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{2-14} \cline{3-14}
+ & \multirow[t]{3}{*}{Temporal} & \multirow[t]{2}{*}{Gemma 4 2B} & Gemma 4 31B & 0.203 & 0.795 & -0.592 & -0.757 & -0.433 & True & 1 & 191 & 10000 & 20260826 \\
+ &  &  & Gemma 4 4B & 0.203 & 0.457 & -0.254 & -0.405 & -0.110 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{3-14}
+ &  & Gemma 4 4B & Gemma 4 31B & 0.457 & 0.795 & -0.338 & -0.527 & -0.146 & True & 1 & 191 & 10000 & 20260826 \\
+\cline{1-14} \cline{2-14} \cline{3-14}
+\bottomrule
+\end{tabular}
+\end{table}

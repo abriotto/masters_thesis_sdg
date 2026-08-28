@@ -1,0 +1,113 @@
+{
+  "manifest_version": "1",
+  "artifact_kind": "discopy_explicit_candidates",
+  "artifact_file": "discopy_explicit_candidates.csv",
+  "written_at_utc": "2026-08-27T22:17:03.212319+00:00",
+  "corpus": {
+    "fingerprint": "a0946232dd495b38779fe78a4788175d9a240f686b6df9f56a701b6f9f5614e1",
+    "fingerprint_version": "1",
+    "fingerprint_fields": [
+      "model",
+      "game_id",
+      "run_label",
+      "decoding",
+      "justification"
+    ],
+    "stage": "base",
+    "prompt_version": "prompt_v4",
+    "n_justifications": 2292,
+    "n_games": 191,
+    "n_sentences": 8044,
+    "n_words": 169748,
+    "models": [
+      "Gemma 4 2B",
+      "Gemma 4 31B",
+      "Gemma 4 4B"
+    ],
+    "runs": [
+      "greedy_t0",
+      "run_1",
+      "run_2",
+      "run_3"
+    ],
+    "run_structure": {
+      "Gemma 4 2B / greedy_t0": 191,
+      "Gemma 4 2B / run_1": 191,
+      "Gemma 4 2B / run_2": 191,
+      "Gemma 4 2B / run_3": 191,
+      "Gemma 4 31B / greedy_t0": 191,
+      "Gemma 4 31B / run_1": 191,
+      "Gemma 4 31B / run_2": 191,
+      "Gemma 4 31B / run_3": 191,
+      "Gemma 4 4B / greedy_t0": 191,
+      "Gemma 4 4B / run_1": 191,
+      "Gemma 4 4B / run_2": 191,
+      "Gemma 4 4B / run_3": 191
+    }
+  },
+  "config": {
+    "stage": "base",
+    "prompt_version": "prompt_v4",
+    "models": [
+      "Gemma 4 2B",
+      "Gemma 4 4B",
+      "Gemma 4 31B"
+    ],
+    "stochastic_runs": [
+      "run_1",
+      "run_2",
+      "run_3"
+    ],
+    "greedy_runs": [
+      "greedy_t0"
+    ],
+    "artifact_root": "analysis\\cross_model\\base\\voting\\prompt_v4\\justification_analysis"
+  },
+  "producer": {
+    "implementation": "rknaebel/discopy",
+    "version": "1.1.0",
+    "commit": "5507d65",
+    "data_package": "rknaebel/discopy-data",
+    "data_version": "1.0.2",
+    "data_commit": "87db2a2",
+    "checkpoint": "bert-10.11.21-13.31",
+    "checkpoint_note": "release 1.1.0 archive bert-10.11.21-13.31.tar.gz, extracted locally to a directory named bert-codi; the directory name is a local convenience, the checkpoint identity is bert-10.11.21-13.31",
+    "bert_model": "bert-base-cased",
+    "component": "ConnectiveSenseClassifier",
+    "used_context": 1,
+    "relation_type": "Explicit",
+    "note": "blessed retrospectively by exact reconciliation against the base corpus; see bless_base_artifact.py"
+  },
+  "outputs": {
+    "n_candidates": 14209,
+    "n_accepted": 5504,
+    "n_nosense": 8705,
+    "top_level_counts": {
+      "Comparison": 1608,
+      "Contingency": 1534,
+      "Expansion": 1513,
+      "Temporal": 849
+    },
+    "observed_senses": [
+      "Comparison.Concession",
+      "Comparison.Contrast",
+      "Contingency.Cause",
+      "Contingency.Condition",
+      "Expansion.Alternative",
+      "Expansion.Conjunction",
+      "Expansion.Restatement",
+      "Temporal.Asynchronous",
+      "Temporal.Synchrony"
+    ]
+  },
+  "environment": {
+    "python": "3.10.19",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "migration": {
+    "blessed_retrospectively": true,
+    "reason": "artifact predates the manifest system",
+    "reconciliation_checks": 9,
+    "all_passed": true
+  }
+}
