@@ -62,10 +62,18 @@ from src.justification_analysis.discopy_parser.discopy_explicit import (  # noqa
 
 TARGET_FORMS = ("given", "given that")
 
-ARTIFACTS = (
-    REPO_ROOT / "analysis" / "cross_model" / "base" / "voting"
-    / "prompt_v4" / "justification_analysis" / "discourse_parser"
-)
+# ---------------------------------------------------------------------------
+# BASE-ONLY utility. This documents a CLOSED base-development strand, so it is
+# not rerun for other stages and must never quietly read base paths from a
+# non-base configuration.
+# ---------------------------------------------------------------------------
+from src.justification_analysis.pipeline.config import (  # noqa: E402
+    default_config, require_base_stage)
+
+_CONFIG = default_config(repo_root=REPO_ROOT)
+require_base_stage(_CONFIG, "forced_span_probe", "It is the rejected candidate-expansion experiment, retained as evidence for why the hybrid was not adopted.")
+
+ARTIFACTS = _CONFIG.discourse_dir
 
 
 def parse_spans(text: str):

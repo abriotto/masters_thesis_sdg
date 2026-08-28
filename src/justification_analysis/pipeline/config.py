@@ -259,6 +259,34 @@ class AnalysisConfig:
         return replace(self, stage=stage)
 
 
+class BaseOnlyUtilityError(RuntimeError):
+    """A closed base-development utility was invoked for another stage."""
+
+
+def require_base_stage(config: AnalysisConfig, utility: str,
+                       reason: str = "") -> None:
+    """Guard for utilities that document a CLOSED base-development strand.
+
+    Some scripts regenerate the record of what was tried and rejected while the
+    base pipeline was being built - the forced-span probe, the rejected
+    DiMLex-expanded hybrid, the completed 50-case validation sheet. Re-running
+    them against a fine-tuned corpus would not answer the question they were
+    written to answer, and silently reading base paths from a fine-tuned
+    context would be worse still.
+
+    So they fail loudly instead of quietly using base.
+    """
+    if config.stage != BASE_STAGE:
+        raise BaseOnlyUtilityError(
+            f"{utility} is a BASE-ONLY utility and was invoked with "
+            f"stage={config.stage!r}.\n"
+            + (f"{reason}\n" if reason else "")
+            + "It documents a closed base-development strand, so it is not "
+              "rerun for other stages. It will not fall back to base paths "
+              "from a non-base configuration."
+        )
+
+
 def default_config(**overrides) -> AnalysisConfig:
     """The configuration a notebook gets unless it says otherwise.
 

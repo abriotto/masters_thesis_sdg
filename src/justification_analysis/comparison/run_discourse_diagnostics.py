@@ -6,12 +6,18 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(r"C:\Users\annab\Documents\GitHub\masters_thesis_sdg")
+# Repo root is discovered, never hard-coded to one machine.
+ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 from src.justification_analysis.comparison import discourse_comparison as dc
 from src.utils.sentences import count_sentences
 
-OUT = ROOT / "analysis/cross_model/base/voting/prompt_v4/justification_analysis/discourse_parser"
+from src.justification_analysis.pipeline.config import default_config
+
+# Stage-aware. The validation sample this writes is drawn from the ACTIVE
+# corpus; an old sample is never reused across stages.
+CONFIG = default_config(repo_root=ROOT)
+OUT = CONFIG.discourse_dir
 pd.set_option("display.width", 210, "display.max_columns", 40, "display.max_colwidth", 95)
 
 dim_a = pd.read_csv(OUT / "alignment_dimlex_side.csv", encoding="utf-8-sig")

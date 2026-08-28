@@ -42,7 +42,18 @@ REPO_ROOT = find_repo_root()
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-ARTIFACTS = REPO_ROOT / "analysis/cross_model/base/voting/prompt_v4/justification_analysis/discourse_parser"
+# ---------------------------------------------------------------------------
+# BASE-ONLY utility. This documents a CLOSED base-development strand, so it is
+# not rerun for other stages and must never quietly read base paths from a
+# non-base configuration.
+# ---------------------------------------------------------------------------
+from src.justification_analysis.pipeline.config import (  # noqa: E402
+    default_config, require_base_stage)
+
+_CONFIG = default_config(repo_root=REPO_ROOT)
+require_base_stage(_CONFIG, "evaluate_manual_validation", "It evaluates the completed 50-case base validation sheet, which is a one-off record and not regenerated per stage.")
+
+ARTIFACTS = _CONFIG.discourse_dir
 AMBIGUOUS_FORMS = {"as", "for", "and", "or", "then", "since", "while"}
 
 TRUE_VALUES = {"y", "yes", "true", "1", "t"}

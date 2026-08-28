@@ -1,11 +1,10 @@
 """Canonical FINAL semantic results for the frozen justification annotations.
 
-The single input is
-
-    results/justification_annotation/full_frozen/annotations.jsonl
-
-which is the merged, frozen output of the DeepSeek annotation run (schema
-`frozen`, 2,292 justifications). Nothing here re-annotates, re-prompts or
+The input is the merged DeepSeek annotation run for the ACTIVE stage,
+resolved through `AnalysisConfig.semantic_annotations_path`. For the base
+stage that is the frozen annotation run (schema `frozen`, 2,292
+justifications); another stage resolves to its own annotation run and raises
+if that run does not exist. Nothing here re-annotates, re-prompts or
 edits that file; the one documented repair below is applied in memory, to the
 loaded frame, and is reported as an artifact.
 
@@ -70,7 +69,7 @@ RUNS_BY_DECODING = {"Stochastic": STOCHASTIC_RUNS, "Greedy": GREEDY_RUNS}
 RUN_KEYS = ["model", "decoding_group", "run_label"]
 
 # Paths derive from the active configuration. The base stage resolves to the
-# frozen annotation run (`full_frozen`) and to the base artifact namespace, so
+# frozen annotation run and to the base artifact namespace, so
 # base behaviour is byte-identical to before; any other stage resolves to its
 # own annotation run and its own output namespace, and raises if that run does
 # not exist rather than reading base annotations.

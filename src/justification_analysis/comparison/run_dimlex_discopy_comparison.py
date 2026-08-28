@@ -6,13 +6,19 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(r"C:\Users\annab\Documents\GitHub\masters_thesis_sdg")
+# Repo root is discovered, never hard-coded to one machine.
+ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 SP = Path(__file__).resolve().parent.parent / "discopy_parser"
 
 from src.justification_analysis.comparison import discourse_comparison as dc
 
-OUT = ROOT / "analysis/cross_model/base/voting/prompt_v4/justification_analysis/discourse_parser"
+from src.justification_analysis.pipeline.config import default_config
+
+# Stage-aware: this diagnostic is meaningful for any corpus, so its
+# inputs and outputs follow the active configuration.
+CONFIG = default_config(repo_root=ROOT)
+OUT = CONFIG.discourse_dir
 pd.set_option("display.width", 200, "display.max_columns", 40)
 
 dimlex = pd.read_csv(OUT / "dimlex_occurrences.csv", encoding="utf-8-sig")

@@ -1,4 +1,10 @@
-"""Regenerate the DIAGNOSTIC thesis tables (10b-23) from the frozen inputs.
+"""BASE-ONLY: regenerate the DIAGNOSTIC thesis tables (10b-23).
+
+These document three CLOSED base-development strands - the DiMLex
+coverage bounds, the forced-span probe, and the rejected DiMLex-expanded
+hybrid. They are the record of what was tried and rejected while the base
+pipeline was built, so they are not rerun for other stages; invoking this
+with a non-base stage raises rather than quietly reading base paths.
 
 These tables are *not* production results. They belong to three closed strands:
 
@@ -51,10 +57,18 @@ from src.justification_analysis.comparison import discourse_statistics as ds  # 
 from src.justification_analysis.comparison import forced_span_summary as fs  # noqa: E402
 from src.justification_analysis.comparison import hybrid_experimental as hx  # noqa: E402
 
-ARTIFACTS = (
-    REPO_ROOT / "analysis" / "cross_model" / "base" / "voting" / "prompt_v4"
-    / "justification_analysis" / "discourse_parser"
-)
+# ---------------------------------------------------------------------------
+# BASE-ONLY utility. This documents a CLOSED base-development strand, so it is
+# not rerun for other stages and must never quietly read base paths from a
+# non-base configuration.
+# ---------------------------------------------------------------------------
+from src.justification_analysis.pipeline.config import (  # noqa: E402
+    default_config, require_base_stage)
+
+_CONFIG = default_config(repo_root=REPO_ROOT)
+require_base_stage(_CONFIG, "run_diagnostic_tables", "It regenerates tables 10b-23: the DiMLex coverage bounds, the forced-span probe and the rejected hybrid - all closed.")
+
+ARTIFACTS = _CONFIG.discourse_dir
 TABLES = ARTIFACTS / "thesis_tables"
 PROBE = ARTIFACTS / "forced_span_probe"
 HYBRID = ARTIFACTS / "experimental_hybrid"
