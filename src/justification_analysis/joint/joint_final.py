@@ -65,10 +65,11 @@ MODEL_ORDER = list(sem.MODEL_ORDER)
 DECODING_ORDER = list(sem.DECODING_ORDER)
 SENTENCE_KEY = ["model", "game_id", "run_label", "sentence_id"]
 
-DISCOURSE_SUBPATH = Path(
-    "analysis/cross_model/base/voting/prompt_v4/justification_analysis"
-    "/discourse_parser/discopy_explicit_candidates.csv"
-)
+# NOTE: there is deliberately no module-level path to the candidate table any
+# more. It used to be read straight from a hard-coded base path, which meant
+# the joint analysis bypassed the freshness gate entirely: a stale or
+# mismatched parser artifact would fail in notebook 7 but sail through here.
+# `load_layers` now goes through `pipeline.manifest.load_verified_candidates`.
 
 
 
@@ -104,17 +105,37 @@ def _order(frame: pd.DataFrame) -> pd.DataFrame:
 # Input and alignment
 # ---------------------------------------------------------------------------
 
-def load_layers(repo_root: Path) -> Dict[str, pd.DataFrame]:
+def load_layers(repo_root: Path = None, config=None) -> Dict[str, pd.DataFrame]:
     """The semantic frames and the ACCEPTED discourse relations.
 
-    Only `is_connective == True` rows are returned as relations: the rejected
-    NoSense candidates stay in the source table so the accept/reject behaviour
-    is inspectable, but they are not relations and never enter this analysis.
-    """
-    repo_root = Path(repo_root)
-    semantic = sem.load_annotations(repo_root)
+    The candidate table now passes the SAME freshness gate the final discourse
+    notebook uses. Previously this read a hard-coded base CSV directly, so a
+    stale or mismatched parser artifact stopped notebook 7 but was consumed
+    silently here - the joint results would have been about a corpus that no
+    longer existed.
 
-    candidates = pd.read_csv(repo_root / DISCOURSE_SUBPATH)
+    Only `is_connective == True` rows are returned as relations: the rejected
+    NoSense candidates stay in the table so the accept/reject behaviour is
+    inspectable, but they are not relations and never enter this analysis.
+    """
+    from src.justification_analysis.pipeline import config as pipeline_config
+    from src.justification_analysis.pipeline import corpus as corpus_module
+    from src.justification_analysis.pipeline import manifest as manifest_module
+
+    if config is None:
+        config = pipeline_config.AnalysisConfig(
+            repo_root=Path(repo_root) if repo_root
+            else pipeline_config.find_repo_root())
+
+    semantic = sem.load_annotations(config.repo_root, config=config)
+
+    # The gate compares the artifact's manifest fingerprint against the
+    # CURRENT corpus. Mismatch or missing manifest raises; there is no
+    # fallback to another stage.
+    corpus = corpus_module.load_corpus(config)
+    candidates, manifest = manifest_module.load_verified_candidates(
+        config, corpus)
+
     relations = candidates.loc[candidates["is_connective"]].copy()
     relations["model"] = relations["model"].astype(str)
 
@@ -122,6 +143,9 @@ def load_layers(repo_root: Path) -> Dict[str, pd.DataFrame]:
         "semantic": semantic,
         "candidates": candidates,
         "relations": relations,
+        "corpus": corpus,
+        "manifest": manifest,
+        "config": config,
     }
 
 

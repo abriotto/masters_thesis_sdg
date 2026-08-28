@@ -121,6 +121,61 @@ def main() -> int:
     record("manifest records the candidate count",
            recorded == 14209, f"n_candidates={recorded}")
 
+
+    # -- 7. the ANALYSIS ENTRY POINTS, not just the loader ------------------
+    print("\n7. notebook 7 and the joint pipeline both stop for a stage "
+          "with no artifact")
+    from src.justification_analysis.comparison import discourse_final as fin
+    from src.justification_analysis.joint import joint_final as jf
+
+    for label, entry in (("notebook 7 entry (load_production_data)",
+                          lambda: fin.load_production_data(finetuned)),
+                         ("joint entry (joint_final.load_layers)",
+                          lambda: jf.load_layers(config=finetuned))):
+        try:
+            entry()
+            record(f"{label} stops for finetuned", False, "it returned data")
+        except (manifest_module.MissingArtifactError,
+                manifest_module.StaleArtifactError, FileNotFoundError) as error:
+            record(f"{label} stops for finetuned", True,
+                   type(error).__name__)
+            record(f"{label} does not fall back to base",
+                   "base" not in str(error).split("stage")[0].lower()
+                   or "finetuned" in str(error))
+
+    # -- 8. and both stop for a MISMATCHED corpus hash ----------------------
+    print("\n8. both entry points stop on a mismatched corpus hash")
+    import pandas as pd
+    from src.justification_analysis.pipeline import corpus as corpus_mod
+
+    real_load = corpus_mod.load_corpus
+
+    def poisoned_load(cfg):
+        frame = real_load(cfg)
+        frame = frame.copy()
+        frame.loc[frame.index[0], "justification"] = (
+            str(frame.loc[frame.index[0], "justification"]) + " (edited)")
+        return frame
+
+    corpus_mod.load_corpus = poisoned_load
+    try:
+        for label, entry in (("notebook 7 entry",
+                              lambda: fin.load_production_data(config)),
+                             ("joint entry",
+                              lambda: jf.load_layers(config=config))):
+            try:
+                entry()
+                record(f"{label} refuses a mismatched hash", False,
+                       "it accepted the stale artifact")
+            except manifest_module.StaleArtifactError:
+                record(f"{label} refuses a mismatched hash", True,
+                       "raised StaleArtifactError")
+            except Exception as error:
+                record(f"{label} refuses a mismatched hash", False,
+                       f"wrong exception: {type(error).__name__}")
+    finally:
+        corpus_mod.load_corpus = real_load
+
     print()
     failed = [name for name, passed, _ in results if not passed]
     print(f"{len(results) - len(failed)}/{len(results)} checks passed")

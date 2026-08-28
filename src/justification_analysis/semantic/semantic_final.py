@@ -69,17 +69,54 @@ GREEDY_RUNS = ["greedy_t0"]
 RUNS_BY_DECODING = {"Stochastic": STOCHASTIC_RUNS, "Greedy": GREEDY_RUNS}
 RUN_KEYS = ["model", "decoding_group", "run_label"]
 
-ANNOTATIONS_SUBPATH = Path(
-    "results/justification_annotation/full_frozen/annotations.jsonl"
-)
-INPUT_SUBPATH = Path("results/justification_annotation/full_frozen/input")
+# Paths derive from the active configuration. The base stage resolves to the
+# frozen annotation run (`full_frozen`) and to the base artifact namespace, so
+# base behaviour is byte-identical to before; any other stage resolves to its
+# own annotation run and its own output namespace, and raises if that run does
+# not exist rather than reading base annotations.
+def _resolved_config(repo_root=None, config=None):
+    from src.justification_analysis.pipeline import config as pipeline_config
+    if config is not None:
+        return config
+    return pipeline_config.AnalysisConfig(
+        repo_root=Path(repo_root) if repo_root
+        else pipeline_config.find_repo_root())
 
-ARTIFACT_SUBPATH = Path(
-    "analysis/cross_model/base/voting/prompt_v4/justification_analysis"
-    "/semantic_annotation"
-)
-FINAL_TABLES_SUBPATH = ARTIFACT_SUBPATH / "thesis_tables" / "final_semantic"
-FINAL_FIGURES_SUBPATH = ARTIFACT_SUBPATH / "figures" / "final_semantic"
+
+def annotations_path(config=None) -> Path:
+    return _resolved_config(config=config).semantic_annotations_path
+
+
+def input_dir(config=None) -> Path:
+    return _resolved_config(config=config).semantic_input_dir
+
+
+def final_tables_dir(config=None) -> Path:
+    return _resolved_config(config=config).semantic_dir / "thesis_tables" / "final_semantic"
+
+
+def final_figures_dir(config=None) -> Path:
+    return _resolved_config(config=config).semantic_dir / "figures" / "final_semantic"
+
+
+# Legacy module-level names, resolved through the default (base) config so
+# existing callers keep working. New code should pass a config explicitly.
+def __getattr__(name):
+    _legacy = {
+        "ANNOTATIONS_SUBPATH": lambda: annotations_path().relative_to(
+            _resolved_config().repo_root),
+        "INPUT_SUBPATH": lambda: input_dir().relative_to(
+            _resolved_config().repo_root),
+        "FINAL_TABLES_SUBPATH": lambda: final_tables_dir().relative_to(
+            _resolved_config().repo_root),
+        "FINAL_FIGURES_SUBPATH": lambda: final_figures_dir().relative_to(
+            _resolved_config().repo_root),
+        "ARTIFACT_SUBPATH": lambda: _resolved_config().semantic_dir.relative_to(
+            _resolved_config().repo_root),
+    }
+    if name in _legacy:
+        return _legacy[name]()
+    raise AttributeError(name)
 
 BOOTSTRAP_SEED = 20260826
 BOOTSTRAP_REPLICATES = 10_000
@@ -110,7 +147,7 @@ def _read_jsonl(path: Path) -> List[dict]:
     return records
 
 
-def _source_sentences(repo_root: Path) -> Dict[str, Dict[int, str]]:
+def _source_sentences(repo_root: Path, config=None) -> Dict[str, Dict[int, str]]:
     """The sentence text as it was SENT to the annotator, per justification.
 
     This is the authority for sentence text: the annotator was asked to echo
@@ -118,7 +155,7 @@ def _source_sentences(repo_root: Path) -> Dict[str, Dict[int, str]]:
     annotator transcription error, repaired from here.
     """
     source: Dict[str, Dict[int, str]] = {}
-    for path in sorted((Path(repo_root) / INPUT_SUBPATH).glob("*.jsonl")):
+    for path in sorted(input_dir(config).glob("*.jsonl")):
         for record in _read_jsonl(path):
             source[record["justification_id"]] = {
                 sentence["sentence_id"]: sentence["text"]
@@ -127,7 +164,7 @@ def _source_sentences(repo_root: Path) -> Dict[str, Dict[int, str]]:
     return source
 
 
-def load_annotations(repo_root: Path) -> Dict[str, pd.DataFrame]:
+def load_annotations(repo_root: Path = None, config=None) -> Dict[str, pd.DataFrame]:
     """Load the frozen annotations into three tidy frames plus a repair log.
 
     Returns a dict with:
@@ -140,9 +177,11 @@ def load_annotations(repo_root: Path) -> Dict[str, pd.DataFrame]:
     altered text and no analysis silently disagrees with another about what a
     sentence said.
     """
-    repo_root = Path(repo_root)
-    records = _read_jsonl(repo_root / ANNOTATIONS_SUBPATH)
-    source = _source_sentences(repo_root)
+    config = _resolved_config(repo_root, config)
+    config.require_semantic_inputs()
+    repo_root = config.repo_root
+    records = _read_jsonl(annotations_path(config))
+    source = _source_sentences(repo_root, config)
 
     justification_rows: List[dict] = []
     sentence_rows: List[dict] = []

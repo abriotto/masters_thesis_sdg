@@ -80,6 +80,9 @@ class AnalysisConfig:
     stochastic_runs: Tuple[str, ...] = DEFAULT_STOCHASTIC_RUNS
     greedy_runs: Tuple[str, ...] = DEFAULT_GREEDY_RUNS
     repo_root: Path = field(default_factory=find_repo_root)
+    # Set only to point at a non-default annotation run; normally the run is
+    # derived from the stage (see `semantic_run`).
+    semantic_run_override: str = None
 
     # -- vocabulary derived from the configured model set -------------------
 
@@ -198,6 +201,43 @@ class AnalysisConfig:
     @property
     def semantic_dir(self) -> Path:
         return self.artifact_root / "semantic_annotation"
+
+    # -- semantic annotation inputs ----------------------------------------
+    #
+    # The DeepSeek annotations live under results/, not under analysis/, and
+    # are named by annotation run rather than by stage. `semantic_run`
+    # resolves from the stage so that a fine-tuned analysis cannot silently
+    # read the base annotations: base maps to the frozen run, anything else
+    # maps to a stage-specific name that has to exist.
+
+    @property
+    def semantic_run(self) -> str:
+        if self.semantic_run_override:
+            return self.semantic_run_override
+        return "full_frozen" if self.is_base else f"full_{self.stage}"
+
+    @property
+    def semantic_run_dir(self) -> Path:
+        return (self.repo_root / "results" / "justification_annotation"
+                / self.semantic_run)
+
+    @property
+    def semantic_annotations_path(self) -> Path:
+        return self.semantic_run_dir / "annotations.jsonl"
+
+    @property
+    def semantic_input_dir(self) -> Path:
+        return self.semantic_run_dir / "input"
+
+    def require_semantic_inputs(self) -> None:
+        if not self.semantic_annotations_path.exists():
+            raise FileNotFoundError(
+                f"no semantic annotations for stage {self.stage!r} "
+                f"(annotation run {self.semantic_run!r}):\n"
+                f"  {self.semantic_annotations_path}\n"
+                f"The analysis stops here rather than falling back to another "
+                f"stage's annotations."
+            )
 
     @property
     def joint_dir(self) -> Path:

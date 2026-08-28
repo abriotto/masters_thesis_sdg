@@ -68,13 +68,39 @@ MODEL_ORDER = list(sem.MODEL_ORDER)
 DECODING_ORDER = list(sem.DECODING_ORDER)
 RUNS_BY_DECODING = dict(sem.RUNS_BY_DECODING)
 
-ARTIFACT_SUBPATH = Path(
-    "analysis/cross_model/base/voting/prompt_v4/justification_analysis"
-    "/joint_discourse_semantic_justification"
-)
-FINAL_TABLES_SUBPATH = ARTIFACT_SUBPATH / "thesis_tables" / "final_joint_justification"
-FINAL_FIGURES_SUBPATH = ARTIFACT_SUBPATH / "figures" / "final_joint_justification"
-QUALITATIVE_SUBPATH = ARTIFACT_SUBPATH / "qualitative"
+# Output namespace derives from the active configuration, so a fine-tuned run
+# writes to its own directory and cannot overwrite the base joint results.
+def _resolved_config(config=None):
+    from src.justification_analysis.pipeline import config as pipeline_config
+    return config or pipeline_config.default_config()
+
+
+def artifact_dir(config=None) -> Path:
+    return _resolved_config(config).joint_dir
+
+
+def final_tables_dir(config=None) -> Path:
+    return artifact_dir(config) / "thesis_tables" / "final_joint_justification"
+
+
+def final_figures_dir(config=None) -> Path:
+    return artifact_dir(config) / "figures" / "final_joint_justification"
+
+
+def qualitative_dir(config=None) -> Path:
+    return artifact_dir(config) / "qualitative"
+
+
+def __getattr__(name):
+    _legacy = {
+        "ARTIFACT_SUBPATH": artifact_dir,
+        "FINAL_TABLES_SUBPATH": final_tables_dir,
+        "FINAL_FIGURES_SUBPATH": final_figures_dir,
+        "QUALITATIVE_SUBPATH": qualitative_dir,
+    }
+    if name in _legacy:
+        return _legacy[name]()
+    raise AttributeError(name)
 
 BOOTSTRAP_SEED = sem.BOOTSTRAP_SEED
 BOOTSTRAP_REPLICATES = sem.BOOTSTRAP_REPLICATES
@@ -141,7 +167,7 @@ def _count_columns(kind: str) -> Tuple[List[str], List[str]]:
 # Input
 # ---------------------------------------------------------------------------
 
-def load_justification_metadata(repo_root: Path) -> pd.DataFrame:
+def load_justification_metadata(repo_root: Path = None, config=None) -> pd.DataFrame:
     """Vote, correctness and the canonical WORD_PATTERN token count.
 
     Word counts come from the justification text in the annotator's input
@@ -149,7 +175,8 @@ def load_justification_metadata(repo_root: Path) -> pd.DataFrame:
     analysis uses. The corpus total is asserted against the frozen 169,748.
     """
     rows = []
-    directory = Path(repo_root) / sem.INPUT_SUBPATH
+    config = _resolved_config(config)
+    directory = sem.input_dir(config)
     for path in sorted(directory.glob("*.jsonl")):
         with path.open("r", encoding="utf-8") as handle:
             for line in handle:
