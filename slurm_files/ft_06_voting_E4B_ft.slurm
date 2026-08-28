@@ -2,7 +2,7 @@
 #SBATCH --job-name=vote_E4B_ft
 #SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/vote_E4B_ft_%j.out
 #SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/vote_E4B_ft_%j.err
-#SBATCH --partition=owner1
+#SBATCH --partition=testing
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G

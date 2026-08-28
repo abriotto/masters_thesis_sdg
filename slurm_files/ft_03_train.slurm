@@ -22,4 +22,8 @@ echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 
 export PYTORCH_ALLOC_CONF=expandable_segments:True
 
-python -m src.finetuning.train_role_inference --train_path data/processed/jin2024_onuw/sft_role_inference_traced_31B/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_traced_31B/val.jsonl --output_dir models/finetuned/gemma-4-31B-role-inference-traced --response_part '<channel|>' --enable_thinking_in_prompt --max_seq_length 12288 --num_train_epochs 3 --smoke_test_samples 3
+set -euo pipefail
+
+python -m src.finetuning.train_role_inference --model_name unsloth/gemma-4-E4B-it-unsloth-bnb-4bit --train_path data/processed/jin2024_onuw/sft_role_inference_traced_E4B/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_traced_E4B/val.jsonl --response_part '<channel|>' --enable_thinking_in_prompt --max_seq_length 8192 --inspect_only
+
+python -m src.finetuning.train_role_inference --model_name unsloth/gemma-4-E4B-it-unsloth-bnb-4bit --train_path data/processed/jin2024_onuw/sft_role_inference_traced_E4B/train.jsonl --val_path data/processed/jin2024_onuw/sft_role_inference_traced_E4B/val.jsonl --output_dir models/finetuned/gemma-4-E4B-role-inference-traced --response_part '<channel|>' --enable_thinking_in_prompt --max_seq_length 8192 --num_train_epochs 3 --smoke_test_samples 3
