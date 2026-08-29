@@ -116,6 +116,7 @@ def run_role_inference(
 
     total_correct = 0
     total_slots = 0
+    exact_games = 0
     correct_by_role: Counter = Counter()
     seen_by_role: Counter = Counter()
     emitted = 0
@@ -141,6 +142,7 @@ def run_role_inference(
         )
         total_correct += c
         total_slots += t
+        exact_games += int(c == t)
         correct_by_role.update(cbr)
         seen_by_role.update(sbr)
 
@@ -150,6 +152,7 @@ def run_role_inference(
         )
 
     accuracy = total_correct / total_slots if total_slots else 0.0
+    exact_game_accuracy = exact_games / len(rows) if rows else 0.0
     per_role = {
         role: {
             "correct": correct_by_role.get(role, 0),
@@ -176,6 +179,8 @@ def run_role_inference(
         "role_accuracy": accuracy,
         "correct": total_correct,
         "total": total_slots,
+        "exact_game_matches": exact_games,
+        "exact_game_accuracy": exact_game_accuracy,
         "per_role": per_role,
         "thought_channel_emitted": emitted,
         "json_parse_failures": parse_failures,
