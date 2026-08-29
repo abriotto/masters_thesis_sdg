@@ -170,8 +170,9 @@ def integrity_checks(corpus: pd.DataFrame, config: AnalysisConfig) -> pd.DataFra
          bool((corpus["n_words"] > 0).all()), ""),
         ("sentence counts are positive",
          bool((corpus["n_sentences"] > 0).all()), ""),
-        ("decoding groups are exactly Stochastic and Greedy",
-         set(corpus["decoding_group"]) == {"Stochastic", "Greedy"}, ""),
+        (f"decoding groups are exactly {', '.join(config.decoding_groups)}",
+         set(corpus["decoding_group"]) == set(config.decoding_groups),
+         f"{sorted(set(corpus['decoding_group']))}"),
     ]
     return pd.DataFrame([
         {"check": name, "passed": bool(passed), "observed": observed,

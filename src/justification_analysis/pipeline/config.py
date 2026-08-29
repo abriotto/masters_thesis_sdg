@@ -67,6 +67,17 @@ DEFAULT_MODELS: Tuple[ModelSpec, ...] = (
 DEFAULT_STOCHASTIC_RUNS: Tuple[str, ...] = ("run_1", "run_2", "run_3")
 DEFAULT_GREEDY_RUNS: Tuple[str, ...] = ("greedy_t0",)
 
+# The run structure actually generated for each stage. This is a record of the
+# experimental design, not a guess: the fine-tuned models were run three times
+# stochastically with no greedy pass, so a greedy group would be empty rather
+# than merely small. A stage absent from this table gets the defaults above.
+STAGE_RUN_STRUCTURE: Dict[str, Dict[str, Tuple[str, ...]]] = {
+    "base": {"stochastic_runs": DEFAULT_STOCHASTIC_RUNS,
+             "greedy_runs": DEFAULT_GREEDY_RUNS},
+    "ft": {"stochastic_runs": DEFAULT_STOCHASTIC_RUNS,
+           "greedy_runs": ()},
+}
+
 VOTE_TABLE_RELATIVE = Path("vote_stability/tables/llm_vote_file_level.csv")
 
 
@@ -96,7 +107,18 @@ class AnalysisConfig:
 
     @property
     def runs_by_decoding(self) -> Dict[str, Tuple[str, ...]]:
-        return {"Stochastic": self.stochastic_runs, "Greedy": self.greedy_runs}
+        """Only the decoding groups this stage actually has.
+
+        A stage with no greedy pass must not carry an empty Greedy group
+        through the analysis: every per-group table would gain a blank column
+        and every mean would be taken over nothing.
+        """
+        groups = {"Stochastic": self.stochastic_runs, "Greedy": self.greedy_runs}
+        return {name: runs for name, runs in groups.items() if runs}
+
+    @property
+    def decoding_groups(self) -> Tuple[str, ...]:
+        return tuple(self.runs_by_decoding)
 
     @property
     def all_runs(self) -> Tuple[str, ...]:
@@ -122,13 +144,42 @@ class AnalysisConfig:
             )
         return matches[0]
 
+    def stage_dir(self, model: ModelSpec) -> Path:
+        """The model's folder for the configured stage, matched as a prefix.
+
+        `base` is a literal folder name, but the fine-tuned folders carry the
+        adapter that produced them and so differ across models:
+
+            ft_gemma-4-E2B-role-inference-traced-final_adapter
+            ft_gemma-4-E4B-role-inference-traced-final_adapter
+            ft_gemma-4-31B-role-inference-traced-final_adapter
+
+        One literal stage string cannot name all three, so `stage="ft"` is
+        matched as a prefix. Exactly one match is required: a stage that is
+        ambiguous (two adapters analysed side by side) or absent stops here
+        rather than silently picking one.
+        """
+        model_dir = self.model_analysis_dir(model)
+        matches = sorted(path for path in model_dir.glob(f"{self.stage}*")
+                         if path.is_dir())
+        if len(matches) != 1:
+            raise FileNotFoundError(
+                f"stage {self.stage!r} matched {len(matches)} folders under "
+                f"{model_dir} for {model.display}: "
+                f"{[path.name for path in matches]}. Expected exactly one.\n"
+                f"Name the stage more precisely if two adapters are present.\n"
+                f"The analysis stops here rather than falling back to another "
+                f"stage."
+            )
+        return matches[0]
+
     def vote_table(self, model: ModelSpec) -> Path:
         """The per-model vote table FOR THE CONFIGURED STAGE.
 
         Raises rather than falling back. A missing fine-tuned table must stop
         the analysis, not quietly hand back base results.
         """
-        path = (self.model_analysis_dir(model) / self.stage / "voting"
+        path = (self.stage_dir(model) / "voting"
                 / self.prompt_version / VOTE_TABLE_RELATIVE)
         if not path.exists():
             raise FileNotFoundError(
@@ -293,6 +344,14 @@ def default_config(**overrides) -> AnalysisConfig:
     Defaults to the base stage because that is the frozen thesis corpus.
     Switching is a one-line change:
 
-        config = default_config(stage="finetuned")
+        config = default_config(stage="ft")
+
+    The run structure follows the stage from STAGE_RUN_STRUCTURE unless the
+    caller names it explicitly, so switching stage does not silently keep a
+    run structure the stage never had.
     """
+    stage = overrides.get("stage", BASE_STAGE)
+    structure = STAGE_RUN_STRUCTURE.get(stage, {})
+    for field_name, value in structure.items():
+        overrides.setdefault(field_name, value)
     return AnalysisConfig(**overrides)
