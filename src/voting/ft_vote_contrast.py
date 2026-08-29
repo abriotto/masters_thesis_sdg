@@ -238,12 +238,39 @@ print()
 print("=" * 92)
 print("C2. AGREEMENT BETWEEN A MODEL AND ITS OWN FINETUNED VERSION")
 print("=" * 92)
-# Same between_model_agreement definition: all 3 x 3 = 9 cross-run pairs per game,
+# Same between_model_agreement definition: all n_B x n_F cross-run pairs per game,
 # BASE runs against FT runs. Its reference point is not 1.0 but the two self
 # agreements -- a model does not reproduce its own votes either. The reported
-# contrast is therefore (mean of the two self-stabilities) - (BASE vs FT
-# agreement): the drop in agreement that the adapter causes over and above the
-# sampling noise already present in each condition. Paired over games.
+# quantity is the vote-distribution shift
+#
+#     D(g) = (A_BASE(g) + A_FT(g)) / 2 - A_BASE,FT(g)
+#
+# with A_BASE / A_FT the within-condition pairwise agreements (notebook 2's
+# definition: DISTINCT run pairs, self-pairs excluded) and A_BASE,FT the
+# all-pairs cross-condition agreement. Paired over games.
+#
+# EQUIVALENCE. Writing p_B, p_F for the true vote distributions of the two
+# conditions on a game, D is an unbiased estimator of the squared L2 distance
+#
+#     E[D(g)] = 1/2 * sum_v ( p_B(v) - p_F(v) )^2 ,
+#
+# exactly, for any number of runs >= 2 per condition. Two facts give this:
+# A_BASE,FT is unbiased for sum_v p_B(v) p_F(v) because the two samples are
+# independent, and the self-pair-excluded A_BASE is the U-statistic for
+# sum_v p_B(v)^2 -- which is precisely why notebook 2 removed the self-pairs.
+# So D is not merely analogous to a distributional distance; it estimates one.
+#
+# The identity does NOT hold for the plug-in version computed on the empirical
+# distributions. With p_hat the observed proportions,
+#
+#     1/2 * sum_v (p_hat_B(v) - p_hat_F(v))^2
+#         = D + 1/2 * [ (1 - A_BASE)/n_B + (1 - A_FT)/n_F ] ,
+#
+# an upward-biased estimate: sum_v p_hat(v)^2 carries the self-pairs back in.
+# At n = 3 runs the inflation is large -- a Monte Carlo over 400k draws from
+# p_B = (.5,.2,.2,.1), p_F = (.3,.3,.3,.1), true value 0.030, returns 0.0301
+# for D and 0.2600 for the plug-in. Both the algebraic identity above and the
+# non-negativity of D are asserted per game below.
 rows = []
 for label in MODELS:
     d = DATA[label]
@@ -251,19 +278,50 @@ for label in MODELS:
     cross = np.array([between_model_agreement(d["base_l"][g], d["ft_l"][g]) for g in gids], float)
     self_b = np.array([within_model_agreement(d["base_l"][g]) for g in gids], float)
     self_f = np.array([within_model_agreement(d["ft_l"][g]) for g in gids], float)
-    ceiling = (self_b + self_f) / 2.0
+    shift = (self_b + self_f) / 2.0 - cross
+
+    # Verification: the plug-in squared L2 distance minus the predicted offset
+    # must reproduce D exactly, game by game.
+    plug_in, offset = [], []
+    for g in gids:
+        lb, lf = d["base_l"][g], d["ft_l"][g]
+        pb = Counter(lb)
+        pf = Counter(lf)
+        nb, nf = len(lb), len(lf)
+        keys = set(pb) | set(pf)
+        plug_in.append(0.5 * sum((pb.get(k, 0) / nb - pf.get(k, 0) / nf) ** 2 for k in keys))
+        offset.append(0.5 * ((1 - within_model_agreement(lb)) / nb
+                             + (1 - within_model_agreement(lf)) / nf))
+    plug_in, offset = np.array(plug_in), np.array(offset)
+    assert np.allclose(plug_in - offset, shift, atol=1e-12), \
+        f"{label}: plug-in identity failed"
+    # D is unbiased for a non-negative quantity, so per game it may itself be
+    # negative -- the usual price of an unbiased estimator of a square. With 3
+    # runs the floor is -1/3 (both conditions unanimous on the same vote gives
+    # D = 1 - 1 = 0; both fully split gives (0+0)/2 - 1/3). Only the corpus mean
+    # estimates 1/2 * sum_v (p_B - p_F)^2; single-game values are not distances.
+    n_neg = int((shift < -1e-12).sum())
+
     a_mean, a_lo, a_hi = bootstrap_mean_ci(cross)
-    gap, g_lo, g_hi = bootstrap_mean_ci(ceiling - cross)
+    D, d_lo, d_hi = bootstrap_mean_ci(shift)
     rows.append({"model": label, "n_games": len(gids),
                  "base_stability": np.nanmean(self_b), "ft_stability": np.nanmean(self_f),
-                 "base_vs_ft": a_mean, "ci_low": a_lo, "ci_high": a_hi,
-                 "self_mean": np.nanmean(ceiling), "gap": gap,
-                 "gap_ci_low": g_lo, "gap_ci_high": g_hi,
-                 "sig": bool(g_lo > 0 or g_hi < 0)})
+                 "base_vs_ft": a_mean, "cross_ci_low": a_lo, "cross_ci_high": a_hi,
+                 "D": D, "D_ci_low": d_lo, "D_ci_high": d_hi,
+                 "sig": bool(d_lo > 0 or d_hi < 0),
+                 "games_D_negative": n_neg,
+                 "plug_in_biased": plug_in.mean()})
     DATA[label]["cross_bf"] = cross
-print("\nBASE vs its own FT adapter (9 cross-run pairs per game), against the")
-print("mean of the two within-condition stabilities:")
+    DATA[label]["shift"] = shift
+
+print("\nVote-distribution shift D = (A_BASE + A_FT)/2 - A_BASE,FT, per game,")
+print("paired bootstrap over games. plug_in_biased is the empirical-distribution")
+print("formula, shown only to document that it is NOT the same quantity:")
 print(pd.DataFrame(rows).round(4).to_string(index=False))
+print("\nper-game check passed: the plug-in identity holds exactly (1e-12) on every game.")
+print("games_D_negative counts games where the unbiased estimator fell below 0; that is")
+print("expected noise in a U-statistic, not a distance. Only the corpus mean estimates")
+print("1/2 * sum_v (p_BASE(v) - p_FT(v))^2.")
 
 print("\nIs the base-to-FT distance larger than the distance to the OTHER models?")
 print("(higher agreement = closer; compare each row against its own base_vs_ft)")
