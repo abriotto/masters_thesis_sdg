@@ -236,6 +236,68 @@ print(pd.DataFrame(rows).round(4).to_string(index=False))
 
 print()
 print("=" * 92)
+print("C2. AGREEMENT BETWEEN A MODEL AND ITS OWN FINETUNED VERSION")
+print("=" * 92)
+# Same between_model_agreement definition: all 3 x 3 = 9 cross-run pairs per game,
+# BASE runs against FT runs. Its reference point is not 1.0 but the two self
+# agreements -- a model does not reproduce its own votes either. The reported
+# contrast is therefore (mean of the two self-stabilities) - (BASE vs FT
+# agreement): the drop in agreement that the adapter causes over and above the
+# sampling noise already present in each condition. Paired over games.
+rows = []
+for label in MODELS:
+    d = DATA[label]
+    gids = d["games"]
+    cross = np.array([between_model_agreement(d["base_l"][g], d["ft_l"][g]) for g in gids], float)
+    self_b = np.array([within_model_agreement(d["base_l"][g]) for g in gids], float)
+    self_f = np.array([within_model_agreement(d["ft_l"][g]) for g in gids], float)
+    ceiling = (self_b + self_f) / 2.0
+    a_mean, a_lo, a_hi = bootstrap_mean_ci(cross)
+    gap, g_lo, g_hi = bootstrap_mean_ci(ceiling - cross)
+    rows.append({"model": label, "n_games": len(gids),
+                 "base_stability": np.nanmean(self_b), "ft_stability": np.nanmean(self_f),
+                 "base_vs_ft": a_mean, "ci_low": a_lo, "ci_high": a_hi,
+                 "self_mean": np.nanmean(ceiling), "gap": gap,
+                 "gap_ci_low": g_lo, "gap_ci_high": g_hi,
+                 "sig": bool(g_lo > 0 or g_hi < 0)})
+    DATA[label]["cross_bf"] = cross
+print("\nBASE vs its own FT adapter (9 cross-run pairs per game), against the")
+print("mean of the two within-condition stabilities:")
+print(pd.DataFrame(rows).round(4).to_string(index=False))
+
+print("\nIs the base-to-FT distance larger than the distance to the OTHER models?")
+print("(higher agreement = closer; compare each row against its own base_vs_ft)")
+comp = []
+for label in MODELS:
+    d = DATA[label]
+    row = {"model": label, "vs_own_ft": np.nanmean(DATA[label]["cross_bf"])}
+    for other in MODELS:
+        if other == label:
+            continue
+        v = np.array([between_model_agreement(DATA[label]["base_l"][g], DATA[other]["base_l"][g])
+                      for g in common_all], float)
+        row[f"base_vs_{other}_base"] = np.nanmean(v)
+    comp.append(row)
+print(pd.DataFrame(comp).round(4).to_string(index=False))
+
+# Full 6 x 6 matrix over the games common to all three models.
+print(f"\nFull agreement matrix over the {len(common_all)} games common to all models, % "
+      "(diagonal = within-condition stability):")
+conds = [(m, c) for m in order for c in ("BASE", "FT")]
+names = [f"{m}-{c}" for m, c in conds]
+key = {"BASE": "base_l", "FT": "ft_l"}
+full = pd.DataFrame(np.nan, index=names, columns=names)
+for i, (ma, ca) in enumerate(conds):
+    full.iloc[i, i] = np.nanmean([within_model_agreement(DATA[ma][key[ca]][g]) for g in common_all])
+    for j in range(i + 1, len(conds)):
+        mb, cb = conds[j]
+        v = np.nanmean([between_model_agreement(DATA[ma][key[ca]][g], DATA[mb][key[cb]][g])
+                        for g in common_all])
+        full.iloc[i, j] = full.iloc[j, i] = v
+print((full * 100).round(1).to_string())
+
+print()
+print("=" * 92)
 print("D1. INCORRECT VOTE TARGETS - availability-normalised selection lift")
 print("=" * 92)
 
