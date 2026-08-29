@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game10",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game10.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Here's a thinking process to arrive at the desired JSON output:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to maximize the chance of Team Village winning. Team Village wins if they eliminate a Werewolf (if one exists) or if no Werewolves exist and no one dies. I must base this solely on the provided transcript and rules.\n\n2.  **Analyze the Rules (Winning Condition Focus):**\n    *   Team Village wins if at least one Werewolf dies.\n    *   Team Werewolf wins if no Werewolves die.\n    *   Tanner wins if the Tanner dies.\n    *   The core task is identifying a likely Werewolf.\n\n3.  **Analyze the Transcript for Clues (Focus on Accusations/Defenses):**\n    *   *Initial Night Phase:* Roles are mentioned (Werewolves, Minion, Seer, Robber, Troublemaker, Insomniac, Drunk).\n    *   *Discussion:* The conversation quickly devolves into complex role-swapping arguments (Mike/Caitlynn/Justin/James/Mitchell).\n    *   *Key Accusations/Suspicion:*\n        *   [39] Caitlynn: \"So somebody did something to Mike or Mike's lying?\" (Suspicion is high).\n        *   [40] Mike: Claims to be Seer, saw Troublemaker (Caitlynn).\n        *   [53] James: \"There's a good chance he's a werewolf.\" (Targeting Mitchell).\n        *   [57] Caitlynn: \"Will it stop us from voting Mitchell?\" (Strong focus on Mitchell).\n        *   [58] Justin: Denies doing anything to Mitchell.\n        *   [60] James: Accuses Justin of opening eyes when he shouldn't have.\n        *   [125] Mike: \"No, but Mitchell is, if our story checks out, he is [a werewolf].\" (Strong defense/accusation against Mitchell).\n        *   [129] Mitchell: \"Yeah, vote me. I'm fucked.\" (Self-sabotage/confession, which is highly suspicious).\n\n4.  **Evaluate Suspects based on Behavior/Statements:**\n    *   **Mitchell:** Is repeatedly targeted (53, 57, 125). He eventually concedes (\"I'm fucked,\" 129). This behavior is characteristic of a player who is cornered or is actively trying to manipulate the situation, which is common for a Werewolf or a Tanner.\n    *   **Mike:** Is very active in explaining complex role swaps (40, 65, 95). While this could be genuine roleplay, it also serves to confuse the group, which is a Werewolf tactic.\n    *   **Caitlynn:** Is involved in the role-swapping drama (25, 29, 114). She seems engaged in the meta-game.\n    *   **Justin:** Is defensive and evasive (43, 58, 75).\n    *   **James:** Is focused on the mechanics of the roles (66, 71, 80).\n\n5.  **Determine the Most Likely Target (The Werewolf):**\n    *   Mitchell is the most heavily targeted player and ultimately accepts the blame (\"vote me,\" 129). In a high-stakes environment, a player who preemptively admits guilt is often the most dangerous bluff or the most obvious target.\n    *   The discussion strongly revolves around Mitchell's potential role (Drunk/Werewolf).\n\n6.  **Formulate the Justification and Selection:**\n    *   The justification must be concise (3-5 sentences) and explain *why* the chosen player is the most likely Werewolf based on the transcript.\n    *   The chosen vote must be a single name.\n\n7.  **Final Review against Constraints:**\n    *   Output must be valid JSON. (Yes)\n    *   Must use the exact structure. (Yes)\n    *   Justification must be 3-5 sentences. (Yes)\n    *   Chosen vote must be a name or \"No Werewolf\". (Yes)\n\n*(Self-Correction during drafting: While Mike is confusing, Mitchell's repeated self-incrimination and acceptance of the blame makes him the statistically strongest target for a Village win.)*",
+  "parsed_output": {
+    "justification": "Mitchell is the most heavily scrutinized player throughout the discussion, with multiple players directly accusing him of being a Werewolf or having played his role improperly. His behavior shifted from defensive to openly conceding guilt, stating, 'Yeah, vote me. I'm fucked.' This pattern of self-sabotage or preemptive confession is a common tactic used by Werewolves to divert suspicion or force a vote. Given the intense focus on his potential role and his willingness to accept the blame, he represents the highest probability target for Team Village to eliminate a Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell is the most heavily scrutinized player throughout the discussion, with multiple players directly accusing him of being a Werewolf or having played his role improperly. His behavior shifted from defensive to openly conceding guilt, stating, 'Yeah, vote me. I'm fucked.' This pattern of self-sabotage or preemptive confession is a common tactic used by Werewolves to divert suspicion or force a vote. Given the intense focus on his potential role and his willingness to accept the blame, he represents the highest probability target for Team Village to eliminate a Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell is the most heavily scrutinized player throughout the discussion, with multiple players directly accusing him of being a Werewolf or having played his role improperly. His behavior shifted from defensive to openly conceding guilt, stating, 'Yeah, vote me. I'm fucked.' This pattern of self-sabotage or preemptive confession is a common tactic used by Werewolves to divert suspicion or force a vote. Given the intense focus on his potential role and his willingness to accept the blame, he represents the highest probability target for Team Village to eliminate a Werewolf.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell is the most heavily scrutinized player throughout the discussion, with multiple players directly accusing him of being a Werewolf or having played his role improperly. His behavior shifted from defensive to openly conceding guilt, stating, 'Yeah, vote me. I'm fucked.' This pattern of self-sabotage or preemptive confession is a common tactic used by Werewolves to divert suspicion or force a vote. Given the intense focus on his potential role and his willingness to accept the blame, he represents the highest probability target for Team Village to eliminate a Werewolf."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3844,
+    "output_token_count": 1102,
+    "generation_time_sec": 202.37492394447327,
+    "used_chat_template": true,
+    "input_char_count": 13093,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

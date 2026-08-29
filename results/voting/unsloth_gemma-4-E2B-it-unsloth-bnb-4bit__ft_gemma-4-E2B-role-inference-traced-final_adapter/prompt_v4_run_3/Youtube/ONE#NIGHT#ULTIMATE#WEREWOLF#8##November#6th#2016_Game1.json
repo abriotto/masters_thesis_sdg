@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#8##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Matt",
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E2B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to choose one player to vote out to make Team Village win, which means eliminating a Werewolf. If no Werewolf is present, I should choose \"No Werewolf\".\n\n2.  **Analyze the Roles and Win Conditions:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   Werewolves win if no Werewolves die.\n    *   Tanner wins if they die.\n\n3.  **Analyze the Player List and Transcript for Role Identification:**\n    *   Players: Matt, Caitlynn, Mitchell, Alana, Mike.\n    *   Roles mentioned/implied: Villager, Werewolf, Seer, Robber, Troublemaker, Tanner.\n\n    *   *Key Transcript Segments:*\n        *   [123] Mitchell: I really wasn't the tanner. I was the werewolf.\n        *   [124] Mike: You really were the tanner.\n        *   [125] Caitlynn: No, you really were the tanner.\n        *   [136] Mitchell: As the werewolf, I'm in big trouble this round.\n        *   [151] Mitchell: I'm the werewolf.\n\n4.  **Determine the Werewolf Status:**\n    *   Mitchell explicitly claims to be the Werewolf ([123], [136], [151]).\n    *   If Mitchell is the Werewolf, Team Village needs to vote for him.\n\n5.  **Evaluate the Vote Strategy:**\n    *   The goal is to eliminate a Werewolf.\n    *   Mitchell is the primary suspect identified as the Werewolf by himself.\n\n6.  **Conclusion:** Based on the transcript, Mitchell identifies himself as the Werewolf. Voting for Mitchell maximizes the chance of Team Village winning.\n\n7.  **Construct the JSON Output.**",
+  "parsed_output": {
+    "justification": "The transcript clearly indicates that Mitchell identifies himself as the Werewolf multiple times during the discussion phase, stating 'I was the werewolf' and expressing concern about being in trouble as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting for Mitchell is the optimal strategy to achieve this goal.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript clearly indicates that Mitchell identifies himself as the Werewolf multiple times during the discussion phase, stating 'I was the werewolf' and expressing concern about being in trouble as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting for Mitchell is the optimal strategy to achieve this goal.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript clearly indicates that Mitchell identifies himself as the Werewolf multiple times during the discussion phase, stating 'I was the werewolf' and expressing concern about being in trouble as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting for Mitchell is the optimal strategy to achieve this goal.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript clearly indicates that Mitchell identifies himself as the Werewolf multiple times during the discussion phase, stating 'I was the werewolf' and expressing concern about being in trouble as the Werewolf. Since Team Village wins by eliminating a Werewolf, voting for Mitchell is the optimal strategy to achieve this goal."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4628,
+    "output_token_count": 501,
+    "generation_time_sec": 68.71980237960815,
+    "used_chat_template": true,
+    "input_char_count": 15005,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

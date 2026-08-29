@@ -1,0 +1,73 @@
+{
+  "source": "Ego4D",
+  "session_name": "698f6bbe-4347-4a06-bd5d-3482f5e4fbbe",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/698f6bbe-4347-4a06-bd5d-3482f5e4fbbe_Game2.txt",
+  "player_names": [
+    "Elliot",
+    "Ashley",
+    "James",
+    "Chris",
+    "Sukeshi",
+    "Sian"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E2B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The task is to choose one player to vote out to make Team Village win. Team Village wins if they eliminate a Werewolf. If no Werewolf is present, Team Village wins if no one dies.\n\n2.  **Identify Potential Werewolves (W):** I need to review the transcript for strong indicators or direct claims of Werewolf status.\n\n    *   [44] Sian: Werewolf. (Direct claim)\n    *   [108] Sukeshi: Yeah I'm definitely a werewolf. (Direct claim)\n    *   [155] Ashley: She's the werewolf. (Direct claim, targeting Sukeshi)\n    *   [206] Elliot: No, I'm voting Sue. She's a werewolf. I have a feeling. (Elliot votes for Sukeshi)\n    *   [254] Sukeshi: You are very hell-bent on me. (Context implies she is being targeted)\n\n3.  **Analyze Villager/Village Roles:**\n    *   Elliot: Claims to be Villager [29, 40, 147].\n    *   Chris: Claims to be Seer [43, 71].\n    *   Sian: Claims to be Hunter [35].\n    *   Ashley: Claims not to be a Werewolf [31], but is accused by Chris [168] and Elliot [206].\n\n4.  **Evaluate Suspects based on Villager Goal (Eliminate Werewolf):**\n\n    *   **Sukeshi:** Claimed to be Werewolf [108]. Also mentioned as \"either the werewolf or the Tanner\" [158]. Ashley and Elliot vote for her [206]. If she is the Werewolf, eliminating her wins.\n    *   **Ashley:** Accused by Chris [168] and Elliot [206]. If she is the Werewolf, eliminating her wins.\n    *   **James:** Mentioned as potentially being the Werewolf [50, 110], but Sian denies it [188].\n\n5.  **Synthesize Discussion Points:**\n    *   The core conflict revolves around Sukeshi being either the Werewolf or the Tanner.\n    *   Ashley strongly suggests Sukeshi is the Werewolf [155].\n    *   Elliot votes for Sukeshi [206].\n    *   The general consensus seems to lean towards Sukeshi being the target.\n\n6.  **Determine the Vote:** Since the goal is to eliminate a Werewolf, and Sukeshi is the most heavily implicated player (claimed Werewolf, targeted by multiple players), she is the prime candidate.\n\n7.  **Final Check:** If Sukeshi is the Werewolf, voting for her makes Team Village win.",
+  "parsed_output": {
+    "justification": "Sukeshi is the most heavily implicated player, as she directly claimed to be a Werewolf during the discussion, and multiple other players (Ashley and Elliot) expressed suspicion, leading to a consensus that she is either the Werewolf or the Tanner. Since Team Village wins by eliminating a Werewolf, voting for Sukeshi is the best strategic move to achieve this goal.",
+    "chosen_vote": "Sukeshi"
+  },
+  "raw_response": "{\n  \"justification\": \"Sukeshi is the most heavily implicated player, as she directly claimed to be a Werewolf during the discussion, and multiple other players (Ashley and Elliot) expressed suspicion, leading to a consensus that she is either the Werewolf or the Tanner. Since Team Village wins by eliminating a Werewolf, voting for Sukeshi is the best strategic move to achieve this goal.\",\n  \"chosen_vote\": \"Sukeshi\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Sukeshi is the most heavily implicated player, as she directly claimed to be a Werewolf during the discussion, and multiple other players (Ashley and Elliot) expressed suspicion, leading to a consensus that she is either the Werewolf or the Tanner. Since Team Village wins by eliminating a Werewolf, voting for Sukeshi is the best strategic move to achieve this goal.\",\n  \"chosen_vote\": \"Sukeshi\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sukeshi",
+    "justification": "Sukeshi is the most heavily implicated player, as she directly claimed to be a Werewolf during the discussion, and multiple other players (Ashley and Elliot) expressed suspicion, leading to a consensus that she is either the Werewolf or the Tanner. Since Team Village wins by eliminating a Werewolf, voting for Sukeshi is the best strategic move to achieve this goal."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 6594,
+    "output_token_count": 729,
+    "generation_time_sec": 100.77687072753906,
+    "used_chat_template": true,
+    "input_char_count": 19556,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

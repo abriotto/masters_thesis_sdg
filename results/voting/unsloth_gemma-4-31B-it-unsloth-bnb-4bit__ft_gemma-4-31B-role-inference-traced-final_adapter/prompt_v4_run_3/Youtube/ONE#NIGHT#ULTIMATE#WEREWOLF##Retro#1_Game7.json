@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1",
+  "game_key": "Game7",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#1_Game7.txt",
+  "player_names": [
+    "Justin",
+    "Alvin",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-31B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_3",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 14000,
+  "max_seq_length": 24576,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer, says James is a Werewolf.\n    *   Mitchell: Claims Robber (initially), then says he might be the Drunk (or was swapped).\n    *   Alvin: Claims Robber, says Mitchell was the Drunk.\n    *   James: Admits he started as a Werewolf (\"My first play was to look at this card, werewolf\", \"I'm admitting I know I'm a werewolf\").\n\n    *   Justin (Seer) -> James (Werewolf).\n    *   James (Werewolf) -> Admits he started as a Werewolf.\n    *   Alvin (Robber) -> Swapped with someone?\n    *   Mitchell (Drunk/Robber) -> Confused about his role.\n\n    *   James explicitly admits to being a Werewolf (or starting as one).\n    *   Justin claims to be the Seer and saw James as a Werewolf.\n    *   Even if James was swapped, he admits he had the card.\n    *   Wait, James says: \"My first play was to look at this card, werewolf.\" This implies he knows his starting role.\n    *   If James is a Werewolf, voting him out wins the game for the Village.\n    *   Is there any reason to suspect James is the Tanner? The Tanner wants to be voted out. James is admitting he's a Werewolf, which is a very \"Tanner-like\" move, but in this context, he's just being honest/confused. However, if he is the Tanner, voting him out makes the Tanner win.\n    *   But the prompt asks to make Team Village win. Team Village wins if they eliminate a Werewolf.\n    *   Let's look at the roles again.\n    *   Justin: Seer.\n    *   James: Werewolf (admitted).\n    *   Alvin: Robber.\n    *   Mitchell: Drunk.\n    *   If James is the Werewolf, voting him out wins.\n    *   If James is the Tanner pretending to be a Werewolf, voting him out makes the Tanner win.\n    *   However, James's admission is very direct: \"I'm admitting I know I'm a werewolf\".\n    *   Justin's claim as Seer corroborates this.\n    *   Is there any reason to doubt Justin? He says he saw James as a Werewolf.\n    *   If James is the Werewolf, the Village wins.\n\n    *   James: \"My first play was to look at this card, werewolf.\"\n    *   James: \"I'm admitting I know I'm a werewolf and you're admitting you know where the other werewolf is.\" (Wait, Mitchell said this to James).\n    *   James: \"I really put myself up in a poor position here by admitting I'm the werewolf...\"\n    *   James is essentially confessing.\n\n    *   Werewolf: James (confessed).\n    *   Seer: Justin (claims).\n    *   Robber: Alvin (claims).\n    *   Drunk: Mitchell (claims/suggested).\n    *   If James is the Werewolf, voting him out is the correct move for the Village.\n\n    *   Could James be the Tanner? Tanners want to be voted out. Admitting to being a Werewolf is a classic Tanner strategy.\n    *   However, Justin (Seer) also identified him as a Werewolf. If Justin is the Seer and James is the Tanner, Justin is lying. If Justin is the Werewolf and James is the Tanner, they are both lying.\n    *   But based on the transcript, James's confession is the strongest piece of evidence. In most \"Ultimate Werewolf\" scenarios, a confession is treated as truth unless there's a strong reason to believe it's a Tanner.\n    *   Given the options, James is the most likely Werewolf.\n\n    *   Justin: Seer.\n    *   Alvin: Robber.\n    *   Mitchell: Drunk.\n    *   James: Werewolf.\n    *   This fits the roles perfectly.\n\n    *   James admitted to being a Werewolf.\n    *   Justin claimed to be the Seer and saw James as a Werewolf.\n    *   Alvin and Mitchell's roles (Robber/Drunk) don't contradict this.\n    *   Voting James is the most logical choice for the Village.",
+  "parsed_output": {
+    "justification": "James explicitly admitted to starting the game as a Werewolf, stating, 'I'm admitting I know I'm a werewolf.' This confession is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. While James's honesty is unusual, there is no strong evidence to suggest he is the Tanner, and voting him out is the most direct path to a Village victory.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\"justification\": \"James explicitly admitted to starting the game as a Werewolf, stating, 'I'm admitting I know I'm a werewolf.' This confession is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. While James's honesty is unusual, there is no strong evidence to suggest he is the Tanner, and voting him out is the most direct path to a Village victory.\", \"chosen_vote\": \"James\"}",
+  "response_for_parsing": "{\"justification\": \"James explicitly admitted to starting the game as a Werewolf, stating, 'I'm admitting I know I'm a werewolf.' This confession is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. While James's honesty is unusual, there is no strong evidence to suggest he is the Tanner, and voting him out is the most direct path to a Village victory.\", \"chosen_vote\": \"James\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "James explicitly admitted to starting the game as a Werewolf, stating, 'I'm admitting I know I'm a werewolf.' This confession is corroborated by Justin, who claimed to be the Seer and stated he saw James's card as a Werewolf. While James's honesty is unusual, there is no strong evidence to suggest he is the Tanner, and voting him out is the most direct path to a Village victory."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3485,
+    "output_token_count": 1082,
+    "generation_time_sec": 151.44898509979248,
+    "used_chat_template": true,
+    "input_char_count": 12627,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 24576,
+    "hf_device_map": null
+  }
+}

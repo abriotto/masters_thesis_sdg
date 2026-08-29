@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game9",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game9.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E2B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose one player to vote out to make Team Village win. Team Village wins if they eliminate a Werewolf. If no Werewolf is present, Team Village wins if no one dies.\n\n2.  **Analyze the Game State & Roles:**\n    *   Players: Justin, Caitlynn, Mike, James, Mitchell.\n    *   Roles involved (based on transcript): Werewolf, Minion, Seer, Drunk, Robber, Troublemaker, Insomniac. (Need to determine who has which role based on the voting/claims).\n\n3.  **Analyze the Transcript for Werewolf Identification:**\n    *   The transcript is highly chaotic, involving claims, switches, and accusations.\n    *   Key statements regarding Werewolves:\n        *   [75] Mike: It was a werewolf. (Referring to the center card looked at by the Seer).\n        *   [76] Justin: Oh, shit.\n        *   [84] Mike: One of them's the werewolf. One of them's the minion.\n        *   [112] Mike: Because he got the werewolf. You were the werewolf then and she was the minion. (This implies James/Justin/Caitlynn/Mitchell were involved in role swapping).\n        *   [121] Mike: Well, there was only one werewolf, cause I did see a werewolf and a troublemaker.\n        *   [124] James: Okay. Mike's not the fucking seer. I was the werewolf. I saw the werewolf right there.\n        *   [130] James: Justin's the werewolf.\n        *   [131] Mike: And she's the drunk. (Caitlynn?)\n\n4.  **Determine the Likely Werewolf:**\n    *   James claims: \"I was the werewolf. I saw the werewolf right there.\" (Implies James is Werewolf).\n    *   Justin claims: \"Justin's the werewolf.\" (Said by James).\n    *   Mike claims: \"I did see a werewolf and a troublemaker.\" (Mike is Seer, based on earlier claims, but then denies it later).\n    *   The final accusation is James voting for Justin ([137] \"Gank Justin. Vote now...\").\n\n5.  **Evaluate Voting Strategy (Team Village Goal):** Team Village needs to vote out a Werewolf.\n\n6.  **Conclusion based on Transcript:** James explicitly states, \"I was the werewolf\" [124], and Justin is accused of being the werewolf [130]. Given the high tension and direct accusations, James is the most likely candidate identified as the Werewolf by another player.\n\n7.  **Final Selection:** Vote James.",
+  "parsed_output": {
+    "justification": "The transcript shows intense confusion regarding role swaps and identity, but James explicitly claims, \"I was the werewolf\" [124], and Justin is directly accused of being the werewolf [130]. Since Team Village's goal is to eliminate a Werewolf, James is the most likely candidate identified as the Werewolf by another player, making him the target for elimination.",
+    "chosen_vote": "James"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript shows intense confusion regarding role swaps and identity, but James explicitly claims, \\\"I was the werewolf\\\" [124], and Justin is directly accused of being the werewolf [130]. Since Team Village's goal is to eliminate a Werewolf, James is the most likely candidate identified as the Werewolf by another player, making him the target for elimination.\",\n  \"chosen_vote\": \"James\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript shows intense confusion regarding role swaps and identity, but James explicitly claims, \\\"I was the werewolf\\\" [124], and Justin is directly accused of being the werewolf [130]. Since Team Village's goal is to eliminate a Werewolf, James is the most likely candidate identified as the Werewolf by another player, making him the target for elimination.\",\n  \"chosen_vote\": \"James\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "James",
+    "justification": "The transcript shows intense confusion regarding role swaps and identity, but James explicitly claims, \"I was the werewolf\" [124], and Justin is directly accused of being the werewolf [130]. Since Team Village's goal is to eliminate a Werewolf, James is the most likely candidate identified as the Werewolf by another player, making him the target for elimination."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4154,
+    "output_token_count": 712,
+    "generation_time_sec": 56.5575430393219,
+    "used_chat_template": true,
+    "input_char_count": 14283,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

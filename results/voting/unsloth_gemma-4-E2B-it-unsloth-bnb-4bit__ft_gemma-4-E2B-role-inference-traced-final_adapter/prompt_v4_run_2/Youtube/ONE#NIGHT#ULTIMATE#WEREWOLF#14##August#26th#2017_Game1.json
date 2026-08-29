@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#14##August#26th#2017_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Caitlynn",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E2B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** The goal is to determine who to vote out to make Team Village win (by eliminating a Werewolf). If no Werewolf is present, I should state \"No Werewolf\".\n\n2.  **Analyze the Roles and Teams:**\n    *   Team Village win condition: Eliminate a Werewolf.\n    *   Werewolf win condition: Make all Werewolves survive.\n    *   Player List: Justin, Mitchell, Caitlynn, Mike.\n\n3.  **Analyze the Transcript for Role Identification/Suspicion:**\n\n    *   *Night Phase Actions:*\n        *   [1] Announcer: Werewolves look for other werewolves (if one, look at a center card).\n        *   [2] Announcer: Seer wakes up.\n        *   [9] Announcer: Troublemaker wakes up. Swaps cards between two other players.\n        *   [9] Announcer: Insomniac wakes up and looks at their card.\n        *   [13] Announcer: Revealer wakes up.\n        *   *Night Action Order:* Doppelganger (missing), Werewolves, Minion (missing), Masons (missing), Seer, Robber (missing), Troublemaker, Drunk (missing), Insomniac.\n\n    *   *Day Phase Discussion (Focusing on claims and suspicions):*\n        *   [20] Justin: \"PuppyTutor is the werewolf. Case closed. Vote.\" (Self-serving/bluffing?)\n        *   [21] Mitchell: \"Vote PuppyTutors.\"\n        *   [24] Justin: \"Two werewolves.\"\n        *   [29] Justin: Denies the two werewolves claim, blaming others.\n        *   [32] Mitchell: \"Justin's actually employing that strategy right now as one of the two werewolves.\" (Accusing Justin)\n        *   [80] Mike: \"Caitlynn's the werewolf.\"\n        *   [81] Caitlynn: \"I am the werewolf.\" (Self-confession/bluff?)\n        *   [82] Mitchell: \"Okay. So I'm very sure we have a werewolf here.\"\n        *   [87] Mitchell: \"I think Caitlynn's a werewolf because she's held off so long on.\"\n        *   [121] Mitchell: \"Do you want to defend yourself against this? Were you perhaps the werewolf and he's lying?\" (Accusing Justin)\n        *   [132] Mitchell: \"I have a feeling she's the werewolf and he's a tanner.\" (Suggesting Caitlynn is Werewolf)\n        *   [144] Mitchell: \"I'm going to be voting Justin.\" (Targeting Justin)\n\n4.  **Evaluate Suspects based on Win Conditions:**\n\n    *   The game is heavily focused on who is the Werewolf.\n    *   Caitlynn claims to be the Werewolf (81). Mike claims Caitlynn is the Werewolf (80). Mitchell strongly suspects Caitlynn (87, 132).\n    *   Justin makes early claims (20, 24) and is targeted by Mitchell (32, 121, 144).\n\n5.  **Determine the Most Likely Werewolf:**\n    *   Caitlynn is the primary suspect. If she is the Werewolf, voting her out wins Team Village.\n\n6.  **Formulate the Vote:** Based on the consensus of Mitchell and Mike, Caitlynn is the strongest target.\n\n7.  **Final Check:** The task requires choosing one player to eliminate to make Team Village win (eliminate a Werewolf). Caitlynn is the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell and Mike strongly suspect Caitlynn is the Werewolf, with Mike directly accusing her and Mitchell suggesting she is the Werewolf because she has held off on revealing her role. Since Team Village wins by eliminating a Werewolf, voting out Caitlynn is the optimal strategy to achieve this goal.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "{\n  \"justification\": \"Mitchell and Mike strongly suspect Caitlynn is the Werewolf, with Mike directly accusing her and Mitchell suggesting she is the Werewolf because she has held off on revealing her role. Since Team Village wins by eliminating a Werewolf, voting out Caitlynn is the optimal strategy to achieve this goal.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell and Mike strongly suspect Caitlynn is the Werewolf, with Mike directly accusing her and Mitchell suggesting she is the Werewolf because she has held off on revealing her role. Since Team Village wins by eliminating a Werewolf, voting out Caitlynn is the optimal strategy to achieve this goal.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Mitchell and Mike strongly suspect Caitlynn is the Werewolf, with Mike directly accusing her and Mitchell suggesting she is the Werewolf because she has held off on revealing her role. Since Team Village wins by eliminating a Werewolf, voting out Caitlynn is the optimal strategy to achieve this goal."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4438,
+    "output_token_count": 922,
+    "generation_time_sec": 72.88404655456543,
+    "used_chat_template": true,
+    "input_char_count": 15078,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

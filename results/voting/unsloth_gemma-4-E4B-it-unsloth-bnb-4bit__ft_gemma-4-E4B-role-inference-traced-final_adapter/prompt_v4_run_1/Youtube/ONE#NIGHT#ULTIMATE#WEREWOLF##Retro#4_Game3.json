@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#4_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mike",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to make Team Village win. Team Village wins if at least one Werewolf dies, or if no Werewolves are present and no one dies.\n2.  **Analyze the Constraints:** I only have the public discussion transcript and the game rules. I cannot access private information (like actual role cards).\n3.  **Analyze the Transcript for Clues:**\n    *   [1]-[7]: Night phase actions (roles waking up, swaps happening).\n    *   [8] Justin: Claims to be Insomniac, but woke up as Seer. (This suggests role changes/swaps occurred).\n    *   [9] Mitchell: Claims to be Seer, looked at two center cards, and saw \"those two.\" (This is a strong claim of knowledge, potentially pointing to Werewolves).\n    *   [10] Mike: Claims to be Seer, looked at Mitchell's card, and saw \"he was a werewolf.\" (This is a direct accusation/claim of knowledge).\n    *   [11] Justin: Confirms Mike's story and mentions switching to \"these two.\" (Reinforces the previous claims).\n    *   [12] Mike: States Caitlynn was the Drunk.\n    *   [13] Caitlynn: Confirms being the Drunk.\n    *   [14]-[15]: Discussion about Drunk/swaps.\n    *   [16] Justin: States Mitchell is wrong. (Directly challenging Mitchell's claims).\n    *   [17] Mike: Strongly asserts Mitchell is the werewolf (\"Mitchell is very wrong. It's still possible She's aware, but we know for sure. Mitchell is the werewolf.\").\n    *   [18] Justin: Suggests killing Mitchell (\"I feel like we have to kill Mitchell.\").\n    *   [19] Mitchell: Asks if they should vote.\n    *   [20] Justin: Agrees to vote.\n    *   [21] Caitlynn: Suggests Mitchell could be the Minion. (Minion is a Werewolf ally).\n    *   [22]-[23]: End of discussion.\n\n4.  **Evaluate Suspects and Evidence:**\n    *   **Mitchell:** Multiple players (Mike, Justin, Caitlynn) have pointed fingers at Mitchell, claiming he is a Werewolf or Minion. This is the strongest line of evidence presented.\n    *   **Mike:** Claims to be the Seer and made a direct accusation against Mitchell. While this is strong evidence, the Seer's information could be misleading or misinterpreted, but the accusation itself is targeted.\n    *   **Justin:** Supports Mike's accusation against Mitchell.\n    *   **Caitlynn:** Confirms her role (Drunk) but also casts doubt on Mitchell.\n    *   **James:** Minimal contribution, mostly confused.\n\n5.  **Determine the Best Target for Village Victory:**\n    *   The goal is to eliminate a Werewolf.\n    *   The consensus, driven by Mike and Justin, is that Mitchell is the primary target.\n    *   Mitchell is the most heavily accused player, and the accusations come from players claiming high-value roles (Seer/Insomniac).\n\n6.  **Formulate Justification and Choice:**\n    *   The evidence points strongly toward Mitchell.\n    *   Mike and Justin, claiming roles that grant insight (Seer/Insomniac), directly accuse Mitchell of being a Werewolf.\n    *   The collective sentiment of the group is to eliminate Mitchell.\n\n7.  **Final Selection:** Mitchell. (Ensure the output is valid JSON).",
+  "parsed_output": {
+    "justification": "The transcript shows a clear focus on eliminating Mitchell, who is the most heavily accused player. Mike and Justin, who claim roles granting them insight (Seer/Insomniac), both directly accuse Mitchell of being a Werewolf or Minion. Despite the possibility of deception, the weight of the evidence and the collective determination of the group point to Mitchell as the most likely Werewolf threat. Eliminating him is the clearest path to achieving Team Village's win condition.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"The transcript shows a clear focus on eliminating Mitchell, who is the most heavily accused player. Mike and Justin, who claim roles granting them insight (Seer/Insomniac), both directly accuse Mitchell of being a Werewolf or Minion. Despite the possibility of deception, the weight of the evidence and the collective determination of the group point to Mitchell as the most likely Werewolf threat. Eliminating him is the clearest path to achieving Team Village's win condition.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript shows a clear focus on eliminating Mitchell, who is the most heavily accused player. Mike and Justin, who claim roles granting them insight (Seer/Insomniac), both directly accuse Mitchell of being a Werewolf or Minion. Despite the possibility of deception, the weight of the evidence and the collective determination of the group point to Mitchell as the most likely Werewolf threat. Eliminating him is the clearest path to achieving Team Village's win condition.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript shows a clear focus on eliminating Mitchell, who is the most heavily accused player. Mike and Justin, who claim roles granting them insight (Seer/Insomniac), both directly accuse Mitchell of being a Werewolf or Minion. Despite the possibility of deception, the weight of the evidence and the collective determination of the group point to Mitchell as the most likely Werewolf threat. Eliminating him is the clearest path to achieving Team Village's win condition."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 2248,
+    "output_token_count": 930,
+    "generation_time_sec": 170.03747129440308,
+    "used_chat_template": true,
+    "input_char_count": 8946,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

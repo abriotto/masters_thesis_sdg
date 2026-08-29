@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Way#Way#Back##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#10_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Laura",
+    "Paul",
+    "James",
+    "Mitchell"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-31B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 14000,
+  "max_seq_length": 24576,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Players: Justin, Laura, Paul, James, Mitchell.\n    *   Goal: Eliminate a Werewolf to win for Team Village.\n\n    *   Paul: Claims Insomniac (initially), then says he didn't wake up as Insomniac (meaning he was swapped/robbed). Later claims Robber (after Justin's claim).\n    *   Mitchell: Claims Hunter (initially), then claims Tanner (later).\n    *   Justin: Claims Robber/Seer (initially), then says he stole from Paul (who was Insomniac).\n    *   Laura: Claims Troublemaker (switched James and Mitchell), then admits to being a Werewolf at the very end.\n    *   James: Doesn't make a strong claim, expresses distrust of Paul and Justin.\n\n    *   Paul says: \"I was the insomniac, and I will be able to confirm because I did not wake up as the insomniac.\" (Line 56)\n    *   Justin says: \"I am one of these two... I have robber and seer.\" (Line 87, 92)\n    *   Justin says: \"I obviously stole from Paul. He is the insomniac. He woke up as the robber.\" (Line 123)\n    *   Paul says: \"Yep.\" (Line 125)\n    *   Laura says: \"Yes. I'm a werewolf.\" (Line 186)\n\n    *   Wait, the transcript ends with Laura admitting she is a werewolf.\n    *   Let's re-read the end:\n        [184] Justin: Laura, what are you?\n        [185] James: I [inaudible] for Laura.\n        [186] Laura: Yes. I'm a werewolf.\n    *   This is a direct admission.\n\n    *   Werewolves: Laura (admitted).\n    *   Tanner: Mitchell (claimed Tanner at line 109, and later said \"Kill me\" at line 182).\n    *   Robber/Insomniac/Seer/Troublemaker: Paul and Justin are claiming these roles.\n    *   If Laura is a Werewolf, voting her out wins the game for Team Village.\n\n    *   Is there any reason to doubt Laura's admission? In One Night Ultimate Werewolf, players often admit their roles after the vote or right before it.\n    *   The prompt asks to choose the player to vote out to make Team Village win.\n    *   If Laura is a Werewolf, voting her out is the correct move.\n\n    *   Paul claimed Insomniac, then Robber.\n    *   Justin claimed Robber/Seer.\n    *   Laura claimed Troublemaker, then Werewolf.\n    *   Mitchell claimed Hunter, then Tanner.\n    *   James didn't claim a specific role.\n    *   The most reliable piece of information is Laura's admission: \"Yes. I'm a werewolf.\"\n\n    *   Justification: Laura explicitly admitted to being a werewolf at the end of the discussion. Paul and Justin's claims about the Robber and Insomniac roles seem to support each other, and Mitchell claimed to be the Tanner. Therefore, voting for Laura is the most certain way for Team Village to win.\n    *   Chosen Vote: Laura.",
+  "parsed_output": {
+    "justification": "Laura explicitly admitted to being a werewolf at the end of the discussion. While other players made conflicting claims about being the Robber, Insomniac, or Tanner, Laura's direct confession provides the most reliable evidence for Team Village to secure a win.",
+    "chosen_vote": "Laura"
+  },
+  "raw_response": "{\"justification\": \"Laura explicitly admitted to being a werewolf at the end of the discussion. While other players made conflicting claims about being the Robber, Insomniac, or Tanner, Laura's direct confession provides the most reliable evidence for Team Village to secure a win.\", \"chosen_vote\": \"Laura\"}",
+  "response_for_parsing": "{\"justification\": \"Laura explicitly admitted to being a werewolf at the end of the discussion. While other players made conflicting claims about being the Robber, Insomniac, or Tanner, Laura's direct confession provides the most reliable evidence for Team Village to secure a win.\", \"chosen_vote\": \"Laura\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Laura",
+    "justification": "Laura explicitly admitted to being a werewolf at the end of the discussion. While other players made conflicting claims about being the Robber, Insomniac, or Tanner, Laura's direct confession provides the most reliable evidence for Team Village to secure a win."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 5264,
+    "output_token_count": 807,
+    "generation_time_sec": 118.759605884552,
+    "used_chat_template": true,
+    "input_char_count": 17018,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 24576,
+    "hf_device_map": null
+  }
+}

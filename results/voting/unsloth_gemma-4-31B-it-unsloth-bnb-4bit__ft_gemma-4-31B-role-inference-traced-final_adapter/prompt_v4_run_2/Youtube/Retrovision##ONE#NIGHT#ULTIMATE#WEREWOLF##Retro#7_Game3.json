@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/Retrovision##ONE#NIGHT#ULTIMATE#WEREWOLF##Retro#7_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Eric",
+    "Paul",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-31B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 14000,
+  "max_seq_length": 24576,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "*   Justin: Claims Seer, says Tanner is in the center.\n    *   Eric: Claims Villager.\n    *   Paul: Claims Troublemaker, says he switched Justin with someone.\n    *   Mitchell: Claims his role was taken/claimed by someone else. Later suggests Justin is a werewolf and Paul is the Tanner.\n    *   Mike: Claims Robber, says he stole a card. Later says he didn't switch anyone (confusing, as Robber steals, Troublemaker switches).\n\n    *   Justin (Seer) -> Saw Tanner in center.\n    *   Paul (Troublemaker) -> Switched Justin with someone.\n    *   Mike (Robber) -> Stole a card.\n    *   Eric (Villager) -> No ability.\n    *   Mitchell (Unknown) -> Claims his role was taken.\n\n    *   Justin claims Seer. If Paul (Troublemaker) switched Justin, Justin might not be the Seer anymore.\n    *   Mitchell is acting very suspiciously. He refuses to name his role, claims someone else took it, and accuses Justin and Paul.\n    *   Mike claims Robber, but his statements are inconsistent (\"I stole\" vs \"I didn't switch anyone\" - though Robbers don't \"switch\" in the Troublemaker sense, they steal).\n    *   Paul claims Troublemaker and says he switched Justin.\n\n    *   Mitchell's behavior is classic Werewolf or Tanner. He's vague, deflects, and makes accusations without evidence.\n    *   Justin is pushing for a vote on Mitchell.\n    *   Eric and Paul also lean towards Mitchell.\n    *   Mike eventually agrees to kill Mitchell.\n\n    *   If Mitchell is the Werewolf, voting him out wins for the Village.\n    *   If Mitchell is the Tanner, voting him out loses for the Village (Tanner wins).\n    *   If Mitchell is a Villager, voting him out loses for the Village (unless there's another Werewolf and the Hunter kills them, but we don't know if there's a Hunter).\n\n    *   Justin (Seer) says Tanner is in the center. If Justin is telling the truth, Mitchell cannot be the Tanner.\n    *   If Mitchell is not the Tanner and is acting this suspiciously, he is likely a Werewolf.\n    *   Paul (Troublemaker) switched Justin. If Justin was the Seer, he might have been swapped with someone else. However, Justin's claim about the center cards (Tanner) remains a piece of information he gained *as* the Seer (if he was the Seer at the time).\n\n    *   Mitchell is the most suspicious player. He refuses to claim a role and makes contradictory accusations.\n    *   Justin, Eric, and Paul are relatively consistent in their claims (though Paul's swap complicates things).\n    *   Mike is a bit chaotic but generally aligns with the group at the end.\n\n    *   Justin: Seer (claims Tanner in center)\n    *   Eric: Villager\n    *   Paul: Troublemaker (swapped Justin)\n    *   Mike: Robber (stole a card)\n    *   Mitchell: ? (Claims role was taken)\n\n    If Justin is the Seer and saw Tanner in the center, Mitchell is either a Werewolf or a Villager. Given his behavior, Werewolf is highly probable.\n\n    Wait, let's re-read:\n    [15] Justin: \"I will say I was the seer.\"\n    [16] Paul: \"I was the troublemaker... I switched Justin with somebody.\"\n    [19] Mitchell: \"My role has already been claimed.\"\n    [101] Justin: \"I think we kill Mitchell.\"\n    [106] Paul: \"Mitchell is for sure a werewolf.\"\n    [107] Eric: \"Mitchell is for sure a werewolf.\"\n    [133] Mike: \"we kill Mitchell.\"\n\n    The consensus among the players is strongly against Mitchell.\n\n    *   Could Mitchell be the Tanner? Justin says Tanner is in the center. If Justin is lying (Werewolf), Mitchell could be the Tanner.\n    *   Could Justin be the Werewolf? He's leading the charge against Mitchell.\n    *   Could Paul be the Werewolf? He's claiming Troublemaker to create confusion.\n\n    However, Mitchell's refusal to name his role and his vague claims (\"My role has already been claimed\") are very typical of a Werewolf trying to avoid a direct lie that can be easily debunked, or a Tanner trying to get voted out. But if the Seer (Justin) saw the Tanner in the center, the Tanner is out of play.\n\n    Let's look at Mitchell's claims again:\n    [105] \"Paul is the tanner. Paul is the Tanner. Justin is the werewolf.\"\n    If Mitchell is the Werewolf, he's trying to frame Paul and Justin.\n\n    The most likely candidate for Werewolf based on the discussion is Mitchell.\n\n    *   Justin: Seer\n    *   Paul: Troublemaker\n    *   Mike: Robber\n    *   Eric: Villager\n    *   Mitchell: Werewolf (or Tanner, but Justin says Tanner is in center)\n\n    If Mitchell is the Werewolf, voting him out wins.\n\n    Wait, let's check the roles again.\n    Players: Justin, Eric, Paul, Mitchell, Mike (5 players).\n    Roles: 5 + 3 = 8 roles.\n    If Justin is Seer, Paul is Troublemaker, Mike is Robber, Eric is Villager, and Mitchell is Werewolf... that's 5 roles. The other 3 (Tanner, etc.) are in the center. This is a plausible scenario.\n\n    Mitchell's behavior:\n    - \"My role has already been claimed.\" (Vague)\n    - \"I want to figure out why that would happen before...\" (Deflecting)\n    - \"Justin is the werewolf, the Tanner took my role.\" (Accusatory)\n    - \"Paul is the tanner.\" (Accusatory)\n\n    This is very suspicious.\n\n    Final check on the \"No Werewolf\" option:\n    Is there any evidence that all Werewolves are in the center?\n    Justin (Seer) saw Tanner in the center. He didn't say he saw Werewolves in the center.\n    If there are no Werewolves among the players, the Village wins if no one dies. But the players are actively voting.\n\n    Given the transcript, Mitchell is the clear target.\n\n    Justification: Mitchell is the most suspicious player, as he refuses to clearly state his role and makes vague claims that his role was \"already claimed.\" Justin (claiming Seer) states the Tanner is in the center, which makes Mitchell's accusations against Paul (calling him the Tanner) unlikely. The majority of the players, including those claiming roles, have converged on Mitchell as the most likely Werewolf.",
+  "parsed_output": {
+    "justification": "Mitchell is the most suspicious player, as he refuses to clearly state his role and makes vague claims that his role was 'already claimed.' Justin, claiming to be the Seer, states that the Tanner is in the center, which makes Mitchell's accusation that Paul is the Tanner unlikely. The majority of the players, including those claiming roles, have converged on Mitchell as the most likely Werewolf.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\"justification\": \"Mitchell is the most suspicious player, as he refuses to clearly state his role and makes vague claims that his role was 'already claimed.' Justin, claiming to be the Seer, states that the Tanner is in the center, which makes Mitchell's accusation that Paul is the Tanner unlikely. The majority of the players, including those claiming roles, have converged on Mitchell as the most likely Werewolf.\", \"chosen_vote\": \"Mitchell\"}",
+  "response_for_parsing": "{\"justification\": \"Mitchell is the most suspicious player, as he refuses to clearly state his role and makes vague claims that his role was 'already claimed.' Justin, claiming to be the Seer, states that the Tanner is in the center, which makes Mitchell's accusation that Paul is the Tanner unlikely. The majority of the players, including those claiming roles, have converged on Mitchell as the most likely Werewolf.\", \"chosen_vote\": \"Mitchell\"}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell is the most suspicious player, as he refuses to clearly state his role and makes vague claims that his role was 'already claimed.' Justin, claiming to be the Seer, states that the Tanner is in the center, which makes Mitchell's accusation that Paul is the Tanner unlikely. The majority of the players, including those claiming roles, have converged on Mitchell as the most likely Werewolf."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4254,
+    "output_token_count": 1628,
+    "generation_time_sec": 227.00519824028015,
+    "used_chat_template": true,
+    "input_char_count": 14675,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-31B-it-unsloth-bnb-4bit",
+    "max_seq_length": 24576,
+    "hf_device_map": null
+  }
+}

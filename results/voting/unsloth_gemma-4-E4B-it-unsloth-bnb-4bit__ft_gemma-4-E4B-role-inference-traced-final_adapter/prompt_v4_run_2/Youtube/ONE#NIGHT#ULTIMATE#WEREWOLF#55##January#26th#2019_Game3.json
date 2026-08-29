@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#55##January#26th#2019",
+  "game_key": "Game3",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#55##January#26th#2019_Game3.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "Brad",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_2",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Here's a thinking process to arrive at the desired JSON output:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to make Team Village win. Team Village wins if they eliminate a Werewolf (if one exists). If no Werewolf is present, the outcome is \"No Werewolf.\"\n\n2.  **Analyze the Constraints & Rules:**\n    *   I am an external observer with only the public transcript.\n    *   I cannot know the actual roles, only what is discussed.\n    *   Village wants to eliminate a Werewolf.\n    *   Werewolves want to survive.\n    *   Tanner wants to die.\n    *   The final vote is crucial.\n\n3.  **Analyze the Transcript for Clues (Focusing on Suspicion/Bluffing):**\n\n    *   *Initial Phase (Night/Early Day):* Mike (7, 36) and Caitlynn (32) seem to have good information about the center cards (Witch, Troublemaker). Mitchell (26) claims he wasn't swapped.\n    *   *Mid-Game (Suspicion Builds):* Justin (48) claims to be the PI (Seer/Investigator). Mike (49) immediately dismisses the other three as \"bad.\" This is a strong, aggressive statement, potentially a Werewolf trying to sow discord or a Village player being overly confident.\n    *   *Voting Discussion (The Target):* The discussion shifts heavily to who to vote for.\n        *   Justin (56) suggests voting for himself (a classic bluff/misdirection).\n        *   Caitlynn (75) and Justin (77) agree on voting for Justin.\n        *   Mitchell (81) calculates votes and suggests voting for Brad.\n        *   The focus quickly shifts to Justin (88, 89, 100).\n        *   Justin (105) suggests voting for Mitchell, implying a potential alliance or misdirection.\n        *   The final votes (127, 128, 132, 133) solidify the target: Justin.\n\n4.  **Evaluate Potential Targets based on Behavior:**\n\n    *   **Justin:** Highly vocal, makes strong claims (PI, self-vote), and is the clear target of the final vote. His behavior is highly suspicious, whether he is a Werewolf or a Troublemaker/Doppelganger.\n    *   **Mike:** Very assertive, claims knowledge of center cards, and immediately accuses others (49). Could be a Werewolf or a strong Village player.\n    *   **Mitchell:** Defensive about his role (17, 26), but seems focused on the mechanics of the game (swaps, Tanner).\n    *   **Brad:** Seems reactive and less assertive in the early stages, but participates in the final vote.\n    *   **Caitlynn:** Seems supportive of the group's decisions, but her early knowledge claims are also notable.\n\n5.  **Determine the Optimal Vote (Village Strategy):**\n    *   Village needs to eliminate a Werewolf.\n    *   The transcript shows a massive consensus building around Justin in the final moments (75, 77, 88, 89, 100, 127, 128, 132, 133).\n    *   In a high-stakes scenario where the goal is to eliminate a threat, following the strongest consensus, especially when that consensus is built around a highly suspicious individual, is the safest bet for Team Village. Justin is the most aggressively targeted player.\n\n6.  **Formulate the Justification:** The justification must explain *why* Justin is chosen, referencing the observed behavior and the goal of Team Village. (Focus on the high level of suspicion and the final voting consensus).\n\n7.  **Final Review against Constraints:**\n    *   JSON format only? Yes.\n    *   Concise justification (3-5 sentences)? Yes.\n    *   Valid player name or \"No Werewolf\"? Yes (Justin).\n\n8.  **Construct the JSON.** (Self-Correction: Ensure the tone is objective, reflecting an external observer.)",
+  "parsed_output": {
+    "justification": "Justin is the most heavily targeted player throughout the discussion, making him the primary suspect for Team Village. He makes several bold claims, such as identifying himself as the PI, which can be a tactic used by a Werewolf or a Troublemaker to deflect suspicion. Despite attempts at misdirection, the final voting consensus overwhelmingly points toward Justin, indicating a strong collective belief that he is the threat. Eliminating the most suspected player maximizes the chance of removing a Werewolf and securing a Village victory.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Justin is the most heavily targeted player throughout the discussion, making him the primary suspect for Team Village. He makes several bold claims, such as identifying himself as the PI, which can be a tactic used by a Werewolf or a Troublemaker to deflect suspicion. Despite attempts at misdirection, the final voting consensus overwhelmingly points toward Justin, indicating a strong collective belief that he is the threat. Eliminating the most suspected player maximizes the chance of removing a Werewolf and securing a Village victory.\",\n  \"chosen_vote\": \"Justin\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Justin is the most heavily targeted player throughout the discussion, making him the primary suspect for Team Village. He makes several bold claims, such as identifying himself as the PI, which can be a tactic used by a Werewolf or a Troublemaker to deflect suspicion. Despite attempts at misdirection, the final voting consensus overwhelmingly points toward Justin, indicating a strong collective belief that he is the threat. Eliminating the most suspected player maximizes the chance of removing a Werewolf and securing a Village victory.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "Justin is the most heavily targeted player throughout the discussion, making him the primary suspect for Team Village. He makes several bold claims, such as identifying himself as the PI, which can be a tactic used by a Werewolf or a Troublemaker to deflect suspicion. Despite attempts at misdirection, the final voting consensus overwhelmingly points toward Justin, indicating a strong collective belief that he is the threat. Eliminating the most suspected player maximizes the chance of removing a Werewolf and securing a Village victory."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4045,
+    "output_token_count": 1042,
+    "generation_time_sec": 190.53347659111023,
+    "used_chat_template": true,
+    "input_char_count": 13694,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

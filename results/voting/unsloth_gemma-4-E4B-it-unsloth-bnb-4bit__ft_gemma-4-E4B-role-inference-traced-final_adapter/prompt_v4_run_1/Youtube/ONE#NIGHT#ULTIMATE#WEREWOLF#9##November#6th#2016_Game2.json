@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#9##November#6th#2016_Game2.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to maximize the chance of Team Village winning. Team Village wins if at least one Werewolf dies, or if no Werewolves exist and no one dies.\n2.  **Analyze the Constraints:** I only have the public discussion transcript and the game rules. I cannot access private information (like actual role cards).\n3.  **Analyze the Transcript for Clues:** I need to look for accusations, self-incriminations, or strong claims about roles/actions.\n\n    *   [1] Announcer calls roles (Doppelganger, Werewolves, Seer, Robber, Troublemaker, Insomniac).\n    *   [15] Mitchell confirms two people were switching cards.\n    *   [18] Mitchell confirms being the Robber.\n    *   [20] Mitchell confirms robbing for Mike.\n    *   [22] Mike confirms being the Troublemaker.\n    *   [23] Caitlynn suggests killing Alana based on what she saw in the center. (This is a strong accusation, possibly based on a Seer/Insomniac reading, or a bluff).\n    *   [42] Mike accuses Caitlynn of being a Werewolf.\n    *   [44] Mike accuses Alana of being the Seer.\n    *   [46] Alana claims she looked at a card and it was a Werewolf.\n    *   [47] Caitlynn claims she saw a Werewolf.\n    *   [48] Mike claims he saw a Werewolf.\n    *   [49] Mike denies switching cards.\n    *   [60] Caitlynn mentions the worst part is being a Werewolf and seeing the other Werewolves. (This is a self-incriminating statement if true, but could be a bluff).\n    *   [63] Alana states, \"You've nothing to hide behind.\" (A general attack, possibly directed at a suspected Werewolf).\n\n4.  **Evaluate Suspects based on Claims/Actions:**\n\n    *   **Caitlynn:** Accused by Mike (Werewolf). Made a strong claim about seeing a Werewolf in the center [47]. Made a self-incriminating comment about seeing other Werewolves [60].\n    *   **Mitchell:** Confirmed being the Robber [18]. Seems generally defensive/observational.\n    *   **Alana:** Claimed to be the Seer [44]. Claimed to have seen a Werewolf [46]. Was targeted by Caitlynn [23].\n    *   **Mike:** Confirmed being the Troublemaker [22]. Accused Caitlynn of being a Werewolf [42]. Made multiple claims about seeing Werewolves [48].\n\n5.  **Determine the Best Target (Village Strategy):**\n    *   Team Village needs to eliminate a Werewolf.\n    *   Caitlynn and Mike are both actively claiming to see Werewolves, which is a positive sign for Village, but they are also the most aggressive in accusing others.\n    *   Caitlynn made a potentially damning statement about seeing other Werewolves [60].\n    *   Mike is the Troublemaker, whose role involves swapping cards, making his information unreliable, but he is also a strong accuser.\n    *   Alana is the Seer, and her claim [46] is a direct piece of evidence.\n\n6.  **Refining the Target:**\n    *   If I assume the most direct evidence is reliable, Alana (Seer) is the strongest source of information regarding Werewolves. However, if she is a Werewolf pretending to be a Seer (or if her information was manipulated), she is dangerous.\n    *   Caitlynn is the most overtly suspicious due to the combination of being accused and making the highly incriminating statement [60].\n    *   Mike is the Troublemaker, which is inherently suspicious, but he is also actively participating in the accusation process.\n\n7.  **Conclusion (Risk Assessment):** In a small group (4 players), the most volatile and suspicious player is often the best target. Caitlynn's statement in [60] (\"It's the worst when you are the werewolf and you see the werewolves\") is a massive red flag, regardless of whether it's a bluff or not, as it reveals knowledge of the Werewolf team's internal workings.\n\n8.  **Final Selection:** Caitlynn.\n\n9.  **Construct JSON.** (Ensure strict adherence to format).",
+  "parsed_output": {
+    "justification": "Caitlynn makes the most overtly suspicious statement in the transcript, specifically admitting that 'It's the worst when you are the werewolf and you see the werewolves' [60]. While this could be a bluff, it reveals knowledge of the Werewolf team's internal dynamics, which is highly incriminating. Furthermore, she was directly accused by Mike, and her early suggestion to kill Alana based on center cards also shows aggressive targeting. Given the small player count, eliminating the player who has made the most revealing statements about the Werewolf role is the highest risk/reward strategy for Team Village.",
+    "chosen_vote": "Caitlynn"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Caitlynn makes the most overtly suspicious statement in the transcript, specifically admitting that 'It's the worst when you are the werewolf and you see the werewolves' [60]. While this could be a bluff, it reveals knowledge of the Werewolf team's internal dynamics, which is highly incriminating. Furthermore, she was directly accused by Mike, and her early suggestion to kill Alana based on center cards also shows aggressive targeting. Given the small player count, eliminating the player who has made the most revealing statements about the Werewolf role is the highest risk/reward strategy for Team Village.\",\n  \"chosen_vote\": \"Caitlynn\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Caitlynn makes the most overtly suspicious statement in the transcript, specifically admitting that 'It's the worst when you are the werewolf and you see the werewolves' [60]. While this could be a bluff, it reveals knowledge of the Werewolf team's internal dynamics, which is highly incriminating. Furthermore, she was directly accused by Mike, and her early suggestion to kill Alana based on center cards also shows aggressive targeting. Given the small player count, eliminating the player who has made the most revealing statements about the Werewolf role is the highest risk/reward strategy for Team Village.\",\n  \"chosen_vote\": \"Caitlynn\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Caitlynn",
+    "justification": "Caitlynn makes the most overtly suspicious statement in the transcript, specifically admitting that 'It's the worst when you are the werewolf and you see the werewolves' [60]. While this could be a bluff, it reveals knowledge of the Werewolf team's internal dynamics, which is highly incriminating. Furthermore, she was directly accused by Mike, and her early suggestion to kill Alana based on center cards also shows aggressive targeting. Given the small player count, eliminating the player who has made the most revealing statements about the Werewolf role is the highest risk/reward strategy for Team Village."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3600,
+    "output_token_count": 1158,
+    "generation_time_sec": 212.35456585884094,
+    "used_chat_template": true,
+    "input_char_count": 12723,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

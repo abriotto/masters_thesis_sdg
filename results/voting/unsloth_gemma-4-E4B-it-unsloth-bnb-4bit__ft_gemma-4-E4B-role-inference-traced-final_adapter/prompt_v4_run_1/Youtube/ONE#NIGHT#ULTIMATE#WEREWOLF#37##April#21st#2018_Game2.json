@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018",
+  "game_key": "Game2",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#37##April#21st#2018_Game2.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Mitchell",
+    "James",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Here's a thinking process to arrive at the desired JSON output:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to ensure Team Village wins. Team Village wins if they eliminate at least one Werewolf, or if no Werewolves exist and no one dies. I must use only the public transcript and game rules.\n\n2.  **Analyze the Transcript for Clues (Focusing on Accusations and Confessions):**\n    *   [1] Mike: \"We're all werewolves.\" (Initial aggressive statement, potentially a bluff or a role statement).\n    *   [3] Mitchell: \"Caitlynn's a were-corgi.\" (Direct accusation).\n    *   [19] Mitchell: \"He was a werewolf.\" (Referring to Mike).\n    *   [20] Mike: \"No. I was the troublemaker.\" (Denial/Counter-claim).\n    *   [34] Caitlynn: \"I robbed you.\" (Claim of having used a role ability).\n    *   [42] Mike: \"I switched you, Mitchell.\" (Claim of having used a role ability).\n    *   [46] Mike: \"I was the troublemaker. 100%, I was the troublemaker.\" (Strong assertion of role).\n    *   [51] Mitchell: \"I have 100% confidence that he's a werewolf so I'm not at all afraid.\" (Strong accusation against Mike).\n    *   [64] Justin: \"I saw a werewolf in the center. I saw a werewolf in the center.\" (Claim of seeing a Werewolf, possibly via Seer/Apprentice Seer).\n    *   [67] Mike: \"I don't think you do. I think you're bad and you saw the revealer in the center as the only werewolf.\" (Counter-accusation against Mitchell).\n    *   [91] Mike: \"I am not a werewolf. I 100% am not a werewolf. I am the troublemaker.\" (Repeated denial).\n    *   [92] James: \"I want to believe you Mike, but more because I just want to kill Mitchell.\" (Indicates distrust of Mitchell).\n    *   [105] Justin: \"I don't know. I saw a werewolf in the center.\" (Reinforces previous claim).\n    *   [127] Mike: \"I'm voting for Mitchell.\" (Self-sabotage/Misdirection).\n    *   [128] Mitchell: \"I'm voting 100% for Mike.\" (Direct accusation/Targeting Mike).\n    *   [130] Justin: \"I'm voting for Mike.\" (Supporting Mitchell's accusation).\n    *   [141] Mike: \"Your winning vote is Mitchell. I'm saying it right now.\" (Final attempt at misdirection).\n\n3.  **Evaluate the Evidence and Suspects:**\n    *   **Mike:** Is accused by Mitchell and Justin (19, 51, 128, 130). He claims to be the Troublemaker (20, 46, 91). He is highly active in role-swapping claims, which is suspicious, but his denials are consistent.\n    *   **Mitchell:** Is accused by Caitlynn (3) and is the primary accuser of Mike (19, 51). He is also targeted by James (92).\n    *   **Caitlynn:** Accused by Mitchell (3). She is involved in the Robber/Troublemaker discussions (34, 36).\n    *   **Justin:** Claims to have seen a Werewolf in the center (64, 105). He is involved in the role-swapping drama (45, 77, 130).\n    *   **James:** Seems largely passive and confused, but expresses strong dislike for Mitchell and Mike's arguments (72, 92).\n\n4.  **Determine the Most Likely Werewolf:**\n    *   The conversation is highly chaotic, filled with role-swapping claims (Troublemaker, Robber, Doppelganger). This makes definitive identification impossible.\n    *   However, the most consistent and aggressive accusations are directed at **Mike** (by Mitchell and Justin) and **Mitchell** (by James).\n    *   Mike is the most vocal about his role (Troublemaker) and his ability to manipulate the game (swapping). This level of confidence and constant denial is often a hallmark of a Werewolf trying to control the narrative.\n    *   Mitchell is also a strong accuser, which could be genuine, but also a tactic.\n\n5.  **Apply the Winning Condition Logic:**\n    *   Team Village wins if they eliminate a Werewolf.\n    *   The goal is to target the player who has demonstrated the most suspicious behavior, or who is the most consistently accused by those who claim to be Village aligned (Mitchell, Justin).\n    *   Mitchell and Justin both accuse Mike. Mike is the most central figure in the role-swapping chaos.\n\n6.  **Final Selection:** Mike is the most heavily targeted player by those claiming Village alignment (Mitchell, Justin) and is the most assertive in claiming a manipulative role (Troublemaker), which is a common Werewolf strategy.\n\n7.  **Construct the Justification:** Summarize the evidence (accusations, role claims, high activity) leading to the choice. (Self-Correction: Ensure the justification is concise and 3-5 sentences.)\n\n8.  **Format Check:** Ensure the output is strictly valid JSON. (Checked).",
+  "parsed_output": {
+    "justification": "Mike is the most heavily scrutinized player, being directly accused by both Mitchell and Justin of being a werewolf. While Mike claims to be the Troublemaker, his constant involvement in role-swapping claims and his aggressive denial of being a werewolf suggest a high level of strategic deception. Mitchell and Justin, who claim to have seen Werewolves in the center, have consistently targeted Mike. Given the chaotic nature of the role swaps, targeting the most vocal and consistently accused player is the best strategy to eliminate a threat.",
+    "chosen_vote": "Mike"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mike is the most heavily scrutinized player, being directly accused by both Mitchell and Justin of being a werewolf. While Mike claims to be the Troublemaker, his constant involvement in role-swapping claims and his aggressive denial of being a werewolf suggest a high level of strategic deception. Mitchell and Justin, who claim to have seen Werewolves in the center, have consistently targeted Mike. Given the chaotic nature of the role swaps, targeting the most vocal and consistently accused player is the best strategy to eliminate a threat.\",\n  \"chosen_vote\": \"Mike\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mike is the most heavily scrutinized player, being directly accused by both Mitchell and Justin of being a werewolf. While Mike claims to be the Troublemaker, his constant involvement in role-swapping claims and his aggressive denial of being a werewolf suggest a high level of strategic deception. Mitchell and Justin, who claim to have seen Werewolves in the center, have consistently targeted Mike. Given the chaotic nature of the role swaps, targeting the most vocal and consistently accused player is the best strategy to eliminate a threat.\",\n  \"chosen_vote\": \"Mike\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mike",
+    "justification": "Mike is the most heavily scrutinized player, being directly accused by both Mitchell and Justin of being a werewolf. While Mike claims to be the Troublemaker, his constant involvement in role-swapping claims and his aggressive denial of being a werewolf suggest a high level of strategic deception. Mitchell and Justin, who claim to have seen Werewolves in the center, have consistently targeted Mike. Given the chaotic nature of the role swaps, targeting the most vocal and consistently accused player is the best strategy to eliminate a threat."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4424,
+    "output_token_count": 1377,
+    "generation_time_sec": 246.13295245170593,
+    "used_chat_template": true,
+    "input_char_count": 15109,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

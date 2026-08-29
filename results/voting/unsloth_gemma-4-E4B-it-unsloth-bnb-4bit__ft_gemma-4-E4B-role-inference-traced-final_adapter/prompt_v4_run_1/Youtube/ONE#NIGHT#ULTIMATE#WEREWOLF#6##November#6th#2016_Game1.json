@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#6##November#6th#2016_Game1.txt",
+  "player_names": [
+    "Caitlynn",
+    "Mitchell",
+    "Alana",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-role-inference-traced/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to ensure Team Village wins. Team Village wins if at least one Werewolf dies, or if no Werewolves exist and no one dies.\n2.  **Analyze the Constraints:** I only have the public discussion transcript and the game rules. I cannot access private information (like actual role cards).\n3.  **Analyze the Transcript for Clues (Focusing on Roles/Actions):**\n    *   *Night Phase Actions:*\n        *   Werewolves wake up and look for teammates.\n        *   Seer wakes up and looks at a player or two center cards.\n        *   Robber wakes up and swaps cards with another player.\n        *   Troublemaker wakes up and swaps cards between two other players.\n    *   *Day Phase Discussion:*\n        *   Caitlynn (C) and Mike (M) are heavily involved in discussing role swaps and alignments.\n        *   Mitchell (Mi) claims to be a Villager (46, 48) but also claims to be almost always a Werewolf (26).\n        *   Mike (M) claims to be a Werewolf (49).\n        *   Caitlynn (C) claims to be a Werewolf (56).\n        *   Alana (A) claims to be the Troublemaker (42).\n        *   The discussion centers around a complex sequence of swaps involving Robber and Troublemaker actions (50-61).\n    *   *Key Conflict/Suspicion:*\n        *   Mitchell is highly suspicious due to his conflicting statements (Villager vs. Werewolf).\n        *   Caitlynn is identified as a Werewolf by Mitchell (57).\n        *   Mike is identified as a Werewolf by himself (49).\n        *   Alana is identified as the Troublemaker (42).\n4.  **Evaluate Win Conditions & Strategy:**\n    *   Team Village needs to eliminate a Werewolf.\n    *   Werewolves will try to deflect suspicion.\n    *   The discussion is highly chaotic, suggesting multiple role swaps have occurred, making definitive identification impossible.\n5.  **Identify Potential Targets (Werewolves):**\n    *   Caitlynn: Explicitly claimed to be a Werewolf (56).\n    *   Mike: Explicitly claimed to be a Werewolf (49).\n    *   Mitchell: Highly suspicious, claiming to be a Werewolf at times (26).\n6.  **Determine the Most Convincing Target:**\n    *   Caitlynn and Mike are actively arguing about the mechanics of the swaps, which might be a distraction or a genuine attempt to explain the chaos.\n    *   Mitchell's behavior is the most erratic and self-contradictory (claiming to be a Villager, then claiming to be a Werewolf). This pattern of shifting identity is often characteristic of a deceptive role (like a Doppelganger or a Werewolf trying to maintain cover).\n7.  **Formulate the Justification:** Focus on the inconsistencies and the high level of self-interest shown by the players. Mitchell's shifting narrative is the strongest indicator of deception, regardless of whether he is a Werewolf or a Doppelganger.\n8.  **Select the Vote:** Mitchell. (He is the most inconsistent and self-serving in the discussion.)\n\n9.  **Final Review against Constraints:**\n    *   Output format: Valid JSON only.\n    *   Justification: Concise (3-5 sentences).\n    *   Chosen Vote: One player name or \"No Werewolf\". (Choosing Mitchell).",
+  "parsed_output": {
+    "justification": "Mitchell displays the most inconsistent and self-serving behavior throughout the discussion. He repeatedly shifts his stated role, claiming to be a 'plain old, do nothing villager' while simultaneously admitting he is 'almost always a werewolf.' This pattern of contradictory statements suggests a deliberate attempt to mislead the group. While Caitlynn and Mike are also involved in complex role discussions, Mitchell's erratic narrative makes him the primary target for elimination to advance Team Village's goal.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "```json\n{\n  \"justification\": \"Mitchell displays the most inconsistent and self-serving behavior throughout the discussion. He repeatedly shifts his stated role, claiming to be a 'plain old, do nothing villager' while simultaneously admitting he is 'almost always a werewolf.' This pattern of contradictory statements suggests a deliberate attempt to mislead the group. While Caitlynn and Mike are also involved in complex role discussions, Mitchell's erratic narrative makes him the primary target for elimination to advance Team Village's goal.\",\n  \"chosen_vote\": \"Mitchell\"\n}\n```",
+  "response_for_parsing": "{\n  \"justification\": \"Mitchell displays the most inconsistent and self-serving behavior throughout the discussion. He repeatedly shifts his stated role, claiming to be a 'plain old, do nothing villager' while simultaneously admitting he is 'almost always a werewolf.' This pattern of contradictory statements suggests a deliberate attempt to mislead the group. While Caitlynn and Mike are also involved in complex role discussions, Mitchell's erratic narrative makes him the primary target for elimination to advance Team Village's goal.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "Mitchell displays the most inconsistent and self-serving behavior throughout the discussion. He repeatedly shifts his stated role, claiming to be a 'plain old, do nothing villager' while simultaneously admitting he is 'almost always a werewolf.' This pattern of contradictory statements suggests a deliberate attempt to mislead the group. While Caitlynn and Mike are also involved in complex role discussions, Mitchell's erratic narrative makes him the primary target for elimination to advance Team Village's goal."
+  },
+  "soft_warnings": [
+    "response_contains_code_fence",
+    "response_was_cleaned_before_parsing"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3236,
+    "output_token_count": 913,
+    "generation_time_sec": 163.11445021629333,
+    "used_chat_template": true,
+    "input_char_count": 11670,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
