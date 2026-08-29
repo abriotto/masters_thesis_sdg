@@ -51,7 +51,13 @@ MODEL_FOLDERS = {
 
 MODEL_ORDER = ["2B", "4B", "31B"]
 
-VOTE_TABLE_REL = Path("base/voting/prompt_v4/vote_stability/tables/llm_vote_file_level.csv")
+BASE_STAGE = "base"
+
+# Relative to the model's STAGE folder, not to the model folder. The stage is
+# resolved separately because fine-tuned folders carry the adapter name and so
+# differ per model (ft_gemma-4-E2B-..., ft_gemma-4-E4B-...); a single literal
+# stage string cannot address all three.
+VOTE_TABLE_REL = Path("voting/prompt_v4/vote_stability/tables/llm_vote_file_level.csv")
 
 DEFAULT_ANALYSIS_ROOT = REPO_ROOT / "analysis"
 RESULTS_ROOT = REPO_ROOT / "results" / "justification_annotation"
@@ -69,14 +75,33 @@ DEFAULT_SEED = 42
 # Frame construction
 # ============================================================
 
-def load_frame(analysis_root):
+def resolve_stage_dir(analysis_root, model_name, stage):
+    """The model's folder for `stage`, matched as a prefix.
+
+    "base" matches `base`; "ft" matches `ft_gemma-4-E2B-...` and its siblings.
+    Exactly one match is required, so a stage name that is ambiguous or absent
+    stops here rather than quietly annotating the wrong corpus.
+    """
+    model_dir = analysis_root / MODEL_FOLDERS[model_name]
+    matches = sorted(path for path in model_dir.glob(f"{stage}*") if path.is_dir())
+    if len(matches) != 1:
+        raise FileNotFoundError(
+            f"stage {stage!r} matched {len(matches)} folders under {model_dir}: "
+            f"{[path.name for path in matches]}. Expected exactly one."
+        )
+    return matches[0]
+
+
+def load_frame(analysis_root, stage=BASE_STAGE):
     """One row per annotatable justification across the three models."""
     frames = []
 
     for model_name in MODEL_ORDER:
-        table_path = analysis_root / MODEL_FOLDERS[model_name] / VOTE_TABLE_REL
+        table_path = resolve_stage_dir(analysis_root, model_name, stage) / VOTE_TABLE_REL
         if not table_path.exists():
-            raise FileNotFoundError(f"Vote table not found for {model_name}: {table_path}")
+            raise FileNotFoundError(
+                f"Vote table not found for {model_name} at stage {stage!r}: {table_path}"
+            )
 
         model_frame = pd.read_csv(table_path)
         model_frame["model"] = model_name

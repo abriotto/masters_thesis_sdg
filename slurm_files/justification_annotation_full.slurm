@@ -34,7 +34,11 @@
 # for no speed gain whatsoever.
 #
 # Submit:
-#   sbatch slurm_files/justification_annotation_full.slurm
+#   sbatch slurm_files/justification_annotation_full.slurm            # base, 12 shards
+#
+# The fine-tuned corpus is stochastic-only -- no greedy pass -- so it has 9
+# shards, not 12, and needs both the array range and the stage:
+#   sbatch --array=0-8 --export=ALL,STAGE=ft slurm_files/justification_annotation_full.slurm
 #
 # If the partition limits concurrent tasks, throttle without editing this file:
 #   sbatch --array=0-11%4 slurm_files/justification_annotation_full.slurm
@@ -97,16 +101,34 @@ CONCURRENCY=${CONCURRENCY:-1}
 # Override at submit time:
 #   sbatch --export=ALL,SCHEMA=v3 slurm_files/justification_annotation_full.slurm
 SCHEMA=${SCHEMA:-$($PYTHON -c "from src.pt_annotation.justification_schema import DEFAULT_SCHEMA; print(DEFAULT_SCHEMA)")}
-FULL_DIR=results/justification_annotation/full_${SCHEMA}
+
+# STAGE selects the corpus. Base keeps its historical directory name so the
+# frozen annotations are never a target; every other stage gets its own.
+#
+# This is what stops a fine-tuned run from landing on the base annotations.
+# Without it the default schema (frozen) resolves to full_frozen -- the base
+# directory -- and --resume would find every justification already annotated
+# and write nothing, leaving base annotations in place under a manifest that
+# says they are fine-tuned.
+#
+#   sbatch --array=0-8 --export=ALL,STAGE=ft slurm_files/justification_annotation_full.slurm
+STAGE=${STAGE:-base}
+
+if [[ "$STAGE" == "base" ]]; then
+    FULL_DIR=results/justification_annotation/full_${SCHEMA}
+else
+    FULL_DIR=results/justification_annotation/full_${STAGE}
+fi
 MANIFEST=$FULL_DIR/manifest.json
 
+echo "stage  : $STAGE"
 echo "schema : $SCHEMA"
 
 $PYTHON -c "import openai, pandas; print('openai', openai.__version__, '| pandas', pandas.__version__)"
 
 if [[ ! -f "$MANIFEST" ]]; then
     echo "ERROR: $MANIFEST not found. Build the shards first:" >&2
-    echo "  $PYTHON src/pt_annotation/justification_build_input.py --schema $SCHEMA" >&2
+    echo "  $PYTHON src/pt_annotation/justification_build_input.py --stage $STAGE --schema $SCHEMA" >&2
     exit 1
 fi
 
@@ -116,6 +138,12 @@ fi
 # The manifest is the single source of truth for index -> shard, so the array
 # index means the same thing here, in the builder, and in the merge step.
 # ------------------------------------------------------------
+
+MANIFEST_STAGE=$($PYTHON -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8')).get('stage','base'))" "$MANIFEST")
+if [[ "$MANIFEST_STAGE" != "$STAGE" ]]; then
+    echo "ERROR: $MANIFEST was built for stage '$MANIFEST_STAGE', not '$STAGE'." >&2
+    exit 1
+fi
 
 read -r SHARD_KEY SHARD_IN SHARD_OUT SHARD_N < <(
     $PYTHON - "$MANIFEST" "$SLURM_ARRAY_TASK_ID" <<'PYEOF'
