@@ -2,7 +2,7 @@
 #SBATCH --job-name=ft_eval_role
 #SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_eval_role_%j.out
 #SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/ft_eval_role_%j.err
-#SBATCH --partition=testing
+#SBATCH --partition=owner1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
