@@ -172,7 +172,15 @@ def load_justification_metadata(repo_root: Path = None, config=None) -> pd.DataF
 
     Word counts come from the justification text in the annotator's input
     shards, tokenised with the SAME `WORD_PATTERN` the frozen discourse
-    analysis uses. The corpus total is asserted against the frozen 169,748.
+    analysis uses. For the BASE stage the corpus total is asserted against the
+    frozen 169,748.
+
+    That assertion is a property of the BASE corpus, not of this function, so
+    it applies only when the active stage is base. A fine-tuned corpus is a
+    different size and would fail it while being perfectly well formed - the
+    same reasoning `pipeline.corpus.integrity_checks` already documents for its
+    own structural checks. Base behaviour is unchanged: the stage defaults to
+    base, so every existing caller still gets the assertion.
     """
     rows = []
     config = _resolved_config(config)
@@ -194,10 +202,11 @@ def load_justification_metadata(repo_root: Path = None, config=None) -> pd.DataF
                 })
     frame = pd.DataFrame(rows)
     total = int(frame["n_words"].sum())
-    assert total == INVARIANTS["word_pattern_tokens"], (
-        f"word denominator is {total}, frozen value is "
-        f"{INVARIANTS['word_pattern_tokens']} - the corpus changed"
-    )
+    if config.is_base:
+        assert total == INVARIANTS["word_pattern_tokens"], (
+            f"word denominator is {total}, frozen value is "
+            f"{INVARIANTS['word_pattern_tokens']} - the corpus changed"
+        )
     return frame
 
 
