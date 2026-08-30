@@ -292,8 +292,13 @@ def run_nested_cv(frame, fold_df, cols, kind="l2", penalty_grid=None,
                     coef_rows.append({"repeat": rep, "fold": f, "feature": c,
                                      "coef": float(b), "penalty": best_pen})
     per_game = pd.concat(rows, ignore_index=True)
-    assert per_game.groupby("repeat")["key"].nunique().eq(191).all(), \
-        "not every game covered exactly once per repeat"
+    # Every game in ``frame`` must be tested exactly once per repeat. Checked
+    # against the frame's own game count rather than a hard-coded 191, so a
+    # matched BASE/FT subset (which drops games lacking a complete 3-vote
+    # ballot on one side) is still fully verified.
+    n_games = frame["key"].nunique()
+    assert per_game.groupby("repeat")["key"].nunique().eq(n_games).all(), \
+        f"not every game covered exactly once per repeat (expected {n_games})"
     if collect_coef:
         return per_game, pd.DataFrame(fold_meta), pd.DataFrame(coef_rows)
     return per_game, pd.DataFrame(fold_meta)

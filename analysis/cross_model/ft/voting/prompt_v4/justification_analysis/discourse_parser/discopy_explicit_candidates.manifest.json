@@ -1,0 +1,100 @@
+{
+  "manifest_version": "1",
+  "artifact_kind": "discopy_explicit_candidates",
+  "artifact_file": "discopy_explicit_candidates.csv",
+  "written_at_utc": "2026-08-29T15:39:35.476601+00:00",
+  "corpus": {
+    "fingerprint": "d41dcd64f040f9c233b32bb8bbd9adf58e2dfbef563b68bc304038f3e3d84d99",
+    "fingerprint_version": "1",
+    "fingerprint_fields": [
+      "model",
+      "game_id",
+      "run_label",
+      "decoding",
+      "justification"
+    ],
+    "stage": "ft",
+    "prompt_version": "prompt_v4",
+    "n_justifications": 1718,
+    "n_games": 191,
+    "n_sentences": 5984,
+    "n_words": 121884,
+    "models": [
+      "Gemma 4 2B",
+      "Gemma 4 31B",
+      "Gemma 4 4B"
+    ],
+    "runs": [
+      "run_1",
+      "run_2",
+      "run_3"
+    ],
+    "run_structure": {
+      "Gemma 4 2B / run_1": 191,
+      "Gemma 4 2B / run_2": 190,
+      "Gemma 4 2B / run_3": 191,
+      "Gemma 4 31B / run_1": 191,
+      "Gemma 4 31B / run_2": 191,
+      "Gemma 4 31B / run_3": 191,
+      "Gemma 4 4B / run_1": 191,
+      "Gemma 4 4B / run_2": 191,
+      "Gemma 4 4B / run_3": 191
+    }
+  },
+  "config": {
+    "stage": "ft",
+    "prompt_version": "prompt_v4",
+    "models": [
+      "Gemma 4 2B",
+      "Gemma 4 4B",
+      "Gemma 4 31B"
+    ],
+    "stochastic_runs": [
+      "run_1",
+      "run_2",
+      "run_3"
+    ],
+    "greedy_runs": [],
+    "artifact_root": "analysis\\cross_model\\ft\\voting\\prompt_v4\\justification_analysis"
+  },
+  "producer": {
+    "implementation": "rknaebel/discopy",
+    "component": "ConnectiveSenseClassifier",
+    "checkpoint": "C:/Users/annab/discopy-env/models/bert-codi",
+    "checkpoint_name": "bert-codi",
+    "bert_model": "bert-base-cased",
+    "used_context": 1,
+    "relation_type": "Explicit",
+    "discopy_version": null,
+    "discopy_data_version": null,
+    "transformers_version": "4.30.2",
+    "command": "src/justification_analysis/discopy_parser/run_discopy_on_justifications.py --model-path C:/Users/annab/discopy-env/models/bert-codi --stage ft"
+  },
+  "outputs": {
+    "n_candidates": 10320,
+    "n_accepted": 3990,
+    "n_nosense": 6330,
+    "top_level_counts": {
+      "Comparison": 1120,
+      "Contingency": 1057,
+      "Expansion": 1227,
+      "Temporal": 586
+    },
+    "observed_senses": [
+      "Comparison.Concession",
+      "Comparison.Contrast",
+      "Contingency.Cause",
+      "Contingency.Condition",
+      "Expansion.Alternative",
+      "Expansion.Conjunction",
+      "Temporal.Asynchronous",
+      "Temporal.Synchrony"
+    ],
+    "partial": false,
+    "n_justifications_parsed": 1718
+  },
+  "environment": {
+    "python": "3.10.19",
+    "platform": "Windows-10-10.0.26200-SP0"
+  }
+}

@@ -55,7 +55,10 @@ from src.justification_analysis.discopy_parser.discopy_explicit import (  # noqa
 
 from src.justification_analysis.pipeline import corpus as corpus_module  # noqa: E402
 from src.justification_analysis.pipeline import manifest as manifest_module  # noqa: E402
-from src.justification_analysis.pipeline.config import AnalysisConfig  # noqa: E402
+from src.justification_analysis.pipeline.config import (  # noqa: E402
+    AnalysisConfig,
+    default_config,
+)
 
 
 def _package_version(name: str):
@@ -98,7 +101,12 @@ def main():
 
     from discopy_data.nn.bert import get_sentence_embedder
 
-    config = AnalysisConfig(stage=args.stage,
+    # default_config, not AnalysisConfig: the run structure has to follow the
+    # stage. Constructing the config directly would record the default
+    # stochastic+greedy structure in the manifest even for a stage that was
+    # never run greedily, which is a false provenance record in the one file
+    # whose job is to be true.
+    config = default_config(stage=args.stage,
                             prompt_version=args.prompt_version,
                             repo_root=REPO_ROOT)
     corpus = load_justifications(config)
