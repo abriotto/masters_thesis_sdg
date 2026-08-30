@@ -20,24 +20,18 @@ echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 
 export PYTORCH_ALLOC_CONF=expandable_segments:True
 
-# This card is shared. A 31B eval needs the whole 47 GiB; on 2026-08-30 another
-# process held 25.8 GiB and the run OOMed after two full weight loads. Fail in
-# seconds instead, so the job can simply be resubmitted onto a free GPU.
-MIN_FREE_MIB="${MIN_FREE_MIB:-40000}"
-FREE_MIB=$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits | head -1)
-echo "GPU free memory: ${FREE_MIB} MiB (need >= ${MIN_FREE_MIB})"
-if [ "${FREE_MIB}" -lt "${MIN_FREE_MIB}" ]; then
-  echo "ABORT: another process is using this GPU. Resubmit; do not lower the eval"
-  echo "settings, since that would break comparability with the base arm."
-  nvidia-smi --query-compute-apps=pid,used_memory --format=csv
-  exit 1
-fi
-
 
 # Role accuracy on the 21 held-out validation episodes, BASE vs finetuned.
 #
-# Submit one job per model:
-#   for M in E2B E4B 31B; do sbatch --export=ALL,MODEL=$M slurm_files/ft_05_eval_role_accuracy.slurm; done
+# Submit one job per model. The partition is chosen at submit time, since an
+# #SBATCH directive is read before the script body and so cannot branch on MODEL;
+# a --partition flag on the sbatch command line overrides the directive below.
+# 31B goes to owner1 for the larger card, E2B and E4B to testing:
+#
+#   sbatch --partition=owner1 --export=ALL,MODEL=31B,ARM=both slurm_files/ft_05_eval_role_accuracy.slurm
+#   for M in E2B E4B; do
+#     sbatch --partition=testing --export=ALL,MODEL=$M,ARM=both slurm_files/ft_05_eval_role_accuracy.slurm
+#   done
 #
 # Both arms of a model run in the same job, on the same GPU, with identical
 # --val_path / --max_seq_length / --max_new_tokens, so the only difference
@@ -53,6 +47,27 @@ fi
 # generation, and 24576 leaves headroom over 3100 + 16000.
 
 MODEL="${MODEL:-E2B}"
+
+# Cards are shared. A 31B eval needs essentially the whole 47 GiB: on 2026-08-30
+# another process held 25.8 GiB and the run OOMed after two full weight loads.
+# E2B and E4B need far less, so the threshold scales with the model rather than
+# aborting small jobs on a partly-used card. Failing here costs seconds instead
+# of two 1188-shard loads, so the job can just be resubmitted.
+case "$MODEL" in
+  31B) DEFAULT_MIN_FREE=40000 ;;
+  E4B) DEFAULT_MIN_FREE=14000 ;;
+  E2B) DEFAULT_MIN_FREE=10000 ;;
+  *)   echo "unknown MODEL=$MODEL (expected 31B, E4B or E2B)"; exit 1 ;;
+esac
+MIN_FREE_MIB="${MIN_FREE_MIB:-$DEFAULT_MIN_FREE}"
+FREE_MIB=$(nvidia-smi --query-gpu=memory.free --format=csv,noheader,nounits | head -1)
+echo "GPU free memory: ${FREE_MIB} MiB (need >= ${MIN_FREE_MIB} for ${MODEL})"
+if [ "${FREE_MIB}" -lt "${MIN_FREE_MIB}" ]; then
+  echo "ABORT: not enough free GPU memory. Resubmit; do not lower the eval settings,"
+  echo "since that would break comparability between the arms."
+  nvidia-smi --query-compute-apps=pid,used_memory --format=csv
+  exit 1
+fi
 # ARM=base | ft | both. The base arms are already done, so a rerun after an
 # OOM should pass ARM=ft rather than repeating a three-hour base pass.
 ARM="${ARM:-both}"
