@@ -122,6 +122,7 @@ def run_role_inference(
     emitted = 0
     parse_failures = 0
     out_tokens: list[int] = []
+    episodes: list[dict[str, Any]] = []
 
     for i, row in enumerate(rows, start=1):
         text, debug_info = generate(
@@ -133,7 +134,8 @@ def run_role_inference(
             out_tokens.append(int(debug_info["output_token_count"]))
 
         predicted = parse_model_json(text)
-        if not isinstance(predicted, dict) or "roles" not in predicted:
+        parse_ok = isinstance(predicted, dict) and "roles" in predicted
+        if not parse_ok:
             parse_failures += 1
 
         gold_roles = json.loads(row["completion"])["roles"]
@@ -146,9 +148,33 @@ def run_role_inference(
         correct_by_role.update(cbr)
         seen_by_role.update(sbr)
 
+        # Per-episode record. Two reasons this is kept: a parse failure is
+        # otherwise unexaminable, since the raw text is discarded; and the
+        # aggregate alone cannot support a paired base-vs-finetuned bootstrap,
+        # which needs the per-game values. Raw text is stored only when parsing
+        # failed, and clipped, because a runaway generation can reach 80k chars.
+        rec = {
+            "session_name": row["session_name"],
+            "correct": c,
+            "total": t,
+            "exact_game": bool(c == t),
+            "thought_emitted": bool(has_thought),
+            "output_token_count": debug_info.get("output_token_count"),
+            "hit_max_new_tokens": bool(
+                debug_info.get("output_token_count") == args.max_new_tokens
+            ),
+            "parse_ok": bool(parse_ok),
+        }
+        if not parse_ok:
+            rec["raw_head"] = text[:2000]
+            rec["raw_tail"] = text[-2000:]
+            rec["raw_char_count"] = len(text)
+        episodes.append(rec)
+
         print(
             f"[{i}/{len(rows)}] {row['session_name']}  {c}/{t} roles  "
-            f"thought={has_thought}  tokens={debug_info.get('output_token_count')}"
+            f"thought={has_thought}  parse_ok={parse_ok}  "
+            f"tokens={debug_info.get('output_token_count')}"
         )
 
     accuracy = total_correct / total_slots if total_slots else 0.0
@@ -180,6 +206,7 @@ def run_role_inference(
         "correct": total_correct,
         "total": total_slots,
         "exact_game_matches": exact_games,
+        "episodes": episodes,
         "exact_game_accuracy": exact_game_accuracy,
         "per_role": per_role,
         "thought_channel_emitted": emitted,
