@@ -5,10 +5,14 @@ CPU only - loads the tokenizer, never the weights.
     python -m src.finetuning.derivation.inspect_loss_span \
         --model_name unsloth/gemma-4-E2B-it --game_id episode_002
 
-The point of this rebuild is that the loss covers the WHOLE completion, starting
-at "Dealt cards:", not just the final configuration. The previous run supervised
-~30 answer tokens after an unsupervised thought block. So the check to make here
-is: does the supervised span begin at the first token of the derivation?
+The point of this rebuild is that the loss covers the WHOLE completion, starting at
+"Night actions, in call order:", not just the final configuration. The previous run
+supervised ~30 answer tokens after an unsupervised thought block. So the check to
+make here is: does the supervised span begin at the first token of the derivation?
+
+The Dealt cards block is NOT in the completion. It is given in the prompt, and
+supervising a verbatim copy of prompt text would train copying rather than
+derivation.
 
 With `--response_part '<|turn>model\\n'` (the trainer's default RESPONSE_PART) the
 answer is yes: train_on_responses_only masks everything up to and including the
@@ -58,11 +62,11 @@ def marker_level(example, response_part):
     print()
     print("FIRST SUPERVISED TEXT: %r" % completion[:40])
     print("LAST  SUPERVISED TEXT: %r" % completion[-40:])
-    starts_at_derivation = completion.lstrip().startswith("Dealt cards:")
+    starts_at_derivation = completion.lstrip().startswith("Night actions, in call order:")
     print()
     print("loss begins at the derivation, not the answer: %s" % starts_at_derivation)
     if not starts_at_derivation:
-        print("  *** WRONG: the supervised span does not start at 'Dealt cards:'")
+        print("  *** WRONG: the supervised span does not start at 'Night actions, in call order:'")
     return 0 if starts_at_derivation else 1
 
 
@@ -109,10 +113,10 @@ def token_level(example, model_name, response_part):
     print("decoded supervised span, last 120 chars:")
     print("  %r" % decoded[-120:])
     print()
-    ok = decoded.lstrip().startswith("Dealt cards:")
+    ok = decoded.lstrip().startswith("Night actions, in call order:")
     print("loss begins at the derivation, not the answer: %s" % ok)
     if not ok:
-        print("  *** WRONG: the supervised span does not start at 'Dealt cards:'")
+        print("  *** WRONG: the supervised span does not start at 'Night actions, in call order:'")
         print("  *** With --response_part '<channel|>' this is what you would see.")
     return 0 if ok else 1
 

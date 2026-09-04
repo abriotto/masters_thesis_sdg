@@ -98,9 +98,11 @@ Each script runs `--inspect_only` first, then trains, in the same job.
 
 **Check, in the `inspect_only` section, before trusting the run:**
 
-- the supervised span starts at `Dealt cards:`, not at `Final configuration:`.
-  This is the whole point of the rebuild. If the loss starts at the answer, the
-  `--response_part` did not take.
+- the supervised span starts at `Night actions, in call order:`, not at
+  `Final configuration:`. This is the whole point of the rebuild. If the loss
+  starts at the answer, the `--response_part` did not take.
+- the supervised span does NOT contain `Dealt cards:`. That block is given in the
+  prompt; supervising a verbatim copy of prompt text would train copying.
 - the masked region ends with the end of the transcript.
 - token count is under `max_seq_length` with no truncation warning.
 

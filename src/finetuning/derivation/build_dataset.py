@@ -31,12 +31,16 @@ Excluded from every prompt, without exception:
 
 Completion and masking
 ----------------------
-completion = derivation + "\\n\\n" + answer, which reconstructs the step 5 render
-exactly. `derivation` is the Dealt cards and Night actions sections; `answer` is
-the Final configuration section. NOTHING IS MASKED: the loss covers the whole
-completion, starting at the first character of "Dealt cards:". Only the prompt is
-masked. That is the change from the previous run, where the loss covered the
-~30-token answer alone.
+completion = derivation + "\\n\\n" + answer. `derivation` is the Night actions
+section; `answer` is the Final configuration section. NOTHING IS MASKED WITHIN THE
+COMPLETION: the loss covers all of it, starting at "Night actions, in call order:".
+Only the prompt is masked. That is the change from the previous run, where the loss
+covered the ~30-token answer alone.
+
+The Dealt cards block is deliberately NOT in the target. It is given in the prompt,
+so supervising it would train verbatim copying and dilute the signal across the
+tokens that actually carry the derivation. The full three-section trace is kept in
+`full_trace` for display and for the thesis appendix.
 
 The trainer's loss anchor must therefore be the assistant turn marker, not the
 thought-channel delimiter:
@@ -68,6 +72,7 @@ RULES_PATH = REPO_ROOT / "src" / "prompts" / "onuw_rules_v2.txt"
 DEFAULT_OUT = REPO_ROOT / "data" / "processed" / "jin2024_onuw" / "sft_derivation_v1"
 
 ANSWER_MARKER = "\n\nFinal configuration:\n"
+NIGHT_MARKER = "\n\nNight actions, in call order:\n"
 
 
 def build_derivation_prompt(instruction, rules, players, deal_block, transcript):
@@ -147,15 +152,24 @@ def build_example(game_id: str) -> dict:
     game = load_game(game_id)
     record = build_record(game, game_id)
 
-    full = render_derivation(record)
-    if ANSWER_MARKER not in full:
-        raise ValueError("%s: rendered trace has no answer section" % game_id)
-    head, tail = full.split(ANSWER_MARKER, 1)
-    derivation = head
+    # The full three-section trace is kept for display and for the thesis
+    # appendix. The TARGET is only the last two sections.
+    full_trace = render_derivation(record)
+    if ANSWER_MARKER not in full_trace or NIGHT_MARKER not in full_trace:
+        raise ValueError("%s: rendered trace is missing a section" % game_id)
+
+    head, tail = full_trace.split(ANSWER_MARKER, 1)
     answer = "Final configuration:\n" + tail
+
+    # Drop the Dealt cards block from the completion. It is verbatim prompt text,
+    # so supervising it trains copying rather than derivation and dilutes the
+    # signal across the tokens that do carry it.
+    dealt_section, night_body = head.split(NIGHT_MARKER, 1)
+    derivation = "Night actions, in call order:\n" + night_body
     completion = derivation + "\n\n" + answer
-    if completion != full:
-        raise ValueError("%s: derivation + answer does not reconstruct the trace"
+
+    if dealt_section + "\n\n" + completion != full_trace:
+        raise ValueError("%s: completion does not reconstruct the rendered trace"
                          % game_id)
 
     instruction = INSTRUCTION_PATH.read_text(encoding="utf-8").strip()
@@ -169,10 +183,13 @@ def build_example(game_id: str) -> dict:
         transcript=render_transcript(game),
     )
 
-    # The derivation's Dealt cards section must be entailed by the prompt, not
-    # merely consistent with it. Assert the correspondence rather than trust it.
-    if deal_block not in prompt or deal_block not in derivation:
-        raise ValueError("%s: the deal block is not shared by prompt and derivation"
+    # The deal must be in the prompt, so the night actions are entailed rather
+    # than inferred, and must NOT be in the target, so nothing is supervised that
+    # is copyable from the input. Assert both rather than trust them.
+    if deal_block not in prompt:
+        raise ValueError("%s: the deal block is missing from the prompt" % game_id)
+    if deal_block in completion:
+        raise ValueError("%s: the deal block leaked into the supervised completion"
                          % game_id)
 
     end_roles = {p: record.final[p] for p in record.players}
@@ -187,6 +204,7 @@ def build_example(game_id: str) -> dict:
         "prompt": prompt,
         "derivation": derivation,
         "answer": answer,
+        "full_trace": full_trace,
         "completion": completion,
         "messages": [
             {"role": "user", "content": prompt},
