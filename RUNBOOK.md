@@ -6,19 +6,35 @@ they are the only placeholders.
 
 Repo path assumed on the cluster: `/home/abriotto/Tesi/masters_thesis_sdg`.
 
-## Prerequisite: the split does not exist yet
+## The split
 
-`slurm_files/dv_train_*.slurm` and `dv_base_diagnostic.slurm` read
+Already built and committed:
 
 ```
-data/processed/jin2024_onuw/sft_derivation_v1/train.jsonl
-data/processed/jin2024_onuw/sft_derivation_v1/val.jsonl
-data/processed/jin2024_onuw/sft_derivation_v1/split.json
+data/processed/jin2024_onuw/sft_derivation_v1/split.json    90 train / 30 val ids
+data/processed/jin2024_onuw/sft_derivation_v1/train.jsonl   90 games
+data/processed/jin2024_onuw/sft_derivation_v1/val.jsonl     30 games
+data/processed/jin2024_onuw/sft_derivation_v1/all.jsonl     all 120
 ```
 
-Only `all.jsonl` (120 games) exists so far. **The 90/30 stratified split is step 7
-and has not been built** — do not submit anything below until it has, or the jobs
-will fail on a missing file.
+Stratified by end-game Werewolf count, seed 1234, no overlap:
+
+| Werewolves | corpus | train | val | val share |
+|---|---|---|---|---|
+| 0 | 3 | 2 | 1 | 33.3% |
+| 1 | 77 | 58 | 19 | 24.7% |
+| 2 | 40 | 30 | 10 | 25.0% |
+| **total** | **120** | **90** | **30** | **25.0%** |
+
+`split.json` is the authority — `train.jsonl` and `val.jsonl` are derived from
+its id lists, not from a fresh shuffle, so the partitions survive any change to
+the shuffling code. Regenerate with
+`python -m src.finetuning.derivation.split --write`; it is deterministic.
+
+**Note:** episode_031, the corpus's only Robber decline, is in *validation*. The
+model therefore never sees that pattern in training. With n=1 it has to be on one
+side or the other, but it means a decline-shaped error at eval is unsurprising and
+should not be read as a general failure.
 
 ## Order
 
