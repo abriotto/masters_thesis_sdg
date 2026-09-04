@@ -50,7 +50,10 @@ echo "=== STEP 0: length guard - abort rather than truncate ==="
 # aborts the job here, before training. Silent truncation of the completion is the
 # one failure that cannot be detected after the fact: the adapter would simply have
 # been trained on a derivation with its tail cut off.
-python -m src.finetuning.derivation.token_stats \n  --model_name "$MODEL" \n  --limit "$MAX_SEQ" \n  --out "results/finetuning/token_stats_E2B.json"
+python -m src.finetuning.derivation.token_stats \
+  --model_name "$MODEL" \
+  --limit "$MAX_SEQ" \
+  --out "results/finetuning/token_stats_E2B.json"
 
 echo
 echo "=== STEP 1: inspect_only - what does the loss actually cover? ==="
