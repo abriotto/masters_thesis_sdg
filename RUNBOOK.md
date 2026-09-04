@@ -1,14 +1,87 @@
 # Runbook: derivation-trace finetuning
 
-Everything here runs on the Slurm cluster. Fill in `FILL_IN_PARTITION`,
-`FILL_IN_TIME`, `FILL_IN_GPU` and `FILL_IN_MEM` in each script before submitting;
-they are the only placeholders.
+Repo path on the cluster: `/home/abriotto/Tesi/masters_thesis_sdg`.
 
-Repo path assumed on the cluster: `/home/abriotto/Tesi/masters_thesis_sdg`.
+**One placeholder left in every script: `#SBATCH --mem=FILL_IN_MEM`.** Partition,
+node, wall clock and GPU are filled in. Nothing uses `$TMPDIR` or node-local
+scratch: every path is repo-relative on the shared filesystem, so all outputs
+survive job exit.
 
-## The split
+## Submission order
 
-Already built and committed:
+```bash
+# 1. Diagnostics - two nodes, in parallel, independent of each other
+sbatch slurm_files/dv_diag_A_night.slurm
+sbatch slurm_files/dv_diag_B_discussion.slurm
+
+# 2. Training - owner1, one node, sequential. afterany, not afterok, so a
+#    failure in one does not block the rest.
+JID=$(sbatch --parsable slurm_files/dv_train_E2B.slurm)
+JID=$(sbatch --parsable --dependency=afterany:$JID slurm_files/dv_train_E4B.slurm)
+sbatch --dependency=afterany:$JID slurm_files/dv_train_31B.slurm
+```
+
+## Job table
+
+| Job | Partition / node | Wall | Writes | Check in the log |
+|---|---|---|---|---|
+| `dv_diag_A_night` | testing / vgpu8-0 | 6h | `results/finetuning/base_diagnostic_{E2B,E4B,31B}_night.jsonl` | `non-terminating : 0`. If not, raise `--max_new_tokens` and rerun; those rows are unscored, not wrong. |
+| `dv_diag_B_discussion` | testing / vgpu9-0 | 6h | `results/finetuning/base_diagnostic_{E2B,E4B,31B}_discussion.jsonl` | Same. Low accuracy here is the expected result, not a failure. |
+| `dv_train_E2B` | owner1 | 4h | `models/finetuned/gemma-4-E2B-derivation-v1/` | STEP 1: supervised span starts at `Night actions, in call order:` and contains no `Dealt cards:`. |
+| `dv_train_E4B` | owner1 | 4h | `models/finetuned/gemma-4-E4B-derivation-v1/` | Same. |
+| `dv_train_31B` | owner1 | 8h | `models/finetuned/gemma-4-31B-derivation-v1/` | Same. |
+
+Three distinct adapter directories, one per variant, all repo-relative. One epoch
+checkpoint each, `save_strategy="epoch"` hardcoded in the trainer.
+
+Optional, no GPU: `sbatch slurm_files/dv_00_token_stats.slurm` writes
+`results/finetuning/token_stats_{E2B,E4B,31B}.json`. The identical guard runs as
+STEP 0 inside every training job, so this is only useful for seeing the numbers
+before queueing.
+
+## The length guard
+
+`MAX_SEQ=8192` in all three training scripts. Sequences are ~3k tokens; 8192 is
+real headroom over a chars-per-token *estimate* that had only ~36% margin at 4096.
+Not higher: training does no generation, so extra context is wasted memory, and
+that matters for 31B on a 48GB card.
+
+STEP 0 of every training job runs `token_stats --limit 8192`, which exits non-zero
+if any example exceeds it. With `set -euo pipefail` the job aborts there, before
+the model loads. **Silent truncation of the completion is the one failure that
+cannot be detected afterwards** - the adapter would have been trained on a
+derivation with its tail cut off - so it is turned into a hard failure. On failure:
+
+```
+*** N game(s) exceed max_seq_length=8192. RAISE IT - do not filter them out.
+```
+
+## Reading the diagnostic
+
+```
+night  (30 generations)
+   scored          : 30
+   non-terminating : 0   (hit max_new_tokens=14000)
+   unparseable     : 0   (finished, no Final configuration block)
+   per-player      : 128/150 = 85.3%
+   exact-match     : 21/30 = 70.0%
+```
+
+Accuracy is over **scored** generations only. A generation that hit the token cap
+never finished, and one that finished without a `Final configuration` block said
+nothing about the roles. Neither is a wrong answer, and scoring them 0/5 would
+understate accuracy while hiding a decoding-budget problem. Both are recorded per
+row as `non_terminating`, `parsed_ok` and `scored`, with the raw text kept.
+
+`max_new_tokens=14000`, `max_seq_length=24576`: base models with thinking enabled
+overrun, and 31B produced non-terminations at 16000 on the previous role-inference
+eval.
+
+**A high `night` score is a real finding, not a null result.** It would mean the
+base model can already do the bookkeeping when handed the night actions, and the
+headline comparison has to be read that way. That is why the diagnostics run first.
+
+## The data
 
 ```
 data/processed/jin2024_onuw/sft_derivation_v1/split.json    90 train / 30 val ids
@@ -26,108 +99,39 @@ Stratified by end-game Werewolf count, seed 1234, no overlap:
 | 2 | 40 | 30 | 10 | 25.0% |
 | **total** | **120** | **90** | **30** | **25.0%** |
 
-`split.json` is the authority — `train.jsonl` and `val.jsonl` are derived from
-its id lists, not from a fresh shuffle, so the partitions survive any change to
-the shuffling code. Regenerate with
-`python -m src.finetuning.derivation.split --write`; it is deterministic.
+`split.json` is the authority; the JSONLs are materialised from its id lists, not
+from a fresh shuffle. Regenerate with
+`python -m src.finetuning.derivation.split --write`. Deterministic.
 
 **Note:** episode_031, the corpus's only Robber decline, is in *validation*. The
-model therefore never sees that pattern in training. With n=1 it has to be on one
-side or the other, but it means a decline-shaped error at eval is unsurprising and
-should not be read as a general failure.
+model never sees that pattern in training, so a decline-shaped error at eval is
+unsurprising and not a general failure.
 
-## Order
+## What the target is
 
-### 0. Token lengths — no GPU
+The prompt carries the instruction, the rules, the player list, the **initial deal
+and centre**, and the full transcript **including the private Moderator night
+messages**. The completion is the night actions plus the final configuration.
 
-```bash
-sbatch slurm_files/dv_00_token_stats.slurm
-```
+The `Dealt cards:` block is in the prompt and not in the target: supervising a
+verbatim copy of prompt text trains copying. The complete three-section rendering
+is kept per row as `full_trace` for the appendix.
 
-Writes `results/finetuning/token_stats_{E2B,E4B,31B}.json`.
-
-**Check:** every variant reports `games over 4096 : 0`. If any reports more, raise
-`MAX_SEQ` in all three `dv_train_*.slurm` to clear the reported max. Do not filter
-the long games out — that is what silently shrank the previous dataset.
-
-Estimated from characters at ~4 chars/token, the max total is ~3,015 tokens, so
-4096 should hold with room. This job replaces that estimate with real counts.
-
-### 1. Base diagnostic — GPU
+Loss covers the whole completion. The anchor is the assistant turn marker, not
+`<channel|>`. Verify without a GPU:
 
 ```bash
-sbatch slurm_files/dv_base_diagnostic.slurm
+python -m src.finetuning.derivation.inspect_loss_span --game_id episode_002
 ```
 
-Writes `results/finetuning/base_diagnostic_{E2B,E4B,31B}.jsonl`, one row per game
-per condition, with the raw generation kept.
+## Local checks, no GPU
 
-**Run this before the finetunes.** It fixes the interpretation in advance instead
-of after seeing the training result.
-
-**Check** the summary table at the end of the log:
-
-```
-night        per-player NNN/150 = NN.N%   exact-match NN/30   unparsed N   truncated N
-discussion   per-player NNN/150 = NN.N%   exact-match NN/30   unparsed N   truncated N
-```
-
-- `night` high (say >80% per-player) means the base model can already do the
-  bookkeeping when handed the night actions. The finetune is then teaching format
-  and reliability, not the deduction — say so in the writeup.
-- `discussion` near chance is expected and is the honest baseline for the voting
-  task, which never shows night actions.
-- `unparsed` should be low. If it is high, the base model is ignoring the output
-  format rather than getting the answer wrong; those two failures mean different
-  things and the raw responses are in the JSONL to tell them apart.
-- `truncated` should be 0. If not, raise `--max_new_tokens`.
-
-### 2. Finetune, one job per variant — GPU
-
-```bash
-sbatch slurm_files/dv_train_E2B.slurm
-sbatch slurm_files/dv_train_E4B.slurm
-sbatch slurm_files/dv_train_31B.slurm
-```
-
-Writes adapters to `models/finetuned/gemma-4-{E2B,E4B,31B}-derivation-v1`, one per
-epoch (`save_strategy="epoch"` is hardcoded in the trainer). `models/` is
-gitignored — the adapters stay on the cluster.
-
-Each script runs `--inspect_only` first, then trains, in the same job.
-
-**Check, in the `inspect_only` section, before trusting the run:**
-
-- the supervised span starts at `Night actions, in call order:`, not at
-  `Final configuration:`. This is the whole point of the rebuild. If the loss
-  starts at the answer, the `--response_part` did not take.
-- the supervised span does NOT contain `Dealt cards:`. That block is given in the
-  prompt; supervising a verbatim copy of prompt text would train copying.
-- the masked region ends with the end of the transcript.
-- token count is under `max_seq_length` with no truncation warning.
-
-Then in the training section: loss decreasing, and three adapter directories at
-the end.
-
-## Verifying the loss span locally
-
-The same check runs on CPU with only a tokeniser:
-
-```bash
-python -m src.finetuning.derivation.inspect_loss_span --model_name unsloth/gemma-4-E2B-it --game_id episode_002
-```
-
-Without `--model_name` it prints a marker-level view that needs no tokeniser, which
-is all that runs on the laptop (HuggingFace is unreachable there — TLS interception).
-
-## What produces the data
-
-| Command | Writes |
+| Command | Expect |
 |---|---|
-| `python -m src.finetuning.derivation.test_simulation` | nothing; 7 test groups must pass |
-| `python -m src.finetuning.derivation.gate` | nothing; must report 120/120 |
-| `python -m src.finetuning.derivation.render` | nothing; prints five sample traces |
-| `python -m src.finetuning.derivation.build_dataset --write` | `sft_derivation_v1/all.jsonl` |
+| `python -m src.finetuning.derivation.test_simulation` | 7/7 test groups pass |
+| `python -m src.finetuning.derivation.gate` | 120/120, gate passed |
+| `python -m src.finetuning.derivation.render` | five sample traces |
+| `python -m src.finetuning.derivation.build_dataset --write` | rewrites `all.jsonl` |
 
 `build_dataset` refuses to run if any game fails the gate.
 

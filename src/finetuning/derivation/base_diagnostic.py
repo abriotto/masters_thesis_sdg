@@ -125,6 +125,17 @@ def main() -> int:
             predicted = parse_final_configuration(text)
             result = score(predicted, example["end_roles"])
             out_tokens = debug_info.get("output_token_count")
+
+            # A generation that hit the token cap never finished, and one that
+            # finished without a parseable Final configuration block said nothing
+            # about the roles. Neither is a wrong answer, and scoring them as 0/5
+            # would understate accuracy while hiding a decoding-budget problem.
+            # They are recorded, excluded from the accuracy denominator, and
+            # reported on their own line.
+            non_terminating = bool(out_tokens and out_tokens >= args.max_new_tokens)
+            parsed_ok = bool(predicted)
+            scored = parsed_ok and not non_terminating
+
             rows.append({
                 "game_id": game_id,
                 "condition": condition,
@@ -132,14 +143,22 @@ def main() -> int:
                 "raw_response": text,
                 "predicted": predicted,
                 "gold": example["end_roles"],
-                "parsed_ok": bool(predicted),
+                "parsed_ok": parsed_ok,
+                "non_terminating": non_terminating,
+                "scored": scored,
                 "output_token_count": out_tokens,
-                "truncated": bool(out_tokens and out_tokens >= args.max_new_tokens),
+                "max_new_tokens": args.max_new_tokens,
                 **result,
             })
+            if scored:
+                note = ""
+            elif non_terminating:
+                note = "  [NON-TERMINATING, not scored]"
+            else:
+                note = "  [UNPARSEABLE, not scored]"
             print("  %-11s %s  %d/%d%s"
                   % (condition, game_id, result["players_correct"],
-                     result["players_total"], "" if predicted else "  [UNPARSED]"))
+                     result["players_total"], note))
 
     out = Path(args.output_path)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -148,21 +167,40 @@ def main() -> int:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
     print()
-    print("=" * 68)
+    print("=" * 72)
+    print("Accuracy is over SCORED generations only. Non-terminating and")
+    print("unparseable rows are reported separately, not counted as wrong.")
+    print("=" * 72)
     for condition in conditions:
         subset = [r for r in rows if r["condition"] == condition]
         if not subset:
             continue
-        players = sum(r["players_correct"] for r in subset)
-        total = sum(r["players_total"] for r in subset)
-        exact = sum(1 for r in subset if r["exact_match"])
-        unparsed = sum(1 for r in subset if not r["parsed_ok"])
-        trunc = sum(1 for r in subset if r["truncated"])
-        print("%-11s  per-player %3d/%3d = %5.1f%%   exact-match %2d/%2d   "
-              "unparsed %d   truncated %d"
-              % (condition, players, total, 100.0 * players / max(total, 1),
-                 exact, len(subset), unparsed, trunc))
-    print("=" * 68)
+        scored = [r for r in subset if r["scored"]]
+        nonterm = [r for r in subset if r["non_terminating"]]
+        unparsed = [r for r in subset if not r["parsed_ok"] and not r["non_terminating"]]
+        players = sum(r["players_correct"] for r in scored)
+        total = sum(r["players_total"] for r in scored)
+        exact = sum(1 for r in scored if r["exact_match"])
+
+        print()
+        print("%s  (%d generations)" % (condition, len(subset)))
+        print("   scored          : %d" % len(scored))
+        print("   non-terminating : %d   (hit max_new_tokens=%d)"
+              % (len(nonterm), args.max_new_tokens))
+        print("   unparseable     : %d   (finished, no Final configuration block)"
+              % len(unparsed))
+        if scored:
+            print("   per-player      : %d/%d = %.1f%%"
+                  % (players, total, 100.0 * players / total))
+            print("   exact-match     : %d/%d = %.1f%%"
+                  % (exact, len(scored), 100.0 * exact / len(scored)))
+        else:
+            print("   per-player      : n/a - nothing was scorable")
+        if nonterm:
+            print("   *** raise --max_new_tokens: %d generation(s) never terminated ***"
+                  % len(nonterm))
+    print()
+    print("=" * 72)
     print("wrote %s" % out)
     return 0
 

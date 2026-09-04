@@ -5,11 +5,9 @@
 #SBATCH --account=thesis
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-# ---------------- FILL THESE IN ----------------
-#SBATCH --partition=FILL_IN_PARTITION
-#SBATCH --time=FILL_IN_TIME
+#SBATCH --partition=testing
+#SBATCH --time=00:20:00
 #SBATCH --mem=FILL_IN_MEM
-# -----------------------------------------------
 # NO GPU NEEDED. Tokenizer only, no model weights. Can also be run on the login
 # node if your cluster allows it - it takes seconds.
 
@@ -33,11 +31,12 @@ for SPEC in \
   echo "############ $TAG ############"
   python -m src.finetuning.derivation.token_stats \
     --model_name "$MODEL" \
-    --limit 4096 \
+    --limit 8192 \
     --out "results/finetuning/token_stats_${TAG}.json" || \
     echo "*** $TAG EXCEEDS THE LIMIT - raise max_seq_length in the dv_train scripts ***"
 done
 
 echo
-echo "=== done. If every model reported 0 games over 4096, leave MAX_SEQ=4096. ==="
-echo "=== If not, raise MAX_SEQ in slurm_files/dv_train_*.slurm to clear the max. ==="
+echo "=== done. Every model should report 0 games over 8192. ==="
+echo "=== This job is OPTIONAL: the same guard runs as STEP 0 inside each ==="
+echo "=== dv_train_*.slurm, which aborts the run rather than truncating. ==="
