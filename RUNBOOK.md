@@ -2,20 +2,32 @@
 
 Repo path on the cluster: `/home/abriotto/Tesi/masters_thesis_sdg`.
 
-**One placeholder left in every script: `#SBATCH --mem=FILL_IN_MEM`.** Partition,
-node, wall clock and GPU are filled in. Nothing uses `$TMPDIR` or node-local
+**Two things to fill in: `#SBATCH --mem=FILL_IN_MEM` in every script, and the
+diagnostic node via `--nodelist` at submit. Nothing uses `$TMPDIR` or node-local
 scratch: every path is repo-relative on the shared filesystem, so all outputs
 survive job exit.
 
 ## Submission order
 
-```bash
-# 1. Diagnostics - two nodes, in parallel, independent of each other
-sbatch slurm_files/dv_diag_A_night.slurm
-sbatch slurm_files/dv_diag_B_discussion.slurm
+Node is passed at submit time, not baked into the scripts.
 
-# 2. Training - owner1, one node, sequential. afterany, not afterok, so a
-#    failure in one does not block the rest.
+```bash
+# Diagnostics - six jobs, one per variant x condition. Pin 31B to a big card.
+sbatch --nodelist=<NODE_A_E2B> slurm_files/dv_diag_A_night_E2B.slurm
+sbatch --nodelist=<NODE_A_E4B> slurm_files/dv_diag_A_night_E4B.slurm
+sbatch --nodelist=<NODE_A_31B> slurm_files/dv_diag_A_night_31B.slurm
+sbatch --nodelist=<NODE_B_E2B> slurm_files/dv_diag_B_discussion_E2B.slurm
+sbatch --nodelist=<NODE_B_E4B> slurm_files/dv_diag_B_discussion_E4B.slurm
+sbatch --nodelist=<NODE_B_31B> slurm_files/dv_diag_B_discussion_31B.slurm
+```
+
+31B 4-bit is ~20 GB of weights before any KV cache, and `--max_seq_length 24576`
+makes that cache large. It will not fit the 23.5 GB A5000 on vgpu8-0. Put both
+31B jobs on the A6000 (vgpu9-0) or vgpu10, and give vgpu8-0 the E2B work.
+
+Training jobs are unchanged and independent of the above. They were submitted with:
+
+```bash
 JID=$(sbatch --parsable slurm_files/dv_train_E2B.slurm)
 JID=$(sbatch --parsable --dependency=afterany:$JID slurm_files/dv_train_E4B.slurm)
 sbatch --dependency=afterany:$JID slurm_files/dv_train_31B.slurm
@@ -23,21 +35,33 @@ sbatch --dependency=afterany:$JID slurm_files/dv_train_31B.slurm
 
 ## Job table
 
-| Job | Partition / node | Wall | Writes | Check in the log |
+| Job | Partition | Wall | Writes | Check in the log |
 |---|---|---|---|---|
-| `dv_diag_A_night` | testing / vgpu8-0 | 6h | `results/finetuning/base_diagnostic_{E2B,E4B,31B}_night.jsonl` | `non-terminating : 0`. If not, raise `--max_new_tokens` and rerun; those rows are unscored, not wrong. |
-| `dv_diag_B_discussion` | testing / vgpu9-0 | 6h | `results/finetuning/base_diagnostic_{E2B,E4B,31B}_discussion.jsonl` | Same. Low accuracy here is the expected result, not a failure. |
-| `dv_train_E2B` | owner1 | 4h | `models/finetuned/gemma-4-E2B-derivation-v1/` | STEP 1: supervised span starts at `Night actions, in call order:` and contains no `Dealt cards:`. |
+| `dv_diag_A_night_{E2B,E4B,31B}` | testing, node at submit | 12h | `results/finetuning/base_diagnostic_<TAG>_night.jsonl` | Rows appear as games finish — `wc -l` grows. At the end, `non-terminating : 0`. |
+| `dv_diag_B_discussion_{E2B,E4B,31B}` | testing, node at submit | 12h | `results/finetuning/base_diagnostic_<TAG>_discussion.jsonl` | Same. Low accuracy here is the expected result, not a failure. |
+| `dv_train_E2B` | owner1 | 4h | `models/finetuned/gemma-4-E2B-derivation-v1/` | STEP 1 supervised span starts at `Night actions, in call order:`. |
 | `dv_train_E4B` | owner1 | 4h | `models/finetuned/gemma-4-E4B-derivation-v1/` | Same. |
 | `dv_train_31B` | owner1 | 8h | `models/finetuned/gemma-4-31B-derivation-v1/` | Same. |
 
-Three distinct adapter directories, one per variant, all repo-relative. One epoch
-checkpoint each, `save_strategy="epoch"` hardcoded in the trainer.
+**Ignore one warning in the training log.** `print_exact_loss_span` prints
+`!! WARNING: the supervised span does not contain 'roles'` — that check was written
+for the old `{"roles": {...}}` JSON target. Our completion is prose and contains
+neither `roles` nor `role`. The mask is fine; what confirms it is the
+`--- supervised text ---` dump just above, which must start with
+`Night actions, in call order:`.
 
-Optional, no GPU: `sbatch slurm_files/dv_00_token_stats.slurm` writes
-`results/finetuning/token_stats_{E2B,E4B,31B}.json`. The identical guard runs as
-STEP 0 inside every training job, so this is only useful for seeing the numbers
-before queueing.
+## Crash safety
+
+The diagnostic appends and flushes **per game**. A walltime kill or an OOM costs
+only the game in flight; everything already generated is on disk and the partial
+JSONL is valid. Watch progress with:
+
+```bash
+wc -l results/finetuning/base_diagnostic_*.jsonl
+```
+
+The earlier single job buffered every result until the end, so a crash in the last
+variant would have destroyed the first two.
 
 ## The length guard
 

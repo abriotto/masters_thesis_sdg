@@ -93,10 +93,17 @@ def main() -> int:
     game_ids = split["val"]
     conditions = [c.strip() for c in args.conditions.split(",") if c.strip()]
 
+    # Open the output before loading the model, so a bad path fails in seconds
+    # rather than after the weights are in memory.
+    out = Path(args.output_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    handle = open(out, "w", encoding="utf-8")
+
     print("model      : %s" % args.model_name)
     print("val games  : %d" % len(game_ids))
     print("conditions : %s" % conditions)
     print("decoding   : temperature=1.0 top_p=0.95 top_k=64  (as the voting runs)")
+    print("output     : %s  (appended and flushed per game)" % out)
 
     model_io, model = load_local_model(
         model_name=args.model_name, max_seq_length=args.max_seq_length)
@@ -136,7 +143,7 @@ def main() -> int:
             parsed_ok = bool(predicted)
             scored = parsed_ok and not non_terminating
 
-            rows.append({
+            row = {
                 "game_id": game_id,
                 "condition": condition,
                 "model_name": args.model_name,
@@ -149,7 +156,16 @@ def main() -> int:
                 "output_token_count": out_tokens,
                 "max_new_tokens": args.max_new_tokens,
                 **result,
-            })
+            }
+            rows.append(row)
+
+            # Write and flush per GAME, not per variant and not at the end. An OOM
+            # or a walltime kill then costs only the game in flight; everything
+            # already generated is on disk. Buffering the whole run meant a crash
+            # in the last variant destroyed the earlier ones too.
+            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+            handle.flush()
+
             if scored:
                 note = ""
             elif non_terminating:
@@ -160,11 +176,7 @@ def main() -> int:
                   % (condition, game_id, result["players_correct"],
                      result["players_total"], note))
 
-    out = Path(args.output_path)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    with open(out, "w", encoding="utf-8") as handle:
-        for row in rows:
-            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+    handle.close()
 
     print()
     print("=" * 72)
