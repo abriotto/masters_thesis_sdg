@@ -194,6 +194,12 @@ def build_example(game_id: str) -> dict:
 
     end_roles = {p: record.final[p] for p in record.players}
     return {
+        # train_role_inference.py reads exactly four keys per row: session_name,
+        # messages, prompt and completion. `session_name` is first and named this
+        # way to match sft_role_inference/train.jsonl, whose values are the same
+        # "episode_NNN" strings. `game_id` is kept as well because this package's
+        # own modules key on it; the two are always equal by construction.
+        "session_name": game_id,
         "game_id": game_id,
         "source": "jin2024",
         "player_names": list(record.players),
