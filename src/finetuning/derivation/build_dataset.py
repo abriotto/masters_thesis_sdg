@@ -62,13 +62,58 @@ from src.finetuning.derivation.records import (  # noqa: E402
     recipients,
 )
 from src.finetuning.derivation.render import render_derivation  # noqa: E402
-from src.utils.prompt_utils import build_full_prompt  # noqa: E402
 
 INSTRUCTION_PATH = REPO_ROOT / "src" / "prompts" / "role_inference_prompt_v3.txt"
 RULES_PATH = REPO_ROOT / "src" / "prompts" / "onuw_rules_v2.txt"
 DEFAULT_OUT = REPO_ROOT / "data" / "processed" / "jin2024_onuw" / "sft_derivation_v1"
 
 ANSWER_MARKER = "\n\nFinal configuration:\n"
+
+
+def build_derivation_prompt(instruction, rules, players, deal_block, transcript):
+    """Assemble the prompt.
+
+    This mirrors src.utils.prompt_utils.build_full_prompt but adds the "## Initial
+    deal" section. That helper is NOT extended, because it is shared with the
+    voting prompt and the base arm has already been run against it; changing it
+    would invalidate those results. The two layouts are otherwise identical.
+    """
+    return """{instruction}
+
+Here are the game rules:
+
+{rules}
+
+## Player list
+
+{players}
+
+## Initial deal
+
+{deal}
+
+## Transcript
+
+{transcript}
+""".format(instruction=instruction, rules=rules, players=", ".join(players),
+           deal=deal_block, transcript=transcript).strip()
+
+
+def render_deal_block(record) -> str:
+    """The cards as dealt, plus the centre.
+
+    Present so that the derivation's "Dealt cards:" section is entailed by the
+    prompt rather than inferred. Villagers never wake, so without this the model
+    would have to read a player's dealt Villager card off the ABSENCE of a
+    Moderator message, and tell that apart from the same role sitting in the
+    centre. Absence of evidence is not entailment, and entailment is the point.
+
+    Rendered in the same order and format as the derivation's own Dealt cards
+    block, so the correspondence is exact.
+    """
+    lines = ["- %s: %s" % (p, record.dealt[p]) for p in record.players]
+    lines.append("- Centre: %s" % ", ".join(record.centre))
+    return "\n".join(lines)
 
 
 def render_transcript(game: dict) -> str:
@@ -115,12 +160,20 @@ def build_example(game_id: str) -> dict:
 
     instruction = INSTRUCTION_PATH.read_text(encoding="utf-8").strip()
     rules = RULES_PATH.read_text(encoding="utf-8").strip()
-    prompt = build_full_prompt(
-        base_prompt=instruction,
-        rules_text=rules,
-        player_names=record.players,
-        transcript_text=render_transcript(game),
+    deal_block = render_deal_block(record)
+    prompt = build_derivation_prompt(
+        instruction=instruction,
+        rules=rules,
+        players=record.players,
+        deal_block=deal_block,
+        transcript=render_transcript(game),
     )
+
+    # The derivation's Dealt cards section must be entailed by the prompt, not
+    # merely consistent with it. Assert the correspondence rather than trust it.
+    if deal_block not in prompt or deal_block not in derivation:
+        raise ValueError("%s: the deal block is not shared by prompt and derivation"
+                         % game_id)
 
     end_roles = {p: record.final[p] for p in record.players}
     return {
