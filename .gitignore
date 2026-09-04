@@ -9,7 +9,19 @@ werebench_persuasion/outputs/
 data/lai2023
 
 # Raw downloaded datasets: reproducible via src/finetuning/download_jin.py
-data/raw/
+#
+# Exception: the 120 Jin et al. ONUW episodes ARE tracked. The cluster jobs read
+# them directly and a gitignored corpus meant the diagnostic jobs loaded their
+# models and then died on the first data read. Nothing else under data/raw/ is
+# tracked -- lai2023 in particular is large and stays ignored.
+#
+# A negation cannot re-include a file whose parent directory is excluded, so each
+# level down to gpt4_dataset/ is unignored in turn. This is the same shape as the
+# slurm_files rule below.
+data/raw/*
+!data/raw/jin2024_onuw/
+data/raw/jin2024_onuw/*
+!data/raw/jin2024_onuw/gpt4_dataset/
 
 logs/
 # Ignore slurm scripts by default, but track the finetuning ones so they reach
