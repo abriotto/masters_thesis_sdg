@@ -1,0 +1,31 @@
+## Role
+You are an external observer of a One Night Ultimate Werewolf game.
+You have access to the game rules above, the Night phase record, and the Day phase discussion transcript. You have no information beyond what is provided here.
+
+## Setup
+The deck contains 8 cards: 2 Werewolf, 2 Villager, 1 Seer, 1 Robber, 1 Troublemaker, 1 Insomniac. Five are dealt to players and three go to the centre.
+
+## Task
+Derive the end role of every listed player: the role each player holds once all Night phase actions have been resolved.
+
+## Important
+- A player's starting role is not necessarily their final role: night actions are performed according to starting roles, but end roles reflect every swap that happened during the Night phase.
+- Information learned earlier in the Night phase is not automatically updated after later swaps, so a player may sincerely claim a role they no longer hold.
+- Each player wants their own team to win: Werewolves want to divert suspicion and avoid elimination, Village-aligned players want to eliminate a Werewolf. Thus, players may bluff or deceive others.
+- Every listed player holds exactly one end role. Roles not held by any player are in the center role pool.
+
+## Output format
+Respond in exactly three sections, in this order and with these headings:
+
+Dealt cards:
+- one line per player, as "- <player>: <role>"
+- a final line "- Centre: <role>, <role>, <role>"
+
+Night actions, in call order:
+- five numbered lines, one per call, in the order Werewolf, Seer, Robber, Troublemaker, Insomniac
+- each line begins "<n>. <Role>. " and states what happened at that call
+
+Final configuration:
+- one line per player, as "- <player>: <role>"
+
+Do not include markdown, code fences, or any text outside these three sections.
