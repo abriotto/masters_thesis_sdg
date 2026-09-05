@@ -204,8 +204,14 @@ def run_role_inference(
         # Per-episode record. Two reasons this is kept: a parse failure is
         # otherwise unexaminable, since the raw text is discarded; and the
         # aggregate alone cannot support a paired base-vs-finetuned bootstrap,
-        # which needs the per-game values. Raw text is stored only when parsing
-        # failed, and clipped, because a runaway generation can reach 80k chars.
+        # which needs the per-game values.
+        #
+        # `raw_response` is the full generation, unclipped, on every episode - the
+        # finetuned derivations have to be readable, not just scoreable. The
+        # clipped raw_head/raw_tail/raw_char_count are still written on a parse
+        # failure so existing readers of that shape keep working. Note the file
+        # can get large: a runaway generation can reach 80k chars, so 30 episodes
+        # is worst-case a few MB.
         rec = {
             "session_name": row["session_name"],
             "correct": c,
@@ -221,6 +227,7 @@ def run_role_inference(
             "scored": bool(scored or not derivation),
             "predicted": predicted_roles,
             "gold": gold_roles,
+            "raw_response": text,
         }
         if not parse_ok:
             rec["raw_head"] = text[:2000]
