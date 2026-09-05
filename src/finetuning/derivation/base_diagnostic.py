@@ -1,17 +1,27 @@
 """Base-model diagnostic: can the base model already do this task?
 
-Runs one variant over the validation games in two prompt conditions:
+Runs one variant over the validation games on an information ladder of three
+prompt conditions, each removing one more thing:
 
-- `night`      the full prompt, private Moderator night messages included. This is
-               the finetuning condition. The derivation is deducible from it.
-- `discussion` the same prompt with the private Moderator night messages removed,
-               i.e. what an external observer sees. The derivation is NOT deducible;
-               the final configuration can only be inferred from what players say.
+- `night`      the full prompt: initial deal + private Moderator night messages +
+               discussion. This is the finetuning condition; the derivation is
+               fully deducible from it.
+- `discussion` night messages removed, initial deal KEPT. The model is still handed
+               the starting configuration and only has to apply whatever the players
+               announce openly.
+- `public`     both removed: instruction, rules, player list and the public
+               discussion only. This is what an external observer actually sees,
+               and the honest baseline for the voting task.
 
-The gap between the two is the diagnostic. If the base model already scores well in
-`night`, the finetuning is teaching bookkeeping the model can do, and the headline
-comparison should be read accordingly. If it scores near zero in `discussion`, that
-is the honest baseline for the voting task, which never shows night actions.
+`discussion` was originally intended as the external-observer condition and is not:
+leaving the deal in place is why 31B scored 94.7% there against 100% on `night`.
+It is kept because the three rungs together separate "can apply announced swaps to
+a known deal" from "can infer the configuration at all", which is the distinction
+the finetuning claim depends on.
+
+If the base model already scores well on `night`, the finetuning is teaching
+bookkeeping the model can already do, and the headline comparison should be read
+accordingly.
 
 One generation per game, decoding identical to the voting experiments
 (temperature 1.0, top_p 0.95, top_k 64), so numbers are comparable.
@@ -44,14 +54,80 @@ PRIVATE_LINE = re.compile(r"^\[\d+\] Moderator \(to player[\d, player]*\): ")
 FINAL_RE = re.compile(r"^-\s*(player\d+)\s*:\s*(\w+)\s*$", re.M)
 
 
+DEAL_HEADER = "## Initial deal"
+TRANSCRIPT_HEADER = "## Transcript"
+
+CONDITIONS = ("night", "discussion", "public")
+
+
 def strip_night_actions(prompt: str) -> str:
     """Remove the private Moderator night messages from an assembled prompt.
 
-    Everything else - instruction, rules, player list, public transcript - is
-    left byte-identical, so the two conditions differ in exactly one thing.
+    Everything else - instruction, rules, player list, initial deal, public
+    transcript - is left byte-identical, so the conditions differ in exactly the
+    intended way.
     """
     kept = [line for line in prompt.split("\n") if not PRIVATE_LINE.match(line)]
     return "\n".join(kept)
+
+
+def strip_initial_deal(prompt: str) -> str:
+    """Remove the "## Initial deal" section, header and body.
+
+    Excises everything from the deal header up to the transcript header, so the
+    surrounding text is untouched.
+    """
+    if DEAL_HEADER not in prompt:
+        raise ValueError("prompt has no %r section" % DEAL_HEADER)
+    head, rest = prompt.split(DEAL_HEADER, 1)
+    if TRANSCRIPT_HEADER not in rest:
+        raise ValueError("prompt has no %r section after the deal" % TRANSCRIPT_HEADER)
+    _, tail = rest.split(TRANSCRIPT_HEADER, 1)
+    return head + TRANSCRIPT_HEADER + tail
+
+
+def build_condition_prompt(example: dict, condition: str) -> str:
+    """Return the prompt for one rung of the information ladder.
+
+        night       deal + night actions + discussion
+        discussion  deal + discussion          (night actions removed)
+        public      discussion only            (deal AND night actions removed)
+
+    `discussion` still hands the model the starting configuration, so it only has
+    to apply whatever the players announce openly. That is a meaningful condition,
+    but it is not the external-observer setting - `public` is.
+    """
+    if condition not in CONDITIONS:
+        raise ValueError("unknown condition %r; expected one of %s"
+                         % (condition, list(CONDITIONS)))
+
+    prompt = example["prompt"]
+    if condition == "night":
+        return prompt
+
+    prompt = strip_night_actions(prompt)
+    if condition == "discussion":
+        return prompt
+
+    prompt = strip_initial_deal(prompt)
+
+    # Assert rather than trust. The bug this replaces was exactly a strip that
+    # looked right and silently left the deal in place, which made 31B score 94.7%
+    # on a condition that was supposed to withhold the starting configuration.
+    leaked = [line for line in prompt.split("\n") if PRIVATE_LINE.match(line)]
+    if leaked:
+        raise AssertionError(
+            "public prompt still contains %d private Moderator line(s), e.g. %r"
+            % (len(leaked), leaked[0][:90]))
+    if DEAL_HEADER in prompt:
+        raise AssertionError("public prompt still contains %r" % DEAL_HEADER)
+    deal_block = "\n".join(
+        ["- %s: %s" % (p, example["dealt"][p]) for p in example["player_names"]]
+        + ["- Centre: %s" % ", ".join(example["centre"])]
+    )
+    if deal_block in prompt:
+        raise AssertionError("public prompt still contains the dealt configuration")
+    return prompt
 
 
 def parse_final_configuration(text: str) -> dict:
@@ -112,9 +188,7 @@ def main() -> int:
     for condition in conditions:
         for game_id in game_ids:
             example = build_example(game_id)
-            prompt = example["prompt"]
-            if condition == "discussion":
-                prompt = strip_night_actions(prompt)
+            prompt = build_condition_prompt(example, condition)
 
             text, debug_info = call_local_model(
                 model=model,

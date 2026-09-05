@@ -12,14 +12,39 @@ survive job exit.
 Node is passed at submit time, not baked into the scripts.
 
 ```bash
-# Diagnostics - six jobs, one per variant x condition. Pin 31B to a big card.
-sbatch --nodelist=<NODE_A_E2B> slurm_files/dv_diag_A_night_E2B.slurm
-sbatch --nodelist=<NODE_A_E4B> slurm_files/dv_diag_A_night_E4B.slurm
-sbatch --nodelist=<NODE_A_31B> slurm_files/dv_diag_A_night_31B.slurm
-sbatch --nodelist=<NODE_B_E2B> slurm_files/dv_diag_B_discussion_E2B.slurm
-sbatch --nodelist=<NODE_B_E4B> slurm_files/dv_diag_B_discussion_E4B.slurm
-sbatch --nodelist=<NODE_B_31B> slurm_files/dv_diag_B_discussion_31B.slurm
+# Condition C - the one still to run. 31B on the A6000, E2B/E4B on the A5000.
+sbatch --nodelist=vgpu8-0 slurm_files/dv_diag_C_public_E2B.slurm
+sbatch --nodelist=vgpu8-0 slurm_files/dv_diag_C_public_E4B.slurm
+sbatch --nodelist=vgpu9-0 slurm_files/dv_diag_C_public_31B.slurm
+
+# Conditions A and B, already run:
+#   slurm_files/dv_diag_A_night_{E2B,E4B,31B}.slurm
+#   slurm_files/dv_diag_B_discussion_{E2B,E4B,31B}.slurm
 ```
+
+## The information ladder
+
+Three conditions, each removing one more thing from the same prompt:
+
+| Condition | Initial deal | Night actions | Discussion | What it measures |
+|---|---|---|---|---|
+| `night` | yes | yes | yes | the finetuning condition; derivation fully deducible |
+| `discussion` | **yes** | no | yes | apply openly-announced swaps to a known deal |
+| `public` | no | no | yes | infer the configuration at all - the external observer |
+
+`discussion` was originally described as the external-observer condition and is
+not: it leaves the deal in the prompt. That is why 31B scored 94.7% there against
+100% on `night` - it only had to apply the changes the GPT-4 agents announce out
+loud. `public` is the real baseline for the voting task.
+
+All three are kept: together they separate "can apply announced swaps" from "can
+infer the configuration", which is the distinction the finetuning claim rests on.
+
+`build_condition_prompt` asserts that a `public` prompt contains neither the
+`## Initial deal` header nor any private Moderator line nor the dealt block
+itself, and raises rather than generating. Verified across all 30 validation
+games: deal header 30/30 in `night` and `discussion`, 0/30 in `public`; private
+lines 99 in `night`, 0 in both others.
 
 31B 4-bit is ~20 GB of weights before any KV cache, and `--max_seq_length 24576`
 makes that cache large. It will not fit the 23.5 GB A5000 on vgpu8-0. Put both

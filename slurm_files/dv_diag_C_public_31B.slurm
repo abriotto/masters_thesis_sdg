@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=dv_diag_B_discussion_31B
-#SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/dv_diag_B_discussion_31B_%j.out
-#SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/dv_diag_B_discussion_31B_%j.err
+#SBATCH --job-name=dv_diag_C_public_31B
+#SBATCH --output=/home/abriotto/Tesi/masters_thesis_sdg/logs/dv_diag_C_public_31B_%j.out
+#SBATCH --error=/home/abriotto/Tesi/masters_thesis_sdg/logs/dv_diag_C_public_31B_%j.err
 #SBATCH --account=thesis
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -13,10 +13,11 @@
 
 # Base-model diagnostic. ONE variant, ONE condition, one job.
 #
-#   condition B = night actions removed, INITIAL DEAL KEPT. The model is still
-#                 given the starting configuration and only has to apply what the
-#                 players announce openly. This is NOT the external-observer
-#                 setting - condition C is. Kept as the middle rung of the ladder.
+#   condition C = initial deal AND night actions BOTH removed. Instruction,
+#                 rules, player list and the public discussion only - what an
+#                 external observer actually sees, and the honest baseline for
+#                 the voting task. Condition B leaves the deal in the prompt and
+#                 is therefore NOT the external-observer setting.
 #   variant     = 31B
 #
 # Split six ways, by variant as well as by condition, so 31B can be pinned to a
@@ -25,7 +26,7 @@
 # end, so an OOM in the last variant would have destroyed the first two.
 #
 # NO --nodelist here: pass it at submit time, e.g.
-#   sbatch --nodelist=vgpu8-0 slurm_files/dv_diag_B_discussion_31B.slurm
+#   sbatch --nodelist=vgpu8-0 slurm_files/dv_diag_C_public_31B.slurm
 #
 # Results are appended and flushed PER GAME, so a walltime kill or an OOM costs
 # only the game in flight.
@@ -38,7 +39,7 @@ cd /home/abriotto/Tesi/masters_thesis_sdg || exit 1
 
 TAG="31B"
 MODEL="unsloth/gemma-4-31B-it-unsloth-bnb-4bit"
-CONDITION="discussion"
+CONDITION="public"
 SPLIT="data/processed/jin2024_onuw/sft_derivation_v1/split.json"
 OUT="results/finetuning/base_diagnostic_${TAG}_${CONDITION}.jsonl"
 

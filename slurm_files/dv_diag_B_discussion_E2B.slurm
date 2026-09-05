@@ -13,9 +13,10 @@
 
 # Base-model diagnostic. ONE variant, ONE condition, one job.
 #
-#   condition B = night actions REMOVED from the prompt (what an external observer
-#                 sees, and what the voting task shows; the derivation is NOT
-#                 deducible - near-chance here is the honest baseline, not a bug)
+#   condition B = night actions removed, INITIAL DEAL KEPT. The model is still
+#                 given the starting configuration and only has to apply what the
+#                 players announce openly. This is NOT the external-observer
+#                 setting - condition C is. Kept as the middle rung of the ladder.
 #   variant     = E2B
 #
 # Split six ways, by variant as well as by condition, so 31B can be pinned to a
