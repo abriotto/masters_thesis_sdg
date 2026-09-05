@@ -31,7 +31,10 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Optional
 
-from src.finetuning.derivation.base_diagnostic import parse_final_configuration
+from src.finetuning.derivation.base_diagnostic import (
+    build_condition_prompt,
+    parse_final_configuration,
+)
 from src.utils.io_utils import find_repo_root, load_json
 from src.utils.json_utils import parse_model_json
 from src.utils.model_utils import call_local_model, load_local_model
@@ -151,6 +154,7 @@ def run_role_inference(
     print("\n" + "=" * 78)
     print(f"ROLE INFERENCE - {len(rows)} validation episodes")
     print(f"dataset shape: {'derivation (end_roles dict)' if derivation else 'legacy (JSON completion)'}")
+    print(f"condition:     {args.condition}")
     print("=" * 78)
 
     total_correct = 0
@@ -166,8 +170,14 @@ def run_role_inference(
     episodes: list[dict[str, Any]] = []
 
     for i, row in enumerate(rows, start=1):
+        # Same function base_diagnostic uses, imported rather than reimplemented,
+        # so an adapter number is comparable with the base for that condition.
+        # `night` returns row["prompt"] untouched; `public` strips both the private
+        # Moderator lines and the "## Initial deal" section, and asserts that
+        # neither survives.
+        prompt = build_condition_prompt(row, args.condition)
         text, debug_info = generate(
-            model, model_io, args.model_name, row["prompt"], args.max_new_tokens
+            model, model_io, args.model_name, prompt, args.max_new_tokens
         )
         has_thought, _ = thought_present(text, debug_info)
         emitted += int(has_thought)
@@ -261,7 +271,7 @@ def run_role_inference(
     # Same block, same order, same wording as base_diagnostic, so an adapter
     # number can be read straight against the base per-player accuracies.
     print()
-    print(f"condition A  ({len(rows)} generations)")
+    print(f"condition {args.condition}  ({len(rows)} generations)")
     print(f"   scored          : {scored_count}")
     print(f"   non-terminating : {non_terminating}   (hit max_new_tokens={args.max_new_tokens})")
     print(f"   unparseable     : {unparseable}   (finished, no Final configuration block)")
@@ -285,6 +295,7 @@ def run_role_inference(
 
     return {
         "num_episodes": len(rows),
+        "condition": args.condition,
         "dataset_shape": "derivation" if derivation else "legacy",
         "scored": scored_count,
         "non_terminating": non_terminating,
@@ -407,6 +418,20 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max_seq_length", type=int, default=12000)
     parser.add_argument("--max_new_tokens", type=int, default=10000)
+    parser.add_argument(
+        "--condition",
+        type=str,
+        default="night",
+        choices=["night", "public"],
+        help=(
+            "Prompt condition, matching base_diagnostic. 'night' is the full "
+            "prompt (deal + private Moderator night messages + discussion) and is "
+            "the default and the previous behaviour. 'public' strips both the "
+            "night messages and the '## Initial deal' section, leaving the "
+            "instruction, rules, player list and public discussion. Requires a "
+            "derivation dataset; the legacy rows have no deal section."
+        ),
+    )
     parser.add_argument("--limit", type=int, default=-1, help="Cap role-inference episodes.")
     parser.add_argument(
         "--summarize_voting_results",
@@ -435,6 +460,7 @@ def main() -> None:
         "model_name": args.model_name,
         "adapter_path": args.adapter_path,
         "max_new_tokens": args.max_new_tokens,
+        "condition": args.condition,
     }
 
     if args.summarize_voting_results:
