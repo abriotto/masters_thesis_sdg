@@ -6,10 +6,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --partition=testing
+#SBATCH --partition=owner1
 #SBATCH --time=12:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --mem=FILL_IN_MEM
+#SBATCH --mem=64G
 
 # Evaluate ONE trained adapter on the 30 validation games, condition A.
 #

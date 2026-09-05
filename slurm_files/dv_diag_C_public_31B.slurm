@@ -9,7 +9,7 @@
 #SBATCH --partition=testing
 #SBATCH --time=12:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --mem=FILL_IN_MEM
+#SBATCH --mem=64G
 
 # Base-model diagnostic. ONE variant, ONE condition, one job.
 #
