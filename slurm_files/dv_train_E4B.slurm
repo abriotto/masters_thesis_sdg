@@ -9,7 +9,7 @@
 #SBATCH --partition=owner1
 #SBATCH --time=04:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --mem=FILL_IN_MEM
+#SBATCH --mem=64G
 
 # Derivation-trace QLoRA finetune, E4B.
 #

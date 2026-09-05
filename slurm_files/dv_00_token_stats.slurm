@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --partition=testing
 #SBATCH --time=00:20:00
-#SBATCH --mem=FILL_IN_MEM
+#SBATCH --mem=64G
 # NO GPU NEEDED. Tokenizer only, no model weights. Can also be run on the login
 # node if your cluster allows it - it takes seconds.
 
