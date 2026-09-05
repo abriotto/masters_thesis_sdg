@@ -50,6 +50,26 @@ neither `roles` nor `role`. The mask is fine; what confirms it is the
 `--- supervised text ---` dump just above, which must start with
 `Night actions, in call order:`.
 
+## Evaluating a trained adapter
+
+```bash
+sbatch --nodelist=<NODE> slurm_files/dv_eval_adapter.slurm <TAG> <ADAPTER_PATH>
+```
+
+TAG is E2B, E4B or 31B; ADAPTER_PATH is any directory the trainer wrote, final or
+a per-epoch checkpoint. Writes
+`results/finetuning/adapter_eval_<TAG>_<basename of adapter>.json`.
+
+Directly comparable with the base diagnostic: same prompt (val.jsonl's `prompt`
+field IS condition A), same decoding (t=1.0, top_p=0.95, top_k=64, thinking on),
+and max_new_tokens 14000 / max_seq_length 24576 pinned to the diagnostic's values
+rather than evaluate_adapter's smaller defaults.
+
+Base per-player accuracies, condition A: **E2B 75.3%, E4B 84.7%, 31B 100%.**
+
+31B has no headroom left to show, so read its adapter number as a check that the
+finetune did not *break* anything, not as an improvement.
+
 ## Crash safety
 
 The diagnostic appends and flushes **per game**. A walltime kill or an OOM costs

@@ -31,6 +31,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Optional
 
+from src.finetuning.derivation.base_diagnostic import parse_final_configuration
 from src.utils.io_utils import find_repo_root, load_json
 from src.utils.json_utils import parse_model_json
 from src.utils.model_utils import call_local_model, load_local_model
@@ -78,16 +79,20 @@ def generate(
 
 
 def score_roles(
-    predicted: Optional[dict[str, Any]],
+    roles: Optional[dict[str, Any]],
     player_names: list[str],
     gold_roles: list[str],
 ) -> tuple[int, int, Counter, Counter]:
-    """Return (correct, total, correct_by_role, seen_by_role)."""
+    """Return (correct, total, correct_by_role, seen_by_role).
+
+    `roles` is a flat {player: role} mapping. Callers extract it: from the
+    "roles" key of a parsed JSON completion (legacy datasets) or from the
+    generated "Final configuration:" block (derivation datasets).
+    """
     correct_by_role: Counter = Counter()
     seen_by_role: Counter = Counter()
     correct = 0
 
-    roles = (predicted or {}).get("roles") if isinstance(predicted, dict) else None
     if not isinstance(roles, dict):
         roles = {}
 
@@ -100,6 +105,37 @@ def score_roles(
     return correct, len(player_names), correct_by_role, seen_by_role
 
 
+def is_derivation_row(row: dict[str, Any]) -> bool:
+    """Does this row come from sft_derivation_v1?
+
+    Dispatch on the TYPE of `end_roles`, not its presence: the old
+    sft_role_inference rows also carry `end_roles`, but as a positional list
+    aligned to player_names, whereas the derivation rows carry a
+    {player: role} dict. Testing presence alone would misroute the old data.
+    """
+    return isinstance(row.get("end_roles"), dict)
+
+
+def gold_and_prediction(
+    row: dict[str, Any], text: str
+) -> tuple[dict[str, str], dict[str, str], bool]:
+    """Return (gold_roles, predicted_roles, parsed_ok) for either dataset shape."""
+    if is_derivation_row(row):
+        # Gold comes from the row, not from the completion: the completion is
+        # prose ending in a Final configuration block, not JSON.
+        gold = dict(row["end_roles"])
+        # Same parser the base diagnostic uses, imported rather than reimplemented,
+        # so adapter numbers are comparable with the base per-player accuracies.
+        predicted = parse_final_configuration(text)
+        return gold, predicted, bool(predicted)
+
+    gold = json.loads(row["completion"])["roles"]
+    parsed = parse_model_json(text)
+    ok = isinstance(parsed, dict) and "roles" in parsed
+    predicted = parsed.get("roles") if ok else {}
+    return gold, (predicted if isinstance(predicted, dict) else {}), ok
+
+
 def run_role_inference(
     model: Any,
     model_io: Any,
@@ -110,8 +146,11 @@ def run_role_inference(
     if args.limit > 0:
         rows = rows[: args.limit]
 
+    derivation = bool(rows) and is_derivation_row(rows[0])
+
     print("\n" + "=" * 78)
     print(f"ROLE INFERENCE - {len(rows)} validation episodes")
+    print(f"dataset shape: {'derivation (end_roles dict)' if derivation else 'legacy (JSON completion)'}")
     print("=" * 78)
 
     total_correct = 0
@@ -121,6 +160,8 @@ def run_role_inference(
     seen_by_role: Counter = Counter()
     emitted = 0
     parse_failures = 0
+    non_terminating = 0
+    scored_count = 0
     out_tokens: list[int] = []
     episodes: list[dict[str, Any]] = []
 
@@ -133,20 +174,32 @@ def run_role_inference(
         if debug_info.get("output_token_count"):
             out_tokens.append(int(debug_info["output_token_count"]))
 
-        predicted = parse_model_json(text)
-        parse_ok = isinstance(predicted, dict) and "roles" in predicted
+        gold_roles, predicted_roles, parse_ok = gold_and_prediction(row, text)
         if not parse_ok:
             parse_failures += 1
 
-        gold_roles = json.loads(row["completion"])["roles"]
+        # A generation that hit the cap never finished, so it has no answer to be
+        # wrong about. Same rule as the base diagnostic: recorded, reported, and
+        # kept out of the accuracy denominator.
+        hit_cap = bool(debug_info.get("output_token_count") == args.max_new_tokens)
+        non_terminating += int(hit_cap)
+        scored = parse_ok and not hit_cap
+
         c, t, cbr, sbr = score_roles(
-            predicted, row["player_names"], [gold_roles[n] for n in row["player_names"]]
+            predicted_roles,
+            row["player_names"],
+            [gold_roles[n] for n in row["player_names"]],
         )
-        total_correct += c
-        total_slots += t
-        exact_games += int(c == t)
-        correct_by_role.update(cbr)
-        seen_by_role.update(sbr)
+
+        # Legacy datasets keep the original behaviour, where every episode counts.
+        # Derivation datasets score only completed, parseable generations.
+        if scored or not derivation:
+            scored_count += 1
+            total_correct += c
+            total_slots += t
+            exact_games += int(c == t)
+            correct_by_role.update(cbr)
+            seen_by_role.update(sbr)
 
         # Per-episode record. Two reasons this is kept: a parse failure is
         # otherwise unexaminable, since the raw text is discarded; and the
@@ -164,6 +217,10 @@ def run_role_inference(
                 debug_info.get("output_token_count") == args.max_new_tokens
             ),
             "parse_ok": bool(parse_ok),
+            "non_terminating": hit_cap,
+            "scored": bool(scored or not derivation),
+            "predicted": predicted_roles,
+            "gold": gold_roles,
         }
         if not parse_ok:
             rec["raw_head"] = text[:2000]
@@ -178,7 +235,9 @@ def run_role_inference(
         )
 
     accuracy = total_correct / total_slots if total_slots else 0.0
-    exact_game_accuracy = exact_games / len(rows) if rows else 0.0
+    # Denominator is the scored count, matching the diagnostic. In legacy mode
+    # every episode is scored, so this is unchanged from len(rows).
+    exact_game_accuracy = exact_games / scored_count if scored_count else 0.0
     per_role = {
         role: {
             "correct": correct_by_role.get(role, 0),
@@ -188,9 +247,26 @@ def run_role_inference(
         for role in sorted(seen_by_role)
     }
 
-    print(f"\nrole accuracy:        {total_correct}/{total_slots} = {accuracy:.1%}")
-    print(f"thought channel:      {emitted}/{len(rows)}")
-    print(f"JSON parse failures:  {parse_failures}/{len(rows)}")
+    unparseable = parse_failures - sum(
+        1 for e in episodes if e["non_terminating"] and not e["parse_ok"]
+    )
+
+    # Same block, same order, same wording as base_diagnostic, so an adapter
+    # number can be read straight against the base per-player accuracies.
+    print()
+    print(f"condition A  ({len(rows)} generations)")
+    print(f"   scored          : {scored_count}")
+    print(f"   non-terminating : {non_terminating}   (hit max_new_tokens={args.max_new_tokens})")
+    print(f"   unparseable     : {unparseable}   (finished, no Final configuration block)")
+    if total_slots:
+        print(f"   per-player      : {total_correct}/{total_slots} = {accuracy:.1%}")
+        print(f"   exact-match     : {exact_games}/{scored_count} = {exact_game_accuracy:.1%}")
+    else:
+        print("   per-player      : n/a - nothing was scorable")
+    if non_terminating:
+        print(f"   *** raise --max_new_tokens: {non_terminating} generation(s) never terminated ***")
+
+    print(f"\nthought channel:      {emitted}/{len(rows)}")
     if out_tokens:
         print(
             f"output tokens:        min {min(out_tokens)} / "
@@ -202,6 +278,10 @@ def run_role_inference(
 
     return {
         "num_episodes": len(rows),
+        "dataset_shape": "derivation" if derivation else "legacy",
+        "scored": scored_count,
+        "non_terminating": non_terminating,
+        "unparseable": unparseable,
         "role_accuracy": accuracy,
         "correct": total_correct,
         "total": total_slots,
