@@ -1,0 +1,897 @@
+{
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-derivation-v1/final_adapter",
+  "max_new_tokens": 14000,
+  "condition": "night",
+  "role_inference": {
+    "num_episodes": 30,
+    "condition": "night",
+    "dataset_shape": "derivation",
+    "scored": 30,
+    "non_terminating": 0,
+    "unparseable": 0,
+    "role_accuracy": 0.92,
+    "correct": 138,
+    "total": 150,
+    "exact_game_matches": 23,
+    "episodes": [
+      {
+        "session_name": "episode_003",
+        "correct": 3,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1423,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Seer",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Seer",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No player woke up or acted.\n2. Werewolves. Player3 and Player5 identified each other as teammates.\n3. Minion. No player woke up or acted.\n4. Masons. No player woke up or acted.\n5. Seer. Player4 checked two roles in the role pool (Insomniac, Robber).\n6. Robber. No player woke up or acted.\n7. Troublemaker. Player5 claimed to be Troublemaker and swapped the roles of Player1 and Player4. Player1 received Seer, and Player4 received Villager.\n8. Insomniac. Player1 looked at their current role, which is Seer.\n\nFinal configuration:\n- player1: Seer\n- player2: Villager\n- player3: Werewolf\n- player4: Villager\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_008",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1557,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Robber",
+          "player2": "Troublemaker",
+          "player3": "Insomniac",
+          "player4": "Werewolf",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Robber",
+          "player2": "Troublemaker",
+          "player3": "Insomniac",
+          "player4": "Werewolf",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 and player4 identified each other as teammates. No swaps occurred.\n2. Seer. No player currently holds the Seer role. No action was taken.\n3. Robber. player3 switched roles with player1. player3's new role is Werewolf.\n4. Troublemaker. player2 swapped roles between player3 and player5. player3's new role is Insomniac. player5's new role is Werewolf.\n5. Insomniac. player3 is the Insomniac and looked at their current role. No swaps occurred.\n\nFinal configuration:\n- player1: Robber\n- player2: Troublemaker\n- player3: Insomniac\n- player4: Werewolf\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_011",
+        "correct": 3,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1753,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Seer",
+          "player3": "Insomniac",
+          "player4": "Villager",
+          "player5": "Robber"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Seer",
+          "player3": "Robber",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 identified themselves as the only Werewolf in the game. No swap occurred.\n2. Seer. player3 checked player1's role, which is Werewolf. No swap occurred.\n3. Robber. player2 swapped their role with player3. player2 received Seer, and player3 received Robber.\n4. Troublemaker. player1 claimed to be the Troublemaker and swapped the roles of player3 and player5. player3 received Insomniac, and player5 received Robber.\n5. Insomniac. player3 looked at their current role, which is Insomniac. No swap occurred.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Seer\n- player3: Insomniac\n- player4: Villager\n- player5: Robber"
+      },
+      {
+        "session_name": "episode_013",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1724,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Troublemaker",
+          "player2": "Villager",
+          "player3": "Robber",
+          "player4": "Werewolf",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Troublemaker",
+          "player2": "Villager",
+          "player3": "Robber",
+          "player4": "Werewolf",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No player holds this role. No action occurred.\n2. Werewolves. Player4 is the only Werewolf. They look for teammates and find none. No action occurred.\n3. Minion. No player holds this role. No action occurred.\n4. Masons. No player holds this role. No action occurred.\n5. Seer. No player holds this role. No action occurred.\n6. Robber. Player3 (Robber) swaps with Player4 (Werewolf). Player3's new role is Werewolf.\n7. Troublemaker. Player1 (Troublemaker) swaps roles between Player3 (Werewolf) and Player4 (Robber). Player3's new role is Robber. Player4's new role is Werewolf.\n8. Drunk. No player holds this role. No action occurred.\n9. Insomniac. Player5 (Insomniac) checks their current role. No action occurred.\n\nFinal configuration:\n- player1: Troublemaker\n- player2: Villager\n- player3: Robber\n- player4: Werewolf\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_018",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1573,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Seer",
+          "player2": "Insomniac",
+          "player3": "Robber",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Seer",
+          "player2": "Insomniac",
+          "player3": "Robber",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player3 identified their teammates. Since there was only one, no swap occurred.\n2. Seer. player1 checked player3's role. The role of player3 is Werewolf.\n3. Robber. player5 switched their role with player3, and their new role is Werewolf.\n4. Troublemaker. No player holds the Troublemaker role. No action was taken.\n5. Insomniac. player2 looked at their current card. Your final role is Insomniac.\n\nFinal configuration:\n- player1: Seer\n- player2: Insomniac\n- player3: Robber\n- player4: Villager\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_019",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 917,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Seer",
+          "player2": "Insomniac",
+          "player3": "Robber",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Seer",
+          "player2": "Insomniac",
+          "player3": "Robber",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. Player3 identified teammates. Since there were no other Werewolves, no role swaps occurred.\n2. Seer. Player1 checked player2's role, which was Insomniac. No role swaps occurred.\n3. Robber. Player5 swapped their role with player3. Player5 became Werewolf, and player3 became Robber.\n4. Troublemaker. The Troublemaker did not wake up and performed no actions. No role swaps occurred.\n5. Insomniac. Player2 checked their final role, which was Insomniac. No role swaps occurred.\n\nFinal configuration:\n- player1: Seer\n- player2: Insomniac\n- player3: Robber\n- player4: Villager\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_023",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1200,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Robber",
+          "player2": "Werewolf",
+          "player3": "Seer",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Robber",
+          "player2": "Werewolf",
+          "player3": "Seer",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player2 is the only Werewolf. player2 looks for other werewolves and finds none.\n2. Seer. player1 is the Seer. player1 checks player2's role and learns that player2 is Werewolf.\n3. Robber. player3 is the Robber. player3 swaps their role with player1, and player3's new role is Seer.\n4. Troublemaker. No player currently holds the Troublemaker role. No action is taken.\n5. Insomniac. player5 is the Insomniac. player5 checks their current role and confirms they are Insomniac.\n\nFinal configuration:\n- player1: Robber\n- player2: Werewolf\n- player3: Seer\n- player4: Villager\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_024",
+        "correct": 4,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 2541,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Robber",
+          "player2": "Villager",
+          "player3": "Robber",
+          "player4": "Werewolf",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Robber",
+          "player2": "Villager",
+          "player3": "Insomniac",
+          "player4": "Werewolf",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player4 and player5 identify their teammates. No swaps occurred.\n2. Seer. No player holds the Seer role. No action occurred.\n3. Robber. player3 switches their role with player1. player3 receives Insomniac, and player1 receives Robber.\n4. Troublemaker. player2 swaps the cards of player1 and player3. player1 receives Insomniac, and player3 receives Robber.\n5. Insomniac. player1 looks at their current card. The Moderator reports that player1's final role is Robber. player1's role is set to Robber.\n\nFinal configuration:\n- player1: Robber\n- player2: Villager\n- player3: Robber\n- player4: Werewolf\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_028",
+        "correct": 4,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1591,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Insomniac",
+          "player3": "Villager",
+          "player4": "Robber",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Werewolf",
+          "player3": "Villager",
+          "player4": "Robber",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Villager. No action was taken.\n2. Werewolf. Player4 identified themselves as the only Werewolf in the game. No swaps occurred.\n3. Villager. No action was taken.\n4. Villager. No action was taken.\n5. Insomniac. Player5 checked a player's role or two roles in the role pool. No swaps occurred.\n6. Robber. Player2 swapped their role with player4. Player2 became Werewolf, and player4 became Robber.\n7. Robber. Player4 swapped the roles of player2 and player5. Player2 became Insomniac, and player5 became Werewolf.\n8. Insomniac. Player5 looked at their current role, and the Moderator stated their role is Insomniac. Player5's role changed to Insomniac.\n\nFinal configuration:\n- player1: Villager\n- player2: Insomniac\n- player3: Villager\n- player4: Robber\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_031",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1419,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Robber",
+          "player3": "Seer",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Robber",
+          "player3": "Seer",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 identified themselves as the only Werewolf. No swaps occurred.\n2. Seer. player3 checked two roles in the role pool: Villager and Werewolf. No swaps occurred.\n3. Robber. player2 stated they did not switch with other player, so they remain their role. No swaps occurred.\n4. Troublemaker. No player holds the Troublemaker role. No action was taken.\n5. Insomniac. player4 looked at their current card and confirmed they are Insomniac. No swaps occurred.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Robber\n- player3: Seer\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_032",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1152,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Seer",
+          "player3": "Robber",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Seer",
+          "player3": "Robber",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 identified only themselves as a Werewolf in the game. No swaps occurred.\n2. Seer. player3 checked two roles in the role pool: Villager and Werewolf. No swaps occurred.\n3. Robber. player2 swapped roles with player3. player2 received Seer, and player3 received Robber.\n4. Troublemaker. No player holds the Troublemaker role. No actions occurred.\n5. Insomniac. player4 looked at their current role and confirmed it was Insomniac. No swaps occurred.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Seer\n- player3: Robber\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_033",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1285,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Not called. No action taken.\n2. Werewolves. player3 and player5 identify each other as teammates. No swaps occur.\n3. Not called. No action taken.\n4. Not called. No Seer was dealt to any player. No action taken.\n5. Robber. player4 swaps their role with player2. player4's new role is Villager.\n\nFinal configuration:\n- player1: Villager\n- player2: Robber\n- player3: Werewolf\n- player4: Villager\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_036",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 2006,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No action occurred.\n2. Werewolves. Player3 identified themselves as the only Werewolf. No swaps occurred.\n3. Minion. No action occurred.\n4. Masons. No action occurred.\n5. Seer. No action occurred.\n6. Robber. Player4 swapped their role with player2. Player4's new role is Insomniac. Player2's new role is Robber.\n7. Troublemaker. No action occurred.\n8. Drunk. No action occurred.\n9. Insomniac. Player4 is the Insomniac and looked at their current card. No swaps occurred.\n\nFinal configuration:\n- player1: Villager\n- player2: Robber\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_037",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 2046,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. Player3 identified themselves as the only Werewolf in the game. No swaps occurred.\n2. Robber. Player4 (starting as Robber) swapped roles with Player2. Player4's new role is Insomniac. Player2's new role is Robber.\n3. Robber. No player currently holding the Robber role (Player2) was called, and the transcript provides no evidence of a swap being performed by the Robber. No swaps occurred.\n4. Troublemaker. Player3 (starting as Werewolf) was called, but is not the Troublemaker. No swaps occurred.\n5. Insomniac. Player2 looked at their current role, which is Robber. No swaps occurred.\n\nFinal configuration:\n- player1: Villager\n- player2: Robber\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_038",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1789,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player3 identified themselves as the only Werewolf. No swaps occurred.\n2. Seer. The Seer role is in the center. No Seer action took place. No swaps occurred.\n3. Robber. player4 swapped their role with player2. player4's new role is Insomniac, and player2's new role is Robber.\n4. Troublemaker. The Troublemaker role is in the center. No Troublemaker action took place. No swaps occurred.\n5. Insomniac. player2 looked at their current role, which is Robber. No swaps occurred.\n\nFinal configuration:\n- player1: Villager\n- player2: Robber\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_039",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1377,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Villager",
+          "player3": "Robber",
+          "player4": "Seer",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Villager",
+          "player3": "Robber",
+          "player4": "Seer",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No player holds this role, so no action is taken.\n2. Werewolves. Player1 is the only Werewolf and looks for teammates. No other Werewolves are found.\n3. Minion. No player holds this role, so no action is taken.\n4. Masons. No player holds this role, so no action is taken.\n5. Seer. Player4 is the Seer and checks player2's role. Player2's role is Robber.\n6. Robber. Player2 is the Robber and swaps roles with player3. Player2 receives Villager, and player3 receives Robber.\n7. Troublemaker. No player holds this role, so no action is taken.\n8. Drunk. No player holds this role, so no action is taken.\n9. Insomniac. Player5 is the Insomniac and looks at their current role. Player5's role is Insomniac.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Villager\n- player3: Robber\n- player4: Seer\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_051",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1572,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Insomniac",
+          "player2": "Werewolf",
+          "player3": "Troublemaker",
+          "player4": "Villager",
+          "player5": "Seer"
+        },
+        "gold": {
+          "player1": "Insomniac",
+          "player2": "Werewolf",
+          "player3": "Troublemaker",
+          "player4": "Villager",
+          "player5": "Seer"
+        },
+        "raw_response": "Night actions, in call order:\n1. Insomniac. Player1 checked their current role, which is Insomniac. No swap occurred.\n2. Werewolf. Player4 identified their teammates. Player4 is the only Werewolf. No swap occurred.\n3. Minion. No Minion action was recorded. No swap occurred.\n4. Mason. No Mason action was recorded. No swap occurred.\n5. Seer. Player5 checked two roles in the role pool. The roles were Robber and Werewolf. No swap occurred.\n6. Robber. No Robber action was recorded. No swap occurred.\n7. Troublemaker. Player3 successfully swapped roles between player2 and player4. Player2 became Werewolf, and player4 became Villager.\n8. Drunk. No Drunk action was recorded. No swap occurred.\n9. Insomniac. Player1 checked their current role, which is Insomniac. No swap occurred.\n\nFinal configuration:\n- player1: Insomniac\n- player2: Werewolf\n- player3: Troublemaker\n- player4: Villager\n- player5: Seer"
+      },
+      {
+        "session_name": "episode_061",
+        "correct": 4,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1837,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Insomniac",
+          "player3": "Insomniac",
+          "player4": "Werewolf",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Villager",
+          "player3": "Insomniac",
+          "player4": "Werewolf",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No action was taken.\n2. Werewolf. player1 and player4 identified each other as teammates.\n3. Minion. No action was taken.\n4. Mason. No action was taken.\n5. Seer. No action was taken.\n6. Robber. No action was taken.\n7. Troublemaker. player4 swapped player2's role (Villager) with player3's role (Insomniac).\n8. Drunk. No action was taken.\n9. Insomniac. player3 confirmed their final role is Insomniac.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Insomniac\n- player3: Insomniac\n- player4: Werewolf\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_064",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1229,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Seer",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Seer",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No Doppelganger is present, so no action is taken.\n2. Werewolves. Player3 is the only Werewolf and identifies no teammates. No action is taken.\n3. Minion. No Minion is present, so no action is taken.\n4. Masons. No Mason is present, so no action is taken.\n5. Seer. Player2 is the Seer and views Player1's role. Player1 is Villager.\n6. Robber. No Robber is present, so no action is taken.\n7. Troublemaker. No Troublemaker is present, so no action is taken.\n8. Insomniac. Player4 is the Insomniac and views their current role. Player4 is Insomniac.\n\nFinal configuration:\n- player1: Villager\n- player2: Seer\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_074",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 2080,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Werewolf",
+          "player5": "Seer"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Werewolf",
+          "player5": "Seer"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No player holds this role. Action: None.\n2. Werewolves. Players3 and Player4 are Werewolves. They identify their teammates. Action: None.\n3. Minion. No player holds this role. Action: None.\n4. Masons. No player holds this role. Action: None.\n5. Seer. Player5 is the Seer. They check two roles in the role pool. The roles checked are Robber and Troublemaker. Action: Player5 gains information. No role change.\n6. Robber. No player holds this role. Action: None.\n7. Troublemaker. No player holds this role. Action: None.\n8. Insomniac. No player holds this role. Action: None.\n\nFinal configuration:\n- player1: Villager\n- player2: Villager\n- player3: Werewolf\n- player4: Werewolf\n- player5: Seer"
+      },
+      {
+        "session_name": "episode_079",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1051,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Robber",
+          "player2": "Werewolf",
+          "player3": "Villager",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "gold": {
+          "player1": "Robber",
+          "player2": "Werewolf",
+          "player3": "Villager",
+          "player4": "Villager",
+          "player5": "Werewolf"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 and player5 identified each other as Werewolves. No swaps occurred.\n2. Seer. No player holds the Seer role. No actions occurred.\n3. Robber. player2 swapped roles with player1. player1 became Robber, and player2 became Werewolf.\n4. Troublemaker. No player holds the Troublemaker role. No actions occurred.\n5. Insomniac. No player holds the Insomniac role. No actions occurred.\n\nFinal configuration:\n- player1: Robber\n- player2: Werewolf\n- player3: Villager\n- player4: Villager\n- player5: Werewolf"
+      },
+      {
+        "session_name": "episode_083",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1858,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Troublemaker",
+          "player2": "Werewolf",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Troublemaker",
+          "player2": "Werewolf",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player3 and player4 confirm each other as Werewolves. No role swaps occurred.\n2. Seer. No player currently holds the Seer role. No action occurred.\n3. Robber. The transcript does not detail the Robber's action. No role swaps occurred.\n4. Troublemaker. player1 swapped player2's card (Insomniac) with player4's card (Werewolf). player2 is now Werewolf, and player4 is now Insomniac.\n5. Insomniac. player2 checks their current role and confirms they are Werewolf. No role swaps occurred.\n\nFinal configuration:\n- player1: Troublemaker\n- player2: Werewolf\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_084",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1931,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Troublemaker",
+          "player2": "Werewolf",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Troublemaker",
+          "player2": "Werewolf",
+          "player3": "Werewolf",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No Doppelganger was called, so no action occurred.\n2. Werewolves. Player3 and player4 identified each other as Werewolves. No swaps occurred.\n3. Minion. No Minion was called, so no action occurred.\n4. Masons. No Mason was called, so no action occurred.\n5. Seer. No player currently holds the Seer role, and no action was described, so no swaps occurred.\n6. Robber. No player currently holds the Robber role, and no action was described, so no swaps occurred.\n7. Troublemaker. Player1 successfully swapped player2's role (Insomniac) with player4's role (Werewolf). Player2 is now Werewolf, and player4 is now Insomniac.\n8. Insomniac. Player2 checked their current role, which is Werewolf. No swaps occurred.\n\nFinal configuration:\n- player1: Troublemaker\n- player2: Werewolf\n- player3: Werewolf\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_087",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1005,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Werewolf",
+          "player2": "Robber",
+          "player3": "Troublemaker",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Werewolf",
+          "player2": "Robber",
+          "player3": "Troublemaker",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player2 confirmed they are the only Werewolf in the game. No swap occurred.\n2. Seer. No player holds the Seer role. No action occurred.\n3. Robber. player5 switched their role with player1. player5's new role is Insomniac.\n4. Troublemaker. player3 successfully swapped roles between player1 and player2. player1 is now Werewolf, and player2 is now Robber.\n5. Insomniac. player5 looked at their current role, Insomniac. No swap occurred.\n\nFinal configuration:\n- player1: Werewolf\n- player2: Robber\n- player3: Troublemaker\n- player4: Villager\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_089",
+        "correct": 1,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1633,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Robber",
+          "player2": "Werewolf",
+          "player3": "Seer",
+          "player4": "Villager",
+          "player5": "Insomniac"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Werewolf",
+          "player3": "Insomniac",
+          "player4": "Robber",
+          "player5": "Seer"
+        },
+        "raw_response": "Night actions, in call order:\n1. Not called. No action.\n2. player4 (Werewolf) looked for other Werewolves. Found none.\n3. Not called. No action.\n4. Not called. No action.\n5. player5 (Seer) checked two roles in the role pool. They were Villager and Troublemaker.\n6. player2 (Robber) switched role with player4. player2 became Werewolf and player4 became Robber.\n7. player2 (Werewolf) swapped roles between player1 and player3. player1 became Robber and player3 became Seer.\n8. player3 (Seer) looked at their current card. It is Seer.\n\nFinal configuration:\n- player1: Robber\n- player2: Werewolf\n- player3: Seer\n- player4: Villager\n- player5: Insomniac"
+      },
+      {
+        "session_name": "episode_091",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1791,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Insomniac",
+          "player2": "Troublemaker",
+          "player3": "Robber",
+          "player4": "Werewolf",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Insomniac",
+          "player2": "Troublemaker",
+          "player3": "Robber",
+          "player4": "Werewolf",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player4 identified themselves as the only Werewolf in the game. No swaps occurred.\n2. Seer. No action was recorded for the Seer phase. The subsequent Robber action proceeded.\n3. Robber. player3 switched their role with player1. player3 received Insomniac, and player1 received Robber.\n4. Troublemaker. player2 swapped roles between player1 and player3. player1 received Insomniac, and player3 received Robber.\n5. Insomniac. player1 looked at their current card and confirmed they were Insomniac. No swaps occurred.\n\nFinal configuration:\n- player1: Insomniac\n- player2: Troublemaker\n- player3: Robber\n- player4: Werewolf\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_094",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 938,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Werewolf",
+          "player3": "Villager",
+          "player4": "Troublemaker",
+          "player5": "Seer"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Werewolf",
+          "player3": "Villager",
+          "player4": "Troublemaker",
+          "player5": "Seer"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. Player1 (Werewolf) looked for teammates and found none among the other players.\n2. Seer. Player5 (Seer) checked player1's role and saw it was Werewolf.\n3. Robber. No player currently holds the Robber role, so no action was taken.\n4. Troublemaker. Player4 (Troublemaker) swapped roles between player1 and player2. Player1 received Villager, and player2 received Werewolf.\n5. Insomniac. No player currently holds the Insomniac role, so no action was taken.\n\nFinal configuration:\n- player1: Villager\n- player2: Werewolf\n- player3: Villager\n- player4: Troublemaker\n- player5: Seer"
+      },
+      {
+        "session_name": "episode_096",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1365,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Troublemaker",
+          "player5": "Seer"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Villager",
+          "player3": "Werewolf",
+          "player4": "Troublemaker",
+          "player5": "Seer"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player1 is the only Werewolf and reports that the only Werewolf in the game is player1.\n2. Seer. player5 is the Seer and reports that the two roles checked in the role pool are Insomniac and Werewolf.\n3. Robber. No player currently holds the Robber role, so no action is taken.\n4. Troublemaker. player4 swapped the roles of player1 and player3. player1 changed from Werewolf to Villager, and player3 changed from Villager to Werewolf.\n5. Insomniac. No player currently holds the Insomniac role, so no action is taken.\n\nFinal configuration:\n- player1: Villager\n- player2: Villager\n- player3: Werewolf\n- player4: Troublemaker\n- player5: Seer"
+      },
+      {
+        "session_name": "episode_111",
+        "correct": 5,
+        "total": 5,
+        "exact_game": true,
+        "thought_emitted": true,
+        "output_token_count": 1449,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Troublemaker",
+          "player2": "Seer",
+          "player3": "Robber",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "gold": {
+          "player1": "Troublemaker",
+          "player2": "Seer",
+          "player3": "Robber",
+          "player4": "Insomniac",
+          "player5": "Villager"
+        },
+        "raw_response": "Night actions, in call order:\n1. Doppelganger. No Doppelganger role was dealt to any player, so no action was taken.\n2. Werewolves. There are two Werewolves in the role pool, and no player holds the Werewolf role, so no action was taken.\n3. Minion. No Minion role was dealt to any player, so no action was taken.\n4. Masons. No Mason role was dealt to any player, so no action was taken.\n5. Seer. Player3 (Seer) checked Player2's role and confirmed it was Villager. No role swap occurred.\n6. Robber. Player5 (Robber) swapped roles with Player2. Player5 took Villager, and Player2 took Robber.\n7. Troublemaker. Player1 (Troublemaker) swapped roles between Player2 and Player3. Player2 took Seer, and Player3 took Robber.\n8. Drunk. No Drunk role was dealt to any player, so no action was taken.\n9. Insomniac. Player4 (Insomniac) looked at their current role and confirmed it was Insomniac. No role swap occurred.\n\nFinal configuration:\n- player1: Troublemaker\n- player2: Seer\n- player3: Robber\n- player4: Insomniac\n- player5: Villager"
+      },
+      {
+        "session_name": "episode_112",
+        "correct": 4,
+        "total": 5,
+        "exact_game": false,
+        "thought_emitted": true,
+        "output_token_count": 1296,
+        "hit_max_new_tokens": false,
+        "parse_ok": true,
+        "non_terminating": false,
+        "scored": true,
+        "predicted": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Seer",
+          "player5": "Troublemaker"
+        },
+        "gold": {
+          "player1": "Villager",
+          "player2": "Robber",
+          "player3": "Werewolf",
+          "player4": "Werewolf",
+          "player5": "Troublemaker"
+        },
+        "raw_response": "Night actions, in call order:\n1. Werewolf. player3 and player4 identified each other as teammates. No roles were swapped.\n2. Seer. player4 woke up and was called Seer. No action or role change was reported in the transcript.\n3. Robber. player2 swapped their role with player1. player2 received Villager, and player1 received Robber.\n4. Troublemaker. player5 swapped the roles of player1 and player2. player1 received Villager, and player2 received Robber.\n5. Insomniac. The Insomniac role was called, but no action that caused a role change was reported in the transcript.\n\nFinal configuration:\n- player1: Villager\n- player2: Robber\n- player3: Werewolf\n- player4: Seer\n- player5: Troublemaker"
+      }
+    ],
+    "exact_game_accuracy": 0.7666666666666667,
+    "per_role": {
+      "Insomniac": {
+        "correct": 20,
+        "total": 23,
+        "accuracy": 0.8695652173913043
+      },
+      "Robber": {
+        "correct": 19,
+        "total": 21,
+        "accuracy": 0.9047619047619048
+      },
+      "Seer": {
+        "correct": 13,
+        "total": 15,
+        "accuracy": 0.8666666666666667
+      },
+      "Troublemaker": {
+        "correct": 11,
+        "total": 11,
+        "accuracy": 1.0
+      },
+      "Villager": {
+        "correct": 38,
+        "total": 41,
+        "accuracy": 0.926829268292683
+      },
+      "Werewolf": {
+        "correct": 37,
+        "total": 39,
+        "accuracy": 0.9487179487179487
+      }
+    },
+    "thought_channel_emitted": 30,
+    "json_parse_failures": 0,
+    "output_tokens": [
+      1423,
+      1557,
+      1753,
+      1724,
+      1573,
+      917,
+      1200,
+      2541,
+      1591,
+      1419,
+      1152,
+      1285,
+      2006,
+      2046,
+      1789,
+      1377,
+      1572,
+      1837,
+      1229,
+      2080,
+      1051,
+      1858,
+      1931,
+      1005,
+      1633,
+      1791,
+      938,
+      1365,
+      1449,
+      1296
+    ]
+  }
+}
