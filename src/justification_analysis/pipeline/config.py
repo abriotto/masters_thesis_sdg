@@ -76,6 +76,20 @@ STAGE_RUN_STRUCTURE: Dict[str, Dict[str, Tuple[str, ...]]] = {
              "greedy_runs": DEFAULT_GREEDY_RUNS},
     "ft": {"stochastic_runs": DEFAULT_STOCHASTIC_RUNS,
            "greedy_runs": ()},
+    "derivation": {"stochastic_runs": DEFAULT_STOCHASTIC_RUNS,
+                   "greedy_runs": ()},
+}
+
+# The models a stage actually covers. Base and ft were generated for all
+# three; the derivation adapters exist for E2B and E4B, and only E4B was
+# sent for semantic annotation, so the justification pipeline treats
+# derivation as an E4B-only corpus. A stage absent here gets DEFAULT_MODELS.
+#
+# This lives beside the run structure for the same reason: switching stage
+# must not silently keep a model set the stage never had, which would fail
+# deep inside a loader instead of at configuration time.
+STAGE_MODELS: Dict[str, Tuple[str, ...]] = {
+    "derivation": ("Gemma 4 4B",),
 }
 
 VOTE_TABLE_RELATIVE = Path("vote_stability/tables/llm_vote_file_level.csv")
@@ -345,13 +359,22 @@ def default_config(**overrides) -> AnalysisConfig:
     Switching is a one-line change:
 
         config = default_config(stage="ft")
+        config = default_config(stage="derivation")
 
-    The run structure follows the stage from STAGE_RUN_STRUCTURE unless the
-    caller names it explicitly, so switching stage does not silently keep a
-    run structure the stage never had.
+    The run structure follows the stage from STAGE_RUN_STRUCTURE and the
+    model set from STAGE_MODELS, unless the caller names either explicitly,
+    so switching stage does not silently keep a run structure or a model
+    set the stage never had.
     """
     stage = overrides.get("stage", BASE_STAGE)
     structure = STAGE_RUN_STRUCTURE.get(stage, {})
     for field_name, value in structure.items():
         overrides.setdefault(field_name, value)
+    displays = STAGE_MODELS.get(stage)
+    if displays is not None:
+        wanted = set(displays)
+        overrides.setdefault(
+            "models",
+            tuple(m for m in DEFAULT_MODELS if m.display in wanted),
+        )
     return AnalysisConfig(**overrides)

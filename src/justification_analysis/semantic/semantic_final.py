@@ -66,6 +66,31 @@ DECODING_ORDER = ["Stochastic", "Greedy"]
 STOCHASTIC_RUNS = ["run_1", "run_2", "run_3"]
 GREEDY_RUNS = ["greedy_t0"]
 RUNS_BY_DECODING = {"Stochastic": STOCHASTIC_RUNS, "Greedy": GREEDY_RUNS}
+
+
+def set_vocabulary(config) -> None:
+    """Bind the model and run vocabulary to a configuration.
+
+    The statistics below build dense (model x run x game) tensors and index
+    them by position, so they have to agree with the corpus actually loaded.
+    Left at the base defaults, a single-model arm would get a three-model
+    tensor with two thirds of its cells never filled -- which the grid
+    assertion in `presence_tensor` catches, but only after the arm has been
+    silently mis-shaped.
+
+    `load_annotations` calls this with the configuration it was given, so
+    the vocabulary always describes the data in hand. For the base stage it
+    rebinds the module constants to exactly their existing values, leaving
+    base behaviour unchanged.
+    """
+    global MODEL_ORDER, DECODING_ORDER, STOCHASTIC_RUNS, GREEDY_RUNS
+    global RUNS_BY_DECODING
+    MODEL_ORDER = list(config.model_order)
+    STOCHASTIC_RUNS = list(config.stochastic_runs)
+    GREEDY_RUNS = list(config.greedy_runs)
+    RUNS_BY_DECODING = {name: list(runs)
+                        for name, runs in config.runs_by_decoding.items()}
+    DECODING_ORDER = list(config.decoding_groups)
 RUN_KEYS = ["model", "decoding_group", "run_label"]
 
 # Paths derive from the active configuration. The base stage resolves to the
@@ -120,8 +145,21 @@ def __getattr__(name):
 BOOTSTRAP_SEED = 20260826
 BOOTSTRAP_REPLICATES = 10_000
 
-# Frozen at the annotation freeze point. If any of these change the corpus is
-# not the one these tables describe, and every number below is stale.
+# Frozen at each stage's annotation freeze point. If any of these change the
+# corpus is not the one these tables describe, and every number below is
+# stale.
+#
+# Only `games`, `sentences` and `labels` are recorded: the justification
+# counts are STRUCTURAL (games x models x runs) and are derived from the
+# configuration in `integrity_summary`, so a stage with a different model or
+# run structure does not need three more hand-copied numbers that could
+# disagree with each other.
+STAGE_INVARIANTS = {
+    "base": {"games": 191, "sentences": 8044, "labels": 11526},
+    "derivation": {"games": 191, "sentences": 2276, "labels": 2692},
+}
+
+# The base corpus, kept under its original name for anything importing it.
 INVARIANTS = {
     "justifications": 2292,
     "games": 191,
@@ -178,6 +216,7 @@ def load_annotations(repo_root: Path = None, config=None) -> Dict[str, pd.DataFr
     """
     config = _resolved_config(repo_root, config)
     config.require_semantic_inputs()
+    set_vocabulary(config)
     repo_root = config.repo_root
     records = _read_jsonl(annotations_path(config))
     source = _source_sentences(repo_root, config)
@@ -297,51 +336,73 @@ def _order(frame: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 def integrity_summary(data: Dict[str, pd.DataFrame],
-                      repo_root: Path) -> pd.DataFrame:
+                      repo_root: Path,
+                      config=None) -> pd.DataFrame:
     """Every count recomputed from the file, with its expected value.
 
     Nothing here trusts a previously reported number: the expectations are the
     frozen invariants, and anything that disagrees shows up as a FAIL row.
+
+    `config` names the stage whose invariants apply and supplies the model
+    and run structure. It defaults to base, so an existing call with two
+    arguments checks the base corpus exactly as before. A stage with no
+    recorded invariants stops here rather than being waved through: an
+    unchecked corpus is how a stale annotation file reaches a results table.
     """
+    from src.justification_analysis.pipeline import config as pipeline_config
+    if config is None:
+        config = pipeline_config.default_config()
+    if config.stage not in STAGE_INVARIANTS:
+        raise KeyError(
+            f"no recorded invariants for stage {config.stage!r}; add its "
+            f"measured counts to STAGE_INVARIANTS before quoting results")
+    invariants = STAGE_INVARIANTS[config.stage]
+    n_models = len(config.model_order)
+    n_runs = len(config.all_runs)
+    # Structural, not hand-copied: the corpus is fully crossed by design.
+    n_justifications = invariants["games"] * n_models * n_runs
+    per_model = invariants["games"] * n_runs
+    per_model_run = invariants["games"]
+
     justifications = data["justifications"]
     sentences = data["sentences"]
     labels = data["labels"]
 
-    source = _source_sentences(Path(repo_root))
+    source = _source_sentences(Path(repo_root), config)
     source_sentence_total = sum(len(v) for v in source.values())
 
     per_sentence = sentences["n_labels"]
     per_justification_categories = justifications["n_distinct_categories"]
 
     checks: List[Tuple[str, object, object]] = [
-        ("justifications", len(justifications), INVARIANTS["justifications"]),
+        ("justifications", len(justifications), n_justifications),
         ("unique justification ids",
          justifications["justification_id"].nunique(),
-         INVARIANTS["justifications"]),
+         n_justifications),
         ("duplicate justification ids",
          int(justifications["justification_id"].duplicated().sum()), 0),
-        ("games", justifications["game_id"].nunique(), INVARIANTS["games"]),
-        ("models", justifications["model"].nunique(), 3),
-        ("runs", justifications["run_label"].nunique(), 4),
+        ("games", justifications["game_id"].nunique(), invariants["games"]),
+        ("models", justifications["model"].nunique(), n_models),
+        ("runs", justifications["run_label"].nunique(), n_runs),
         ("justifications per model",
          sorted(int(n) for n in
                 justifications.groupby("model", observed=True).size().unique()),
-         [INVARIANTS["justifications_per_model"]]),
+         [per_model]),
         ("justifications per model x run",
          sorted(int(n) for n in
                 justifications.groupby(["model", "run_label"], observed=True)
                 .size().unique()),
-         [INVARIANTS["justifications_per_model_run"]]),
+         [per_model_run]),
         ("model x game x run fully crossed",
          len(justifications.drop_duplicates(["model", "game_id", "run_label"])),
-         INVARIANTS["justifications"]),
-        ("sentences", len(sentences), INVARIANTS["sentences"]),
+         n_justifications),
+        ("sentences", len(sentences), invariants["sentences"]),
         ("sentences match the input shards",
          len(sentences), source_sentence_total),
         ("sentence count matches metadata n_sentences",
          int((justifications["n_sentences"]
               != justifications["n_sentences_metadata"]).sum()), 0),
-        ("category assignments (labels)", len(labels), INVARIANTS["labels"]),
+        ("category assignments (labels)", len(labels), invariants["labels"]),
         ("labels use only frozen-schema categories",
          sorted(set(labels["category"].astype(str)) - set(ALL_CATEGORIES)), []),
         ("empty-label sentences", int((per_sentence == 0).sum()), "descriptive"),
@@ -672,7 +733,19 @@ def prevalence_bootstrap_differences(
                         "seed": seed,
                     })
 
-    table = pd.DataFrame(rows)
+    # A between-model difference needs a pair. A single-model arm has none,
+    # so the result is legitimately empty -- but it must still carry the
+    # columns, or every caller that selects a decoding group raises KeyError
+    # on a frame that is simply empty rather than wrong.
+    columns = [
+        "decoding_group", "category", "model_a", "model_b",
+        "prevalence_a", "prevalence_b", "difference", "ci_low", "ci_high",
+        "ci_excludes_zero", "n_runs_averaged", "n_games", "n_replicates",
+        "seed",
+    ]
+    table = pd.DataFrame(rows, columns=columns)
+    if table.empty:
+        return table
     return _order(table).sort_values(
         ["decoding_group", "category", "model_a", "model_b"]
     ).reset_index(drop=True)
@@ -1106,14 +1179,20 @@ def within_game_contrasts(
 # ---------------------------------------------------------------------------
 
 def build_final_tables(data: Dict[str, pd.DataFrame],
-                       repo_root: Path) -> Dict[str, pd.DataFrame]:
-    """Every final table, built once, in dependency order."""
+                       repo_root: Path,
+                       config=None) -> Dict[str, pd.DataFrame]:
+    """Every final table, built once, in dependency order.
+
+    `config` is passed through to the integrity gate so its expectations
+    describe the stage being built. Omitted, it defaults to base, which is
+    what every existing two-argument call means.
+    """
     justifications = data["justifications"]
     run_level = run_level_prevalence(justifications)
     co = cooccurrence(justifications)
 
     tables = {
-        "S0_integrity_summary": integrity_summary(data, repo_root),
+        "S0_integrity_summary": integrity_summary(data, repo_root, config),
         "S0b_repaired_sentences": data["repairs"],
         "S0c_multilabel_distribution": multilabel_distribution(data),
         "S1_annotation_summary": annotation_summary(data),
