@@ -1,0 +1,72 @@
+{
+  "source": "Youtube",
+  "session_name": "The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF_Game5.txt",
+  "player_names": [
+    "Justin",
+    "Mitchell",
+    "Paul",
+    "James",
+    "Tyler"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-derivation-v1/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Here's a thinking process to arrive at the desired JSON output:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to ensure Team Village wins. Team Village wins if they eliminate a Werewolf (if one exists). If no Werewolf exists, the outcome is \"No Werewolf.\"\n\n2.  **Analyze the Constraints & Rules:**\n    *   I am an external observer. I only have the public transcript.\n    *   I have no private information (like actual card assignments).\n    *   I must infer roles and alignments based on discussion, actions, and stated beliefs.\n    *   The game is in the Voting phase (implied by the final exchanges).\n\n3.  **Scan the Transcript for Role Actions/Information:**\n    *   [1] Announcer: \"Copycat, wake up. Look at one of the center cards.\" (Role: Copycat/Doppelganger)\n    *   [5] Announcer: \"Werewolves, wake up.\" (Role: Werewolf)\n    *   [8] Announcer: \"If there is only one, you may look at your cards.\" (Implies a check for single Werewolf)\n    *   [13] Announcer: \"Minion, wake up.\" (Role: Minion)\n    *   [15] Announcer: \"Werewolves, stick out your thumb so the Minion can see you.\" (Werewolves reveal themselves to Minion)\n    *   [20] Announcer: \"Minion, close your eyes. Seer, wake up.\" (Role: Seer)\n    *   [24] Announcer: \"You may look at another player's card, or two of the center cards.\" (Seer action)\n    *   [27] Announcer: \"Seer, close your eyes, Robber, wake up. You may exchange your card with another player's card, and then view your new card. Robber close your eyes. Troublemaker, wake up. You may exchange cards between two other players. Troublemaker, close your eyes.\" (Roles: Seer, Robber, Troublemaker)\n    *   *Crucial Note:* The transcript is highly chaotic and filled with accusations and role claims, making definitive role assignment impossible without knowing the initial setup.\n\n4.  **Evaluate the Evidence for Werewolves:**\n    *   Justin claims Mitchell is a Werewolf [48, 50].\n    *   Justin claims James is a Minion/Werewolf [52, 54].\n    *   Paul claims Mitchell is a Werewolf [91].\n    *   Paul claims James is a Minion [89].\n    *   Paul claims Tyler is Tanner [89].\n    *   Paul claims Mitchell is Werewolf [91].\n    *   *Conclusion on Roles:* Multiple players (Justin, Paul) accuse others of being Werewolves/Minions. However, these accusations are part of the discussion, not confirmed facts.\n\n5.  **Determine the Strategy (Village Win):**\n    *   Team Village needs to eliminate a Werewolf.\n    *   The discussion is highly polarized, with players accusing each other.\n    *   The final votes are focused on Justin and Mitchell.\n    *   [102] Mitchell: \"I'm voting for Justin.\"\n    *   [108] Mitchell: \"So I'm voting for Justin.\"\n    *   [151] Mitchell: \"I'm going to be voting for Justin.\"\n    *   [151] Paul: \"Oh, this is easy. We kill Mitchell.\" (This is a direct contradiction of Mitchell's stated intent, suggesting Paul might be acting differently or manipulating the situation.)\n    *   [152] Justin: \"Sure.\" (Justin seems to agree with Paul's plan to kill Mitchell, despite Mitchell's stated intent.)\n    *   [153] Paul: \"Yeah.\"\n    *   [155] Mitchell: \"Do I have- [156] James: Why do we kill Mitchell?\" (James is questioning the target.)\n    *   [159] Paul: \"You want to kill Mitchell.\" (Paul insists on killing Mitchell.)\n    *   [175] Paul: \"Vote for Mitchell.\" (Paul explicitly directs the vote to Mitchell.)\n    *   [176] Mitchell: \"You have to vote Justin.\" (Mitchell explicitly directs the vote to Justin.)\n    *   [181] Mitchell: \"It's Justin or lose.\" (Mitchell reiterates the target is Justin.)\n    *   [190] Mitchell: \"You can't, I promise it's Justin. It's Justin.\" (Mitchell is firm.)\n    *   [191] Tyler: \"Just go Justin. We'll go Justin.\" (Tyler supports Justin.)\n    *   [192] Mitchell: \"It's Justin. 100%.\" (Mitchell is absolutely certain.)\n    *   [193] Paul: \"It's not Justin.\" (Paul contradicts Mitchell.)\n\n6.  **Formulate the Decision:**\n    *   The final consensus among Mitchell and Tyler is that Justin is the Werewolf.\n    *   Paul is the only one actively contradicting this consensus, suggesting he might be a Werewolf or a Troublemaker trying to derail the vote.\n    *   Since the goal is to win for Team Village, and the majority of the final, high-stakes discussion points to Justin, Justin is the most logical target based on the public narrative.\n\n7.  **Draft Justification and Final Output.** (Ensure strict JSON format.)",
+  "parsed_output": {
+    "justification": "The final moments of the discussion heavily indicate that Justin is the primary suspect for being a Werewolf. Mitchell, who appears to be a key accuser, repeatedly states that the vote must be for Justin ('It's Justin or lose,' 'It's Justin. 100%'). Tyler also supports this conclusion ('Just go Justin. We'll go Justin.'). While Paul attempts to steer the vote toward Mitchell, the overwhelming consensus among the players who are actively participating in the final accusation phase points to Justin as the threat that Team Village must eliminate.",
+    "chosen_vote": "Justin"
+  },
+  "raw_response": "{\n  \"justification\": \"The final moments of the discussion heavily indicate that Justin is the primary suspect for being a Werewolf. Mitchell, who appears to be a key accuser, repeatedly states that the vote must be for Justin ('It's Justin or lose,' 'It's Justin. 100%'). Tyler also supports this conclusion ('Just go Justin. We'll go Justin.'). While Paul attempts to steer the vote toward Mitchell, the overwhelming consensus among the players who are actively participating in the final accusation phase points to Justin as the threat that Team Village must eliminate.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The final moments of the discussion heavily indicate that Justin is the primary suspect for being a Werewolf. Mitchell, who appears to be a key accuser, repeatedly states that the vote must be for Justin ('It's Justin or lose,' 'It's Justin. 100%'). Tyler also supports this conclusion ('Just go Justin. We'll go Justin.'). While Paul attempts to steer the vote toward Mitchell, the overwhelming consensus among the players who are actively participating in the final accusation phase points to Justin as the threat that Team Village must eliminate.\",\n  \"chosen_vote\": \"Justin\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Justin",
+    "justification": "The final moments of the discussion heavily indicate that Justin is the primary suspect for being a Werewolf. Mitchell, who appears to be a key accuser, repeatedly states that the vote must be for Justin ('It's Justin or lose,' 'It's Justin. 100%'). Tyler also supports this conclusion ('Just go Justin. We'll go Justin.'). While Paul attempts to steer the vote toward Mitchell, the overwhelming consensus among the players who are actively participating in the final accusation phase points to Justin as the threat that Team Village must eliminate."
+  },
+  "soft_warnings": [
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4993,
+    "output_token_count": 1376,
+    "generation_time_sec": 449.93177938461304,
+    "used_chat_template": true,
+    "input_char_count": 16112,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

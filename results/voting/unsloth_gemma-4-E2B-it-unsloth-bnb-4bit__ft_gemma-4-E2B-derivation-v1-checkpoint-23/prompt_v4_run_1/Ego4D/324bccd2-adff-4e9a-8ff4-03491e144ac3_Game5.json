@@ -1,0 +1,71 @@
+{
+  "source": "Ego4D",
+  "session_name": "324bccd2-adff-4e9a-8ff4-03491e144ac3",
+  "game_key": "Game5",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Ego4D/324bccd2-adff-4e9a-8ff4-03491e144ac3_Game5.txt",
+  "player_names": [
+    "Zack",
+    "Sean",
+    "Hunter",
+    "Jacob"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E2B-derivation-v1/checkpoint-23",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Request:** I need to act as an external observer, determine the optimal vote to make Team Village win, based solely on the provided transcript and game rules. Team Village wins if they eliminate a Werewolf, or if there are no Werewolves and no one dies.\n\n2.  **Identify Key Roles and Swaps:**\n    *   Players: Zack, Sean, Hunter, Jacob.\n    *   Winning Condition Check: Village wins if W dies, OR if no Ws and no deaths.\n\n3.  **Analyze the Transcript for Role Information/Changes:**\n    *   [37] Jacob: I started as a werewolf.\n    *   [39] Jacob: But I'm pretty sure my card got swapped.\n    *   [43] Jacob: I think the Werewolf card is now right here.\n    *   [75] Hunter: Well, Jacob's still the werewolf. (This confirms Jacob *started* as Werewolf).\n    *   [81] Jacob: So Sean's lying\n    *   [112] Jacob: If there is no robber that's then we vote Sean.\n    *   [117] Hunter: The Robber happens before the Troublemaker.\n    *   [120] Jacob: I am unsure of which round my card was swapped in. I know I heard it move at least once, but it could have been twice.\n    *   [142] Hunter: So what I just got from that little brief read of roles is that Sean is now the tanner, because he is not telling us what he is or was.\n    *   [143] Sean: Guys, I am the tanner even thought the tanner isn't in play. Not in play, but I'm the tanner. (Sean claims Tanner).\n    *   [144] Zack: I'm a villager\n    *   [148] Zack: What? Yeah, last night, I didn't wake up because I was a villager. (Zack claims Villager).\n    *   [172] Jacob: Looks like I'm a villager. (Jacob claims Villager).\n\n4.  **Determine Current State/Suspicions:**\n    *   Jacob claimed Werewolf initially, but admitted the card might have been swapped (meaning Jacob might not be the Werewolf now).\n    *   Sean claimed Tanner.\n    *   Zack claimed Villager.\n    *   Jacob claimed Villager at the end.\n    *   Hunter's actions strongly point toward Sean being the Werewolf (154: \"Because you've screwed over these two in the past so I know that if he's telling the truth than you're the werewolf\").\n\n5.  **Evaluate Voting Options (Zack, Sean, Hunter, Jacob):**\n    *   The question is: Who is the Werewolf? If Hunter is correct, Sean is the Werewolf.\n\n6.  **Determine the Vote based on Goal (Team Village winning):**\n    *   If Sean is the Werewolf, Team Village wins.\n    *   If the Werewolf is in the center (unlikely based on the confusion, but possible), I would choose 'No Werewolf'.\n\n7.  **Final Conclusion:** Hunter is the strongest indicator that Sean is the Werewolf (158). I will vote Sean.",
+  "parsed_output": {
+    "justification": "Hunter strongly indicates that Sean is the Werewolf by arguing that Sean's previous actions suggest he is lying about his role. Since Team Village wins if they eliminate a Werewolf, voting Sean eliminates the presumed Werewolf and ensures Team Village achieves its objective.",
+    "chosen_vote": "Sean"
+  },
+  "raw_response": "{\n  \"justification\": \"Hunter strongly indicates that Sean is the Werewolf by arguing that Sean's previous actions suggest he is lying about his role. Since Team Village wins if they eliminate a Werewolf, voting Sean eliminates the presumed Werewolf and ensures Team Village achieves its objective.\",\n  \"chosen_vote\": \"Sean\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Hunter strongly indicates that Sean is the Werewolf by arguing that Sean's previous actions suggest he is lying about his role. Since Team Village wins if they eliminate a Werewolf, voting Sean eliminates the presumed Werewolf and ensures Team Village achieves its objective.\",\n  \"chosen_vote\": \"Sean\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Sean",
+    "justification": "Hunter strongly indicates that Sean is the Werewolf by arguing that Sean's previous actions suggest he is lying about his role. Since Team Village wins if they eliminate a Werewolf, voting Sean eliminates the presumed Werewolf and ensures Team Village achieves its objective."
+  },
+  "soft_warnings": [
+    "justification_may_be_shorter_than_3_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastLanguageModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4723,
+    "output_token_count": 820,
+    "generation_time_sec": 169.36370372772217,
+    "used_chat_template": true,
+    "input_char_count": 15623,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E2B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

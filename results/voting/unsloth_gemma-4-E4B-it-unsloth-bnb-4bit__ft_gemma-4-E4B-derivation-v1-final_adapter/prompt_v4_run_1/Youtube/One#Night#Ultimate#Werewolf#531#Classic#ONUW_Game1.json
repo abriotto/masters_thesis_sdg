@@ -1,0 +1,71 @@
+{
+  "source": "Youtube",
+  "session_name": "One#Night#Ultimate#Werewolf#531#Classic#ONUW",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/One#Night#Ultimate#Werewolf#531#Classic#ONUW_Game1.txt",
+  "player_names": [
+    "Ryan",
+    "Katie",
+    "Brett",
+    "DeAndre"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-derivation-v1/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Thinking Process:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to make Team Village win. Team Village wins if they eliminate a Werewolf, or if no Werewolves exist and no one dies. I must base this solely on the public transcript and rules.\n\n2.  **Identify Key Roles/Information:** I need to track who claims what role and who makes claims about others' roles, especially regarding Werewolves.\n\n3.  **Review the Transcript for Role Claims/Actions:**\n\n    *   [2] Announcer calls Werewolves. (Initial roles are unknown, but the process started.)\n    *   [3] Announcer calls Minion. (Initial roles are unknown.)\n    *   [4] Announcer calls Robber. (Initial roles are unknown.)\n    *   [5] Announcer calls Troublemaker. (Initial roles are unknown.)\n    *   [6] Announcer calls Drunk. (Initial roles are unknown.)\n    *   [14] Katie claims she \"might have taken something that didn't belong to me.\" (Suggests Robber/Troublemaker/Doppelganger action).\n    *   [20] Brett claims he \"might have sleepwalked, and exchange something from the center.\" (Suggests Drunk/Robber action).\n    *   [24] Brett claims he was \"drunk.\" (Role claim).\n    *   [29] DeAndre claims he \"woke up, and I also exchanged a card from the center.\" (Suggests Drunk/Robber action).\n    *   [30] Katie suggests two people claim to be drunk.\n    *   [32] Ryan claims he is a \"drunk.\" (Role claim).\n    *   [37] Ryan confirms he \"exchanged my card from this with a card from the center.\" (Confirms Drunk/Robber action).\n    *   [44] Katie claims the card she stole \"was not a drunk card.\" (Implies she performed a swap).\n    *   [59] Brett claims he was the \"robber,\" and \"I took his drunk.\" (Implies Brett performed a swap).\n    *   [64] Brett claims he \"became the drunk.\" (Confirms a swap occurred).\n    *   [75] DeAndre claims he was the \"troublemaker,\" and \"I switched your card to somebody else's card?\" (Implies DeAndre performed a swap).\n    *   [91] Brett admits: \"Yes, I was the werewolf. At the beginning?\" (Initial role claim).\n    *   [98] Katie states: \"So, I was not the robber. So, Brett's still a werewolf.\" (Assessment of Brett's role).\n    *   [99] Brett asks Katie: \"Are you tanning?\" (Suggests Brett believes Katie is Tanner).\n    *   [101] DeAndre claims: \"No, he said he was the troublemaker. He's saying he swapped me and Ryan.\" (DeAndre claims Brett was Troublemaker).\n    *   [106] Katie states: \"A tanner. So, don't vote for Brett.\" (Katie claims her role is Tanner).\n    *   [104] DeAndre claims: \"Wait, so you were really a werewolf? Well, then I gave Katie a werewolf.\" (DeAndre claims he swapped Katie to Werewolf).\n    *   [112] Brett insists: \"No, we got to vote for Ryan. If we want to win, we got to vote for Ryan.\" (Targeting Ryan).\n\n4.  **Evaluate Suspects (Werewolves):**\n\n    *   **Brett:** Claims to be Werewolf initially [91]. Later claims to be Robber/Drunk [59, 64]. Later claims to be Troublemaker [101]. He is highly inconsistent and has claimed to be a Werewolf.\n    *   **DeAndre:** Claims to be Troublemaker [75]. Later claims he gave Katie a Werewolf [104]. He is actively manipulating roles.\n    *   **Ryan:** Claimed to be Drunk [32]. Targeted by Brett [112].\n    *   **Katie:** Claims to be Tanner [106]. Also claimed to be Robber [44].\n\n5.  **Determine the Most Likely Werewolf:**\n\n    *   Brett is the only player who explicitly stated, \"Yes, I was the werewolf. At the beginning?\" [91]. While he has subsequently claimed other roles, this is a direct admission of his starting role.\n    *   DeAndre claims to have *given* Katie a Werewolf [104], suggesting he knows who the Werewolves are, but he hasn't claimed to be one himself.\n    *   Given the direct admission by Brett, he is the strongest candidate for a Werewolf.\n\n6.  **Formulate the Justification and Vote:**\n\n    *   The justification must focus on the evidence (Brett's admission).\n    *   The chosen vote must be Brett.\n\n7.  **Final Review against Constraints:**\n    *   Output must be valid JSON only.\n    *   Justification must be 3-5 sentences.\n    *   Chosen vote must be a player name or \"No Werewolf\". (Brett).",
+  "parsed_output": {
+    "justification": "Brett explicitly admitted to being a Werewolf at the beginning of the game, stating, \"Yes, I was the werewolf. At the beginning?\" [91]. Although Brett later claimed to be a Robber or Troublemaker, this initial admission provides strong evidence of his starting alignment. Given that Team Village wins by eliminating a Werewolf, and Brett is the only player who directly confessed to this role, he is the most probable target. Voting him out is the clearest path to victory for Team Village.",
+    "chosen_vote": "Brett"
+  },
+  "raw_response": "{\n  \"justification\": \"Brett explicitly admitted to being a Werewolf at the beginning of the game, stating, \\\"Yes, I was the werewolf. At the beginning?\\\" [91]. Although Brett later claimed to be a Robber or Troublemaker, this initial admission provides strong evidence of his starting alignment. Given that Team Village wins by eliminating a Werewolf, and Brett is the only player who directly confessed to this role, he is the most probable target. Voting him out is the clearest path to victory for Team Village.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"Brett explicitly admitted to being a Werewolf at the beginning of the game, stating, \\\"Yes, I was the werewolf. At the beginning?\\\" [91]. Although Brett later claimed to be a Robber or Troublemaker, this initial admission provides strong evidence of his starting alignment. Given that Team Village wins by eliminating a Werewolf, and Brett is the only player who directly confessed to this role, he is the most probable target. Voting him out is the clearest path to victory for Team Village.\",\n  \"chosen_vote\": \"Brett\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Brett",
+    "justification": "Brett explicitly admitted to being a Werewolf at the beginning of the game, stating, \"Yes, I was the werewolf. At the beginning?\" [91]. Although Brett later claimed to be a Robber or Troublemaker, this initial admission provides strong evidence of his starting alignment. Given that Team Village wins by eliminating a Werewolf, and Brett is the only player who directly confessed to this role, he is the most probable target. Voting him out is the clearest path to victory for Team Village."
+  },
+  "soft_warnings": [
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 3854,
+    "output_token_count": 1296,
+    "generation_time_sec": 424.43879675865173,
+    "used_chat_template": true,
+    "input_char_count": 13463,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "source": "Youtube",
+  "session_name": "ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018",
+  "game_key": "Game1",
+  "processed_txt_path": "data/processed/lai2023/onuw_transcripts_ready/Youtube/ONE#NIGHT#ULTIMATE#WEREWOLF#28##February#17th#2018_Game1.txt",
+  "player_names": [
+    "Justin",
+    "Caitlynn",
+    "Paul",
+    "Alysha",
+    "Mitchell",
+    "Mike"
+  ],
+  "backend": "unsloth_local",
+  "model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+  "adapter_path": "models/finetuned/gemma-4-E4B-derivation-v1/final_adapter",
+  "prompt_version": "v4_run_1",
+  "prompt_path": "src/prompts/voting_prompt_v4.txt",
+  "rules_path": "src/prompts/onuw_rules_v2.txt",
+  "max_new_tokens": 10000,
+  "max_seq_length": 16384,
+  "reasoning_effort": "low",
+  "gemma_enable_thinking": true,
+  "save_internal_thoughts": true,
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 64,
+  "repetition_penalty": 1.05,
+  "no_repeat_ngram_size": 0,
+  "internal_thoughts": "Here's a thinking process to arrive at the desired JSON output:\n\n1.  **Analyze the Goal:** The objective is to choose a player to vote out to ensure Team Village wins. Team Village wins if they eliminate a Werewolf (and a Werewolf is present). If no Werewolf is present, the outcome is \"No Werewolf.\"\n\n2.  **Analyze the Constraints:** I only have the public discussion transcript and the game rules. I cannot see private information. I must provide a concise justification (3-5 sentences) and a single chosen vote/status.\n\n3.  **Identify Key Information/Actions (Role Tracking):** The transcript is highly chaotic, involving multiple role swaps (Robber, Troublemaker, Doppelganger, Drunk). I must track the *stated* roles and the *implied* actions, focusing on who claims what and who accuses whom.\n\n    *   **Players:** Justin, Caitlynn, Paul, Alysha, Mitchell, Mike.\n    *   **Roles mentioned/claimed:** Drunk, Revealer, Tanner, Troublemaker, Seer, Minion, Werewolf, Robber.\n\n    *   **Night Actions (Implied):**\n        *   *Werewolves/Minion:* They are looking for teammates.\n        *   *Seer/Robber/Troublemaker/Drunk:* They are performing actions.\n\n    *   **Crucial Claims/Accusations:**\n        *   (26) Justin: \"I only have werewolf, werewolf, minion, tanner.\" (Justin claims to have multiple roles, which is impossible, but this shows his perceived roles.)\n        *   (26) Justin: \"I was the troublemaker, which is a little bit suspicious and I switched to you two.\" (Justin claims to have been Troublemaker and performed a swap.)\n        *   (26) Justin: \"Caitlynn actually said you were the drunk.\" (Justin is pointing fingers.)\n        *   (28) Paul: \"I know who the minion is.\" (Paul claims knowledge.)\n        *   (50) Mike: \"Yeah. It's Mitchell.\" (Mike names Mitchell as the Minion.)\n        *   (103) Paul: \"Alysha knows that because she's a werewolf and she's the only werewolf.\" (Paul accuses Alysha of being a Werewolf.)\n        *   (116) Paul: \"Then I think Mitchell's a werewolf.\" (Paul accuses Mitchell of being a Werewolf.)\n        *   (125) Alysha: \"If they switched, I think Mitchell might be a werewolf.\" (Alysha suggests Mitchell is a Werewolf.)\n        *   (129) Paul: \"Alysha and Mike are definitely both lying.\" (Paul accuses Alysha and Mike of lying.)\n        *   (130) Mitchell: \"Don't vote for me, I'm a werewolf. I want to win.\" (Mitchell admits/claims to be a Werewolf.)\n\n4.  **Evaluate the Evidence for Werewolves:**\n    *   Mitchell explicitly claims: \"I'm a werewolf.\" (130)\n    *   Paul accuses Mitchell: \"I think Mitchell's a werewolf.\" (116)\n    *   Alysha suggests Mitchell: \"I think Mitchell might be a werewolf.\" (125)\n    *   Paul accuses Alysha: \"Alysha knows that because she's a werewolf.\" (103)\n    *   Paul accuses Mike: \"This is the revealer. This is the minion.\" (117)\n\n5.  **Determine the Target:** Since multiple players (Mitchell, Alysha, Mike) have been strongly implicated or have admitted to being Werewolves, the goal is to eliminate one of them.\n\n6.  **Select the Most Convincing Target:**\n    *   Mitchell is the most direct target because he explicitly stated: \"Don't vote for me, I'm a werewolf.\" (130). While this could be a bluff, it is the most direct piece of self-incrimination.\n    *   Alysha and Mike are accused, but their claims are based on complex role swaps and observations (103, 117).\n\n7.  **Final Decision:** Mitchell's admission is the strongest piece of evidence available in the transcript. I will choose Mitchell.\n\n8.  **Draft Justification (3-5 sentences):** Focus on the direct evidence of self-incrimination and the general suspicion surrounding the players.\n\n9.  **Format Output:** Ensure the final output is strict JSON. (Self-Correction: Double-check the required structure and constraints.)",
+  "parsed_output": {
+    "justification": "The transcript contains several strong accusations and admissions regarding Werewolf roles. Most critically, Mitchell explicitly stated, \"Don't vote for me, I'm a werewolf. I want to win\" (130). While this could be a bluff, it is the most direct piece of self-incrimination presented in the discussion. Furthermore, Paul and Alysha both suggested Mitchell was a Werewolf based on observed role swaps. Given the high degree of suspicion directed at Mitchell, eliminating him is the most logical move to ensure Team Village wins.",
+    "chosen_vote": "Mitchell"
+  },
+  "raw_response": "{\n  \"justification\": \"The transcript contains several strong accusations and admissions regarding Werewolf roles. Most critically, Mitchell explicitly stated, \\\"Don't vote for me, I'm a werewolf. I want to win\\\" (130). While this could be a bluff, it is the most direct piece of self-incrimination presented in the discussion. Furthermore, Paul and Alysha both suggested Mitchell was a Werewolf based on observed role swaps. Given the high degree of suspicion directed at Mitchell, eliminating him is the most logical move to ensure Team Village wins.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "response_for_parsing": "{\n  \"justification\": \"The transcript contains several strong accusations and admissions regarding Werewolf roles. Most critically, Mitchell explicitly stated, \\\"Don't vote for me, I'm a werewolf. I want to win\\\" (130). While this could be a bluff, it is the most direct piece of self-incrimination presented in the discussion. Furthermore, Paul and Alysha both suggested Mitchell was a Werewolf based on observed role swaps. Given the high degree of suspicion directed at Mitchell, eliminating him is the most logical move to ensure Team Village wins.\",\n  \"chosen_vote\": \"Mitchell\"\n}",
+  "validation": {
+    "is_valid": true,
+    "errors": [],
+    "chosen_vote": "Mitchell",
+    "justification": "The transcript contains several strong accusations and admissions regarding Werewolf roles. Most critically, Mitchell explicitly stated, \"Don't vote for me, I'm a werewolf. I want to win\" (130). While this could be a bluff, it is the most direct piece of self-incrimination presented in the discussion. Furthermore, Paul and Alysha both suggested Mitchell was a Werewolf based on observed role swaps. Given the high degree of suspicion directed at Mitchell, eliminating him is the most logical move to ensure Team Village wins."
+  },
+  "soft_warnings": [
+    "justification_may_exceed_5_sentences"
+  ],
+  "debug_info": {
+    "backend": "unsloth+peft",
+    "loader": "FastModel",
+    "model_device": "cuda:0",
+    "input_token_count": 4347,
+    "output_token_count": 1143,
+    "generation_time_sec": 377.4169337749481,
+    "used_chat_template": true,
+    "input_char_count": 14955,
+    "model_family": "gemma4",
+    "handler": "Gemma4Handler",
+    "prompt_formatter": "chat_template",
+    "reasoning_effort": null,
+    "gemma_enable_thinking": true,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64,
+    "repetition_penalty": 1.05,
+    "no_repeat_ngram_size": 0,
+    "torch_dtype": "torch.bfloat16",
+    "quantization": "unsloth_load_in_4bit_on_bnb_checkpoint",
+    "requested_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "resolved_model_name": "unsloth/gemma-4-E4B-it-unsloth-bnb-4bit",
+    "max_seq_length": 16384,
+    "hf_device_map": null
+  }
+}
