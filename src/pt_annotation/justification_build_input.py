@@ -78,10 +78,15 @@ def shard_key(model, run_label):
     return f"{model}__{run_label}"
 
 
-def build_shards(frame, runs):
-    """(model, run) -> DataFrame, in the fixed order above."""
+def build_shards(frame, runs, models=None):
+    """(model, run) -> DataFrame, in the fixed order above.
+
+    Only the requested models get shards. A model with no data for the
+    stage would otherwise produce an empty shard that a SLURM array task
+    is still allocated for, and shift every later index.
+    """
     shards = {}
-    for model in MODEL_ORDER:
+    for model in (MODEL_ORDER if models is None else models):
         for run_label in runs:
             subset = frame[
                 frame["model"].eq(model) & frame["run_label"].eq(run_label)
@@ -136,6 +141,12 @@ def parse_args():
         help="Which corpus to annotate, matched as a folder prefix under each "
              "model: 'base', or 'ft' for the fine-tuned adapters.",
     )
+    parser.add_argument(
+        "--models", nargs="+", default=None, choices=MODEL_ORDER, metavar="MODEL",
+        help="Models to shard, e.g. --models 4B. Defaults to all of "
+             f"{MODEL_ORDER}. Required for a stage that does not exist for "
+             "every model, such as the derivation adapters (E2B, E4B only).",
+    )
     parser.add_argument("--schema", default=DEFAULT_SCHEMA, choices=sorted(SCHEMAS))
     parser.add_argument("--output-root", type=Path, default=None)
     parser.add_argument(
@@ -168,9 +179,11 @@ def main():
                 f"Pass --output-root to write elsewhere."
             )
 
-    frame = load_frame(args.analysis_root, stage=args.stage)
+    selected_models = [m for m in MODEL_ORDER
+                       if args.models is None or m in set(args.models)]
+    frame = load_frame(args.analysis_root, stage=args.stage, models=selected_models)
     runs = ordered_runs(frame)
-    shards = build_shards(frame, runs)
+    shards = build_shards(frame, runs, selected_models)
 
     covered = sum(len(subset) for subset in shards.values())
     if covered != len(frame):
@@ -182,6 +195,7 @@ def main():
     manifest = {
         "schema": args.schema,
         "stage": args.stage,
+        "models": selected_models,
         "runs": runs,
         "n_justifications": int(len(frame)),
         "n_shards": len(shards),
@@ -189,6 +203,7 @@ def main():
     }
 
     print(f"Stage : {args.stage}   Schema: {args.schema}")
+    print(f"Models: {', '.join(selected_models)}")
     print(f"Runs  : {', '.join(runs)}")
     print(f"Corpus: {len(frame)} justifications, {len(shards)} shards\n")
     print(f"{'idx':>3}  {'shard':<16} {'n':>5}  {'est. wall':>9}")

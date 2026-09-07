@@ -93,9 +93,16 @@ def _assert_outer_folds(df, comp):
         # no composition split across folds within this repeat
         cf = g.groupby("composition_id")["fold"].nunique()
         assert (cf == 1).all(), f"repeat {rep}: a composition spans multiple folds"
-    assert df["composition_id"].nunique() == 36, \
-        f"expected 36 compositions, found {df['composition_id'].nunique()}"
-    assert df["key"].nunique() == 191, f"expected 191 games, found {df['key'].nunique()}"
+    # Sizes follow the roster this was called with, not the full corpus. The
+    # base arm passes all 191 games in 36 compositions; a finetuned arm that
+    # drops games with an unusable generation passes fewer, and the calling
+    # notebook has already pinned its own expected game count before this.
+    n_comps = len(set(comp.values()))
+    assert df['composition_id'].nunique() == n_comps, (
+        f"expected {n_comps} compositions, found "
+        f"{df['composition_id'].nunique()}")
+    assert df['key'].nunique() == n_games, (
+        f"expected {n_games} games, found {df['key'].nunique()}")
 
 
 def outer_splits(fold_df, repeat):

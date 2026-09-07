@@ -92,11 +92,24 @@ def resolve_stage_dir(analysis_root, model_name, stage):
     return matches[0]
 
 
-def load_frame(analysis_root, stage=BASE_STAGE):
-    """One row per annotatable justification across the three models."""
+def load_frame(analysis_root, stage=BASE_STAGE, models=None):
+    """One row per annotatable justification, across the requested models.
+
+    ``models`` defaults to all of MODEL_ORDER, which is what the base and
+    ft corpora need. A stage that does not cover every model -- the
+    derivation adapters exist for E2B and E4B only -- must pass the subset
+    it has, otherwise the missing model raises below. Order always follows
+    MODEL_ORDER so shard indices stay meaningful.
+    """
+    requested = list(MODEL_ORDER if models is None else models)
+    unknown = [m for m in requested if m not in MODEL_ORDER]
+    if unknown:
+        raise ValueError(f"unknown model(s) {unknown}; expected {MODEL_ORDER}")
+    selected = [m for m in MODEL_ORDER if m in set(requested)]
+
     frames = []
 
-    for model_name in MODEL_ORDER:
+    for model_name in selected:
         table_path = resolve_stage_dir(analysis_root, model_name, stage) / VOTE_TABLE_REL
         if not table_path.exists():
             raise FileNotFoundError(

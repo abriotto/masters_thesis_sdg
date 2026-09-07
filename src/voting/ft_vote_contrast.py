@@ -1,64 +1,51 @@
 """
-BASE -> FT contrast for the RQ3 voting subsection.
+BASE -> finetuned contrast for the RQ3 voting subsection.
 
-Notebook 2 compares models within one stage; it has no path to a direct
-BASE -> finetuned contrast, so that contrast is computed here. Every
-definition is copied unchanged from notebooks/03_llm_voting_outcome_analysis:
-p_correct and the vote distribution from notebook 1, and bootstrap_mean_ci,
-within/between_model_agreement, the availability-normalised selection lift and
-the start/end Werewolf split from notebook 2. Only the pairing is new -- each
-model is compared with its own finetuned counterpart on the same games, and
-the per-game difference is bootstrapped.
+Notebook 2 compares models within one arm; it has no path to a direct
+BASE -> finetuned contrast, so that contrast is computed here. The definitions
+are NOT duplicated: bootstrap_mean_ci, within/between_model_agreement, the arm
+registry and the replicate count are imported from voting.vote_stats, the same
+module notebook 2 imports. p_correct and the vote distribution come from
+notebook 1's tables, and the availability-normalised selection lift and the
+start/end Werewolf split follow notebook 2. Only the pairing is specific to
+this script -- each model is compared with its own finetuned counterpart on the
+same games, and the per-game difference is bootstrapped.
 
-Reads the tables notebook 1 writes under analysis/<model>/<stage>/, so run
-notebook 1 for the finetuned dirs first:
+Reads the tables notebook 1 writes under analysis/<model>/<arm>/, so run
+notebook 1 for every arm first, giving each arm its own stage directory:
 
-    EXPECT_GREEDY_RUN=0 LLM_NAME=<results/voting dir> jupyter nbconvert         --execute --to notebook 1_llm_vote_tables.ipynb
+    MODEL_STAGE=derivation EXPECT_GREEDY_RUN=0 LLM_NAME=<results/voting dir> jupyter nbconvert --execute --to notebook 1_llm_vote_tables.ipynb
 
-Run:  python -m src.voting.ft_vote_contrast
+Run:  python -m src.voting.ft_vote_contrast --arm derivation
 """
 from pathlib import Path
 from collections import Counter
 from itertools import combinations
-import json
+import argparse
+import sys
 import numpy as np
 import pandas as pd
 
 REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "src"))
+from voting.vote_stats import (ARM_RESULTS_DIRS, CIRCLE_VOTE_STRING as CIRCLE,
+                               LIFT_BOOT_SEED, N_BOOT, arm_models,
+                               between_model_agreement, bootstrap_mean_ci,
+                               excluded_game_ids, parse_json,
+                               within_model_agreement)
+
 ANALYSIS = REPO / "analysis"
 PROMPT_DIR = "prompt_v4"
-CIRCLE = "No Werewolf"
-N_BOOT, BOOT_SEED = 5000, 0
 
-MODELS = {
-    "E2B": ("unsloth_gemma-4-E2B-it-unsloth-bnb-4bit", "ft_gemma-4-E2B-role-inference-traced-final_adapter"),
-    "E4B": ("unsloth_gemma-4-E4B-it-unsloth-bnb-4bit", "ft_gemma-4-E4B-role-inference-traced-final_adapter"),
-    "31B": ("unsloth_gemma-4-31B-it-unsloth-bnb-4bit", "ft_gemma-4-31B-role-inference-traced-final_adapter"),
-}
-EXCLUDE = {"E2B": {"Youtube / The#Return#of#the#King##ONE#NIGHT#ULTIMATE#WEREWOLF / Game5"}}
+_ap = argparse.ArgumentParser(description=__doc__)
+_ap.add_argument("--arm", default="derivation",
+                 choices=[a for a in ARM_RESULTS_DIRS if a != "base"],
+                 help="finetuned arm to contrast against base")
+ARM = _ap.parse_args().arm
 
-
-def bootstrap_mean_ci(values, n_boot=N_BOOT, alpha=0.05, seed=BOOT_SEED):
-    values = np.asarray(values, dtype=float)
-    values = values[~np.isnan(values)]
-    if len(values) == 0:
-        return np.nan, np.nan, np.nan
-    rng = np.random.default_rng(seed)
-    idx = rng.integers(0, len(values), size=(n_boot, len(values)))
-    boot = values[idx].mean(axis=1)
-    lo, hi = np.percentile(boot, [100 * alpha / 2, 100 * (1 - alpha / 2)])
-    return float(values.mean()), float(lo), float(hi)
-
-
-def parse_json(value, default):
-    if isinstance(value, (list, dict)):
-        return value
-    if not isinstance(value, str) or not value.strip():
-        return default
-    try:
-        return json.loads(value)
-    except json.JSONDecodeError:
-        return default
+# Display labels; the arm registry keys models by the label notebook 2 uses.
+LABELS = {"2B": "E2B", "4B": "E4B", "31B": "31B"}
+MODELS = {LABELS[m]: ARM_RESULTS_DIRS["base"][m] for m in arm_models(ARM)}
 
 
 def tables(model_base, stage):
@@ -82,15 +69,8 @@ def circle_mass(dist):
     return float(dist.get(CIRCLE, 0.0))
 
 
-def within_model_agreement(labels):
-    pairs = list(combinations(range(len(labels)), 2))
-    return sum(labels[i] == labels[j] for i, j in pairs) / len(pairs) if pairs else np.nan
-
-
-def between_model_agreement(la, lb):
-    if not la or not lb:
-        return np.nan
-    return sum(a == b for a in la for b in lb) / (len(la) * len(lb))
+# within/between_model_agreement are imported from voting.vote_stats, the
+# same module notebook 2 imports, so the two cannot drift apart.
 
 
 def stoch_labels(f):
@@ -99,11 +79,31 @@ def stoch_labels(f):
     return s.groupby("game_id")["vote"].apply(list).to_dict()
 
 
+def arm_excluded(arm):
+    """Games this arm drops, derived from its own file-level vote tables."""
+    frames = [pd.read_csv(ANALYSIS / mb / arm / "voting" / PROMPT_DIR
+                          / "vote_stability" / "tables" / "llm_vote_file_level.csv")
+              for mb in MODELS.values()]
+    return excluded_game_ids(pd.concat(frames, ignore_index=True), arm,
+                             n_models=len(MODELS))
+
+
+# One paired game set for the whole contrast: a game is kept only if every
+# model produced a usable vote in every run of BOTH conditions. Deriving it
+# from the data replaces the hand-maintained exclusion list this script used
+# to carry, which could not follow a new arm.
+EXCLUDED = arm_excluded("base") | arm_excluded(ARM)
+print(f"arm: {ARM} | models: {list(MODELS)} | bootstrap replicates: {N_BOOT}")
+if EXCLUDED:
+    print(f"excluded {len(EXCLUDED)} game(s) with an unusable generation:")
+    for g in sorted(EXCLUDED):
+        print("   ", g)
+
 DATA = {}
-for label, (mb, ft_stage) in MODELS.items():
+for label, mb in MODELS.items():
     gb, fb = tables(mb, "base")
-    gf, ff = tables(mb, ft_stage)
-    common = (set(gb["game_id"]) & set(gf["game_id"])) - EXCLUDE.get(label, set())
+    gf, ff = tables(mb, ARM)
+    common = (set(gb["game_id"]) & set(gf["game_id"])) - EXCLUDED
     DATA[label] = {
         "base_g": gb[gb["game_id"].isin(common)].set_index("game_id").sort_index(),
         "ft_g":   gf[gf["game_id"].isin(common)].set_index("game_id").sort_index(),
@@ -207,7 +207,8 @@ for label in MODELS:
 print(pd.DataFrame(rows).round(4).to_string(index=False))
 
 common_all = sorted(set.intersection(*[set(DATA[m]["games"]) for m in MODELS]))
-print(f"\nCross-model agreement on the {len(common_all)} games common to all three models.")
+print(f"\nCross-model agreement on the {len(common_all)} games common to all "
+      f"{len(MODELS)} models.")
 order = list(MODELS)
 mats = {}
 for cond, key in [("BASE", "base_l"), ("FT", "ft_l")]:
@@ -360,7 +361,9 @@ print("D1. INCORRECT VOTE TARGETS - availability-normalised selection lift")
 print("=" * 92)
 
 MIN_OPPORTUNITY_SHARE = 0.04
-LIFT_N_BOOT, LIFT_BOOT_SEED = 5000, 20260822
+LIFT_N_BOOT = N_BOOT             # shared replicate count (voting.vote_stats);
+                                 # LIFT_BOOT_SEED is imported and stays
+                                 # independent of BOOT_SEED.
 
 
 def lift_matrices(g, game_ids, roles):
@@ -421,10 +424,12 @@ for label in MODELS:
                          "in_figure": opp[i] >= MIN_OPPORTUNITY_SHARE})
 
 lift = pd.DataFrame(lift_out)
-OUT_DIR = REPO / "analysis" / "cross_model" / "base_vs_ft" / "voting" / PROMPT_DIR / "tables"
+OUT_DIR = (REPO / "analysis" / "cross_model" / f"base_vs_{ARM}" / "voting"
+           / PROMPT_DIR / "tables")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
-lift.to_csv(OUT_DIR / "lift_base_vs_ft.csv", index=False)
-print(f"\nsaved -> {(OUT_DIR / 'lift_base_vs_ft.csv').relative_to(REPO)}")
+LIFT_PATH = OUT_DIR / f"lift_base_vs_{ARM}.csv"
+lift.to_csv(LIFT_PATH, index=False)
+print(f"\nsaved -> {LIFT_PATH.relative_to(REPO)}")
 fig = lift[lift["in_figure"]].copy()
 fig["model"] = pd.Categorical(fig["model"], list(MODELS), ordered=True)
 fig = fig.sort_values(["role", "model"])
