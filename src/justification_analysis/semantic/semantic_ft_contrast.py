@@ -173,7 +173,9 @@ def annotation_coverage(condition: Condition, model: str,
 # ---------------------------------------------------------------------------
 
 def build_matrices(condition: Condition, model: str,
-                   games: Sequence[str]) -> Tuple[List[str], Dict[str, np.ndarray]]:
+                   games: Sequence[str],
+                   keep: Sequence[str] = None
+                   ) -> Tuple[List[str], Dict[str, np.ndarray]]:
     """Presence, assignment counts and sentences, shaped (n_runs, n_games).
 
     Aligned on the given game order so BASE and FT index the same games, which
@@ -182,11 +184,22 @@ def build_matrices(condition: Condition, model: str,
     `presence` is the 0/1 justification-level indicator that feeds the PRIMARY
     metric; `assignments` counts every label occurrence and feeds the
     sentence-normalised sensitivity check only.
+
+    `keep` optionally restricts the grid to a set of justification ids -- used
+    to condition on a property of the generation itself, such as "the vote
+    named a player". The grid is then RAGGED: a game may contribute three runs
+    in one condition and one in the other. `mask` records which cells survive,
+    and every statistic is reduced per game over the surviving runs, so a game
+    counts once regardless of how many of its runs are present. With `keep`
+    omitted the grid is full, `mask` is all ones, and the reduction is
+    arithmetically identical to the mean over a full grid.
     """
     frame = condition.justifications.loc[
         condition.justifications["model"].astype(str).eq(model)
         & condition.justifications["game_id"].isin(games)
     ]
+    if keep is not None:
+        frame = frame.loc[frame["justification_id"].isin(set(keep))]
     runs = sorted(frame["run_label"].unique())
     index = {game: i for i, game in enumerate(games)}
 
@@ -194,6 +207,7 @@ def build_matrices(condition: Condition, model: str,
     presence = {c: np.zeros(shape) for c in CATEGORIES}
     assignments = {c: np.zeros(shape) for c in CATEGORIES}
     sentences = np.zeros(shape)
+    mask = np.zeros(shape)
 
     labels = condition.labels.loc[
         condition.labels["justification_id"].isin(frame["justification_id"])]
@@ -202,11 +216,13 @@ def build_matrices(condition: Condition, model: str,
 
     for r, run in enumerate(runs):
         run_rows = frame.loc[frame["run_label"].eq(run)]
-        assert len(run_rows) == len(games), (
-            f"{condition.stage}/{model}/{run}: {len(run_rows)} annotated "
-            f"justifications for {len(games)} matched games")
+        if keep is None:
+            assert len(run_rows) == len(games), (
+                f"{condition.stage}/{model}/{run}: {len(run_rows)} annotated "
+                f"justifications for {len(games)} matched games")
         for row in run_rows.itertuples(index=False):
             g = index[row.game_id]
+            mask[r, g] = 1.0
             sentences[r, g] = row.n_sentences
             for category in CATEGORIES:
                 presence[category][r, g] = float(getattr(row, f"has_{category}"))
@@ -215,8 +231,24 @@ def build_matrices(condition: Condition, model: str,
 
     assert sentences.sum() > 0, \
         f"{condition.stage}/{model}: no sentences in the matched set"
+    assert (mask.sum(axis=0) > 0).all(), (
+        f"{condition.stage}/{model}: a game contributes no run after filtering; "
+        "restrict `games` to those retained in BOTH conditions")
     return runs, {"presence": presence, "assignments": assignments,
-                  "sentences": sentences}
+                  "sentences": sentences, "mask": mask}
+
+
+def per_game(grid: np.ndarray, mask: np.ndarray) -> np.ndarray:
+    """Reduce a (n_runs, n_games) grid to one value per game.
+
+    The mean is taken over the runs that survive in that game, so a game
+    counts once however many of its runs are present. On a full grid this is
+    the plain mean over runs, and averaging it over games reproduces the mean
+    over the whole grid exactly -- which is why switching to this reduction
+    leaves the unfiltered results unchanged.
+    """
+    denominator = mask.sum(axis=0)
+    return (grid * mask).sum(axis=0) / denominator
 
 
 def _weights(n_games: int, n_replicates: int, seed: int) -> np.ndarray:
@@ -238,7 +270,9 @@ def _weights(n_games: int, n_replicates: int, seed: int) -> np.ndarray:
 def prevalence_contrast(base: Condition, ft: Condition, model: str,
                         games: Sequence[str],
                         n_replicates: int = BOOTSTRAP_REPLICATES,
-                        seed: int = BOOTSTRAP_SEED) -> pd.DataFrame:
+                        seed: int = BOOTSTRAP_SEED,
+                        keep_base: Sequence[str] = None,
+                        keep_ft: Sequence[str] = None) -> pd.DataFrame:
     """FT - BASE prevalence differences, in points, with paired 95% CIs.
 
     One replicate resamples the matched games with replacement and applies the
@@ -246,26 +280,38 @@ def prevalence_contrast(base: Condition, ft: Condition, model: str,
     variation from the difference: a game that invites mechanical reasoning
     invites it in both conditions, and resampling it moves both sides together.
 
+    `keep_base` / `keep_ft` restrict each condition to a set of justification
+    ids -- used to condition on a property of the generation, such as "the vote
+    named a player". The grid is then ragged and each game is reduced over the
+    runs that survive in it, so a game still counts once. The game is the
+    resampling unit either way, so the pairing is unaffected.
+
     No p-values. The interval is a descriptive uncertainty statement about the
     difference, and `ci_excludes_zero` is recorded as a fact about the
     interval, not applied as a decision rule.
     """
-    _, base_m = build_matrices(base, model, games)
-    _, ft_m = build_matrices(ft, model, games)
+    _, base_m = build_matrices(base, model, games, keep=keep_base)
+    _, ft_m = build_matrices(ft, model, games, keep=keep_ft)
 
     n_games = len(games)
     weights = _weights(n_games, n_replicates, seed)            # (B, G)
+    base_mask, ft_mask = base_m["mask"], ft_m["mask"]
+    base_runs_per_game = float(base_mask.sum(axis=0).mean())
+    ft_runs_per_game = float(ft_mask.sum(axis=0).mean())
 
     rows = []
     for category in CATEGORIES:
         base_grid, ft_grid = base_m["presence"][category], ft_m["presence"][category]
 
-        # Per run, then averaged across runs - the frozen aggregation order.
-        base_point = float((base_grid.mean(axis=1)).mean())
-        ft_point = float((ft_grid.mean(axis=1)).mean())
+        # Per game over the surviving runs, then averaged across games. On a
+        # full grid this equals the frozen "per run, then across runs" order.
+        base_by_game = per_game(base_grid, base_mask)          # (G,)
+        ft_by_game = per_game(ft_grid, ft_mask)
+        base_point = float(base_by_game.mean())
+        ft_point = float(ft_by_game.mean())
 
-        base_boot = ((base_grid @ weights.T) / n_games).mean(axis=0)   # (B,)
-        ft_boot = ((ft_grid @ weights.T) / n_games).mean(axis=0)
+        base_boot = (base_by_game @ weights.T) / n_games       # (B,)
+        ft_boot = (ft_by_game @ weights.T) / n_games
         differences = 100 * (ft_boot - base_boot)
         low, high = np.percentile(differences, [2.5, 97.5])
 
@@ -274,7 +320,10 @@ def prevalence_contrast(base: Condition, ft: Condition, model: str,
             "category": category,
             "is_substantive": category != sf.OTHER_CATEGORY,
             "n_games": n_games,
-            "n_justifications_per_condition": n_games * base_grid.shape[0],
+            "n_justifications_per_condition": int(base_mask.sum()),
+            "n_justifications_ft": int(ft_mask.sum()),
+            "mean_runs_per_game_base": base_runs_per_game,
+            "mean_runs_per_game_ft": ft_runs_per_game,
             "base_pct": 100 * base_point,
             "ft_pct": 100 * ft_point,
             "delta_pp": 100 * (ft_point - base_point),
