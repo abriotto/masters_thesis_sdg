@@ -38,10 +38,13 @@ from src.justification_analysis.comparison import discourse_statistics as ds
 from src.justification_analysis.pipeline import config as pipeline_config
 from src.justification_analysis.pipeline import corpus as corpus_module
 from src.justification_analysis.pipeline import manifest as manifest_module
+# CATEGORY_ORDER and PDTB_TOP_LEVEL are properties of the PDTB scheme and
+# never vary by arm, so they are imported by name. MODEL_ORDER and
+# DECODING_ORDER DO vary, and are read through the module (ds.MODEL_ORDER)
+# so that `set_vocabulary` reaches this module too -- importing them by
+# name would freeze a three-model snapshot at import time.
 from src.justification_analysis.comparison.discourse_statistics import (
     CATEGORY_ORDER,
-    DECODING_ORDER,
-    MODEL_ORDER,
     PDTB_TOP_LEVEL,
     RUN_KEYS,
 )
@@ -98,6 +101,7 @@ def load_production_data(config=None, repo_root: Path = None):
             repo_root=Path(repo_root) if repo_root
             else pipeline_config.find_repo_root())
 
+    ds.set_vocabulary(config)
     justifications = corpus_module.load_corpus(config)
     candidates, manifest = manifest_module.load_verified_candidates(
         config, justifications)
@@ -152,10 +156,10 @@ def base_regression_checks(candidates, accepted, justifications) -> List[str]:
 def _order(frame: pd.DataFrame) -> pd.DataFrame:
     out = frame.copy()
     if "model" in out.columns:
-        out["model"] = pd.Categorical(out["model"], MODEL_ORDER, ordered=True)
+        out["model"] = pd.Categorical(out["model"], ds.MODEL_ORDER, ordered=True)
     if "decoding_group" in out.columns:
         out["decoding_group"] = pd.Categorical(out["decoding_group"],
-                                               DECODING_ORDER, ordered=True)
+                                               ds.DECODING_ORDER, ordered=True)
     cols = [c for c in ("model", "decoding_group") if c in out.columns]
     return out.sort_values(cols).reset_index(drop=True) if cols else out
 
@@ -300,8 +304,15 @@ def fine_grained_senses(accepted: pd.DataFrame,
         mean_pct_of_relations=("pct_of_relations", "mean"),
         sd_pct_of_relations=("pct_of_relations", "std"),
     )
-    assert int(table["total_count"].sum()) == INVARIANTS["accepted"], \
-        "level-2 senses do not sum to the accepted relations"
+    # Structural: every accepted relation carries exactly one level-2 sense,
+    # so the table must account for the corpus actually loaded. The frozen
+    # base figure (INVARIANTS['accepted'] = 5504) is a property of the base
+    # corpus and is checked separately, for the base stage only, in
+    # `base_regression_checks`.
+    n_senses = int(table['total_count'].sum())
+    assert n_senses == len(accepted), (
+        'level-2 senses do not sum to the accepted relations: '
+        f'{n_senses} vs {len(accepted)}')
     return _order(table)
 
 
@@ -325,14 +336,14 @@ def _metric_matrices(
     runs = sorted(subset["run_label"].unique())
     game_index = {game: i for i, game in enumerate(games)}
 
-    shape = (len(MODEL_ORDER), len(runs), len(games))
+    shape = (len(ds.MODEL_ORDER), len(runs), len(games))
     words = np.zeros(shape)
     metrics = {name: np.zeros(shape) for name in ["overall", *PDTB_TOP_LEVEL]}
 
     counts = accepted.groupby(["justification_id", "top_level"], observed=True).size()
     per_just_total = accepted.groupby("justification_id").size()
 
-    for m, model in enumerate(MODEL_ORDER):
+    for m, model in enumerate(ds.MODEL_ORDER):
         for r, run in enumerate(runs):
             rows = subset.loc[subset["model"].eq(model) & subset["run_label"].eq(run)]
             assert len(rows) == len(games), \
@@ -370,7 +381,7 @@ def paired_game_bootstrap(
     run and metric reuse the identical replicate weights.
     """
     rows = []
-    for decoding in DECODING_ORDER:
+    for decoding in ds.DECODING_ORDER:
         games, runs, words, metrics = _metric_matrices(
             accepted, justifications, decoding
         )
@@ -387,21 +398,21 @@ def paired_game_bootstrap(
             flat_counts = counts.reshape(-1, n_games)
             boot_counts = flat_counts @ weights.T
             rates = 100 * boot_counts / boot_words             # (M*R, B)
-            rates = rates.reshape(len(MODEL_ORDER), len(runs), n_replicates)
+            rates = rates.reshape(len(ds.MODEL_ORDER), len(runs), n_replicates)
             model_values = rates.mean(axis=1)                  # (M, B)
 
             observed = 100 * counts.sum(axis=2) / words.sum(axis=2)  # (M, R)
             observed = observed.mean(axis=1)                   # (M,)
 
-            for i in range(len(MODEL_ORDER)):
-                for j in range(i + 1, len(MODEL_ORDER)):
+            for i in range(len(ds.MODEL_ORDER)):
+                for j in range(i + 1, len(ds.MODEL_ORDER)):
                     differences = model_values[i] - model_values[j]
                     low, high = np.percentile(differences, [2.5, 97.5])
                     rows.append({
                         "decoding_group": decoding,
                         "metric": "All relations" if metric == "overall" else metric,
-                        "model_a": MODEL_ORDER[i],
-                        "model_b": MODEL_ORDER[j],
+                        "model_a": ds.MODEL_ORDER[i],
+                        "model_b": ds.MODEL_ORDER[j],
                         "rate_a": observed[i],
                         "rate_b": observed[j],
                         "difference": observed[i] - observed[j],
@@ -415,10 +426,21 @@ def paired_game_bootstrap(
                     })
 
     metric_order = ["All relations", *CATEGORY_ORDER]
-    table = pd.DataFrame(rows)
+    # A between-model difference needs a pair. A single-model arm has none, so
+    # the result is legitimately empty -- but it must still carry the columns,
+    # or every caller that selects one raises KeyError on a frame that is
+    # simply empty rather than wrong.
+    columns = [
+        "decoding_group", "metric", "model_a", "model_b", "rate_a", "rate_b",
+        "difference", "ci_low", "ci_high", "ci_excludes_zero",
+        "n_runs_averaged", "n_games", "n_replicates", "seed",
+    ]
+    table = pd.DataFrame(rows, columns=columns)
+    if table.empty:
+        return table
     table["metric"] = pd.Categorical(table["metric"], metric_order, ordered=True)
     table["decoding_group"] = pd.Categorical(table["decoding_group"],
-                                             DECODING_ORDER, ordered=True)
+                                             ds.DECODING_ORDER, ordered=True)
     return table.sort_values(
         ["decoding_group", "metric", "model_a", "model_b"]
     ).reset_index(drop=True)

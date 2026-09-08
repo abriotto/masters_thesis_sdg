@@ -63,6 +63,20 @@ SENSE_ORDER = [
 
 MODEL_ORDER = list(sem.MODEL_ORDER)
 DECODING_ORDER = list(sem.DECODING_ORDER)
+
+
+def set_vocabulary(config) -> None:
+    """Bind this module's model and decoding vocabulary to a configuration.
+
+    Copied from `semantic_final` at import time, so rebinding them there
+    does not reach here. This module builds the joint sentence and
+    alignment frames, which are then indexed by position downstream, so it
+    has to agree with the arm being analysed. For the base stage this
+    rebinds them to exactly their existing values.
+    """
+    global MODEL_ORDER, DECODING_ORDER
+    MODEL_ORDER = list(config.model_order)
+    DECODING_ORDER = list(config.decoding_groups)
 SENTENCE_KEY = ["model", "game_id", "run_label", "sentence_id"]
 
 # NOTE: there is deliberately no module-level path to the candidate table any

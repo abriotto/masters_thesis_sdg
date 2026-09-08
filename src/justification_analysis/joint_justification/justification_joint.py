@@ -68,6 +68,21 @@ MODEL_ORDER = list(sem.MODEL_ORDER)
 DECODING_ORDER = list(sem.DECODING_ORDER)
 RUNS_BY_DECODING = dict(sem.RUNS_BY_DECODING)
 
+
+def set_vocabulary(config) -> None:
+    """Bind this module's model and run vocabulary to a configuration.
+
+    These are copied from `semantic_final` at import time, so rebinding them
+    there does not reach here. `validation_report` calls this with the
+    configuration it was given. For the base stage it rebinds them to exactly
+    their existing values, leaving base behaviour unchanged.
+    """
+    global MODEL_ORDER, DECODING_ORDER, RUNS_BY_DECODING
+    MODEL_ORDER = list(config.model_order)
+    DECODING_ORDER = list(config.decoding_groups)
+    RUNS_BY_DECODING = {name: list(runs)
+                        for name, runs in config.runs_by_decoding.items()}
+
 # Output namespace derives from the active configuration, so a fine-tuned run
 # writes to its own directory and cannot overwrite the base joint results.
 def _resolved_config(config=None):
@@ -110,6 +125,31 @@ BOOTSTRAP_REPLICATES = sem.BOOTSTRAP_REPLICATES
 # are read together rather than the point estimate alone.
 LOW_SUPPORT_DIAGNOSTIC = 30
 
+# Measured at each stage's freeze point. `justifications` is STRUCTURAL
+# (games x models x runs) and is derived in `validation_report` rather than
+# recorded, so it cannot drift out of step with the model and run structure.
+STAGE_INVARIANTS = {
+    "base": {
+        "games": 191,
+        "sentences": 8044,
+        "semantic_labels": 11526,
+        "accepted_relations": 5504,
+        "word_pattern_tokens": 169748,
+        "top_level": {"Comparison": 1608, "Contingency": 1534,
+                      "Expansion": 1513, "Temporal": 849},
+    },
+    "derivation": {
+        "games": 191,
+        "sentences": 2276,
+        "semantic_labels": 2692,
+        "accepted_relations": 1417,
+        "word_pattern_tokens": 44641,
+        "top_level": {"Comparison": 442, "Contingency": 466,
+                      "Expansion": 393, "Temporal": 116},
+    },
+}
+
+# The base corpus, kept under its original name for anything importing it.
 INVARIANTS = {
     "justifications": 2292,
     "games": 191,
@@ -281,8 +321,23 @@ def build_justification_frame(layers: Dict[str, pd.DataFrame],
 def validation_report(layers: Dict[str, pd.DataFrame],
                       alignment: Dict[str, pd.DataFrame],
                       sentences_joint: pd.DataFrame,
-                      justifications: pd.DataFrame) -> pd.DataFrame:
-    """Everything that has to hold before a single number is interpreted."""
+                      justifications: pd.DataFrame,
+                      config=None) -> pd.DataFrame:
+    """Everything that has to hold before a single number is interpreted.
+
+    `config` names the stage whose measured invariants apply and supplies the
+    model and run structure. It defaults to base, so an existing four-argument
+    call checks the base corpus exactly as before. A stage with no recorded
+    invariants stops here rather than being waved through.
+    """
+    config = _resolved_config(config)
+    set_vocabulary(config)
+    if config.stage not in STAGE_INVARIANTS:
+        raise KeyError(
+            f"no recorded joint invariants for stage {config.stage!r}; add its "
+            f"measured counts to STAGE_INVARIANTS before quoting results")
+    inv = STAGE_INVARIANTS[config.stage]
+    n_justifications = inv["games"] * len(config.model_order) * len(config.all_runs)
     semantic = layers["semantic"]
     aligned = alignment["aligned"]
 
@@ -300,41 +355,40 @@ def validation_report(layers: Dict[str, pd.DataFrame],
         c: int(justifications[f"n_sent_{c}"].sum()) for c in ALL_CATEGORIES}
 
     checks: List[Tuple[str, object, object]] = [
-        ("justifications", len(justifications), INVARIANTS["justifications"]),
+        ("justifications", len(justifications), n_justifications),
         ("no duplicate justification records",
          int(justifications["justification_id"].duplicated().sum()), 0),
         ("no justification lost",
          justifications["justification_id"].nunique(),
          sentences_joint["justification_id"].nunique()),
         ("underlying canonical sentences",
-         len(sentences_joint), INVARIANTS["sentences"]),
+         len(sentences_joint), inv["sentences"]),
         ("sentence counts sum to the corpus",
-         int(justifications["n_sentences"].sum()), INVARIANTS["sentences"]),
+         int(justifications["n_sentences"].sum()), inv["sentences"]),
         ("semantic labels unchanged",
-         len(semantic["labels"]), INVARIANTS["semantic_labels"]),
+         len(semantic["labels"]), inv["semantic_labels"]),
         ("accepted discourse relations",
-         len(aligned), INVARIANTS["accepted_relations"]),
+         len(aligned), inv["accepted_relations"]),
         ("relation counts aggregate without loss",
-         relation_sum, INVARIANTS["accepted_relations"]),
+         relation_sum, inv["accepted_relations"]),
         ("top-level counts aggregate without loss",
          {k: top_level_sum[k] for k in sorted(top_level_sum)},
          {k: top_level_direct[k] for k in sorted(top_level_direct)}),
-        ("top-level totals reproduce the frozen discourse analysis",
+        ("top-level totals reproduce this stage's discourse analysis",
          {k: top_level_sum[k] for k in sorted(top_level_sum)},
-         {"Comparison": 1608, "Contingency": 1534,
-          "Expansion": 1513, "Temporal": 849}),
+         {k: inv["top_level"][k] for k in sorted(inv["top_level"])}),
         ("sentence-presence aggregates without loss",
          aggregated_presence, sentence_presence),
         ("WORD_PATTERN token total reproduces the frozen denominator",
          int(justifications["n_words"].sum()),
-         INVARIANTS["word_pattern_tokens"]),
-        ("games", justifications["game_id"].nunique(), INVARIANTS["games"]),
+         inv["word_pattern_tokens"]),
+        ("games", justifications["game_id"].nunique(), inv["games"]),
         ("models agree across layers",
          sorted(justifications["model"].astype(str).unique()),
          sorted(MODEL_ORDER)),
         ("runs agree across layers",
          sorted(justifications["run_label"].unique()),
-         sorted(sem.STOCHASTIC_RUNS + sem.GREEDY_RUNS)),
+         sorted(config.all_runs)),
         ("game sets agree across layers",
          set(aligned["game_id"]) == set(justifications["game_id"]), True),
         ("justifications per model x run",
@@ -768,7 +822,20 @@ def _paired_bootstrap(justifications: pd.DataFrame, kind: str,
                             "n_replicates": n_replicates,
                             "seed": seed,
                         })
-    return _order(pd.DataFrame(rows))
+    # A between-model difference needs a pair. A single-model arm has none,
+    # so the result is legitimately empty -- but it must still carry the
+    # columns, or every caller that selects one raises KeyError on a frame
+    # that is simply empty rather than wrong.
+    columns = [
+        "decoding_group", "metric", "semantic_category", "discourse_relation",
+        "model_a", "model_b", "value_a", "value_b", "difference",
+        "ci_low", "ci_high", "ci_excludes_zero",
+        "n_justifications_with_category_a", "n_justifications_with_category_b",
+        "low_support_diagnostic", "n_valid_replicates", "n_games",
+        "n_replicates", "seed",
+    ]
+    table = pd.DataFrame(rows, columns=columns)
+    return table if table.empty else _order(table)
 
 
 def prevalence_bootstrap(justifications: pd.DataFrame, kind: str = "top_level",

@@ -30,6 +30,24 @@ CATEGORY_ORDER = ["Contingency", "Comparison", "Expansion", "Temporal"]
 MODEL_ORDER = ["Gemma 4 2B", "Gemma 4 4B", "Gemma 4 31B"]
 DECODING_ORDER = ["Stochastic", "Greedy"]
 
+
+def set_vocabulary(config) -> None:
+    """Bind the model and decoding vocabulary to a configuration.
+
+    The statistics build dense (model x run x game) arrays and index them by
+    position, so the vocabulary has to match the corpus actually loaded. An
+    arm with fewer models would otherwise get a three-model array with rows
+    that are never filled, and an arm with no greedy pass would carry an
+    empty decoding group through every table.
+
+    `discourse_final.load_production_data` calls this with the configuration
+    it was given. For the base stage it rebinds these to exactly their
+    existing values, so base behaviour is unchanged.
+    """
+    global MODEL_ORDER, DECODING_ORDER
+    MODEL_ORDER = list(config.model_order)
+    DECODING_ORDER = list(config.decoding_groups)
+
 MODEL_FOLDER_PATTERNS = {
     "Gemma 4 2B": "*gemma-4-E2B*",
     "Gemma 4 4B": "*gemma-4-E4B*",
