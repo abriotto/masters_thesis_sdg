@@ -89,7 +89,7 @@ STAGE_RUN_STRUCTURE: Dict[str, Dict[str, Tuple[str, ...]]] = {
 # must not silently keep a model set the stage never had, which would fail
 # deep inside a loader instead of at configuration time.
 STAGE_MODELS: Dict[str, Tuple[str, ...]] = {
-    "derivation": ("Gemma 4 4B",),
+    "derivation": ("Gemma 4 2B", "Gemma 4 4B"),
 }
 
 VOTE_TABLE_RELATIVE = Path("vote_stability/tables/llm_vote_file_level.csv")

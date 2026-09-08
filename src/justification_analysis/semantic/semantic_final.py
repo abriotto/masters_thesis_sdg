@@ -529,6 +529,10 @@ def presence_tensor(justifications: pd.DataFrame,
     presence = np.zeros(shape + (len(CATEGORY_ORDER),), dtype=np.float64)
     correct = np.zeros(shape, dtype=np.float64)
     filled = np.zeros(shape, dtype=bool)
+    # Unlike density, prevalence is a mean over cells, so an absent cell is NOT
+    # zero-safe: counted as a zero it would read as "category absent" rather
+    # than "no generation here". `filled` is therefore returned and every
+    # reduction over it must divide by the cells that exist.
 
     columns = [f"has_{c}" for c in CATEGORY_ORDER]
     for row in frame.itertuples(index=False):
@@ -539,11 +543,14 @@ def presence_tensor(justifications: pd.DataFrame,
         correct[m, r, g] = float(row.is_correct)
         filled[m, r, g] = True
 
-    assert filled.all(), (
-        f"{decoding}: the model x run x game grid has holes "
-        f"({int((~filled).sum())} missing cells)"
+    # The grid is ragged whenever a model failed to produce a parseable vote
+    # for some game: that justification was never annotated and the cell has no
+    # value. A game with no cell at all in any model or run cannot be scored.
+    assert filled.any(axis=(0, 1)).all(), (
+        f"{decoding}: some game has no annotated justification in any "
+        "model or run"
     )
-    return games, runs, presence, correct
+    return games, runs, presence, correct, filled
 
 
 def _game_weights(n_games: int, n_replicates: int, seed: int) -> np.ndarray:
@@ -700,17 +707,27 @@ def prevalence_bootstrap_differences(
     """
     rows = []
     for decoding in DECODING_ORDER:
-        games, runs, presence, _ = presence_tensor(justifications, decoding)
+        games, runs, presence, _, filled = presence_tensor(
+            justifications, decoding)
         n_games = len(games)
         weights = _game_weights(n_games, n_replicates, seed)      # (B, G)
+        # Prevalence is a mean over the cells that exist, so both the observed
+        # value and every replicate divide by the present cells rather than by
+        # n_games. On a full grid the denominator is n_games in every
+        # replicate and this is arithmetically the previous expression.
+        present = filled.astype(float).reshape(-1, n_games)        # (M*R, G)
+        boot_den = present @ weights.T                             # (M*R, B)
 
         for c, category in enumerate(CATEGORY_ORDER):
-            indicator = presence[:, :, :, c].reshape(-1, n_games)  # (M*R, G)
-            boot = (indicator @ weights.T) / n_games               # (M*R, B)
+            indicator = (presence[:, :, :, c] * filled).reshape(-1, n_games)
+            boot = (indicator @ weights.T) / boot_den              # (M*R, B)
             boot = boot.reshape(len(MODEL_ORDER), len(runs), n_replicates)
             model_values = boot.mean(axis=1)                       # (M, B)
 
-            observed = presence[:, :, :, c].mean(axis=2).mean(axis=1)  # (M,)
+            observed = (
+                (presence[:, :, :, c] * filled).sum(axis=2)
+                / filled.sum(axis=2)
+            ).mean(axis=1)                                         # (M,)
 
             for i in range(len(MODEL_ORDER)):
                 for j in range(i + 1, len(MODEL_ORDER)):
@@ -903,11 +920,16 @@ def correctness_arrays(justifications: pd.DataFrame,
     arrays, which is the point: three views that cannot silently disagree about
     their inputs.
     """
-    games, runs, presence, correct = presence_tensor(justifications, decoding)
+    games, runs, presence, correct, filled = presence_tensor(
+        justifications, decoding)
     n_runs = len(runs)
 
+    # These are COUNTS over runs, so an absent cell contributes nothing and no
+    # masking is required; `n_cells` records how many runs each (model, game)
+    # actually has, which is the denominator any rate built from them needs.
     n_present = presence.sum(axis=1)                       # (M, G, C)
     n_correct = correct.sum(axis=1)                        # (M, G)
+    n_cells = filled.sum(axis=1)                           # (M, G)
     n_correct_present = np.einsum(
         "mrg,mrgc->mgc", correct, presence
     )                                                      # (M, G, C)
@@ -918,6 +940,8 @@ def correctness_arrays(justifications: pd.DataFrame,
         "n_runs": n_runs,
         "presence": presence,
         "correct": correct,
+        "filled": filled,
+        "n_cells": n_cells,
         "n_present": n_present,
         "n_correct": n_correct,
         "n_correct_present": n_correct_present,

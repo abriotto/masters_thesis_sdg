@@ -330,6 +330,13 @@ def _metric_matrices(
     Returns the game order, the run labels, the words array and one counts
     array per metric, all shaped (n_models, n_runs, n_games) and aligned on the
     same game order - which is what makes the resampling paired.
+
+    The grid may be RAGGED on the model axis: a model whose generation failed
+    to parse for some game contributes no justification there. Density is a
+    ratio of sums, so an absent cell contributes zero to both the relation
+    count and the word count and simply does not enter that run's density --
+    no mask is needed for the arithmetic to be right. `mask` is returned so
+    the raggedness is visible to callers rather than silent.
     """
     subset = justifications.loc[justifications["decoding_group"].eq(decoding)]
     games = sorted(subset["game_id"].unique())
@@ -338,6 +345,7 @@ def _metric_matrices(
 
     shape = (len(ds.MODEL_ORDER), len(runs), len(games))
     words = np.zeros(shape)
+    mask = np.zeros(shape)
     metrics = {name: np.zeros(shape) for name in ["overall", *PDTB_TOP_LEVEL]}
 
     counts = accepted.groupby(["justification_id", "top_level"], observed=True).size()
@@ -346,19 +354,22 @@ def _metric_matrices(
     for m, model in enumerate(ds.MODEL_ORDER):
         for r, run in enumerate(runs):
             rows = subset.loc[subset["model"].eq(model) & subset["run_label"].eq(run)]
-            assert len(rows) == len(games), \
-                f"{model}/{run}: {len(rows)} justifications for {len(games)} games"
+            assert len(rows) <= len(games), \
+                f"{model}/{run}: {len(rows)} justifications exceed {len(games)} games"
             for justification_id, game, n_words in zip(
                 rows["justification_id"], rows["game_id"], rows["n_words"]
             ):
                 g = game_index[game]
+                mask[m, r, g] = 1.0
                 words[m, r, g] = n_words
                 metrics["overall"][m, r, g] = per_just_total.get(justification_id, 0)
                 for category in PDTB_TOP_LEVEL:
                     metrics[category][m, r, g] = counts.get(
                         (justification_id, category), 0
                     )
-    return games, runs, words, metrics
+    assert (mask.sum(axis=(0, 1)) > 0).all(), \
+        "a game contributes no justification in any model or run"
+    return games, runs, words, metrics, mask
 
 
 def paired_game_bootstrap(
@@ -382,7 +393,7 @@ def paired_game_bootstrap(
     """
     rows = []
     for decoding in ds.DECODING_ORDER:
-        games, runs, words, metrics = _metric_matrices(
+        games, runs, words, metrics, mask = _metric_matrices(
             accepted, justifications, decoding
         )
         n_games = len(games)
