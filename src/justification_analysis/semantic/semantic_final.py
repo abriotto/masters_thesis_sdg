@@ -154,9 +154,22 @@ BOOTSTRAP_REPLICATES = 10_000
 # configuration in `integrity_summary`, so a stage with a different model or
 # run structure does not need three more hand-copied numbers that could
 # disagree with each other.
+# `justifications`, `per_model` and `per_model_run` are recorded rather than
+# derived from games x models x runs, because the grid can be RAGGED: a model
+# whose generation failed to parse has no justification for that game, so the
+# product would overcount. The product is still checked as an upper bound.
 STAGE_INVARIANTS = {
-    "base": {"games": 191, "sentences": 8044, "labels": 11526},
-    "derivation": {"games": 191, "sentences": 2276, "labels": 2692},
+    "base": {
+        "games": 191, "sentences": 8044, "labels": 11526,
+        "justifications": 2292, "per_model": [764], "per_model_run": [191],
+    },
+    "derivation": {
+        "games": 191, "sentences": 4121, "labels": 5134,
+        # E2B run_1 and run_3 are 189: two generations produced no parseable
+        # vote and so carry no justification text to annotate.
+        "justifications": 1144, "per_model": [571, 573],
+        "per_model_run": [189, 191],
+    },
 }
 
 # The base corpus, kept under its original name for anything importing it.
@@ -359,10 +372,12 @@ def integrity_summary(data: Dict[str, pd.DataFrame],
     invariants = STAGE_INVARIANTS[config.stage]
     n_models = len(config.model_order)
     n_runs = len(config.all_runs)
-    # Structural, not hand-copied: the corpus is fully crossed by design.
-    n_justifications = invariants["games"] * n_models * n_runs
-    per_model = invariants["games"] * n_runs
-    per_model_run = invariants["games"]
+    n_justifications = invariants["justifications"]
+    per_model = invariants["per_model"]
+    per_model_run = invariants["per_model_run"]
+    # The fully-crossed product is the ceiling the corpus cannot exceed; where
+    # it falls short, the shortfall is the ragged cells and is recorded above.
+    crossed_ceiling = invariants["games"] * n_models * n_runs
 
     justifications = data["justifications"]
     sentences = data["sentences"]
@@ -387,15 +402,20 @@ def integrity_summary(data: Dict[str, pd.DataFrame],
         ("justifications per model",
          sorted(int(n) for n in
                 justifications.groupby("model", observed=True).size().unique()),
-         [per_model]),
+         sorted(per_model)),
         ("justifications per model x run",
          sorted(int(n) for n in
                 justifications.groupby(["model", "run_label"], observed=True)
                 .size().unique()),
-         [per_model_run]),
-        ("model x game x run fully crossed",
+         sorted(per_model_run)),
+        ("no duplicate (model, game, run) cell",
          len(justifications.drop_duplicates(["model", "game_id", "run_label"])),
          n_justifications),
+        ("cells do not exceed the fully-crossed ceiling",
+         bool(n_justifications <= crossed_ceiling), True),
+        ("ragged cells accounted for",
+         crossed_ceiling - n_justifications,
+         crossed_ceiling - invariants["justifications"]),
         ("sentences", len(sentences), invariants["sentences"]),
         ("sentences match the input shards",
          len(sentences), source_sentence_total),

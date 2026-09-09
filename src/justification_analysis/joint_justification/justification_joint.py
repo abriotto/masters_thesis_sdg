@@ -140,12 +140,12 @@ STAGE_INVARIANTS = {
     },
     "derivation": {
         "games": 191,
-        "sentences": 2276,
-        "semantic_labels": 2692,
-        "accepted_relations": 1417,
-        "word_pattern_tokens": 44641,
-        "top_level": {"Comparison": 442, "Contingency": 466,
-                      "Expansion": 393, "Temporal": 116},
+        "sentences": 4121,
+        "semantic_labels": 5134,
+        "accepted_relations": 2780,
+        "word_pattern_tokens": 83889,
+        "top_level": {"Comparison": 801, "Contingency": 955,
+                      "Expansion": 796, "Temporal": 228},
     },
 }
 
